@@ -199,11 +199,12 @@ export const gradeEssay = async (question: Question, studentEssay: string, image
       1. **Total Score:** Give a specific mark (e.g., 6/${question.maxMarks}). Be strict on "Logic Chains".
       2. **Score Breakdown:**
          - If 8 marks: AO1 (/3), AO2 (/3), AO3 (/2).
-         - If 12 marks: AO1+AO2 (/8), AO3 (/4).
+         - If 12 marks: AO1+AO2 (/8) [**State Level: L1/L2/L3**], AO3 (/4) [**State Level: L1/L2**].
       3. **Detailed Commentary:**
          - **Logic Check:** Identify specific sentences where the student made an assertion (A->Z) instead of a chain (A->B->C). Quote them.
          - **Context Check:** Did they use the specific industry/country context?
          - **Structure Check:** Did they define terms? Did they have a balanced body? Did they conclude?
+         - **Levels (for 12 marks):** Explicitly state why they are in a specific level (e.g., "Placed in L2 because argument is one-sided").
       4. **Actionable Advice:** Tell them exactly how to get +2 marks next time (e.g., "Add a step in your analysis: explain *why* interest rates reduce investment").
     `;
 
@@ -220,11 +221,12 @@ export const gradeEssay = async (question: Question, studentEssay: string, image
   }
 };
 
-export const getRealTimeCoaching = async (question: Question, currentText: string): Promise<{ao1: number, ao2: number, ao3: number, total: number, advice: string}> => {
+export const getRealTimeCoaching = async (question: Question, currentText: string): Promise<{ao1?: number, ao2?: number, ao1_ao2?: number, ao3: number, total: number, advice: string}> => {
   try {
     checkForApiKey();
 
     let logicDescription = "";
+    let responseSchema;
     
     if (question.maxMarks === 8) {
         logicDescription = `
@@ -233,12 +235,33 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
         - AO2 (Max 3): Analysis chains. (A->B->C).
         - AO3 (Max 2): Evaluation/Conclusion.
         `;
+        responseSchema = {
+          type: Type.OBJECT,
+          properties: {
+            ao1: { type: Type.INTEGER },
+            ao2: { type: Type.INTEGER },
+            ao3: { type: Type.INTEGER },
+            total: { type: Type.INTEGER },
+            advice: { type: Type.STRING }
+          },
+          required: ["ao1", "ao2", "ao3", "total", "advice"]
+        };
     } else {
         logicDescription = `
         **Scoring Logic (12 Marks - Level Based):**
         - AO1+AO2 (Max 8): Knowledge + Analysis. Balanced argument required for >5. Developed chains required for >5.
         - AO3 (Max 4): Evaluation. Judgment + Justification.
         `;
+        responseSchema = {
+          type: Type.OBJECT,
+          properties: {
+            ao1_ao2: { type: Type.INTEGER, description: "Combined Knowledge & Analysis score out of 8" },
+            ao3: { type: Type.INTEGER, description: "Evaluation score out of 4" },
+            total: { type: Type.INTEGER },
+            advice: { type: Type.STRING }
+          },
+          required: ["ao1_ao2", "ao3", "total", "advice"]
+        };
     }
 
     const prompt = `
@@ -251,14 +274,12 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
       **Student Draft:** "${currentText}"
 
       **Task:**
-      1. Estimate their current marks for AO1, AO2, AO3.
+      1. Estimate their current marks.
          - For AO2: If they just state "X leads to Y" without explaining *how*, score low.
-         - For 12-marks: Estimate the split of the 8 marks into AO1/AO2 roughly (e.g. AO1~2, AO2~6).
+         - For 12-marks: Give a single score for AO1+AO2 out of 8.
       2. Provide **ONE** short, tactical sentence of advice.
          - Example: "Don't just say 'Demand rises', explain the income effect."
          - Example: "You need a 'However' paragraph for evaluation."
-
-      Response JSON: { ao1: number, ao2: number, ao3: number, total: number, advice: string }
     `;
 
     const response = await ai.models.generateContent({
@@ -266,24 +287,16 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
       contents: prompt,
       config: { 
         responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            ao1: { type: Type.INTEGER },
-            ao2: { type: Type.INTEGER },
-            ao3: { type: Type.INTEGER },
-            total: { type: Type.INTEGER },
-            advice: { type: Type.STRING }
-          }
-        }
+        responseSchema: responseSchema
       }
     });
     
     const json = JSON.parse(response.text || "{}");
     
     return {
-        ao1: json.ao1 || 0,
-        ao2: json.ao2 || 0,
+        ao1: json.ao1,
+        ao2: json.ao2,
+        ao1_ao2: json.ao1_ao2,
         ao3: json.ao3 || 0,
         total: json.total || 0,
         advice: json.advice || "Keep writing..."

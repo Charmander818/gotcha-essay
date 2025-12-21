@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Question } from '../types';
 import { getRealTimeCoaching } from '../services/geminiService';
@@ -9,15 +10,16 @@ interface Props {
 }
 
 interface Scores {
-  ao1: number;
-  ao2: number;
+  ao1?: number;
+  ao2?: number;
+  ao1_ao2?: number; // For 12 marks combined
   ao3: number;
   total: number;
 }
 
 const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
   const [text, setText] = useState(savedText);
-  const [scores, setScores] = useState<Scores>({ ao1: 0, ao2: 0, ao3: 0, total: 0 });
+  const [scores, setScores] = useState<Scores>({ total: 0, ao3: 0 });
   const [advice, setAdvice] = useState("Start typing to get real-time feedback based on the mark scheme.");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   
@@ -27,7 +29,7 @@ const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
   // Reset or load saved text when question changes
   useEffect(() => {
     setText(savedText);
-    setScores({ ao1: 0, ao2: 0, ao3: 0, total: 0 });
+    setScores({ total: 0, ao3: 0 });
     setAdvice("Start typing to get real-time feedback based on the mark scheme.");
   }, [question.id]);
   
@@ -49,6 +51,7 @@ const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
       setScores({
         ao1: result.ao1,
         ao2: result.ao2,
+        ao1_ao2: result.ao1_ao2,
         ao3: result.ao3,
         total: result.total
       });
@@ -77,10 +80,7 @@ const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
     document.body.removeChild(element);
   };
 
-  // Determine Max Marks for display purposes
-  const maxAo1 = question.maxMarks === 12 ? "4~" : 3;
-  const maxAo2 = question.maxMarks === 12 ? "4~" : 3;
-  const maxAo3 = question.maxMarks === 12 ? 4 : 2;
+  const is12Mark = question.maxMarks === 12;
 
   return (
     <div className="max-w-5xl mx-auto h-[calc(100vh-8rem)] grid grid-cols-3 gap-6">
@@ -125,20 +125,33 @@ const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
             <span className="text-slate-400 text-sm">/ {question.maxMarks}</span>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 text-center">
-            <div className="bg-slate-50 rounded-lg p-2">
-              <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO1</div>
-              <div className="text-lg font-semibold text-slate-700">{scores.ao1}<span className="text-xs text-slate-400 font-normal">/{maxAo1}</span></div>
+          {is12Mark ? (
+            <div className="grid grid-cols-2 gap-2 text-center">
+              <div className="bg-slate-50 rounded-lg p-2">
+                <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO1 + AO2</div>
+                <div className="text-lg font-semibold text-slate-700">{scores.ao1_ao2 || 0}<span className="text-xs text-slate-400 font-normal">/8</span></div>
+              </div>
+              <div className="bg-slate-50 rounded-lg p-2">
+                <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO3</div>
+                <div className="text-lg font-semibold text-slate-700">{scores.ao3}<span className="text-xs text-slate-400 font-normal">/4</span></div>
+              </div>
             </div>
-            <div className="bg-slate-50 rounded-lg p-2">
-              <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO2</div>
-              <div className="text-lg font-semibold text-slate-700">{scores.ao2}<span className="text-xs text-slate-400 font-normal">/{maxAo2}</span></div>
+          ) : (
+            <div className="grid grid-cols-3 gap-2 text-center">
+              <div className="bg-slate-50 rounded-lg p-2">
+                <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO1</div>
+                <div className="text-lg font-semibold text-slate-700">{scores.ao1 || 0}<span className="text-xs text-slate-400 font-normal">/3</span></div>
+              </div>
+              <div className="bg-slate-50 rounded-lg p-2">
+                <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO2</div>
+                <div className="text-lg font-semibold text-slate-700">{scores.ao2 || 0}<span className="text-xs text-slate-400 font-normal">/3</span></div>
+              </div>
+              <div className="bg-slate-50 rounded-lg p-2">
+                <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO3</div>
+                <div className="text-lg font-semibold text-slate-700">{scores.ao3}<span className="text-xs text-slate-400 font-normal">/2</span></div>
+              </div>
             </div>
-            <div className="bg-slate-50 rounded-lg p-2">
-              <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO3</div>
-              <div className="text-lg font-semibold text-slate-700">{scores.ao3}<span className="text-xs text-slate-400 font-normal">/{maxAo3}</span></div>
-            </div>
-          </div>
+          )}
         </div>
 
         {/* Coach Advice */}
