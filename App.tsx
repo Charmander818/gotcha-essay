@@ -379,8 +379,9 @@ const App: React.FC = () => {
               const data = JSON.parse(event.target?.result as string);
               // Basic validation check
               if (typeof data === 'object') {
-                  setTopicAnalyses(data);
-                  alert("Analysis data restored successfully!");
+                  // MERGE imported data with existing data instead of replacing
+                  setTopicAnalyses(prev => ({ ...prev, ...data }));
+                  alert("Analysis data imported successfully! (Merged with existing)");
               } else {
                   alert("Invalid file format.");
               }
@@ -503,13 +504,13 @@ const App: React.FC = () => {
                     onClick={handleBackupAnalysis}
                     className="bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:bg-slate-50"
                   >
-                      Backup Analysis
+                      Backup All Analysis
                   </button>
                   <button 
                     onClick={() => fileInputRef.current?.click()}
                     className="bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:bg-slate-50"
                   >
-                      Restore Analysis
+                      Import / Merge Analysis
                   </button>
                   <input 
                     type="file" 
