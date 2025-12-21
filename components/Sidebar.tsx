@@ -1,4 +1,3 @@
-
 import React, { useMemo, useState, useEffect } from 'react';
 import { Question, SyllabusTopic, QuestionState } from '../types';
 import { SYLLABUS_STRUCTURE, Level } from '../syllabusData';
@@ -193,7 +192,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   // --- Grouping & Sorting Logic ---
   
   // 1. Syllabus View (Nested: Topic -> Chapter -> Questions)
-  const syllabusGroups = useMemo(() => {
+  const syllabusGroups = useMemo<Record<string, Record<string, Question[]>> | null>(() => {
     if (sortOption !== 'syllabus') return null;
 
     const groups: Record<string, Record<string, Question[]>> = {};
@@ -432,12 +431,20 @@ const Sidebar: React.FC<SidebarProps> = ({
                if (!chapters || Object.keys(chapters).length === 0) return null;
 
                const sortedChapters = getSortedChapters(chapters);
+               
+               // Calculate total questions in this topic
+               const topicTotalQuestions = Object.values(chapters).reduce((acc, curr: Question[]) => acc + curr.length, 0);
 
                return (
                  <div key={topic} className="mb-6">
-                   <h2 className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mb-2 sticky top-0 bg-white/95 py-1 z-10">
-                     {topic.replace(/^\d+\.\s*/, '')}
-                   </h2>
+                   <div className="flex items-center justify-between mb-2 sticky top-0 bg-white/95 py-1 z-10">
+                     <h2 className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">
+                       {topic.replace(/^\d+\.\s*/, '')}
+                     </h2>
+                     <span className="text-[9px] font-bold text-slate-300 bg-slate-50 px-1.5 py-0.5 rounded">
+                       {topicTotalQuestions}
+                     </span>
+                   </div>
                    
                    {sortedChapters.map((chapter) => {
                      const topicQuestions = chapters[chapter];
