@@ -612,7 +612,7 @@ export const analyzeExamStrategy = async (markValue: number, questions: Question
     }
 };
 
-export const generateSyllabusLogicChain = async (topicTitle: string, point: string): Promise<string> => {
+export const generateSyllabusLogicChain = async (topicTitle: string, point: string, context?: string): Promise<string> => {
   try {
     checkForApiKey();
     const prompt = `
@@ -620,15 +620,16 @@ export const generateSyllabusLogicChain = async (topicTitle: string, point: stri
       
       **Topic:** ${topicTitle}
       **Syllabus Point:** ${point}
+      ${context ? `**Specific Context:** ${context}` : ""}
       
-      **Task:** Write a perfect, step-by-step **Economic Logic Chain** that fully explains this specific syllabus point.
+      **Task:** Write a perfect, step-by-step **Economic Logic Chain** that fully explains this specific point.
       
-      **Rules:**
-      1. Start with the core economic definition or concept (AO1).
-      2. Use arrows (→) to show the mechanism of transmission (AO2).
-      3. Ensure no logical jumps. Explain *why* A leads to B.
-      4. Include real-world examples if relevant.
-      5. Keep it concise but rigorous.
+      **Strict Rules:**
+      1. Start with the core economic trigger (e.g. Interest Rates Rise).
+      2. Use arrows (→) to show the mechanism of transmission.
+      3. **AO2 Focus:** Ensure no logical jumps. Explain *why* A leads to B (e.g. mention the "Income Effect" or "Incentive Function").
+      4. Keep it concise but rigorous.
+      5. Output ONLY the chain, no intro/outro.
     `;
 
     const response = await ai.models.generateContent({
@@ -638,7 +639,35 @@ export const generateSyllabusLogicChain = async (topicTitle: string, point: stri
     return response.text || "Error generating chain.";
   } catch (error) {
     console.error("Syllabus Chain Error:", error);
-    return "Failed to generate logic chain.";
+    throw new Error("Failed to generate logic chain");
+  }
+};
+
+export const generateSyllabusDefinition = async (topicTitle: string, point: string): Promise<string> => {
+  try {
+    checkForApiKey();
+    const prompt = `
+      You are a Cambridge Economics Examiner.
+      
+      **Topic:** ${topicTitle}
+      **Syllabus Point:** ${point}
+      
+      **Task:** Provide the **Official Textbook Definition (AO1)** for the key concept in this syllabus point.
+      
+      **Rules:**
+      1. Precise, academic definition.
+      2. If there is a formula, include it.
+      3. Do not include analysis, just the definition.
+    `;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+    });
+    return response.text || "Error generating definition.";
+  } catch (error) {
+    console.error("Syllabus Definition Error:", error);
+    throw new Error("Failed to generate definition");
   }
 };
 

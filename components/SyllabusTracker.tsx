@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
-import { SyllabusStatus } from '../types';
-import { generateSyllabusLogicChain, evaluateSyllabusChain } from '../services/geminiService';
+import { SyllabusStatus, LogicChainItem } from '../types';
+import { generateSyllabusLogicChain, generateSyllabusDefinition } from '../services/geminiService';
 import ReactMarkdown from 'react-markdown';
 
 interface Props {
@@ -16,17 +16,16 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
   
   const [activeTrainingPoint, setActiveTrainingPoint] = useState<{id: string, text: string, topic: string} | null>(null);
   
-  // Training State
-  const [studentInput, setStudentInput] = useState("");
-  const [ao1Notes, setAo1Notes] = useState(""); // New State for AO1
-  const [trainingFeedback, setTrainingFeedback] = useState("");
-  const [modelChain, setModelChain] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [notesSaved, setNotesSaved] = useState(false);
-  
-  // Bulk Gen State
-  const [generatingSectionId, setGeneratingSectionId] = useState<string | null>(null);
-  const [progress, setProgress] = useState("");
+  // AO1 Definition State
+  const [ao1Definition, setAo1Definition] = useState("");
+  const [defLoading, setDefLoading] = useState(false);
+  const [defError, setDefError] = useState(false);
+
+  // AO2 Logic Chains State
+  const [chains, setChains] = useState<LogicChainItem[]>([]);
+  const [newChainContext, setNewChainContext] = useState("");
+  const [chainLoading, setChainLoading] = useState(false);
+  const [chainError, setChainError] = useState(false);
 
   const toggleSection = (id: string) => {
     setExpandedSections(prev => ({ ...prev, [id]: !prev[id] }));
@@ -47,178 +46,174 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
     const uniqueId = `${sectionId}-${subsectionTitle}-${pointIndex}`;
     setActiveTrainingPoint({ id: uniqueId, text: pointText, topic: subsectionTitle });
     
-    // Load saved work if any
-    const saved = statusMap[uniqueId];
-    setStudentInput(saved?.userChain || "");
-    setAo1Notes(saved?.ao1Notes || "");
-    setTrainingFeedback(saved?.feedback || "");
-    setModelChain(saved?.modelChain || ""); 
-    setNotesSaved(false);
+    // Load saved work
+    const saved = statusMap[uniqueId] || {};
+    
+    // Legacy support: Load old data if new data is missing
+    setAo1Definition(saved.ao1Definition || saved.ao1Notes || "");
+    
+    if (saved.ao2Chains && saved.ao2Chains.length > 0) {
+        setChains(saved.ao2Chains);
+    } else if (saved.modelChain) {
+        // Migrate old single chain to new array format
+        setChains([{ id: 'legacy', context: 'General', chain: saved.modelChain }]);
+    } else {
+        setChains([]);
+    }
+    
+    setDefError(false);
+    setChainError(false);
   };
 
   const closeTrainer = () => {
     setActiveTrainingPoint(null);
-    setStudentInput("");
-    setAo1Notes("");
-    setTrainingFeedback("");
-    setModelChain("");
-    setNotesSaved(false);
+    setAo1Definition("");
+    setChains([]);
+    setDefError(false);
+    setChainError(false);
   };
 
-  const handleSaveNotes = () => {
+  // --- Actions ---
+
+  const handleSaveAll = () => {
       if (!activeTrainingPoint) return;
-      
       onUpdateStatus(prev => ({
           ...prev,
           [activeTrainingPoint.id]: {
               ...prev[activeTrainingPoint.id],
-              ao1Notes: ao1Notes
+              ao1Definition: ao1Definition,
+              ao2Chains: chains,
+              lastPracticed: new Date().toISOString()
           }
       }));
-      setNotesSaved(true);
-      setTimeout(() => setNotesSaved(false), 2000);
   };
 
-  const handleCheckChain = async () => {
-    if (!activeTrainingPoint || !studentInput.trim()) return;
-    setLoading(true);
-    const feedback = await evaluateSyllabusChain(activeTrainingPoint.topic, activeTrainingPoint.text, studentInput);
-    setTrainingFeedback(feedback);
-    
-    onUpdateStatus(prev => ({
-      ...prev,
-      [activeTrainingPoint.id]: {
-        ...prev[activeTrainingPoint.id],
-        userChain: studentInput,
-        feedback: feedback,
-        lastPracticed: new Date().toISOString()
-      }
-    }));
-    
-    setLoading(false);
-  };
-
-  const handleShowModel = async () => {
-    if (!activeTrainingPoint) return;
-    
-    // Check if we already have it in state
-    if (statusMap[activeTrainingPoint.id]?.modelChain) {
-        setModelChain(statusMap[activeTrainingPoint.id].modelChain!);
-        return;
-    }
-
-    setLoading(true);
-    const chain = await generateSyllabusLogicChain(activeTrainingPoint.topic, activeTrainingPoint.text);
-    setModelChain(chain);
-    
-    onUpdateStatus(prev => ({
-        ...prev,
-        [activeTrainingPoint.id]: {
-            ...prev[activeTrainingPoint.id],
-            modelChain: chain
-        }
-    }));
-    setLoading(false);
-  };
-
-  const handleCopyText = (text: string) => {
-      navigator.clipboard.writeText(text);
-      alert("Copied to clipboard!");
-  };
-
-  // --- Bulk Operations ---
-
-  const handleBulkGenerate = async (sectionId: string, subTitle: string, points: string[]) => {
-      if (!confirm(`Generate logic chains for all ${points.length} points in "${subTitle}"? This may take a minute.`)) return;
-      
-      setGeneratingSectionId(subTitle);
-      
-      for (let i = 0; i < points.length; i++) {
-          const uniqueId = `${sectionId}-${subTitle}-${i}`;
+  const handleGenerateDefinition = async () => {
+      if (!activeTrainingPoint) return;
+      setDefLoading(true);
+      setDefError(false);
+      try {
+          const result = await generateSyllabusDefinition(activeTrainingPoint.topic, activeTrainingPoint.text);
+          setAo1Definition(result);
           
-          // Skip if already exists to save tokens/time
-          if (statusMap[uniqueId]?.modelChain) {
-              setProgress(`${i+1}/${points.length} (Skipping existing...)`);
-              continue;
-          }
-
-          setProgress(`${i+1}/${points.length} Generating...`);
-          try {
-              const chain = await generateSyllabusLogicChain(subTitle, points[i]);
-              
-              onUpdateStatus(prev => ({
-                  ...prev,
-                  [uniqueId]: {
-                      ...prev[uniqueId],
-                      modelChain: chain
-                  }
-              }));
-              
-              // Small delay to be nice to the API
-              await new Promise(r => setTimeout(r, 1500));
-          } catch (e) {
-              console.error("Failed to generate for point " + i, e);
-          }
+          // Auto-save
+          onUpdateStatus(prev => ({
+              ...prev,
+              [activeTrainingPoint.id]: { ...prev[activeTrainingPoint.id], ao1Definition: result }
+          }));
+      } catch (e) {
+          setDefError(true);
       }
-      
-      setGeneratingSectionId(null);
-      setProgress("");
-      alert("Bulk generation complete!");
+      setDefLoading(false);
   };
 
-  const handleExportWord = (sectionId: string, subTitle: string, points: string[]) => {
-      const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>${subTitle} Logic Chains</title>
+  const handleAddChain = async () => {
+      if (!activeTrainingPoint) return;
+      setChainLoading(true);
+      setChainError(false);
+      try {
+          const result = await generateSyllabusLogicChain(activeTrainingPoint.topic, activeTrainingPoint.text, newChainContext);
+          
+          const newChain: LogicChainItem = {
+              id: Date.now().toString(),
+              context: newChainContext || "General Chain",
+              chain: result
+          };
+          
+          const updatedChains = [...chains, newChain];
+          setChains(updatedChains);
+          setNewChainContext("");
+
+          // Auto-save
+          onUpdateStatus(prev => ({
+              ...prev,
+              [activeTrainingPoint.id]: { ...prev[activeTrainingPoint.id], ao2Chains: updatedChains }
+          }));
+
+      } catch (e) {
+          setChainError(true);
+      }
+      setChainLoading(false);
+  };
+
+  const handleDeleteChain = (chainId: string) => {
+      if (!activeTrainingPoint) return;
+      if (!confirm("Delete this logic chain?")) return;
+      
+      const updatedChains = chains.filter(c => c.id !== chainId);
+      setChains(updatedChains);
+      
+      onUpdateStatus(prev => ({
+          ...prev,
+          [activeTrainingPoint.id]: { ...prev[activeTrainingPoint.id], ao2Chains: updatedChains }
+      }));
+  };
+
+  const handleExportHandbook = (sectionId: string, subTitle: string, points: string[]) => {
+      const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>${subTitle} Revision Handbook</title>
       <style>
-        body { font-family: 'Calibri', sans-serif; }
-        h1 { color: #1e3a8a; }
-        .chain-box { border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; background: #f9f9f9; }
-        .point { font-weight: bold; margin-bottom: 5px; color: #333; }
-        .ao1 { color: #555; font-style: italic; margin-bottom: 10px; border-left: 3px solid #ccc; padding-left: 10px;}
-        .chain { color: #047857; }
+        body { font-family: 'Calibri', sans-serif; font-size: 10pt; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #94a3b8; padding: 12px; vertical-align: top; }
+        th { background-color: #f1f5f9; text-align: left; }
+        .syllabus-col { width: 25%; font-weight: bold; color: #1e293b; background-color: #f8fafc; }
+        .content-col { width: 75%; }
+        .ao1-box { margin-bottom: 15px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 10px; }
+        .ao1-label { font-weight: bold; color: #b91c1c; display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 8pt; }
+        .ao2-label { font-weight: bold; color: #047857; display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 8pt; margin-top: 10px;}
+        .chain-item { margin-bottom: 8px; background: #f0fdf4; padding: 8px; border-radius: 4px; border: 1px solid #bbf7d0; }
+        .chain-context { font-weight: bold; font-size: 9pt; color: #166534; }
       </style>
       </head><body>`;
       
-      let html = `<h1>Syllabus Notes: ${subTitle}</h1>`;
+      let html = `<h1 style="color:#1e3a8a; border-bottom: 2px solid #1e3a8a;">Revision Handbook: ${subTitle}</h1>`;
+      html += `<table>`;
+      html += `<tr><th>Syllabus Point</th><th>Revision Content (AO1 Definition + AO2 Analysis)</th></tr>`;
       
       points.forEach((point, i) => {
           const uniqueId = `${sectionId}-${subTitle}-${i}`;
           const data = statusMap[uniqueId];
-          const chain = data?.modelChain || "(No logic chain generated yet)";
-          const notes = data?.ao1Notes ? `<strong>Textbook / AO1:</strong><br/>${data.ao1Notes.replace(/\n/g, '<br/>')}` : "";
+          const def = data?.ao1Definition || data?.ao1Notes || "(No definition saved)";
           
-          html += `<div class="chain-box">
-            <div class="point">${point}</div>
-            ${notes ? `<div class="ao1">${notes}</div>` : ''}
-            <div class="chain"><strong>Logic Chain:</strong><br/>${chain.replace(/\n/g, '<br/>')}</div>
-          </div>`;
+          let chainsHtml = "";
+          if (data?.ao2Chains && data.ao2Chains.length > 0) {
+              chainsHtml = data.ao2Chains.map(c => `
+                  <div class="chain-item">
+                      <div class="chain-context">${c.context}</div>
+                      ${c.chain.replace(/\n/g, '<br/>')}
+                  </div>
+              `).join('');
+          } else if (data?.modelChain) {
+              chainsHtml = `<div class="chain-item"><div class="chain-context">General</div>${data.modelChain}</div>`;
+          } else {
+              chainsHtml = "<i>(No logic chains generated)</i>";
+          }
+          
+          html += `<tr>
+            <td class="syllabus-col">${point}</td>
+            <td class="content-col">
+                <div class="ao1-box">
+                    <span class="ao1-label">AO1: Knowledge Definition (Memorize)</span>
+                    ${def.replace(/\n/g, '<br/>')}
+                </div>
+                <div>
+                    <span class="ao2-label">AO2: Economic Logic Chains (Understand)</span>
+                    ${chainsHtml}
+                </div>
+            </td>
+          </tr>`;
       });
       
-      html += "</body></html>";
+      html += "</table></body></html>";
       
       const blob = new Blob([header + html], { type: 'application/msword' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `SyllabusNotes_${subTitle.replace(/[^a-z0-9]/gi, '_')}.doc`;
+      link.download = `Handbook_${subTitle.replace(/[^a-z0-9]/gi, '_')}.doc`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-  };
-
-  const handleCopyAll = (sectionId: string, subTitle: string, points: string[]) => {
-      let text = `LOGIC CHAINS: ${subTitle}\n\n`;
-      
-      points.forEach((point, i) => {
-          const uniqueId = `${sectionId}-${subTitle}-${i}`;
-          const data = statusMap[uniqueId];
-          const chain = data?.modelChain || "(No logic chain generated yet)";
-          const notes = data?.ao1Notes ? `AO1 NOTES:\n${data.ao1Notes}\n` : "";
-          
-          text += `POINT: ${point}\n${notes}CHAIN:\n${chain}\n\n-------------------\n\n`;
-      });
-      
-      navigator.clipboard.writeText(text);
-      alert("All notes & logic chains for this section copied to clipboard!");
   };
 
   // Helper to group points with same numbering prefix (e.g. 1.1.1)
@@ -226,7 +221,6 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
     const processed: ({ type: 'group'; header: string; items: { idx: number; text: string }[] } | { type: 'single'; item: { idx: number; text: string } })[] = [];
     
     points.forEach((point, idx) => {
-        // Match pattern "1.1.1 Title: Content"
         const match = point.match(/^(\d+(?:\.\d+)*\s+[^:]+):\s+(.+)$/);
         
         if (match) {
@@ -249,8 +243,8 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
   const renderPointRow = (sectionId: string, subTitle: string, idx: number, pointText: string) => {
       const uniqueId = `${sectionId}-${subTitle}-${idx}`;
       const currentStatus = statusMap[uniqueId]?.status;
-      const hasModel = !!statusMap[uniqueId]?.modelChain;
-      const hasNotes = !!statusMap[uniqueId]?.ao1Notes;
+      const hasDef = !!statusMap[uniqueId]?.ao1Definition || !!statusMap[uniqueId]?.ao1Notes;
+      const chainCount = statusMap[uniqueId]?.ao2Chains?.length || (statusMap[uniqueId]?.modelChain ? 1 : 0);
 
       return (
         <div key={idx} className="flex items-start gap-3 group">
@@ -274,21 +268,21 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
           <div className="flex-1">
               <span className="text-sm text-slate-700 leading-snug">{pointText}</span>
               <div className="flex gap-2 mt-1">
-                  {hasModel && (
-                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-green-100 text-green-700">
-                          Chain Ready
+                  {hasDef && (
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-purple-100 text-purple-700">
+                          AO1 Ready
                       </span>
                   )}
-                  {hasNotes && (
-                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-100 text-amber-700">
-                          Notes Added
+                  {chainCount > 0 && (
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-green-100 text-green-700">
+                          {chainCount} Chains
                       </span>
                   )}
               </div>
           </div>
           <button
             onClick={() => openTrainer(sectionId, subTitle, idx, pointText)}
-            className="opacity-0 group-hover:opacity-100 px-2 py-0.5 bg-indigo-50 text-indigo-600 text-xs font-bold rounded hover:bg-indigo-100 transition-all flex-shrink-0"
+            className="opacity-0 group-hover:opacity-100 px-2 py-0.5 bg-blue-50 text-blue-600 text-xs font-bold rounded hover:bg-blue-100 transition-all flex-shrink-0"
           >
             Train
           </button>
@@ -300,7 +294,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
     <div className="flex h-full">
       {/* List Area */}
       <div className={`flex-1 overflow-y-auto custom-scroll p-8 ${activeTrainingPoint ? 'hidden md:block md:w-1/2' : 'w-full'}`}>
-        <h2 className="text-2xl font-bold text-slate-800 mb-6">Syllabus Knowledge Check</h2>
+        <h2 className="text-2xl font-bold text-slate-800 mb-6">Syllabus Revision Handbook</h2>
         
         <div className="space-y-4">
           {SYLLABUS_CHECKLIST.map((section) => (
@@ -317,7 +311,6 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
                 <div className="p-4 space-y-4">
                   {section.subsections.map(sub => {
                     const isSubExpanded = expandedSubsections[sub.id];
-                    const isGenerating = generatingSectionId === sub.title;
 
                     return (
                       <div key={sub.id} className="border border-blue-50 rounded-lg overflow-hidden">
@@ -331,35 +324,14 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
                             </button>
                             
                             {isSubExpanded && (
-                                <div className="flex items-center gap-2">
-                                    {isGenerating ? (
-                                        <span className="text-[10px] font-bold text-blue-600 animate-pulse">{progress}</span>
-                                    ) : (
-                                        <>
-                                            <button 
-                                                onClick={() => handleBulkGenerate(section.id, sub.title, sub.points)}
-                                                className="p-1.5 bg-white text-blue-600 rounded hover:bg-blue-100 transition-colors shadow-sm"
-                                                title="Generate All Logic Chains"
-                                            >
-                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                                            </button>
-                                            <button 
-                                                onClick={() => handleExportWord(section.id, sub.title, sub.points)}
-                                                className="p-1.5 bg-white text-blue-600 rounded hover:bg-blue-100 transition-colors shadow-sm"
-                                                title="Export to Word"
-                                            >
-                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                                            </button>
-                                            <button 
-                                                onClick={() => handleCopyAll(section.id, sub.title, sub.points)}
-                                                className="p-1.5 bg-white text-blue-600 rounded hover:bg-blue-100 transition-colors shadow-sm"
-                                                title="Copy All"
-                                            >
-                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
-                                            </button>
-                                        </>
-                                    )}
-                                </div>
+                                <button 
+                                    onClick={() => handleExportHandbook(section.id, sub.title, sub.points)}
+                                    className="p-1.5 bg-white text-blue-600 rounded hover:bg-blue-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1"
+                                    title="Export Revision Handbook"
+                                >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                                    Handbook
+                                </button>
                             )}
                         </div>
                         
@@ -397,114 +369,108 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
         </div>
       </div>
 
-      {/* Trainer Panel (Sliding Overlay or Split View) */}
+      {/* Trainer Panel */}
       {activeTrainingPoint && (
         <div className="w-full md:w-1/2 bg-white border-l border-slate-200 shadow-xl flex flex-col h-full z-20 absolute md:static top-0 right-0">
-          <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-indigo-50">
+          <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-blue-50">
             <div>
-              <h3 className="text-sm font-bold text-indigo-900 uppercase tracking-wider">Logic Chain Trainer</h3>
-              <p className="text-xs text-indigo-700 mt-1 max-w-md truncate" title={activeTrainingPoint.topic}>{activeTrainingPoint.topic}</p>
+              <h3 className="text-sm font-bold text-blue-900 uppercase tracking-wider">Revision Card</h3>
+              <p className="text-xs text-blue-700 mt-1 max-w-md truncate" title={activeTrainingPoint.topic}>{activeTrainingPoint.topic}</p>
             </div>
             <button onClick={closeTrainer} className="text-slate-400 hover:text-slate-600">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto custom-scroll p-6">
-            <div className="mb-6 bg-white p-4 rounded-lg border border-indigo-100 shadow-sm">
+          <div className="flex-1 overflow-y-auto custom-scroll p-6 space-y-8">
+            <div className="mb-6 bg-white p-4 rounded-lg border border-blue-100 shadow-sm">
               <span className="text-xs font-bold text-slate-400 uppercase">Syllabus Point</span>
               <p className="text-lg font-medium text-slate-800 mt-1">{activeTrainingPoint.text}</p>
             </div>
 
-            {/* AO1 / Textbook Section */}
-            <div className="mb-6">
+            {/* AO1 SECTION */}
+            <div>
               <div className="flex justify-between items-center mb-2">
-                  <label className="block text-sm font-bold text-slate-600">
-                      📚 Textbook Definition / AO1 Notes
+                  <label className="block text-sm font-bold text-red-700 uppercase tracking-wide">
+                      AO1: Standard Definition
                   </label>
                   <button 
-                    onClick={handleSaveNotes}
-                    className={`text-xs font-bold px-2 py-1 rounded transition-colors ${notesSaved ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                    onClick={handleGenerateDefinition}
+                    disabled={defLoading}
+                    className="text-[10px] font-bold px-2 py-1 rounded bg-red-50 text-red-600 hover:bg-red-100 border border-red-200"
                   >
-                    {notesSaved ? 'Saved!' : 'Save Notes'}
+                    {defLoading ? "Generating..." : "Generate Textbook Def"}
                   </button>
               </div>
-              <textarea 
-                className="w-full h-24 p-3 border border-slate-200 rounded-lg resize-none focus:ring-2 focus:ring-amber-500 outline-none text-slate-700 text-sm bg-amber-50/30"
-                placeholder="Paste the official textbook definition here..."
-                value={ao1Notes}
-                onChange={(e) => setAo1Notes(e.target.value)}
-                onBlur={handleSaveNotes}
-              />
-            </div>
-
-            <div className="mb-6">
-              <label className="block text-sm font-bold text-slate-600 mb-2">Build your Logic Chain (AO2)</label>
-              <textarea 
-                className="w-full h-32 p-4 border border-slate-200 rounded-lg resize-none focus:ring-2 focus:ring-indigo-500 outline-none text-slate-700"
-                placeholder="Step 1 -> Step 2 -> Step 3..."
-                value={studentInput}
-                onChange={(e) => setStudentInput(e.target.value)}
-              />
-              <div className="flex gap-2 mt-2 justify-end">
-                 <button 
-                   onClick={handleShowModel}
-                   className="text-xs text-slate-500 hover:text-slate-700 font-medium underline px-2"
-                 >
-                   Show Model Answer
-                 </button>
-                 <button 
-                   onClick={handleCheckChain}
-                   disabled={loading || !studentInput.trim()}
-                   className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-indigo-700 transition-colors disabled:opacity-50 flex items-center gap-2"
-                 >
-                   {loading ? "Thinking..." : "Check Logic"}
-                 </button>
+              <div className="relative">
+                  <textarea 
+                    className="w-full h-32 p-4 border border-red-200 rounded-lg resize-none focus:ring-2 focus:ring-red-500 outline-none text-slate-700 text-sm bg-red-50/20"
+                    placeholder="Enter or generate the exact textbook definition to memorise..."
+                    value={ao1Definition}
+                    onChange={(e) => setAo1Definition(e.target.value)}
+                    onBlur={handleSaveAll}
+                  />
+                  {defError && (
+                      <div className="absolute bottom-2 right-2">
+                          <button onClick={handleGenerateDefinition} className="text-xs bg-red-600 text-white px-2 py-1 rounded shadow hover:bg-red-700">Retry Generation</button>
+                      </div>
+                  )}
               </div>
             </div>
 
-            {modelChain && (
-               <div className="mb-6 animate-fade-in-down">
-                  <div className="bg-green-50 border border-green-100 rounded-lg p-4 relative group">
-                     <div className="flex justify-between items-start mb-2">
-                         <h4 className="text-sm font-bold text-green-800 flex items-center gap-2">
-                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                           Perfect Model Chain
-                         </h4>
-                         <button 
-                            onClick={() => handleCopyText(modelChain)}
-                            className="text-green-600 hover:text-green-800 p-1 rounded hover:bg-green-100 transition-colors"
-                            title="Copy to Clipboard"
-                         >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
-                         </button>
-                     </div>
-                     <div className="prose prose-sm prose-green max-w-none">
-                        <ReactMarkdown>{modelChain}</ReactMarkdown>
-                     </div>
-                  </div>
-               </div>
-            )}
+            {/* AO2 SECTION */}
+            <div>
+              <label className="block text-sm font-bold text-green-700 uppercase tracking-wide mb-3">
+                  AO2: Economic Logic Chains
+              </label>
+              
+              {/* Existing Chains List */}
+              <div className="space-y-4 mb-4">
+                  {chains.map((item, idx) => (
+                      <div key={item.id} className="bg-green-50 border border-green-200 rounded-lg p-3 relative group">
+                          <div className="flex justify-between items-start mb-2">
+                              <span className="text-xs font-bold text-green-800 bg-green-200 px-2 py-0.5 rounded">{item.context}</span>
+                              <button onClick={() => handleDeleteChain(item.id)} className="text-green-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                              </button>
+                          </div>
+                          <div className="prose prose-sm prose-green max-w-none text-sm">
+                              <ReactMarkdown>{item.chain}</ReactMarkdown>
+                          </div>
+                      </div>
+                  ))}
+              </div>
 
-            {trainingFeedback && (
-               <div className="animate-fade-in-up">
-                  <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 relative group">
-                     <div className="flex justify-between items-start mb-2">
-                         <h4 className="text-sm font-bold text-slate-700">Examiner Feedback</h4>
-                         <button 
-                            onClick={() => handleCopyText(trainingFeedback)}
-                            className="text-slate-400 hover:text-slate-600 p-1 rounded hover:bg-slate-200 transition-colors"
-                            title="Copy to Clipboard"
-                         >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
-                         </button>
-                     </div>
-                     <div className="prose prose-sm prose-slate max-w-none">
-                        <ReactMarkdown>{trainingFeedback}</ReactMarkdown>
-                     </div>
+              {/* Add New Chain */}
+              <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-sm">
+                  <div className="flex gap-2 mb-2">
+                      <input 
+                        type="text" 
+                        placeholder="Context (e.g. 'Short Run' or 'Impact on Consumers')"
+                        className="flex-1 text-xs p-2 border border-slate-200 rounded focus:ring-1 focus:ring-green-500 outline-none"
+                        value={newChainContext}
+                        onChange={(e) => setNewChainContext(e.target.value)}
+                      />
+                      <button 
+                        onClick={handleAddChain}
+                        disabled={chainLoading}
+                        className="bg-green-600 hover:bg-green-700 text-white text-xs font-bold px-3 py-1 rounded transition-colors disabled:opacity-50"
+                      >
+                        {chainLoading ? "..." : "Generate Chain"}
+                      </button>
                   </div>
-               </div>
-            )}
+                  {chainError && (
+                      <div className="text-center py-2">
+                          <span className="text-xs text-red-500 mr-2">Generation failed.</span>
+                          <button onClick={handleAddChain} className="text-xs underline text-red-600 font-bold">Retry</button>
+                      </div>
+                  )}
+                  <p className="text-[10px] text-slate-400 italic text-center">
+                      AI will generate a step-by-step chain (A → B → C) based on this context.
+                  </p>
+              </div>
+            </div>
+
           </div>
         </div>
       )}

@@ -93,11 +93,23 @@ export interface SyllabusSection {
   subsections: SyllabusItem[];
 }
 
+export interface LogicChainItem {
+  id: string;
+  context: string; // e.g. "Impact on Consumers" or "Short Run"
+  chain: string;
+}
+
 export interface SyllabusStatus {
   status: 'R' | 'A' | 'G' | null;
   lastPracticed?: string;
+  
+  // Revised Structure for "Handbook Mode"
+  ao1Definition?: string; // Formal textbook definition
+  ao2Chains?: LogicChainItem[]; // List of specific logic chains
+  
+  // Legacy fields (kept for backward compatibility with existing saves)
   userChain?: string;
   modelChain?: string;
   feedback?: string;
-  ao1Notes?: string; // For saving Textbook/AO1 content
+  ao1Notes?: string; 
 }
