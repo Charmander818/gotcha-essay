@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
 import { SyllabusStatus, LogicChainItem } from '../types';
-import { generateSyllabusLogicChain, generateSyllabusDefinition } from '../services/geminiService';
+import { generateSyllabusLogicChain } from '../services/geminiService';
 import ReactMarkdown from 'react-markdown';
 
 interface Props {
@@ -18,8 +18,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
   
   // AO1 Definition State
   const [ao1Definition, setAo1Definition] = useState("");
-  const [defLoading, setDefLoading] = useState(false);
-  const [defError, setDefError] = useState(false);
+  const [defSaved, setDefSaved] = useState(false); // New state for save confirmation
 
   // AO2 Logic Chains State
   const [chains, setChains] = useState<LogicChainItem[]>([]);
@@ -61,7 +60,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
         setChains([]);
     }
     
-    setDefError(false);
+    setDefSaved(false);
     setChainError(false);
   };
 
@@ -69,7 +68,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
     setActiveTrainingPoint(null);
     setAo1Definition("");
     setChains([]);
-    setDefError(false);
+    setDefSaved(false);
     setChainError(false);
   };
 
@@ -88,23 +87,10 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
       }));
   };
 
-  const handleGenerateDefinition = async () => {
-      if (!activeTrainingPoint) return;
-      setDefLoading(true);
-      setDefError(false);
-      try {
-          const result = await generateSyllabusDefinition(activeTrainingPoint.topic, activeTrainingPoint.text);
-          setAo1Definition(result);
-          
-          // Auto-save
-          onUpdateStatus(prev => ({
-              ...prev,
-              [activeTrainingPoint.id]: { ...prev[activeTrainingPoint.id], ao1Definition: result }
-          }));
-      } catch (e) {
-          setDefError(true);
-      }
-      setDefLoading(false);
+  const handleManualSaveDefinition = () => {
+      handleSaveAll();
+      setDefSaved(true);
+      setTimeout(() => setDefSaved(false), 2000);
   };
 
   const handleAddChain = async () => {
@@ -392,29 +378,23 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
             <div>
               <div className="flex justify-between items-center mb-2">
                   <label className="block text-sm font-bold text-red-700 uppercase tracking-wide">
-                      AO1: Standard Definition
+                      AO1: Standard Definition (Manual Entry)
                   </label>
                   <button 
-                    onClick={handleGenerateDefinition}
-                    disabled={defLoading}
-                    className="text-[10px] font-bold px-2 py-1 rounded bg-red-50 text-red-600 hover:bg-red-100 border border-red-200"
+                    onClick={handleManualSaveDefinition}
+                    className={`text-[10px] font-bold px-3 py-1.5 rounded transition-colors border ${defSaved ? 'bg-green-100 text-green-700 border-green-200' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}`}
                   >
-                    {defLoading ? "Generating..." : "Generate Textbook Def"}
+                    {defSaved ? "Saved!" : "Save Definition"}
                   </button>
               </div>
               <div className="relative">
                   <textarea 
                     className="w-full h-32 p-4 border border-red-200 rounded-lg resize-none focus:ring-2 focus:ring-red-500 outline-none text-slate-700 text-sm bg-red-50/20"
-                    placeholder="Enter or generate the exact textbook definition to memorise..."
+                    placeholder="Paste the official textbook definition here to memorize..."
                     value={ao1Definition}
                     onChange={(e) => setAo1Definition(e.target.value)}
                     onBlur={handleSaveAll}
                   />
-                  {defError && (
-                      <div className="absolute bottom-2 right-2">
-                          <button onClick={handleGenerateDefinition} className="text-xs bg-red-600 text-white px-2 py-1 rounded shadow hover:bg-red-700">Retry Generation</button>
-                      </div>
-                  )}
               </div>
             </div>
 
@@ -434,8 +414,19 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
                                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                               </button>
                           </div>
-                          <div className="prose prose-sm prose-green max-w-none text-sm">
-                              <ReactMarkdown>{item.chain}</ReactMarkdown>
+                          
+                          {/* IMPROVED STYLING FOR LOGIC CHAIN OUTPUT */}
+                          <div className="bg-white p-3 rounded border border-green-100">
+                              <div className="prose prose-blue max-w-none text-sm leading-7">
+                                  <ReactMarkdown 
+                                    components={{
+                                        p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
+                                        li: ({node, ...props}) => <li className="mb-1" {...props} />
+                                    }}
+                                  >
+                                      {item.chain}
+                                  </ReactMarkdown>
+                              </div>
                           </div>
                       </div>
                   ))}
