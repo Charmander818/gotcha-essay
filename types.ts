@@ -96,5 +96,6 @@ export interface SyllabusStatus {
   status: 'R' | 'A' | 'G' | null;
   lastPracticed?: string;
   userChain?: string;
+  modelChain?: string;
   feedback?: string;
 }

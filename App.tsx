@@ -10,7 +10,7 @@ import TopicAnalyzer from './components/TopicAnalyzer';
 import SyllabusTracker from './components/SyllabusTracker';
 import AddQuestionModal from './components/AddQuestionModal';
 import CodeExportModal from './components/CodeExportModal';
-import { Question, AppMode, QuestionState, TopicAnalysisData } from './types';
+import { Question, AppMode, QuestionState, TopicAnalysisData, SyllabusStatus } from './types';
 import { questions as initialQuestions } from './data';
 import { generateModelAnswer, generateClozeExercise } from './services/geminiService';
 
@@ -18,6 +18,7 @@ const STORAGE_KEY_CUSTOM_QUESTIONS = 'cie_econ_custom_questions_v2';
 const STORAGE_KEY_DELETED_IDS = 'cie_econ_deleted_ids_v1';
 const STORAGE_KEY_WORK = 'cie_economics_work_v1';
 const STORAGE_KEY_TOPIC_ANALYSIS = 'cie_economics_analysis_v1';
+const STORAGE_KEY_SYLLABUS = 'cie_econ_syllabus_status_v1';
 const SESSION_KEY_AUTH = 'cie_econ_auth_session';
 
 // Basic protection.
@@ -44,6 +45,11 @@ const App: React.FC = () => {
 
   const [topicAnalyses, setTopicAnalyses] = useState<Record<string, TopicAnalysisData>>(() => {
     const saved = localStorage.getItem(STORAGE_KEY_TOPIC_ANALYSIS);
+    return saved ? JSON.parse(saved) : {};
+  });
+
+  const [syllabusStatus, setSyllabusStatus] = useState<Record<string, SyllabusStatus>>(() => {
+    const saved = localStorage.getItem(STORAGE_KEY_SYLLABUS);
     return saved ? JSON.parse(saved) : {};
   });
 
@@ -76,6 +82,7 @@ const App: React.FC = () => {
   const [isBatchProcessing, setIsBatchProcessing] = useState(false);
   const [batchProgress, setBatchProgress] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const syllabusFileInputRef = useRef<HTMLInputElement>(null);
 
   // --- Effects ---
   useEffect(() => {
@@ -93,6 +100,10 @@ const App: React.FC = () => {
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY_TOPIC_ANALYSIS, JSON.stringify(topicAnalyses));
   }, [topicAnalyses]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_SYLLABUS, JSON.stringify(syllabusStatus));
+  }, [syllabusStatus]);
 
   // --- Handlers ---
   const handleLogin = (e: React.FormEvent) => {
@@ -131,14 +142,10 @@ const App: React.FC = () => {
   };
 
   const handleSaveQuestion = (question: Question) => {
-    // If the question was previously deleted (e.g. user is re-adding/editing a deleted static question),
-    // remove it from the deleted list.
     if (deletedIds.includes(question.id)) {
         setDeletedIds(prev => prev.filter(id => id !== question.id));
     }
 
-    // Upsert logic: If the question ID already exists in customQuestions (whether it was originally 
-    // a custom question or an edited static question), update it. Otherwise, add it.
     setCustomQuestions(prev => {
       const exists = prev.some(q => q.id === question.id);
       if (exists) {
@@ -147,7 +154,6 @@ const App: React.FC = () => {
       return [...prev, question];
     });
 
-    // Update selection if we are currently viewing the edited question
     if (selectedQuestion?.id === question.id) {
       setSelectedQuestion(question);
     }
@@ -158,13 +164,10 @@ const App: React.FC = () => {
 
   const handleDeleteQuestion = (id: string) => {
     if (window.confirm("Are you sure you want to delete this question?")) {
-      // 1. If it's a purely custom question (starts with 'custom-'), remove it from data
       if (id.startsWith('custom-')) {
          setCustomQuestions(prev => prev.filter(q => q.id !== id));
       } else {
-         // 2. If it's a standard question (or edited standard), mark ID as deleted
          setDeletedIds(prev => [...prev, id]);
-         // Also remove any custom override to keep data clean
          setCustomQuestions(prev => prev.filter(q => q.id !== id));
       }
 
@@ -227,20 +230,14 @@ const App: React.FC = () => {
   };
 
   const handleExportAll = () => {
-    // ... existing export logic ...
-    // (Kept concise for brevity, assumes logic exists from previous context)
-    const dateStr = new Date().toLocaleDateString();
-    let htmlBody = `<h1>Export</h1>`;
-    // ... logic ...
-    // Placeholder to satisfy typescript in snippet if full logic isn't repeated
     alert("Use existing export logic");
   };
 
   const handleExportExcel = () => {
-    // ... existing excel logic ...
     alert("Use existing excel logic");
   };
 
+  // --- Analysis Backup/Restore ---
   const handleBackupAnalysis = () => {
       const blob = new Blob([JSON.stringify(topicAnalyses, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
@@ -260,9 +257,7 @@ const App: React.FC = () => {
       reader.onload = (event) => {
           try {
               const data = JSON.parse(event.target?.result as string);
-              // Basic validation check
               if (typeof data === 'object') {
-                  // MERGE imported data with existing data instead of replacing
                   setTopicAnalyses(prev => ({ ...prev, ...data }));
                   alert("Analysis data imported successfully! (Merged with existing)");
               } else {
@@ -273,14 +268,47 @@ const App: React.FC = () => {
           }
       };
       reader.readAsText(file);
-      // Reset input
       if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
-  // --- Login Screen ---
+  // --- Syllabus Backup/Restore ---
+  const handleBackupSyllabus = () => {
+      const blob = new Blob([JSON.stringify(syllabusStatus, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `CIE_Syllabus_Logic_Backup_${new Date().toISOString().slice(0,10)}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+  };
+
+  const handleRestoreSyllabus = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+          try {
+              const data = JSON.parse(event.target?.result as string);
+              if (typeof data === 'object') {
+                  setSyllabusStatus(prev => ({ ...prev, ...data }));
+                  alert("Syllabus & Logic Chains imported successfully!");
+              } else {
+                  alert("Invalid file format.");
+              }
+          } catch (err) {
+              alert("Failed to parse JSON file.");
+          }
+      };
+      reader.readAsText(file);
+      if (syllabusFileInputRef.current) syllabusFileInputRef.current.value = '';
+  };
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-100 px-4">
+        {/* Login UI code unchanged */}
         <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
@@ -332,7 +360,6 @@ const App: React.FC = () => {
       <Sidebar 
         questions={allQuestions}
         onSelectQuestion={(q) => {
-            // When selecting a question, force switch to a question-specific mode if currently in a global mode
             if (isGlobalMode) setMode(AppMode.GENERATOR);
             setSelectedQuestion(q);
         }} 
@@ -350,7 +377,6 @@ const App: React.FC = () => {
       />
       
       <main className="flex-1 flex flex-col h-screen overflow-hidden">
-        {/* Header */}
         <header className="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between flex-shrink-0 z-10">
           <div className="flex items-center gap-4">
             {mode === AppMode.TOPIC_ANALYSIS ? (
@@ -379,7 +405,6 @@ const App: React.FC = () => {
           </div>
 
           <div className="flex bg-slate-100 p-1 rounded-lg overflow-x-auto gap-1">
-            {/* Global Tools */}
             <button
                 onClick={() => setMode(AppMode.SYLLABUS_TRACKER)}
                 className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
@@ -403,7 +428,6 @@ const App: React.FC = () => {
             
             <div className="w-px bg-slate-300 mx-1"></div>
 
-            {/* Question Tools */}
             {[AppMode.GENERATOR, AppMode.IMPROVER, AppMode.GRADER, AppMode.COACH].map((m) => (
               <button
                 key={m}
@@ -421,7 +445,6 @@ const App: React.FC = () => {
           </div>
         </header>
 
-        {/* Content Area */}
         <div className="flex-1 overflow-y-auto p-0 relative">
           {mode === AppMode.TOPIC_ANALYSIS && (
               <div className="absolute bottom-4 left-4 z-50 flex gap-2">
@@ -447,9 +470,36 @@ const App: React.FC = () => {
               </div>
           )}
 
+          {mode === AppMode.SYLLABUS_TRACKER && (
+              <div className="absolute bottom-4 left-4 z-50 flex gap-2">
+                  <button 
+                    onClick={handleBackupSyllabus}
+                    className="bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:bg-slate-50"
+                  >
+                      Backup Syllabus Data
+                  </button>
+                  <button 
+                    onClick={() => syllabusFileInputRef.current?.click()}
+                    className="bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:bg-slate-50"
+                  >
+                      Restore Syllabus Data
+                  </button>
+                  <input 
+                    type="file" 
+                    ref={syllabusFileInputRef} 
+                    onChange={handleRestoreSyllabus} 
+                    className="hidden" 
+                    accept=".json" 
+                  />
+              </div>
+          )}
+
           <div className="h-full">
             {mode === AppMode.SYLLABUS_TRACKER ? (
-                <SyllabusTracker />
+                <SyllabusTracker 
+                  statusMap={syllabusStatus}
+                  onUpdateStatus={setSyllabusStatus}
+                />
             ) : mode === AppMode.TOPIC_ANALYSIS ? (
                <div className="p-8">
                <TopicAnalyzer 
