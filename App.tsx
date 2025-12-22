@@ -8,6 +8,7 @@ import EssayImprover from './components/EssayImprover';
 import LogicChainImprover from './components/LogicChainImprover';
 import TopicAnalyzer from './components/TopicAnalyzer';
 import SyllabusTracker from './components/SyllabusTracker';
+import StrategyAnalyzer from './components/StrategyAnalyzer';
 import AddQuestionModal from './components/AddQuestionModal';
 import CodeExportModal from './components/CodeExportModal';
 import { Question, AppMode, QuestionState, TopicAnalysisData, SyllabusStatus } from './types';
@@ -353,7 +354,7 @@ const App: React.FC = () => {
     );
   }
 
-  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN;
+  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.STRATEGY;
 
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50">
@@ -394,6 +395,11 @@ const App: React.FC = () => {
                     <h2 className="text-lg font-bold text-slate-800">Freeform Logic Improver</h2>
                     <p className="text-sm text-slate-500">Convert notes to formal chains</p>
                 </div>
+            ) : mode === AppMode.STRATEGY ? (
+                <div>
+                    <h2 className="text-lg font-bold text-slate-800">Exam Strategy Decoder</h2>
+                    <p className="text-sm text-slate-500">Reverse-engineering Mark Scheme Rules</p>
+                </div>
             ) : selectedQuestion ? (
               <div>
                  <h2 className="text-lg font-bold text-slate-800">{selectedQuestion.paper} - {selectedQuestion.variant} {selectedQuestion.year}</h2>
@@ -424,6 +430,16 @@ const App: React.FC = () => {
                 }`}
             >
                 Analysis
+            </button>
+            <button
+                onClick={() => setMode(AppMode.STRATEGY)}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
+                  mode === AppMode.STRATEGY
+                    ? 'bg-purple-600 text-white shadow-sm' 
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+            >
+                Strategy
             </button>
             
             <div className="w-px bg-slate-300 mx-1"></div>
@@ -512,6 +528,8 @@ const App: React.FC = () => {
                </div>
             ) : mode === AppMode.LOGIC_CHAIN ? (
                 <div className="p-8"><LogicChainImprover /></div>
+            ) : mode === AppMode.STRATEGY ? (
+                <StrategyAnalyzer questions={allQuestions} />
             ) : selectedQuestion ? (
               <div className="p-8">
                 {mode === AppMode.GENERATOR && (

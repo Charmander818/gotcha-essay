@@ -77,7 +77,8 @@ export enum AppMode {
   COACH = "Real-time Coach",
   LOGIC_CHAIN = "Logic Chain Improver",
   TOPIC_ANALYSIS = "Topic Analysis",
-  SYLLABUS_TRACKER = "Syllabus Tracker"
+  SYLLABUS_TRACKER = "Syllabus Tracker",
+  STRATEGY = "Exam Strategy"
 }
 
 export interface SyllabusItem {
@@ -98,4 +99,5 @@ export interface SyllabusStatus {
   userChain?: string;
   modelChain?: string;
   feedback?: string;
+  ao1Notes?: string; // For saving Textbook/AO1 content
 }

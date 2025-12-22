@@ -18,9 +18,11 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
   
   // Training State
   const [studentInput, setStudentInput] = useState("");
+  const [ao1Notes, setAo1Notes] = useState(""); // New State for AO1
   const [trainingFeedback, setTrainingFeedback] = useState("");
   const [modelChain, setModelChain] = useState("");
   const [loading, setLoading] = useState(false);
+  const [notesSaved, setNotesSaved] = useState(false);
   
   // Bulk Gen State
   const [generatingSectionId, setGeneratingSectionId] = useState<string | null>(null);
@@ -48,15 +50,33 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
     // Load saved work if any
     const saved = statusMap[uniqueId];
     setStudentInput(saved?.userChain || "");
+    setAo1Notes(saved?.ao1Notes || "");
     setTrainingFeedback(saved?.feedback || "");
     setModelChain(saved?.modelChain || ""); 
+    setNotesSaved(false);
   };
 
   const closeTrainer = () => {
     setActiveTrainingPoint(null);
     setStudentInput("");
+    setAo1Notes("");
     setTrainingFeedback("");
     setModelChain("");
+    setNotesSaved(false);
+  };
+
+  const handleSaveNotes = () => {
+      if (!activeTrainingPoint) return;
+      
+      onUpdateStatus(prev => ({
+          ...prev,
+          [activeTrainingPoint.id]: {
+              ...prev[activeTrainingPoint.id],
+              ao1Notes: ao1Notes
+          }
+      }));
+      setNotesSaved(true);
+      setTimeout(() => setNotesSaved(false), 2000);
   };
 
   const handleCheckChain = async () => {
@@ -153,18 +173,22 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
         h1 { color: #1e3a8a; }
         .chain-box { border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; background: #f9f9f9; }
         .point { font-weight: bold; margin-bottom: 5px; color: #333; }
+        .ao1 { color: #555; font-style: italic; margin-bottom: 10px; border-left: 3px solid #ccc; padding-left: 10px;}
         .chain { color: #047857; }
       </style>
       </head><body>`;
       
-      let html = `<h1>Logic Chains: ${subTitle}</h1>`;
+      let html = `<h1>Syllabus Notes: ${subTitle}</h1>`;
       
       points.forEach((point, i) => {
           const uniqueId = `${sectionId}-${subTitle}-${i}`;
-          const chain = statusMap[uniqueId]?.modelChain || "(No logic chain generated yet)";
+          const data = statusMap[uniqueId];
+          const chain = data?.modelChain || "(No logic chain generated yet)";
+          const notes = data?.ao1Notes ? `<strong>Textbook / AO1:</strong><br/>${data.ao1Notes.replace(/\n/g, '<br/>')}` : "";
           
           html += `<div class="chain-box">
             <div class="point">${point}</div>
+            ${notes ? `<div class="ao1">${notes}</div>` : ''}
             <div class="chain"><strong>Logic Chain:</strong><br/>${chain.replace(/\n/g, '<br/>')}</div>
           </div>`;
       });
@@ -175,7 +199,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `LogicChains_${subTitle.replace(/[^a-z0-9]/gi, '_')}.doc`;
+      link.download = `SyllabusNotes_${subTitle.replace(/[^a-z0-9]/gi, '_')}.doc`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -186,12 +210,15 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
       
       points.forEach((point, i) => {
           const uniqueId = `${sectionId}-${subTitle}-${i}`;
-          const chain = statusMap[uniqueId]?.modelChain || "(No logic chain generated yet)";
-          text += `POINT: ${point}\nCHAIN:\n${chain}\n\n-------------------\n\n`;
+          const data = statusMap[uniqueId];
+          const chain = data?.modelChain || "(No logic chain generated yet)";
+          const notes = data?.ao1Notes ? `AO1 NOTES:\n${data.ao1Notes}\n` : "";
+          
+          text += `POINT: ${point}\n${notes}CHAIN:\n${chain}\n\n-------------------\n\n`;
       });
       
       navigator.clipboard.writeText(text);
-      alert("All logic chains for this section copied to clipboard!");
+      alert("All notes & logic chains for this section copied to clipboard!");
   };
 
   // Helper to group points with same numbering prefix (e.g. 1.1.1)
@@ -223,6 +250,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
       const uniqueId = `${sectionId}-${subTitle}-${idx}`;
       const currentStatus = statusMap[uniqueId]?.status;
       const hasModel = !!statusMap[uniqueId]?.modelChain;
+      const hasNotes = !!statusMap[uniqueId]?.ao1Notes;
 
       return (
         <div key={idx} className="flex items-start gap-3 group">
@@ -245,11 +273,18 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
           </div>
           <div className="flex-1">
               <span className="text-sm text-slate-700 leading-snug">{pointText}</span>
-              {hasModel && (
-                  <span className="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-green-100 text-green-700">
-                      Chain Ready
-                  </span>
-              )}
+              <div className="flex gap-2 mt-1">
+                  {hasModel && (
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-green-100 text-green-700">
+                          Chain Ready
+                      </span>
+                  )}
+                  {hasNotes && (
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-100 text-amber-700">
+                          Notes Added
+                      </span>
+                  )}
+              </div>
           </div>
           <button
             onClick={() => openTrainer(sectionId, subTitle, idx, pointText)}
@@ -381,8 +416,30 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
               <p className="text-lg font-medium text-slate-800 mt-1">{activeTrainingPoint.text}</p>
             </div>
 
+            {/* AO1 / Textbook Section */}
             <div className="mb-6">
-              <label className="block text-sm font-bold text-slate-600 mb-2">Build your Logic Chain</label>
+              <div className="flex justify-between items-center mb-2">
+                  <label className="block text-sm font-bold text-slate-600">
+                      📚 Textbook Definition / AO1 Notes
+                  </label>
+                  <button 
+                    onClick={handleSaveNotes}
+                    className={`text-xs font-bold px-2 py-1 rounded transition-colors ${notesSaved ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                  >
+                    {notesSaved ? 'Saved!' : 'Save Notes'}
+                  </button>
+              </div>
+              <textarea 
+                className="w-full h-24 p-3 border border-slate-200 rounded-lg resize-none focus:ring-2 focus:ring-amber-500 outline-none text-slate-700 text-sm bg-amber-50/30"
+                placeholder="Paste the official textbook definition here..."
+                value={ao1Notes}
+                onChange={(e) => setAo1Notes(e.target.value)}
+                onBlur={handleSaveNotes}
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-bold text-slate-600 mb-2">Build your Logic Chain (AO2)</label>
               <textarea 
                 className="w-full h-32 p-4 border border-slate-200 rounded-lg resize-none focus:ring-2 focus:ring-indigo-500 outline-none text-slate-700"
                 placeholder="Step 1 -> Step 2 -> Step 3..."

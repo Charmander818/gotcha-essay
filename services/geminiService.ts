@@ -550,6 +550,68 @@ export const analyzeTopic = async (topic: string, questions: Question[]): Promis
     }
 };
 
+export const analyzeExamStrategy = async (markValue: number, questions: Question[]): Promise<string> => {
+    try {
+        checkForApiKey();
+        
+        // Filter questions by mark value
+        const relevantQuestions = questions.filter(q => q.maxMarks === markValue);
+        
+        // Take a representative sample (e.g., up to 40) to fit context, focusing on diverse phrasing
+        const sampleQuestions = relevantQuestions.slice(0, 40).map(q => `
+            Question: "${q.questionText}"
+            Marks: ${q.maxMarks}
+            Mark Scheme Excerpt: "${q.markScheme.substring(0, 400).replace(/\n/g, ' ')}"
+        `).join("\n\n");
+
+        const prompt = `
+            You are a Cambridge Economics Head Examiner. Your job is to reveal the "Hidden Marking Formulas" to teachers.
+            
+            I am providing you with ${relevantQuestions.length} past paper questions worth **${markValue} Marks**.
+            
+            **Task:** 
+            Reverse-engineer the marking logic based on the *Phrasing of the Question* (The Command Words/Stem).
+            Group these questions into distinct "Types" based on what the examiner demands for AO2 and AO3.
+            
+            **Input Data:**
+            ${sampleQuestions}
+            
+            **Output Format:**
+            Return a markdown report structured as follows:
+            
+            # ${markValue}-Mark Question Strategy Decoder
+            
+            [Brief intro about the general split of AO1/AO2/AO3 for this mark value]
+            
+            ## Type 1: [Name, e.g. "Assess whether A is always B"]
+            **Trigger Words:** "Always", "To what extent..."
+            **AO2 Formula (Analysis):** [Explain the specific structure required. e.g. 1-sided vs 2-sided? Diagram needed?]
+            **AO3 Formula (Evaluation):** [What is the specific 'Evaluation Trigger'? e.g. Short run vs Long run? Magnitude? Elasticity?]
+            **Example Question:** [Quote one from the list]
+            
+            ## Type 2: [Name, e.g. "Explain X and Consider Y"]
+            ...
+            
+            ## Type 3: [Name, e.g. "Which is better?"]
+            ...
+            
+            ## Examiner's 'Cheat Sheet' for Evaluation (AO3)
+            [List 3-4 bullet points of universal evaluation arguments that work for ${markValue} mark questions]
+        `;
+
+        const response = await ai.models.generateContent({
+            model: 'gemini-2.5-flash',
+            contents: prompt,
+        });
+        
+        return response.text || "Failed to analyze strategy.";
+
+    } catch (error) {
+        console.error("Strategy Analysis Error:", error);
+        return "Error analyzing strategy. Please try again.";
+    }
+};
+
 export const generateSyllabusLogicChain = async (topicTitle: string, point: string): Promise<string> => {
   try {
     checkForApiKey();
