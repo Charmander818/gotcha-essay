@@ -233,27 +233,32 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
       const chainCount = statusMap[uniqueId]?.ao2Chains?.length || (statusMap[uniqueId]?.modelChain ? 1 : 0);
 
       return (
-        <div key={idx} className="flex items-start gap-3 group">
+        <div key={idx} className="flex items-start gap-3 group mb-3 last:mb-0">
           <div className="flex-shrink-0 flex gap-1 mt-0.5">
             <button 
-              onClick={() => updateStatus(uniqueId, 'R')}
+              onClick={(e) => { e.stopPropagation(); updateStatus(uniqueId, 'R'); }}
               className={`w-3 h-3 rounded-full border border-red-200 ${currentStatus === 'R' ? 'bg-red-500 ring-2 ring-red-100' : 'bg-white hover:bg-red-100'}`}
               title="Red: Needs work"
             />
             <button 
-              onClick={() => updateStatus(uniqueId, 'A')}
+              onClick={(e) => { e.stopPropagation(); updateStatus(uniqueId, 'A'); }}
               className={`w-3 h-3 rounded-full border border-amber-200 ${currentStatus === 'A' ? 'bg-amber-500 ring-2 ring-amber-100' : 'bg-white hover:bg-amber-100'}`}
               title="Amber: Getting there"
             />
             <button 
-              onClick={() => updateStatus(uniqueId, 'G')}
+              onClick={(e) => { e.stopPropagation(); updateStatus(uniqueId, 'G'); }}
               className={`w-3 h-3 rounded-full border border-green-200 ${currentStatus === 'G' ? 'bg-green-500 ring-2 ring-green-100' : 'bg-white hover:bg-green-100'}`}
               title="Green: Confident"
             />
           </div>
-          <div className="flex-1">
-              <span className="text-sm text-slate-700 leading-snug">{pointText}</span>
-              <div className="flex gap-2 mt-1">
+          <div 
+            onClick={() => openTrainer(sectionId, subTitle, idx, pointText)}
+            className="flex-1 cursor-pointer hover:bg-blue-50/50 rounded -m-1 p-1 transition-colors"
+          >
+              <span className={`text-sm leading-snug ${currentStatus ? 'text-slate-900 font-medium' : 'text-slate-700'}`}>
+                {pointText}
+              </span>
+              <div className="flex gap-2 mt-1 min-h-[16px]">
                   {hasDef && (
                       <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-purple-100 text-purple-700">
                           AO1 Ready
@@ -264,14 +269,14 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
                           {chainCount} Chains
                       </span>
                   )}
+                  {/* Hint for empty state on hover */}
+                  {(!hasDef && chainCount === 0) && (
+                      <span className="text-[9px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                          Click to add definitions & logic
+                      </span>
+                  )}
               </div>
           </div>
-          <button
-            onClick={() => openTrainer(sectionId, subTitle, idx, pointText)}
-            className="opacity-0 group-hover:opacity-100 px-2 py-0.5 bg-blue-50 text-blue-600 text-xs font-bold rounded hover:bg-blue-100 transition-all flex-shrink-0"
-          >
-            Train
-          </button>
         </div>
       );
   };
