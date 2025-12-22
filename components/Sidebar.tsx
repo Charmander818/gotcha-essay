@@ -433,7 +433,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                const sortedChapters = getSortedChapters(chapters);
                
                // Calculate total questions in this topic
-               const topicTotalQuestions = Object.values(chapters).reduce((acc, curr: Question[]) => acc + curr.length, 0);
+               const topicTotalQuestions = Object.values(chapters).reduce((acc: number, curr: Question[]) => acc + curr.length, 0);
 
                return (
                  <div key={topic} className="mb-6">

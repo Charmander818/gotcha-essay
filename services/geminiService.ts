@@ -548,4 +548,63 @@ export const analyzeTopic = async (topic: string, questions: Question[]): Promis
         console.error("Topic Analysis Error:", error);
         return null;
     }
-}
+};
+
+export const generateSyllabusLogicChain = async (topicTitle: string, point: string): Promise<string> => {
+  try {
+    checkForApiKey();
+    const prompt = `
+      You are an expert Cambridge Economics Teacher.
+      
+      **Topic:** ${topicTitle}
+      **Syllabus Point:** ${point}
+      
+      **Task:** Write a perfect, step-by-step **Economic Logic Chain** that fully explains this specific syllabus point.
+      
+      **Rules:**
+      1. Start with the core economic definition or concept (AO1).
+      2. Use arrows (→) to show the mechanism of transmission (AO2).
+      3. Ensure no logical jumps. Explain *why* A leads to B.
+      4. Include real-world examples if relevant.
+      5. Keep it concise but rigorous.
+    `;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+    });
+    return response.text || "Error generating chain.";
+  } catch (error) {
+    console.error("Syllabus Chain Error:", error);
+    return "Failed to generate logic chain.";
+  }
+};
+
+export const evaluateSyllabusChain = async (topicTitle: string, point: string, studentInput: string): Promise<string> => {
+  try {
+    checkForApiKey();
+    const prompt = `
+      You are a strict Cambridge Economics Examiner.
+      
+      **Topic:** ${topicTitle}
+      **Syllabus Point:** ${point}
+      **Student's Logic Chain:** "${studentInput}"
+      
+      **Task:**
+      1. **Grade:** Assign a grade (A/B/C/D) based on accuracy and completeness.
+      2. **Critique:** Identify any "Logical Jumps" (steps missing) or errors.
+      3. **Improve:** Rewrite the student's chain to make it perfect (using → arrows).
+      
+      Format the output clearly with bold headers.
+    `;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+    });
+    return response.text || "Error evaluating chain.";
+  } catch (error) {
+    console.error("Syllabus Eval Error:", error);
+    return "Failed to evaluate logic chain.";
+  }
+};

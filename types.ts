@@ -76,5 +76,25 @@ export enum AppMode {
   GRADER = "Essay Grader",
   COACH = "Real-time Coach",
   LOGIC_CHAIN = "Logic Chain Improver",
-  TOPIC_ANALYSIS = "Topic Analysis"
+  TOPIC_ANALYSIS = "Topic Analysis",
+  SYLLABUS_TRACKER = "Syllabus Tracker"
+}
+
+export interface SyllabusItem {
+  id: string;
+  title: string;
+  points: string[];
+}
+
+export interface SyllabusSection {
+  id: string;
+  title: string;
+  subsections: SyllabusItem[];
+}
+
+export interface SyllabusStatus {
+  status: 'R' | 'A' | 'G' | null;
+  lastPracticed?: string;
+  userChain?: string;
+  feedback?: string;
 }
