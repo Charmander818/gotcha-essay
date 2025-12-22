@@ -502,6 +502,7 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         id: "6.2",
         title: "6.2 Protectionism",
         points: [
+          "6.2.1 Meaning of protectionism in the context of international trade: the protection of domestic industries from foreign competition",
           "6.2.2 Different tools of protection: tariffs and their impact",
           "6.2.2 Different tools of protection: import quotas and their impact",
           "6.2.2 Different tools of protection: export subsidies and their impact",
