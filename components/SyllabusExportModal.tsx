@@ -27,22 +27,53 @@ const SyllabusExportModal: React.FC<Props> = ({ isOpen, onClose, baseChecklist, 
 
   const generateCodes = () => {
     // 1. Generate Checklist Code
+    // We will accumulate definitions here as we calculate the new structure
+    const exportDefinitions: Record<string, string> = { ...baseDefinitions };
+
     const mergedSections = baseChecklist.map(section => {
         const mergedSubsections = section.subsections.map(sub => {
             // Get original points
             const originalPoints = [...sub.points];
             // Get custom points for this subsection
             const extras = customPoints[sub.id] || [];
-            // Merge them (just the text strings, as the file format expects strings)
-            const extraTexts = extras.map(e => e.text);
             
-            // To avoid duplicates if user clicks sync multiple times after hardcoding:
-            // We only add custom points if they aren't already in the list
-            const uniqueExtras = extraTexts.filter(t => !originalPoints.includes(t));
+            // Only add custom points if they aren't already in the list
+            const uniqueExtras = extras.filter(extra => !originalPoints.includes(extra.text));
+            const uniqueExtraTexts = uniqueExtras.map(e => e.text);
             
+            const finalPointsList = [...originalPoints, ...uniqueExtraTexts];
+
+            // --- Definitions Mapping Logic ---
+            // Iterate through the FINAL list of points for this subsection
+            finalPointsList.forEach((pointText, index) => {
+                // The new ID for this point once it's hardcoded
+                const newStandardId = `${section.id}-${sub.title}-${index}`;
+
+                // 1. Check if we have a definition for this point under its 'custom' ID
+                // (Only relevant if it was one of the uniqueExtras)
+                const sourceCustomPoint = uniqueExtras.find(e => e.text === pointText);
+                
+                if (sourceCustomPoint) {
+                    // It was a custom point. Does it have saved data?
+                    const status = currentStatus[sourceCustomPoint.id];
+                    if (status && status.ao1Definition && status.ao1Definition.trim().length > 5) {
+                        exportDefinitions[newStandardId] = status.ao1Definition;
+                    }
+                } 
+                
+                // 2. Check if the user has EDITED the definition for an existing standard point
+                // (e.g. they edited the hardcoded one)
+                // In this case, the ID hasn't changed, but we want to capture their edit.
+                // Or if they added a definition to a standard point that didn't have one.
+                const existingStandardStatus = currentStatus[newStandardId];
+                if (existingStandardStatus && existingStandardStatus.ao1Definition && existingStandardStatus.ao1Definition.trim().length > 5) {
+                     exportDefinitions[newStandardId] = existingStandardStatus.ao1Definition;
+                }
+            });
+
             return {
                 ...sub,
-                points: [...originalPoints, ...uniqueExtras]
+                points: finalPointsList
             };
         });
         return { ...section, subsections: mergedSubsections };
@@ -56,23 +87,11 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = ${JSON.stringify(mergedSect
     setGeneratedChecklistCode(checklistCode);
 
     // 2. Generate Definitions Code
-    // Merge base definitions with any user-written definitions in currentStatus
-    // We only take definitions that are not empty.
-    const newDefinitions: Record<string, string> = { ...baseDefinitions };
-    
-    Object.keys(currentStatus).forEach(key => {
-        const status = currentStatus[key];
-        // If user has a definition and it's not just the default placeholder
-        if (status.ao1Definition && status.ao1Definition.trim().length > 10) {
-            newDefinitions[key] = status.ao1Definition;
-        }
-    });
-
     const defCode = `
 // This file is for the TEACHER to hardcode standard definitions (AO1) or Model Chains (AO2).
 // These will appear as the default content for students if they haven't written their own yet.
 
-export const PREFILLED_DEFINITIONS: Record<string, string> = ${JSON.stringify(newDefinitions, null, 2)};
+export const PREFILLED_DEFINITIONS: Record<string, string> = ${JSON.stringify(exportDefinitions, null, 2)};
 `;
     setGeneratedDefCode(defCode);
   };

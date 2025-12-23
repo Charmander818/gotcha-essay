@@ -268,8 +268,6 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
       const currentStatus = statusMap[uniqueId]?.status;
       const savedDef = statusMap[uniqueId]?.ao1Definition || statusMap[uniqueId]?.ao1Notes;
       
-      // Removed the logic that displayed "Default (Teacher Provided)"
-      // but we still check if there IS a definition to show the green badge
       const hasDef = !!savedDef || !!PREFILLED_DEFINITIONS[uniqueId];
       
       const chainCount = statusMap[uniqueId]?.ao2Chains?.length || (statusMap[uniqueId]?.modelChain ? 1 : 0);
@@ -355,7 +353,11 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                 <div className="p-4 space-y-4">
                   {section.subsections.map(sub => {
                     const isSubExpanded = expandedSubsections[sub.id];
-                    const subCustomPoints = customPoints[sub.id] || [];
+                    const rawCustomPoints = customPoints[sub.id] || [];
+                    
+                    // Filter out custom points that already exist in the syllabus points (exact string match)
+                    // This hides duplicates after user has synced code
+                    const visibleCustomPoints = rawCustomPoints.filter(cp => !sub.points.includes(cp.text));
 
                     return (
                       <div key={sub.id} className="border border-blue-50 rounded-lg overflow-hidden">
@@ -407,11 +409,11 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                                }
                             })}
 
-                            {/* Render Custom Points */}
-                            {subCustomPoints.length > 0 && (
+                            {/* Render Custom Points (Only visible ones) */}
+                            {visibleCustomPoints.length > 0 && (
                                 <div className="mt-4 pt-4 border-t border-dashed border-slate-200">
                                     <h5 className="text-[10px] font-bold text-purple-500 uppercase mb-2">My Additional Points (AO3/Eval)</h5>
-                                    {subCustomPoints.map(cp => (
+                                    {visibleCustomPoints.map(cp => (
                                         renderPointRow(section.id, sub.id, cp.id, cp.text, true, cp.id)
                                     ))}
                                 </div>
@@ -512,7 +514,6 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                     onChange={(e) => setAo1Definition(e.target.value)}
                     onBlur={handleSaveAll}
                   />
-                  {/* Badge removed as requested */}
               </div>
             </div>
 
