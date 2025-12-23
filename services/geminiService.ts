@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Type } from "@google/genai";
 import { Question, ClozeBlank, ClozeFeedback, TopicAnalysisData } from "../types";
 
@@ -54,24 +55,61 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
   });
 
   const prompt = `
-    You are a strict Cambridge A-Level Economics Examiner.
-    Grade the following student essay based on the mark scheme provided.
-    
-    Question: ${question.questionText}
-    Max Marks: ${question.maxMarks}
-    Mark Scheme:
-    ${question.markScheme}
-    
-    Student Essay:
-    ${essay}
-    
-    (Note: If images are provided, they contain handwritten parts of the essay).
-    
-    Provide:
-    1. An estimated mark (e.g., 6/8).
-    2. A breakdown by Assessment Objective (AO1, AO2, AO3).
-    3. Specific feedback on what was done well.
-    4. Specific improvements needed to reach full marks.
+    You are a STRICT Cambridge A-Level Economics Examiner. 
+    Your job is to mark the student's essay accurately and critically.
+
+    **QUESTION DETAILS:**
+    - Question: "${question.questionText}"
+    - Max Marks: ${question.maxMarks}
+    - Mark Scheme: ${question.markScheme}
+
+    **STUDENT ESSAY:**
+    "${essay}"
+    (If images are attached, they contain handwriting).
+
+    ---
+
+    **STEP 1: CRITICAL PREMISE CHECK (Pass/Fail)**
+    Before grading, check if the student is answering the SPECIFIC question asked.
+    - Example: If the question asks how to *reduce* inflation, and the student writes about policies that *increase* AD (which causes inflation), this is a PREMISE FAILURE.
+    - If the premise is wrong, cap the marks significantly (max Level 1 or 2) and explicitly state this error at the very top.
+
+    **STEP 2: SCORING RULES (Strict Adherence)**
+    ${question.maxMarks === 12 
+      ? `- **AO1 (Knowledge) + AO2 (Analysis):** Max 8 marks. (Requires detailed chains of reasoning, diagrams, accurate definitions).
+         - **AO3 (Evaluation):** Max 4 marks. (Requires critical judgement, weighing up arguments, conclusion).`
+      : `- **AO1 (Knowledge):** Max 3 marks.
+         - **AO2 (Analysis):** Max 3 marks.
+         - **AO3 (Evaluation):** Max 2 marks.`
+    }
+
+    **STEP 3: GENERATE REPORT**
+    Please format your response exactly as follows using Markdown:
+
+    ### 1. Premise Check
+    - **Status:** [PASS / FAIL]
+    - **Comment:** [One sentence verifying if the student addressed the correct economic direction/topic.]
+
+    ### 2. Mark Scheme Coverage Checklist
+    - [ ] [Key Point 1 from MS] - [State if student covered it]
+    - [ ] [Key Point 2 from MS] - [State if student covered it]
+    - [ ] [Evaluation Requirement] - [State if student evaluated it]
+
+    ### 3. Paragraph-by-Paragraph Critique
+    *Go through the student's main paragraphs. Identify logic gaps.*
+    - **Para 1:** [Feedback on definition/intro. e.g., "Good definition of Inflation."]
+    - **Para 2:** [Feedback on Analysis. e.g., "Logic Gap: You said interest rates rise -> investment falls, but you didn't explain the MEC mechanism or cost of borrowing."]
+    - **Para 3:** [Feedback on Counter-argument/Evaluation.]
+
+    ### 4. Estimated Mark & Breakdown
+    **Total: X / ${question.maxMarks}**
+    ${question.maxMarks === 12 
+      ? `- AO1 + AO2: X / 8\n- AO3: X / 4`
+      : `- AO1: X / 3\n- AO2: X / 3\n- AO3: X / 2`
+    }
+
+    ### 5. Final Advice for Improvement
+    [2-3 specific, actionable bullet points to get full marks next time]
   `;
 
   const ai = getAI();
@@ -96,23 +134,31 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
   advice: string;
 }> => {
   checkForApiKey();
-  // const is12Mark = question.maxMarks === 12;
+  const is12Mark = question.maxMarks === 12;
   
   const prompt = `
-    Analyze this incomplete Economics essay draft.
+    You are a real-time Economics Writing Coach.
+    Analyze this incomplete draft.
+    
     Question: ${question.questionText}
     Mark Scheme: ${question.markScheme}
     Current Text: "${currentText}"
     
-    Estimate the current accumulated marks.
-    Provide a very brief, encouraging tip on what to add next (e.g., "Good definition, now explain the impact on price" or "Add evaluation").
+    **TASK:**
+    1. **Premise Check:** Is the student answering the question asked? (e.g. if asked to *reduce* inflation, are they using contractionary policies?). If NOT, your 'advice' MUST immediately warn them they are off-topic.
+    2. **Scoring:** Estimate marks based on CIE standards:
+       ${is12Mark 
+         ? "- AO1 + AO2 combined (Max 8)\n- AO3 (Max 4)" 
+         : "- AO1 (Max 3)\n- AO2 (Max 3)\n- AO3 (Max 2)"}
     
+    3. **Advice:** Give ONE short, encouraging sentence on what to do next (e.g. "Good definition, now draw the AD/AS diagram" or "Logic Gap: Explain WHY consumption falls").
+
     Return JSON format:
     {
-      "ao1": number,
-      "ao2": number,
+      "ao1": number (0 if 12-mark),
+      "ao2": number (0 if 12-mark),
       "ao3": number,
-      "ao1_ao2": number (only if 12 marks question, otherwise 0),
+      "ao1_ao2": number (only if 12-mark question, otherwise 0),
       "total": number,
       "advice": string
     }
