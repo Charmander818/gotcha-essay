@@ -76,7 +76,10 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         points: [
           "1.4.1 Decision-making in market, planned and mixed economies: the role of the price mechanism in market, planned and mixed economies",
           "1.4.1 Decision-making in market, planned and mixed economies: the role of government in market, planned and mixed economies",
-          "1.4.2 Resource allocation in these economic systems: the advantages and disadvantages of resource allocation in market, planned and mixed economic systems"
+          "1.4.2 Resource allocation in these economic systems: the advantages and disadvantages of resource allocation in market, planned and mixed economic systems",
+          // ADDED BY TEACHER (Example of hardcoding AO3 points)
+          "AO3: Evaluate the effectiveness of the market mechanism vs government intervention in allocating resources",
+          "AO3: Assess whether a mixed economy is always the most efficient system"
         ]
       },
       {
@@ -113,7 +116,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "1.6.3 Merit goods: application to examples",
           "1.6.4 Demerit goods: the meaning of demerit goods",
           "1.6.4 Demerit goods: why there is over-consumption due to imperfect information in the market",
-          "1.6.4 Demerit goods: application to examples"
+          "1.6.4 Demerit goods: application to examples",
+          // ADDED BY TEACHER
+          "AO3: Evaluate the effectiveness of government provision of public and merit goods"
         ]
       }
     ]
@@ -182,7 +187,8 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "2.2.7 PED and total expenditure: when demand for the product is price elastic and price decreases",
           "2.2.8 Implications for decision-making: why firms try to make their product more price inelastic",
           "2.2.8 Implications for decision-making: why firms produce more inferior goods when incomes are falling",
-          "2.2.8 Implications for decision-making: why knowledge of XED allows a firm to estimate the impact of a competitor’s pricing strategy on demand for their own products"
+          "2.2.8 Implications for decision-making: why knowledge of XED allows a firm to estimate the impact of a competitor’s pricing strategy on demand for their own products",
+          "AO3: Evaluate the usefulness of elasticity concepts for business decision making"
         ]
       },
       {
@@ -265,7 +271,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "3.2.4 Maximum and minimum prices: the effects of minimum price control in a market",
           "3.2.5 Buffer stock schemes: why a buffer stock scheme is needed",
           "3.2.5 Buffer stock schemes: how a buffer stock scheme works",
-          "3.2.6 Provision of information: how governments provide information"
+          "3.2.6 Provision of information: how governments provide information",
+          // ADDED BY TEACHER
+          "AO3: Evaluate the effectiveness of different government microeconomic interventions"
         ]
       },
       {
@@ -282,7 +290,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "3.3.4 Policies to redistribute income and wealth: progressive income taxes",
           "3.3.4 Policies to redistribute income and wealth: inheritance taxes",
           "3.3.4 Policies to redistribute income and wealth: taxes on capital",
-          "3.3.4 Policies to redistribute income and wealth: state provision of essential goods and services"
+          "3.3.4 Policies to redistribute income and wealth: state provision of essential goods and services",
+          // ADDED BY TEACHER
+          "AO3: Evaluate the effectiveness of policies to redistribute income and wealth"
         ]
       }
     ]
@@ -360,7 +370,8 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "4.4.4 Causes of economic growth: the increase in quantity of resources",
           "4.4.4 Causes of economic growth: the increase in quality of resources",
           "4.4.5 Consequences of economic growth: the benefits of economic growth",
-          "4.4.5 Consequences of economic growth: the costs of economic growth"
+          "4.4.5 Consequences of economic growth: the costs of economic growth",
+          "AO3: Evaluate whether the benefits of economic growth outweigh the costs"
         ]
       },
       {
@@ -376,7 +387,8 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "4.5.3 Causes and types of unemployment: structural unemployment",
           "4.5.3 Causes and types of unemployment: cyclical unemployment",
           "4.5.3 Causes and types of unemployment: technological unemployment",
-          "4.5.4 Consequences of unemployment: the consequences of unemployment for individuals, firms and the economy"
+          "4.5.4 Consequences of unemployment: the consequences of unemployment for individuals, firms and the economy",
+          "AO3: Evaluate the relative costs of unemployment to different stakeholders"
         ]
       },
       {
@@ -396,7 +408,8 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "4.6.4 Causes of inflation: demand-pull inflation",
           "4.6.4 Causes of inflation: monetary inflation",
           "4.6.5 Consequences of inflation: the costs of inflation for individuals, firms and the economy",
-          "4.6.5 Consequences of inflation: the benefits of inflation for individuals, firms and the economy"
+          "4.6.5 Consequences of inflation: the benefits of inflation for individuals, firms and the economy",
+          "AO3: Evaluate whether a low and stable rate of inflation is beneficial"
         ]
       }
     ]
@@ -436,7 +449,8 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "5.2.7 AD/AS analysis of fiscal policy: the impact on national income",
           "5.2.7 AD/AS analysis of fiscal policy: the impact on level of real output",
           "5.2.7 AD/AS analysis of fiscal policy: the impact on price level",
-          "5.2.7 AD/AS analysis of fiscal policy: the impact on employment"
+          "5.2.7 AD/AS analysis of fiscal policy: the impact on employment",
+          "AO3: Evaluate the effectiveness of fiscal policy in achieving macroeconomic objectives"
         ]
       },
       {
@@ -452,7 +466,8 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "5.3.4 AD/AS analysis of monetary policy: the impact on national income",
           "5.3.4 AD/AS analysis of monetary policy: the impact on the level of real output",
           "5.3.4 AD/AS analysis of monetary policy: the impact on price level",
-          "5.3.4 AD/AS analysis of monetary policy: the impact on employment"
+          "5.3.4 AD/AS analysis of monetary policy: the impact on employment",
+          "AO3: Evaluate the effectiveness of monetary policy in achieving macroeconomic objectives"
         ]
       },
       {
@@ -471,7 +486,8 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "5.4.4 AD/AS analysis of supply-side policy: the impact on national income",
           "5.4.4 AD/AS analysis of supply-side policy: the impact on the level of real output",
           "5.4.4 AD/AS analysis of supply-side policy: the impact on the price level",
-          "5.4.4 AD/AS analysis of supply-side policy: the impact on employment"
+          "5.4.4 AD/AS analysis of supply-side policy: the impact on employment",
+          "AO3: Evaluate the effectiveness of supply-side policy in achieving macroeconomic objectives"
         ]
       }
     ]
@@ -509,7 +525,8 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "6.2.2 Different tools of protection: embargoes and their impact",
           "6.2.2 Different tools of protection: excessive administrative burdens (‘red tape’) and their impact",
           "6.2.3 Arguments for and against protection: the reasons for protection (infant industries, sunset industries, strategic industries, dumping, etc.)",
-          "6.2.3 Arguments for and against protection: the reasons against protection (anti-specialisation, increased prices, lower quality, etc.)"
+          "6.2.3 Arguments for and against protection: the reasons against protection (anti-specialisation, increased prices, lower quality, etc.)",
+          "AO3: Evaluate the arguments for and against protectionism"
         ]
       },
       {
@@ -553,7 +570,8 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "6.5.2 Effect of policies: the effect of fiscal policies on the current account of the balance of payments",
           "6.5.2 Effect of policies: the effect of monetary policies on the current account of the balance of payments",
           "6.5.2 Effect of policies: the effect of supply-side policies on the current account of the balance of payments",
-          "6.5.2 Effect of policies: the effect of protectionist policies on the current account of the balance of payments"
+          "6.5.2 Effect of policies: the effect of protectionist policies on the current account of the balance of payments",
+          "AO3: Evaluate the effectiveness of different policies to correct current account imbalances"
         ]
       }
     ]

@@ -113,3 +113,9 @@ export interface SyllabusStatus {
   feedback?: string;
   ao1Notes?: string; 
 }
+
+export interface CustomSyllabusPoint {
+  id: string;
+  text: string;
+  subsectionId: string;
+}

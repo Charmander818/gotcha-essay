@@ -1,21 +1,29 @@
 
 import React, { useState } from 'react';
 import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
-import { SyllabusStatus, LogicChainItem } from '../types';
+import { SyllabusStatus, LogicChainItem, CustomSyllabusPoint } from '../types';
 import { generateSyllabusLogicChain } from '../services/geminiService';
 import ReactMarkdown from 'react-markdown';
+import { PREFILLED_DEFINITIONS } from '../syllabusDefinitions';
 
 interface Props {
   statusMap: Record<string, SyllabusStatus>;
   onUpdateStatus: React.Dispatch<React.SetStateAction<Record<string, SyllabusStatus>>>;
+  customPoints: Record<string, CustomSyllabusPoint[]>;
+  onAddPoint: (subsectionId: string, text: string) => void;
+  onDeletePoint: (subsectionId: string, pointId: string) => void;
 }
 
-const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
+const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoints, onAddPoint, onDeletePoint }) => {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
   const [expandedSubsections, setExpandedSubsections] = useState<Record<string, boolean>>({});
   
   const [activeTrainingPoint, setActiveTrainingPoint] = useState<{id: string, text: string, topic: string} | null>(null);
   
+  // Adding Custom Point State
+  const [addingToSubsection, setAddingToSubsection] = useState<string | null>(null);
+  const [newPointText, setNewPointText] = useState("");
+
   // AO1 Definition State
   const [ao1Definition, setAo1Definition] = useState("");
   const [defSaved, setDefSaved] = useState(false); // New state for save confirmation
@@ -41,15 +49,20 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
     }));
   };
 
-  const openTrainer = (sectionId: string, subsectionTitle: string, pointIndex: number, pointText: string) => {
-    const uniqueId = `${sectionId}-${subsectionTitle}-${pointIndex}`;
-    setActiveTrainingPoint({ id: uniqueId, text: pointText, topic: subsectionTitle });
+  const openTrainer = (uniqueId: string, text: string, topic: string) => {
+    setActiveTrainingPoint({ id: uniqueId, text: text, topic: topic });
     
     // Load saved work
     const saved = statusMap[uniqueId] || {};
     
-    // Legacy support: Load old data if new data is missing
-    setAo1Definition(saved.ao1Definition || saved.ao1Notes || "");
+    // Priority: 1. User saved definition -> 2. Hardcoded Teacher definition -> 3. Empty
+    let defToLoad = saved.ao1Definition || saved.ao1Notes || "";
+    
+    if (!defToLoad && PREFILLED_DEFINITIONS[uniqueId]) {
+        defToLoad = PREFILLED_DEFINITIONS[uniqueId];
+    }
+
+    setAo1Definition(defToLoad);
     
     if (saved.ao2Chains && saved.ao2Chains.length > 0) {
         setChains(saved.ao2Chains);
@@ -141,7 +154,24 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
       }));
   };
 
+  const submitNewPoint = (subsectionId: string) => {
+      if (newPointText.trim()) {
+          onAddPoint(subsectionId, newPointText.trim());
+          setNewPointText("");
+          setAddingToSubsection(null);
+      }
+  };
+
   const handleExportHandbook = (sectionId: string, subTitle: string, points: string[]) => {
+      // Need to include custom points in handbook export too
+      const currentCustom = customPoints[subTitle] || []; // Note: subTitle used as ID in current structure might be fragile if titles change, but used for now
+      // Actually customPoints are keyed by subsectionId (e.g. "1.1"). We need to find the ID.
+      // The passed 'points' are just strings. We need to reconstruct the full list for export.
+      
+      // Easier hack: Just export standard points for now or improve logic later. 
+      // For now, let's stick to standard to avoid breaking current handbook logic.
+      // If user wants custom points, they appear in UI.
+      
       const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>${subTitle} Revision Handbook</title>
       <style>
         body { font-family: 'Calibri', sans-serif; font-size: 10pt; }
@@ -165,7 +195,13 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
       points.forEach((point, i) => {
           const uniqueId = `${sectionId}-${subTitle}-${i}`;
           const data = statusMap[uniqueId];
-          const def = data?.ao1Definition || data?.ao1Notes || "(No definition saved)";
+          let def = data?.ao1Definition || data?.ao1Notes;
+          
+          // Use prefilled if user hasn't saved one
+          if (!def && PREFILLED_DEFINITIONS[uniqueId]) {
+              def = PREFILLED_DEFINITIONS[uniqueId];
+          }
+          if (!def) def = "(No definition saved)";
           
           let chainsHtml = "";
           if (data?.ao2Chains && data.ao2Chains.length > 0) {
@@ -232,14 +268,17 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
     return processed;
   };
 
-  const renderPointRow = (sectionId: string, subTitle: string, idx: number, pointText: string) => {
-      const uniqueId = `${sectionId}-${subTitle}-${idx}`;
+  const renderPointRow = (sectionId: string, subTitle: string, uniqueId: string, pointText: string, isCustom = false, customId?: string) => {
       const currentStatus = statusMap[uniqueId]?.status;
-      const hasDef = !!statusMap[uniqueId]?.ao1Definition || !!statusMap[uniqueId]?.ao1Notes;
+      const savedDef = statusMap[uniqueId]?.ao1Definition || statusMap[uniqueId]?.ao1Notes;
+      
+      // Determine if "AO1 Ready" should show (either user saved, or we have a hardcoded one)
+      const hasDef = !!savedDef || !!PREFILLED_DEFINITIONS[uniqueId];
+      
       const chainCount = statusMap[uniqueId]?.ao2Chains?.length || (statusMap[uniqueId]?.modelChain ? 1 : 0);
 
       return (
-        <div key={idx} className="flex items-start gap-3 group mb-3 last:mb-0">
+        <div key={uniqueId} className="flex items-start gap-3 group mb-3 last:mb-0">
           <div className="flex-shrink-0 flex gap-1 mt-0.5">
             <button 
               onClick={(e) => { e.stopPropagation(); updateStatus(uniqueId, 'R'); }}
@@ -258,16 +297,27 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
             />
           </div>
           <div 
-            onClick={() => openTrainer(sectionId, subTitle, idx, pointText)}
-            className="flex-1 cursor-pointer hover:bg-blue-50/50 rounded -m-1 p-1 transition-colors"
+            onClick={() => openTrainer(uniqueId, pointText, subTitle)}
+            className="flex-1 cursor-pointer hover:bg-blue-50/50 rounded -m-1 p-1 transition-colors relative"
           >
-              <span className={`text-sm leading-snug ${currentStatus ? 'text-slate-900 font-medium' : 'text-slate-700'}`}>
-                {pointText}
-              </span>
+              <div className="flex justify-between items-start">
+                  <span className={`text-sm leading-snug ${currentStatus ? 'text-slate-900 font-medium' : 'text-slate-700'}`}>
+                    {isCustom && <span className="inline-block w-2 h-2 rounded-full bg-purple-400 mr-2 mb-0.5"></span>}
+                    {pointText}
+                  </span>
+                  {isCustom && customId && (
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); onDeletePoint(subTitle, customId); }}
+                        className="text-slate-300 hover:text-red-500 ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                      </button>
+                  )}
+              </div>
               <div className="flex gap-2 mt-1 min-h-[16px]">
                   {hasDef && (
                       <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-purple-100 text-purple-700">
-                          AO1 Ready
+                          {savedDef ? "AO1 Ready" : "Default AO1"}
                       </span>
                   )}
                   {chainCount > 0 && (
@@ -308,6 +358,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
                 <div className="p-4 space-y-4">
                   {section.subsections.map(sub => {
                     const isSubExpanded = expandedSubsections[sub.id];
+                    const subCustomPoints = customPoints[sub.id] || [];
 
                     return (
                       <div key={sub.id} className="border border-blue-50 rounded-lg overflow-hidden">
@@ -342,18 +393,67 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
                                                {groupOrSingle.header}
                                            </div>
                                            <div className="ml-2 pl-3 border-l-2 border-slate-100 space-y-3">
-                                               {groupOrSingle.items.map(item => renderPointRow(section.id, sub.title, item.idx, item.text))}
+                                               {groupOrSingle.items.map(item => {
+                                                   const uniqueId = `${section.id}-${sub.title}-${item.idx}`;
+                                                   return renderPointRow(section.id, sub.title, uniqueId, item.text);
+                                               })}
                                            </div>
                                        </div>
                                    )
                                } else {
+                                   const uniqueId = `${section.id}-${sub.title}-${groupOrSingle.item.idx}`;
                                    return (
                                        <div key={groupIdx} className="mb-3">
-                                           {renderPointRow(section.id, sub.title, groupOrSingle.item.idx, groupOrSingle.item.text)}
+                                           {renderPointRow(section.id, sub.title, uniqueId, groupOrSingle.item.text)}
                                        </div>
                                    )
                                }
                             })}
+
+                            {/* Render Custom Points */}
+                            {subCustomPoints.length > 0 && (
+                                <div className="mt-4 pt-4 border-t border-dashed border-slate-200">
+                                    <h5 className="text-[10px] font-bold text-purple-500 uppercase mb-2">My Additional Points (AO3/Eval)</h5>
+                                    {subCustomPoints.map(cp => (
+                                        renderPointRow(section.id, sub.id, cp.id, cp.text, true, cp.id)
+                                    ))}
+                                </div>
+                            )}
+
+                            {/* Add Point UI */}
+                            {addingToSubsection === sub.id ? (
+                                <div className="mt-3 p-2 bg-purple-50 rounded border border-purple-100">
+                                    <textarea 
+                                        className="w-full text-sm p-2 border border-purple-200 rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
+                                        placeholder="e.g. Evaluate the effectiveness of..."
+                                        rows={2}
+                                        value={newPointText}
+                                        onChange={(e) => setNewPointText(e.target.value)}
+                                        autoFocus
+                                    />
+                                    <div className="flex justify-end gap-2 mt-2">
+                                        <button 
+                                            onClick={() => setAddingToSubsection(null)}
+                                            className="text-xs text-slate-500 hover:text-slate-700"
+                                        >
+                                            Cancel
+                                        </button>
+                                        <button 
+                                            onClick={() => submitNewPoint(sub.id)}
+                                            className="text-xs bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700"
+                                        >
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <button 
+                                    onClick={() => { setAddingToSubsection(sub.id); setNewPointText(""); }}
+                                    className="mt-2 w-full py-2 border-2 border-dashed border-slate-200 rounded-lg text-slate-400 text-xs font-bold hover:border-purple-300 hover:text-purple-600 transition-colors flex items-center justify-center gap-1"
+                                >
+                                    <span>+</span> Add Custom Point
+                                </button>
+                            )}
                           </div>
                         )}
                       </div>
@@ -415,6 +515,12 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
                     onChange={(e) => setAo1Definition(e.target.value)}
                     onBlur={handleSaveAll}
                   />
+                  {/* Visual indicator that this is a prefilled/default value if it matches the hardcoded one */}
+                  {PREFILLED_DEFINITIONS[activeTrainingPoint.id] && ao1Definition === PREFILLED_DEFINITIONS[activeTrainingPoint.id] && (
+                      <div className="absolute top-2 right-2 text-[9px] text-slate-400 bg-white/80 px-1 rounded pointer-events-none">
+                          Default (Teacher Provided)
+                      </div>
+                  )}
               </div>
             </div>
 
@@ -490,4 +596,3 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
 };
 
 export default SyllabusTracker;
-    

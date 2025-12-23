@@ -11,15 +11,19 @@ import SyllabusTracker from './components/SyllabusTracker';
 import StrategyAnalyzer from './components/StrategyAnalyzer';
 import AddQuestionModal from './components/AddQuestionModal';
 import CodeExportModal from './components/CodeExportModal';
-import { Question, AppMode, QuestionState, TopicAnalysisData, SyllabusStatus } from './types';
+import SyllabusExportModal from './components/SyllabusExportModal'; // New Import
+import { Question, AppMode, QuestionState, TopicAnalysisData, SyllabusStatus, CustomSyllabusPoint } from './types';
 import { questions as initialQuestions } from './data';
 import { generateModelAnswer, generateClozeExercise } from './services/geminiService';
+import { SYLLABUS_CHECKLIST } from './syllabusChecklistData'; // Import for export merging
+import { PREFILLED_DEFINITIONS } from './syllabusDefinitions'; // Import for export merging
 
 const STORAGE_KEY_CUSTOM_QUESTIONS = 'cie_econ_custom_questions_v2';
 const STORAGE_KEY_DELETED_IDS = 'cie_econ_deleted_ids_v1';
 const STORAGE_KEY_WORK = 'cie_economics_work_v1';
 const STORAGE_KEY_TOPIC_ANALYSIS = 'cie_economics_analysis_v1';
 const STORAGE_KEY_SYLLABUS = 'cie_econ_syllabus_status_v1';
+const STORAGE_KEY_CUSTOM_SYLLABUS = 'cie_econ_custom_syllabus_v1';
 const SESSION_KEY_AUTH = 'cie_econ_auth_session';
 
 // Basic protection.
@@ -54,6 +58,11 @@ const App: React.FC = () => {
     return saved ? JSON.parse(saved) : {};
   });
 
+  const [customSyllabusPoints, setCustomSyllabusPoints] = useState<Record<string, CustomSyllabusPoint[]>>(() => {
+    const saved = localStorage.getItem(STORAGE_KEY_CUSTOM_SYLLABUS);
+    return saved ? JSON.parse(saved) : {};
+  });
+
   const allQuestions = useMemo(() => {
     // Create a map of custom questions for easy lookup (ID -> Question)
     const customMap = new Map(customQuestions.map(q => [q.id, q]));
@@ -73,6 +82,7 @@ const App: React.FC = () => {
   const [mode, setMode] = useState<AppMode>(AppMode.GENERATOR);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCodeExportOpen, setIsCodeExportOpen] = useState(false);
+  const [isSyllabusExportOpen, setIsSyllabusExportOpen] = useState(false); // New State
   const [questionToEdit, setQuestionToEdit] = useState<Question | null>(null);
   
   const [questionStates, setQuestionStates] = useState<Record<string, QuestionState>>(() => {
@@ -105,6 +115,10 @@ const App: React.FC = () => {
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY_SYLLABUS, JSON.stringify(syllabusStatus));
   }, [syllabusStatus]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_CUSTOM_SYLLABUS, JSON.stringify(customSyllabusPoints));
+  }, [customSyllabusPoints]);
 
   // --- Handlers ---
   const handleLogin = (e: React.FormEvent) => {
@@ -176,6 +190,25 @@ const App: React.FC = () => {
         setSelectedQuestion(null);
       }
     }
+  };
+
+  const handleAddSyllabusPoint = (subsectionId: string, text: string) => {
+    const newPoint: CustomSyllabusPoint = {
+        id: `custom-syll-${Date.now()}`,
+        text,
+        subsectionId
+    };
+    setCustomSyllabusPoints(prev => ({
+        ...prev,
+        [subsectionId]: [...(prev[subsectionId] || []), newPoint]
+    }));
+  };
+
+  const handleDeleteSyllabusPoint = (subsectionId: string, pointId: string) => {
+    setCustomSyllabusPoints(prev => ({
+        ...prev,
+        [subsectionId]: prev[subsectionId].filter(p => p.id !== pointId)
+    }));
   };
 
   const handleBatchGenerate = async () => {
@@ -274,7 +307,11 @@ const App: React.FC = () => {
 
   // --- Syllabus Backup/Restore ---
   const handleBackupSyllabus = () => {
-      const blob = new Blob([JSON.stringify(syllabusStatus, null, 2)], { type: 'application/json' });
+      const payload = {
+          status: syllabusStatus,
+          customPoints: customSyllabusPoints
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
@@ -293,7 +330,14 @@ const App: React.FC = () => {
           try {
               const data = JSON.parse(event.target?.result as string);
               if (typeof data === 'object') {
-                  setSyllabusStatus(prev => ({ ...prev, ...data }));
+                  if (data.status) setSyllabusStatus(prev => ({ ...prev, ...data.status }));
+                  if (data.customPoints) setCustomSyllabusPoints(prev => ({ ...prev, ...data.customPoints }));
+                  
+                  // Backward compatibility for old backup format which was just status
+                  if (!data.status && !data.customPoints) {
+                      setSyllabusStatus(prev => ({ ...prev, ...data }));
+                  }
+                  
                   alert("Syllabus & Logic Chains imported successfully!");
               } else {
                   alert("Invalid file format.");
@@ -507,6 +551,14 @@ const App: React.FC = () => {
                     className="hidden" 
                     accept=".json" 
                   />
+                  {/* New Sync Button */}
+                  <button 
+                    onClick={() => setIsSyllabusExportOpen(true)}
+                    className="bg-purple-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-md hover:bg-purple-700 flex items-center gap-1"
+                  >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                      Sync to Source Code
+                  </button>
               </div>
           )}
 
@@ -515,6 +567,9 @@ const App: React.FC = () => {
                 <SyllabusTracker 
                   statusMap={syllabusStatus}
                   onUpdateStatus={setSyllabusStatus}
+                  customPoints={customSyllabusPoints}
+                  onAddPoint={handleAddSyllabusPoint}
+                  onDeletePoint={handleDeleteSyllabusPoint}
                 />
             ) : mode === AppMode.TOPIC_ANALYSIS ? (
                <div className="p-8">
@@ -592,6 +647,15 @@ const App: React.FC = () => {
          isOpen={isCodeExportOpen}
          onClose={() => setIsCodeExportOpen(false)}
          questions={allQuestions}
+      />
+
+      <SyllabusExportModal
+         isOpen={isSyllabusExportOpen}
+         onClose={() => setIsSyllabusExportOpen(false)}
+         baseChecklist={SYLLABUS_CHECKLIST}
+         customPoints={customSyllabusPoints}
+         currentStatus={syllabusStatus}
+         baseDefinitions={PREFILLED_DEFINITIONS}
       />
     </div>
   );
