@@ -93,6 +93,12 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
       setTimeout(() => setDefSaved(false), 2000);
   };
 
+  const handleCleanFormat = () => {
+      // Replaces all whitespace sequences (including newlines) with a single space
+      const cleaned = ao1Definition.replace(/\s+/g, ' ').trim();
+      setAo1Definition(cleaned);
+  };
+
   const handleAddChain = async () => {
       if (!activeTrainingPoint) return;
       setChainLoading(true);
@@ -385,12 +391,21 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
                   <label className="block text-sm font-bold text-red-700 uppercase tracking-wide">
                       AO1: Standard Definition (Manual Entry)
                   </label>
-                  <button 
-                    onClick={handleManualSaveDefinition}
-                    className={`text-[10px] font-bold px-3 py-1.5 rounded transition-colors border ${defSaved ? 'bg-green-100 text-green-700 border-green-200' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}`}
-                  >
-                    {defSaved ? "Saved!" : "Save Definition"}
-                  </button>
+                  <div className="flex gap-2">
+                    <button 
+                        onClick={handleCleanFormat}
+                        className="text-[10px] font-bold px-3 py-1.5 rounded transition-colors border bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+                        title="Remove extra line breaks from copied text"
+                    >
+                        Clean Format
+                    </button>
+                    <button 
+                        onClick={handleManualSaveDefinition}
+                        className={`text-[10px] font-bold px-3 py-1.5 rounded transition-colors border ${defSaved ? 'bg-green-100 text-green-700 border-green-200' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}`}
+                    >
+                        {defSaved ? "Saved!" : "Save Definition"}
+                    </button>
+                  </div>
               </div>
               <div className="relative">
                   <textarea 
@@ -475,3 +490,4 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus }) => {
 };
 
 export default SyllabusTracker;
+    
