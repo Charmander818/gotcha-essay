@@ -1,19 +1,36 @@
 
 // This file is for the TEACHER to hardcode standard definitions (AO1) or Model Chains (AO2).
 // These will appear as the default content for students if they haven't written their own yet.
-//
-// Format: 
-// Key: "SectionID-SubsectionTitle-Index" (You can find these IDs by inspecting the app or looking at the console log if you add one)
-// Note: The Index is 0-based (0 is the first point, 1 is the second...)
 
 export const PREFILLED_DEFINITIONS: Record<string, string> = {
-    // Example for 1.1.1 Scarcity
-    "1.1-1.1 Scarcity, choice and opportunity cost-0": 
-        "Scarcity is the fundamental economic problem resulting from the conflict between unlimited wants and limited (scarce) resources.",
-    
-    // Example for 1.1.3 Opportunity Cost
-    "1.1-1.1 Scarcity, choice and opportunity cost-7": 
-        "Opportunity cost is the benefit of the next best alternative foregone when a choice is made.",
-
-    // You can add your "Effectiveness" definitions here as well if you add them to the checklist data.
+  "1.1-1.1 Scarcity, choice and opportunity cost-0": "Scarcity is the fundamental economic problem resulting from the conflict between unlimited wants and limited (scarce) resources.",
+  "1.1-1.1 Scarcity, choice and opportunity cost-7": "Opportunity cost is the benefit of the next best alternative foregone when a choice is made.",
+  "5-5.4 Supply-side policy-6": "Better transport, power, communications → lower costs, fewer delays.\nGovernment may fund directly or encourage private provision.\n",
+  "6-6.2 Protectionism-0": "Protectionism is when governments seek to protect domestic industries from foreign competition. Protectionism involves the restriction of free trade. The tools of protection often seek to increase the price competitiveness of domestic industries.",
+  "6-6.2 Protectionism-1": "Tariffs are the best-known tool of protection and are sometimes referred to as customs duties. Tariffs are taxes, usually on imports but they may also be imposed on exports. A tariff can be:\n• specific: a fixed sum per unit\n• ad valorem: a percentage of the price.\n\nEffects of import quotas\nDomestic producers:\nHigher prices → higher output\nConsumers:\nHigher prices\nReduced consumption\nGovernment:\nGains tax revenue (if imports still occur)\n\nEffectiveness depends on elasticity:\nInelastic demand → good for revenue\nElastic demand → better protection for domestic firms\n\nImpact of export tariffs:\nLower domestic prices\nReduced export competitiveness\n",
+  "6-6.2 Protectionism-2": "Quotas are limits on imports. The limits are usually imposed on the quantity of imports. Restricting the supply of imports is likely to drive up their price.\n\nEffects:\nHigher prices\nReduced consumer choice\nIncreased domestic production\n\nReducing a quota = more protection, not less\n",
+  "6-6.2 Protectionism-3": "Subsidies may be given to both exporters and to those domestic firms that compete with imports.\n\nLowers firms’ costs → increases output\n\nWinners:\nDomestic producers\nConsumers (short run)\nLosers:\nTaxpayers\nForeign competitors\nLong-run risk:\nInefficient domestic firms survive\nReduced competition → higher prices\n",
+  "6-6.2 Protectionism-4": "An embargo is a complete ban either on the imports of a particular product or on trade with a particular country. \nReasons:\nPolitical conflict\nNational security\nHealth and safety concerns\n\nImpact:\nSevere restriction of trade\nCan significantly distort markets\n",
+  "6-6.2 Protectionism-5": "A government may seek to discourage imports by requiring importers to fill out lengthy forms that are time-consuming to complete (excessive administrative burdens or ‘red tape’).\nEffects:\nSlows down imports\nRaises costs for foreign firms\nReduces consumer choice\nHard to challenge internationally\n",
+  "6-6.2 Protectionism-6": "Governments may use protectionism to:\n\nProtect infant industries\nSupport declining industries\nProtect strategic industries\nPrevent dumping\nImprove terms of trade\nImprove balance of payments\nProtect domestic workers from cheap labour\n",
+  "6-6.2 Protectionism-7": "Protectionism may:\n\nPrevent specialisation and comparative advantage\nReduce global output and living standards\nIncrease prices and reduce quality\nLimit consumer choice\nReduce economies of scale\nIncrease production costs\nTrigger trade wars\n",
+  "5-5.4 Supply-side policy-0": "Governments use supply-side policies to increase aggregate supply by improving the workings of product and factor markets. Sometimes supply-side policy tools will reduce government intervention; at other times they result in increased government intervention.",
+  "5-5.4 Supply-side policy-1": "Supply-side policy tools seek to increase productive capacity and so shift the economy’s long-run aggregate supply (LRAS) curve to the right . The main way supply-side tools try to do this is by increasing productivity.",
+  "5-5.4 Supply-side policy-5": "Improves workers’ skills, productivity, flexibility, mobility.\nRaises quality of labour and entrepreneurship.\n\nWith the same sized labour force, more goods and services can be produced. A better educated and trained population can also increase the quality of entrepreneurship, which can increase innovation.\n",
+  "5-5.4 Supply-side policy-7": "Subsidies to universities/firms to develop technology.\nTech → higher output, lower costs (e.g., robotics in agriculture).\n",
+  "5-5.4 Supply-side policy-8": "Corporate tax cuts → encourage investment → ↑ AD & AS.\n\nIncome tax cuts → encourage work, more labour supply.\n\nTrade union reform → more flexibility, fewer strikes, ↑ productivity. MNC↑\n\nPrivatisation & deregulation → more efficiency, more competition.\n\nImmigration encouragement → increases quantity & quality of labour.",
+  "5-5.4 Supply-side policy-9": "Higher productivity → higher real GDP.\nImproves quality/quantity of labour, capital, infrastructure.\n",
+  "5-5.4 Supply-side policy-10": "Higher productivity → higher real GDP.\nImproves quality/quantity of labour, capital, infrastructure.\n",
+  "5-5.4 Supply-side policy-11": "Over time, aggregate demand tends to increase. If increases in aggregate supply can keep pace with higher aggregate demand, a country can enjoy higher output (higher real GDP) without experiencing demand-pull inflation. \nGovernments may also employ supply-side policy measures to correct cost-push inflation. For example, increased spending on training can raise labour productivity and so reduce labour costs or at least reduce the upward pressure on labour costs.",
+  "5-5.4 Supply-side policy-12": "Training → less frictional & structural unemployment.\nTech may replace workers, but lower costs can also increase output → more jobs.",
+  "5-5.3 Monetary policy-0": "Monetary policy refers to any policy tools that affect the price or quantity of money. Monetary policy, like fiscal policy, is a demand-side policy as it seeks to influence aggregate demand. Monetary policy tools are usually applied by the central bank of the country or area.",
+  "5-5.3 Monetary policy-1": "Interest rate = the price of money.\nBorrowers pay interest; savers receive interest.\nCentral bank’s rate = bank rate / base rate / repo rate.\nMain tool for achieving price stability.\n",
+  "5-5.3 Monetary policy-2": "Central bank can influence the quantity of money.\nMain driver of money supply changes: commercial bank lending.\nCentral banks try to guide or control commercial banks’ lending behaviour.\n",
+  "5-5.3 Monetary policy-3": "Central banks may impose rules on commercial banks to ensure stability.\nExample: requiring banks to hold a certain proportion of assets in liquid form.\nHelps prevent crises and influences lending levels.\n",
+  "5-5.3 Monetary policy-4": "Expansionary monetary policy may be used to increase aggregate demand. A cut in the interest rate, an increase in the money supply and a reduction in any restrictions on bank lending can be used to achieve an increase.",
+  "5-5.3 Monetary policy-5": "To reduce aggregate demand or the growth of AD, contractionary monetary policy may be used. This might include a rise in the interest rate, a decrease in the money supply and restrictions on bank lending.",
+  "5-5.3 Monetary policy-9": "Expansionary policy\nWhen spare capacity exists:\nAD ↑ → output ↑\nEmployment ↑\n\nContractionary policy\nMay reduce output and employment.\nBut if economy is at full capacity, it mainly:\nLowers inflation\nHas little effect on output\n",
+  "5-5.3 Monetary policy-8": "Often used to reduce demand-pull inflation.\nCentral banks with inflation targets raise interest rates if inflation rises too much.\nHigher interest rates reduce:\nBorrowing (discourages big purchases)\nConsumption\nInvestment\n",
+  "5-5.3 Monetary policy-6": "Expansionary policy\nWhen spare capacity exists:\nAD ↑ → output ↑\nEmployment ↑\n\nContractionary policy\nMay reduce output and employment.\nBut if economy is at full capacity, it mainly:\nLowers inflation\nHas little effect on output",
+  "5-5.3 Monetary policy-7": "Expansionary policy\nWhen spare capacity exists:\nAD ↑ → output ↑\nEmployment ↑\n\nContractionary policy\nMay reduce output and employment.\nBut if economy is at full capacity, it mainly:\nLowers inflation\nHas little effect on output"
 };
