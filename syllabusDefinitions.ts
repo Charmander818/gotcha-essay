@@ -36,5 +36,8 @@ export const PREFILLED_DEFINITIONS: Record<string, string> = {
   "5-5.3 Monetary policy-10": "Difficult to control money supply due to:\nBanks’ incentives to expand lending\nEmergence of new forms of money\nTime lag: interest rate changes may take up to 18 months for full effect.\nInterest rates are a blunt tool 钝 不精确:\nBorrowers suffer; savers benefit.\nCan worsen unemployment and slow growth.\nHigh financial mobility: difficult to have very different interest rates from competitor countries.\n\n\n",
   "custom-syll-1766471046227": "Commercial banks might not pass on higher central bank rates.\nConsumers may remain optimistic and keep spending.\n",
   "custom-syll-1766471072793": "Higher rates may attract capital inflows → currency appreciation.\nIn economic unions, countries may share one interest rate and exchange rate.\n",
-  "custom-syll-1766471119769": "Households/firms are pessimistic\nInterest rates are already low (“lower bound”)\nBanks refuse to lend due to lack of creditworthy borrowers\n"
+  "custom-syll-1766471119769": "Households/firms are pessimistic\nInterest rates are already low (“lower bound”)\nBanks refuse to lend due to lack of creditworthy borrowers\n",
+  "5-5.3 Monetary policy-11": "Commercial banks might not pass on higher central bank rates.\nConsumers may remain optimistic and keep spending.\n",
+  "5-5.3 Monetary policy-12": "Higher rates may attract capital inflows → currency appreciation.\nIn economic unions, countries may share one interest rate and exchange rate.\n",
+  "5-5.3 Monetary policy-13": "Households/firms are pessimistic\nInterest rates are already low (“lower bound”)\nBanks refuse to lend due to lack of creditworthy borrowers\n"
 };
