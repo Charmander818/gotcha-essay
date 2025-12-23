@@ -1,618 +1,360 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { Question, ClozeBlank, ClozeFeedback, TopicAnalysisData } from "../types";
 
-// Basic check for API key existence
-const apiKey = process.env.API_KEY;
-
-let ai: GoogleGenAI;
-if (apiKey) {
-    ai = new GoogleGenAI({ apiKey: apiKey });
-} else {
-    console.warn("API_KEY is missing. AI features will not work until configured.");
-}
+// Helper to ensure we have a client. 
+// Since we must use process.env.API_KEY directly as per guidelines.
+const getAI = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const checkForApiKey = () => {
-    if (!apiKey) {
-        throw new Error("API Key is missing. Please go to Vercel Settings -> Environment Variables and add API_KEY.");
-    }
+  if (!process.env.API_KEY) {
+    console.error("API Key is missing!");
+  }
 };
 
 export const generateModelAnswer = async (question: Question): Promise<string> => {
-  try {
-    checkForApiKey();
+  checkForApiKey();
+  const prompt = `
+    You are an expert Cambridge A-Level Economics Examiner.
+    Write a perfect model essay for the following question.
     
-    let structureInstructions = "";
+    Question: ${question.questionText}
+    Marks: ${question.maxMarks}
+    Topic: ${question.topic}
+    
+    Mark Scheme Guidance:
+    ${question.markScheme}
+    
+    Requirements:
+    1. Structure the essay clearly (Introduction, Definitions, Analysis, Evaluation, Conclusion).
+    2. Explicitly label AO1 (Knowledge), AO2 (Analysis), and AO3 (Evaluation) points if appropriate, or just write a flowing essay that hits all these levels naturally but with high precision.
+    3. Use precise economic terminology.
+    4. Include descriptions of diagrams where a diagram would be drawn (e.g. [Diagram: AD/AS shift right]).
+  `;
 
-    if (question.maxMarks === 8) {
-      structureInstructions = `
-      **Strict CIE AS Level Structure for 8 Marks (Point-Based Marking):**
-      
-      **Target Split:** AO1 (3 Marks) + AO2 (3 Marks) + AO3 (2 Marks).
-
-      **1. AO1: Knowledge & Understanding (3 Marks)**
-      - **Precise Definitions:** Define specific key terms from the question (e.g., "PED", "Public Good"). 
-      - **Bookwork:** Use official textbook definitions.
-      - **Formula/Diagram:** If relevant, include the text description of the formula or diagram (axes, curves, shifts).
-
-      **2. AO2: Analysis (3 Marks)**
-      - **Structure:** Write 1-2 distinct paragraphs analyzing the "mechanisms".
-      - **Logic Chains (CRITICAL):** Do not assert. Use the "A -> B -> C -> Z" chain format.
-        - *Bad:* "Prices rise so demand falls."
-        - *Good:* "Price rises -> purchasing power falls (income effect) & good becomes relatively expensive (substitution effect) -> quantity demanded falls."
-      - **Context:** Apply directly to the scenario (e.g., if "agricultural goods", mention weather/seasonality).
-
-      **3. AO3: Evaluation (2 Marks)**
-      - **Requirement:** Answer the "Consider" or "Whether" part of the question.
-      - **Judgement:** Make a definitive statement (e.g., "It is likely that...").
-      - **Justification:** Provide a reason for this judgement (e.g., "However, this depends on the PED of the product...").
-      `;
-    } else if (question.maxMarks === 12) {
-      structureInstructions = `
-      **Strict CIE AS Level Structure for 12 Marks (Level-Based Marking):**
-      
-      **Target Split:** AO1+AO2 (8 Marks) + AO3 (4 Marks).
-
-      **1. AO1 & AO2: Knowledge & Analysis (Max 8 Marks)**
-      - **Goal:** Reach Level 3 (6-8 marks).
-      - **Requirements:** 
-        - Detailed knowledge of concepts.
-        - **Developed Logical Chains:** Analysis must be fully explained step-by-step.
-        - **Balance:** You MUST discuss BOTH sides (e.g., Pros AND Cons, or Policy A vs Policy B). One-sided answers are capped at Level 2.
-        - **Context:** specific application to the industry/economy mentioned.
-
-      **2. AO3: Evaluation (Max 4 Marks)**
-      - **Goal:** Reach Level 2 (3-4 marks).
-      - **Requirements:**
-        - A reasoned conclusion/judgement that directly answers the specific question.
-        - **Not a summary:** Do not just repeat points. Weigh the arguments.
-        - **"Depends On":** Evaluate significance (e.g., Short run vs Long run, Elasticities, Magnitude of change).
-      `;
-    } else {
-      structureInstructions = `
-      **General Economics Essay Standards:**
-      - Define key terms accurately (AO1).
-      - Use detailed logical chains of reasoning (AO2). Avoid assertions.
-      - Evaluate and conclude based on the arguments (AO3).
-      `;
-    }
-
-    const prompt = `
-      You are a **Senior Cambridge International AS Level Economics (9708) Examiner**.
-      Write a **perfect, full-mark model essay** for the following question.
-      
-      **Question:** ${question.questionText}
-      **Max Marks:** ${question.maxMarks}
-      **Mark Scheme Guidance:**
-      ${question.markScheme}
-      
-      **Examiner's Secret Writing Rules:**
-      1. **No Assertions:** Every point must be explained via a logical economic chain.
-      2. **Specific Terminology:** Use precise economic vocabulary (e.g., "ceteris paribus", "real disposable income").
-      3. **Contextual:** If the question mentions a specific country type (e.g. Low Income) or good (e.g. Rice), the analysis **must** reference that specific context.
-      
-      **Formatting Instructions:**
-      ${structureInstructions}
-      
-      - Use bold headers for sections (e.g., **Introduction**, **Analysis**, **Evaluation**).
-      - Keep the tone academic and professional.
-    `;
-
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-    });
-    return response.text || "Error generating response.";
-  } catch (error: any) {
-    console.error("Gemini API Error:", error);
-    if (error.message.includes("API Key")) {
-        return "Error: API Key is missing in Vercel Settings. Please configure it and redeploy.";
-    }
-    return "Failed to generate essay. Please check API key or try again.";
-  }
+  const ai = getAI();
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: prompt,
+  });
+  return response.text || "Failed to generate essay.";
 };
 
-export const gradeEssay = async (question: Question, studentEssay: string, imagesBase64?: string[]): Promise<string> => {
-  try {
-    checkForApiKey();
+export const gradeEssay = async (question: Question, essay: string, images: string[] = []): Promise<string> => {
+  checkForApiKey();
+  const imageParts = images.map(img => {
+      // Assuming img is data:image/png;base64,...
+      const [mimeTypePrefix, base64Data] = img.split(';base64,');
+      const mimeType = mimeTypePrefix.split(':')[1];
+      return {
+          inlineData: {
+              mimeType,
+              data: base64Data
+          }
+      };
+  });
 
-    const parts: any[] = [];
+  const prompt = `
+    You are a strict Cambridge A-Level Economics Examiner.
+    Grade the following student essay based on the mark scheme provided.
     
-    let essayContentText = studentEssay;
+    Question: ${question.questionText}
+    Max Marks: ${question.maxMarks}
+    Mark Scheme:
+    ${question.markScheme}
+    
+    Student Essay:
+    ${essay}
+    
+    (Note: If images are provided, they contain handwritten parts of the essay).
+    
+    Provide:
+    1. An estimated mark (e.g., 6/8).
+    2. A breakdown by Assessment Objective (AO1, AO2, AO3).
+    3. Specific feedback on what was done well.
+    4. Specific improvements needed to reach full marks.
+  `;
 
-    if (imagesBase64 && imagesBase64.length > 0) {
-       imagesBase64.forEach((imgBase64) => {
-           const match = imgBase64.match(/^data:(image\/[a-zA-Z+]+);base64,/);
-           const mimeType = match ? match[1] : 'image/jpeg';
-           const cleanBase64 = imgBase64.replace(/^data:image\/[a-zA-Z+]+;base64,/, "");
-           
-           parts.push({
-              inlineData: {
-                 mimeType: mimeType,
-                 data: cleanBase64
-              }
-           });
-       });
-       essayContentText += `\n\n[Note: The student also submitted ${imagesBase64.length} image(s). Consider them as part of the answer.]`;
+  const ai = getAI();
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: {
+        parts: [
+            { text: prompt },
+            ...imageParts
+        ]
     }
-
-    let rubricInstructions = "";
-
-    if (question.maxMarks === 8) {
-       rubricInstructions = `
-       **8-Mark Question Rubric (Point-Based):**
-       
-       **AO1 (3 Marks) - Knowledge:**
-       - 1 mark per valid point (Definition, Formula, Diagram description).
-       - Must be precise textbook definitions.
-
-       **AO2 (3 Marks) - Analysis:**
-       - Award 1 mark for each *complete* logical chain (A->B->C).
-       - **Zero marks** for assertions (statements without "because" or mechanism).
-       - Must apply to context (if any).
-
-       **AO3 (2 Marks) - Evaluation:**
-       - 1 Mark for a Judgement (answering the "Consider" part).
-       - 1 Mark for Justification (why is this the case?).
-       - Note: If they didn't analyze the "counter-point" (the 'and' part of the question), cap marks.
-       `;
-    } else {
-       rubricInstructions = `
-       **12-Mark Question Rubric (Level-Based):**
-       
-       **AO1 + AO2 (Max 8 Marks):**
-       - **Level 3 (6-8 marks):** 
-         - Detailed knowledge.
-         - **Developed** logical chains of reasoning (no gaps).
-         - **Balanced** argument (Pros AND Cons, or Policy A vs Policy B).
-         - Clear application to context.
-       - **Level 2 (3-5 marks):** 
-         - Accurate but limited analysis.
-         - Undeveloped chains or **One-Sided** argument (Cap at L2).
-       - **Level 1 (1-2 marks):** 
-         - Descriptive, generic, or contains errors. Assertions only.
-
-       **AO3 (Max 4 Marks):**
-       - **Level 2 (3-4 marks):** 
-         - Reasoned judgement/conclusion based on analysis.
-         - Considers "It depends on..." factors (elasticity, time, magnitude).
-       - **Level 1 (1-2 marks):** 
-         - Simple assertion or summary.
-       - **0 Marks:** No evaluation or one-sided answer.
-       `;
-    }
-
-    const prompt = `
-      You are a **strict** Cambridge International AS Level Economics Examiner. Grade the following student essay.
-
-      **Question:** ${question.questionText}
-      **Max Marks:** ${question.maxMarks}
-      **Official Mark Scheme:** ${question.markScheme}
-
-      **Grading Rubric:**
-      ${rubricInstructions}
-
-      **Student Essay:**
-      "${essayContentText}"
-
-      **Output Instructions:**
-      1. **Total Score:** Give a specific mark (e.g., 6/${question.maxMarks}). Be strict on "Logic Chains".
-      2. **Score Breakdown:**
-         - If 8 marks: AO1 (/3), AO2 (/3), AO3 (/2).
-         - If 12 marks: AO1+AO2 (/8) [**State Level: L1/L2/L3**], AO3 (/4) [**State Level: L1/L2**].
-      3. **Detailed Commentary:**
-         - **Logic Check:** Identify specific sentences where the student made an assertion (A->Z) instead of a chain (A->B->C). Quote them.
-         - **Context Check:** Did they use the specific industry/country context?
-         - **Structure Check:** Did they define terms? Did they have a balanced body? Did they conclude?
-         - **Levels (for 12 marks):** Explicitly state why they are in a specific level (e.g., "Placed in L2 because argument is one-sided").
-      4. **Actionable Advice:** Tell them exactly how to get +2 marks next time (e.g., "Add a step in your analysis: explain *why* interest rates reduce investment").
-    `;
-
-    parts.push({ text: prompt });
-
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: { parts: parts },
-    });
-    return response.text || "Error grading essay.";
-  } catch (error: any) {
-    console.error("Gemini API Error:", error);
-    return "Failed to grade essay. Please check API key.";
-  }
+  });
+  return response.text || "Failed to grade essay.";
 };
 
-export const getRealTimeCoaching = async (question: Question, currentText: string): Promise<{ao1?: number, ao2?: number, ao1_ao2?: number, ao3: number, total: number, advice: string}> => {
-  try {
-    checkForApiKey();
-
-    let logicDescription = "";
-    let responseSchema;
+export const getRealTimeCoaching = async (question: Question, currentText: string): Promise<{
+  ao1: number;
+  ao2: number;
+  ao1_ao2?: number;
+  ao3: number;
+  total: number;
+  advice: string;
+}> => {
+  checkForApiKey();
+  // const is12Mark = question.maxMarks === 12;
+  
+  const prompt = `
+    Analyze this incomplete Economics essay draft.
+    Question: ${question.questionText}
+    Mark Scheme: ${question.markScheme}
+    Current Text: "${currentText}"
     
-    if (question.maxMarks === 8) {
-        logicDescription = `
-        **Scoring Logic (8 Marks):**
-        - AO1 (Max 3): Definitions, formulas.
-        - AO2 (Max 3): Analysis chains. (A->B->C).
-        - AO3 (Max 2): Evaluation/Conclusion.
-        `;
-        responseSchema = {
-          type: Type.OBJECT,
-          properties: {
-            ao1: { type: Type.INTEGER },
-            ao2: { type: Type.INTEGER },
-            ao3: { type: Type.INTEGER },
-            total: { type: Type.INTEGER },
-            advice: { type: Type.STRING }
-          },
-          required: ["ao1", "ao2", "ao3", "total", "advice"]
-        };
-    } else {
-        logicDescription = `
-        **Scoring Logic (12 Marks - Level Based):**
-        - AO1+AO2 (Max 8): Knowledge + Analysis. Balanced argument required for >5. Developed chains required for >5.
-        - AO3 (Max 4): Evaluation. Judgment + Justification.
-        `;
-        responseSchema = {
-          type: Type.OBJECT,
-          properties: {
-            ao1_ao2: { type: Type.INTEGER, description: "Combined Knowledge & Analysis score out of 8" },
-            ao3: { type: Type.INTEGER, description: "Evaluation score out of 4" },
-            total: { type: Type.INTEGER },
-            advice: { type: Type.STRING }
-          },
-          required: ["ao1_ao2", "ao3", "total", "advice"]
-        };
+    Estimate the current accumulated marks.
+    Provide a very brief, encouraging tip on what to add next (e.g., "Good definition, now explain the impact on price" or "Add evaluation").
+    
+    Return JSON format:
+    {
+      "ao1": number,
+      "ao2": number,
+      "ao3": number,
+      "ao1_ao2": number (only if 12 marks question, otherwise 0),
+      "total": number,
+      "advice": string
     }
+  `;
 
-    const prompt = `
-      You are a **strict** Cambridge Economics Coach watching a student write in real-time.
-      
-      **Question:** ${question.questionText}
-      **Mark Scheme:** ${question.markScheme}
-      ${logicDescription}
-      
-      **Student Draft:** "${currentText}"
-
-      **Task:**
-      1. Estimate their current marks.
-         - For AO2: If they just state "X leads to Y" without explaining *how*, score low.
-         - For 12-marks: Give a single score for AO1+AO2 out of 8.
-      2. Provide **ONE** short, tactical sentence of advice.
-         - Example: "Don't just say 'Demand rises', explain the income effect."
-         - Example: "You need a 'However' paragraph for evaluation."
-    `;
-
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-      config: { 
-        responseMimeType: "application/json",
-        responseSchema: responseSchema
-      }
-    });
-    
-    const json = JSON.parse(response.text || "{}");
-    
-    return {
-        ao1: json.ao1,
-        ao2: json.ao2,
-        ao1_ao2: json.ao1_ao2,
-        ao3: json.ao3 || 0,
-        total: json.total || 0,
-        advice: json.advice || "Keep writing..."
-    };
-  } catch (error) {
-    console.error("Gemini API Error:", error);
-    return { ao1: 0, ao2: 0, ao3: 0, total: 0, advice: "Check API Key" };
-  }
-};
-
-export const generateClozeExercise = async (modelEssay: string): Promise<{ textWithBlanks: string, blanks: ClozeBlank[] } | null> => {
-  try {
-    checkForApiKey();
-
-    const prompt = `
-      You are an expert Economics teacher creating a "Logic Chain" completion exercise.
-      Take the provided model essay and create a fill-in-the-blank (cloze) test.
-
-      **Instructions:**
-      1. Identify **8 to 12** critical parts to remove.
-      2. Target:
-         - **AO1:** Key definitions/terms.
-         - **AO2:** Logical connectors or middle steps in analysis chains.
-         - **AO3:** Evaluative qualifiers.
-      3. Replace with [BLANK_1], [BLANK_2], etc.
-      4. Return JSON with the text and the list of blanks + hints.
-      
-      **Input Essay:**
-      ${modelEssay}
-    `;
-
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-      config: {
+  const ai = getAI();
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: prompt,
+    config: {
         responseMimeType: "application/json",
         responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            textWithBlanks: { type: Type.STRING },
-            blanks: {
-              type: Type.ARRAY,
-              items: {
-                type: Type.OBJECT,
-                properties: {
-                  id: { type: Type.INTEGER },
-                  original: { type: Type.STRING },
-                  hint: { type: Type.STRING }
-                }
-              }
+            type: Type.OBJECT,
+            properties: {
+                ao1: { type: Type.NUMBER },
+                ao2: { type: Type.NUMBER },
+                ao3: { type: Type.NUMBER },
+                ao1_ao2: { type: Type.NUMBER },
+                total: { type: Type.NUMBER },
+                advice: { type: Type.STRING }
             }
-          }
         }
-      }
-    });
-
-    const json = JSON.parse(response.text || "{}");
-    return {
-      textWithBlanks: json.textWithBlanks,
-      blanks: json.blanks
-    };
-  } catch (error) {
-    console.error("Cloze Generation Error:", error);
-    return null;
-  }
-};
-
-export const evaluateClozeAnswers = async (
-  blanks: ClozeBlank[],
-  userAnswers: Record<number, string>
-): Promise<Record<number, ClozeFeedback> | null> => {
+    }
+  });
   
   try {
-    checkForApiKey();
-
-    const comparisons = blanks.map(b => ({
-      id: b.id,
-      original: b.original,
-      studentAnswer: userAnswers[b.id] || "(No answer)"
-    }));
-
-    const prompt = `
-      Grade the student's answers for a fill-in-the-blank Economics exercise.
-      
-      **Data:**
-      ${JSON.stringify(comparisons)}
-
-      **Instructions:**
-      For each item:
-      1. Compare Student Answer to Original.
-      2. Score (1-5): 5 = Perfect logic/meaning (exact words not needed), 1 = Incorrect.
-      3. Provide a 1-sentence comment.
-    `;
-
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            feedback: {
-              type: Type.ARRAY,
-              items: {
-                type: Type.OBJECT,
-                properties: {
-                  id: { type: Type.INTEGER },
-                  score: { type: Type.INTEGER },
-                  comment: { type: Type.STRING }
-                }
-              }
-            }
-          }
-        }
+      if (response.text) {
+        return JSON.parse(response.text);
       }
-    });
+      throw new Error("No text");
+  } catch (e) {
+      return { ao1: 0, ao2: 0, ao3: 0, total: 0, advice: "Keep writing..." };
+  }
+};
 
-    const json = JSON.parse(response.text || "{}");
-    const feedbackMap: Record<number, ClozeFeedback> = {};
+export const generateClozeExercise = async (text: string): Promise<{ textWithBlanks: string; blanks: ClozeBlank[] } | null> => {
+  checkForApiKey();
+  const prompt = `
+    Take the following economics text and create a "fill in the blanks" exercise.
+    Identify 5-8 key economic terms or phrases to blank out.
+    Replace them in the text with [BLANK_1], [BLANK_2], etc.
     
-    if (json.feedback && Array.isArray(json.feedback)) {
-      json.feedback.forEach((item: any) => {
-        feedbackMap[item.id] = {
-          score: item.score,
-          comment: item.comment
-        };
-      });
+    Return JSON:
+    {
+      "textWithBlanks": string,
+      "blanks": [
+        { "id": number, "original": string, "hint": string }
+      ]
     }
     
-    return feedbackMap;
+    Text:
+    ${text}
+  `;
 
-  } catch (error) {
-    console.error("Cloze Evaluation Error:", error);
-    return null;
+  const ai = getAI();
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: prompt,
+    config: {
+        responseMimeType: "application/json",
+        responseSchema: {
+            type: Type.OBJECT,
+            properties: {
+                textWithBlanks: { type: Type.STRING },
+                blanks: {
+                    type: Type.ARRAY,
+                    items: {
+                        type: Type.OBJECT,
+                        properties: {
+                            id: { type: Type.INTEGER },
+                            original: { type: Type.STRING },
+                            hint: { type: Type.STRING }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  });
+
+  try {
+      if (response.text) return JSON.parse(response.text);
+      return null;
+  } catch (e) {
+      return null;
+  }
+};
+
+export const evaluateClozeAnswers = async (blanks: ClozeBlank[], userAnswers: Record<number, string>): Promise<Record<number, ClozeFeedback>> => {
+  checkForApiKey();
+  
+  const prompt = `
+    Evaluate these fill-in-the-blank answers for an Economics exercise.
+    For each blank, compare the User Answer with the Original.
+    Give a score (0-5) and a short comment. 
+    Accept synonyms or close alternatives if they make economic sense.
+    
+    Blanks Data: ${JSON.stringify(blanks)}
+    User Answers: ${JSON.stringify(userAnswers)}
+    
+    Return JSON:
+    {
+      "feedback": [
+         { "id": number, "score": number, "comment": string }
+      ]
+    }
+  `;
+
+  const ai = getAI();
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: prompt,
+    config: {
+        responseMimeType: "application/json",
+        responseSchema: {
+            type: Type.OBJECT,
+            properties: {
+                feedback: {
+                    type: Type.ARRAY,
+                    items: {
+                        type: Type.OBJECT,
+                        properties: {
+                            id: { type: Type.INTEGER },
+                            score: { type: Type.NUMBER },
+                            comment: { type: Type.STRING }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  });
+
+  try {
+      const data = JSON.parse(response.text || "{}");
+      if (data.feedback) {
+          const result: Record<number, ClozeFeedback> = {};
+          data.feedback.forEach((f: any) => {
+              result[f.id] = { score: f.score, comment: f.comment };
+          });
+          return result;
+      }
+      return {};
+  } catch (e) {
+      return {};
   }
 };
 
 export const improveLogicChain = async (input: string): Promise<string> => {
-  try {
-    checkForApiKey();
-    const prompt = `
-      You are an expert Cambridge Economics teacher helping a student convert rough notes into a perfect **Logical Chain of Analysis (AO2)**.
-
-      **Student Notes:** "${input}"
-
-      **Task:**
-      1. Identify the core economic concept being discussed.
-      2. Rewrite the notes into a series of clear, step-by-step causal links.
-      3. Use arrows (→) to visually show the flow.
-      4. Ensure there are no "logical jumps". Explain *why* A leads to B.
-      5. Add a brief explanation of the mechanism if it's missing.
-
-      **Format:**
-      - **Concept:** [Name of concept]
-      - **Improved Logic Chain:** Step 1 → Step 2 → Step 3 ...
-      - **Explanation:** [Why this chain works, referencing standard theory like SRAS, AD, PED, etc.]
-    `;
+  checkForApiKey();
+  const prompt = `
+    Turn the following rough notes into a formal, rigorous Economic Logic Chain.
+    Use arrows (→) to show causality. 
+    Ensure every step is explained (e.g. why A leads to B).
+    Use high-level vocabulary (e.g. "ceteris paribus", "incentive function", "derived demand").
     
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-    });
-    return response.text || "Could not generate logic chain.";
-  } catch (error) {
-    console.error("Logic Chain Error:", error);
-    return "Error generating logic chain.";
+    Input: "${input}"
+  `;
+
+  const ai = getAI();
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: prompt,
+  });
+  return response.text || "Could not improve chain.";
+};
+
+export const analyzeTopic = async (topic: string, questions: Question[]): Promise<TopicAnalysisData> => {
+  checkForApiKey();
+  const questionsText = questions.map(q => `Q (${q.year}): ${q.questionText}\nMark Scheme: ${q.markScheme}`).join("\n---\n");
+  
+  const prompt = `
+    Analyze these past paper questions for the topic: ${topic}.
+    
+    Identify:
+    1. Common AO1 Knowledge points required (Definitions, formulas).
+    2. Common AO2 Logical Chains (Analysis) that appear frequently.
+    3. Common AO3 Evaluation points (Limitations, counter-arguments).
+    4. Key Debates (e.g. Free Market vs Intervention) with Pros, Cons, and "Depends on" factors.
+    
+    Return JSON:
+    {
+      "lastUpdated": "${new Date().toLocaleDateString()}",
+      "questionCount": ${questions.length},
+      "ao1": ["point 1", "point 2"...],
+      "ao2": ["chain 1", "chain 2"...],
+      "ao3": ["eval 1", "eval 2"...],
+      "keyDebates": [
+        { "title": "...", "pros": "...", "cons": "...", "dependencies": "..." }
+      ]
+    }
+    
+    Data:
+    ${questionsText}
+  `;
+
+  const ai = getAI();
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: prompt,
+    config: { responseMimeType: "application/json" }
+  });
+
+  try {
+      return JSON.parse(response.text || "{}");
+  } catch (e) {
+      throw new Error("Failed to parse analysis");
   }
 };
 
-export const analyzeTopic = async (topic: string, questions: Question[]): Promise<TopicAnalysisData | null> => {
-    try {
-        checkForApiKey();
-        
-        // Filter questions for the specific topic/chapter to send as context
-        const topicQuestions = questions.filter(q => q.topic === topic || q.chapter === topic);
-        
-        // Create a summary payload to save context tokens (we don't need the full MS for every question, just the text/MS gist)
-        const questionsSummary = topicQuestions.map(q => `
-            Q (${q.year} ${q.variant} ${q.paper}): ${q.questionText}
-            Max Marks: ${q.maxMarks}
-            Mark Scheme Hint: ${q.markScheme.substring(0, 300)}...
-        `).join("\n---\n");
+export const analyzeExamStrategy = async (marks: number, questions: Question[]): Promise<string> => {
+  checkForApiKey();
+  const relevantQuestions = questions.filter(q => q.maxMarks === marks);
+  const sample = relevantQuestions.slice(0, 15).map(q => `Q: ${q.questionText}\nMS: ${q.markScheme}`).join("\n\n");
+  
+  const prompt = `
+    You are a Pattern Recognition Expert for Cambridge Economics Exams.
+    Analyze these ${marks}-mark questions and their mark schemes.
+    
+    Determine the "Hidden Formula" for getting full marks.
+    
+    Address:
+    1. Structure: How many paragraphs? What should each contain?
+    2. AO2: How detailed does the analysis need to be? (e.g. diagrams required? definitions?)
+    3. AO3: What specific type of evaluation scores high? (e.g. Short run vs Long run, Elasticity, Magnitude).
+    4. Keywords: How to interpret "Assess", "Discuss", "Explain", "Consider".
+    
+    Output as a detailed Strategy Guide in Markdown.
+    
+    Sample Data:
+    ${sample}
+  `;
 
-        const prompt = `
-            You are a Senior Examiner analyzing the Cambridge Economics Syllabus Topic: **${topic}**.
-            
-            Here are ${topicQuestions.length} past paper questions for this topic in our database:
-            ${questionsSummary}
-
-            **Task:** Perform a comprehensive "Topic Analysis" for students.
-            
-            Return the output in the following JSON format:
-            {
-              "ao1": ["Point 1", "Point 2"], // Common definitions, key concepts, diagrams required.
-              "ao2": ["Chain 1", "Chain 2"], // Recurring logical analysis chains found in mark schemes.
-              "ao3": ["Eval 1", "Eval 2"], // Standard evaluation arguments (e.g. elasticities, time lags).
-              "keyDebates": [
-                {
-                  "title": "Debate Title (e.g. Free Trade vs Protectionism)",
-                  "pros": "Arguments for...",
-                  "cons": "Arguments against...",
-                  "dependencies": "Depends on X, Y, Z..."
-                }
-              ]
-            }
-        `;
-
-        const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            contents: prompt,
-            config: {
-              responseMimeType: "application/json",
-              responseSchema: {
-                type: Type.OBJECT,
-                properties: {
-                  ao1: { type: Type.ARRAY, items: { type: Type.STRING } },
-                  ao2: { type: Type.ARRAY, items: { type: Type.STRING } },
-                  ao3: { type: Type.ARRAY, items: { type: Type.STRING } },
-                  keyDebates: {
-                    type: Type.ARRAY,
-                    items: {
-                      type: Type.OBJECT,
-                      properties: {
-                        title: { type: Type.STRING },
-                        pros: { type: Type.STRING },
-                        cons: { type: Type.STRING },
-                        dependencies: { type: Type.STRING }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-        });
-        
-        const json = JSON.parse(response.text || "{}");
-        
-        return {
-          lastUpdated: new Date().toLocaleString(),
-          questionCount: topicQuestions.length,
-          ao1: json.ao1 || [],
-          ao2: json.ao2 || [],
-          ao3: json.ao3 || [],
-          keyDebates: json.keyDebates || []
-        };
-
-    } catch (error) {
-        console.error("Topic Analysis Error:", error);
-        return null;
-    }
+  const ai = getAI();
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: prompt,
+  });
+  return response.text || "Analysis failed.";
 };
 
-export const analyzeExamStrategy = async (markValue: number, questions: Question[]): Promise<string> => {
-    try {
-        checkForApiKey();
-        
-        // Filter questions by mark value
-        const relevantQuestions = questions.filter(q => q.maxMarks === markValue);
-        
-        // Take a representative sample (e.g., up to 40) to fit context, focusing on diverse phrasing
-        const sampleQuestions = relevantQuestions.slice(0, 40).map(q => `
-            Question: "${q.questionText}"
-            Marks: ${q.maxMarks}
-            Mark Scheme Excerpt: "${q.markScheme.substring(0, 400).replace(/\n/g, ' ')}"
-        `).join("\n\n");
-
-        const prompt = `
-            You are a Cambridge Economics Head Examiner. Your job is to reveal the "Hidden Marking Formulas" to teachers.
-            
-            I am providing you with ${relevantQuestions.length} past paper questions worth **${markValue} Marks**.
-            
-            **Task:** 
-            Reverse-engineer the marking logic based on the *Phrasing of the Question* (The Command Words/Stem).
-            Group these questions into distinct "Types" based on what the examiner demands for AO2 and AO3.
-            
-            **Input Data:**
-            ${sampleQuestions}
-            
-            **Output Format:**
-            Return a markdown report structured as follows:
-            
-            # ${markValue}-Mark Question Strategy Decoder
-            
-            [Brief intro about the general split of AO1/AO2/AO3 for this mark value]
-            
-            ## Type 1: [Name, e.g. "Assess whether A is always B"]
-            **Trigger Words:** "Always", "To what extent..."
-            **AO2 Formula (Analysis):** [Explain the specific structure required. e.g. 1-sided vs 2-sided? Diagram needed?]
-            **AO3 Formula (Evaluation):** [What is the specific 'Evaluation Trigger'? e.g. Short run vs Long run? Magnitude? Elasticity?]
-            **Example Question:** [Quote one from the list]
-            
-            ## Type 2: [Name, e.g. "Explain X and Consider Y"]
-            ...
-            
-            ## Type 3: [Name, e.g. "Which is better?"]
-            ...
-            
-            ## Examiner's 'Cheat Sheet' for Evaluation (AO3)
-            [List 3-4 bullet points of universal evaluation arguments that work for ${markValue} mark questions]
-        `;
-
-        const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            contents: prompt,
-        });
-        
-        return response.text || "Failed to analyze strategy.";
-
-    } catch (error) {
-        console.error("Strategy Analysis Error:", error);
-        return "Error analyzing strategy. Please try again.";
-    }
-};
-
-export const generateSyllabusLogicChain = async (topicTitle: string, point: string, context?: string): Promise<string> => {
+export const generateSyllabusLogicChain = async (topicTitle: string, point: string, context?: string, definition?: string): Promise<string> => {
   try {
     checkForApiKey();
     const prompt = `
@@ -620,6 +362,7 @@ export const generateSyllabusLogicChain = async (topicTitle: string, point: stri
       
       **Topic:** ${topicTitle}
       **Syllabus Point:** ${point}
+      ${definition ? `**Core Definition (AO1):** ${definition}` : ""}
       ${context ? `**Specific Context:** ${context}` : ""}
       
       **Task:** Write a perfect, step-by-step **Economic Logic Chain** that fully explains this specific point.
@@ -628,10 +371,12 @@ export const generateSyllabusLogicChain = async (topicTitle: string, point: stri
       1. Start with the core economic trigger (e.g. Interest Rates Rise).
       2. Use arrows (→) to show the mechanism of transmission.
       3. **AO2 Focus:** Ensure no logical jumps. Explain *why* A leads to B (e.g. mention the "Income Effect" or "Incentive Function").
-      4. Keep it concise but rigorous.
-      5. Output ONLY the chain, no intro/outro.
+      4. If a Definition (AO1) is provided above, ensure the logic chain builds directly upon it.
+      5. Keep it concise but rigorous.
+      6. Output ONLY the chain, no intro/outro.
     `;
 
+    const ai = getAI();
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
@@ -660,6 +405,7 @@ export const generateSyllabusDefinition = async (topicTitle: string, point: stri
       3. Do not include analysis, just the definition.
     `;
 
+    const ai = getAI();
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,
@@ -689,6 +435,7 @@ export const evaluateSyllabusChain = async (topicTitle: string, point: string, s
       Format the output clearly with bold headers.
     `;
 
+    const ai = getAI();
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: prompt,

@@ -3,13 +3,13 @@ import { SyllabusSection } from "./types";
 
 export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
   {
-    id: "1",
-    title: "1. Basic economic ideas and resource allocation (AS Level)",
-    subsections: [
+    "id": "1",
+    "title": "1. Basic economic ideas and resource allocation (AS Level)",
+    "subsections": [
       {
-        id: "1.1",
-        title: "1.1 Scarcity, choice and opportunity cost",
-        points: [
+        "id": "1.1",
+        "title": "1.1 Scarcity, choice and opportunity cost",
+        "points": [
           "1.1.1 Fundamental economic problem of scarcity: why resources are scarce in relation to wants",
           "1.1.1 Fundamental economic problem of scarcity: the difference between wants and needs",
           "1.1.1 Fundamental economic problem of scarcity: why decisions have to be made involving choices",
@@ -29,9 +29,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "1.2",
-        title: "1.2 Economic methodology",
-        points: [
+        "id": "1.2",
+        "title": "1.2 Economic methodology",
+        "points": [
           "1.2.1 Economics as a social science: the difference in scope between microeconomics and macroeconomics",
           "1.2.1 Economics as a social science: why this distinction is not always clear",
           "1.2.1 Economics as a social science: why economics is a social science",
@@ -48,9 +48,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "1.3",
-        title: "1.3 Factors of production",
-        points: [
+        "id": "1.3",
+        "title": "1.3 Factors of production",
+        "points": [
           "1.3.1 Nature and definition of factors of production: the factors of production as resources (land, labour, capital and enterprise)",
           "1.3.2 Difference between human capital and physical capital: the meaning of human capital",
           "1.3.2 Difference between human capital and physical capital: the meaning of physical capital",
@@ -71,21 +71,20 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "1.4",
-        title: "1.4 Resource allocation in different economic systems",
-        points: [
+        "id": "1.4",
+        "title": "1.4 Resource allocation in different economic systems",
+        "points": [
           "1.4.1 Decision-making in market, planned and mixed economies: the role of the price mechanism in market, planned and mixed economies",
           "1.4.1 Decision-making in market, planned and mixed economies: the role of government in market, planned and mixed economies",
           "1.4.2 Resource allocation in these economic systems: the advantages and disadvantages of resource allocation in market, planned and mixed economic systems",
-          // ADDED BY TEACHER (Example of hardcoding AO3 points)
           "AO3: Evaluate the effectiveness of the market mechanism vs government intervention in allocating resources",
           "AO3: Assess whether a mixed economy is always the most efficient system"
         ]
       },
       {
-        id: "1.5",
-        title: "1.5 Production possibility curves",
-        points: [
+        "id": "1.5",
+        "title": "1.5 Production possibility curves",
+        "points": [
           "1.5.1 Nature and meaning of a PPC: the concept of a PPC",
           "1.5.1 Nature and meaning of a PPC: straight line and curved PPCs",
           "1.5.1 Nature and meaning of a PPC: the significance of a point on the PPC in terms of resource allocation",
@@ -99,9 +98,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "1.6",
-        title: "1.6 Classification of goods and services",
-        points: [
+        "id": "1.6",
+        "title": "1.6 Classification of goods and services",
+        "points": [
           "1.6.1 Free goods and private goods: the meaning of free goods",
           "1.6.1 Free goods and private goods: the meaning of private goods",
           "1.6.1 Free goods and private goods: excludability and rivalry in the provision of free goods and private goods",
@@ -117,20 +116,19 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "1.6.4 Demerit goods: the meaning of demerit goods",
           "1.6.4 Demerit goods: why there is over-consumption due to imperfect information in the market",
           "1.6.4 Demerit goods: application to examples",
-          // ADDED BY TEACHER
           "AO3: Evaluate the effectiveness of government provision of public and merit goods"
         ]
       }
     ]
   },
   {
-    id: "2",
-    title: "2. The price system and the microeconomy (AS Level)",
-    subsections: [
+    "id": "2",
+    "title": "2. The price system and the microeconomy (AS Level)",
+    "subsections": [
       {
-        id: "2.1",
-        title: "2.1 Demand and supply curves",
-        points: [
+        "id": "2.1",
+        "title": "2.1 Demand and supply curves",
+        "points": [
           "2.1.1 Effective demand: how the price mechanism works",
           "2.1.1 Effective demand: the nature of a market",
           "2.1.1 Effective demand: effective demand and notional demand",
@@ -162,9 +160,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "2.2",
-        title: "2.2 Price, income and cross elasticity of demand",
-        points: [
+        "id": "2.2",
+        "title": "2.2 Price, income and cross elasticity of demand",
+        "points": [
           "2.2.1 Definitions of PED, YED, XED: the meaning of PED",
           "2.2.1 Definitions of PED, YED, XED: the meaning of YED",
           "2.2.1 Definitions of PED, YED, XED: the meaning of XED",
@@ -192,9 +190,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "2.3",
-        title: "2.3 Price elasticity of supply",
-        points: [
+        "id": "2.3",
+        "title": "2.3 Price elasticity of supply",
+        "points": [
           "2.3.1 Definition of PES: the meaning of PES",
           "2.3.2 Formula and calculation of PES: the formula for and how to calculate PES",
           "2.3.3 Significance of PES coefficient: why PES is always positive",
@@ -206,9 +204,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "2.4",
-        title: "2.4 The interaction of demand and supply",
-        points: [
+        "id": "2.4",
+        "title": "2.4 The interaction of demand and supply",
+        "points": [
           "2.4.1 Market equilibrium and disequilibrium: the meaning of market equilibrium",
           "2.4.1 Market equilibrium and disequilibrium: the meaning of disequilibrium in a market",
           "2.4.1 Market equilibrium and disequilibrium: the equilibrium price and equilibrium quantity",
@@ -225,9 +223,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "2.5",
-        title: "2.5 Consumer and producer surplus",
-        points: [
+        "id": "2.5",
+        "title": "2.5 Consumer and producer surplus",
+        "points": [
           "2.5.1 Consumer surplus: the concept of consumer surplus",
           "2.5.2 Producer surplus: the concept of producer surplus",
           "2.5.3 Causes of changes: the effects of a price increase or decrease on consumer surplus",
@@ -240,13 +238,13 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
     ]
   },
   {
-    id: "3",
-    title: "3. Government microeconomic intervention (AS Level)",
-    subsections: [
+    "id": "3",
+    "title": "3. Government microeconomic intervention (AS Level)",
+    "subsections": [
       {
-        id: "3.1",
-        title: "3.1 Reasons for government intervention in markets",
-        points: [
+        "id": "3.1",
+        "title": "3.1 Reasons for government intervention in markets",
+        "points": [
           "3.1.1 Addressing the non-provision of public goods: why governments provide public goods",
           "3.1.2 Addressing overconsumption/underconsumption: why governments intervene to prevent the overconsumption of demerit goods",
           "3.1.2 Addressing overconsumption/underconsumption: why governments encourage the consumption of merit goods",
@@ -254,9 +252,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "3.2",
-        title: "3.2 Methods and effects of government intervention in markets",
-        points: [
+        "id": "3.2",
+        "title": "3.2 Methods and effects of government intervention in markets",
+        "points": [
           "3.2.1 Impact and incidence of specific indirect taxes: The nature of a specific indirect tax",
           "3.2.1 Impact and incidence of specific indirect taxes: the effects of imposing a specific indirect tax in a market",
           "3.2.1 Impact and incidence of specific indirect taxes: the incidence of imposing a specific indirect tax in a market",
@@ -272,14 +270,13 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "3.2.5 Buffer stock schemes: why a buffer stock scheme is needed",
           "3.2.5 Buffer stock schemes: how a buffer stock scheme works",
           "3.2.6 Provision of information: how governments provide information",
-          // ADDED BY TEACHER
           "AO3: Evaluate the effectiveness of different government microeconomic interventions"
         ]
       },
       {
-        id: "3.3",
-        title: "3.3 Addressing income and wealth inequality",
-        points: [
+        "id": "3.3",
+        "title": "3.3 Addressing income and wealth inequality",
+        "points": [
           "3.3.1 Difference between income and wealth: the meaning of income",
           "3.3.1 Difference between income and wealth: the meaning of wealth",
           "3.3.2 Measuring income and wealth inequality: the Gini coefficient",
@@ -291,20 +288,19 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "3.3.4 Policies to redistribute income and wealth: inheritance taxes",
           "3.3.4 Policies to redistribute income and wealth: taxes on capital",
           "3.3.4 Policies to redistribute income and wealth: state provision of essential goods and services",
-          // ADDED BY TEACHER
           "AO3: Evaluate the effectiveness of policies to redistribute income and wealth"
         ]
       }
     ]
   },
   {
-    id: "4",
-    title: "4. The Macroeconomy (AS Level)",
-    subsections: [
+    "id": "4",
+    "title": "4. The Macroeconomy (AS Level)",
+    "subsections": [
       {
-        id: "4.1",
-        title: "4.1 National income statistics",
-        points: [
+        "id": "4.1",
+        "title": "4.1 National income statistics",
+        "points": [
           "4.1.1 Meaning of national income: what is meant by national income",
           "4.1.2 Measurement of national income: Gross Domestic Product (GDP) and how it is measured",
           "4.1.2 Measurement of national income: Gross National Income (GNI) and how it is measured",
@@ -319,9 +315,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "4.2",
-        title: "4.2 Introduction to the circular flow of income",
-        points: [
+        "id": "4.2",
+        "title": "4.2 Introduction to the circular flow of income",
+        "points": [
           "4.2.1 Circular flow of income: the concept of the circular flow of income",
           "4.2.1 Circular flow of income: the circular flow of income in a closed economy",
           "4.2.1 Circular flow of income: the circular flow of income in an open economy",
@@ -335,9 +331,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "4.3",
-        title: "4.3 Aggregate Demand and Aggregate Supply analysis",
-        points: [
+        "id": "4.3",
+        "title": "4.3 Aggregate Demand and Aggregate Supply analysis",
+        "points": [
           "4.3.1 Definition of Aggregate Demand (AD): what is meant by Aggregate Demand",
           "4.3.2 Components of AD and their meaning: the components of AD: C, I, G, (X – M)",
           "4.3.2 Components of AD and their meaning: the meaning of components",
@@ -363,9 +359,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "4.4",
-        title: "4.4 Economic growth",
-        points: [
+        "id": "4.4",
+        "title": "4.4 Economic growth",
+        "points": [
           "4.4.4 Causes of economic growth: the reasons for economic growth",
           "4.4.4 Causes of economic growth: the increase in quantity of resources",
           "4.4.4 Causes of economic growth: the increase in quality of resources",
@@ -375,9 +371,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "4.5",
-        title: "4.5 Unemployment",
-        points: [
+        "id": "4.5",
+        "title": "4.5 Unemployment",
+        "points": [
           "4.5.1 Meaning of unemployment: what is meant by unemployment",
           "4.5.2 Measures of unemployment: the level of unemployment",
           "4.5.2 Measures of unemployment: the rate of unemployment",
@@ -392,9 +388,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "4.6",
-        title: "4.6 Price stability",
-        points: [
+        "id": "4.6",
+        "title": "4.6 Price stability",
+        "points": [
           "4.6.1 Definition of inflation, deflation, disinflation: the meaning of price stability",
           "4.6.1 Definition of inflation, deflation, disinflation: the meaning of inflation",
           "4.6.1 Definition of inflation, deflation, disinflation: an inflation rate",
@@ -415,22 +411,22 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
     ]
   },
   {
-    id: "5",
-    title: "5. Government macroeconomic intervention (AS Level)",
-    subsections: [
+    "id": "5",
+    "title": "5. Government macroeconomic intervention (AS Level)",
+    "subsections": [
       {
-        id: "5.1",
-        title: "5.1 Government macroeconomic policy objectives",
-        points: [
+        "id": "5.1",
+        "title": "5.1 Government macroeconomic policy objectives",
+        "points": [
           "5.1.1 Use of government policy: the objective of price stability",
           "5.1.1 Use of government policy: the objective of low unemployment",
           "5.1.1 Use of government policy: the objective of economic growth"
         ]
       },
       {
-        id: "5.2",
-        title: "5.2 Fiscal policy",
-        points: [
+        "id": "5.2",
+        "title": "5.2 Fiscal policy",
+        "points": [
           "5.2.1 Meaning of government budget: taxation and government spending",
           "5.2.1 Meaning of government budget: the budget as a statement of fiscal policy",
           "5.2.2 Distinction between budget deficit and surplus: the meaning of a budget deficit",
@@ -454,9 +450,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "5.3",
-        title: "5.3 Monetary policy",
-        points: [
+        "id": "5.3",
+        "title": "5.3 Monetary policy",
+        "points": [
           "5.3.1 Definition of monetary policy: price and quantity of money",
           "5.3.2 Tools of monetary policy: interest rates",
           "5.3.2 Tools of monetary policy: money supply",
@@ -467,13 +463,16 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
           "5.3.4 AD/AS analysis of monetary policy: the impact on the level of real output",
           "5.3.4 AD/AS analysis of monetary policy: the impact on price level",
           "5.3.4 AD/AS analysis of monetary policy: the impact on employment",
-          "AO3: Evaluate the effectiveness of monetary policy in achieving macroeconomic objectives"
+          "AO3: Evaluate the effectiveness of monetary policy in achieving macroeconomic objectives",
+          "Why higher interest rates may NOT reduce spending",
+          "Constraints on monetary policy",
+          "Monetary policy in deflation：Lowering interest rates or increasing money supply may fail if"
         ]
       },
       {
-        id: "5.4",
-        title: "5.4 Supply-side policy",
-        points: [
+        "id": "5.4",
+        "title": "5.4 Supply-side policy",
+        "points": [
           "5.4.1 Meaning of supply-side policy: the purpose of increasing Aggregate Supply",
           "5.4.1 Meaning of supply-side policy: the shift to right of LRAS",
           "5.4.2 Objectives of supply-side policy: increasing productivity",
@@ -493,13 +492,13 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
     ]
   },
   {
-    id: "6",
-    title: "6. International economic issues (AS Level)",
-    subsections: [
+    "id": "6",
+    "title": "6. International economic issues (AS Level)",
+    "subsections": [
       {
-        id: "6.1",
-        title: "6.1 The reasons for international trade",
-        points: [
+        "id": "6.1",
+        "title": "6.1 The reasons for international trade",
+        "points": [
           "6.1.1 Distinction between absolute and comparative advantage: the principle of absolute advantage",
           "6.1.1 Distinction between absolute and comparative advantage: the principle of comparative advantage",
           "6.1.1 Distinction between absolute and comparative advantage: factor endowment",
@@ -515,9 +514,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "6.2",
-        title: "6.2 Protectionism",
-        points: [
+        "id": "6.2",
+        "title": "6.2 Protectionism",
+        "points": [
           "6.2.1 Meaning of protectionism in the context of international trade: the protection of domestic industries from foreign competition",
           "6.2.2 Different tools of protection: tariffs and their impact",
           "6.2.2 Different tools of protection: import quotas and their impact",
@@ -530,9 +529,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "6.3",
-        title: "6.3 Current account of the balance of payments",
-        points: [
+        "id": "6.3",
+        "title": "6.3 Current account of the balance of payments",
+        "points": [
           "6.3.1 Components of the current account: the purpose of the balance of payments",
           "6.3.1 Components of the current account: the components of the current account (trade in goods, trade in services, primary income, secondary income)",
           "6.3.2 Calculation: the balance of trade in goods",
@@ -546,9 +545,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "6.4",
-        title: "6.4 Exchange rates",
-        points: [
+        "id": "6.4",
+        "title": "6.4 Exchange rates",
+        "points": [
           "6.4.1 Definition of exchange rate: what is meant by a (foreign) exchange rate",
           "6.4.2 Determination of a floating foreign exchange rate: the role of demand and supply in the determination of a foreign exchange rate",
           "6.4.3 Distinction between depreciation and appreciation: the meaning of depreciation of a floating exchange rate",
@@ -563,9 +562,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "6.5",
-        title: "6.5 Policies to correct imbalances in the current account of the balance of payments",
-        points: [
+        "id": "6.5",
+        "title": "6.5 Policies to correct imbalances in the current account of the balance of payments",
+        "points": [
           "6.5.1 Government policy objective: the meaning of stability in the current account of the balance of payments",
           "6.5.2 Effect of policies: the effect of fiscal policies on the current account of the balance of payments",
           "6.5.2 Effect of policies: the effect of monetary policies on the current account of the balance of payments",
@@ -577,13 +576,13 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
     ]
   },
   {
-    id: "7",
-    title: "7. The price system and the microeconomy (A Level)",
-    subsections: [
+    "id": "7",
+    "title": "7. The price system and the microeconomy (A Level)",
+    "subsections": [
       {
-        id: "7.1",
-        title: "7.1 Utility",
-        points: [
+        "id": "7.1",
+        "title": "7.1 Utility",
+        "points": [
           "total utility and marginal utility",
           "law of diminishing marginal utility",
           "equi-marginal principle",
@@ -592,9 +591,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "7.2",
-        title: "7.2 Indifference curves",
-        points: [
+        "id": "7.2",
+        "title": "7.2 Indifference curves",
+        "points": [
           "indifference curve and budget line",
           "causes of shift in budget line",
           "income, substitution and price effects (normal, inferior, Giffen)",
@@ -602,9 +601,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "7.3",
-        title: "7.3 Efficiency and market failure",
-        points: [
+        "id": "7.3",
+        "title": "7.3 Efficiency and market failure",
+        "points": [
           "productive and allocative efficiency",
           "conditions for efficiency",
           "Pareto optimality",
@@ -613,9 +612,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "7.4",
-        title: "7.4 Private/Social Costs & Benefits",
-        points: [
+        "id": "7.4",
+        "title": "7.4 Private/Social Costs & Benefits",
+        "points": [
           "social costs = private + external",
           "social benefits = private + external",
           "positive and negative externalities",
@@ -626,9 +625,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "7.5",
-        title: "7.5 Costs, revenue and profit",
-        points: [
+        "id": "7.5",
+        "title": "7.5 Costs, revenue and profit",
+        "points": [
           "short-run production function (law of diminishing returns)",
           "short-run cost curves (FC, VC, ATC, MC)",
           "long-run production function (returns to scale)",
@@ -639,9 +638,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "7.6",
-        title: "7.6 Market structures",
-        points: [
+        "id": "7.6",
+        "title": "7.6 Market structures",
+        "points": [
           "characteristics of perfect competition, monopoly, oligopoly, monopolistic comp",
           "barriers to entry and exit (sunk costs)",
           "performance of firms in these structures (output, price, profit, efficiency)",
@@ -652,9 +651,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "7.7",
-        title: "7.7 Growth and survival of firms",
-        points: [
+        "id": "7.7",
+        "title": "7.7 Growth and survival of firms",
+        "points": [
           "reasons for small firms",
           "internal growth (organic)",
           "external growth (integration, M&A)",
@@ -663,9 +662,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "7.8",
-        title: "7.8 Objectives of firms",
-        points: [
+        "id": "7.8",
+        "title": "7.8 Objectives of firms",
+        "points": [
           "profit maximisation",
           "survival, profit satisficing, sales max, revenue max",
           "price discrimination (1st, 2nd, 3rd degree)",
@@ -676,21 +675,21 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
     ]
   },
   {
-    id: "8",
-    title: "8. Government microeconomic intervention (A Level)",
-    subsections: [
+    "id": "8",
+    "title": "8. Government microeconomic intervention (A Level)",
+    "subsections": [
       {
-        id: "8.1",
-        title: "8.1 Efficient resource allocation",
-        points: [
+        "id": "8.1",
+        "title": "8.1 Efficient resource allocation",
+        "points": [
           "policies for externalities (taxes, subsidies, permits, property rights, regulation, nudge)",
           "government failure (causes and consequences)"
         ]
       },
       {
-        id: "8.2",
-        title: "8.2 Equity and redistribution",
-        points: [
+        "id": "8.2",
+        "title": "8.2 Equity and redistribution",
+        "points": [
           "equity vs equality",
           "absolute vs relative poverty",
           "poverty trap",
@@ -698,9 +697,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "8.3",
-        title: "8.3 Labour market",
-        points: [
+        "id": "8.3",
+        "title": "8.3 Labour market",
+        "points": [
           "demand for labour (derived)",
           "supply of labour",
           "wage determination in perfect/imperfect markets",
@@ -712,22 +711,22 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
     ]
   },
   {
-    id: "9",
-    title: "9. The Macroeconomy (A Level)",
-    subsections: [
+    "id": "9",
+    "title": "9. The Macroeconomy (A Level)",
+    "subsections": [
       {
-        id: "9.1",
-        title: "9.1 Circular flow",
-        points: [
+        "id": "9.1",
+        "title": "9.1 Circular flow",
+        "points": [
           "multiplier process and calculation",
           "marginal propensities (mpc, mps, mpm, mrt)",
           "impact of AD change via multiplier"
         ]
       },
       {
-        id: "9.2",
-        title: "9.2 Economic growth",
-        points: [
+        "id": "9.2",
+        "title": "9.2 Economic growth",
+        "points": [
           "actual vs potential growth",
           "output gaps",
           "business cycle",
@@ -735,9 +734,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "9.3",
-        title: "9.3 Unemployment",
-        points: [
+        "id": "9.3",
+        "title": "9.3 Unemployment",
+        "points": [
           "full employment definition",
           "equilibrium vs disequilibrium unemployment (hysteresis)",
           "natural rate of unemployment",
@@ -746,9 +745,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "9.4",
-        title: "9.4 Money and banking",
-        points: [
+        "id": "9.4",
+        "title": "9.4 Money and banking",
+        "points": [
           "functions/characteristics of money",
           "money supply definitions",
           "Quantity Theory of Money (MV=PT)",
@@ -761,28 +760,28 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
     ]
   },
   {
-    id: "10",
-    title: "10. Government macroeconomic intervention (A Level)",
-    subsections: [
+    "id": "10",
+    "title": "10. Government macroeconomic intervention (A Level)",
+    "subsections": [
       {
-        id: "10.1",
-        title: "10.1 Objectives",
-        points: [
+        "id": "10.1",
+        "title": "10.1 Objectives",
+        "points": [
           "development, sustainability, redistribution targets"
         ]
       },
       {
-        id: "10.2",
-        title: "10.2 Interrelatedness",
-        points: [
+        "id": "10.2",
+        "title": "10.2 Interrelatedness",
+        "points": [
           "links between money value, BOP, inflation, growth",
           "Phillips curve (short and long run)"
         ]
       },
       {
-        id: "10.3",
-        title: "10.3 Effectiveness",
-        points: [
+        "id": "10.3",
+        "title": "10.3 Effectiveness",
+        "points": [
           "effectiveness of fiscal (Laffer curve), monetary, supply-side policies",
           "problems and conflicts",
           "government failure in macro policies"
@@ -791,21 +790,21 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
     ]
   },
   {
-    id: "11",
-    title: "11. International economic issues (A Level)",
-    subsections: [
+    "id": "11",
+    "title": "11. International economic issues (A Level)",
+    "subsections": [
       {
-        id: "11.1",
-        title: "11.1 BOP policies",
-        points: [
+        "id": "11.1",
+        "title": "11.1 BOP policies",
+        "points": [
           "BOP accounts details",
           "expenditure-switching vs expenditure-reducing policies"
         ]
       },
       {
-        id: "11.2",
-        title: "11.2 Exchange rates",
-        points: [
+        "id": "11.2",
+        "title": "11.2 Exchange rates",
+        "points": [
           "nominal/real/trade-weighted rates",
           "fixed/managed systems",
           "Marshall-Lerner condition",
@@ -813,27 +812,27 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "11.3",
-        title: "11.3 Economic development",
-        points: [
+        "id": "11.3",
+        "title": "11.3 Economic development",
+        "points": [
           "classification of economies",
           "indicators (HDI, MEW, MPI, Kuznets curve)",
           "comparison of growth rates"
         ]
       },
       {
-        id: "11.4",
-        title: "11.4 Characteristics of countries",
-        points: [
+        "id": "11.4",
+        "title": "11.4 Characteristics of countries",
+        "points": [
           "population growth/structure",
           "income distribution (Lorenz, Gini)",
           "economic structure (sectoral)"
         ]
       },
       {
-        id: "11.5",
-        title: "11.5 Relationships",
-        points: [
+        "id": "11.5",
+        "title": "11.5 Relationships",
+        "points": [
           "trade and aid",
           "MNCs and FDI",
           "external debt",
@@ -841,9 +840,9 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = [
         ]
       },
       {
-        id: "11.6",
-        title: "11.6 Globalisation",
-        points: [
+        "id": "11.6",
+        "title": "11.6 Globalisation",
+        "points": [
           "causes and consequences",
           "economic integration (FTA, Customs Union, Monetary Union)",
           "trade creation and diversion"

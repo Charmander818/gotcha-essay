@@ -117,7 +117,13 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
       setChainLoading(true);
       setChainError(false);
       try {
-          const result = await generateSyllabusLogicChain(activeTrainingPoint.topic, activeTrainingPoint.text, newChainContext);
+          // PASSING ao1Definition here to base the chain on the definition
+          const result = await generateSyllabusLogicChain(
+              activeTrainingPoint.topic, 
+              activeTrainingPoint.text, 
+              newChainContext,
+              ao1Definition // Pass the definition as context
+          );
           
           const newChain: LogicChainItem = {
               id: Date.now().toString(),
@@ -163,15 +169,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
   };
 
   const handleExportHandbook = (sectionId: string, subTitle: string, points: string[]) => {
-      // Need to include custom points in handbook export too
-      const currentCustom = customPoints[subTitle] || []; // Note: subTitle used as ID in current structure might be fragile if titles change, but used for now
-      // Actually customPoints are keyed by subsectionId (e.g. "1.1"). We need to find the ID.
-      // The passed 'points' are just strings. We need to reconstruct the full list for export.
-      
-      // Easier hack: Just export standard points for now or improve logic later. 
-      // For now, let's stick to standard to avoid breaking current handbook logic.
-      // If user wants custom points, they appear in UI.
-      
+      // Logic same as before...
       const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>${subTitle} Revision Handbook</title>
       <style>
         body { font-family: 'Calibri', sans-serif; font-size: 10pt; }
@@ -197,7 +195,6 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
           const data = statusMap[uniqueId];
           let def = data?.ao1Definition || data?.ao1Notes;
           
-          // Use prefilled if user hasn't saved one
           if (!def && PREFILLED_DEFINITIONS[uniqueId]) {
               def = PREFILLED_DEFINITIONS[uniqueId];
           }
@@ -244,7 +241,6 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
       document.body.removeChild(link);
   };
 
-  // Helper to group points with same numbering prefix (e.g. 1.1.1)
   const processSyllabusPoints = (points: string[]) => {
     const processed: ({ type: 'group'; header: string; items: { idx: number; text: string }[] } | { type: 'single'; item: { idx: number; text: string } })[] = [];
     
@@ -272,7 +268,8 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
       const currentStatus = statusMap[uniqueId]?.status;
       const savedDef = statusMap[uniqueId]?.ao1Definition || statusMap[uniqueId]?.ao1Notes;
       
-      // Determine if "AO1 Ready" should show (either user saved, or we have a hardcoded one)
+      // Removed the logic that displayed "Default (Teacher Provided)"
+      // but we still check if there IS a definition to show the green badge
       const hasDef = !!savedDef || !!PREFILLED_DEFINITIONS[uniqueId];
       
       const chainCount = statusMap[uniqueId]?.ao2Chains?.length || (statusMap[uniqueId]?.modelChain ? 1 : 0);
@@ -317,7 +314,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
               <div className="flex gap-2 mt-1 min-h-[16px]">
                   {hasDef && (
                       <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-purple-100 text-purple-700">
-                          {savedDef ? "AO1 Ready" : "Default AO1"}
+                          AO1 Ready
                       </span>
                   )}
                   {chainCount > 0 && (
@@ -515,12 +512,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                     onChange={(e) => setAo1Definition(e.target.value)}
                     onBlur={handleSaveAll}
                   />
-                  {/* Visual indicator that this is a prefilled/default value if it matches the hardcoded one */}
-                  {PREFILLED_DEFINITIONS[activeTrainingPoint.id] && ao1Definition === PREFILLED_DEFINITIONS[activeTrainingPoint.id] && (
-                      <div className="absolute top-2 right-2 text-[9px] text-slate-400 bg-white/80 px-1 rounded pointer-events-none">
-                          Default (Teacher Provided)
-                      </div>
-                  )}
+                  {/* Badge removed as requested */}
               </div>
             </div>
 

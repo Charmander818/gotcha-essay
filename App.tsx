@@ -506,62 +506,6 @@ const App: React.FC = () => {
         </header>
 
         <div className="flex-1 overflow-y-auto p-0 relative">
-          {mode === AppMode.TOPIC_ANALYSIS && (
-              <div className="absolute bottom-4 left-4 z-50 flex gap-2">
-                  <button 
-                    onClick={handleBackupAnalysis}
-                    className="bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:bg-slate-50"
-                  >
-                      Backup All Analysis
-                  </button>
-                  <button 
-                    onClick={() => fileInputRef.current?.click()}
-                    className="bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:bg-slate-50"
-                  >
-                      Import / Merge Analysis
-                  </button>
-                  <input 
-                    type="file" 
-                    ref={fileInputRef} 
-                    onChange={handleRestoreAnalysis} 
-                    className="hidden" 
-                    accept=".json" 
-                  />
-              </div>
-          )}
-
-          {mode === AppMode.SYLLABUS_TRACKER && (
-              <div className="absolute bottom-4 left-4 z-50 flex gap-2">
-                  <button 
-                    onClick={handleBackupSyllabus}
-                    className="bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:bg-slate-50"
-                  >
-                      Backup Syllabus Data
-                  </button>
-                  <button 
-                    onClick={() => syllabusFileInputRef.current?.click()}
-                    className="bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 shadow-sm hover:bg-slate-50"
-                  >
-                      Restore Syllabus Data
-                  </button>
-                  <input 
-                    type="file" 
-                    ref={syllabusFileInputRef} 
-                    onChange={handleRestoreSyllabus} 
-                    className="hidden" 
-                    accept=".json" 
-                  />
-                  {/* New Sync Button */}
-                  <button 
-                    onClick={() => setIsSyllabusExportOpen(true)}
-                    className="bg-purple-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-md hover:bg-purple-700 flex items-center gap-1"
-                  >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                      Sync to Source Code
-                  </button>
-              </div>
-          )}
-
           <div className="h-full">
             {mode === AppMode.SYLLABUS_TRACKER ? (
                 <SyllabusTracker 
@@ -634,6 +578,69 @@ const App: React.FC = () => {
             )}
           </div>
         </div>
+
+        {/* Footer for Topic Analysis Mode */}
+        {mode === AppMode.TOPIC_ANALYSIS && (
+            <div className="border-t border-slate-200 bg-white p-3 px-6 flex justify-between items-center z-20 shadow-lg">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Analysis Data Options</span>
+                <div className="flex gap-3">
+                    <button 
+                      onClick={handleBackupAnalysis}
+                      className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs font-bold rounded shadow-sm hover:bg-slate-50 transition-colors"
+                    >
+                        Backup
+                    </button>
+                    <button 
+                      onClick={() => fileInputRef.current?.click()}
+                      className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs font-bold rounded shadow-sm hover:bg-slate-50 transition-colors"
+                    >
+                        Restore
+                    </button>
+                    <input 
+                      type="file" 
+                      ref={fileInputRef} 
+                      onChange={handleRestoreAnalysis} 
+                      className="hidden" 
+                      accept=".json" 
+                    />
+                </div>
+            </div>
+        )}
+
+        {/* Footer for Syllabus Mode */}
+        {mode === AppMode.SYLLABUS_TRACKER && (
+            <div className="border-t border-slate-200 bg-white p-3 px-6 flex justify-between items-center z-20 shadow-lg">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Syllabus Data Options</span>
+                <div className="flex gap-3">
+                    <button 
+                      onClick={handleBackupSyllabus}
+                      className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs font-bold rounded shadow-sm hover:bg-slate-50 transition-colors"
+                    >
+                        Backup
+                    </button>
+                    <button 
+                      onClick={() => syllabusFileInputRef.current?.click()}
+                      className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs font-bold rounded shadow-sm hover:bg-slate-50 transition-colors"
+                    >
+                        Restore
+                    </button>
+                    <input 
+                      type="file" 
+                      ref={syllabusFileInputRef} 
+                      onChange={handleRestoreSyllabus} 
+                      className="hidden" 
+                      accept=".json" 
+                    />
+                    <button 
+                      onClick={() => setIsSyllabusExportOpen(true)}
+                      className="px-3 py-1.5 bg-purple-600 text-white text-xs font-bold rounded shadow-md hover:bg-purple-700 transition-colors flex items-center gap-1"
+                    >
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                        Sync to Source
+                    </button>
+                </div>
+            </div>
+        )}
       </main>
 
       <AddQuestionModal 
