@@ -264,11 +264,111 @@ const App: React.FC = () => {
   };
 
   const handleExportAll = () => {
-    alert("Use existing export logic");
+    const questionsToExport = allQuestions;
+
+    let htmlContent = `
+      <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+      <head>
+        <meta charset='utf-8'>
+        <title>CIE Economics Question Bank</title>
+        <style>
+          body { font-family: 'Calibri', sans-serif; font-size: 11pt; }
+          h1 { color: #1e3a8a; font-size: 24pt; text-align: center; margin-bottom: 30px; }
+          h2 { color: #1e40af; font-size: 16pt; margin-top: 30px; border-bottom: 2px solid #1e40af; padding-bottom: 5px; }
+          .question-box { border: 1px solid #cbd5e1; padding: 15px; margin-bottom: 15px; page-break-inside: avoid; background-color: #f8fafc; }
+          .meta { color: #64748b; font-size: 9pt; font-weight: bold; margin-bottom: 10px; }
+          .q-text { font-size: 11pt; font-weight: bold; margin-bottom: 10px; color: #0f172a; }
+          .marks { float: right; background: #e0f2fe; color: #0369a1; padding: 2px 6px; border-radius: 4px; font-size: 9pt; }
+          .ms-header { font-size: 9pt; font-weight: bold; color: #047857; margin-top: 10px; text-transform: uppercase; }
+          .ms-content { font-size: 10pt; color: #334155; white-space: pre-wrap; font-family: 'Consolas', monospace; background: #fff; padding: 10px; border: 1px dashed #cbd5e1; }
+        </style>
+      </head>
+      <body>
+        <h1>CIE Economics Question Bank</h1>
+        <p style="text-align:center; color:#64748b;">Generated on ${new Date().toLocaleDateString()} • Total Questions: ${questionsToExport.length}</p>
+    `;
+
+    // Group by Topic
+    const grouped = questionsToExport.reduce((acc, q) => {
+        if (!acc[q.topic]) acc[q.topic] = [];
+        acc[q.topic].push(q);
+        return acc;
+    }, {} as Record<string, Question[]>);
+
+    // Sort Topics
+    const sortedTopics = Object.keys(grouped).sort();
+
+    sortedTopics.forEach(topic => {
+        htmlContent += `<h2>${topic}</h2>`;
+        grouped[topic].forEach(q => {
+            htmlContent += `
+              <div class="question-box">
+                 <div class="meta">
+                    ${q.year} | ${q.paper} | ${q.variant} | Q${q.questionNumber}
+                    <span class="marks">${q.maxMarks} Marks</span>
+                 </div>
+                 <div class="q-text">${q.questionText}</div>
+                 <div class="ms-header">Mark Scheme Guidance</div>
+                 <div class="ms-content">${q.markScheme}</div>
+                 <div style="font-size: 8pt; color: #94a3b8; margin-top: 5px;">Chapter: ${q.chapter}</div>
+              </div>
+            `;
+        });
+    });
+
+    htmlContent += "</body></html>";
+
+    const blob = new Blob([htmlContent], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `CIE_Economics_Question_Bank_${new Date().toISOString().slice(0, 10)}.doc`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleExportExcel = () => {
-    alert("Use existing excel logic");
+    const questionsToExport = allQuestions;
+    
+    // Header row
+    const headers = ["ID", "Year", "Paper", "Variant", "Question No", "Topic", "Chapter", "Max Marks", "Question Text", "Mark Scheme"];
+    
+    // Helper to escape CSV fields
+    const escapeCsv = (str: string) => {
+        if (str == null) return '';
+        const stringified = String(str);
+        // If contains quotes, commas or newlines, wrap in quotes and escape internal quotes
+        if (stringified.includes('"') || stringified.includes(',') || stringified.includes('\n')) {
+            return `"${stringified.replace(/"/g, '""')}"`;
+        }
+        return stringified;
+    };
+
+    const rows = questionsToExport.map(q => [
+        q.id,
+        q.year,
+        q.paper,
+        q.variant,
+        q.questionNumber,
+        q.topic,
+        q.chapter,
+        q.maxMarks,
+        q.questionText,
+        q.markScheme
+    ].map(escapeCsv).join(','));
+
+    const csvContent = [headers.join(','), ...rows].join('\n');
+    
+    // Add BOM for Excel to interpret UTF-8 correctly
+    const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `CIE_Economics_Question_Bank_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   // --- Analysis Backup/Restore ---
