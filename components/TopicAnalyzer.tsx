@@ -90,17 +90,46 @@ const TopicAnalyzer: React.FC<Props> = ({
         h2 { color: #1e40af; font-size: 14pt; margin-top: 20px; margin-bottom: 10px; }
         .meta { color: #64748b; font-size: 10pt; margin-bottom: 20px; }
         li { margin-bottom: 5px; }
+        .tip-box { background-color: #f0f9ff; border: 1px solid #bae6fd; padding: 10px; margin-bottom: 15px; }
+        .mistake-box { background-color: #fef2f2; border: 1px solid #fecaca; padding: 10px; margin-bottom: 15px; }
       </style>
       </head><body>`;
       const footer = "</body></html>";
       
-      let html = `<h1>Topic Analysis: ${selectedChapter}</h1>`;
+      let html = `<h1>Topic Master Guide: ${selectedChapter}</h1>`;
       html += `<p class="meta"><strong>Level:</strong> ${selectedLevel} | <strong>Topic:</strong> ${selectedTopic}<br/><strong>Questions Analyzed:</strong> ${currentData.questionCount} | <strong>Last Updated:</strong> ${currentData.lastUpdated}</p><hr/>`;
       
+      // Exam Tips & Mistakes
+      if (currentData.examTips?.length > 0 || currentData.commonMistakes?.length > 0) {
+          html += `<h2>Examiner's Strategy Guide</h2>`;
+          
+          if (currentData.examTips?.length > 0) {
+            html += `<div class="tip-box"><strong>💡 Top Exam Tips:</strong><ul>`;
+            currentData.examTips.forEach(tip => html += `<li>${tip}</li>`);
+            html += `</ul></div>`;
+          }
+
+          if (currentData.commonMistakes?.length > 0) {
+            html += `<div class="mistake-box"><strong>⚠️ Common Pitfalls:</strong><ul>`;
+            currentData.commonMistakes.forEach(m => html += `<li>${m}</li>`);
+            html += `</ul></div>`;
+          }
+      }
+
+      // Definitions
+      if (currentData.commonDefinitions?.length > 0) {
+          html += `<h2>Core Definitions (AO1)</h2>`;
+          html += `<table><tr><th width="30%">Term</th><th>Precise Definition</th></tr>`;
+          currentData.commonDefinitions.forEach(d => {
+              html += `<tr><td><strong>${d.term}</strong></td><td>${d.definition}</td></tr>`;
+          });
+          html += `</table>`;
+      }
+
       // AO Summary Table
-      html += `<h2>Examiner's Assessment Objectives Breakdown</h2>`;
+      html += `<h2>Assessment Objectives Breakdown</h2>`;
       html += `<table>`;
-      html += `<tr><th style="background-color:#eff6ff; width:33%;">AO1: Knowledge & Understanding</th><th style="background-color:#eef2ff; width:33%;">AO2: Analysis Chains</th><th style="background-color:#fffbeb; width:33%;">AO3: Evaluation</th></tr>`;
+      html += `<tr><th style="background-color:#eff6ff; width:33%;">AO1: Key Concepts</th><th style="background-color:#eef2ff; width:33%;">AO2: Analysis Chains</th><th style="background-color:#fffbeb; width:33%;">AO3: Evaluation</th></tr>`;
       
       const maxRows = Math.max(currentData.ao1.length, currentData.ao2.length, currentData.ao3.length);
       
@@ -133,7 +162,7 @@ const TopicAnalyzer: React.FC<Props> = ({
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `Analysis_${selectedChapter.replace(/[^a-z0-9]/gi, '_')}.doc`;
+      link.download = `Master_Guide_${selectedChapter.replace(/[^a-z0-9]/gi, '_')}.doc`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -157,6 +186,8 @@ const TopicAnalyzer: React.FC<Props> = ({
         h2 { color: #1e40af; font-size: 14pt; margin-top: 20px; margin-bottom: 10px; }
         .meta { color: #64748b; font-size: 10pt; margin-bottom: 20px; }
         li { margin-bottom: 5px; }
+        .tip-box { background-color: #f0f9ff; border: 1px solid #bae6fd; padding: 10px; margin-bottom: 15px; }
+        .mistake-box { background-color: #fef2f2; border: 1px solid #fecaca; padding: 10px; margin-bottom: 15px; }
       </style>
       </head><body>`;
       const footer = "</body></html>";
@@ -167,13 +198,40 @@ const TopicAnalyzer: React.FC<Props> = ({
           const data = savedAnalysis[chapter];
           if (!data) return;
 
-          html += `<h1>Topic Analysis: ${chapter}</h1>`;
+          html += `<h1>Topic Master Guide: ${chapter}</h1>`;
           html += `<p class="meta"><strong>Questions Analyzed:</strong> ${data.questionCount} | <strong>Last Updated:</strong> ${data.lastUpdated}</p><hr/>`;
           
+          // Exam Tips & Mistakes
+          if (data.examTips?.length > 0 || data.commonMistakes?.length > 0) {
+              html += `<h2>Examiner's Strategy Guide</h2>`;
+              
+              if (data.examTips?.length > 0) {
+                html += `<div class="tip-box"><strong>💡 Top Exam Tips:</strong><ul>`;
+                data.examTips.forEach(tip => html += `<li>${tip}</li>`);
+                html += `</ul></div>`;
+              }
+
+              if (data.commonMistakes?.length > 0) {
+                html += `<div class="mistake-box"><strong>⚠️ Common Pitfalls:</strong><ul>`;
+                data.commonMistakes.forEach(m => html += `<li>${m}</li>`);
+                html += `</ul></div>`;
+              }
+          }
+
+          // Definitions
+          if (data.commonDefinitions?.length > 0) {
+              html += `<h2>Core Definitions (AO1)</h2>`;
+              html += `<table><tr><th width="30%">Term</th><th>Precise Definition</th></tr>`;
+              data.commonDefinitions.forEach(d => {
+                  html += `<tr><td><strong>${d.term}</strong></td><td>${d.definition}</td></tr>`;
+              });
+              html += `</table>`;
+          }
+          
           // AO Summary Table
-          html += `<h2>Examiner's Assessment Objectives Breakdown</h2>`;
+          html += `<h2>Assessment Objectives Breakdown</h2>`;
           html += `<table>`;
-          html += `<tr><th style="background-color:#eff6ff; width:33%;">AO1: Knowledge & Understanding</th><th style="background-color:#eef2ff; width:33%;">AO2: Analysis Chains</th><th style="background-color:#fffbeb; width:33%;">AO3: Evaluation</th></tr>`;
+          html += `<tr><th style="background-color:#eff6ff; width:33%;">AO1: Key Concepts</th><th style="background-color:#eef2ff; width:33%;">AO2: Analysis Chains</th><th style="background-color:#fffbeb; width:33%;">AO3: Evaluation</th></tr>`;
           
           const maxRows = Math.max(data.ao1.length, data.ao2.length, data.ao3.length);
           
@@ -207,7 +265,7 @@ const TopicAnalyzer: React.FC<Props> = ({
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `Complete_Analysis_Export_${new Date().toISOString().slice(0, 10)}.doc`;
+      link.download = `Complete_Master_Guide_${new Date().toISOString().slice(0, 10)}.doc`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -413,6 +471,74 @@ const TopicAnalyzer: React.FC<Props> = ({
               </div>
           ) : (
               <div className="space-y-6">
+                  
+                  {/* Strategy Section (Tips & Mistakes) */}
+                  {(currentData.examTips?.length > 0 || currentData.commonMistakes?.length > 0) && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Tips */}
+                        {currentData.examTips?.length > 0 && (
+                            <div className="bg-sky-50 border border-sky-100 rounded-xl p-5 shadow-sm">
+                                <h3 className="flex items-center gap-2 font-bold text-sky-800 mb-3 uppercase tracking-wide text-xs">
+                                    <span className="text-lg">💡</span> Examiner's Tips
+                                </h3>
+                                <ul className="space-y-2">
+                                    {currentData.examTips.map((tip, i) => (
+                                        <li key={i} className="text-sm text-sky-900 flex gap-2 items-start">
+                                            <span className="text-sky-400 mt-1">•</span>
+                                            <span>{tip}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                        
+                        {/* Mistakes */}
+                        {currentData.commonMistakes?.length > 0 && (
+                            <div className="bg-rose-50 border border-rose-100 rounded-xl p-5 shadow-sm">
+                                <h3 className="flex items-center gap-2 font-bold text-rose-800 mb-3 uppercase tracking-wide text-xs">
+                                    <span className="text-lg">⚠️</span> Common Pitfalls
+                                </h3>
+                                <ul className="space-y-2">
+                                    {currentData.commonMistakes.map((mistake, i) => (
+                                        <li key={i} className="text-sm text-rose-900 flex gap-2 items-start">
+                                            <span className="text-rose-400 mt-1">•</span>
+                                            <span>{mistake}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+                  )}
+
+                  {/* Definitions Section */}
+                  {currentData.commonDefinitions?.length > 0 && (
+                    <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                        <div className="p-4 bg-slate-50 border-b border-slate-100 flex items-center gap-2">
+                             <span className="text-lg">📖</span>
+                             <h3 className="font-bold text-slate-800 text-sm uppercase tracking-wide">Core Definitions (AO1)</h3>
+                        </div>
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-sm text-left">
+                                <thead className="bg-slate-50 text-slate-500 font-medium border-b border-slate-100">
+                                    <tr>
+                                        <th className="px-6 py-3 w-1/4 font-semibold uppercase text-xs tracking-wider">Term</th>
+                                        <th className="px-6 py-3 font-semibold uppercase text-xs tracking-wider">Precise Definition</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-slate-100">
+                                    {currentData.commonDefinitions.map((def, i) => (
+                                        <tr key={i} className="hover:bg-slate-50/50 transition-colors">
+                                            <td className="px-6 py-3 font-bold text-slate-700 align-top">{def.term}</td>
+                                            <td className="px-6 py-3 text-slate-600 leading-relaxed">{def.definition}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                  )}
+
                   {/* Top Row: AO1, AO2, AO3 Cards */}
                   <div className="grid grid-cols-3 gap-6">
                       {/* AO1 Card */}

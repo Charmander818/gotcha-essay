@@ -68,6 +68,9 @@ export interface TopicAnalysisData {
   ao2: string[];
   ao3: string[];
   keyDebates: KeyDebate[];
+  commonDefinitions: { term: string; definition: string }[];
+  commonMistakes: string[];
+  examTips: string[];
 }
 
 export enum AppMode {

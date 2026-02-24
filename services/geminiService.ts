@@ -331,27 +331,37 @@ export const analyzeTopic = async (topic: string, questions: Question[]): Promis
   const questionsText = questions.map(q => `Q (${q.year}): ${q.questionText}\nMark Scheme: ${q.markScheme}`).join("\n---\n");
   
   const prompt = `
-    Analyze these past paper questions for the topic: ${topic}.
+    You are an expert Cambridge A-Level Economics Examiner and Textbook Author.
+    Create a comprehensive "Topic Master Guide" (宝书) based on these past paper questions for the topic: ${topic}.
     
-    Identify:
-    1. Common AO1 Knowledge points required (Definitions, formulas).
-    2. Common AO2 Logical Chains (Analysis) that appear frequently.
-    3. Common AO3 Evaluation points (Limitations, counter-arguments).
-    4. Key Debates (e.g. Free Market vs Intervention) with Pros, Cons, and "Depends on" factors.
+    Your goal is to provide a "Bible" for students to master this topic.
     
-    Return JSON:
+    Analyze the questions and mark schemes to identify:
+    1. **AO1 Definitions:** The exact definitions required for key terms in this topic.
+    2. **AO2 Analysis Chains:** The standard logical chains of reasoning used to explain concepts (Cause -> Effect -> Consequence). Group similar chains.
+    3. **AO3 Evaluation:** The common "Depends on" factors, limitations of policies, or alternative viewpoints.
+    4. **Key Debates:** The major economic arguments (e.g. Free Market vs Intervention) relevant to this topic.
+    5. **Common Mistakes:** Errors students often make or concepts they confuse.
+    6. **Exam Tips:** Specific advice on how to score high in this topic (e.g. "Always draw a diagram for X").
+
+    Return JSON format:
     {
       "lastUpdated": "${new Date().toLocaleDateString()}",
       "questionCount": ${questions.length},
-      "ao1": ["point 1", "point 2"...],
-      "ao2": ["chain 1", "chain 2"...],
-      "ao3": ["eval 1", "eval 2"...],
+      "commonDefinitions": [
+        { "term": "Term", "definition": "Precise definition..." }
+      ],
+      "ao1": ["Key knowledge point 1", "Key formula 1"...], 
+      "ao2": ["Detailed logic chain 1...", "Detailed logic chain 2..."],
+      "ao3": ["Evaluation point 1...", "Evaluation point 2..."],
       "keyDebates": [
-        { "title": "...", "pros": "...", "cons": "...", "dependencies": "..." }
-      ]
+        { "title": "Debate Title", "pros": "Arguments For...", "cons": "Arguments Against...", "dependencies": "Depends on..." }
+      ],
+      "commonMistakes": ["Mistake 1...", "Mistake 2..."],
+      "examTips": ["Tip 1...", "Tip 2..."]
     }
     
-    Data:
+    Data to Analyze:
     ${questionsText}
   `;
 
