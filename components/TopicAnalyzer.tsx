@@ -139,6 +139,80 @@ const TopicAnalyzer: React.FC<Props> = ({
       document.body.removeChild(link);
   };
 
+  const handleExportAllWord = () => {
+      const chapters = Object.keys(savedAnalysis);
+      if (chapters.length === 0) {
+          alert("No analysis data found to export.");
+          return;
+      }
+      
+      const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Complete Question Bank Analysis</title>
+      <style>
+        body { font-family: 'Calibri', sans-serif; font-size: 11pt; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #cbd5e1; padding: 10px; vertical-align: top; }
+        th { background-color: #f1f5f9; text-align: left; font-weight: bold; }
+        h1 { color: #1e3a8a; font-size: 18pt; margin-bottom: 5px; page-break-before: always; }
+        h1:first-child { page-break-before: auto; }
+        h2 { color: #1e40af; font-size: 14pt; margin-top: 20px; margin-bottom: 10px; }
+        .meta { color: #64748b; font-size: 10pt; margin-bottom: 20px; }
+        li { margin-bottom: 5px; }
+      </style>
+      </head><body>`;
+      const footer = "</body></html>";
+      
+      let html = "";
+
+      chapters.forEach(chapter => {
+          const data = savedAnalysis[chapter];
+          if (!data) return;
+
+          html += `<h1>Topic Analysis: ${chapter}</h1>`;
+          html += `<p class="meta"><strong>Questions Analyzed:</strong> ${data.questionCount} | <strong>Last Updated:</strong> ${data.lastUpdated}</p><hr/>`;
+          
+          // AO Summary Table
+          html += `<h2>Examiner's Assessment Objectives Breakdown</h2>`;
+          html += `<table>`;
+          html += `<tr><th style="background-color:#eff6ff; width:33%;">AO1: Knowledge & Understanding</th><th style="background-color:#eef2ff; width:33%;">AO2: Analysis Chains</th><th style="background-color:#fffbeb; width:33%;">AO3: Evaluation</th></tr>`;
+          
+          const maxRows = Math.max(data.ao1.length, data.ao2.length, data.ao3.length);
+          
+          for(let i=0; i<maxRows; i++) {
+              html += `<tr>`;
+              html += `<td>${data.ao1[i] ? '• ' + data.ao1[i] : ''}</td>`;
+              html += `<td>${data.ao2[i] ? '• ' + data.ao2[i] : ''}</td>`;
+              html += `<td>${data.ao3[i] ? '• ' + data.ao3[i] : ''}</td>`;
+              html += `</tr>`;
+          }
+          html += `</table>`;
+          
+          // Debates Tables
+          html += `<h2>Key Debates & Policy Evaluations</h2>`;
+          
+          data.keyDebates.forEach(d => {
+              html += `<table style="border: 2px solid #334155;">`;
+              html += `<tr><td colspan="3" style="background-color: #334155; color: white; font-weight: bold; font-size: 12pt; padding: 8px;">${d.title}</td></tr>`;
+              html += `<tr>
+                <td width="33%" style="background-color:#ecfdf5;"><strong style="color:#047857;">ADVANTAGES</strong><br/><br/>${d.pros}</td>
+                <td width="33%" style="background-color:#fef2f2;"><strong style="color:#dc2626;">LIMITATIONS</strong><br/><br/>${d.cons}</td>
+                <td width="33%" style="background-color:#f3e8ff;"><strong style="color:#7c3aed;">DEPENDS ON...</strong><br/><br/>${d.dependencies}</td>
+              </tr>`;
+              html += `</table><br/>`;
+          });
+      });
+
+      const sourceHTML = header + html + footer;
+      
+      const blob = new Blob([sourceHTML], { type: 'application/msword' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `Complete_Analysis_Export_${new Date().toISOString().slice(0, 10)}.doc`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+  };
+
   const handleExportPDF = () => {
       if (!currentData) return;
       
@@ -281,6 +355,15 @@ const TopicAnalyzer: React.FC<Props> = ({
               <div className="h-8 w-px bg-slate-200"></div>
 
               <div className="flex gap-2">
+                  <button
+                    onClick={handleExportAllWord}
+                    disabled={Object.keys(savedAnalysis).length === 0}
+                    className="px-3 py-2 bg-white border border-slate-200 text-emerald-600 font-bold rounded-lg text-xs hover:bg-slate-50 disabled:opacity-50 transition-colors flex items-center gap-1"
+                    title="Export All Analyses as Word Doc"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" /></svg>
+                    Export All
+                  </button>
                   <button
                     onClick={handleExportWord}
                     disabled={!currentData}
