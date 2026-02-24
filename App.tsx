@@ -335,7 +335,7 @@ const App: React.FC = () => {
     const headers = ["ID", "Year", "Paper", "Variant", "Question No", "Topic", "Chapter", "Max Marks", "Question Text", "Mark Scheme"];
     
     // Helper to escape CSV fields
-    const escapeCsv = (str: string) => {
+    const escapeCsv = (str: string | number) => {
         if (str == null) return '';
         const stringified = String(str);
         // If contains quotes, commas or newlines, wrap in quotes and escape internal quotes
