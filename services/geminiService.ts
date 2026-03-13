@@ -25,6 +25,23 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
     Mark Scheme Guidance:
     ${question.markScheme}
     
+    **CRITICAL EXAMINER INSTRUCTIONS (MUST FOLLOW):**
+    1. **AO1 (Knowledge) Rules:**
+       - ONLY provide real-world examples if the question explicitly asks for them.
+       - ONLY draw/describe diagrams if the question explicitly asks for them, OR if they are absolutely necessary to explain the AO2 analysis. A diagram without written explanation scores 0.
+       - If the question asks for "Causes" (e.g., causes of inflation), you MUST define the term first, then explain the causes. If it does NOT ask for causes, do NOT write them.
+       - If the question asks to "Explain the difference", keep the difference brief (1-2 lines) after defining both concepts.
+    2. **AO2 (Analysis) Rules:**
+       - If the question mentions a "price change", you MUST discuss BOTH price increases and price decreases.
+       - Pay attention to plurals (e.g., "causes", "markets") - you MUST discuss at least two.
+       - For Policy questions, use the **FEAST** framework (Feasibility, Effectiveness, Appropriateness, Side effects, Time lag) to structure your analysis of pros and cons.
+    3. **AO3 (Evaluation) Rules (AVOID 0-POINT EV TRAPS):**
+       - **DO NOT repeat AO2 in AO3.** (e.g., Do not just say "it depends on PED, if elastic X, if inelastic Y" if you already explained that in AO2).
+       - **DO NOT write AO2 in AO3.** (e.g., Do not just list a limitation of Policy A and a limitation of Policy B and conclude A is better).
+       - **DO NOT give a judgement without explanation.**
+       - **The Correct EV Approach:** Use Context + Judgement. Give a specific context, explain how that context amplifies the pros or mitigates the cons of a policy, and make a clear judgement (e.g., "If the government needs to act quickly during a crisis (context), the speed of implementation of a maximum price outweighs the long-term market distortion (mitigated cons), making it the better short-term policy (judgement).").
+       - If it's a Data Response question, you MUST evaluate based on the provided data context, not a hypothetical one.
+    
     Requirements:
     1. Structure the essay clearly (Introduction, Definitions, Analysis, Evaluation, Conclusion).
     2. Explicitly label AO1 (Knowledge), AO2 (Analysis), and AO3 (Evaluation) points if appropriate, or just write a flowing essay that hits all these levels naturally but with high precision.
@@ -74,7 +91,21 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
     - Example: If the question asks how to *reduce* inflation, and the student writes about policies that *increase* AD (which causes inflation), this is a PREMISE FAILURE.
     - If the premise is wrong, cap the marks significantly (max Level 1 or 2) and explicitly state this error at the very top.
 
-    **STEP 2: SCORING RULES (Strict Adherence)**
+    **STEP 2: STRICT EXAMINER PENALTIES (Check for these common mistakes):**
+    - **AO1/AO2 Traps:**
+      - Did they waste time drawing a diagram when not asked and not used for analysis? Warn them.
+      - Did they provide examples when not asked? Warn them it's a waste of time.
+      - Did they write "causes" when the question didn't ask for them? Warn them.
+      - If the question mentioned "price change", did they only discuss an increase and ignore a decrease? Penalize.
+      - Did they ignore plurals (e.g., only discussed one market when asked for "markets")? Penalize.
+      - For policy questions, did they consider FEAST criteria (Feasibility, Effectiveness, Appropriateness, Side effects, Time lag)? Praise if yes, suggest if no.
+    - **0-Point EV Traps (AO3):** 
+      - Did they just repeat AO2 points in their evaluation? (e.g., "depends on PED" without adding new context/judgement). PENALIZE.
+      - Did they just list limitations of policies instead of comparing them based on context? PENALIZE.
+      - Did they give a conclusion without explaining *why* based on a specific context? PENALIZE.
+      - *Praise them if they use context to weigh pros/cons and make a justified judgement.*
+
+    **STEP 3: SCORING RULES (Strict Adherence)**
     ${question.maxMarks === 12 
       ? `- **AO1 (Knowledge) + AO2 (Analysis):** Max 8 marks. (Requires detailed chains of reasoning, diagrams, accurate definitions).
          - **AO3 (Evaluation):** Max 4 marks. (Requires critical judgement, weighing up arguments, conclusion).`
@@ -83,7 +114,7 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
          - **AO3 (Evaluation):** Max 2 marks.`
     }
 
-    **STEP 3: GENERATE REPORT**
+    **STEP 4: GENERATE REPORT**
     Please format your response exactly as follows using Markdown:
 
     ### 1. Premise Check
@@ -96,10 +127,10 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
     - [ ] [Evaluation Requirement] - [State if student evaluated it]
 
     ### 3. Paragraph-by-Paragraph Critique
-    *Go through the student's main paragraphs. Identify logic gaps.*
+    *Go through the student's main paragraphs. Identify logic gaps and 0-point EV traps.*
     - **Para 1:** [Feedback on definition/intro. e.g., "Good definition of Inflation."]
     - **Para 2:** [Feedback on Analysis. e.g., "Logic Gap: You said interest rates rise -> investment falls, but you didn't explain the MEC mechanism or cost of borrowing."]
-    - **Para 3:** [Feedback on Counter-argument/Evaluation.]
+    - **Para 3:** [Feedback on Counter-argument/Evaluation. Explicitly call out if they fell into a 0-point EV trap.]
 
     ### 4. Estimated Mark & Breakdown
     **Total: X / ${question.maxMarks}**
@@ -109,7 +140,7 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
     }
 
     ### 5. Final Advice for Improvement
-    [2-3 specific, actionable bullet points to get full marks next time]
+    [2-3 specific, actionable bullet points to get full marks next time. If they failed EV, give them a specific example of how to write a good EV for this question using Context + Judgement.]
   `;
 
   const ai = getAI();
