@@ -484,7 +484,7 @@ For an answer that clearly compares the advantages and disadvantages of the prin
     variant: "May/June",
     questionNumber: "4(b)",
     topic: SyllabusTopic.INTERNATIONAL,
-    chapter: "6.5 Policies to correct imbalances in the current account",
+    chapter: "6.2 Protectionism",
     maxMarks: 12,
     questionText: "Assess whether protectionism is the best way to correct a deficit in the current account of the balance of payments.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis (max 8 marks)
@@ -1787,7 +1787,7 @@ AO3 Evaluation (max 2 marks)
     variant: "Oct/Nov",
     questionNumber: "5(b)",
     topic: SyllabusTopic.INTERNATIONAL,
-    chapter: "6.5 Policies to correct imbalances in the current account",
+    chapter: "6.2 Protectionism",
     maxMarks: 12,
     questionText: "Assess whether protectionism is always the best way of reducing a deficit on the current account of the balance of payments.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
