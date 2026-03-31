@@ -72,6 +72,18 @@ const StrategyAnalyzer: React.FC<Props> = ({ questions }) => {
           </ul>
         </section>
 
+        {/* 12-Mark Specific Rules */}
+        <section>
+          <h3 className="text-lg font-bold text-pink-700 mb-3 border-b pb-2">12-Mark Question Framework</h3>
+          <ul className="list-disc pl-5 space-y-2 text-slate-700">
+            <li><strong className="text-pink-800">AO1:</strong> Define ALL key terms in the question.</li>
+            <li><strong className="text-pink-800">AO2 Paragraph Structure:</strong> One point per paragraph. Start with a topic sentence, followed by a complete logical chain and economic terms.</li>
+            <li><strong className="text-pink-800">Single Concept (e.g., "Is inflation always bad?"):</strong> Write exactly 3 positive points and 3 negative points in AO2.</li>
+            <li><strong className="text-pink-800">Comparing Policies/Systems (e.g., "Fiscal vs Monetary"):</strong> Policy A (how it solves/2 pros + 2 limitations) and Policy B (how it solves/2 pros + 2 limitations). Do NOT use a "should/should not" framework for systems.</li>
+            <li><strong className="text-pink-800">AO3 Evaluation:</strong> Write exactly 2 "depends on" points. DO NOT repeat any limitations or points already discussed in AO2.</li>
+          </ul>
+        </section>
+
         {/* Correct EV Approach */}
         <section>
           <h3 className="text-lg font-bold text-emerald-700 mb-3 border-b pb-2">AO3: The Winning EV Formula</h3>

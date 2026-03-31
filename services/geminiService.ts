@@ -3,11 +3,10 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { Question, ClozeBlank, ClozeFeedback, TopicAnalysisData } from "../types";
 
 // Helper to ensure we have a client. 
-// Since we must use process.env.API_KEY directly as per guidelines.
-const getAI = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
+const getAI = () => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 const checkForApiKey = () => {
-  if (!process.env.API_KEY) {
+  if (!process.env.GEMINI_API_KEY) {
     console.error("API Key is missing!");
   }
 };
@@ -31,16 +30,23 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
        - ONLY draw/describe diagrams if the question explicitly asks for them, OR if they are absolutely necessary to explain the AO2 analysis. A diagram without written explanation scores 0.
        - If the question asks for "Causes" (e.g., causes of inflation), you MUST define the term first, then explain the causes. If it does NOT ask for causes, do NOT write them.
        - If the question asks to "Explain the difference", keep the difference brief (1-2 lines) after defining both concepts.
+       - For 12-mark questions: AO1 MUST define ALL key terms in the question.
     2. **AO2 (Analysis) Rules:**
        - If the question mentions a "price change", you MUST discuss BOTH price increases and price decreases.
        - Pay attention to plurals (e.g., "causes", "markets") - you MUST discuss at least two.
        - For Policy questions, use the **FEAST** framework (Feasibility, Effectiveness, Appropriateness, Side effects, Time lag) to structure your analysis of pros and cons.
+       - For 12-mark questions:
+         - Each paragraph MUST contain ONLY ONE point.
+         - Each AO2 paragraph MUST consist of: a topic sentence + a complete logical chain + use of economic terms.
+         - If evaluating a single concept's pros and cons (e.g., "whether inflation is always bad"): Write exactly 3 positive points and 3 negative points.
+         - If comparing two policies or two economic systems (e.g., "mixed vs market economy", "fiscal vs monetary policy"): Write how Policy/System A solves the problem (or its 2 pros) + 2 limitations/cons. Then write how Policy/System B solves the problem (or its 2 pros) + 2 limitations/cons. Do NOT use a "should/should not" framework for systems.
     3. **AO3 (Evaluation) Rules (AVOID 0-POINT EV TRAPS):**
        - **DO NOT repeat AO2 in AO3.** (e.g., Do not just say "it depends on PED, if elastic X, if inelastic Y" if you already explained that in AO2).
        - **DO NOT write AO2 in AO3.** (e.g., Do not just list a limitation of Policy A and a limitation of Policy B and conclude A is better).
        - **DO NOT give a judgement without explanation.**
-       - **The Correct EV Approach:** Use Context + Judgement. Give a specific context, explain how that context amplifies the pros or mitigates the cons of a policy, and make a clear judgement (e.g., "If the government needs to act quickly during a crisis (context), the speed of implementation of a maximum price outweighs the long-term market distortion (mitigated cons), making it the better short-term policy (judgement).").
+       - **The Correct EV Approach:** Use Context + Judgement. Give a specific context, explain how that context amplifies the pros or mitigates the cons of a policy, and make a clear judgement.
        - If it's a Data Response question, you MUST evaluate based on the provided data context, not a hypothetical one.
+       - For 12-mark questions: Write exactly 2 "depends on" evaluation points. These points MUST NOT repeat any limitations or points already discussed in AO2 (e.g., if inelasticity/addiction was used as an AO2 limitation, it cannot be used as an AO3 "depends on" point).
     
     Requirements:
     1. Structure the essay clearly (Introduction, Definitions, Analysis, Evaluation, Conclusion).
@@ -99,11 +105,18 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
       - If the question mentioned "price change", did they only discuss an increase and ignore a decrease? Penalize.
       - Did they ignore plurals (e.g., only discussed one market when asked for "markets")? Penalize.
       - For policy questions, did they consider FEAST criteria (Feasibility, Effectiveness, Appropriateness, Side effects, Time lag)? Praise if yes, suggest if no.
+      - For 12-mark questions specifically:
+        - Did they define ALL key terms in AO1? Penalize if not.
+        - Did they write exactly one point per paragraph in AO2? Penalize if they mixed points.
+        - Does each AO2 paragraph have a topic sentence, a complete logical chain, and economic terms? Penalize if missing.
+        - If comparing pros/cons of a single concept: Did they write 3 positive and 3 negative points? Penalize if not.
+        - If comparing two policies/systems: Did they write how Policy A solves the problem (or 2 pros) + 2 limitations, and the same for Policy B? Penalize if not.
     - **0-Point EV Traps (AO3):** 
       - Did they just repeat AO2 points in their evaluation? (e.g., "depends on PED" without adding new context/judgement). PENALIZE.
       - Did they just list limitations of policies instead of comparing them based on context? PENALIZE.
       - Did they give a conclusion without explaining *why* based on a specific context? PENALIZE.
       - *Praise them if they use context to weigh pros/cons and make a justified judgement.*
+      - For 12-mark questions specifically: Did they write exactly 2 "depends on" evaluation points? Penalize if not. Did they repeat an AO2 limitation as an AO3 "depends on" point? PENALIZE.
 
     **STEP 3: SCORING RULES (Strict Adherence)**
     ${question.maxMarks === 12 
@@ -183,6 +196,13 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
          : "- AO1 (Max 3)\n- AO2 (Max 3)\n- AO3 (Max 2)"}
     
     3. **Advice:** Give ONE short, encouraging sentence on what to do next (e.g. "Good definition, now draw the AD/AS diagram" or "Logic Gap: Explain WHY consumption falls").
+       ${is12Mark ? `
+       - Ensure they define ALL key terms for AO1.
+       - Ensure each AO2 paragraph has exactly one point, starting with a topic sentence, followed by a complete logical chain and economic terms.
+       - If comparing pros/cons of a single concept: guide them towards 3 positive and 3 negative points.
+       - If comparing two policies/systems: guide them towards Policy A (how it solves/2 pros + 2 limitations) and Policy B (how it solves/2 pros + 2 limitations).
+       - Ensure they write exactly 2 "depends on" AO3 points, and warn them if they repeat an AO2 limitation in AO3.
+       ` : ""}
 
     Return JSON format:
     {
@@ -423,6 +443,13 @@ export const analyzeExamStrategy = async (marks: number, questions: Question[]):
     
     Address:
     1. Structure: How many paragraphs? What should each contain?
+       ${marks === 12 ? `
+       - AO1 MUST define ALL key terms in the question.
+       - Each AO2 paragraph MUST contain ONLY ONE point, starting with a topic sentence, followed by a complete logical chain and economic terms.
+       - If evaluating a single concept's pros and cons: 3 positive points and 3 negative points.
+       - If comparing two policies or two economic systems: Policy/System A (how it solves/2 pros + 2 limitations) and Policy/System B (how it solves/2 pros + 2 limitations). Do NOT use a "should/should not" framework for systems.
+       - AO3 MUST have exactly 2 "depends on" evaluation points. These points MUST NOT repeat any limitations or points already discussed in AO2.
+       ` : ""}
     2. AO2: How detailed does the analysis need to be? (e.g. diagrams required? definitions?)
     3. AO3: What specific type of evaluation scores high? (e.g. Short run vs Long run, Elasticity, Magnitude).
     4. Keywords: How to interpret "Assess", "Discuss", "Explain", "Consider".

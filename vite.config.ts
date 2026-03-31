@@ -8,8 +8,8 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     define: {
-      // Shims process.env.API_KEY so the existing code works without modification
-      'process.env.API_KEY': JSON.stringify(env.API_KEY)
+      // Shims process.env.GEMINI_API_KEY so the existing code works without modification
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
     }
   };
 });
