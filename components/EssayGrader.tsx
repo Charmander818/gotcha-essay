@@ -57,10 +57,16 @@ const EssayGrader: React.FC<Props> = ({ question, savedInput, savedFeedback, onS
     }
     setLoading(true);
     setFeedback(""); // clear previous
-    const result = await gradeEssay(question, input, images);
-    setFeedback(result);
-    onSave(input, result);
-    setLoading(false);
+    try {
+      const result = await gradeEssay(question, input, images);
+      setFeedback(result);
+      onSave(input, result);
+    } catch (error) {
+      console.error("Error grading essay:", error);
+      alert("Failed to grade essay. Please check the console for details.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleCopy = () => {

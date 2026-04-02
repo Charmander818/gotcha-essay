@@ -16,10 +16,16 @@ const StrategyAnalyzer: React.FC<Props> = ({ questions }) => {
 
   const handleAnalyze = async (marks: number) => {
     setLoading(true);
-    const report = await analyzeExamStrategy(marks, questions);
-    if (marks === 8) setReport8(report);
-    else setReport12(report);
-    setLoading(false);
+    try {
+      const report = await analyzeExamStrategy(marks, questions);
+      if (marks === 8) setReport8(report);
+      else setReport12(report);
+    } catch (error) {
+      console.error("Error analyzing strategy:", error);
+      alert("Failed to analyze strategy. Please check the console for details.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const activeReport = activeTab === 8 ? report8 : report12;
@@ -81,6 +87,7 @@ const StrategyAnalyzer: React.FC<Props> = ({ questions }) => {
             <li><strong className="text-pink-800">Single Concept (e.g., "Is inflation always bad?"):</strong> Write exactly 3 positive points and 3 negative points in AO2.</li>
             <li><strong className="text-pink-800">Comparing Policies/Systems (e.g., "Fiscal vs Monetary"):</strong> Policy A (how it solves/2 pros + 2 limitations) and Policy B (how it solves/2 pros + 2 limitations). Do NOT use a "should/should not" framework for systems.</li>
             <li><strong className="text-pink-800">AO3 Evaluation:</strong> Write exactly 2 "depends on" points. DO NOT repeat any limitations or points already discussed in AO2.</li>
+            <li><strong className="text-pink-800">Mark Scheme Myth:</strong> The mark scheme lists *possible* points. You DO NOT need to cover every point to get full marks. If you hit the required number of well-developed points (e.g., 3 pros and 3 cons) with complete logical chains, you will get full AO2 marks.</li>
           </ul>
         </section>
 

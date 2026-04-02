@@ -57,7 +57,7 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.1-pro-preview',
     contents: prompt,
   });
   return response.text || "Failed to generate essay.";
@@ -119,9 +119,11 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
       - For 12-mark questions specifically: Did they write exactly 2 "depends on" evaluation points? Penalize if not. Did they repeat an AO2 limitation as an AO3 "depends on" point? PENALIZE.
 
     **STEP 3: SCORING RULES (Strict Adherence)**
+    - **CRITICAL:** The Mark Scheme provides a list of *possible* valid points. The student DOES NOT need to cover every single point in the mark scheme to get full marks.
     ${question.maxMarks === 12 
       ? `- **AO1 (Knowledge) + AO2 (Analysis):** Max 8 marks. (Requires detailed chains of reasoning, diagrams, accurate definitions).
-         - **AO3 (Evaluation):** Max 4 marks. (Requires critical judgement, weighing up arguments, conclusion).`
+         - If the student provides the required number of well-developed points (e.g., exactly 3 positive and 3 negative points for a single concept, OR 2 pros/2 cons each for two policies) with complete logical chains, they MUST receive FULL AO2 marks. Do NOT penalize them for omitting other possible points listed in the mark scheme.
+         - **AO3 (Evaluation):** Max 4 marks. (Requires critical judgement, exactly 2 "depends on" points, weighing up arguments, conclusion).`
       : `- **AO1 (Knowledge):** Max 3 marks.
          - **AO2 (Analysis):** Max 3 marks.
          - **AO3 (Evaluation):** Max 2 marks.`
@@ -158,7 +160,7 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.1-pro-preview',
     contents: {
         parts: [
             { text: prompt },
@@ -191,8 +193,10 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
     **TASK:**
     1. **Premise Check:** Is the student answering the question asked? (e.g. if asked to *reduce* inflation, are they using contractionary policies?). If NOT, your 'advice' MUST immediately warn them they are off-topic.
     2. **Scoring:** Estimate marks based on CIE standards:
+       - **CRITICAL:** The Mark Scheme provides a list of *possible* valid points. The student DOES NOT need to cover every single point in the mark scheme to get full marks.
        ${is12Mark 
-         ? "- AO1 + AO2 combined (Max 8)\n- AO3 (Max 4)" 
+         ? `- AO1 + AO2 combined (Max 8): If they hit the required number of points (e.g. 3 pros/3 cons for a single concept, or 2 pros/2 cons each for two policies) with complete logical chains, award full AO2 marks. DO NOT penalize for missing other points in the mark scheme.
+- AO3 (Max 4): Requires exactly 2 "depends on" points.` 
          : "- AO1 (Max 3)\n- AO2 (Max 3)\n- AO3 (Max 2)"}
     
     3. **Advice:** Give ONE short, encouraging sentence on what to do next (e.g. "Good definition, now draw the AD/AS diagram" or "Logic Gap: Explain WHY consumption falls").
@@ -217,7 +221,7 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.1-pro-preview',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -266,7 +270,7 @@ export const generateClozeExercise = async (text: string): Promise<{ textWithBla
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.1-pro-preview',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -320,7 +324,7 @@ export const evaluateClozeAnswers = async (blanks: ClozeBlank[], userAnswers: Re
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.1-pro-preview',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -371,7 +375,7 @@ export const improveLogicChain = async (input: string): Promise<string> => {
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.1-pro-preview',
     contents: prompt,
   });
   return response.text || "Could not improve chain.";
@@ -418,7 +422,7 @@ export const analyzeTopic = async (topic: string, questions: Question[]): Promis
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.1-pro-preview',
     contents: prompt,
     config: { responseMimeType: "application/json" }
   });
@@ -449,6 +453,7 @@ export const analyzeExamStrategy = async (marks: number, questions: Question[]):
        - If evaluating a single concept's pros and cons: 3 positive points and 3 negative points.
        - If comparing two policies or two economic systems: Policy/System A (how it solves/2 pros + 2 limitations) and Policy/System B (how it solves/2 pros + 2 limitations). Do NOT use a "should/should not" framework for systems.
        - AO3 MUST have exactly 2 "depends on" evaluation points. These points MUST NOT repeat any limitations or points already discussed in AO2.
+       - CRITICAL: The Mark Scheme lists *possible* points. Students DO NOT need to cover every point to get full marks, as long as they meet the required number of well-developed points (e.g. 3 pros/3 cons).
        ` : ""}
     2. AO2: How detailed does the analysis need to be? (e.g. diagrams required? definitions?)
     3. AO3: What specific type of evaluation scores high? (e.g. Short run vs Long run, Elasticity, Magnitude).
@@ -462,7 +467,7 @@ export const analyzeExamStrategy = async (marks: number, questions: Question[]):
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.1-pro-preview',
     contents: prompt,
   });
   return response.text || "Analysis failed.";
@@ -492,7 +497,7 @@ export const generateSyllabusLogicChain = async (topicTitle: string, point: stri
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.1-pro-preview',
       contents: prompt,
     });
     return response.text || "Error generating chain.";
@@ -521,7 +526,7 @@ export const generateSyllabusDefinition = async (topicTitle: string, point: stri
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.1-pro-preview',
       contents: prompt,
     });
     return response.text || "Error generating definition.";
@@ -551,7 +556,7 @@ export const evaluateSyllabusChain = async (topicTitle: string, point: string, s
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.1-pro-preview',
       contents: prompt,
     });
     return response.text || "Error evaluating chain.";

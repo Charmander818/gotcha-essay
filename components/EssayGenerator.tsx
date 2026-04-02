@@ -21,10 +21,16 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
 
   const handleGenerate = async () => {
     setLoading(true);
-    const result = await generateModelAnswer(question);
-    setEssay(result);
-    onSave(result);
-    setLoading(false);
+    try {
+      const result = await generateModelAnswer(question);
+      setEssay(result);
+      onSave(result);
+    } catch (error) {
+      console.error("Error generating essay:", error);
+      alert("Failed to generate essay. Please check the console for details.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDownload = () => {

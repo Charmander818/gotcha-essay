@@ -47,16 +47,22 @@ const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
 
     timeoutRef.current = setTimeout(async () => {
       setIsAnalyzing(true);
-      const result = await getRealTimeCoaching(question, text);
-      setScores({
-        ao1: result.ao1,
-        ao2: result.ao2,
-        ao1_ao2: result.ao1_ao2,
-        ao3: result.ao3,
-        total: result.total
-      });
-      setAdvice(result.advice);
-      setIsAnalyzing(false);
+      try {
+        const result = await getRealTimeCoaching(question, text);
+        setScores({
+          ao1: result.ao1,
+          ao2: result.ao2,
+          ao1_ao2: result.ao1_ao2,
+          ao3: result.ao3,
+          total: result.total
+        });
+        setAdvice(result.advice);
+      } catch (error) {
+        console.error("Error getting real-time coaching:", error);
+        setAdvice("Failed to analyze. Please check the console.");
+      } finally {
+        setIsAnalyzing(false);
+      }
     }, 2000); // 2 second debounce
 
     return () => {
