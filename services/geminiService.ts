@@ -58,7 +58,7 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3-flash-preview',
     contents: prompt,
   });
   return response.text || "Failed to generate essay.";
@@ -161,7 +161,7 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3-flash-preview',
     contents: {
         parts: [
             { text: prompt },
@@ -222,7 +222,7 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3-flash-preview',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -271,7 +271,7 @@ export const generateClozeExercise = async (text: string): Promise<{ textWithBla
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3-flash-preview',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -325,7 +325,7 @@ export const evaluateClozeAnswers = async (blanks: ClozeBlank[], userAnswers: Re
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3-flash-preview',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -376,7 +376,7 @@ export const improveLogicChain = async (input: string): Promise<string> => {
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3-flash-preview',
     contents: prompt,
   });
   return response.text || "Could not improve chain.";
@@ -423,7 +423,7 @@ export const analyzeTopic = async (topic: string, questions: Question[]): Promis
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3-flash-preview',
     contents: prompt,
     config: { responseMimeType: "application/json" }
   });
@@ -468,7 +468,7 @@ export const analyzeExamStrategy = async (marks: number, questions: Question[]):
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3-flash-preview',
     contents: prompt,
   });
   return response.text || "Analysis failed.";
@@ -498,7 +498,7 @@ export const generateSyllabusLogicChain = async (topicTitle: string, point: stri
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.1-pro-preview',
+      model: 'gemini-3-flash-preview',
       contents: prompt,
     });
     return response.text || "Error generating chain.";
@@ -527,7 +527,7 @@ export const generateSyllabusDefinition = async (topicTitle: string, point: stri
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.1-pro-preview',
+      model: 'gemini-3-flash-preview',
       contents: prompt,
     });
     return response.text || "Error generating definition.";
@@ -557,7 +557,7 @@ export const evaluateSyllabusChain = async (topicTitle: string, point: string, s
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.1-pro-preview',
+      model: 'gemini-3-flash-preview',
       contents: prompt,
     });
     return response.text || "Error evaluating chain.";
