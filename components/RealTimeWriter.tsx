@@ -57,9 +57,9 @@ const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
           total: result.total
         });
         setAdvice(result.advice);
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error getting real-time coaching:", error);
-        setAdvice("Failed to analyze. Please check the console.");
+        setAdvice(`Failed to analyze. Error: ${error?.message || String(error)}`);
       } finally {
         setIsAnalyzing(false);
       }

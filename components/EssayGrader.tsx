@@ -61,9 +61,9 @@ const EssayGrader: React.FC<Props> = ({ question, savedInput, savedFeedback, onS
       const result = await gradeEssay(question, input, images);
       setFeedback(result);
       onSave(input, result);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error grading essay:", error);
-      alert("Failed to grade essay. Please check the console for details.");
+      alert(`Failed to grade essay. Error: ${error?.message || String(error)}`);
     } finally {
       setLoading(false);
     }

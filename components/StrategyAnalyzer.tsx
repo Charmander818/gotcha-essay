@@ -20,9 +20,9 @@ const StrategyAnalyzer: React.FC<Props> = ({ questions }) => {
       const report = await analyzeExamStrategy(marks, questions);
       if (marks === 8) setReport8(report);
       else setReport12(report);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error analyzing strategy:", error);
-      alert("Failed to analyze strategy. Please check the console for details.");
+      alert(`Failed to analyze strategy. Error: ${error?.message || String(error)}`);
     } finally {
       setLoading(false);
     }

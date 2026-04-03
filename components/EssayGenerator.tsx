@@ -25,9 +25,9 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
       const result = await generateModelAnswer(question);
       setEssay(result);
       onSave(result);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error generating essay:", error);
-      alert("Failed to generate essay. Please check the console for details.");
+      alert(`Failed to generate essay. Error: ${error?.message || String(error)}`);
     } finally {
       setLoading(false);
     }
