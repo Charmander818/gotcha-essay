@@ -8,6 +8,7 @@ const getAI = () => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 const checkForApiKey = () => {
   if (!process.env.GEMINI_API_KEY) {
     console.error("API Key is missing!");
+    throw new Error("GEMINI_API_KEY is missing. If you deployed to Vercel, please add it in Vercel Settings -> Environment Variables, and redeploy.");
   }
 };
 
