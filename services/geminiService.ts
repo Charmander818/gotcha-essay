@@ -41,13 +41,13 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
          - Each AO2 paragraph MUST consist of: a topic sentence + a complete logical chain + use of economic terms.
          - If evaluating a single concept's pros and cons (e.g., "whether inflation is always bad"): Write exactly 3 positive points and 3 negative points.
          - If comparing two policies or two economic systems (e.g., "mixed vs market economy", "fiscal vs monetary policy"): Write how Policy/System A solves the problem (or its 2 pros) + 2 limitations/cons. Then write how Policy/System B solves the problem (or its 2 pros) + 2 limitations/cons. Do NOT use a "should/should not" framework for systems.
-    3. **AO3 (Evaluation) Rules (AVOID 0-POINT EV TRAPS):**
-       - **DO NOT repeat AO2 in AO3.** (e.g., Do not just say "it depends on PED, if elastic X, if inelastic Y" if you already explained that in AO2).
-       - **DO NOT write AO2 in AO3.** (e.g., Do not just list a limitation of Policy A and a limitation of Policy B and conclude A is better).
-       - **DO NOT give a judgement without explanation.**
-       - **The Correct EV Approach:** Use Context + Judgement. Give a specific context, explain how that context amplifies the pros or mitigates the cons of a policy, and make a clear judgement.
-       - If it's a Data Response question, you MUST evaluate based on the provided data context, not a hypothetical one.
-       - For 12-mark questions: Write exactly 2 "depends on" evaluation points. These points MUST NOT repeat any limitations or points already discussed in AO2 (e.g., if inelasticity/addiction was used as an AO2 limitation, it cannot be used as an AO3 "depends on" point).
+    3. **AO3 (Evaluation) Rules (STRICT CIE STANDARD):**
+       - **CRITICAL:** Evaluation should NOT consist of summative statements nor a series of statements preceded by 'it depends upon' etc.
+       - **CRITICAL:** Do NOT simply analyse the strengths and weaknesses of individual arguments (that is AO2).
+       - **The Correct EV Approach:** Evaluation is the comparison of the strengths and weaknesses of different concepts etc., leading to a conclusion that attempts to answer the question set.
+       - **Link AO3 directly to AO2:** Your AO3 MUST be based on the specific points you chose in AO2. For example, if comparing market vs mixed economy and your AO2 discusses public goods, your AO3 must evaluate based on public goods (e.g., how public goods provide infrastructure that amplifies market opportunities, mitigating the cost drawbacks). Do NOT use generic or "universal" evaluation templates.
+       - If it's a Data Response question, you MUST evaluate based on the provided data context.
+       - For 12-mark questions: Provide a deep, comparative evaluation leading to a final conclusion answering the question.
     
     Requirements:
     1. Structure the essay clearly (Introduction, Definitions, Analysis, Evaluation, Conclusion).
@@ -112,19 +112,19 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
         - Does each AO2 paragraph have a topic sentence, a complete logical chain, and economic terms? Penalize if missing.
         - If comparing pros/cons of a single concept: Did they write 3 positive and 3 negative points? Penalize if not.
         - If comparing two policies/systems: Did they write how Policy A solves the problem (or 2 pros) + 2 limitations, and the same for Policy B? Penalize if not.
-    - **0-Point EV Traps (AO3):** 
-      - Did they just repeat AO2 points in their evaluation? (e.g., "depends on PED" without adding new context/judgement). PENALIZE.
-      - Did they just list limitations of policies instead of comparing them based on context? PENALIZE.
+    - **0-Point EV Traps (AO3 - STRICT CIE STANDARD):** 
+      - Did they just write summative statements or a series of statements preceded by 'it depends upon'? PENALIZE (0 marks for EV).
+      - Did they simply analyse the strengths and weaknesses of individual arguments in the evaluation section? PENALIZE (This is AO2, not AO3).
+      - Did they use a generic/universal EV template disconnected from their specific AO2 points? PENALIZE. AO3 MUST directly build upon the specific points made in AO2 (e.g., if AO2 is about public goods, AO3 must evaluate based on public goods).
       - Did they give a conclusion without explaining *why* based on a specific context? PENALIZE.
-      - *Praise them if they use context to weigh pros/cons and make a justified judgement.*
-      - For 12-mark questions specifically: Did they write exactly 2 "depends on" evaluation points? Penalize if not. Did they repeat an AO2 limitation as an AO3 "depends on" point? PENALIZE.
+      - *Praise them if Evaluation is the comparison of the strengths and weaknesses of different concepts etc., leading to a conclusion that attempts to answer the question set.*
 
     **STEP 3: SCORING RULES (Strict Adherence)**
     - **CRITICAL:** The Mark Scheme provides a list of *possible* valid points. The student DOES NOT need to cover every single point in the mark scheme to get full marks.
     ${question.maxMarks === 12 
       ? `- **AO1 (Knowledge) + AO2 (Analysis):** Max 8 marks. (Requires detailed chains of reasoning, diagrams, accurate definitions).
          - If the student provides the required number of well-developed points (e.g., exactly 3 positive and 3 negative points for a single concept, OR 2 pros/2 cons each for two policies) with complete logical chains, they MUST receive FULL AO2 marks. Do NOT penalize them for omitting other possible points listed in the mark scheme.
-         - **AO3 (Evaluation):** Max 4 marks. (Requires critical judgement, exactly 2 "depends on" points, weighing up arguments, conclusion).`
+         - **AO3 (Evaluation):** Max 4 marks. (Requires comparison of strengths/weaknesses leading to a conclusion, NO generic templates, MUST link to AO2).`
       : `- **AO1 (Knowledge):** Max 3 marks.
          - **AO2 (Analysis):** Max 3 marks.
          - **AO3 (Evaluation):** Max 2 marks.`
@@ -206,7 +206,7 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
        - Ensure each AO2 paragraph has exactly one point, starting with a topic sentence, followed by a complete logical chain and economic terms.
        - If comparing pros/cons of a single concept: guide them towards 3 positive and 3 negative points.
        - If comparing two policies/systems: guide them towards Policy A (how it solves/2 pros + 2 limitations) and Policy B (how it solves/2 pros + 2 limitations).
-       - Ensure they write exactly 2 "depends on" AO3 points, and warn them if they repeat an AO2 limitation in AO3.
+       - Ensure their AO3 is a comparison of strengths/weaknesses leading to a conclusion, NOT just summative statements or "it depends upon" lists. Warn them if they use generic templates disconnected from their AO2.
        ` : ""}
 
     Return JSON format:
@@ -453,7 +453,7 @@ export const analyzeExamStrategy = async (marks: number, questions: Question[]):
        - Each AO2 paragraph MUST contain ONLY ONE point, starting with a topic sentence, followed by a complete logical chain and economic terms.
        - If evaluating a single concept's pros and cons: 3 positive points and 3 negative points.
        - If comparing two policies or two economic systems: Policy/System A (how it solves/2 pros + 2 limitations) and Policy/System B (how it solves/2 pros + 2 limitations). Do NOT use a "should/should not" framework for systems.
-       - AO3 MUST have exactly 2 "depends on" evaluation points. These points MUST NOT repeat any limitations or points already discussed in AO2.
+       - AO3 MUST be a comparison of strengths/weaknesses leading to a conclusion. It MUST NOT be summative statements, generic templates, or a series of "it depends upon". It MUST directly build upon the specific points made in AO2.
        - CRITICAL: The Mark Scheme lists *possible* points. Students DO NOT need to cover every point to get full marks, as long as they meet the required number of well-developed points (e.g. 3 pros/3 cons).
        ` : ""}
     2. AO2: How detailed does the analysis need to be? (e.g. diagrams required? definitions?)
