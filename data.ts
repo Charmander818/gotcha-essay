@@ -4001,5 +4001,307 @@ each other which leads to
 be most effective in redistributing income.
 Accept all valid responses.
 Note: A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1775615746835",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 8,
+    questionText: "With the help of a formula, explain what is meant by price elasticity of \ndemand for a product and consider the importance of time in \ndetermining whether demand for the product is likely to be relatively \nprice elastic or relatively price inelastic.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+• A knowledge and understanding of the formula for calculating price 
+elasticity of demand: percentage change in the quantity demanded of a 
+product divided by percentage change in the price of the product. (1)
+• If the PED value is greater than one, the demand is price elastic, which 
+means that percentage change in demand is greater than percentage 
+change in price. (1)
+• if the PED value is between zero and one, the demand is price inelastic, 
+which means that percentage change in demand is less than percentage 
+change in price. (1)
+AO2 Analysis (max 3 marks)
+An analysis of the importance of time in determining PED:
+• Demand for a product is likely to be more inelastic in the short run than in 
+the long run. (1)
+• In the long run, consumers have more time to think about possible 
+alternatives to a product. (1)
+• Habit is more likely to influence the short-run pattern of consumption, 
+making demand less likely to be affected by price changes. (1)
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on the importance of time in determining whether 
+demand for the product was likely to be relatively price elastic or relatively 
+price inelastic (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "custom-1775615779893",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 12,
+    questionText: "Assess whether knowledge of a product’s income elasticity of demand \nis more important to a firm producing it than knowledge of its cross \nelasticity of demand.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• A knowledge and understanding and analysis of income elasticity of
+demand (YED), such as in relation to whether a product is a normal 
+good, where YED will be positive, or an inferior good, where YED will be 
+negative and an analysis of the importance of it to a firm, i.e. the extent of 
+its importance.
+• A knowledge and understanding and analysis of cross elasticity of
+demand (XED), such as in relation to whether two goods are substitutes, 
+where XED will be positive, or complements, where XED will be negative 
+and an analysis of the importance of it to a firm, i.e. the extent of its 
+importance
+(Up to 8 marks)
+Level 1 responses will be assertive and lacking in explanations/mainly 
+descriptive and/or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and will be one-sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies/concepts etc. and will be 
+balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+Evaluation of whether YED or XED is likely to be more important for a firm 
+producing a product to reach a conclusion. 
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.
+(Up to 4 marks)`
+  },
+  {
+    id: "custom-1775615821751",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.6 Classification of goods and services",
+    maxMarks: 8,
+    questionText: "With the help of examples, explain the nature and characteristics of free \ngoods and private goods (economic goods) and consider the significance of the distinction between these two types of good.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+Free goods:
+• A free good is one which is consumed by people without a situation of 
+scarcity arising, i.e. there is enough of the good to satisfy everybody and 
+it has no opportunity cost, such as sunlight. (1)
+Private goods (economic goods):
+• A private or economic good is one which is consumed by an individual for 
+their own private benefit, such as clothing. (1)
+Use of appropriate examples of each type of good to support the 
+explanations. (1)
+AO2 Analysis (max 3 marks)
+Free goods:
+• As a free good is not scarce, it does not require a market. The supply of 
+the good equals the demand for it at zero price. It takes no factors of 
+production to produce a free good and so there is no opportunity cost 
+involved; analysis of the significance of there being no opportunity cost.
+Private (economic) goods:
+• Excludability: people can be excluded from consuming it if they do not 
+pay the required price for it.
+• Rivalry: the consumption of a private good by one person reduces its 
+availability for other people, i.e. there is rivalry in such a situation because 
+consumers are in competition with other consumers to consume a particular product.
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on the significance of the distinction between the two 
+types of good (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "custom-1775615952382",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.6 Classification of goods and services",
+    maxMarks: 12,
+    questionText: "Assess whether education should be classified as a public good or a merit good.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Public good:
+• In contrast to private goods, public goods are provided by society as a 
+whole so that everyone can benefit from them.
+• Non-excludability: once a public good has been provided for one person, 
+it is not possible to stop other people from benefiting from such a good 
+(i.e. no one is excluded) (this would not apply to education).
+• Non-rivalry: as more people consumer the public good, the benefit to 
+those already consuming it is not reduced (i.e. consumption by one 
+person does not prevent others from consuming it).
+• Non-rejectability: even if a person does not want the public good, they are 
+not actually able to reject it.
+• Free rider issue: it is impossible to exclude a person who has not paid.
+Merit good:
+• A merit good is a particular type of private good.
+• Like other private goods, a merit good is both rival and excludable.
+• What distinguishes a merit good is under-consumption if provided through 
+the private sector as a result of imperfect information in the market, such 
+as education (there has to be a clear focus on education throughout 
+the answer).
+(Up to 8 marks)
+Level 1 responses will be assertive and lacking in explanations/mainly 
+descriptive and/or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and will be one-sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies/concepts etc. and will be 
+balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.AO3 Evaluation
+• Evaluation of the distinction between the features and characteristics of a 
+public good and a merit good. 
+• In conclusion, education is provided through both the public sector and 
+the private sector and so should be considered as a merit good rather 
+than a public good.
+Accept all valid responses. A one-sided response cannot gain any marks for 
+evaluation. (Up to 4 marks)`
+  },
+  {
+    id: "custom-1775615994156",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.5 Unemployment",
+    maxMarks: 8,
+    questionText: "Explain the possible causes of frictional unemployment and technological unemployment and consider whether some element of frictional unemployment is inevitable in an economy.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+• A knowledge and understanding of what unemployment means in 
+general. (1)
+• One cause of frictional unemployment: it is temporary and at any point 
+in time, there will be workers transferring between jobs; this could occur 
+simply because an individual wishes to improve their job prospects and 
+needs to spend time searching for a new job; there will be some 
+unemployment while the transfer between jobs takes place. Searching 
+may take some time if information about the availability of jobs is not very 
+good. Frictional unemployment can include not only search 
+unemployment, but also casual unemployment and seasonal 
+unemployment. (1)
+• One cause of technological unemployment is a type of structural 
+unemployment that arises from the introduction of technology, when 
+existing workers do not have the skills to operate the new technology; 
+This is caused when developments in technology and working practices 
+cause some workers to lose their jobs as they are replaced by capital 
+investment. (1)
+AO2 Analysis (max 3 marks)
+An analysis of whether some element of frictional unemployment is 
+inevitable, e.g. it would depend on the quality of information available about 
+vacancies and the extent to which workers would be keen to change from one 
+job to another. Is it always likely to occur? Candidates need to analyse the 
+extent to which it is or is not inevitable.
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on whether some element of frictional unemployment 
+is inevitable in an economy (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "custom-1775616026902",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.5 Unemployment",
+    maxMarks: 12,
+    questionText: "Assess whether the consequences of technological unemployment are \nlikely to be more serious than those of cyclical unemployment.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Technological unemployment:
+• Workers are unemployed as a result of a change in the pattern of 
+production when machines replace labour in the productive process.
+• New skills are required to use the capital equipment.
+• Such unemployment is due to technical progress; if workers cannot move 
+from one industry to another because of a lack of the required skills, they 
+will become technologically unemployed.
+Cyclical unemployment:
+• Workers are unemployed because of a deficiency in aggregate demand, 
+i.e. there are insufficient jobs in an economy.
+• Whereas technological unemployment affects workers in particular 
+industries, cyclical or demand-deficient unemployment affects the whole 
+economy with job losses across a number of industries as firms reduce 
+their output.
+Focus of analysis should be the relative seriousness of the two types of 
+unemployment. i.e. which is more serious and why.
+(Up to 8 marks)
+Level 1 responses will be assertive and lacking in explanations/mainly 
+descriptive and/or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and will be one-sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies/concepts etc. and will be 
+balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+• Consideration of whether the consequences of technological 
+unemployment are likely to be more serious than those of cyclical 
+unemployment to reach a conclusion.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation. (Up to 4 marks)`
+  },
+  {
+    id: "custom-1775616071669",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 8,
+    questionText: "Explain two tools of protection used by a country when trading \ninternationally and consider whether one is likely to have more of an \nimpact on the country’s economy than the other.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+An explanation of what is meant by protectionism in general, i.e. to protect 
+domestic industries from international competition. (1)
+An explanation of two tools of protection used by a country when trading 
+internationally, including tariffs, import quotas, export subsidies, embargoes 
+and excessive administrative burdens (‘red tape’). (1  2)
+AO2 Analysis (max 3 marks)
+An analysis of the two tools and how they impact an economy as methods of 
+protection (a maximum of 2 marks if only one tool of protection is analysed).
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on whether one of the tools of protection is likely to 
+have more of an impact on the country than the other (1) to reach a 
+conclusion. (1)`
+  },
+  {
+    id: "custom-1775616098807",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 12,
+    questionText: "Assess whether all consumers, all producers and the government in a \ncountry will benefit equally from protectionism.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Consumers:
+• Consumers are likely to be worse off as a result of protectionist 
+measures. There may be a restriction of choice. In the case of a tariff, 
+consumer surplus will be lower after a tariff is imposed because 
+consumers will pay a higher price but will consume less (i.e. there will be 
+a redistribution of income away from consumers).
+Producers:
+• Producers may gain from protectionism as there will be a higher producer 
+surplus with producers gaining at the expense of consumers (i.e. there 
+will be a redistribution of income towards producers). However, 
+protectionism may reduce the incentive to be eff icient, e.g. potential 
+benefits of the infant industry argument may not materialise.
+Government:
+• A government can receive revenue from a tariff. There may be an 
+improvement in the balance of trade if protectionism is successful in 
+reducing imports. However, whether domestic production will be able to 
+compensate for this will depend on the elasticity of supply.
+(Up to 8 marks)
+Level 1 responses will be assertive and lacking in explanations/mainly 
+descriptive and/or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and will be one-sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies/concepts etc. and will be 
+balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+• Consideration of whether all consumers, all producers and the 
+government in a country will benefit equally from protectionism to reach a 
+conclusion. 
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation. (Up to 4 marks)`
   }
 ];
