@@ -4303,5 +4303,312 @@ government in a country will benefit equally from protectionism to reach a
 conclusion. 
 Accept all valid responses.
 A one-sided response cannot gain any marks for evaluation. (Up to 4 marks)`
+  },
+  {
+    id: "custom-1775616264871",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.5 Consumer and producer surplus",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain the difference between producer \nsurplus and consumer surplus and consider the extent to which \nproducers always gain when the price of a product increases due to \nhigher costs of production.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+For an fully accurately drawn diagram that clearly shows the area of consumer 
+surplus below the demand curve and producer surplus above the supply curve 
+(1) and that clearly explains that consumer surplus represents the difference 
+between what a consumer is prepared to pay for a product and its market price 
+(1) and that producer surplus represents the difference between what a 
+producer is willing to accept and what is actually paid (1).
+AO2 Analysis (max 3 marks)
+For a correct diagram showing the effect of the higher cost of production on the 
+price of the product (1) and explains the impact on the producer in terms of an 
+increase /fall in revenue if the PED is inelastic (1) or elastic (1). The impact may 
+also depend on whether PES is elastic / inelastic affecting the producer’s ability 
+to respond to the price increase (1)
+Guidance: The same diagram can be used for both Knowledge and 
+Understanding and analysis.
+AO3 Evaluation (max 2 marks)
+The extent to which producers will always gain will depend on the value of PED 
+(1) the value of PES (1) leading to a reasoned conclusion (1)`
+  },
+  {
+    id: "custom-1775616303216",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 12,
+    questionText: "Assess the view that a business should be more concerned about the \nincome elasticity of demand for its product than its cross elasticity of \ndemand when incomes are falling.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Analysis of the advantages and disadvantages of using income elasticity 
+of demand. For example, it lets the business know whether it produces 
+inferior or normal goods and therefore what to produce more of when 
+incomes are falling but businesses may not be so flexible. Alternatively, 
+the predictions may be incorrect or the same measurement may not be 
+applicable to all households.
+• Analysis of the advantages and disadvantages of using cross elasticity of 
+demand. For example, for substitutes, it allows businesses to track the 
+actions of competitors when incomes are falling. For complements, 
+businesses can try to ensure they are aware of the impact on their own 
+products depending on the impact on the complement. However, data 
+may be out of date and make it unreliable.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+Guidance: Answers that do not refer to falling incomes cannot gain more than 
+a mid-Level 2 mark.
+AO3 Evaluation
+That clearly analyses both sides of the question and comes to a valid 
+conclusion.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1775616333716",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.5 Production possibility curves",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain the difference between a movement \nalong a production possibility curve (PPC) and a shift of this curve and \nconsider whether a decision to produce more of one product will always \nincur an equal opportunity cost.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+For a fully accurately labelled diagram showing 2 products (not X and Y, P and 
+Q etc.) (1) and an explanation that a movement means a decision to produce 
+more of one product than another (1) and an explanation that a shift means that 
+more (or less) of both products can be produced due to a change in productive 
+capacity (1). Also accept a diagram showing an accurate shift in the PPC along 
+with an explanation that this results from increased/decreased resources in the 
+economy (1).
+AO2 Analysis (max 3 marks)
+For analysis that clearly explains what is meant by opportunity cost (1) and fully 
+explains what is meant by increasing opportunity cost in terms of rate of which 
+one product is given up for another product (1) and by a constant opportunity 
+cost in terms of the rate of which one product is given up for another product (1)
+AO3 Evaluation (max 2 marks)
+For evaluation that explains that whether the opportunity cost is equal will 
+depend on the ease of transferring production resources from one product to 
+another (1) and reaches a justified conclusion (1)`
+  },
+  {
+    id: "custom-1775616370812",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.5 Production possibility curves",
+    maxMarks: 12,
+    questionText: "Assess the extent to which it is always necessary to increase the size of \nthe labour factor of production in order to cause an outward shift of the \nproduction possibility curve.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Responses should be aware that the question is focused on factors of 
+production that cause an outward shift of the PPC i.e., an overall increase in 
+potential output. Points to consider in the discussion may include: -
+• the ease of increasing the labour force through e.g., increasing the 
+retirement age, attracting more people into the labour force etc.
+• the quality of the labour force including the importance of education and 
+training
+• the importance of at least one other factor of production e.g., enterprise, 
+capital and /or land
+The analysis should focus on the necessity of increasing the size of the labour 
+force to increase potential output and compare this with the advantages and 
+disadvantages of increasing at least one other factor of production.
+For example:
+• An increase in the size of the labour force provides more workers 
+therefore increasing the number of goods and services that can be 
+produced
+• This will increase total output if other factors of production are maintained
+• This will lead to an increase in economic growth and an outward shift in 
+the production possibility curve
+However:
+• An increase in the labour force may not be possible
+• Other factors of production may be more important, for example, 
+enterprise, capital and /or land
+• It may be more advantageous to develop the productivity of the existing 
+labour force through training, better technology etc.
+• This depends however on the receptiveness of the workforce along with 
+the availability of enterprise skills, capital and land.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+That clearly analyses both sides of the question and comes to a valid 
+conclusion.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1775616408996",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.3 Current account of the balance of payments",
+    maxMarks: 8,
+    questionText: "Explain three components of the current account of the balance of \npayments and consider the extent to which a depreciation in the \nexchange rate will always lead to a surplus on the current account.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+Knowledge and basic understanding of 3 components of the current account. 
+The component must be identified by name together with a brief explanation by 
+name i.e., 3 from 
+• Trade in goods – the value of physical goods e.g., computers
+• Trade in services – the value of invisible goods e.g., insurance/tourism
+• Primary income – e.g., the dividend income earned from overseas
+investments
+• Secondary income – e.g., the income from overseas aid or worker 
+remittances sent back to their own country. (3  1)
+AO2 Analysis (max 3 marks)
+A depreciation in the exchange rate will make exports appear cheaper and/or 
+imports more expensive (1), this should increase export revenue and/or reduce 
+import expenditure and lead to a surplus (1). Also other components of the 
+current account may influence whether the current account goes into surplus or 
+not (1). N.B. if the impact of other sections of the current account are not 
+considered, maximum mark of 2.
+AO3 Evaluation (max 2 marks)
+Of an overall assessment of the extent to which a depreciation in the exchange 
+rate will always lead to a surplus on the current account – for example, 
+reference may be made to the relevance of PED values and also the value of 
+other sections of the current account. Reserve 1 mark for a valid conclusion.`
+  },
+  {
+    id: "custom-1775616449773",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.5 Policies to correct imbalances in the current account of the balance of payments",
+    maxMarks: 12,
+    questionText: "Assess the extent to which the use of supply-side policy would be the \nbest way to reduce a deficit on the current account of the balance of \npayments.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+An analysis of the advantages and disadvantages of using supply-side policy 
+to reduce a deficit e.g.,
+• It is likely to be more effective in the long run and less costly to the 
+economy.
+• it may reduce the possibility of retaliation by other countries BUT
+• it will have an opportunity cost and is not likely to be a short-term solution.
+Examples of supply side policy may include:
+• Investment in education and training to improve worker productivity and 
+entrepreneurship which may reduce costs and lead to increased 
+competitiveness of domestic goods, therefore increasing exports and 
+reducing imports
+• Export subsidies and subsidies for domestic industries competing against 
+imported goods
+• Policies to reduce red tape and bureaucracy to encourage competition to 
+reduce costs
+• Investment in infrastructure to reduce costs of production
+However:
+• They take time and can be costly, which is unlikely to reduce a deficit in 
+the short term
+• Other policies such as contractionary fiscal and monetary policy may 
+work more quickly together with protectionist policies e.g., tariffs and 
+currency depreciation. These policies should be analysed in terms of their 
+strengths and weaknesses in reducing a current account deficit.
+Guidance: Answers that do not refer to the policies in terms of reducing a 
+current account deficit cannot gain more than a mid-Level 2 mark.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+That clearly analyses both sides of the question and comes to a valid 
+conclusion.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1775616480369",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.3 Aggregate Demand and Aggregate Supply analysis",
+    maxMarks: 8,
+    questionText: "With the help of an AD /AS diagram, explain why two components of AD \nmay increase and consider the extent to which an increase in AD will \nalways lead to inflation.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+An accurately labelled AD/AS diagram e.g., axes labelled price level and GDP 
+showing an increase in AD and the increase in the price level (1) plus two 
+components from consumption, investment, government spending and net 
+exports and briefly explain why each may increase (2 x1)
+AO2 Analysis (max 3 marks)
+A rise in AD will lead to possible demand-pull inflation (1). However, the extent 
+to which this may occur depends on the position of AD in relation to AS (1). It 
+also depends on the supply side effect of the increase in AD e.g., government 
+spending on subsidies may increase LRAS and therefore minimise any 
+inflationary pressure (1).
+AO3 Evaluation (max 2 marks)
+For an overall assessment of the possible impacts which may result in inflation 
+or not. Reserve 1 mark for a valid conclusion.`
+  },
+  {
+    id: "custom-1775616519246",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 12,
+    questionText: "Assess the view that the effects of a high rate of inflation are always more damaging for consumers than for firms.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+For consumers problems include:
+• A loss of purchasing power that particularly affects fixed income earners 
+and those with weak wage bargaining power
+• Fiscal drag pulling individuals into higher tax brackets
+• Shoe leather costs 
+• A loss of consumer confidence particularly at a time of high rates of 
+inflation leading to an increased use of alternative methods of payment
+However
+• Consumers with debts gain as the value of their debts is eroded with 
+inflation
+• Consumers with assets gain e.g., house owners
+For firms problems include:
+• A loss of sales domestically and overseas due to higher prices / loss of 
+competitiveness
+• Menu costs
+• Increased costs of production due to raw material costs and wages rising. 
+• At a time of high inflation, this will lead to a loss of confidence and lower 
+investment
+• Inflationary noise leading to poor decision making
+However
+• If it is demand led and sales increase, then firms will make increased 
+profits.
+• If the price level is rising at a faster rate than production costs then profits 
+will rise.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+Guidance: Answers that refer to a moderate or low rate of inflation cannot 
+gain more than mid-level 2 mark.
+AO3 Evaluation
+That clearly considers and compares both sides of the analysis and reaches a 
+justified conclusion.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.`
   }
 ];
