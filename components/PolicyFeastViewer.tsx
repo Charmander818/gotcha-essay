@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { policyFeastData, EconomicProblem } from '../policyFeastData';
-import { BookOpen, CheckCircle, AlertTriangle, Clock, Target, ShieldAlert, ChevronRight, ChevronDown, Download, FileText } from 'lucide-react';
+import { BookOpen, CheckCircle, AlertTriangle, Clock, Target, ShieldAlert, ChevronRight, ChevronDown, Download, FileText, Lightbulb } from 'lucide-react';
 
 export const PolicyFeastViewer: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<"Microeconomics" | "Macroeconomics">("Macroeconomics");
@@ -35,6 +35,7 @@ export const PolicyFeastViewer: React.FC = () => {
       .feast-a { background-color: #eff6ff; }
       .feast-s { background-color: #fef2f2; }
       .feast-t { background-color: #fffbeb; }
+      .feast-eval { background-color: #f8fafc; border-left: 4px solid #64748b; padding-left: 10px; margin-top: 10px; }
     </style>
     </head><body>`;
     const footer = "</body></html>";
@@ -51,6 +52,9 @@ export const PolicyFeastViewer: React.FC = () => {
       html += `<tr><td class="feast-s"><strong>Side Effects</strong></td><td>${policy.feast.sideEffects}</td></tr>`;
       html += `<tr><td class="feast-t"><strong>Time Lag</strong></td><td>${policy.feast.timeLag}</td></tr>`;
       html += `</table>`;
+      if (policy.evaluation) {
+        html += `<div class="feast-eval"><strong>Evaluation (AO3):</strong> ${policy.evaluation}</div>`;
+      }
     });
 
     const sourceHTML = header + html + footer;
@@ -90,6 +94,8 @@ export const PolicyFeastViewer: React.FC = () => {
             .a-label { background-color: #eff6ff; color: #2563eb; }
             .s-label { background-color: #fef2f2; color: #dc2626; }
             .t-label { background-color: #fffbeb; color: #d97706; }
+            .eval-box { background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #64748b; padding: 15px; border-radius: 6px; margin-bottom: 30px; }
+            .eval-title { font-weight: bold; color: #334155; margin-bottom: 5px; display: flex; align-items: center; }
             
             @media print {
               body { padding: 0; }
@@ -127,6 +133,12 @@ export const PolicyFeastViewer: React.FC = () => {
                 <div class="feast-content">${policy.feast.timeLag}</div>
               </div>
             </div>
+            ${policy.evaluation ? `
+            <div class="eval-box">
+              <div class="eval-title">Evaluation (AO3)</div>
+              <div>${policy.evaluation}</div>
+            </div>
+            ` : ''}
           `).join('')}
 
           <script>
@@ -156,6 +168,7 @@ export const PolicyFeastViewer: React.FC = () => {
       .feast-a { background-color: #eff6ff; }
       .feast-s { background-color: #fef2f2; }
       .feast-t { background-color: #fffbeb; }
+      .feast-eval { background-color: #f8fafc; border-left: 4px solid #64748b; padding-left: 10px; margin-top: 10px; margin-bottom: 20px; }
     </style>
     </head><body>`;
     const footer = "</body></html>";
@@ -176,6 +189,9 @@ export const PolicyFeastViewer: React.FC = () => {
           html += `<tr><td class="feast-s"><strong>Side Effects</strong></td><td>${policy.feast.sideEffects}</td></tr>`;
           html += `<tr><td class="feast-t"><strong>Time Lag</strong></td><td>${policy.feast.timeLag}</td></tr>`;
           html += `</table>`;
+          if (policy.evaluation) {
+            html += `<div class="feast-eval"><strong>Evaluation (AO3):</strong> ${policy.evaluation}</div>`;
+          }
         });
       });
     });
@@ -369,6 +385,19 @@ export const PolicyFeastViewer: React.FC = () => {
                               {policy.feast.timeLag}
                             </p>
                           </div>
+
+                          {/* Evaluation */}
+                          {policy.evaluation && (
+                            <div className="space-y-1.5 md:col-span-2 mt-2">
+                              <div className="flex items-center gap-1.5 text-slate-700 font-bold text-sm">
+                                <Lightbulb className="w-4 h-4" />
+                                <h4>Evaluation (AO3)</h4>
+                              </div>
+                              <p className="text-slate-800 text-xs leading-relaxed bg-slate-100 p-3 rounded-lg border border-slate-200 shadow-inner">
+                                {policy.evaluation}
+                              </p>
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>

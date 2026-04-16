@@ -10,6 +10,7 @@ import TopicAnalyzer from './components/TopicAnalyzer';
 import SyllabusTracker from './components/SyllabusTracker';
 import StrategyAnalyzer from './components/StrategyAnalyzer';
 import { PolicyFeastViewer } from './components/PolicyFeastViewer';
+import { CoreConceptViewer } from './components/CoreConceptViewer';
 import AddQuestionModal from './components/AddQuestionModal';
 import CodeExportModal from './components/CodeExportModal';
 import SyllabusExportModal from './components/SyllabusExportModal'; // New Import
@@ -499,7 +500,7 @@ const App: React.FC = () => {
     );
   }
 
-  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.STRATEGY || mode === AppMode.POLICY_FEAST;
+  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.STRATEGY || mode === AppMode.POLICY_FEAST || mode === AppMode.CORE_CONCEPTS;
 
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50">
@@ -549,6 +550,11 @@ const App: React.FC = () => {
                 <div>
                     <h2 className="text-lg font-bold text-slate-800">Policy FEAST</h2>
                     <p className="text-sm text-slate-500">Master Evaluation Frameworks</p>
+                </div>
+            ) : mode === AppMode.CORE_CONCEPTS ? (
+                <div>
+                    <h2 className="text-lg font-bold text-slate-800">Core Concepts</h2>
+                    <p className="text-sm text-slate-500">AO2 & AO3 Masterclass</p>
                 </div>
             ) : selectedQuestion ? (
               <div>
@@ -601,6 +607,16 @@ const App: React.FC = () => {
             >
                 FEAST
             </button>
+            <button
+                onClick={() => setMode(AppMode.CORE_CONCEPTS)}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
+                  mode === AppMode.CORE_CONCEPTS
+                    ? 'bg-purple-600 text-white shadow-sm' 
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+            >
+                Concepts
+            </button>
             
             <div className="w-px bg-slate-300 mx-1"></div>
 
@@ -647,6 +663,8 @@ const App: React.FC = () => {
                 <StrategyAnalyzer questions={allQuestions} />
             ) : mode === AppMode.POLICY_FEAST ? (
                 <PolicyFeastViewer />
+            ) : mode === AppMode.CORE_CONCEPTS ? (
+                <CoreConceptViewer />
             ) : selectedQuestion ? (
               <div className="p-8">
                 {mode === AppMode.GENERATOR && (

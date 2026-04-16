@@ -82,7 +82,8 @@ export enum AppMode {
   TOPIC_ANALYSIS = "Topic Analysis",
   SYLLABUS_TRACKER = "Syllabus Tracker",
   STRATEGY = "Exam Strategy",
-  POLICY_FEAST = "Policy FEAST"
+  POLICY_FEAST = "Policy FEAST",
+  CORE_CONCEPTS = "Core Concepts"
 }
 
 export interface SyllabusItem {
