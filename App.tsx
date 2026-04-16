@@ -9,6 +9,7 @@ import LogicChainImprover from './components/LogicChainImprover';
 import TopicAnalyzer from './components/TopicAnalyzer';
 import SyllabusTracker from './components/SyllabusTracker';
 import StrategyAnalyzer from './components/StrategyAnalyzer';
+import { PolicyFeastViewer } from './components/PolicyFeastViewer';
 import AddQuestionModal from './components/AddQuestionModal';
 import CodeExportModal from './components/CodeExportModal';
 import SyllabusExportModal from './components/SyllabusExportModal'; // New Import
@@ -498,7 +499,7 @@ const App: React.FC = () => {
     );
   }
 
-  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.STRATEGY;
+  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.STRATEGY || mode === AppMode.POLICY_FEAST;
 
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50">
@@ -544,6 +545,11 @@ const App: React.FC = () => {
                     <h2 className="text-lg font-bold text-slate-800">Exam Strategy Decoder</h2>
                     <p className="text-sm text-slate-500">Reverse-engineering Mark Scheme Rules</p>
                 </div>
+            ) : mode === AppMode.POLICY_FEAST ? (
+                <div>
+                    <h2 className="text-lg font-bold text-slate-800">Policy FEAST</h2>
+                    <p className="text-sm text-slate-500">Master Evaluation Frameworks</p>
+                </div>
             ) : selectedQuestion ? (
               <div>
                  <h2 className="text-lg font-bold text-slate-800">{selectedQuestion.paper} - {selectedQuestion.variant} {selectedQuestion.year}</h2>
@@ -584,6 +590,16 @@ const App: React.FC = () => {
                 }`}
             >
                 Strategy
+            </button>
+            <button
+                onClick={() => setMode(AppMode.POLICY_FEAST)}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
+                  mode === AppMode.POLICY_FEAST
+                    ? 'bg-purple-600 text-white shadow-sm' 
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+            >
+                FEAST
             </button>
             
             <div className="w-px bg-slate-300 mx-1"></div>
@@ -629,6 +645,8 @@ const App: React.FC = () => {
                 <div className="p-8"><LogicChainImprover /></div>
             ) : mode === AppMode.STRATEGY ? (
                 <StrategyAnalyzer questions={allQuestions} />
+            ) : mode === AppMode.POLICY_FEAST ? (
+                <PolicyFeastViewer />
             ) : selectedQuestion ? (
               <div className="p-8">
                 {mode === AppMode.GENERATOR && (
