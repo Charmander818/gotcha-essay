@@ -4610,5 +4610,332 @@ That clearly considers and compares both sides of the analysis and reaches a
 justified conclusion.
 Accept all valid responses.
 A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1776301491184",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.4 The interaction of demand and supply",
+    maxMarks: 8,
+    questionText: "In 2022 the supply of root ginger from Nigeria, Africa’s largest producer, \nfell by 20%. Market demand was expected to grow by more than 5%.\nWith the help of a demand and supply diagram, explain how the market \nequilibrium for root ginger in Nigeria is likely to change and consider \nhow certain you are of the new market price.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+An accurate definition of equilibrium. A fully labelled, accurate diagram 
+showing understanding that the decrease in supply will shift the supply curve 
+to the left (1) and the increase in demand will shift the demand curve to the 
+right (1). This can be shown on 2 separate diagrams. 
+AO2 Analysis (max 3 marks)
+Analysis of how the decrease in supply is likely to increase the price of root 
+ginger; an analysis of how the increase in demand is likely to increase the 
+price of root ginger. Up to 2 marks for each reason explained. Maximum of 3 
+marks overall.
+AO3 Evaluation (max 2 marks)
+An assessment of the significance that the overall impact on the equilibrium 
+will depend on the relative size of both shifts and/or the relevance of the PED 
+and PES`
+  },
+  {
+    id: "custom-1776301544544",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess the ways in which producers of root ginger might be able to \nstabilise their incomes.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• An analysis of the at least 2 ways in which producers or root ginger might 
+be able to stabilise their income. For example, using their land for other 
+purposes, diversifying or benefitting from government interventions. 
+These interventions may include: 
+Subsidies
+• Provision of financial support to help producers cover costs and maintain 
+stable incomes.
+• Encourage production by making ginger farming more profitable.
+• Can be expensive for the government to maintain long-term.
+• May encourage overproduction, leading to wasted resources or falling 
+market prices.
+Minimum Price
+• Guarantees a minimum income for producers, stabilizing their earnings.
+• Encourages consistent production levels.
+• May lead to surpluses if minimum price is above equilibrium.
+• Government may need to buy excess ginger, increasing costs.
+Buffer Stock Systems
+• Helps smooth out price fluctuations by buying surplus and releasing stock 
+during shortages.
+• Provides income stability for producers during periods of low demand.
+• Requires significant storage and management costs.
+• Risk of losses if stored ginger spoils or market conditions change.
+Guidance: The assessment of both perspectives must be in the context of 
+stabilising the income of root ginger producers and not a general 
+explanation of a range of policies. A response that fails to do this is unlikely 
+to achieve above a mid-Level 2 mark.`
+  },
+  {
+    id: "custom-1776301574545",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.3 Addressing income and wealth inequality",
+    maxMarks: 8,
+    questionText: "The Gini coefficient for South Korea was estimated to be 0.39 in 2019 \nand 0.33 in 2022.\nExplain what the data means, how it might be used by the government \nof South Korea and consider its usefulness.",
+    markScheme: `Follow the point-based marking guidance at the top of this mark scheme and 
+award:
+up to 3 marks for AO1 Knowledge and understanding up to 3 marks for AO2 
+Analysis up to 2 marks for AO3 Evaluation.
+AO1 Knowledge and Understanding (max 3 marks)
+Meaning of what the Gini coefficient is (1). It ranges from 0 to 1, where 0 
+represents complete equality and 1 represents complete inequality (1). A fall 
+in the Gini coefficient from 0.39 to 0.33 indicates that income became more 
+evenly distributed among the population of South Korea between 2019 and 
+2022. (1)
+AO2 Analysis (max 3 marks)
+• The government could use this information to evaluate the success of 
+policies aimed at reducing income inequality, such as progressive 
+taxation or transfer payments. (1)
+• The data might also guide future policy decisions, for example deciding 
+whether to increase social welfare spending or adjust tax rates to 
+maintain or further reduce inequality. (1)
+• However, its usefulness will be dependent in both the accuracy of and 
+confidence in the data. (1)
+8
+AO3 Evaluation (max 2 marks)
+• The Gini coefficient is useful for showing changes in overall inequality, 
+but it does not indicate which income groups have gained or lost. (1)
+• It also ignores other dimensions of inequality, such as wealth inequality or 
+access to education and healthcare, which can limit its usefulness for 
+policy-making. (1)
+• Despite these limitations, it remains a valuable indicator for comparing 
+inequality over time and across countries. (1)`
+  },
+  {
+    id: "custom-1776301616626",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.3 Addressing income and wealth inequality",
+    maxMarks: 12,
+    questionText: "Assess why it is easier for a government such as that of South Korea to \nredistribute income rather than redistribute wealth.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Redistributing Income
+• Governments can change the level of direct taxation and transfer payments 
+such as benefits or subsidies, allowing income redistribution through 
+existing fiscal systems.
+• Income is received regularly and recorded through wages or salaries, 
+making it easier for governments to measure and adjust policies quickly.
+However
+• High-income earners may respond to redistributive tax policies by avoiding 
+or evading taxes, reducing the effectiveness of redistribution.
+• Increasing taxes on higher earners or firms may discourage work and 
+investment, leading to lower economic growth and government revenue.
+Redistributing wealth
+• Wealth can be redistributed through inheritance or property taxes, which 
+directly target accumulated assets rather than annual income.
+• Governments can promote asset ownership among lower-income groups 
+through housing schemes, education access, or small business grants.
+However
+• Wealth is often difficult to measure accurately, especially in the form of 
+private businesses, offshore accounts, or property, making taxation 
+complex.
+• Wealthy individuals often have political influence and legal means to 
+resist or reduce the impact of wealth taxes, limiting the government’s 
+ability to redistribute effectively.
+AO3 Evaluation
+That clearly analyses at both sides of each perspective question and comes 
+to a valid conclusion.
+A one-sided response that does not contain both perspectives of each 
+option cannot gain any marks for evaluation.
+Accept all valid responses.`
+  },
+  {
+    id: "custom-1776301646463",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 8,
+    questionText: "For your economy or for one that is known to you, explain three causes \nof inflation and consider which of these causes is likely to be most \nimportant in 2025.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+• Inflation is a sustained rise in the general price level (1).
+• Understanding of three causes of inflation. The cause must be identified 
+by name together with a brief explanation–e.g. demand-pull inflation 
+when aggregate demand increases faster than aggregate supply, e.g., 
+due to higher consumer spending, government expenditure etc. (1). Costpush inflation when rising costs of production result in firms raising prices 
+(1).
+Up to 2 marks maximum for each cause, with an overall maximum of 3 
+knowledge marks.
+AO2 Analysis (max 3 marks)
+• An explanation of the identified cause of inflation for a named economy. 
+For example, a reduction in income tax increases disposable income, 
+leading to higher consumption, which raises aggregate demand and can 
+cause an increase in the price level/demand pull inflation (1 + 1). 
+However, if high levels of job insecurity exists then the increase in 
+consumption/AD/demand-pull inflation may be less important (1). 
+AO3 Evaluation (max 2 marks)
+• Evaluation should consider the extent to which a single cause can be 
+identified as being the most important.
+• 1 mark reserved for a justified conclusion.`
+  },
+  {
+    id: "custom-1776301683390",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 12,
+    questionText: "Assess whether supply-side policy or demand-side policy is the better \nway of reducing this inflation.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Possible reasons why supply-side policies are the best way to reduce 
+demand-pull inflation:
+• They increase productive capacity (aggregate supply), helping meet higher 
+demand without causing price rises.
+• Improved efficiency and productivity lower production costs, reducing 
+inflationary pressure in the long term.
+However
+• They take a long time to have an effect, so they may not reduce inflation 
+quickly.
+• Some policies, like education or infrastructure investment, are expensive 
+and may not guarantee results.
+Possible reasons why demand-side policies are the best way to reduce 
+demand-pull inflation:
+• Higher interest rates reduce consumer and business borrowing, lowering 
+consumption and investment, which reduces aggregate demand and 
+inflationary pressure.
+• Increasing taxes reduces disposable income, leading to lower consumer 
+spending and weaker aggregate demand.
+However
+• They can also reduce output and employment, leading to slower economic 
+growth and higher unemployment.
+• Time lags may occur before interest rate or tax changes have a noticeable 
+effect on spending and inflation
+Potential reasons why supply-side policies are the best way to reduce 
+cost-push inflation:
+• Increasing investment in training and technology can raise productivity, 
+allowing firms to produce more with the same resources, helping reduce 
+cost pressures.
+• Improving transport and infrastructure reduces distribution costs for firms, 
+helping lower overall production costs and ease inflationary pressure.
+However
+• They take a long time to show results, so they are not effective in reducing 
+inflation in the short term.
+• External factors like rising oil prices or imported inflation cannot be 
+controlled by domestic supply-side policies
+Guidance: The assessment of both perspectives must be in the context of 
+the reducing inflation and not a general explanation of both policies. A 
+response that fails to do this is unlikely to achieve above a mid-Level 2 mark.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will be 
+balanced. Explanations of points raised will be offered and will be accurate and 
+relevant to the question.
+AO3 Evaluation
+Requires an assessment of how both supply-side policy and demand-side 
+policy may reduce ‘this inflation’ which leads to a justified conclusion as to 
+which policy is the better way for the identified country.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1776301722298",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.3 Current account of the balance of payments",
+    maxMarks: 8,
+    questionText: "Explain two reasons why an economy may have a deficit on the current \naccount of its balance of payments and consider whether its \ngovernment is likely to be concerned about this deficit.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+The current account records trade in goods and services, primary income, and 
+secondary income between countries/A current account deficit occurs when the 
+value of imports of goods or services, primary and secondary income exceeds 
+the value of exports (1). Two marks for an accurate explanation of two 
+reasons–e.g., low international competitiveness, (1) - if the country experiences 
+strong domestic growth. (1)
+AO2 Analysis (max 3 marks)
+An explanation of why the government is likely to be concerned at about this 
+deficit. For example, a current account deficit could lead to downward pressure 
+on the exchange rate, making imports more expensive and potentially causing 
+inflation (1). Persistent deficits may reduce confidence among foreign investors, 
+limiting inflows of capital needed to finance growth (1). However, the 
+government may not be concerned if the deficit is temporary or caused by for 
+example, high investment imports that may boost future productive capacity (1)
+A max of 2 marks for either perspective.
+AO3 Evaluation (max 2 marks)
+An assessment of the extent that the government is likely to be concerned. For 
+example, the level of concern will depend on the size, duration and cause of the 
+deficit and how it is financed (1).`
+  },
+  {
+    id: "custom-1776301759356",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.5 Policies to correct imbalances in the current account of the balance of payments",
+    maxMarks: 12,
+    questionText: "Assess whether it is better to use protectionist policies or \ncontractionary policies to reduce a deficit on the current account of the \nbalance of payments.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Possible reasons why protectionist policies are the best way to reduce a 
+deficit on the current account of the balance of payments.
+• They may reduce the value of imports, which helps to lower the current 
+account deficit by limiting the outflow of money from the economy.
+• They may protect domestic industries from foreign competition, allowing 
+local firms to grow and potentially increase exports in the future.
+However
+• They can raise prices for consumers, as tariffs or quotas make imported 
+goods more expensive, reducing consumer welfare.
+• Other countries may retaliate with their own trade barriers, which could 
+reduce exports and harm the economy further.
+Possible reasons why contractionary policies are the best way to reduce 
+a deficit on the current account of the balance of payments.
+• They can reduce domestic demand, which lowers imports and helps 
+decrease the current account deficit.
+• They may help control inflation by reducing spending in the economy, 
+which can stabilise the exchange rate and make exports more 
+competitive.
+However
+• They can slow economic growth and increase unemployment, as lower 
+demand reduces output in domestic industries.
+• They may reduce consumer and business confidence, which can further 
+decrease spending and investment, worsening the economic slowdown.
+Guidance: The assessment of both perspectives must be in the context of 
+the reducing a current account deficit and not a general explanation of 
+both policies.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+Requires an assessment of whether it is better to use protectionist policies or 
+contractionary policies to reduce a deficit on the current account of the 
+balance of payments. For example–Protectionist policies may work more 
+quickly to reduce imports and protect domestic industries, but they risk 
+retaliation from other countries and higher prices for consumers. Alternatively, 
+contractionary policies may take longer to reduce the deficit but may help 
+control inflation, though they may slow economic growth and increase 
+unemployment.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.
+Accept all valid responses.`
   }
 ];
