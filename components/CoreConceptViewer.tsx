@@ -211,6 +211,24 @@ export const CoreConceptViewer: React.FC = () => {
                 </div>
               </div>
 
+              {/* The Ultimate AO3 Formula Panel */}
+              <div className="mb-8 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl shadow-sm border border-orange-200 overflow-hidden">
+                <div className="px-5 py-3 border-b border-orange-200 bg-orange-100/50 flex items-center gap-2">
+                  <AlertTriangle className="w-5 h-5 text-orange-600" />
+                  <h3 className="font-bold text-orange-800">一招吃遍天：AO3 万能评估框架 (The Ultimate Evaluation Formula)</h3>
+                </div>
+                <div className="p-5 text-sm text-slate-700 space-y-3">
+                  <p className="font-medium text-slate-800">无论题目让你评估什么（汇率贬值、贸易保护、赤字、通货膨胀，还是各类Policy的优缺点），你的 AO3 永远可以通过以下5个维度来“反驳”或限制 AO2 的理论：</p>
+                  <ul className="space-y-2 list-disc pl-5">
+                    <li><strong className="text-orange-700">1. State of the Economy (闲置产能与宏观状况):</strong> 任何影响 AD 的行为都取决于经济的初始状态。在衰退期增加需求能带来就业和增长；而在充分就业时，增加需求只会带来恶性通货膨胀。</li>
+                    <li><strong className="text-orange-700">2. Elasticities (弹性大小 - PED/PES):</strong> 任何“价格变化”（汇率贬值、加税、关税、最高最低限价）的最终效果，完全取决于消费者和生产者的敏感程度（弹性）。</li>
+                    <li><strong className="text-orange-700">3. Time Frame (长短期的区别与时间差):</strong> 供给在短期总是缺乏弹性的。政策（特别是 SSP 投资）生效往往有极长的 Time Lags。而贬值在短期甚至会由于合约限制而恶化赤字（J-Curve）。</li>
+                    <li><strong className="text-orange-700">4. The Root Cause (引发现象的根本原因):</strong> 现象的好坏取决于它是怎么产生的。TOT 改善如果是因为商品质量好就很好，如果是因为国内通胀导致涨价就很糟；贸易赤字如果是买资本机器买出来的就很好，用来奢侈消费就很糟。</li>
+                    <li><strong className="text-orange-700">5. Offsetting Factors / Confidence (其他抵消因素与企业信心):</strong> 假设其他条件不变（Ceteris Paribus）在现实中不存在。降息理论上刺激消费，但如果遭遇金融危机大家极度恐慌（信心为零），就算0利率也没人借钱。</li>
+                  </ul>
+                </div>
+              </div>
+
               <div className="space-y-4">
                 {activeTopic.concepts.map((concept) => {
                   const isExpanded = expandedConcepts[concept.id] ?? true;

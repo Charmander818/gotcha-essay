@@ -20,125 +20,101 @@ export const coreConceptsData: ConceptCategory[] = [
     category: "Microeconomics",
     topics: [
       {
-        id: "micro-basic",
-        topic: "Basic Economic Ideas (PPC & Systems)",
+        id: "micro-gov-intervention",
+        topic: "Gov Intervention & Market Failure",
         concepts: [
           {
-            id: "basic-ppc",
-            name: "Production Possibility Curves (PPC) & Opportunity Cost",
-            description: "Analysing movements, shifts, and the shape of the PPC.",
+            id: "micro-taxes-subsidies",
+            name: "Indirect Taxes & Subsidies",
+            description: "Evaluating the pros and cons of using taxes and subsidies to fix market failure.",
             ao2: [
-              "A movement along the PPC demonstrates reallocation of resources and exact opportunity cost (a trade-off).",
-              "A shift outwards indicates an increase in the quantity/quality of resources or technological advancement, pushing potential output up.",
-              "A point inside the PPC indicates production inefficiency or unemployment.",
-              "Constant opportunity cost is drawn as a straight line, while increasing opportunity cost is drawn as a concave curve."
+              "Pros [Taxes]: Internalises negative externalities, reduces over-consumption of demerit goods, and raises vital government revenue.",
+              "Cons [Taxes]: Regressive (hurts the poor more), can cause cost-push inflation, and may encourage black markets/smuggling.",
+              "Pros [Subsidies]: Increases consumption of merit goods, helps lower income inequality by making essentials cheaper, and supports domestic infant industries.",
+              "Cons [Subsidies]: Huge opportunity cost for the government, necessitates higher taxes elsewhere, and firms may become reliant/inefficient."
             ],
             ao3: [
-              "Time Frame & Priority: A decision to produce more capital goods over consumer goods carries short-term opportunity costs (lower living standards today) but drives sustainable long-run economic growth.",
-              "Permanence: A position inside the PPC is not necessarily permanent if the government implements successful demand-management or supply-side policies to reduce unemployment.",
-              "Shape dependency: Whether opportunity cost is constant or increasing depends on factor mobility (how easily resources switch between producing different goods)."
+              "Depends on Elasticity (PED/PES): Taxes on highly inelastic demerit goods (e.g., cigarettes) won't reduce consumption much, but WILL raise massive tax revenue.",
+              "Depends on Magnitude: A small subsidy won't shift supply enough to change consumer behaviour; a massive one ruins the government budget.",
+              "Time Period: Subsidies might work in the short run to boost an industry, but in the long run create structural inefficiency."
             ]
           },
           {
-            id: "basic-goods",
-            name: "Classification of Goods (Public, Merit, Free, Private)",
-            description: "Distinguishing characteristics of different economic goods.",
+            id: "micro-price-controls",
+            name: "Maximum & Minimum Prices",
+            description: "Regulating prices to protect consumers or producers.",
             ao2: [
-              "Free goods: Have zero opportunity cost, are abundant, and require no factors of production (e.g., sunlight).",
-              "Public goods: Are non-rivalrous and non-excludable. This leads to the free-rider problem where consumers can enjoy the good without paying.",
-              "Private goods: Are rivalrous and excludable. They are effectively supplied by the market mechanism.",
-              "Merit goods: Are private goods that are under-consumed by the free market due to imperfect information (consumers do not realise their full positive externalities, like vaccines)."
+              "Pros [Max Price / Price Ceiling]: Makes essential goods (like food/rent) affordable for low-income households, increasing equity and living standards.",
+              "Cons [Max Price]: Causes massive shortages (excess demand), queueing, and encourages illegal black markets where goods are sold at even higher prices.",
+              "Pros [Min Price / Price Floor]: Protects producer incomes (e.g., farmers) from price volatility, and reduces consumption of demerit goods (e.g., alcohol).",
+              "Cons [Min Price]: Causes massive surpluses (excess supply) which the government might have to buy (expensive!), and hurts poor consumers' living standards."
             ],
             ao3: [
-              "Missing Markets: Without government intervention via tax revenue, a pure market economy will face complete market failure regarding public goods.",
-              "Dynamic nature of Free Goods: Free goods can become economic goods over time if they become scarce (e.g., fresh water or clean air due to pollution).",
-              "Difficulty in categorisation: Goods like a beach can be 'quasi-public'. They might be non-excludable but can become rivalrous if overcrowded."
+              "Depends on Enforcement: Without strict government policing, illegal markets will form immediately, rendering the policy useless.",
+              "Depends on Elasticities: The size of the shortage or surplus directly depends on PED and PES. Highly elastic supply and demand curves will create massive surpluses/shortages.",
+              "Depends on Level Set: A maximum price set above the equilibrium has absolutely no effect."
             ]
           },
           {
-            id: "basic-sys",
-            name: "Allocation in Different Economic Systems",
-            description: "Market vs Planned vs Mixed Economies.",
+            id: "micro-buffer-stock",
+            name: "Buffer Stock Schemes",
+            description: "Buying and selling stocks to stabilize agricultural prices.",
             ao2: [
-              "Market economy: relies purely on the price mechanism. It encourages efficiency and innovation via the profit motive and offers broad consumer choice.",
-              "Planned economy: ignores price mechanisms to focus on welfare. It aims to prevent exploitation, inequality, and under-provision of merit goods.",
-              "Mixed economy: combines market forces with government intervention to correct market failures while maintaining the efficiency incentives of the private sector."
+              "Pros: Stabilizes prices for consumers (stopping food inflation), guarantees stable incomes for farmers (encouraging investment), and prevents market crashes.",
+              "Cons: Massive storage and administrative costs. If the minimum target price is set too high, the government faces endless overproduction and massive purchasing costs."
             ],
             ao3: [
-              "Market failure vs Government failure: A market economy is not 'always' desirable because it under-provides merit goods and completely ignores public goods and inequality. Conversely, planned economies suffer from massive information failures and lack of incentives.",
-              "The success of a mixed economy heavily depends on the efficiency of the government and the scale of taxation required, which may create disincentives to work (Crowding Out)."
+              "Depends on Perishability: Buffer stocks only work for storable commodities (wheat, grain). It fails for perishable goods (fresh milk, tomatoes).",
+              "Depends on Global Climate Shocks: Several years of consecutive bumper harvests will bankrupt the scheme, while consecutive droughts will deplete all reserves."
+            ]
+          },
+          {
+            id: "micro-inequality",
+            name: "Income Inequality",
+            description: "The pros and cons of having an unequal distribution of income.",
+            ao2: [
+              "Pros: Provides a massive incentive to work harder, upskill, and innovate. Entrepreneurs take risks because they want wealth, which drives economic growth and jobs.",
+              "Cons: Causes poverty, reduces overall living standards, creates social friction/crime, and wastes human capital (poor cannot afford education)."
+            ],
+            ao3: [
+              "Depends on the Degree: A small amount of inequality is healthy for incentives. High inequality (Gini > 0.4) strictly damages growth by suppressing consumption.",
+              "Depends on Opportunity: If inequality exists because of different effort levels, it is acceptable. If it exists due to corruption or lack of basic education access, it prevents growth."
             ]
           }
         ]
       },
       {
-        id: "micro-price",
-        topic: "The Price System & Interaction",
+        id: "micro-elasticities",
+        topic: "Elasticities in Decision Making",
         concepts: [
           {
-            id: "price-functions",
-            name: "Functions of Price in Resource Allocation",
-            description: "How prices solve the basic economic problem in a free market.",
+            id: "micro-ped-yed",
+            name: "PED & YED (Consumer Demand)",
+            description: "Whether knowledge of PED and YED is useful for firm decision making.",
             ao2: [
-              "Signalling function: Prices transmit information to buyers and sellers about changing market conditions (e.g., rising price signals a shortage).",
-              "Incentivising function: Higher prices provide a profit motive for producers to reallocate resources to increase output.",
-              "Rationing function: When demand exceeds supply, rising prices clear the shortage by allocating goods only to those willing and able to pay."
+              "Pros [PED]: Crucial for pricing strategy. If inelastic, raising prices maximizes revenue. If elastic, lowering prices captures market share.",
+              "Pros [YED]: Crucial for strategic forecasting. If heading into a recession, firms can switch production to inferior goods (YED < 0). In a boom, shift to normal/luxury goods (YED > 0).",
+              "Cons: Both assume 'ceteris paribus' (that competitors don't react). Data is often historical and immediately out of date."
             ],
             ao3: [
-              "Effectiveness depends on Elasticities: If supply is perfectly inelastic (e.g., agricultural goods in the short run), the signalling and incentivising functions cannot quickly increase output, leading to severe price volatility.",
-              "Inequality limitation: The rationing function allocates goods based on the 'ability to pay', meaning vital necessities may become unaffordable for the poor, leading to a socially undesirable allocation."
+              "Depends on Time Period: In the short run, habits make PED inelastic. In the long run, consumers find substitutes, making past PED data dangerously misleading.",
+              "Brand Loyalty vs Math: A firm with aggressive branding (e.g., Apple) can ignore PED math entirely, as their brand overrides natural consumer price sensitivity.",
+              "Which is better?: YED is vital for long-term survival against macro-shocks (recessions), while PED is vital for daily retail pricing."
             ]
           },
           {
-            id: "price-surplus",
-            name: "Consumer and Producer Surplus",
-            description: "Evaluating the impact of price controls and supply/demand shifts on surplus.",
+            id: "micro-xed-pes",
+            name: "XED & PES (Competitors & Supply)",
+            description: "Whether knowledge of XED and PES is useful.",
             ao2: [
-              "Consumer surplus is the difference between what consumers are willing to pay and the market price.",
-              "Producer surplus is the difference between what producers are willing to accept and the market price.",
-              "An increase in production costs shifts supply to the left, which usually raises the market price and reduces consumer surplus."
+              "Pros [XED]: Identifies substitute threats. If XED is highly positive, a firm must instantly match a rival's price cut. Also helps price loss-leader complements.",
+              "Pros [PES]: Tells a firm how fast it can capture new demand. Highly elastic supply means the firm can grab massive profits during sudden demand surges.",
+              "Cons [XED]: Initiating price cuts based on XED calculations can trigger destructive price wars, destroying revenue for everyone.",
+              "Cons [PES]: Maintaining an elastic PES requires holding spare capacity and massive idle inventories, incurring huge opportunity and storage costs."
             ],
             ao3: [
-              "Extent of impact depends on PED: The exact loss of consumer surplus following a cost increase depends heavily on price elasticity. If demand is highly inelastic, the fall in consumer surplus will be severe, but producer surplus might be relatively protected.",
-              "Impact of government intervention: Minimum prices (price floors) drastically reduce consumer surplus but can increase producer surplus, while maximum prices (price ceilings) increase consumer surplus but cause massive shortages."
-            ]
-          },
-          {
-            id: "price-elasticities",
-            name: "Using Elasticities in Business (PED, PES, YED, XED)",
-            description: "How businesses use elasticities to maximize revenue and plan production.",
-            ao2: [
-              "Price Elasticity of Demand (PED) & Revenue: If demand is price inelastic (<1), firms should raise prices to increase revenue. If elastic, they should lower prices.",
-              "Price Elasticity of Supply (PES): Measures supply responsiveness. Firms try to make PES highly elastic by keeping spare capacity and stock to rapidly capture demand surges.",
-              "Income Elasticity of Demand (YED): Helps firms plan for economic cycles. Normal goods (YED>0) thrive in booms; Inferior goods (YED<0) thrive in recessions.",
-              "Cross Elasticity of Demand (XED): Helps track competitors. Substitutes (XED>0) mean rival price cuts steal market share. Complements (XED<0) allow loss-leader pricing."
-            ],
-            ao3: [
-              "PED/XED Limitations: Brand loyalty can override elasticity formulas; a strong brand may remain unresponsive to competitor price cuts despite XED suggesting they are close substitutes.",
-              "PES Opportunity Costs: Keeping large amounts of idle spare capacity or massive inventory to maintain an elastic PES incurs huge storage and opportunity costs, harming short-turn profit.",
-              "Time Period factor: All elasticity measures tend to be highly inelastic in the short run (due to habit or production lag) but become much more elastic in the long run.",
-              "Reliability of Data: Elasticities are calculated based on historical data and assume 'Ceteris Paribus', making future predictions frequently inaccurate."
-            ]
-          }
-        ]
-      },
-      {
-        id: "micro-inequality",
-        topic: "Income and Wealth Inequality",
-        concepts: [
-          {
-            id: "ineq-causes",
-            name: "Causes and Measurement (Gini Coefficient)",
-            description: "Why inequality exists and how it is measured.",
-            ao2: [
-              "Causes of income inequality include wage differentials due to skills/education, part-time vs full-time work, and varying levels of state welfare.",
-              "Causes of wealth inequality include unequal ownership of assets (like property and stocks) which appreciate over time.",
-              "The Gini Coefficient measures inequality: 0 is complete equality, 1 is complete inequality. A falling Gini coefficient indicates income is becoming more evenly distributed."
-            ],
-            ao3: [
-              "Why Wealth Inequality is harder to measure than Income: Income is heavily documented via taxes, but wealth/assets can be hidden in offshore accounts, transferred to family, or hard to accurately value (e.g., private art).",
-              "Is inequality always negative?: Some level of income inequality is essential in a market economy to provide an incentive for workers to retrain and for entrepreneurs to take risks, driving economic growth.",
-              "Redistribution difficulty: High direct taxes to resolve inequality may cause capital flight (rich earners leaving the country) or disincentivize work, leading to a Laffer Curve effect."
+              "Depends on Spare Capacity Cost: A firm must evaluate if the massive daily cost of warehousing idle inventory is worth the rare benefit of a highly elastic PES.",
+              "Time dimension to Supply: PES is always intensely inelastic in the immediate short run (especially agriculture), rendering PES calculations useless against sudden shocks."
             ]
           }
         ]
@@ -149,100 +125,152 @@ export const coreConceptsData: ConceptCategory[] = [
     category: "Macroeconomics",
     topics: [
       {
-        id: "macro-ad-as",
-        topic: "The Macroeconomy (AD, AS & Circular Flow)",
+        id: "macro-exchange-trade",
+        topic: "Exchange Rates & International Trade",
         concepts: [
           {
-            id: "macro-circular",
-            name: "Circular Flow of Income (Closed vs Open)",
-            description: "Understanding injections, leakages, and equilibrium.",
+            id: "macro-depreciate",
+            name: "Depreciation / Appreciation",
+            description: "Evaluating the impact of a falling or rising exchange rate.",
             ao2: [
-              "A closed economy model has Injections (Investment + Government Spending) and Leakages (Savings + Taxation). Equilibrium is where I + G = S + T.",
-              "An open economy incorporates international trade. Exports (X) act as a strong injection, while Imports (M) act as a leakage. Equilibrium becomes I + G + X = S + T + M.",
-              "If injections exceed leakages, the economy experiences a positive multiplier effect leading to aggregate economic growth."
+              "Pros [Depreciation]: Lowers export prices & raises import prices -> Boosts AD (via Net Exports), cuts cyclical unemployment, and closes a trade deficit.",
+              "Cons [Depreciation]: Causes imported cost-push inflation (raw materials suddenly cost more), reducing living standards.",
+              "Pros [Appreciation]: Excellent for crushing inflationary pressure, as imported goods become cheap. Cheaper raw materials boost SRAS.",
+              "Cons [Appreciation]: Destroys export competitiveness, worsens the trade deficit, and costs domestic jobs."
             ],
             ao3: [
-              "Extent of Impact: Whether an increase in infrastructure investment (Injection) successfully boosts the circular flow depends on the size of the Multiplier (MPC). If consumers save massive amounts of new income (high MPS), the impact is negligible.",
-              "Dependence on Trade: A trade deficit (Leakage > Injection in trade) does not guarantee negative economic growth IF it is heavily offset by massive domestic government spending or private investment."
+              "Marshall-Lerner Condition (Depends on Elasticity): Depreciation ONLY improves the trade deficit if the combined PED of exports and imports is > 1. If imports are inelastic necessities (oil), the deficit actually worsens.",
+              "State of the Economy: If the economy is already at full employment, a depreciation won't boost real GDP, it will just cause violent demand-pull inflation.",
+              "Time Lags (J-Curve): In the short term, trade contracts are signed. Depreciation worsens the deficit initially before improving it in the long run."
             ]
           },
           {
-            id: "macro-inflation",
-            name: "Causes of Inflation and Deflation",
-            description: "Distinguishing between Cost-Push and Demand-Pull mechanisms.",
+            id: "macro-tot",
+            name: "Terms of Trade (TOT) Improvement",
+            description: "Evaluating whether an improved TOT is always beneficial.",
             ao2: [
-              "Demand-Pull Inflation: Occurs when Aggregate Demand (AD) shifts right faster than Aggregate Supply. Caused by high consumer confidence, low interest rates, or increased government spending.",
-              "Cost-Push Inflation: Occurs when Short-Run Aggregate Supply (SRAS) shifts left. Caused by rising wages, expensive raw materials, or currency depreciation (imported inflation).",
-              "Deflation: Can be caused by a collapse in AD (Demand-side) or huge productivity gains shifting AS right (Supply-side)."
+              "Pros: An improved TOT (Export prices rise relative to Import prices) means a country can buy a larger volume of imports for the same volume of exports, immediately boosting living standards.",
+              "Cons: If export prices rose rapidly because of severe domestic inflation, then exports lose their international competitiveness, export volumes crash, and the balance of trade worsens."
             ],
             ao3: [
-              "Which is more damaging?: Cost-push inflation is almost universally more damaging as it causes 'Stagflation' (high inflation paired with rising unemployment and falling GDP). Demand-pull inflation at least brings economic growth and job creation.",
-              "State of the Economy: Demand-pull inflation is only a severe problem if the economy is operating at or near full capacity on the LRAS curve. If there is spare capacity, an AD increase mostly boosts output rather than prices.",
-              "Positive side of inflation: A low, stable rate of inflation reduces the real value of national/consumer debt and boosts business optimism."
+              "Depends on the Root Cause: An improved TOT is excellent if caused by an increase in global demand for a country's high-quality exports. It is terrible if caused by rampant domestic inflation.",
+              "Depends on Export Elasticity: If export prices rise, but global demand for them is highly price elastic, the country will lose massive amounts of export revenue, causing unemployment."
             ]
           },
           {
-            id: "macro-unemployment",
-            name: "Measuring and Causes of Unemployment",
-            description: "Technological, Frictional, Cyclical, and Measurement Methods.",
+            id: "macro-ca-deficit",
+            name: "Current Account Deficit / Surplus",
+            description: "Is a trade imbalance always bad or good?",
             ao2: [
-              "Measurement 1 (Claimant Count): Measures unemployment by counting individuals claiming unemployment-related welfare benefits.",
-              "Measurement 2 (Labour Force Survey): Uses sampling to identify people who are without a job but have actively sought work recently.",
-              "Frictional Unemployment: Temporary gap between jobs. Technological Unemployment: Capital/machines replacing manual labor. Cyclical Unemployment: Caused by a massive fall in AD during a recession."
+              "Pros [Deficit]: In the short term, a deficit means consumers are importing heavily, leading to high current living standards. It may also mean the country is importing vital capital machinery for future growth.",
+              "Cons [Deficit]: Causes debt, downward pressure on exchange rates, and signifies structural weakness (domestic firms are uncompetitive).",
+              "Pros [Surplus]: Indicates export-led growth, high employment in domestic industries, and stable, strong currency.",
+              "Cons [Surplus]: Causes demand-pull inflation, and signifies that the country is exporting its output rather than consuming it (lowering domestic living standards)."
             ],
             ao3: [
-              "Reliability of Measures: The Claimant Count often vastly underestimates actual unemployment due to stigma or strict eligibility rules. The LFS avoids limit errors but is subject to statistical sampling errors and hidden/informal economy presence.",
-              "Inevitable vs Damaging: Some Frictional unemployment is completely inevitable and even healthy (allows workers to reallocate to better-suited roles). Technological/Structural unemployment is the most severely damaging as it renders old skills entirely permanently obsolete."
+              "Depends on Financing: A deficit is safe if financed by long-term Foreign Direct Investment (FDI). It is deadly if financed by volatile short-term 'Hot Money'.",
+              "Nature of the Imports (Cause): A deficit driven by importing capital machinery will improve the LRAS tomorrow. A deficit driven by importing luxury consumption goods is unsustainable."
+            ]
+          },
+          {
+            id: "macro-free-trade",
+            name: "Free Trade vs Protectionism",
+            description: "Evaluating the costs and benefits of opening borders vs tariffs.",
+            ao2: [
+              "Pros [Free Trade]: Consumers get massive choices and lower prices. Global resources are allocated efficiently via Comparative Advantage. Economies of scale are achieved.",
+              "Cons [Free Trade]: Structural unemployment as uncompetitive domestic businesses collapse. Over-specialisation leaves a country fatally vulnerable to global price shocks.",
+              "Pros [Protectionism]: Protects infant industries, saves domestic jobs, fixes current account deficits, and stops dumping.",
+              "Cons [Protectionism]: Guarantees retaliation (trade wars). Consumers subsidize inefficient domestic firms by paying higher prices."
+            ],
+            ao3: [
+              "Depends on Development Stage: Free trade is great for developed nations, but protectionism is mathematically necessary for developing nations to build infant industries.",
+              "Short Run vs Long Run: Tariffs might save jobs today (short run), but in the long run create lazy, uncompetitive monopolies that drag down economic growth.",
+              "Depends on Retaliation likelihood: If you place a tariff on a major superpower, they will retaliate and crush your exports, negating all benefits."
             ]
           }
         ]
       },
       {
-        id: "macro-international",
-        topic: "International Economic Issues",
+        id: "macro-performance",
+        topic: "Macroeconomic Objectives & Performance",
         concepts: [
           {
-            id: "int-adv",
-            name: "Comparative and Absolute Advantage",
-            description: "The core arguments for free country specialisation.",
+            id: "macro-economic-growth",
+            name: "Economic Growth",
+            description: "Evaluating whether GDP growth is always desirable.",
             ao2: [
-              "Absolute Advantage: When a country can produce more of a good with the exact same amount of resources.",
-              "Comparative Advantage: When a country can produce a good at a lower opportunity cost.",
-              "Specialising based on comparative advantage increases total world output, reduces prices, and raises absolute living standards globally."
+              "Pros: Higher living standards, creation of jobs (reducing cyclical unemployment), and a 'fiscal dividend' (gov collects more tax without raising rates) to spend on health/education.",
+              "Cons: Severe environmental degradation, massive stress/less leisure time, rising income inequality if growth is skewed towards the rich, and vicious demand-pull inflation."
             ],
             ao3: [
-              "Unrealistic Assumptions: The theory operates on highly unrealistic assumptions such as zero transport costs, perfect occupational factor mobility, and constant returns to scale.",
-              "Over-specialization Risk: Complete dedication to one commodity based on comparative advantage leaves a country fatally vulnerable to global price shocks (e.g., collapse of coffee prices).",
-              "Protectionist necessity: Infant industries in developing countries absolutely require protection (tariffs) until they hit economies of scale, meaning pure free trade is damaging early on."
+              "Depends on the Type of Growth: Demand-led growth (AD shifting right near full capacity) is dangerous and inflationary. Supply-led growth (LRAS shifting right) is sustainable and non-inflationary.",
+              "Distribution of Benefits: Growth is only meaningful if it is evenly distributed. A 5% GDP growth means nothing to the poor if inflation is 6% and only elites captured the newly created wealth.",
+              "Sustainable vs Short-term: Growth driven by rapid depletion of natural resources (e.g. chopping down entire forests) is catastrophic in the long term."
             ]
           },
           {
-            id: "int-tot",
-            name: "Terms of Trade vs Balance of Trade",
-            description: "Understanding export and import price ratios.",
+            id: "macro-inflation",
+            name: "Inflation",
+            description: "Is inflation always damaging?",
             ao2: [
-              "Balance of Trade: Measures export revenues minus import expenditure (volume traded).",
-              "Terms of Trade (ToT): Is an index ratio of export prices to import prices. ToT improves (rises) when Export Prices rise relative to Import Prices.",
-              "An improved ToT means a given volume of exports can now purchase a larger volume of imports, raising domestic living standards."
+              "Pros: Greases the labor market (allows silent real-wage cuts), reduces the real value of national debt, and stops the dreaded 'deflationary spiral' (where consumers delay all spending).",
+              "Cons: Destroys fixed incomes/pensions, causes menu/shoe-leather costs, creates massive uncertainty crushing business investment, and destroys export competitiveness.",
+              "Note: Deflation is horrible because it postpones consumption, crushes AD, and increases the real burden of debt, leading to deep recessions."
             ],
             ao3: [
-              "The Quality vs Inflation dilemma: Whether an improved ToT is 'good' heavily depends on the cause. If it improved because domestic goods got higher in quality and global demand, it's beneficial.",
-              "Elasticity Evaluation: If ToT improved solely because domestic inflation forced export prices up, AND export demand is highly price elastic, the export volume will massively collapse, fatally worsening the Balance of Trade and causing unemployment."
+              "Depends on the Rate: Creeping inflation (2%) is the bedrock of a healthy, optimistic economy. Hyperinflation destroys the entire currency system.",
+              "Depends on the Cause: Cost-push inflation is infinitely more damaging than demand-pull. Cost-push brings 'Stagflation' (unemployment + inflation), while demand-pull at least brings jobs.",
+              "Anticipated vs Unanticipated: Sudden, surprise inflation wrecks business contracts and wage negotiations. Steady, expected inflation is easily managed."
             ]
           },
           {
-            id: "int-exchange",
-            name: "Exchange Rates (Depreciation & Appreciation)",
-            description: "The causes and consequences of currency value fluctuations.",
+            id: "macro-unemployment",
+            name: "Types of Unemployment",
+            description: "Evaluating which types of unemployment are most damaging.",
             ao2: [
-              "Depreciation (fall in currency value): Lowers the perceived price of exports and raises the price of imports. This boots AD via Net Exports, creates jobs in export sectors, and helps resolve a current account deficit.",
-              "Appreciation (rise in currency value): Lowers the price of imports. This dramatically reduces cost-push inflationary pressure for manufacturers reliant on foreign raw materials.",
-              "Causes of shifts: Changes in relative interest rates (capital/hot money flows), trade balances, and investor speculation."
+              "Pros (Frictional only): Frictional unemployment allows workers to search for jobs that perfectly match their skills, leading to higher long-term productivity and happiness.",
+              "Cons: Massive loss of potential GDP (operating inside PPC), massive fiscal drain (welfare benefits rise, income tax falls), hysteresis (long-term unemployed lose skills and motivation), and crime/social unrest.",
+              "Types: Cyclical (Demand-deficient), Structural (Mismatch of skills due to changing tech/industries), Frictional (Between jobs)."
             ],
             ao3: [
-              "Evaluation on Elasticities (Marshall-Lerner concept): A depreciation will ONLY effectively improve the current account trade deficit if the demand for exports and imports is relatively price elastic. If a country imports highly inelastic necessities (like oil), depreciation just causes massive imported cost-push inflation with no trade gain.",
-              "State of the Macroeconomy: A depreciation boosting AD is highly beneficial during a recession to cut cyclical unemployment. But if the economy is already at full capacity, depreciation will simply trigger severe demand-pull inflation.",
-              "Interest Rates vs Trade: Changes in relative interest rates are often vastly more significant in determining short-term exchange rates than the actual trade balance, due to the sheer volume of global speculative hot money flows."
+              "Comparison of Severity: Structural and Technological unemployment are radically more severe than Cyclical because the skills of the workers are permanently rendered obsolete. Cyclical reverses once the economy booms.",
+              "Depends on Duration: Short-term frictional is harmless. Long-term unemployment causes a permanent inward shift of the PPC as human capital erodes (Hysteresis)."
+            ]
+          }
+        ]
+      },
+      {
+        id: "macro-policies",
+        topic: "Macroeconomic Policies & Budgets",
+        concepts: [
+          {
+            id: "macro-budget",
+            name: "Budget Balance / Deficit / Surplus",
+            description: "The pros and cons of government budget positions.",
+            ao2: [
+              "Pros [Deficit]: Stimulates the economy during a recession (Expansionary Fiscal Policy). Government spends more than taxes, injecting AD.",
+              "Cons [Deficit]: Explodes the national debt, causing massive interest repayment burdens. Can cause 'Crowding Out' (gov borrowing drives up interest rates, crushing private investment).",
+              "Pros [Surplus/Balance]: Creates stability, reduces national debt, and cools down a violently inflationary boom.",
+              "Cons [Surplus/Balance]: Adhering strictly to a balanced budget during a recession forces the government to cut spending, accelerating the economic collapse."
+            ],
+            ao3: [
+              "Depends on Expenditure Type: A deficit is excellent if the money is spent on Capital Expenditure (new roads, broadband) because it builds LRAS to pay off the debt. It is terrible if spent on Current Expenditure (wages, pensions).",
+              "State of the Cycle: Running a deficit during a recession is responsible Keynesian economics. Running a massive deficit during an economic boom is highly inflationary and irresponsible."
+            ]
+          },
+          {
+            id: "macro-fp-mp-ssp",
+            name: "FP vs MP vs SSP",
+            description: "Evaluating the three main macroeconomic tools.",
+            ao2: [
+              "Expansionary Fiscal Policy (FP): Cuts taxes & raises Gov spending. Direct injection to AD. Cons: Causes budget deficits & takes massive political time (Implementation Lag).",
+              "Monetary Policy (MP): Central banks cut interest rates. Pros: Fast to execute. Cons: Liquidity Trap - if confidence is dead, 0% rates won't make anyone borrow. Hot money outflows cause depreciation.",
+              "Supply Side Policy (SSP): Education, training, deregulation. Pros: The ONLY policy that gives growth WITHOUT inflation. Cons: Gigantic time lags (takes 15 years to educate a child) and massive opportunity costs."
+            ],
+            ao3: [
+              "Time vs Effectiveness (SSP vs MP): MP acts quickly but doesn't fix underlying structural issues. SSP fixes the root cause but takes decades. Both must be used together.",
+              "Ceteris Paribus & Confidence: An aggressive MP rate cut will fail entirely if Global Recessions block trade or if Consumer Confidence is utterly destroyed.",
+              "Depends on Initial State: Pushing an expansionary FP or MP is disastrous if the economy has no spare capacity (steep part of AS curve), it will just ignite hyperinflation."
             ]
           }
         ]
