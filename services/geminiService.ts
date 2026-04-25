@@ -131,6 +131,8 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
     }
 
     **STEP 4: GENERATE REPORT**
+    IMPORTANT FORMATTING RULE: DO NOT use LaTeX math wrappers like "$\\downarrow \\rightarrow$" for arrows or chains. Instead, use plain unicode text characters like "↓" and "→" directly (e.g. "Interest Rates ↓ → Borrowing ↑").
+
     Please format your response exactly as follows using Markdown:
 
     ### 1. Premise Check
@@ -143,10 +145,16 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
     - [ ] [Evaluation Requirement] - [State if student evaluated it]
 
     ### 3. Paragraph-by-Paragraph Critique
-    *Go through the student's main paragraphs. Identify logic gaps and 0-point EV traps.*
-    - **Para 1:** [Feedback on definition/intro. e.g., "Good definition of Inflation."]
-    - **Para 2:** [Feedback on Analysis. e.g., "Logic Gap: You said interest rates rise -> investment falls, but you didn't explain the MEC mechanism or cost of borrowing."]
-    - **Para 3:** [Feedback on Counter-argument/Evaluation. Explicitly call out if they fell into a 0-point EV trap.]
+    *Go through the student's main paragraphs. Provide detailed feedback based on the following criteria:*
+    *   **Logic Chain Completeness:** Point out exactly where the logic breaks or jumps. Explain the missing steps explicitly to make the chain robust.
+    *   **Redundant Wording:** Identify any filler words, repetitive phrasing, or unnecessary statements and suggest how to cut them.
+    *   **Professional Economic Terms:** Upgrade the student's casual vocabulary. If they say "people buy less", correct it to "quantity demanded contracts". If they say "companies make less", correct it to "profit margins are squeezed/supply contracts", etc.
+    *   **EV Traps:** Explicitly call out if they fell into a 0-point EV trap.
+    
+    *Format your critique like this:*
+    - **Para 1:** [Feedback on definition/intro. e.g., "Good definition of Inflation, but you used excessive wording here: '...'. Just say '...'.]
+    - **Para 2:** [Feedback on Analysis. e.g., "Logic Gap: You said interest rates rise -> investment falls, but you missed the transmission mechanism. You should state: interest rates rise -> cost of borrowing increases -> expected return on investment (MEC) falls below the interest rate -> investment projects are abandoned.", "Upgrade wording: Change 'businesses spend less' to 'a reduction in capital expenditure'."]
+    - **Para 3:** [Feedback on Counter-argument/Evaluation. e.g., "You fell into the 'it depends' trap. Contextualize it: ..."]
 
     ### 4. Estimated Mark & Breakdown
     **Total: X / ${question.maxMarks}**
@@ -550,7 +558,7 @@ export const evaluateSyllabusChain = async (topicTitle: string, point: string, s
       **Task:**
       1. **Grade:** Assign a grade (A/B/C/D) based on accuracy and completeness.
       2. **Critique:** Identify any "Logical Jumps" (steps missing) or errors.
-      3. **Improve:** Rewrite the student's chain to make it perfect (using → arrows).
+      3. **Improve:** Rewrite the student's chain to make it perfect (using standard unicode text arrows like → or ↓ instead of LaTeX math wrappers like $\\rightarrow$).
       
       Format the output clearly with bold headers.
     `;
