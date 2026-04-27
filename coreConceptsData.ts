@@ -26,47 +26,49 @@ export const coreConceptsData: ConceptCategory[] = [
           {
             id: "basic-ppc",
             name: "Production Possibility Curves (PPC) & Opportunity Cost",
-            description: "Analysing movements, shifts, and the shape of the PPC.",
+            description: "Analysing scarcity, choice, movements, and shifts of the PPC.",
             ao2: [
-              "A movement along the PPC demonstrates reallocation of resources and exact opportunity cost (a trade-off).",
-              "A shift outwards indicates an increase in the quantity/quality of resources or technological advancement, pushing potential output up.",
-              "A point inside the PPC indicates production inefficiency or unemployment.",
+              "Scarcity means we cannot produce outside the PPC. Choice means we must select a single point. A point inside indicates unemployment.",
+              "A movement along the PPC demonstrates a trade-off between consumer and capital goods, revealing the exact opportunity cost.",
+              "A shift outwards indicates an increase in the quantity or quality of resources (e.g., labour education, entrepreneurship), pushing output up.",
               "Constant opportunity cost is drawn as a straight line, while increasing opportunity cost is drawn as a concave curve."
             ],
             ao3: [
-              "Time Frame & Priority: A decision to produce more capital goods over consumer goods carries short-term opportunity costs (lower living standards today) but drives sustainable long-run economic growth.",
-              "Permanence: A position inside the PPC is not necessarily permanent if the government implements successful demand-management or supply-side policies to reduce unemployment.",
-              "Shape dependency: Whether opportunity cost is constant or increasing depends on factor mobility (how easily resources switch between producing different goods)."
+              "Equal Opportunity Cost?: Not every choice has an equal opportunity cost. Due to imperfect factor mobility, opportunity cost usually increases as we push for more of one good.",
+              "Is a position inside permanent?: No. A position inside the PPC is not necessarily permanent if the government implements successful policies to reduce unemployment.",
+              "Shifts = Economic Growth: An outward shift of the PPC is synonymous with long-run economic growth. Prioritising capital goods over consumer goods drives this long-term shift despite short-term costs."
             ]
           },
           {
             id: "basic-goods",
-            name: "Classification of Goods (Public, Merit, Free, Private)",
-            description: "Distinguishing characteristics of different economic goods.",
+            name: "Classification & Provision of Goods",
+            description: "Analysing how goods are classified and whether intervention is needed for provision.",
             ao2: [
-              "Free goods: Have zero opportunity cost, are abundant, and require no factors of production (e.g., sunlight).",
-              "Public goods: Are non-rivalrous and non-excludable. This leads to the free-rider problem where consumers can enjoy the good without paying.",
-              "Private goods: Are rivalrous and excludable. They are effectively supplied by the market mechanism.",
-              "Merit goods: Are private goods that are under-consumed by the free market due to imperfect information (consumers do not realise their full positive externalities, like vaccines)."
+              "Free goods: Zero opportunity cost, abundant in supply, and no factors of production required (e.g., sunlight).",
+              "Public goods: Non-rivalrous (consumption by one limits none for others) and non-excludable (cannot prevent non-payers). This causes the 'free-rider problem'.",
+              "Merit goods: Private goods that generate positive externalities but are under-consumed by the free market due to people's imperfect information about long-term benefits.",
+              "Demerit goods: Private goods that generate negative externalities and are over-consumed due to imperfect information regarding their long-term harms (e.g., tobacco).",
+              "Exams require assessing both 'classification' AND 'provision'. Always tie analysis to the specific good mentioned (e.g., healthcare vs national defence)."
             ],
             ao3: [
-              "Missing Markets: Without government intervention via tax revenue, a pure market economy will face complete market failure regarding public goods.",
-              "Dynamic nature of Free Goods: Free goods can become economic goods over time if they become scarce (e.g., fresh water or clean air due to pollution).",
-              "Difficulty in categorisation: Goods like a beach can be 'quasi-public'. They might be non-excludable but can become rivalrous if overcrowded."
+              "The Pure Market Failure: Can a market ever produce pure public goods? No. Due to the free-rider problem, private firms cannot extract profit. Thus, relying on a market economy guarantees complete non-provision, requiring 100% government funding.",
+              "Merit Goods Debate: Will a market provide Merit Goods? Yes, because they are excludable and rivalrous, but it will severely under-produce them at a price too high for the socially optimal level. Government subsidies or free state provision is needed to fix this quantity gap.",
+              "Categorisation Flaws (Quasi-Public Goods): Absolute categorization is dangerous. A beach or a road can be 'quasi-public'. A road is non-excludable initially, but becomes rivalrous when congested, pushing it closer to a private good and requiring new allocation methods (e.g., tolls)."
             ]
           },
           {
             id: "basic-sys",
             name: "Allocation in Different Economic Systems",
-            description: "Market vs Planned vs Mixed Economies.",
+            description: "Evaluating resource allocation, pricing mechanism, and pros/cons of Market, Planned, and Mixed economies.",
             ao2: [
-              "Market economy: relies purely on the price mechanism. It encourages efficiency and innovation via the profit motive and offers broad consumer choice.",
-              "Planned economy: ignores price mechanisms to focus on welfare. It aims to prevent exploitation, inequality, and under-provision of merit goods.",
-              "Mixed economy: combines market forces with government intervention to correct market failures while maintaining the efficiency incentives of the private sector."
+              "Market Economy: Relies purely on the price mechanism without government intervention. Pros: Aggressive efficiency due to the profit motive, rapid innovation, maximum consumer choice, and automatic resource allocation without bureaucratic costs (invisible hand). Cons: Fails to provide public goods, severe wealth inequality, over-production of demerit goods, and risk of monopolistic exploitation.",
+              "Planned Economy: Government answers what, how, and for whom to produce. Pros: Low unemployment, prevents extreme inequality, ensures provision of public/merit goods, and stops monopoly exploitation. Cons: Massive bureaucratic inefficiency, slow to react to consumer demands (causing extreme shortages/surpluses), lack of profit motive destroys innovation, and loss of personal freedom.",
+              "Mixed Economy: Combines private sector efficiency with state intervention. Pros: Corrects market failures (subsidizing merit goods, taxing demerit goods, providing public goods) while retaining the profit motive for innovation. Cons: Risk of 'Government Failure' (intervention worsens the market outcome due to huge administrative costs, political bias, or imperfect information)."
             ],
             ao3: [
-              "Market failure vs Government failure: A market economy is not 'always' desirable because it under-provides merit goods and completely ignores public goods and inequality. Conversely, planned economies suffer from massive information failures and lack of incentives.",
-              "The success of a mixed economy heavily depends on the efficiency of the government and the scale of taxation required, which may create disincentives to work (Crowding Out)."
+              "Is a mixed economy always the superior system? While pure market economies suffer from devastating market failures (pollution, inequality) and planned economies suffer from fatal inefficiencies, a mixed economy is technically the ideal balance. However, its actual success relies entirely on the 'quality' of government intervention.",
+              "The Paradox of Intervention: The very act of government intervention to fix a market failure (e.g., bureaucracy in healthcare) can create 'Government Failure', leading to massive red tape, corruption, and deadweight welfare loss. Thus, a 'light-touch' mixed economy might outperform a heavily regulated one.",
+              "Transitioning Economies: Historically, economies transitioning from planned to mixed experienced rapid explosions in GDP and GDP-per-capita growth, proving the absolute necessity of the price incentive for long-term growth, despite rising inequality."
             ]
           },
           {
@@ -90,31 +92,46 @@ export const coreConceptsData: ConceptCategory[] = [
         topic: "The Price System & Mechanism",
         concepts: [
           {
-            id: "price-functions",
-            name: "Functions of Price in Resource Allocation",
-            description: "How prices solve the basic economic problem in a free market.",
+            id: "micro-demand-supply-determinants",
+            name: "Determinants of Demand and Supply",
+            description: "Factors that shift curves, particularly applied to specific goods.",
             ao2: [
-              "Signalling function: Prices transmit information to buyers and sellers about changing market conditions (e.g., rising price signals a shortage).",
-              "Incentivising function: Higher prices provide a profit motive for producers to reallocate resources to increase output.",
-              "Rationing function: When demand exceeds supply, rising prices clear the shortage by allocating goods only to those willing and able to pay."
+              "Demand Determinants: Changes in consumer income, tastes/fashions, advertising, and the price of substitutes/complements (e.g., price of petrol impacts demand for electric cars).",
+              "Supply Determinants: Changes in costs of production (wages, raw materials), technological improvements, taxes/subsidies, and climate/weather (crucial for agricultural goods like rice)."
             ],
             ao3: [
-              "Effectiveness depends on Elasticities: If supply is perfectly inelastic (e.g., agricultural goods in the short run), the signalling and incentivising functions cannot quickly increase output, leading to severe price volatility.",
-              "Inequality limitation: The rationing function allocates goods based on the 'ability to pay', meaning vital necessities may become unaffordable for the poor, leading to a socially undesirable allocation."
+              "Greatest Significance?: Exams will ask which determinant is of 'greatest significance'. For electric cars, battery cost (Supply) or charging network availability (Demand) might overpower sheer vehicle price.",
+              "Extent of the shift: A determinant like 'weather' will violently shift agricultural supply, but its impact on price vs quantity depends totally on the fact that agricultural PED is inelastic."
+            ]
+          },
+          {
+            id: "price-functions",
+            name: "Functions of Price in Resource Allocation",
+            description: "How the invisible hand solves the basic economic problem in a free market.",
+            ao2: [
+              "Signalling function: Prices transmit vital information to buyers and sellers about changing market conditions. A rising price signals a shortage, guiding economic behavior without a central planner.",
+              "Incentivising function: Higher prices provide a profit motive for producers to forcefully reallocate resources away from unprofitable sectors and into high-demand sectors to increase output.",
+              "Rationing function: When demand exceeds supply, rising prices clear the shortage by allocating scarce goods only to consumers willing and most able to pay."
+            ],
+            ao3: [
+              "Pros of the Price Mechanism: It operates automatically, totally eliminating the massive bureaucratic costs and endless delays of a planned economy. It adapts rapidly to changing consumer preferences.",
+              "Effectiveness depends on Elasticities: If supply is highly inelastic (e.g., agricultural goods like wheat in the short run), the signalling and incentivising functions cannot immediately increase output. A price spike occurs, but supply stays stagnant, leading to severe price volatility.",
+              "Inequality Limitation (The Moral Flaw): The rationing function purely allocates goods based on 'ability to pay', not 'need'. Thus, vital necessities (like medicine) may become completely unaffordable for the poor, leading to a highly inequitable and socially undesirable allocation that requires government correction."
             ]
           },
           {
             id: "price-disequilibrium",
             name: "Market Equilibrium vs Disequilibrium",
-            description: "How markets clear and resolve imbalances.",
+            description: "How markets clear and the price adjustment process.",
             ao2: [
-              "Equilibrium is where Quantity Demanded equals Quantity Supplied (leaving no tendency for the price to change).",
-              "Disequilibrium exists when there is excess supply (price is set too high) or excess demand (price is set too low).",
-              "To clear excess demand, the price mechanism signals producers to raise prices, rationing the good and incentivising more supply until EQ is restored."
+              "Equilibrium is where Quantity Demanded equals Quantity Supplied (market clears).",
+              "Disequilibrium exists during excess supply or excess demand. For example, if wages rise across an economy, Supply shifts left, creating an immediate excess demand at the original price.",
+              "The Price Adjustment Process: To clear this excess demand, the price mechanism signals producers to raise prices, rationing the good and incentivising more supply until a new Equilibrium is restored."
             ],
             ao3: [
-              "Can a market move back automatically?: Yes, the invisible hand of the price mechanism normally clears imbalances seamlessly without external help.",
-              "Government Blockade Limitation: A market may become permanently trapped in disequilibrium IF the government implements artificial Price Controls (Min/Max prices) that render the price mechanism paralyzed."
+              "Can a market move back automatically?: Yes, the invisible hand of the price mechanism seamlessly re-establishes a new equilibrium.",
+              "Extent of change: The extent to which the equilibrium price and quantity change depends heavily on the gradients (PED and PES).",
+              "Government Blockade Limitation: A market becomes permanently trapped in disequilibrium IF the government implements artificial Price Controls (Min/Max prices)."
             ]
           },
           {
@@ -124,11 +141,12 @@ export const coreConceptsData: ConceptCategory[] = [
             ao2: [
               "Consumer surplus is the difference between what consumers are willing to pay and the market price.",
               "Producer surplus is the difference between what producers are willing to accept and the market price.",
-              "An increase in production costs shifts supply to the left, raising the market price and typically reducing both consumer and producer surplus."
+              "An increase in production costs (e.g., higher wages) shifts supply left, raising the market price and severely reducing consumer surplus."
             ],
             ao3: [
-              "Extent of Impact depends on PED: Does cost always reduce producer surplus? No! If demand is perfectly inelastic, producers pass 100% of the cost burden to consumers via higher prices, preserving their entire producer surplus.",
-              "Impact of Gov Intervention: Minimum prices artificially increase producer surplus (though cause massive excess supply), while maximum prices increase consumer surplus but cause brutal shortages."
+              "Evaluating Outcome using Elasticity: Does cost always reduce surplus? If demand is perfectly inelastic, producers pass 100% of the cost burden to consumers, preserving their entire producer surplus while destroying consumer surplus.",
+              "Extent of Shift (YED/XED): If a demand shift causes surplus changes, the extent is assessed using income/cross elasticities.",
+              "Gov Intervention: Minimum prices artificially increase producer surplus, while maximum prices increase consumer surplus but cause brutal shortages."
             ]
           }
         ]
@@ -140,17 +158,31 @@ export const coreConceptsData: ConceptCategory[] = [
           {
             id: "micro-taxes-subsidies",
             name: "Indirect Taxes & Subsidies (and Incidence)",
-            description: "Evaluating pros, cons, and incidence based on PED.",
+            description: "The 4-step policy breakdown: Why, Mechanism, Pros, and Cons.",
             ao2: [
-              "Pros [Taxes]: Internalises negative externalities, reduces over-consumption of demerit goods, and raises vital government revenue.",
-              "Cons [Taxes]: Regressive (hurts the poor more), can cause cost-push inflation, and may encourage black markets/smuggling.",
-              "Pros [Subsidies]: Increases consumption of merit goods, helps lower income inequality, and supports domestic infant industries.",
-              "Cons [Subsidies]: Huge opportunity cost for the government, and protected firms may become reliant and inefficient."
+              "Indirect Tax Breakdown: Why use it? For overconsumed demerit goods. Mechanism: Shifts supply left, reducing Qd. Pro: Generates rapid tax revenue. Con: If PED < 1 (inelastic), Qd hardly falls, failing to fix the root cause.",
+              "Subsidy Breakdown: Why use it? For underconsumed merit goods. Mechanism: Shifts supply right, lowering price. Pro: Quick impact. Con: Massive opportunity cost for the government.",
+              "Exam Strategy: Questions often ask if a subsidy is the 'best' method. Structure answer by comparing Subsidy to an alternative like Information Campaigns."
             ],
             ao3: [
-              "Incidence of Subsidy/Tax (Depends on Elasticity): If Demand is highly elastic, the price to consumers falls very little, so producers mathematically keep almost all the subsidy. If Demand is highly inelastic, the price crashes, and consumers enjoy most of the subsidy.",
-              "Depends on Magnitude: A very small tax won't shift supply enough to change consumer behaviour; a massive one destroys an industry.",
-              "Time Period: Subsidies might work in the short run to boost an industry, but in the long run create uncompetitive structural inefficiency."
+              "Incidence Strict Rule: The incidence of tax/subsidy depends entirely on PED. If demand is highly inelastic, consumers swallow the tax burden but also reap the most benefit from a subsidy price drop.",
+              "Does it solve the root cause?: A tax treats the symptom (high consumption) but fails to fix the deep root cause (e.g., addiction or lack of education).",
+              "Time Period: Subsidies might work in the short run, but in the long run create uncompetitive structural inefficiency."
+            ]
+          },
+          {
+            id: "micro-direct-provision",
+            name: "Direct Provision of Merit & Public Goods",
+            description: "Should governments always provide healthcare, education, or transit?",
+            ao2: [
+              "Merit Goods (Healthcare/Education) and Public Goods require intervention.",
+              "Why support Direct Provision?: Solves imperfect information, guarantees equity/fairness so the poor are not excluded, and generates massive positive macro-externalities (a healthy, educated workforce drives the whole economy).",
+              "Mass Transit (Bus/Rail): Receiving substantial subsidies reduces traffic congestion and carbon footprints (correcting negative externalities of cars)."
+            ],
+            ao3: [
+              "Why NOT support?: Direct provision has a titanic opportunity cost. Money spent on free healthcare cannot be spent on infrastructure.",
+              "Inefficiency Limitation: Government-run monopolies lack the profit motive, often making them financially inefficient, bloated, and slow to innovate.",
+              "Targeted vs Blanket: 'Always' providing them free of charge to everyone (including the rich) is a waste of funds. A targeted voucher system might be vastly superior to blanket provision."
             ]
           },
           {
@@ -183,15 +215,17 @@ export const coreConceptsData: ConceptCategory[] = [
           },
           {
             id: "micro-inequality",
-            name: "Income Inequality",
-            description: "The pros and cons of having an unequal distribution of income.",
+            name: "Income vs Wealth Inequality",
+            description: "Measurement, causes, and pros/cons of inequality.",
             ao2: [
-              "Pros: Provides a massive incentive to work harder, upskill, and innovate. Entrepreneurs take risks because they want wealth, which drives economic growth and jobs.",
-              "Cons: Causes poverty, reduces overall living standards, creates social friction/crime, and wastes human capital (poor cannot afford education)."
+              "Measurement: Evaluated using the Gini coefficient and Lorenz Curve. Causes include differences in skills/education levels (Income) and inheritance of property/financial assets (Wealth).",
+              "Pros of Inequality: Slight inequality is mathematically necessary in a market economy as a vital incentive for entrepreneurship, upskilling, and hard work. It rewards risk-taking, accelerating overall GDP growth.",
+              "Cons of Inequality (Consequences): Severe poverty, tragically wasted human capital (children in poverty unable to afford higher education), extreme social friction/crime, and skewed production (firms only cater to luxury demands of the wealthy)."
             ],
             ao3: [
-              "Depends on the Degree: A small amount of inequality is healthy for incentives. High inequality (Gini > 0.4) strictly damages growth by suppressing consumption.",
-              "Depends on Opportunity: If inequality exists because of different effort levels, it is acceptable. If it exists due to corruption or lack of basic education access, it permanently paralyzes long-term growth."
+              "Why is Wealth Inequality harder to measure?: Unlike income (which is cleanly recorded by employer payrolls), wealth consists of heavily fluctuating asset valuations (shares, prime real estate) and is easily hidden in complex offshore trusts.",
+              "Why is Wealth harder to redistribute?: A government can easily alter PAYE income tax brackets to be more progressive. But taxing accumulated physical wealth (Wealth Taxes) frequently triggers massive capital flight and aggressively destroys future investment incentives.",
+              "Depends on Equality of Opportunity: Inequality is only economically 'acceptable' if it strictly stems from different effort levels. If it instead stems from a systemic lack of basic education/healthcare access at birth, it permanently paralyzes long-term growth and traps the economy inside its PPC."
             ]
           }
         ]
@@ -271,16 +305,18 @@ export const coreConceptsData: ConceptCategory[] = [
           },
           {
             id: "macro-measuring-gdp",
-            name: "Methods of Measuring GDP",
-            description: "How GDP is calculated and limitations of its accuracy.",
+            name: "Methods of Measuring GDP & Living Standards",
+            description: "How GDP is calculated, its limitations, and whether it measures living standards accurately.",
             ao2: [
-              "GDP can be measured using the Output method (value added across all firms), Income method (wages, profits, rents), or Expenditure method (C + I + G + (X - M)).",
-              "To completely avoid double counting, calculations must only count final goods or use the strict value-added approach, and exclude transfer payments."
+              "GDP Measurement: Evaluated via the Output method (adding up value added), Income method (wages, profits, rents), or Expenditure method (C + I + G + (X - M)).",
+              "Measurement Best Practices: To avoid 'double counting', economists strictly count final goods (or use the value-added method) and universally exclude government transfer payments (e.g., pensions).",
+              "GDP vs Real GDP per Capita: Real GDP actively strips out the distortion of inflation. GDP per capita divides the total by population to roughly estimate average individual income."
             ],
             ao3: [
-              "Difficulties in Accuracy: The Hidden/Informal Economy (e.g., cash jobs, illegal black markets) is completely untraceable, massively understating real GDP in developing nations.",
-              "Non-Market Activities: Valuable output like housework, subsistence farming, or volunteer work is entirely excluded from official GDP figures.",
-              "Inflation Distortion: In extreme hyperinflation, separating nominal values into meaningful Real GDP becomes statistically difficult and prone to severe error."
+              "Does GDP accurately measure living standards?: No. GDP purely measures output, NOT human happiness or quality of life.",
+              "The Informal Economy Blindspot: The Hidden/Informal Economy (e.g., unrecorded cash jobs, illegal black markets) is completely untraceable. This massively understates the true living standards and actual output in developing nations.",
+              "Non-Market Activities & Quality: High-value societal 'output' like housework, subsidence farming, or volunteer work is ignored. Furthermore, GDP completely ignores the 'quality' of products and the amount of leisure time residents enjoy.",
+              "Environmental Tragedy: GDP heavily counts the production of a factory, but actively ignores the terrifying negative externalities (air pollution, deforestation) it causes. An economy might boom in GDP while completely poisoning its citizens' life expectancy."
             ]
           },
           {
@@ -352,16 +388,17 @@ export const coreConceptsData: ConceptCategory[] = [
           },
           {
             id: "macro-budget-causes",
-            name: "Causes of Budget Deficits (Cyclical vs Structural)",
-            description: "Understanding why governments overspend and which type is worse.",
+            name: "Causes & Impacts of Budget Deficits (Cyclical vs Structural)",
+            description: "Understanding why governments overspend, the pros/cons, and which type is worse.",
             ao2: [
-              "A budget deficit occurs when government spending directly exceeds tax revenue in a financial year.",
-              "Cyclical Deficit: Caused by automatic stabilizers during a recession (tax revenue organically falls because of unemployment, welfare benefits organically rise).",
-              "Structural Deficit: A permanent imbalance that exists even when the economy is booming, caused by historically reckless spending or a fundamentally flawed tax collection network."
+              "A budget deficit explicitly occurs when government spending drastically exceeds tax revenue in a single financial year, adding to the National Debt.",
+              "Cyclical Deficit: Automatically caused by the business cycle during a recession. As workers lose jobs, income tax revenue organically crashes, and unemployment welfare payouts organically skyrocket (Automatic Stabilizers).",
+              "Structural Deficit: A permanent, terrifying imbalance that exists even when the economy is booming. It is caused by historically reckless political spending pledges, massive evasion, or an aging population triggering endless pension costs."
             ],
             ao3: [
-              "Which is more damaging?: Structural is infinitely more damaging. It causes permanent, unsustainable accumulation of national debt and requires painful discretionary austerity (massive spending cuts / tax hikes) to fix.",
-              "Cyclical Deficits are economically healthy: Letting a cyclical deficit balloon during a recession is mathematically necessary to cushion the crash (Keynesian support). It naturally self-corrects once economic growth returns."
+              "Which is more damaging?: Structural is infinitely more damaging. It causes a permanent, massive accumulation of national debt, terrifying interest repayment burdens, and requires agonizing discretionary 'Austerity' (aggressively cutting public services / raising taxes) to fix.",
+              "Cyclical Deficits are economically necessary: Actively allowing a cyclical deficit to balloon violently during a severe recession is mathematically necessary to cushion the crash (Keynesian support). Without this spending, the economy plunges into depression. Furthermore, cyclical deficits organically self-correct once economic growth returns.",
+              "The 'Crowding Out' Consequence: If a government continually runs massive structural deficits, it must aggressively borrow from financial markets. This can drive up national interest rates, horrifyingly 'crowding out' private sector investment as lending becomes too expensive for normal businesses."
             ]
           },
           {
@@ -507,16 +544,17 @@ export const coreConceptsData: ConceptCategory[] = [
         concepts: [
           {
             id: "macro-economic-growth",
-            name: "Economic Growth",
-            description: "Evaluating whether GDP growth is always desirable.",
+            name: "Economic Growth (Policies & Consequences)",
+            description: "Evaluating if GDP growth is always desirable and how to safely trigger it.",
             ao2: [
-              "Pros: Higher living standards, creation of jobs (reducing cyclical unemployment), and a 'fiscal dividend' (gov collects more tax without raising rates) to spend on health/education.",
-              "Cons: Severe environmental degradation, massive stress/less leisure time, rising income inequality if growth is skewed towards the rich, and vicious demand-pull inflation."
+              "Triggers of Growth: Sustained Long-Run economic growth requires an outward shift of the PPC/LRAS. This is achieved via Supply-Side Policies (SSP) like heavy investments in STEM education, privatization, building 5G infrastructure, and promoting enterprise.",
+              "Pros: Drastically higher living standards, massive creation of new jobs (obliterating cyclical unemployment), and a powerful 'fiscal dividend' (the government naturally collects vastly more tax revenue to build hospitals without ever needing to raise tax rates).",
+              "Cons: Severe environmental degradation (carbon emissions), brutal workplace stress/reduced leisure time, potentially widening income inequality (if growth is captured only by elites), and explosive demand-pull inflation if the growth is unmanaged."
             ],
             ao3: [
-              "Depends on the Type of Growth: Demand-led growth (AD shifting right near full capacity) is dangerous and inflationary. Supply-led growth (LRAS shifting right) is sustainable and non-inflationary.",
-              "Distribution of Benefits: Growth is only meaningful if it is evenly distributed. A 5% GDP growth means nothing to the poor if inflation is 6% and only elites captured the newly created wealth.",
-              "Sustainable vs Short-term: Growth driven by rapid depletion of natural resources (e.g. chopping down entire forests) is catastrophic in the long term."
+              "Demand-Led vs Supply-Led Growth: Demand-led growth (AD shifting rapidly to the right near full capacity) is highly dangerous and inflationary. Supply-led growth (LRAS shifting right) is universally superior because it is sustainable and non-inflationary.",
+              "Distribution of Benefits: Growth is only a 'success' if it is evenly distributed. A booming 5% GDP growth rate means absolutely nothing to working-class families if inflation is running at 6% and all the newly created wealth was instantly captured by corporate monopolies.",
+              "Sustainable vs Short-term Strip Mining: Growth artificially driven by the rapid, chaotic depletion of natural resources (e.g., hastily chopping down entire national forests for timber) provides a brilliant short-term boom but causes a catastrophic, permanent loss of GDP in the long term."
             ]
           }
         ]
