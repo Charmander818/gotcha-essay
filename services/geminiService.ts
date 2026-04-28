@@ -26,6 +26,7 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
     ${question.markScheme}
     
     **CRITICAL EXAMINER INSTRUCTIONS (MUST FOLLOW):**
+    - **Marking Strategy:** 12-mark questions are graded based on Levels (AO1+2 combined up to 8, AO3 up to 4). 8-mark questions are graded based on valid points covered from the Mark Scheme.
     1. **AO1 (Knowledge) Rules:**
        - ONLY provide real-world examples if the question explicitly asks for them.
        - ONLY draw/describe diagrams if the question explicitly asks for them, OR if they are absolutely necessary to explain the AO2 analysis. A diagram without written explanation scores 0.
@@ -119,15 +120,18 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
       - Did they give a conclusion without explaining *why* based on a specific context? PENALIZE.
       - *Praise them if Evaluation is the comparison of the strengths and weaknesses of different concepts etc., leading to a conclusion that attempts to answer the question set.*
 
-    **STEP 3: SCORING RULES (Strict Adherence)**
-    - **CRITICAL:** The Mark Scheme provides a list of *possible* valid points. The student DOES NOT need to cover every single point in the mark scheme to get full marks.
+    **STEP 3: SCORING RULES & STRICTNESS (Strict Adherence)**
+    - **CRITICAL EXAMINER STRICTNESS:** AS Level economics involves severe strictness ('压分'). Examiners look for flaws to DENY marks. Do not give full marks easily. You MUST be extremely critical, penalizing generic answers, vague terminology, missing links, and uncontextualized evaluation. Look for reasons to withhold marks.
+    - **CRITICAL:** The Mark Scheme provides a list of *possible* valid points. The student DOES NOT need to cover every single point in the mark scheme.
     ${question.maxMarks === 12 
-      ? `- **AO1 (Knowledge) + AO2 (Analysis):** Max 8 marks. (Requires detailed chains of reasoning, diagrams, accurate definitions).
-         - If the student provides the required number of well-developed points (e.g., exactly 3 positive and 3 negative points for a single concept, OR 2 pros/2 cons each for two policies) with complete logical chains, they MUST receive FULL AO2 marks. Do NOT penalize them for omitting other possible points listed in the mark scheme.
-         - **AO3 (Evaluation):** Max 4 marks. (Requires comparison of strengths/weaknesses leading to a conclusion, NO generic templates, MUST link to AO2).`
-      : `- **AO1 (Knowledge):** Max 3 marks.
-         - **AO2 (Analysis):** Max 3 marks.
-         - **AO3 (Evaluation):** Max 2 marks.`
+      ? `- **AO1 (Knowledge) + AO2 (Analysis):** Marks awarded via Level descriptors (Max 8 marks).
+          - Level 3 (6-8 marks): Detailed knowledge/understanding, fully developed explanations, developed and detailed analysis using economic concepts. Well-organised.
+          - Level 2 (3-5 marks): Some relevant concepts, limited/overgeneralised explanations. Generally accurate analysis but little detail.
+          - Level 1 (1-2 marks): Few knowledge points, significant errors, descriptive analysis.
+         - **AO3 (Evaluation):** Marks awarded via Level descriptors (Max 4 marks).
+          - Level 2 (3-4 marks): Justified conclusion addressing specific requirements. Developed, reasoned, well-supported evaluative comment(s).
+          - Level 1 (1-2 marks): Vague conclusion. Simple evaluative comments with no development.`
+      : `- Award up to 8 marks strictly based on covering the points in the Mark Scheme. Requires sufficient logic chains to be awarded the marks per covered point. No levels are used for 8-mark questions.`
     }
 
     **STEP 4: GENERATE REPORT**
@@ -159,8 +163,8 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
     ### 4. Estimated Mark & Breakdown
     **Total: X / ${question.maxMarks}**
     ${question.maxMarks === 12 
-      ? `- AO1 + AO2: X / 8\n- AO3: X / 4`
-      : `- AO1: X / 3\n- AO2: X / 3\n- AO3: X / 2`
+      ? `- AO1 + AO2 (Max 8): X (Level Y)\n- AO3 (Max 4): X (Level Y)`
+      : `- Mark Scheme Points: X / 8`
     }
 
     ### 5. Final Advice for Improvement
@@ -204,9 +208,9 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
     2. **Scoring:** Estimate marks based on CIE standards:
        - **CRITICAL:** The Mark Scheme provides a list of *possible* valid points. The student DOES NOT need to cover every single point in the mark scheme to get full marks.
        ${is12Mark 
-         ? `- AO1 + AO2 combined (Max 8): If they hit the required number of points (e.g. 3 pros/3 cons for a single concept, or 2 pros/2 cons each for two policies) with complete logical chains, award full AO2 marks. DO NOT penalize for missing other points in the mark scheme.
-- AO3 (Max 4): Requires exactly 2 "depends on" points.` 
-         : "- AO1 (Max 3)\n- AO2 (Max 3)\n- AO3 (Max 2)"}
+         ? `- AO1 + AO2 combined (Max 8): Graded on a Level 1-3 scale. Detail and logical chains push them to Level 3 (6-8).
+- AO3 (Max 4): Graded on a Level 1-2 scale. Detailed, well-supported conclusions push them to Level 2 (3-4).`
+         : "- Mark Scheme Points Coverage: Award up to 8 marks based on points strictly covered from the Mark Scheme with sufficient logical chains."}
     
     3. **Advice:** Give ONE short, encouraging sentence on what to do next (e.g. "Good definition, now draw the AD/AS diagram" or "Logic Gap: Explain WHY consumption falls").
        ${is12Mark ? `

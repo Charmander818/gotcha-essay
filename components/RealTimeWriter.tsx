@@ -143,18 +143,10 @@ const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-3 gap-2 text-center">
+            <div className="grid grid-cols-1 gap-2 text-center">
               <div className="bg-slate-50 rounded-lg p-2">
-                <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO1</div>
-                <div className="text-lg font-semibold text-slate-700">{scores.ao1 || 0}<span className="text-xs text-slate-400 font-normal">/3</span></div>
-              </div>
-              <div className="bg-slate-50 rounded-lg p-2">
-                <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO2</div>
-                <div className="text-lg font-semibold text-slate-700">{scores.ao2 || 0}<span className="text-xs text-slate-400 font-normal">/3</span></div>
-              </div>
-              <div className="bg-slate-50 rounded-lg p-2">
-                <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO3</div>
-                <div className="text-lg font-semibold text-slate-700">{scores.ao3}<span className="text-xs text-slate-400 font-normal">/2</span></div>
+                <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">Mark Scheme Points</div>
+                <div className="text-lg font-semibold text-slate-700">{scores.total || 0}<span className="text-xs text-slate-400 font-normal">/{question.maxMarks}</span></div>
               </div>
             </div>
           )}
