@@ -11,6 +11,8 @@ import SyllabusTracker from './components/SyllabusTracker';
 import StrategyAnalyzer from './components/StrategyAnalyzer';
 import { PolicyFeastViewer } from './components/PolicyFeastViewer';
 import { CoreConceptViewer } from './components/CoreConceptViewer';
+import ExamTrends from './components/ExamTrends';
+import { TopicLibrary } from './components/TopicLibrary';
 import AddQuestionModal from './components/AddQuestionModal';
 import CodeExportModal from './components/CodeExportModal';
 import SyllabusExportModal from './components/SyllabusExportModal'; // New Import
@@ -500,7 +502,7 @@ const App: React.FC = () => {
     );
   }
 
-  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.STRATEGY || mode === AppMode.POLICY_FEAST || mode === AppMode.CORE_CONCEPTS;
+  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.POLICY_FEAST || mode === AppMode.CORE_CONCEPTS || mode === AppMode.EXAM_TRENDS || mode === AppMode.TOPIC_LIBRARY;
 
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50">
@@ -541,11 +543,6 @@ const App: React.FC = () => {
                     <h2 className="text-lg font-bold text-slate-800">Freeform Logic Improver</h2>
                     <p className="text-sm text-slate-500">Convert notes to formal chains</p>
                 </div>
-            ) : mode === AppMode.STRATEGY ? (
-                <div>
-                    <h2 className="text-lg font-bold text-slate-800">Exam Strategy Decoder</h2>
-                    <p className="text-sm text-slate-500">Reverse-engineering Mark Scheme Rules</p>
-                </div>
             ) : mode === AppMode.POLICY_FEAST ? (
                 <div>
                     <h2 className="text-lg font-bold text-slate-800">Policy FEAST</h2>
@@ -555,6 +552,16 @@ const App: React.FC = () => {
                 <div>
                     <h2 className="text-lg font-bold text-slate-800">Core Concepts</h2>
                     <p className="text-sm text-slate-500">AO2 & AO3 Masterclass</p>
+                </div>
+            ) : mode === AppMode.EXAM_TRENDS ? (
+                <div>
+                    <h2 className="text-lg font-bold text-slate-800">Exam Trends</h2>
+                    <p className="text-sm text-slate-500">Frequency Analysis & Predictions</p>
+                </div>
+            ) : mode === AppMode.TOPIC_LIBRARY ? (
+                <div>
+                    <h2 className="text-lg font-bold text-slate-800">Topic Library</h2>
+                    <p className="text-sm text-slate-500">Generate Ultimate Cheat Sheets</p>
                 </div>
             ) : selectedQuestion ? (
               <div>
@@ -588,16 +595,6 @@ const App: React.FC = () => {
                 Analysis
             </button>
             <button
-                onClick={() => setMode(AppMode.STRATEGY)}
-                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
-                  mode === AppMode.STRATEGY
-                    ? 'bg-purple-600 text-white shadow-sm' 
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-            >
-                Strategy
-            </button>
-            <button
                 onClick={() => setMode(AppMode.POLICY_FEAST)}
                 className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
                   mode === AppMode.POLICY_FEAST
@@ -616,6 +613,26 @@ const App: React.FC = () => {
                 }`}
             >
                 Concepts
+            </button>
+            <button
+                onClick={() => setMode(AppMode.EXAM_TRENDS)}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
+                  mode === AppMode.EXAM_TRENDS
+                    ? 'bg-purple-600 text-white shadow-sm' 
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+            >
+                Trends
+            </button>
+            <button
+                onClick={() => setMode(AppMode.TOPIC_LIBRARY)}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
+                  mode === AppMode.TOPIC_LIBRARY
+                    ? 'bg-purple-600 text-white shadow-sm' 
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+            >
+                Library
             </button>
             
             <div className="w-px bg-slate-300 mx-1"></div>
@@ -659,12 +676,14 @@ const App: React.FC = () => {
                </div>
             ) : mode === AppMode.LOGIC_CHAIN ? (
                 <div className="p-8"><LogicChainImprover /></div>
-            ) : mode === AppMode.STRATEGY ? (
-                <StrategyAnalyzer questions={allQuestions} />
             ) : mode === AppMode.POLICY_FEAST ? (
                 <PolicyFeastViewer />
             ) : mode === AppMode.CORE_CONCEPTS ? (
                 <CoreConceptViewer />
+            ) : mode === AppMode.EXAM_TRENDS ? (
+                <ExamTrends questions={allQuestions} />
+            ) : mode === AppMode.TOPIC_LIBRARY ? (
+                <div className="p-8 h-full bg-slate-50"><TopicLibrary questions={allQuestions} /></div>
             ) : selectedQuestion ? (
               <div className="p-8">
                 {mode === AppMode.GENERATOR && (

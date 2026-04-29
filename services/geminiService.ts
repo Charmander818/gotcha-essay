@@ -26,7 +26,11 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
     ${question.markScheme}
     
     **CRITICAL EXAMINER INSTRUCTIONS (MUST FOLLOW):**
-    - **Marking Strategy:** 12-mark questions are graded based on Levels (AO1+2 combined up to 8, AO3 up to 4). 8-mark questions are graded based on valid points covered from the Mark Scheme.
+    - **Context:** AS Level economics involves severe strictness ('压分'). Examiners look for flaws to DENY marks. A perfect essay must be entirely bulletproof.
+    - **Marking Strategy:** 12-mark questions are graded based on Levels. To hit the maximum marks, your essay MUST satisfy:
+      - **AO1+2 (Max 8, Level 3):** Detailed knowledge and understanding, fully developed explanations. Analysis is developed, detailed, and makes accurate and relevant use of economic concepts, theories, and tools (diagrams) which are fully explained. Well-organised, logical, and coherent.
+      - **AO3 (Max 4, Level 2):** Provides a justified conclusion/judgement addressing specific question requirements. Makes developed, reasoned, and well-supported evaluative comment(s).
+    - **8-Mark Strategy:** Graded strictly based on Mark Scheme valid points covered. Your essay MUST cover sufficient distinct points from the Mark Scheme with robust logical chains to secure the full 8 marks without needing everything in the Mark Scheme.
     1. **AO1 (Knowledge) Rules:**
        - ONLY provide real-world examples if the question explicitly asks for them.
        - ONLY draw/describe diagrams if the question explicitly asks for them, OR if they are absolutely necessary to explain the AO2 analysis. A diagram without written explanation scores 0.
@@ -576,5 +580,20 @@ export const evaluateSyllabusChain = async (topicTitle: string, point: string, s
   } catch (error) {
     console.error("Syllabus Eval Error:", error);
     return "Failed to evaluate logic chain.";
+  }
+};
+
+export const generateChatResponse = async (prompt: string): Promise<string> => {
+  try {
+    checkForApiKey();
+    const ai = getAI();
+    const response = await ai.models.generateContent({
+      model: 'gemini-3-flash-preview',
+      contents: prompt,
+    });
+    return response.text || "";
+  } catch (error) {
+    console.error("Chat Response Error:", error);
+    throw new Error("Failed to generate response.");
   }
 };
