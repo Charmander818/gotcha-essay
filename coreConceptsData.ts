@@ -286,275 +286,194 @@ export const coreConceptsData: ConceptCategory[] = [
     category: "Macroeconomics",
     topics: [
       {
-        id: "macro-ad-as",
-        topic: "The Macroeconomy (AD/AS, GDP, Inflation & Unemployment)",
+        id: "macro-economy-1",
+        topic: "1. Macro economy (Growth, Unemployment, Price Stability)",
         concepts: [
           {
-            id: "macro-circular",
-            name: "Circular Flow of Income (Closed vs Open)",
-            description: "Understanding injections, leakages, and equilibrium.",
+            id: "macro-growth",
+            name: "Economic Growth",
+            description: "Measurement (GDP), Causes, and Consequences.",
             ao2: [
-              "A closed economy model has Injections (Investment + Government Spending) and Leakages (Savings + Taxation). Equilibrium is where I + G = S + T.",
-              "An open economy incorporates international trade. Exports (X) act as a strong injection, while Imports (M) act as a leakage. Equilibrium becomes I + G + X = S + T + M.",
-              "If injections exceed leakages, the economy experiences a positive multiplier effect leading to aggregate economic growth."
+              "Measurement: Output method (adding up value added), Income method (wages + profits + rents), or Expenditure method (C + I + G + (X - M)).",
+              "Causes: Demand-Led (AD shift right via lower interest rates/Gov spending) vs Supply-Led (LRAS shift right via tech advancements, education).",
+              "Consequences (Pros): Higher living standards, massive job creation (reducing cyclical unemployment), and 'fiscal dividend' (Gov collects more tax revenue to spend on healthcare without raising tax rates)."
             ],
             ao3: [
-              "Extent of Impact: Whether an increase in infrastructure investment (Injection) successfully boosts the circular flow depends on the size of the Multiplier (MPC). If consumers save massive amounts of new income (high MPS), the impact is negligible.",
-              "Dependence on Trade: A trade deficit (Leakage > Injection in trade) does not guarantee negative economic growth IF it is heavily offset by massive domestic government spending or private investment."
-            ]
-          },
-          {
-            id: "macro-measuring-gdp",
-            name: "Methods of Measuring GDP & Living Standards",
-            description: "How GDP is calculated, its limitations, and whether it measures living standards accurately.",
-            ao2: [
-              "GDP Measurement: Evaluated via the Output method (adding up value added), Income method (wages, profits, rents), or Expenditure method (C + I + G + (X - M)).",
-              "Measurement Best Practices: To avoid 'double counting', economists strictly count final goods (or use the value-added method) and universally exclude government transfer payments (e.g., pensions).",
-              "GDP vs Real GDP per Capita: Real GDP actively strips out the distortion of inflation. GDP per capita divides the total by population to roughly estimate average individual income."
-            ],
-            ao3: [
-              "Does GDP accurately measure living standards?: No. GDP purely measures output, NOT human happiness or quality of life.",
-              "The Informal Economy Blindspot: The Hidden/Informal Economy (e.g., unrecorded cash jobs, illegal black markets) is completely untraceable. This massively understates the true living standards and actual output in developing nations.",
-              "Non-Market Activities & Quality: High-value societal 'output' like housework, subsidence farming, or volunteer work is ignored. Furthermore, GDP completely ignores the 'quality' of products and the amount of leisure time residents enjoy.",
-              "Environmental Tragedy: GDP heavily counts the production of a factory, but actively ignores the terrifying negative externalities (air pollution, deforestation) it causes. An economy might boom in GDP while completely poisoning its citizens' life expectancy."
-            ]
-          },
-          {
-            id: "macro-calculating-cpi",
-            name: "Calculating the Inflation Rate (CPI)",
-            description: "How CPI is constructed and its measurement flaws.",
-            ao2: [
-              "CPI is constructed by establishing a base year, selecting a 'basket of representative goods and services', and carefully weighting each item based on the proportion of average household expenditure.",
-              "A periodic survey tracks the prices of these items at retail outlets to calculate the index change."
-            ],
-            ao3: [
-              "Measurement Limitations: The 'Average Household' does not exist. Poorer households spend heavily on food/energy, so if food prices spike, their personal inflation rate is vastly higher than the official CPI.",
-              "Updating the Basket: Consumer habits change rapidly. If the basket is slow to update, it overweights outdated technology and ignores new services.",
-              "Quality vs Price: If a phone doubles in price but also doubles in processing power, CPI statisticans struggle to mathematically separate 'inflation' from genuine 'quality improvement'."
-            ]
-          },
-          {
-            id: "macro-ad-as-shifts",
-            name: "Causes of Inflation and Deflation",
-            description: "Distinguishing between Cost-Push and Demand-Pull mechanisms.",
-            ao2: [
-              "Demand-Pull Inflation: Occurs when Aggregate Demand (AD) shifts right faster than Aggregate Supply. Caused by high consumer confidence, low interest rates, or increased government spending.",
-              "Cost-Push Inflation: Occurs when Short-Run Aggregate Supply (SRAS) shifts left. Caused by rising wages, expensive raw materials, or currency depreciation (imported inflation).",
-              "Deflation: Can be caused by a collapse in AD (Demand-side) or massive productivity gains shifting AS right (Supply-side)."
-            ],
-            ao3: [
-              "Which is more damaging?: Cost-push inflation is universally more damaging as it causes 'Stagflation' (high inflation paired with rising unemployment and falling GDP). Demand-pull inflation at least runs parallel with economic growth.",
-              "State of the Economy: Demand-pull inflation is only a severe problem if the economy is operating at or near full capacity on the LRAS curve. If there is spare capacity, an AD increase mostly boosts output rather than prices.",
-              "Deflation severity: Demand-side deflation causes a catastrophic deflationary spiral (consumers delay all spending). Supply-side deflation is highly beneficial as output expands and prices fall."
+              "Consequences (Cons): Severe environmental degradation (negative externalities), explosive demand-pull inflation if growth is too rapid, and widened income inequality if wealth is captured by monopolies.",
+              "Measurement Difficulties: GDP purely measures output, not human happiness. It ignores the informal economy (unrecorded cash jobs) and non-market activities (unpaid housework).",
+              "Is Growth Always Desirable?: It depends on how it is achieved. Supply-led growth is sustainable and non-inflationary. Demand-led growth at full capacity just creates inflation."
             ]
           },
           {
             id: "macro-unemployment",
-            name: "Types of Unemployment & Measurement",
-            description: "Evaluating which types of unemployment are most damaging and how they are measured.",
+            name: "Unemployment",
+            description: "Measurement, Causes, Consequences, and Policies.",
             ao2: [
-              "Measurement 1 (Claimant Count): Measures unemployment by counting individuals claiming unemployment-related welfare benefits.",
-              "Measurement 2 (Labour Force Survey): Uses sampling to identify people who are without a job but have actively sought work recently.",
-              "Types: Cyclical (Demand-deficient), Structural (Mismatch of skills due to changing tech/industries), Frictional (Between jobs).",
-              "Pros (Frictional only): Frictional unemployment allows workers to search for jobs that perfectly match their skills, leading to higher long-term productivity and happiness.",
-              "Cons: Massive loss of potential GDP, massive fiscal drain (welfare benefits rise, income tax falls), hysteresis (long-term unemployed lose skills), and crime/social unrest."
+              "Measurement: Claimant count (welfare claims) vs Labour Force Survey (survey of active job seekers). Errors arise from stigma (under-claiming) or the hidden economy (fraud).",
+              "Causes: Cyclical (Demand-deficient recessions), Structural (mismatch of skills due to tech/deindustrialization), Frictional (short-term gaps between jobs).",
+              "Consequences (Cons): Massive loss of potential GDP, extreme fiscal drain (tax revenue collapses while welfare spending skyrockets), and 'hysteresis' (long-term unemployed permanently lose their skills)."
             ],
             ao3: [
-              "Reliability of Measures: The Claimant Count often vastly underestimates actual unemployment due to stigma or strict eligibility rules. The LFS avoids limit errors but is subject to statistical sampling errors and hidden/informal economy presence.",
-              "Comparison of Severity: Structural and Technological unemployment are radically more severe than Cyclical because the skills of the workers are permanently rendered obsolete. Cyclical reverses once the economy booms.",
-              "Depends on Duration: Short-term frictional is harmless. Long-term unemployment causes a permanent inward shift of the PPC as human capital erodes (Hysteresis)."
+              "Consequences (Pros): Almost universally negative, EXCEPT Frictional unemployment which has positive consequences—it allows workers time to find jobs that perfectly perfectly match their skills, boosting long-term productivity.",
+              "Severity Comparison: Technological/Structural unemployment is radically more damaging and permanent than cyclical. Cyclical reverses naturally when AD recovers, but structural requires decades of retraining.",
+              "Policies: For cyclical, use Expansionary Monetary Policy (cut rates to boost AD). For structural, use Supply-Side Policy (re-training, education). Using MP to fix structural unemployment just causes inflation."
+            ]
+          },
+          {
+            id: "macro-price-stability",
+            name: "Price Stability (Inflation & Deflation)",
+            description: "Measurement (CPI), Causes, Consequences, and Policies.",
+            ao2: [
+              "Measurement (CPI): Establish base year. Select a 'basket' of representative goods. Weight items based on average household expenditure proportion. Execute periodic price surveys.",
+              "Causes: Demand-pull (surging AD via high confidence/Gov spending). Cost-push (shrinking SRAS via rising wages/raw material shocks - most damaging!).",
+              "Consequences of Inflation (Pros): A low, stable rate allows firms to adjust real wages smoothly, prevents deflationary spirals, and erodes the real value of national/personal debt (benefiting borrowers)."
+            ],
+            ao3: [
+              "Consequences of Inflation (Cons): Shoe-leather costs, menu costs, destroys savings, and brutally destroys international export competitiveness.",
+              "Consequences of Deflation (Pros vs Cons): Supply-side 'good deflation' (SRAS shifts right) acts brilliantly to raise output, lower prices, and boost living standards. Demand-side 'bad deflation' causes a catastrophic deflationary spiral (consumers delay spending indefinitely).",
+              "Measurement Flaws & Policy: The 'average household' doesn't exist. Poor households suffer uniquely if food/energy spike. MP (raising rates) fixes demand-pull, but raises costs during cost-push inflation."
             ]
           }
         ]
       },
       {
-        id: "macro-policies",
-        topic: "Macroeconomic Policies & Budgets",
+        id: "macro-ad-as",
+        topic: "2 & 3. AD/AS Analysis & Circular Flow",
         concepts: [
           {
-            id: "macro-budget",
-            name: "Budget Balance / Deficit / Surplus",
-            description: "The pros and cons of government budget positions.",
+            id: "macro-ad-as-analysis",
+            name: "AD/AS Analysis",
+            description: "Causes of AD/AS shifts and their impacts.",
             ao2: [
-              "Pros [Deficit]: Stimulates the economy during a recession (Expansionary Fiscal Policy). Government spends more than taxes, injecting AD.",
-              "Cons [Deficit]: Explodes the national debt, causing massive interest repayment burdens. Can cause 'Crowding Out' (gov borrowing drives up interest rates, crushing private investment).",
-              "Pros [Surplus/Balance]: Creates stability, reduces national debt, and cools down a violently inflationary boom.",
-              "Cons [Surplus/Balance]: Adhering strictly to a balanced budget during a recession forces the government to cut spending, accelerating the economic collapse."
+              "Exams require deep textual explanations: DO NOT just say 'AD shifts right'. Explain the transmission mechanism.",
+              "Increase in AD: If interest rates fall, borrowing becomes cheaper, causing Consumers to buy durables and Firms to invest in capital, shifting AD right. Or Gov raises spending on infrastructure.",
+              "Increase in AS: A cut in corporation tax increases retained profit, allowing reinvestment. Or a fall in global oil prices lowers production costs for all firms, shifting SRAS right."
             ],
             ao3: [
-              "Depends on Expenditure Type: A deficit is excellent if the money is spent on Capital Expenditure (new roads, broadband) because it builds LRAS to pay off the debt. It is terrible if spent on Current Expenditure (wages, pensions).",
-              "State of the Cycle: Running a deficit during a recession is responsible Keynesian economics. Running a massive deficit during an economic boom is highly inflationary and irresponsible."
+              "Does AD increase ALWAYS lead to inflation?: No. It strictly depends on the current state of the economy. If operating deeply on the horizontal Keynesian segment (massive spare capacity), AD increases yield massive real GDP growth with zero inflation.",
+              "Cost-Push Danger: An AS decrease is the only factor that forcefully creates both inflation and a recession simultaneously (Stagflation)."
             ]
           },
           {
-            id: "macro-budget-causes",
-            name: "Causes & Impacts of Budget Deficits (Cyclical vs Structural)",
-            description: "Understanding why governments overspend, the pros/cons, and which type is worse.",
+            id: "macro-circular-flow",
+            name: "Circular Flow of Income",
+            description: "Equilibrium and Open vs Closed Economy shifts.",
             ao2: [
-              "A budget deficit explicitly occurs when government spending drastically exceeds tax revenue in a single financial year, adding to the National Debt.",
-              "Cyclical Deficit: Automatically caused by the business cycle during a recession. As workers lose jobs, income tax revenue organically crashes, and unemployment welfare payouts organically skyrocket (Automatic Stabilizers).",
-              "Structural Deficit: A permanent, terrifying imbalance that exists even when the economy is booming. It is caused by historically reckless political spending pledges, massive evasion, or an aging population triggering endless pension costs."
+              "The Circular Flow traces income. Injections (J) = Investment (I) + Gov Spending (G) + Exports (X). Leakages (W) = Savings (S) + Taxes (T) + Imports (M).",
+              "Mechanism of Change: Any injection (e.g., Gov spending ↑) raises household income immediately. Households spend a fraction of this based on their Marginal Propensity to Consume (MPC).",
+              "Crucial Exam Trap: This triggers the Multiplier Effect. The newly spent money becomes income for someone else, continually cycling and expanding until the new Leakages perfectly match the original Injection (J = W)."
             ],
             ao3: [
-              "Which is more damaging?: Structural is infinitely more damaging. It causes a permanent, massive accumulation of national debt, terrifying interest repayment burdens, and requires agonizing discretionary 'Austerity' (aggressively cutting public services / raising taxes) to fix.",
-              "Cyclical Deficits are economically necessary: Actively allowing a cyclical deficit to balloon violently during a severe recession is mathematically necessary to cushion the crash (Keynesian support). Without this spending, the economy plunges into depression. Furthermore, cyclical deficits organically self-correct once economic growth returns.",
-              "The 'Crowding Out' Consequence: If a government continually runs massive structural deficits, it must aggressively borrow from financial markets. This can drive up national interest rates, horrifyingly 'crowding out' private sector investment as lending becomes too expensive for normal businesses."
-            ]
-          },
-          {
-            id: "macro-taxation-types",
-            name: "Direct vs Indirect Taxation",
-            description: "Which method is best to raise tax revenue?",
-            ao2: [
-              "Direct Taxes (e.g., Income/Corporation tax): Levied on income/wealth. They are highly reliable revenue generators and mostly progressive.",
-              "Indirect Taxes (e.g., VAT/Sales tax): Levied on expenditure. They are harder to evade, quick to adjust, and can target demerit goods to fix market failure."
-            ],
-            ao3: [
-              "Fairness/Equity vs Revenue: Direct taxes are much fairer (progressive) but extreme marginal rates cause 'Brain Drain' and disincentivise entrepreneurial work (Laffer Curve effect).",
-              "The Regressive Flaw: Indirect taxes raise revenue efficiently but are mathematically regressive—they consume a vastly larger percentage of a poor person's income compared to a rich person, worsening inequality."
-            ]
-          },
-          {
-            id: "macro-gov-spending-types",
-            name: "Types of Gov Spending",
-            description: "Current, Capital, and Transfer Payments.",
-            ao2: [
-              "Current Spending: Recurring daily operational costs (civil servant wages, consumables in hospitals, military supplies).",
-              "Capital Spending: Investments in long-term physical assets (new highways, schools, fiber-optic broadband networks).",
-              "Transfer Payments: Redistribution of wealth where no economic output is received in return (state pensions, unemployment benefits)."
-            ],
-            ao3: [
-              "Is it always beneficial?: Capital spending is profoundly beneficial as it heavily shifts LRAS right, essentially paying for itself in the long run (despite distinct short-run implementation lags).",
-              "The Dangers of Current/Transfer Spending: Flooding the economy with massive transfer payments without simultaneously increasing AS creates violent demand-pull inflation. An over-reliance on current spending balloons the structural deficit to a point of crisis."
-            ]
-          },
-          {
-            id: "macro-fp-mp-ssp",
-            name: "FP vs MP vs SSP",
-            description: "Evaluating the three main macroeconomic tools.",
-            ao2: [
-              "Expansionary Fiscal Policy (FP): Cuts taxes & raises Gov spending. Direct injection to AD. Cons: Causes budget deficits & takes massive political time (Implementation Lag).",
-              "Monetary Policy (MP): Central banks cut interest rates. Pros: Fast to execute. Cons: Liquidity Trap - if confidence is dead, 0% rates won't make anyone borrow. Hot money outflows cause depreciation.",
-              "Supply Side Policy (SSP): Education, training, deregulation. Pros: The ONLY policy that gives growth WITHOUT inflation. Cons: Gigantic time lags (takes 15 years to educate a child) and massive opportunity costs."
-            ],
-            ao3: [
-              "Time vs Effectiveness (SSP vs MP): MP acts quickly but doesn't fix underlying structural issues. SSP fixes the root cause but takes decades. Both must be used together.",
-              "Ceteris Paribus & Confidence: An aggressive MP rate cut will fail entirely if Global Recessions block trade or if Consumer Confidence is utterly destroyed.",
-              "Depends on Initial State: Pushing an expansionary FP or MP is disastrous if the economy has no spare capacity (steep part of AS curve), it will just ignite hyperinflation."
-            ]
-          },
-          {
-            id: "macro-deflation-policies",
-            name: "Policies to Correct Deflation (FP vs MP)",
-            description: "How to escape a deflationary spiral.",
-            ao2: [
-              "Deflation (falling general price level) crushes consumption. To fix it, Expansionary Monetary Policy (MP) slashes interest rates and injects money supply to stimulate borrowing.",
-              "Expansionary Fiscal Policy (FP) drastically cuts taxes and ramps up public capital spending (G) to forcibly inject money into the circular flow."
-            ],
-            ao3: [
-              "The Liquidity Trap Limitation: In severe deflation, MP frequently becomes completely useless. Even at 0% interest rates, fearful consumers will hoard cash rather than borrow (Consumer Confidence is zero).",
-              "Fiscal Supremacy: In deep deflation, FP is vastly superior. The government must step in directly as the 'spender of last resort' to guarantee wages via infrastructure jobs, though this will drastically increase the national debt."
+              "What determines extent of the change?: The Multiplier Effect. The size of the marginal propensities to import, tax, and save directly constrain the final increase to national equilibrium income.",
+              "If students write a standard AD/AS essay instead of explicitly linking to Injections (J) and Withdrawals (W), no major AO2 marks are awarded."
             ]
           }
         ]
       },
       {
-        id: "macro-exchange-trade",
-        topic: "Exchange Rates & International Trade",
+        id: "macro-trade-protectionism",
+        topic: "4 & 5. International Trade & Protectionism",
         concepts: [
           {
-            id: "macro-depreciate",
-            name: "Depreciation / Appreciation",
-            description: "Evaluating the impact of a falling or rising exchange rate.",
+            id: "macro-trade-ca",
+            name: "Theory of Comparative Advantage (CA)",
+            description: "Limitations and Role in Decision Making.",
             ao2: [
-              "Pros [Depreciation]: Lowers export prices & raises import prices -> Boosts AD (via Net Exports), cuts cyclical unemployment, and closes a trade deficit.",
-              "Cons [Depreciation]: Causes imported cost-push inflation (raw materials suddenly cost more), reducing living standards.",
-              "Pros [Appreciation]: Excellent for crushing inflationary pressure, as imported goods become cheap. Cheaper raw materials boost SRAS.",
-              "Cons [Appreciation]: Destroys export competitiveness, worsens the trade deficit, and costs domestic jobs."
+              "Comparative Advantage states countries should specialise in the good where they have the lowest opportunity cost (giving up less alternative output).",
+              "Benefits: By specialising and trading at a rate between their opportunity costs, both nations consume outside their native PPC boundaries, maximising global output.",
+              "Limitations: Exam questions testing 'only based on CA' require stating its unrealistic assumptions: assumes zero transport costs, perfect occupational mobility of labour, and constant returns to scale."
             ],
             ao3: [
-              "Marshall-Lerner Condition (Depends on Elasticity): Depreciation ONLY improves the trade deficit if the combined PED of exports and imports is > 1. If imports are inelastic necessities (oil), the deficit actually worsens.",
-              "State of the Economy: If the economy is already at full employment, a depreciation won't boost real GDP, it will just cause violent demand-pull inflation.",
-              "Time Lags (J-Curve): In the short term, trade contracts are signed. Depreciation worsens the deficit initially before improving it in the long run."
+              "Are CA theories undermined by realities?: Absolutely. Transport costs can easily eliminate a margin of comparative advantage. Complete specialisation leads to dangerous over-reliance.",
+              "Should CA be the main factor?: No. Strategic considerations (protecting infant industries, national security), transportation costs, and avoiding structural unemployment are equally critical factors.",
+              "Free Trade vs CA: In exams on free trade limits, 'limitation' extends beyond CA assumptions; it includes risks like over-reliance, dumping, and destruction of infant industries."
             ]
           },
           {
-            id: "macro-tot",
-            name: "Terms of Trade (TOT) Improvement",
-            description: "Evaluating whether an improved TOT is always beneficial.",
+            id: "macro-protectionism",
+            name: "Protectionism (Tariffs & Quotas)",
+            description: "Methods and whether free trade is always superior.",
             ao2: [
-              "Pros: An improved TOT (Export prices rise relative to Import prices) means a country can buy a larger volume of imports for the same volume of exports, immediately boosting living standards.",
-              "Cons: If export prices rose rapidly because of severe domestic inflation, then exports lose their international competitiveness, export volumes crash, and the balance of trade worsens."
+              "Pros of Free Trade: Consumers access cheaper prices and massive choice. Forces lazy domestic monopolies to become efficient. Global resources are maximized via Comparative Advantage.",
+              "Cons of Free Trade: Causes structural unemployment as uncompetitive domestic firms collapse. Leads to dangerous over-reliance on foreign powers for vital goods.",
+              "Pros of Protectionism: Essential to protect 'infant industries' until they reach economies of scale. Prevents predatory 'dumping' and saves domestic jobs during a crisis."
             ],
             ao3: [
-              "Depends on the Root Cause: An improved TOT is excellent if caused by an increase in global demand for a country's high-quality exports. It is terrible if caused by rampant domestic inflation.",
-              "Depends on Export Elasticity: If export prices rise, but global demand for them is highly price elastic, the country will lose massive amounts of export revenue, causing unemployment."
-            ]
-          },
-          {
-            id: "macro-ca-deficit",
-            name: "Current Account Deficit / Surplus",
-            description: "Is a trade imbalance always bad or good?",
-            ao2: [
-              "Pros [Deficit]: In the short term, a deficit means consumers are importing heavily, leading to high current living standards. It may also mean the country is importing vital capital machinery for future growth.",
-              "Cons [Deficit]: Causes debt, downward pressure on exchange rates, and signifies structural weakness (domestic firms are uncompetitive).",
-              "Pros [Surplus]: Indicates export-led growth, high employment in domestic industries, and stable, strong currency.",
-              "Cons [Surplus]: Causes demand-pull inflation, and signifies that the country is exporting its output rather than consuming it (lowering domestic living standards)."
-            ],
-            ao3: [
-              "Depends on Financing: A deficit is safe if financed by long-term Foreign Direct Investment (FDI). It is deadly if financed by volatile short-term 'Hot Money'.",
-              "Nature of the Imports (Cause): A deficit driven by importing capital machinery will improve the LRAS tomorrow. A deficit driven by importing luxury consumption goods is unsustainable."
-            ]
-          },
-          {
-            id: "macro-free-trade",
-            name: "Free Trade vs Protectionism",
-            description: "Evaluating the costs and benefits of opening borders vs tariffs.",
-            ao2: [
-              "Pros [Free Trade]: Consumers get massive choices and lower prices. Global resources are allocated efficiently via Comparative Advantage. Economies of scale are achieved.",
-              "Cons [Free Trade]: Structural unemployment as uncompetitive domestic businesses collapse. Over-specialisation leaves a country fatally vulnerable to global price shocks.",
-              "Pros [Protectionism]: Protects infant industries, saves domestic jobs, fixes current account deficits, and stops dumping.",
-              "Cons [Protectionism]: Guarantees retaliation (trade wars). Consumers subsidize inefficient domestic firms by paying higher prices."
-            ],
-            ao3: [
-              "Depends on Development Stage: Free trade is great for developed nations, but protectionism is mathematically necessary for developing nations to build infant industries.",
-              "Short Run vs Long Run: Tariffs might save jobs today (short run), but in the long run create lazy, uncompetitive monopolies that drag down economic growth.",
-              "Depends on Retaliation likelihood: If you place a tariff on a major superpower, they will retaliate and crush your exports, negating all benefits."
-            ]
-          },
-          {
-            id: "macro-comp-abs",
-            name: "Comparative and Absolute Advantage",
-            description: "The core arguments for free country specialisation.",
-            ao2: [
-              "What determines comparative advantage? Factor Endowments (abundance of land, labour, or capital). A country rich in fertile land will inevitably have a lower opportunity cost in agriculture.",
-              "Comparative Advantage vs Absolute: Absolute is producing more with the same resources. Comparative is producing at a lower opportunity cost.",
-              "Specialising based on comparative advantage increases total world output, reduces prices, and raises absolute living standards globally."
-            ],
-            ao3: [
-              "Does it change over time? (Dynamic Advantage): Yes. Rapid depletion of natural resources destroys initial endowments. Conversely, strong Supply-Side Policy (SSP) funding STEM education and tech infrastructure can artificially create new comparative advantages over decades (e.g., South Korea's tech dominance).",
-              "Unrealistic Assumptions: The classical theory operates on highly unrealistic assumptions such as zero transport costs, perfect occupational factor mobility, and constant returns to scale."
+              "Cons of Protectionism: Guarantees trade war retaliation. Consumers are forced to heavily subsidize inefficient domestic firms by paying artificially high prices. Breeds domestic monopolies.",
+              "Methods Effectiveness: Tariffs generate tax revenue, but if import demand is totally inelastic, imports won't fall much. Quotas guarantee an absolute physical limit, but provide zero tax revenue.",
+              "Impact on Different Agents: When testing 'does everyone benefit from protectionism', separate your analysis: Consumers suffer (pay higher prices), Producers win (gain market share), Government wins initially (tariff revenue)."
             ]
           }
         ]
       },
       {
-        id: "macro-performance",
-        topic: "Macroeconomic Objectives & Performance",
+        id: "macro-exchange-terms",
+        topic: "6. Exchange Rate & Terms of Trade (TOT)",
         concepts: [
           {
-            id: "macro-economic-growth",
-            name: "Economic Growth (Policies & Consequences)",
-            description: "Evaluating if GDP growth is always desirable and how to safely trigger it.",
+            id: "macro-exchange-rate",
+            name: "Exchange Rate (ER) Appreciation & Depreciation",
+            description: "Causes and Consequences of ER movements.",
             ao2: [
-              "Triggers of Growth: Sustained Long-Run economic growth requires an outward shift of the PPC/LRAS. This is achieved via Supply-Side Policies (SSP) like heavy investments in STEM education, privatization, building 5G infrastructure, and promoting enterprise.",
-              "Pros: Drastically higher living standards, massive creation of new jobs (obliterating cyclical unemployment), and a powerful 'fiscal dividend' (the government naturally collects vastly more tax revenue to build hospitals without ever needing to raise tax rates).",
-              "Cons: Severe environmental degradation (carbon emissions), brutal workplace stress/reduced leisure time, potentially widening income inequality (if growth is captured only by elites), and explosive demand-pull inflation if the growth is unmanaged."
+              "Cause Analysis: If a Central Bank raises interest rates, it attracts foreign investors seeking higher returns ('hot money' inflows). They buy the domestic currency, shifting demand right and causing Appreciation.",
+              "Pros of Depreciation: (SPICED backwards) Exports become massively cheaper abroad, boosting export volumes. Net exports rise, shifting AD right to fix cyclical unemployment and close a trade deficit.",
+              "Cons of Depreciation: Severe imported inflation. Imported raw materials instantly cost more, shifting SRAS left (cost-push inflation), which lowers domestic living standards."
             ],
             ao3: [
-              "Demand-Led vs Supply-Led Growth: Demand-led growth (AD shifting rapidly to the right near full capacity) is highly dangerous and inflationary. Supply-led growth (LRAS shifting right) is universally superior because it is sustainable and non-inflationary.",
-              "Distribution of Benefits: Growth is only a 'success' if it is evenly distributed. A booming 5% GDP growth rate means absolutely nothing to working-class families if inflation is running at 6% and all the newly created wealth was instantly captured by corporate monopolies.",
-              "Sustainable vs Short-term Strip Mining: Growth artificially driven by the rapid, chaotic depletion of natural resources (e.g., hastily chopping down entire national forests for timber) provides a brilliant short-term boom but causes a catastrophic, permanent loss of GDP in the long term."
+              "Pros of Appreciation: Excellent for fighting inflation. Imported goods and raw materials become incredibly cheap, shifting SRAS right.",
+              "Cons of Appreciation: Devastates export competitiveness. Domestic goods become too expensive abroad, destroying export industries and causing huge unemployment.",
+              "Marshall-Lerner Condition: A depreciation ONLY successfully improves a trade deficit if the combined Price Elasticity of Demand for exports and imports is > 1. If imports are perfectly inelastic (oil), a depreciation just worsens the deficit."
+            ]
+          },
+          {
+            id: "macro-tot-true",
+            name: "Terms of Trade (TOT)",
+            description: "Measurement, Causes, and Consequences based on root cause.",
+            ao2: [
+              "Measurement: TOT is natively calculated: (Index of Export Prices / Index of Import Prices) x 100. A numerical rise indicates an 'improvement'.",
+              "Pros of an Improved TOT: The nation can suddenly buy a vastly larger volume of essential imports for the exact same volume of exports, immediately boosting domestic living standards.",
+              "The 'Cause' Trap: An improvement is only beneficial depending entirely on its root cause. If export prices rose due to surging global demand, export revenue and living standards skyrocket."
+            ],
+            ao3: [
+              "Cons of an Improved TOT: If the TOT improved purely because the country suffers from violently high domestic inflation, their exports are now completely uncompetitive globally.",
+              "The 'PED' Trap: Following the domestic inflation cause, if the price elasticity of demand for their exports is elastic, the volume of exports sold will instantly crash.",
+              "Therefore: When discussing TOT consequences, you MUST explicitly state the cause. A demand-led TOT improvement is brilliant for the economy. An inflation-led TOT improvement destroys the Current Account."
+            ]
+          }
+        ]
+      },
+      {
+        id: "macro-fiscal-current",
+        topic: "7 & 8. Fiscal Policy & Current Account",
+        concepts: [
+          {
+            id: "macro-tax-budget",
+            name: "Taxation & Budget Deficit vs Surplus",
+            description: "Direct vs Indirect fairness, Deficits vs Surpluses.",
+            ao2: [
+              "Direct Tax (Income Tax): Levied on earnings. Progressive nature makes it equitable, shrinking the wealth gap. However, high marginal rates destroy incentives to work or invest.",
+              "Indirect Tax (VAT/Sales Tax): Levied on expenditure. Excellent for rapid, unavoidable revenue collection and solving demerit goods. However, it is mathematically regressive, harming lower-income households disproportionately.",
+              "Budget Deficit implies Expansionary Fiscal Policy (Gov Spending > Tax). It directly injects AD into the circular flow to pull the economy out of recession. Surplus withdraws AD to cool inflation."
+            ],
+            ao3: [
+              "Which is \"Fairer\"?: Income tax is progressive (fairer) but severe rates trigger brain drain. Sales tax generates massive revenue effortlessly but is brutally regressive.",
+              "Always aim for Balanced?: Assessing if Governments should 'always' aim for balance. In a severe recession, intentionally running a deficit (expansionary FP) is vital to save the economy.",
+              "Surplus Limitations: A rigid surplus acts as a severe withdrawal from the circular flow, crushing AD and causing potential cyclical unemployment. Therefore, a surplus is heavily damaging unless the economy is dangerously overheating."
+            ]
+          },
+          {
+            id: "macro-current-account",
+            name: "Current Account",
+            description: "Deficits, Surpluses, Causes, and Consequences.",
+            ao2: [
+              "Causes of Deficit (CAD): Overvalued exchange rate, high domestic inflation, or a massive domestic boom organically sucking in luxury imports.",
+              "Pros of CAD: In the short term, consumers are importing heavily, yielding incredible current living standards. Or, the deficit is caused by importing capital machinery, guaranteeing massive future LRAS growth.",
+              "Cons of CAD: Represents a huge net leakage from the circular flow (crushing AD). Forces the country into severe international debt, and places downward pressure to collapse the exchange rate."
+            ],
+            ao3: [
+              "Is CAD always a concern?: It entirely depends on the root cause. A Cyclical CAD (boom) or Capital-led CAD are totally harmless. A Structural CAD (uncompetitive, lazy domestic export industries) will irreversibly destroy national wealth.",
+              "Pros of CAS: A Current Account Surplus signifies massive export-led growth, huge employment in domestic industries, and a sturdy, rock-solid currency.",
+              "Cons of CAS: Causes extreme demand-pull inflation and means the nation is shipping its output abroad rather than consuming it, mathematically lowering domestic living standards."
             ]
           }
         ]
