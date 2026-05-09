@@ -9,9 +9,10 @@ interface Props {
 }
 
 const StrategyAnalyzer: React.FC<Props> = ({ questions }) => {
-  const [activeTab, setActiveTab] = useState<number | 'tips'>(8); // 8, 12, or 'tips'
+  const [activeTab, setActiveTab] = useState<number | 'tips'>(8); // 8, 12, 20 or 'tips'
   const [report8, setReport8] = useState<string>("");
   const [report12, setReport12] = useState<string>("");
+  const [report20, setReport20] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
   const handleAnalyze = async (marks: number) => {
@@ -19,7 +20,8 @@ const StrategyAnalyzer: React.FC<Props> = ({ questions }) => {
     try {
       const report = await analyzeExamStrategy(marks, questions);
       if (marks === 8) setReport8(report);
-      else setReport12(report);
+      else if (marks === 12) setReport12(report);
+      else setReport20(report);
     } catch (error: any) {
       console.error("Error analyzing strategy:", error);
       alert(`Failed to analyze strategy. Error: ${error?.message || String(error)}`);
@@ -28,7 +30,7 @@ const StrategyAnalyzer: React.FC<Props> = ({ questions }) => {
     }
   };
 
-  const activeReport = activeTab === 8 ? report8 : report12;
+  const activeReport = activeTab === 8 ? report8 : activeTab === 12 ? report12 : report20;
 
   const renderTips = () => (
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 animate-fade-in-up">
@@ -91,6 +93,19 @@ const StrategyAnalyzer: React.FC<Props> = ({ questions }) => {
           </ul>
         </section>
 
+        {/* 20-Mark Specific Rules */}
+        <section>
+          <h3 className="text-lg font-bold text-cyan-700 mb-3 border-b pb-2">20-Mark (A Level) Question Framework</h3>
+          <ul className="list-disc pl-5 space-y-2 text-slate-700">
+            <li><strong className="text-cyan-800">5-Part Structure:</strong> Introduction, Definition, Thesis/Anti-thesis, Synthesis, Conclusion.</li>
+            <li><strong className="text-cyan-800">Introduction:</strong> Highly recommended. Tell the examiner your <em>Approach</em>, your <em>Evaluation Framework</em>, and <em>Answer</em> the question directly.</li>
+            <li><strong className="text-cyan-800">Definition:</strong> Define ALL terms, including AS concepts. If no words stand out, define core chapter concepts (e.g., MRP for Labour).</li>
+            <li><strong className="text-cyan-800">Thesis & Anti-thesis:</strong> Make sure you address <em>every</em> part of the statement if there are multiple parts. Answer exactly what is asked. You must provide at least 2-3 fully explained counter-points (Anti-thesis points).</li>
+            <li><strong className="text-cyan-800">Synthesis:</strong> Compare the sides and arguments together. Often done with a specific "depends upon" condition analyzing the context heavily.</li>
+            <li><strong className="text-cyan-800">Conclusion:</strong> Answer the question explicitly AND summarize key arguments <em>without</em> adding any new analysis.</li>
+          </ul>
+        </section>
+
         {/* Correct EV Approach */}
         <section>
           <h3 className="text-lg font-bold text-emerald-700 mb-3 border-b pb-2">AO3: The Winning EV Formula</h3>
@@ -103,18 +118,18 @@ const StrategyAnalyzer: React.FC<Props> = ({ questions }) => {
           <h4 className="font-bold text-slate-800 mt-6 mb-2">Example: "Is a Maximum Price good?"</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1 block">AO2 (Analysis)</span>
-              <ul className="text-sm text-slate-700 space-y-1 list-disc pl-4">
-                <li><strong>Pros:</strong> Fast implementation, transparent.</li>
-                <li><strong>Cons:</strong> Causes shortages, long-term market distortion.</li>
-              </ul>
+               <span className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1 block">AO2 (Analysis)</span>
+               <ul className="text-sm text-slate-700 space-y-1 list-disc pl-4">
+                 <li><strong>Pros:</strong> Fast implementation, transparent.</li>
+                 <li><strong>Cons:</strong> Causes shortages, long-term market distortion.</li>
+               </ul>
             </div>
             <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-1 block">AO3 (Evaluation)</span>
-              <p className="text-sm text-blue-800">
-                <strong>Context:</strong> During COVID-19, masks are essential goods and prices spike.<br/>
-                <strong>Judgement:</strong> In this short-term crisis context, the speed of a max price outweighs the long-term distortion issues, making it an effective policy.
-              </p>
+               <span className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-1 block">AO3 (Evaluation)</span>
+               <p className="text-sm text-blue-800">
+                 <strong>Context:</strong> During COVID-19, masks are essential goods and prices spike.<br/>
+                 <strong>Judgement:</strong> In this short-term crisis context, the speed of a max price outweighs the long-term distortion issues, making it an effective policy.
+               </p>
             </div>
           </div>
         </section>
@@ -152,6 +167,16 @@ const StrategyAnalyzer: React.FC<Props> = ({ questions }) => {
               }`}
             >
               12-Mark Strategy
+            </button>
+            <button
+              onClick={() => setActiveTab(20)}
+              className={`px-6 py-3 rounded-lg text-sm font-bold transition-all ${
+                activeTab === 20
+                  ? 'bg-cyan-100 text-cyan-800 ring-2 ring-cyan-500'
+                  : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+              }`}
+            >
+              20-Mark Strategy
             </button>
             <button
               onClick={() => setActiveTab('tips')}

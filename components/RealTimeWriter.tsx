@@ -87,6 +87,7 @@ const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
   };
 
   const is12Mark = question.maxMarks === 12;
+  const is20Mark = question.maxMarks === 20;
 
   return (
     <div className="max-w-5xl mx-auto h-[calc(100vh-8rem)] grid grid-cols-3 gap-6">
@@ -131,15 +132,15 @@ const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
             <span className="text-slate-400 text-sm">/ {question.maxMarks}</span>
           </div>
 
-          {is12Mark ? (
+          {(is12Mark || is20Mark) ? (
             <div className="grid grid-cols-2 gap-2 text-center">
               <div className="bg-slate-50 rounded-lg p-2">
                 <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO1 + AO2</div>
-                <div className="text-lg font-semibold text-slate-700">{scores.ao1_ao2 || 0}<span className="text-xs text-slate-400 font-normal">/8</span></div>
+                <div className="text-lg font-semibold text-slate-700">{scores.ao1_ao2 || 0}<span className="text-xs text-slate-400 font-normal">/{is20Mark ? '14' : '8'}</span></div>
               </div>
               <div className="bg-slate-50 rounded-lg p-2">
                 <div className="text-[10px] text-slate-500 font-bold uppercase mb-1">AO3</div>
-                <div className="text-lg font-semibold text-slate-700">{scores.ao3}<span className="text-xs text-slate-400 font-normal">/4</span></div>
+                <div className="text-lg font-semibold text-slate-700">{scores.ao3}<span className="text-xs text-slate-400 font-normal">/{is20Mark ? '6' : '4'}</span></div>
               </div>
             </div>
           ) : (
