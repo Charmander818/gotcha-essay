@@ -67,7 +67,9 @@ const AddQuestionModal: React.FC<Props> = ({ isOpen, onClose, onSave, initialQue
     setFormData(prev => ({
       ...prev,
       topic: defaultTopic,
-      chapter: defaultChapters[0] || ''
+      chapter: defaultChapters[0] || '',
+      questionNumber: '',
+      maxMarks: newLevel === "A Level" ? 20 : 8
     }));
   };
 
@@ -85,9 +87,13 @@ const AddQuestionModal: React.FC<Props> = ({ isOpen, onClose, onSave, initialQue
   // Handle Question Number Change -> Auto-set Max Marks
   const handleQuestionNumberChange = (val: string) => {
     let marks = formData.maxMarks;
-    // Logic: (a) -> 8 marks, (b) -> 12 marks
-    if (val.includes('(a)')) marks = 8;
-    else if (val.includes('(b)')) marks = 12;
+    if (level === "A Level") {
+      marks = 20;
+    } else {
+      // Logic: (a) -> 8 marks, (b) -> 12 marks
+      if (val.includes('(a)')) marks = 8;
+      else if (val.includes('(b)')) marks = 12;
+    }
     
     setFormData(prev => ({
       ...prev,
@@ -113,12 +119,9 @@ const AddQuestionModal: React.FC<Props> = ({ isOpen, onClose, onSave, initialQue
   const chaptersMap = SYLLABUS_STRUCTURE[level].chapters as Record<string, string[]>;
   const currentChapters = chaptersMap[formData.topic] || [];
 
-  const questionNumberOptions = [
-    '2(a)', '2(b)', 
-    '3(a)', '3(b)', 
-    '4(a)', '4(b)', 
-    '5(a)', '5(b)'
-  ];
+  const questionNumberOptions = level === "A Level" 
+    ? ['2', '3', '4', '5'] 
+    : ['2(a)', '2(b)', '3(a)', '3(b)', '4(a)', '4(b)', '5(a)', '5(b)'];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
