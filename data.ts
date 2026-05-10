@@ -4944,8 +4944,8 @@ Accept all valid responses.`
     paper: "9708/41",
     variant: "May/June",
     questionNumber: "2",
-    topic: SyllabusTopic.GOVT_MICRO_AL,
-    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  chapter: "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "To improve allocative efficiency economists frequently advise governments to remove existing subsidies to the private sector providers of education.\nWith the help of a diagram, evaluate this advice.",
     markScheme: `Use Table A: AO1 Knowledge and understanding and AO2 Analysis and 
@@ -4983,7 +4983,7 @@ based on the ability to pay and not on the need to learn. Inefficiencies and ine
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.3 Economic development",
+  chapter: "11.3 Economic development",
     maxMarks: 20,
     questionText: "To what extent do you agree that an increase in productivity will lead to a higher standard of living in low-income countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5027,7 +5027,7 @@ some of which might have a less direct positive impact.`
     variant: "Feb/March",
     questionNumber: "2",
     topic: SyllabusTopic.GOVT_MICRO_AL,
-    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+  chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
     maxMarks: 20,
     questionText: "The use of air travel leads to market failure caused by negative externalities.\nWith the help of a diagram, assess the extent to which a government can intervene to correct this market failure.",
     markScheme: `AO1 Knowledge and understanding and AO2Analysis
@@ -5041,7 +5041,7 @@ some of which might have a less direct positive impact.`
     variant: "Feb/March",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.7 Oligopoly",
+  chapter: "7.6 Different market structures",
     maxMarks: 20,
     questionText: "Some firms in oligopoly markets choose to collude rather than engage in price competition. This will lead to higher prices and a less efficient allocation of resources.\nEvaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5068,7 +5068,7 @@ AO3 Evaluation
     variant: "Feb/March",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-    chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "Expenditure-reducing policies will reduce a balance of payments deficit but this will also cause significant unemployment.\nEvaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5093,7 +5093,7 @@ AO3 Evaluation
     variant: "Feb/March",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.1 Economic growth and economic development",
+  chapter: "11.3 Economic development",
     maxMarks: 20,
     questionText: "Assess the impact of globalisation on the standard of living in low-income countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5121,7 +5121,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.6 Monopoly",
+  chapter: "7.8 Differing objectives and policies of firms",
     maxMarks: 20,
     questionText: "Some firms frequently use price discrimination.\nAssess the view that when this occurs, price discrimination will always benefit the producer at the expense of the consumer and society.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5149,7 +5149,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-    chapter: "10.2 Macroeconomic policies",
+  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "An increase in a government's budget surplus will increase unemployment in the short run but it will make it easier to control a balance of payments deficit in the long run.\nEvaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5177,7 +5177,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "2",
     topic: SyllabusTopic.GOVT_MICRO_AL,
-    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+  chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
     maxMarks: 20,
     questionText: "The increased use of electric vehicles (EVs) is encouraged as part of governments' climate change policies because they create fewer negative externalities than diesel and petrol (gas) vehicles.\nEvaluate, with the help of diagrams, two policies that a government may use to encourage the use of EVs.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5206,7 +5206,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.2 Market structure",
+  chapter: "7.6 Different market structures",
     maxMarks: 20,
     questionText: "Evaluate, with the help of a diagram(s) how total market demand and minimum efficient scale may determine the form of market structure in an industry.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5232,7 +5232,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.1 Economic growth and economic development",
+  chapter: "11.3 Economic development",
     maxMarks: 20,
     questionText: "Consider the extent to which the depreciation of its foreign exchange rate contributes to the economic growth of a low-income country.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5258,7 +5258,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-    chapter: "10.2 Macroeconomic policies",
+  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "Evaluate the effectiveness of using monetary policy to reduce the rate of inflation and how this policy may affect a government's ability to achieve its other macroeconomic aims.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5289,8 +5289,8 @@ AO3 Evaluation
     paper: "9708/43",
     variant: "May/June",
     questionNumber: "2",
-    topic: SyllabusTopic.GOVT_MICRO_AL,
-    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  chapter: "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "To improve allocative efficiency economists frequently advise governments to remove existing subsidies to the private sector providers of education.\nWith the help of a diagram, evaluate this advice.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5320,7 +5320,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.6 Monopoly",
+  chapter: "7.8 Differing objectives and policies of firms",
     maxMarks: 20,
     questionText: "Some firms frequently use price discrimination.\nAssess the view that when this occurs, price discrimination will always benefit the producer at the expense of the consumer and society.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5348,7 +5348,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-    chapter: "10.2 Macroeconomic policies",
+  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "An increase in a government's budget surplus will increase unemployment in the short run but it will make it easier to control a balance of payments deficit in the long run.\nEvaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5376,7 +5376,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.1 Economic growth and economic development",
+  chapter: "11.3 Economic development",
     maxMarks: 20,
     questionText: "To what extent do you agree that an increase in productivity will lead to a higher standard of living in low-income countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5401,8 +5401,8 @@ AO3 Evaluation
     paper: "9708/41",
     variant: "Oct/Nov",
     questionNumber: "2",
-    topic: SyllabusTopic.GOVT_MICRO_AL,
-    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  chapter: "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "The provision of health care by the public sector is inefficient, therefore all health care should be provided by firms operating in the private sector.\nEvaluate this comment.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5432,7 +5432,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.6 Monopoly",
+  chapter: "7.6 Different market structures",
     maxMarks: 20,
     questionText: "A government allows the merger of two large firms in the same industry.\nWith the help of a diagram evaluate the view that this merger should not have been allowed.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5460,7 +5460,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-    chapter: "10.2 Macroeconomic policies",
+  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "Assess the extent to which monetary policy can be used effectively to solve the problem of unemployment.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5486,7 +5486,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.1 Economic growth and economic development",
+  chapter: "11.3 Economic development",
     maxMarks: 20,
     questionText: "To what extent do you agree with the view that globalisation benefits high-income countries at the expense of low-income countries?\nAssess the contribution of Foreign Direct Investment (FDI) to the improvement of the standard of living in low-income countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5524,7 +5524,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.1 Utility and consumer behaviour",
+  chapter: "7.2 Indifference curves and budget lines",
     maxMarks: 20,
     questionText: "Evaluate the use of indifference curve analysis to derive the demand curve for a normal good and the demand curve for an inferior good.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5557,7 +5557,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.5 Perfect competition",
+  chapter: "7.6 Different market structures",
     maxMarks: 20,
     questionText: "The model of perfect competition is the ideal form of market structure because it is the most efficient.\nWith the help of diagrams, evaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5583,7 +5583,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.3 Role of multinational companies (MNCs)",
+  chapter: "11.5 Relationship between countries at different levels of development",
     maxMarks: 20,
     questionText: "The presence of multinational corporations (MNCs) in a low-income country always promotes economic growth in that country.\nEvaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5610,7 +5610,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.MACROECONOMY_AL,
-    chapter: "9.1 National income statistics",
+  chapter: "9.1 The circular flow of income",
     maxMarks: 20,
     questionText: "Consider the relative merits of gross national income (GNI) and the multidimensional poverty index (MPI) as measures of the standard of living.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5646,8 +5646,8 @@ Evaluation may be by individual measure or by comparing the measures.
     paper: "9708/43",
     variant: "Oct/Nov",
     questionNumber: "2",
-    topic: SyllabusTopic.GOVT_MICRO_AL,
-    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  chapter: "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "Pollution is caused when consumers or producers make decisions based on self-interest. This is a sign of market failure.\nWith help of a diagram evaluate the extent to which government policies should rely upon market forces to address this market failure.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5676,7 +5676,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.7 Oligopoly",
+  chapter: "7.6 Different market structures",
     maxMarks: 20,
     questionText: "Evaluate the view that monopolistically competitive firms will always charge lower prices and operate more efficiently than a monopoly firm.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5703,7 +5703,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-    chapter: "10.2 Macroeconomic policies",
+  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "With the help of a diagram, assess the effectiveness of the use of fiscal policy to close a negative output gap in an economy.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5733,7 +5733,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.1 Economic growth and economic development",
+  chapter: "11.3 Economic development",
     maxMarks: 20,
     questionText: "Assess the impact of international aid on the standard of living in low-income countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5761,8 +5761,8 @@ AO3 Evaluation
     paper: "9708/42",
     variant: "Feb/March",
     questionNumber: "2",
-    topic: SyllabusTopic.GOVT_MICRO_AL,
-    chapter: "8.1 Market failure",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  chapter: "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "With the help of a diagram, assess the effectiveness of a government’s intervention in the price mechanism to address the causes of climate change.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5786,8 +5786,8 @@ AO3 Evaluation
     paper: "9708/42",
     variant: "Feb/March",
     questionNumber: "3",
-    topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.2 Trade unions",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+  chapter: "8.3 Labour market forces and government intervention",
     maxMarks: 20,
     questionText: "The introduction of a trade union into a perfectly competitive labour market will always lead to higher wage levels and a higher level of unemployment. With the help of a diagram, evaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5811,7 +5811,7 @@ AO3 Evaluation
     variant: "Feb/March",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-    chapter: "10.1 Macroeconomic policies",
+  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "With the help of a diagram, assess the effectiveness of government policies which might be used to reduce cost push inflation.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5836,7 +5836,7 @@ AO3 Evaluation
     variant: "Feb/March",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.1 Globalisation",
+  chapter: "11.6 Globalisation",
     maxMarks: 20,
     questionText: "Globalisation will help to achieve economic growth in high-income economies and this will automatically improve living standards. Evaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5862,7 +5862,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.1 Market structures",
+  chapter: "7.6 Different market structures",
     maxMarks: 20,
     questionText: "The long-term equilibrium position in perfect competition is frequently used to illustrate efficient resource allocation in a free market economy. Explain why this is so and consider what prevents efficiency from being achieved.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5883,7 +5883,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.1 Consumer behaviour",
+  chapter: "7.2 Indifference curves and budget lines",
     maxMarks: 20,
     questionText: "With the help of an indifference curve diagram, assess the extent to which a rise in price would affect the demand for a normal good differently from the demand for a Giffen good.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5904,7 +5904,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.MACROECONOMY_AL,
-    chapter: "9.2 Economic growth",
+  chapter: "9.2 Economic growth and sustainability",
     maxMarks: 20,
     questionText: "In many countries increased government spending is regarded as a cause of economic growth. It is sensible, therefore, for a government to spend more to increase economic growth as it is good for its country. To what extent do you agree with this argument?",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5925,7 +5925,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.MACROECONOMY_AL,
-    chapter: "9.1 National income statistics",
+  chapter: "9.1 The circular flow of income",
     maxMarks: 20,
     questionText: "National income statistics are often used as a measure of the standard of living. Consider to what extent national income statistics can be used to compare the standard of living between low-incomes and high-income and countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5944,8 +5944,8 @@ Alternative measures to develop the extent national income statistics can be use
     paper: "9708/42",
     variant: "May/June",
     questionNumber: "2",
-    topic: SyllabusTopic.GOVT_MICRO_AL,
-    chapter: "8.1 Market failure",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  chapter: "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "Market failure exists in all economies. Evaluate, with the aid of a diagram(s), the meaning of market failure and two policies a government may use to correct market failure.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5974,7 +5974,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.1 Market structures",
+  chapter: "7.6 Different market structures",
     maxMarks: 20,
     questionText: "Evaluate, with the aid of a diagram(s), whether excess profit (super-normal profit) is always necessary for the continued existence of firms in perfect competition and monopoly.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6000,7 +6000,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-    chapter: "10.1 Macroeconomic policies",
+  chapter: "10.2 Links between macroeconomic problems and their interrelatedness",
     maxMarks: 20,
     questionText: "In 2022, many countries experienced a high rate of inflation caused by disruptions to the supply of goods and services arising from the Covid-19 pandemic and the conflict between Russia and Ukraine. In one country, the government cut taxes and the central bank raised interest rates. Evaluate the likely impact of these policies on that government’s ability to control inflation.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6027,7 +6027,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.1 Globalisation",
+  chapter: "11.6 Globalisation",
     maxMarks: 20,
     questionText: "Evaluate the likely impact of globalisation on a low-income country’s standard of living.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6057,7 +6057,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.1 Market structures",
+  chapter: "7.6 Different market structures",
     maxMarks: 20,
     questionText: "The long-term equilibrium position in perfect competition is frequently used to illustrate efficient resource allocation in a free market economy. Explain why this is so and consider what prevents efficiency from being achieved.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6078,7 +6078,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.1 Consumer behaviour",
+  chapter: "7.2 Indifference curves and budget lines",
     maxMarks: 20,
     questionText: "With the help of an indifference curve diagram, assess the extent to which a rise in price would affect the demand for a normal good differently from the demand for a Giffen good.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6099,7 +6099,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.MACROECONOMY_AL,
-    chapter: "9.2 Economic growth",
+  chapter: "9.2 Economic growth and sustainability",
     maxMarks: 20,
     questionText: "In many countries increased government spending is regarded as a cause of economic growth. It is sensible, therefore, for a government to spend more to increase economic growth as it is good for its country. To what extent do you agree with this argument?",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6120,7 +6120,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.MACROECONOMY_AL,
-    chapter: "9.1 National income statistics",
+  chapter: "9.1 The circular flow of income",
     maxMarks: 20,
     questionText: "National income statistics are often used as a measure of the standard of living. Consider to what extent national income statistics can be used to compare the standard of living between low-incomes and high-income and countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6141,7 +6141,7 @@ Alternative measures to develop the extent national income statistics can be use
     variant: "Oct/Nov",
     questionNumber: "2",
     topic: SyllabusTopic.GOVT_MICRO_AL,
-    chapter: "8.1 Market failure",
+  chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
     maxMarks: 20,
     questionText: "Governments in many countries are promoting policies that reduce the impact of the negative externalities. Evaluate, using appropriate diagram(s), the extent to which two policies used to reduce negative externalities can also improve allocative efficiency.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6163,7 +6163,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.1 Market structures",
+  chapter: "7.6 Different market structures",
     maxMarks: 20,
     questionText: "Evaluate the consequences for the price and output of a firm if it changes its objective from profit maximisation to sales maximisation as a response to the principal-agent problem.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6187,7 +6187,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.MACROECONOMY_AL,
-    chapter: "9.3 Unemployment",
+  chapter: "9.3 Employment/unemployment",
     maxMarks: 20,
     questionText: "In periods of rising and persistent inflation, consumers and workers change their expectations of the future rate of inflation. Evaluate, with the help of a diagram(s), the consequences of these changes of expectations for fiscal policy.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6216,7 +6216,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.1 Globalisation",
+  chapter: "11.6 Globalisation",
     maxMarks: 20,
     questionText: "In recent years many countries have joined or established a free trade area (FTA). Evaluate, with the help of a diagram(s), whether membership of an FTA is always beneficial to a country.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6248,7 +6248,7 @@ Macroeconomic:
     variant: "Oct/Nov",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.1 Consumer behaviour",
+  chapter: "7.1 Utility",
     maxMarks: 20,
     questionText: "Evaluate whether marginal utility theory can fully explain the link between the changing price of a good and quantity demanded of that good.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6271,7 +6271,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "3",
     topic: SyllabusTopic.GOVT_MICRO_AL,
-    chapter: "8.2 Policies",
+  chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
     maxMarks: 20,
     questionText: "Privatisation is often required by the International Monetary Fund (IMF) and the World Bank before they are prepared to offer support to countries requiring loans, grants, debt relief and debt cancellation programs. Evaluate the view that privatisation will always improve the allocation of resources in a country.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6305,7 +6305,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.MACROECONOMY_AL,
-    chapter: "9.1 National income statistics",
+  chapter: "9.1 The circular flow of income",
     maxMarks: 20,
     questionText: "The table below contains some key economic data for Mexico in 2020: \nGross National Income (GNI): 18.5 billion pesos\nnominal wages: +2.8%\ndisposable income: +1.2%\nunemployment rate: 4.2%\npopulation growth rate: 1.1%\ninflation rate: 3.4%\nEvaluate the use of these statistics in assessing the standard of living in Mexico in 2020.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6329,7 +6329,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.3 Economic development",
+  chapter: "11.3 Economic development",
     maxMarks: 20,
     questionText: "Between 2010 and 2020, very low interest rates encouraged low-income countries to borrow money from foreign investors and governments to finance long-term economic growth. Evaluate this approach to promoting long-term economic growth.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6355,8 +6355,8 @@ AO3 Evaluation
     paper: "9708/43",
     variant: "Oct/Nov",
     questionNumber: "2",
-    topic: SyllabusTopic.GOVT_MICRO_AL,
-    chapter: "8.1 Market failure",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  chapter: "7.4 Private costs and benefits, externalities and social costs and benefits",
     maxMarks: 20,
     questionText: "Negative externalities of production cause market failure. With the help of a diagram, assess the extent to which the introduction of indirect taxation is likely to address this cause of market failure.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6383,8 +6383,8 @@ AO3 Evaluation
     paper: "9708/43",
     variant: "Oct/Nov",
     questionNumber: "3",
-    topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.2 Labour market",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+  chapter: "8.3 Labour market forces and government intervention",
     maxMarks: 20,
     questionText: "Wages in a perfectly competitive labour market will always be higher than wages in a monopsony labour market. With the help of a diagram evaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6411,7 +6411,7 @@ In some cases, the intervention of Trades Union might lead to an increase in the
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.MACROECONOMY_AL,
-    chapter: "9.4 Money and inflation",
+  chapter: "9.4 Money and banking",
     maxMarks: 20,
     questionText: "Central banks can control the money supply. An increase in the money supply will cause inflation, therefore central banks can control inflation. Evaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6436,7 +6436,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-    chapter: "11.1 Globalisation",
+  chapter: "11.6 Globalisation",
     maxMarks: 20,
     questionText: "Some high-income countries have introduced high tariffs on some imports to reduce the negative effects of globalisation on their economies. With the help of a diagram, evaluate this policy.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6456,4 +6456,344 @@ AO3 Evaluation
 • Protecting inefficient domestic firms by using tariffs is likely to have a negative effect on the economy in the long term.
 • A conclusion should attempt to use cost/benefit analysis and use the preceding analysis to examine the net effect of the introduction of selective tariffs by high-income countries on their economies.`
   }
+,
+{
+  "id": "fm25-42-2",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "Feb/March",
+  "questionNumber": "2",
+  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  "chapter": "7.6 Different market structures",
+  "maxMarks": 20,
+  "questionText": "Oligopolies are able to avoid price competition while maintaining supernormal profits in the long run. Evaluate this statement.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Key characteristics of an Oligopoly market structure.\n• Explanation of the kinked demand curve and price rigidity.\n• Recognition that Game theory might predict stable prices through Nash equilibrium.\n• Analysis of how barriers to entry might enable abnormal profits to be maintained in the long run.\n• Analysis of how collusion might enable abnormal profits to be maintained in long run.\n• Analysis of use of limit pricing to maintain abnormal profits in long run.\n• Alternatives such as non-price competition might be used to maintain profits in long run\n\nAO3 Evaluation\n• Collusion to establish common prices is often illegal and also in some circumstances, difficult to maintain.\n• It might be difficult to maintain barriers to entry if a government introduces legislation to promote more contestable markets.\n• The extended use of limit pricing might have a significant negative impact on profitability in the short run which might reduce investment and dynamic efficiency in the long run.\n• The use of non-price competition based on advertising and/or product differentiation might be costly and significantly reduce profits.\n• Some Oligopolies might prefer to adopt a break-even pricing policy in the long run to increase market share, rather than maximizing profits.\n• A conclusion should be attempted which uses the preceding discussion to evaluate the statement under consideration"
+},
+{
+  "id": "fm25-42-3",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "Feb/March",
+  "questionNumber": "3",
+  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  "chapter": "8.3 Labour market forces and government intervention",
+  "maxMarks": 20,
+  "questionText": "With the help of a diagram, evaluate the consequences of imposing an effective minimum wage on the employment level and the wage level in a monopsony labour market.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• The key characteristics of a monopsony labour market should be provided\n• An explanation of what is meant by a minimum wage should be provided.\n• An accurate, clearly labelled diagram showing the effect of the introduction of a minimum wage in a monopsony labour market should be provided.\n• The impact of the increase of the minimum wage on both the supply of and demand for labour in a monopsony labour market should be analysed.\n• Analysis should be used to determine the potential impact on the level of employment and the new equilibrium wage rate\nL2 Max if no relevant diagram provided.\n\nAO3 Evaluation\n• It should be recognized that the impact on wages and employment will be different depending upon the relative elasticities of demand for and supply of labour in a monopsony market.\n• The extent of the increase will determine the significance of the impact upon the wage level and the level of employment.\n• A minimum wage that increases the current wage might increase productivity, which would increase the MRP curve, increase the demand for labour and lead to even higher wage levels.\n• A minimum wage may lead to the closure of smaller businesses that might already be struggling trying to make a profit thus decreasing employment.\n• A minimum wage may raise costs which might make some businesses less competitive in global markets.\n• The impact of a higher minimum wage on employment will also depend upon how easy it is to substitute capital for labour and the existing proportion of capital to labour in the particular industry.\n• A conclusion should attempt to formulate a judgement regarding the likely net effect on wages and employment in a monopsony labour market."
+},
+{
+  "id": "fm25-42-4",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "Feb/March",
+  "questionNumber": "4",
+  topic: SyllabusTopic.GOVT_MACRO_AL,
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "maxMarks": 20,
+  "questionText": "With the help of a diagram, assess the effectiveness of government policies that might be used to reduce demand-pull inflation.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• A clear outline of different causes of demand-pull inflation and why inflation might cause problems.\n• A more detailed analysis of the causes of demand-pull inflation, can use either a monetarist or Keynesian approach, supported by an accurately labelled diagram\n• A description of alternative policies that a government might use to reduce demand-pull inflation, can focus upon either a Keynesian or monetarist perspective\n• Analysis can be used to show how a government will be able decrease aggregate demand, by appropriate fiscal policy. For example, by increasing direct taxation. This analysis might also be supported by a relevant diagram\n• Alternatively, a government might focus on the use of different types of monetary policy. For example, increasing interest rates, re-valuing the currency or open market operations. Accept alternative supply side policies.\nL2 Max if no relevant diagram provided\n\nAO3 Evaluation\n• Increasing the use of direct taxation might have a negative impact on long term economic growth and/or unemployment\n• Decreasing government expenditure might mean key sectors such as education and health care having a long-term negative impact on social welfare\n• The overall impact of contractionary fiscal policy will depend upon the state of the economy when the new policies were introduced.\n• Exchange rate policies which promote a re-valuation of the currency might have a negative impact on an economy’s balance of payments, depending upon the Marshall-Lerner condition. This might also cause unemployment in the export producing sector.\n• The use of high interest rates might lead to lower levels of investment which, in turn, will have a negative impact on economic growth in the long term\n• A contractionary monetary might also produce additional economic outcomes. For example, a rapid fall in house prices due to the high cost of borrowing for house purchase.\n• A conclusion should attempt to assess the relative effectiveness of each type of policy approach and consider which approach is likely to be the most effective in the short run and then compare this with possible outcomes that might be achieved in the long run."
+},
+{
+  "id": "fm25-42-5",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "Feb/March",
+  "questionNumber": "5",
+  topic: SyllabusTopic.INTERNATIONAL_AL,
+  "chapter": "11.1 Policies to correct disequilibrium in the balance of payments",
+  "maxMarks": 20,
+  "questionText": "With the help of a diagram, evaluate the effectiveness of the use of expenditure-switching policies to reduce a current account deficit on the balance of payments.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• An explanation of the meaning of a current account balance of payments deficit should be provided.\n• Expenditure-switching policies should be explained by the relationship between changes in the market prices of imported and exported goods and services and changes in the balance of payments current account\n• Examples of expenditure-switching policies such as a decrease in tariffs or a devaluation of a currency in a fixed exchange rate system.\n• Analysis of the impact of the introduction of a tariff on the balance of payments current account. An accurately labelled diagram should be provided.\n• Analysis of the impact of tariffs on other key stakeholders, for example, domestic suppliers, consumers and firms should be considered.\n• Analysis of the use of an alternative expenditure switching policy should be provided. For example, the use of a devaluation in a fixed exchange rate system. Accept export subsidies/supply side policies.\nL2 max if no relevant diagram provided.\n\nAO3 Evaluation\n• It is important to establish the magnitude of the deficit and the how long this deficit has persisted before interfering in the import/export market.\n• Although tariffs might temporarily reduce the deficit, other countries might introduce their own tariffs in retaliation.\n• Tariffs might have a negative impact on other key macroeconomic variables. For example, tariffs might contribute to a growth in cost push inflation\n• Tariffs might lead to a net welfare loss for society as a whole. This can be shown on a clearly labelled diagram.\n• A devaluation of the currency will depend upon the relative price elasticities of supply/demand for imports and exports. The Marshall-Lerner condition should be explained.\n• A devaluation might also have a negative impact on other key macroeconomic variables. For example, a devaluation will stimulate the demand for exports, which might contribute to demand pull inflation. Or contribute to cost push inflation by raising the price of imported goods\n• A conclusion addressing the specific statement should be provided."
+},
+{
+  "id": "mj25-41-2",
+  "year": "2025",
+  "paper": "9708/41",
+  "variant": "May/June",
+  "questionNumber": "2",
+  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  "chapter": "7.2 Indifference curves and budget lines",
+  "maxMarks": 20,
+  "questionText": "With the help of a diagram, evaluate the use of indifference curve analysis to explain the relationship between a change in the price of a product and the change in an individual consumer’s demand for this product.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• An explanation of what is meant by an indifference curve and an indifference curve map.\n• Explanation of a budget line and understanding of how a change in price or how a change in real income will affect a budget line\n• Demonstration of an understanding of consumer equilibrium.\n• Use of a diagram to analyse the links between indifference curves, budget lines and consumer equilibrium.\n• Analysis of how a change in price might affect consumer equilibrium. This can be supported by a clear, accurately labelled diagram.\n• Analysis of each element of the price effect on individual consumer demand. Both substitution effects and real income effects should be considered to attain Level 3\nNo diagram-highest mark is L2 – 8\n\nAO3 Evaluation\n• Recognise that the key assumptions regarding human behaviour will determine the shape of the indifference curve. For example, it is assumed that all consumers attempt to maximise satisfaction.\n• Although the analysis only considers ‘bundles’ of two good consumed, it still assumes the consumer can correctly distinguish between different levels of satisfaction between different ‘bundles’.\n• The analysis only considers a choice between two goods. Consumers have the opportunity to consider alternative prices of a wide range of goods before choosing what to purchase.\n• Other factors such as advertising might change consumer taste, which in turn, will change the shape of the indifference curve and, ultimately the final impact of a price change on consumer demand.\n• A conclusion should be attempted which examines the effectiveness of the use of indifference curve analysis to predict the impact of a price change on individual consumer demand."
+},
+{
+  "id": "mj25-41-3",
+  "year": "2025",
+  "paper": "9708/41",
+  "variant": "May/June",
+  "questionNumber": "3",
+  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  "chapter": "7.6 Different market structures",
+  "maxMarks": 20,
+  "questionText": "The growth of a firm using a takeover is desirable because it enables consumers to benefit from lower prices and the firm to gain additional profits. Evaluate this statement.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Recognition that a takeover can be classified as a factor determining the external growth of a firm\n• Differentiates between a takeover, which occurs when one firm buys another firm and a merger which takes place when two firms unite to form one new company\n• Takeovers can relate to different stages of production. For example, horizontal, vertical integration.\n• Analysis should refer to the benefits associate with gaining economies of scale via horizontal integration. For example, lower costs and lower prices for the consumer\n• Analysis could also be used by referring to backward/forward vertical integration which might lead to further cost savings which can be passed on to the consumer.\n• Firms might also increase profits by increasing their market share and increasing their total revenue\n\nAO3 Evaluation\n• The cost benefits of economies of scale might not be passed on to the consumer through lower prices\n• An increase in market share might increase monopoly power and allow the firm to control output and charge higher prices to the consumer.\n• Some takeovers can be very costly in the long run and this may decrease profits in the long run.\n• A takeover will create a much larger organization which may have to deal with unexpected communication problems which increase costs and reduce profits\n• Some takeovers might lead to intervention by the competition authorities which might result in price regulation\n• Culture clashes may arise within firms involved which may lead to diseconomies of scale and rising consumer prices\n• A conclusion should attempt to address each element of the statement. The key words ‘low consumer prices and increased profits’ should be considered in the light of the preceding argument."
+},
+{
+  "id": "mj25-41-4",
+  "year": "2025",
+  "paper": "9708/41",
+  "variant": "May/June",
+  "questionNumber": "4",
+  topic: SyllabusTopic.GOVT_MACRO_AL,
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "maxMarks": 20,
+  "questionText": "A country is experiencing stagflation, when there is a high rate of inflation at the same time as a negative output gap. With the help of a diagram, evaluate the effectiveness of using fiscal policy to solve this problem.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• A clear definition of inflation and why inflation might cause problems.\n• A detailed explanation of what is meant by a ‘negative output gap’.\n• An accurate, clearly labelled aggregate supply and aggregate demand diagram to identify a ‘negative output gap’.\n• An explanation of what is meant by fiscal policy and how it is used to control inflation or close an output gap.\n• Analysis might use a diagram to indicate how fiscal policy might be used to close a negative output gap.\n• Analysis might use a diagram to indicate how fiscal policy might be used to reduce the level of inflation.\n• Analysis using aggregate demand and aggregate supply curves could be used to show why it is possible to have high inflation and a negative output gap at the same time.\nAccept Keynesian Cross diagram\nMaximum 8 marks if no relevant diagram\n\nAO3 Evaluation\n• The use of fiscal policy to reduce aggregate demand might help to reduce the level of inflation, it will simultaneously increase the negative output gap and vice versa.\n• An alternative approach to fiscal might be the use of supply side measures which would increase aggregate supply, reduce the rate of inflation and help to close the negative output gap in the long run.\n• Long run supply-side policies are likely to focus on attempts to increase productivity. This frequently involves significant investment in new technology which might lead to a rise in unemployment in the short run.\n• Fiscal policy may be inappropriate or ineffective unless paired with supply-side reforms. More suitable policies might include reducing regulation, cutting production costs, or encouraging productivity.\n• May lead to crowding out\nA conclusion should attempt to assess the relative effectiveness of each type of policy approach and consider which approach is likely to be the most effective in the short run and then compare this with possible outcomes that might be achieved in the long run."
+},
+{
+  "id": "mj25-41-5",
+  "year": "2025",
+  "paper": "9708/41",
+  "variant": "May/June",
+  "questionNumber": "5",
+  topic: SyllabusTopic.INTERNATIONAL_AL,
+  "chapter": "11.6 Globalisation",
+  "maxMarks": 20,
+  "questionText": "A free trade area gains all the benefits associated with joining a customs union while avoiding all the costs associated with being a member of a customs union. Evaluate this statement.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• A free trade area should be defined and the emphasis be upon the removal of tariffs/quotas on products from one country entering another\n• Key characteristics of a customs union should be identified which include recognizing abolishing tariffs between member nations while adopting a common external tariff on non-member countries.\n• Analysis might recognize that a country in a free trade area can achieve faster economic growth through specialization and a global market\n• The absence of import tariffs will reduce costs to firms operating in free trade areas, will increase incomes, economic competition and potentially an increase in labour productivity.\n• Analysis of a customs union should identify a key difference in relation to the use of common external tariffs. Therefore, although members of a customs union might achieve similar benefits to members of a free trade area. Members of a custom union share protection from competitors outside the union while benefiting from access to a large single market.\n• Analysis might also be used to show how members within the customs union might gain from the benefits of trade creation when internal tariffs are removed.\n\nAO3 Evaluation\n• One cost of associated with membership of a customs union might be the loss of economic and political sovereignty.\n• Although there will be trade creation for a new member of a customs union it is likely that trade diversion will take place when a new member has to adopt a common external tariff. This would lead to a misallocation of the world’s resources.\n• Higher economic growth can take place because of a closely integrated customs union -benefits from comparative advantage.\n• It could however be argued that a closely integrated customs union will encourage greater political stability and integration.\n• It has also been argued that due to the combined large market size of a customs union, there may be a further stimulus to inward foreign investment.\n• Customs unions frequently use non-tariff barriers which can have a negative impact on both trade within a customs union and between a customs union and the rest of the world.\n• A conclusion should attempt to form an overall judgement regarding the extent to which a free trade area can avoid the costs of membership of a customs union while achieving the same benefits."
+}
+,
+{
+  "id": "mj25-42-2",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "May/June",
+  "questionNumber": "2",
+  topic: SyllabusTopic.GOVT_MICRO_AL,
+  "chapter": "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+  "maxMarks": 20,
+  "questionText": "Traffic congestion is a cause of allocative inefficiency. Evaluate, with the help of diagram(s) two policies that a government may introduce to reduce the problem of allocative inefficiency caused by traffic congestion.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Market failure regarding this question would relate to allocative inefficiency. Market failure can be explained by defining allocative efficiency and linking this to the requirement to allocate resources to maximise consumer satisfaction. This can be supported by a diagram illustrating a level of output where AR = MC or MSB = MSC which is consistent with an outcome that achieves allocative efficiency.\n• Negative externalities occur when the consumption/use of a good produces a cost to society which is greater than that received by an individual consumer MPB > MSB. This is sometimes described as a negative ‘spill-over’ effect. The negative externality leads to an over production of the good.\n• Government intervention takes place to address the failure of market forces to allocate resources efficiently.\n• Different types of government intervention can be used to correct the over consumption to enable consumer satisfaction to be maximised.\n• Forms of government intervention might include: the use of subsidies for consumers to increase consumption of alternative forms of transport, use of positive advertising of alternatives; the direct provision of goods and services such as alternative transport methods. Indirect taxation. Nudge theory effects.\n• A clearly labelled, accurate diagram can be used to show the impact of a negative externality on the level of output and the welfare change will be identified.\n• The diagram could show the market equilibrium point which does not take into account the existence of a negative consumption externality and may compare this with the allocatively efficient level of output when the negative externality is taken into account. The diagram may be amended or re-drawn to show the impact of a chosen policy(ies) and the impact on consumption or production shown.\n• Reference to the diagram and the outcomes it illustrates is made in the text.\n\nAO3 Evaluation\n• A government might introduce a subsidy for alternative forms of transport e.g. mass rapid transport to encourage production to enable allocative efficiency, however it is difficult to measure the precise value of the subsidy. Subsidies have opportunity costs and are costly in that the funds might have been used by governments for other purposes. This means governments will have to make a value judgement when deciding whether to provide a subsidy.\n• Consumer demand for alternatives may be low due to the reluctance to price in-elasticity of demand for public transport/alternatives.\n• The impact on price and output in some circumstances takes a long time to become effective.\n• Advertising of alternative methods of transport is often costly and it is not always certain that it will have a sufficiently persuasive effect to ensure the correct level of consumption is reached.\n• Public sector provision is costly and sometimes less efficient than that provided through market forces."
+},
+{
+  "id": "mj25-42-3",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "May/June",
+  "questionNumber": "3",
+  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  "chapter": "8.3 Labour market forces and government intervention",
+  "maxMarks": 20,
+  "questionText": "The average wage of chief executives in large companies in a country is over 100 times greater than the average wage of their employees. Assess how economic theory can account for this variation in average wages.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Explanation of wages determined by demand and supply of labour.\n• Demand for labour determined by marginal physical product (MPP) and the price (P) of the good made to give marginal revenue product (MRP) = MPP × P.\n• Determinants of the supply of labour; skills education, training or ability, reference to elasticity of supply.\n• Analysis of why wages differ depending on MRP and supply.\n• Use of the concepts of economic rent.\n• The application of the theory to the statement concerning chief executives’ pay relative to that of other workers.\n• Difference based on labour market for chief executives and workers.\n• A comparison of the labour markets for CE and workers.\n\nAO3 Evaluation\n• How to measure the MPP of a factor of production is difficult.\n• Wages of chief executives (CE) are sometimes determined by people in a similar position and so may inflate the wage level.\n• Monopsony employer may underpay workers.\n• Prejudice and discrimination leads to low wages for workers."
+},
+{
+  "id": "mj25-42-4",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "May/June",
+  "questionNumber": "4",
+  topic: SyllabusTopic.INTERNATIONAL_AL,
+  "chapter": "11.2 Exchange rates",
+  "maxMarks": 20,
+  "questionText": "Evaluate the effect of a fall in the exchange rate on the achievement of the macroeconomic aims of a country.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Knowledge and understanding of the effect of depreciation/devaluation on the exchange rate (ER), and economic growth.\n• Analysis of Ex R fall on the price of exports (X) and imports (M) and the consequences for their demand, links to aggregate demand (AD) through the balance of payments effect (X–M).\n• Candidates may refer to this change in terms of injections and leakages and their effect on AD.\n• The use of AD and AS diagram to show this effect on the level of national income and economic growth.\n• Alternatively, the analysis of the increased injection may be through the multiplier effect and/or the 45° diagram.\n• Identification of at least two macroeconomic aims of a country: e.g. balance of payments, economic growth, inflation, employment.\n• Analysis of the impact of the change in ER on at least 2 macroeconomic aims to comment on their likely achievement.\n\nAO3 Evaluation\n• The ability of supply capacity in the country to react to the effect of the fall in the exchange rate.\n• The nature of exports from many countries where exports of agricultural commodities are price inelastic in supply.\n• The short run effect on employment (positive) and inflation (negative), reference to the Phillips curve.\n• Effect on a country’s ability to service international debt positive if denominated in domestic currency but negative if borrowings are in a foreign currency.\n• The impact of the inflow of capital in terms of FDI/MNC and the effect on output, employment and growth.\n• The proportion of international trade in relation to GDP."
+},
+{
+  "id": "mj25-42-5",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "May/June",
+  "questionNumber": "5",
+  topic: SyllabusTopic.INTERNATIONAL_AL,
+  "chapter": "11.6 Globalisation",
+  "maxMarks": 20,
+  "questionText": "Evaluate whether the presence of multinational companies (MNCs) in low-income countries is always beneficial.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Definitions of a MNC and a low-income country (LIC).\n• Explanation of benefits of MNC to LIC: Development of infrastructure, employment of workers, training and development of workers, expansion of GDP/GNI, increased range of products improvement of SoL.\n• Analysis of presences of MNC: Impact on Actual growth This could be via AD/AS analysis of expansion of NI:\n• Changes in Current Balance and Capital Balance through movement of goods and capital reflected in impact on the Exchange rate through demand and supply of foreign exchange.\n• Impact on employment both positive and negative as demand increases and decreases in the industry(ies) being affected by MNC. Increase in structural unemployment.\n• Analysis of presences of MNC: Impact on Potential growth: Exploration and development of raw materials and education of workforce expanding the production possibility curve. Development of associated infrastructure: roads, rail ports and education and health services.\n\nAO3 Evaluation\n• Substitution of low cost MNC production of goods displacing local owned production.\n• Changes in work and cultural practices and effect on non-material standard of living.\n• Corruption of local officials to gain permission for development.\n• The use of modern manufacturing processes may lead to increases in unemployment.\n• externalities in production/consumption from the manufacturing/use of the goods. Raw materials exports and the problem of the ‘Dutch’ disease of high exchange rate and its impact on decreasing the level of existing exports leading to structural unemployment."
+},
+{
+  "id": "mj25-43-2",
+  "year": "2025",
+  "paper": "9708/43",
+  "variant": "May/June",
+  "questionNumber": "2",
+  topic: SyllabusTopic.GOVT_MICRO_AL,
+  "chapter": "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+  "maxMarks": 20,
+  "questionText": "With the help of a diagram, consider whether economic efficiency can be achieved without government intervention in a market economy",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Definition and demonstration of productive efficiency in terms of minimum AC and allocative efficiency MC=MR.\n• Candidates may approach the question from a number of points of view\n• Comparison of equilibrium in Perfect Competition with reference to definitions of efficiency.\n• Negative externalities (e.g. the effects of environmental pollution) causing the social cost of production to exceed the private cost or positive externalities (e.g. the provision of education and health care) causing the social benefit of consumption to exceed the private benefit\n• Imperfect information or information failure means that merit goods are under-produced while demerit goods are over-produced or over-consumed.\n• The lack of supply of pure public goods and quasi-public goods issue that are needed to meet people's needs and wants.\n• Market dominance by monopolies can lead to under-production and higher prices than would exist under conditions of competition and the effect on price and quantity produced and consumer welfare.\n• Factor immobility causes unemployment and a loss of productive efficiency.\n• Equity (fairness) issues. Markets can generate an 'unacceptable' distribution of income and consequent social exclusion which the government may choose to change.\n• A choice of government policy to address a market failure from:\n• specific and ad valorem indirect taxes, subsidies, price controls, production quotas, prohibitions and licences, regulation and deregulation, direct provision, pollution permits property rights, nationalisation and privatization, provision of information or behavioural insights and ‘nudge’ theory.\nNo Diagram Max L2 8\n\nAO3 Evaluation\n• Opportunity costs of the policy that has been chosen, what are the alternative uses of the resources and how does it affect efficiency.\n• Can the government accurately measure the extent of the market failure.\n• Unintended consequences on, regulator capture, cost of bureaucracy, political interference.\n• Evaluation may be based on an example cited by candidates.\n• Implications for the government budget increase in tax revenues/costs of subsidies.\nAccept all valid responses."
+},
+{
+  "id": "mj25-43-3",
+  "year": "2025",
+  "paper": "9708/43",
+  "variant": "May/June",
+  "questionNumber": "3",
+  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  "chapter": "8.3 Labour market forces and government intervention",
+  "maxMarks": 20,
+  "questionText": "Evaluate whether the marginal revenue product theory (MRP) always explains the differences in wages.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Definition and explanation of the MRP theory in terms of marginal physical product (MPP) and price equaling MRP which is the demand element in the demand and supply of labour.\n• Explanations of what may affect the MPP.\n• The effect of market structure on MRP.\n• Explanations of factors affecting the supply of labour, for example population size, age structure, fertility, working conditions, education/experience migration etc.\n• The combination of demand and supply factors to produce a wage rate.\n\nAO3 Evaluation\n• The theory is usually applied in a world of perfect competition which does not hold in real life.\n• How do employers know MRP when labour is often collaborative.\n• How to measure productivity e.g. health services/education?\n• Trade union intervention in labour markets.\n• Lack of market price for product e.g. health care outcomes\n• Government intervention in labour markets e.g. minimum wage, staffing ratios (in childcare).\n• Discussion of factors which account for differences which could include discrimination, market segmentation, capital equipment, monopsony."
+},
+{
+  "id": "mj25-43-4",
+  "year": "2025",
+  "paper": "9708/43",
+  "variant": "May/June",
+  "questionNumber": "4",
+  topic: SyllabusTopic.GOVT_MACRO_AL,
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "maxMarks": 20,
+  "questionText": "A country with an open economy has falling demand for exports. Consider the view that monetary policy alone will solve this problem.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• A definition of an open economy in terms of its foreign trade sector in the aggregate demand equation.\n• The effects of the falling exports on the level of aggregate demand.\n• The candidate should show the intended effect of monetary policy on the demand for exports – A choice is made of reducing the exchange rate to boost exports through increasing external demand and the effect of this on aggregate demand.\n• Governments can directly devalue the exchange rate.\n• Government can indirectly reduce the exchange rate by increasing the money supply/decreasing interest rates.\n\nAO3 Evaluation\n• The elasticity of demand for exports and the short-run, long run implications.\n• An explanation of whether the aims can be achieved in the short run or long run.\n• Governments might use supply-side policies e.g. subsidies.\n• Comments on other aims of the government which may be affected and how they may be affected by the policy/policies suggested.\n• The government impact through directly reducing the rate of interest and the effects of this through the monetary transmission mechanism can be traced.\n• Comments on the negative impact on other government aims e.g. Inflation."
+},
+{
+  "id": "mj25-43-5",
+  "year": "2025",
+  "paper": "9708/43",
+  "variant": "May/June",
+  "questionNumber": "5",
+  topic: SyllabusTopic.MACROECONOMY_AL,
+  "chapter": "9.2 Economic growth and sustainability",
+  "maxMarks": 20,
+  "questionText": "Evaluate how a country might increase its potential economic growth.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Definition and explanation of what is meant by potential economic growth (PEG): LRAS/AD analysis or production possibility curves may be used to illustrate the PEG.\n• Identification of government LRAS macroeconomic policies.\n• Supply-side policies: privatisation, education and training, labour market infrastructure Investment in R&D, increased net migration, FDI/MNC and competition policies.\n• Candidates need to identify and analyse at least 2 of these policies to show how they will increase the long-run economic performance of the economy.\n\nAO3 Evaluation\n• Government spending might be constrained by how much the government might borrow without high interest rates/domestic/international lenders becoming reluctant to lend.\n• Monetary policy the government aim to promote long run growth may be compromised by a growth in borrowing and a rise in interest rates to.\n• Supply-side policies may be compromised by political constraints as the government may rely for example, on TU or industrial support.\n• Shortages of Factors of production: labour, raw material or resources.\n• Time lags\n• Shortage of government finance\n• Environmental impact.\n• Privatisation and exploitation of labour/monopoly inefficiencies."
+}
+,
+{
+  "id": "on25-41-2",
+  "year": "2025",
+  "paper": "9708/41",
+  "variant": "Oct/Nov",
+  "questionNumber": "2",
+  topic: SyllabusTopic.GOVT_MICRO_AL,
+  "chapter": "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+  "maxMarks": 20,
+  "questionText": "Market failure is to blame for climate change and the inefficient allocation of resources. The only solution is for governments to intervene to improve resource allocation. Assess the extent to which you agree with this statement",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Climate change can be regarded as a form of market failure can be explained by linking this to the requirement to allocate resources to maximise consumer satisfaction. This can be supported by a diagram illustrating a level of output where AR = MC or MSB = MSC which is consistent with an outcome that achieves allocative efficiency.\n• Negative externalities occur when the consumption/use of a good produces a cost to society which is greater than that received by an individual producer MPB >= MSB or MSC >= MPC. This is sometimes described as a negative ‘spill-over’ effect. The negative externality leads to an over production of the good carbon dioxide or other greenhouse gas.\n• Government intervention takes place to address the failure of market forces to allocate resources efficiently. In this case positive externalities would lead to under–consumption of a good or service.\n• Different types of government intervention can be used to correct the under-production of output to enable consumer satisfaction to be maximised.\n• Forms of government intervention might include: the use of subsidies for consumers to move to less polluting forms of consumption and also producers to change production methods, use of positive advertising; the direct provision of goods and services such as alternative transport methods. Alternatively indirect taxation might be applied to the CO2 producing source. Nudge theory effects.\n• A clearly labelled, accurate diagram can be used to show the impact of a positive/negative externality on the level of output and the welfare change will be identified.\n• The diagram could show the market equilibrium point which does not take into account the existence of a negative consumption externality and may compare this with the allocatively efficient level of output when the negative externality is taken into account. The diagram may be amended or re-drawn to show the impact of a chosen policy(ies) and the impact on consumption or production shown.\n• Reference to the diagram and the outcomes it illustrates is made in the text.\n\nAO3 Evaluation\n• A government might introduce a subsidy to encourage producers to increase output to enable allocative efficiency, however it is difficult to measure the precise value of the subsidy. Subsidies are costly in that the funds might have been used by governments for other purposes. This means governments will have to make a value judgement when deciding whether to provide a subsidy. There are opportunity costs of the subsidy.\n• Also, the impact on price and output in some circumstances takes a long time to become effective.\n• Advertising is often costly and it is not always certain that it will have a sufficiently persuasive effect to ensure the correct level of output/consumption is reached.\n• Direct provision is also costly and sometimes less efficient than that provided through market forces.\n• It is possible to show that government intervention can reduce the level of inefficiency caused by the existence of positive externalities but it is not clear whether the net effect of government intervention will always be positive. Some types of intervention will be more effective than others depending on the nature of the good/service under consideration.\n• Government failure.\nConcluding point which considers ‘only’ aspect."
+},
+{
+  "id": "on25-41-3",
+  "year": "2025",
+  "paper": "9708/41",
+  "variant": "Oct/Nov",
+  "questionNumber": "3",
+  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  "chapter": "7.6 Different market structures",
+  "maxMarks": 20,
+  "questionText": "The degree of competition a firm experiences is determined only by the barriers to entry into its market. With the aid of diagrams, evaluate this statement.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• A discussion of types of barriers to entry.\n• The impact of barriers to entry on market structures.\n• A detailed analysis of at least 2 forms of market structure one with no barriers (perfect competition or monopolistic competition) and one with barriers to entry (oligopoly or monopoly) to include reference to product, knowledge levels, profit levels.\n• Diagrams are correctly labelled and accurately drawn.\n• with correct labelling and relevant reference to it/them in the answer.\n• Max L2 if no diagram\n• Max L2 if only one type of structure\n\nAO3 Evaluation\n• Competition is linked to the number of firms who can access a market, so the simple answer is yes because barriers to entry prevent firms entering a market.\n• Perfect competition and monopolistic competition with their lack of barriers are both highly competitive.\n• Competition takes place in oligopoly through product differentiation and sales and marketing.\n• Monopolies are subject to limitations on their ability to exploit the consumer by the limitations of contestable markets.\n• Regulation"
+},
+{
+  "id": "on25-41-4",
+  "year": "2025",
+  "paper": "9708/41",
+  "variant": "Oct/Nov",
+  "questionNumber": "4",
+  topic: SyllabusTopic.INTERNATIONAL_AL,
+  "chapter": "11.2 Exchange rates",
+  "maxMarks": 20,
+  "questionText": "Evaluate the effect of a rise in the exchange rate on the achievement of the macroeconomic aims of a country.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Explanation of the effect of a rise of the $US on the US’s exports and imports OR any other currency\n• Analysis of exchange rate rise on the price of exports (X) and imports (M) and the consequences for their demand, links to aggregate demand (AD) through the balance of payments effect (X–M). A decrease in exports and an increase in imports, potentially worsening the trade balance\n• Candidates may refer to this change in terms of injections and leakages and their effect on AD.\n• The use of AD and AS diagram to show this effect on the level of national income and economic growth.\n• Alternatively, the analysis of the increased injection may be through the multiplier effect and/or the 45° diagram.\n• A clear link should be made between the effect of the rise in exchange rate and economic growth, reference to the type of economic growth: actual or potential should be made.\n• Ignore $US on the US’s exports\n• Minimum of 2 aims developed for L3\n\nAO3 Evaluation\n• Why the US$ rate rose and how that might have affected economic growth.\n• The nature of exports from the US to the rest of the world: oil, agricultural produce etc. and the price elasticity of demand for that produce.\n• Extent the effects of a rise in ER on employment and inflation.\n• The effect of the $US being a reserve currency.\n• The size of the marginal propensity to export/import on the multiplier and its affect on the change in AD\n• The impact of inflow of capital in terms of MNC and the effect on US output and growth.\n• The percentage of US GDP represented by (X–M)"
+},
+{
+  "id": "on25-41-5",
+  "year": "2025",
+  "paper": "9708/41",
+  "variant": "Oct/Nov",
+  "questionNumber": "5",
+  topic: SyllabusTopic.MACROECONOMY_AL,
+  "chapter": "9.2 Economic growth and sustainability",
+  "maxMarks": 20,
+  "questionText": "Economic growth can only occur when an economy is below full employment. Evaluate this statement.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Definition of economic growth: increase in real GDP/output over time.\n• Definition of full employment: when all resources, especially labour, are used efficiently (natural rate of unemployment remains).\n• Below full employment (Keynesian range):\nGrowth possible via increase in AD (e.g., higher consumption, investment).\nMovement from inside PPF towards PPF.\nLittle inflationary pressure due to spare capacity.\n• At full employment (Classical range):\nGrowth possible only through potential growth – rightward shift of LRAS or outward shift of PPF.\nDriven by productivity, technology, education, capital formation.\n• Diagrams:\nAD–AS showing movement along the AS curve below full employment.\nLRAS shift showing potential growth.\n\nAO3 Evaluation\n• The statement is too narrow – growth can occur both below and at full employment.\n• Context matters:\nIn a recession, growth typically comes from AD increases (below full employment).\nIn the long run, growth depends on supply-side improvements (even at full employment).\n• Inflationary pressures: At/near full employment, AD-led growth may cause inflation rather than real growth.\n• Judgement: Economic growth can occur when below full employment (actual growth) and at full employment (potential growth) – so the statement is partially correct.\n• Is unemployment the principal economic problem and the opportunity costs of pursuing low unemployment rather than balance of payments equilibrium etc.\n• The effect of the multiplier when considering the extent of the increase in GNI.\n• A discussion of whether C, I or (X–M) can increase without unemployment."
+},
+{
+  "id": "on25-42-2",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "Oct/Nov",
+  "questionNumber": "2",
+  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  "chapter": "7.1 Utility",
+  "maxMarks": 20,
+  "questionText": "Evaluate, with the aid of a diagram whether the diminishing marginal utility theory of demand provides an adequate explanation of the market demand curve for all goods and services.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\nAssumptions of marginal utility analysis including:\n• rational consumers who prefer more to less, a two-good world, the goods can be substituted for each other, perfect knowledge of the market.\n• Definition of marginal and total utility.\n• Explanation of diminishing marginal utility.\n• The analysis of the change in the price of a good and the explanation of how much the consumer will purchase as the price changes.\n• The use of the equi-marginal principle to establish how consumers ‘balance’ their expenditure on goods as the price of one of them changes.\n• The horizontal addition of individuals’ demand curves to achieve the market demand curve.\n\nAO3 Evaluation\n• Consumer rationality: marginal utility theory assumes that consumers act rationally. They are of a calculating mind, carrying numerous combinations of different commodities in their heads, can substitute one for the other, compare their total utilities and make a rational choice between various combinations of goods.\n• Marginal utility theory has no provision for income and substitution effects so does not explain inferior goods.\n• It is difficult to compare the concept of changing the demand for expensive goods which are purchased infrequently with goods such as consumables. which are one-off indivisible purchases and the choice is between, for example, 1 fridge and 4 weeks’ food.\n• A consumer is faced with a much more complex world than the two-good world of the model because a consumer buys not just two but a large number of commodities to satisfy their innumerable wants."
+},
+{
+  "id": "on25-42-3",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "Oct/Nov",
+  "questionNumber": "3",
+  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  "chapter": "7.6 Different market structures",
+  "maxMarks": 20,
+  "questionText": "Subnormal and supernormal profits are only experienced in the short run and only by firms in perfect competition. With the help of diagrams, evaluate this statement.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Definition of short run, subnormal and supernormal profits.\n• Statement of the conditions for perfect competition.\n• Analysis of the applicability of the concepts of subnormal and supernormal profits in the context of perfect competition.\n• The resolution of subnormal and/or supernormal profits to equilibrium normal profits in perfect competition in the long run.\n• A relevant diagram to show the analysis.\n\nAO3 Evaluation\n• The analysis of monopolistic competition to show subnormal and supernormal profits and their resolution to normal profit.\n• Monopoly analysis to show that supernormal profits may exist in the long run.\n• Analysis of oligopoly to show that there may or not be subnormal or supernormal profits in the both the short run and the long run."
+},
+{
+  "id": "on25-42-4",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "Oct/Nov",
+  "questionNumber": "4",
+  topic: SyllabusTopic.GOVT_MACRO_AL,
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "maxMarks": 20,
+  "questionText": "A country imposes a tariff of 20% on imported goods and restricts the number of immigrants entering the country. Evaluate, with the aid of a diagram(s), the impact of these two policies on the rate of inflation in that country.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Definition of a tariff and analysis of the effect of a tariff on the price of goods and a development of this in terms of the direct effect on the price of goods bought by consumers.\n• The analysis may also be in terms of the cost of imported raw materials and cost push inflation.\n• Analysis of impact on macroeconomy in terms of leftwards shift of aggregate supply (AS) promoting cost push inflation.\n• A similar analysis of the effect of restricting the supply of labour and reducing any potential decrease in the general wage rate.\n• A relevant diagram to show either the effect of a tariff on cost/prices, the restriction of immigrants and the effect on wages and the impact on AS\n\nAO3 Evaluation\n• The elasticity of supply of domestically produced goods subject to the tariff.\n• The availability of domestic labour force prepared to do jobs.\n• The rate of inflation will also depend on the level of aggregate demand (AD). The restriction on immigrants will reduce the level of demand and hence demand pull inflation.\n• Limited migration may allow domestic workers to claim higher wages and contribute to cost push inflation."
+},
+{
+  "id": "on25-42-5",
+  "year": "2025",
+  "paper": "9708/42",
+  "variant": "Oct/Nov",
+  "questionNumber": "5",
+  topic: SyllabusTopic.GOVT_MACRO_AL,
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "maxMarks": 20,
+  "questionText": "Evaluate whether an increase in a government’s budget deficit will always lead to economic growth.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Definitions of budget deficit, economic growth.\n• Use of AD/AS models or 45o model to analyse government budget deficit.\n• Use of the circular flow of income to explain the effect of an increase in government spending increases the level of aggregate demand within the economy.\n• Reference to the short run and long run economic growth.\n• Reference can be made to employment, inflation, the balance of payments\n• Impact of supply side expenditure of budget deficit on education/investment\n\nAO3 Evaluation\nEvaluation may be by individual measure or by comparing the measures.\n• Closeness of economy to full employment.\n• Use of Phillips’ Curve to reflect inflationary impact.\n• Commentary on the size of marginal propensity to consume and its effects on the size of the multiplier.\n• The role of expectations in determining the reactions to expansionary fiscal policy\n• Reference to the multiplier being an analysis of the trade cycle which exists for only a short run and that the accelerator effect is needed to increase investment and an outwards shift in the production possibility curve for the long run effects."
+}
+,
+{
+  "id": "on25-43-2",
+  "year": "2025",
+  "paper": "9708/43",
+  "variant": "Oct/Nov",
+  "questionNumber": "2",
+  topic: SyllabusTopic.GOVT_MICRO_AL,
+  "chapter": "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+  "maxMarks": 20,
+  "questionText": "Traffic congestion is a cause of allocative inefficiency. Evaluate, with the help of diagram(s) two policies that a government may introduce to reduce the problem of allocative inefficiency caused by traffic congestion.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Market failure regarding this question would relate to allocative inefficiency. Market failure can be explained by defining allocative efficiency and linking this to the requirement to allocate resources to maximise consumer satisfaction. This can be supported by a diagram illustrating a level of output where AR = MC or MSB = MSC which is consistent with an outcome that achieves allocative efficiency.\n• Negative externalities occur when the consumption/use of a good produces a cost to society which is greater than that received by an individual consumer MPB > MSB. This is sometimes described as a negative ‘spill-over’ effect. The negative externality leads to an over production of the good.\n• Government intervention takes place to address the failure of market forces to allocate resources efficiently.\n• Different types of government intervention can be used to correct the over consumption to enable consumer satisfaction to be maximised.\n• Forms of government intervention might include: the use of subsidies for consumers to increase consumption of alternative forms of transport, use of positive advertising of alternatives; the direct provision of goods and services such as alternative transport methods. Indirect taxation. Nudge theory effects.\n• A clearly labelled, accurate diagram can be used to show the impact of a negative externality on the level of output and the welfare change will be identified.\n• The diagram could show the market equilibrium point which does not take into account the existence of a negative consumption externality and may compare this with the allocatively efficient level of output when the negative externality is taken into account. The diagram may be amended or re-drawn to show the impact of a chosen policy(ies) and the impact on consumption or production shown.\n• Reference to the diagram and the outcomes it illustrates is made in the text.\n\nAO3 Evaluation\n• A government might introduce a subsidy for alternative forms of transport e.g. mass rapid transport to encourage production to enable allocative efficiency, however it is difficult to measure the precise value of the subsidy. Subsidies have opportunity costs and are costly in that the funds might have been used by governments for other purposes. This means governments will have to make a value judgement when deciding whether to provide a subsidy.\n• Consumer demand for alternatives may be low due to the reluctance to price in-elasticity of demand for public transport/alternatives.\n• The impact on price and output in some circumstances takes a long time to become effective.\n• Advertising of alternative methods of transport is often costly and it is not always certain that it will have a sufficiently persuasive effect to ensure the correct level of consumption is reached.\n• Public sector provision is costly and sometimes less efficient than that provided through market forces."
+},
+{
+  "id": "on25-43-3",
+  "year": "2025",
+  "paper": "9708/43",
+  "variant": "Oct/Nov",
+  "questionNumber": "3",
+  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  "chapter": "8.3 Labour market forces and government intervention",
+  "maxMarks": 20,
+  "questionText": "The average wage of chief executives in large companies in a country is over 100 times greater than the average wage of their employees. Assess how economic theory can account for this variation in average wages.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Explanation of wages determined by demand and supply of labour.\n• Demand for labour determined by marginal physical product (MPP) and the price (P) of the good made to give marginal revenue product (MRP) = MPP × P.\n• Determinants of the supply of labour; skills education, training or ability, reference to elasticity of supply.\n• Analysis of why wages differ depending on MRP and supply.\n• Use of the concepts of economic rent.\n• The application of the theory to the statement concerning chief executives’ pay relative to that of other workers.\n• Difference based on labour market for chief executives and workers.\n• A comparison of the labour markets for CE and workers.\n\nAO3 Evaluation\n• How to measure the MPP of a factor of production is difficult.\n• Wages of chief executives (CE) are sometimes determined by people in a similar position and so may inflate the wage level.\n• Monopsony employer may underpay workers.\n• Prejudice and discrimination leads to low wages for workers."
+},
+{
+  "id": "on25-43-4",
+  "year": "2025",
+  "paper": "9708/43",
+  "variant": "Oct/Nov",
+  "questionNumber": "4",
+  topic: SyllabusTopic.INTERNATIONAL_AL,
+  "chapter": "11.2 Exchange rates",
+  "maxMarks": 20,
+  "questionText": "Evaluate the effect of a fall in the exchange rate on the achievement of the macroeconomic aims of a country.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Knowledge and understanding of the effect of depreciation/devaluation on the exchange rate (ER), and economic growth.\n• Analysis of Ex R fall on the price of exports (X) and imports (M) and the consequences for their demand, links to aggregate demand (AD) through the balance of payments effect (X–M).\n• Candidates may refer to this change in terms of injections and leakages and their effect on AD.\n• The use of AD and AS diagram to show this effect on the level of national income and economic growth.\n• Alternatively, the analysis of the increased injection may be through the multiplier effect and/or the 45° diagram.\n• Identification of at least two macroeconomic aims of a country: e.g. balance of payments, economic growth, inflation, employment.\n• Analysis of the impact of the change in ER on at least 2 macroeconomic aims to comment on their likely achievement.\n\nAO3 Evaluation\n• The ability of supply capacity in the country to react to the effect of the fall in the exchange rate.\n• The nature of exports from many countries where exports of agricultural commodities are price inelastic in supply.\n• The short run effect on employment (positive) and inflation (negative), reference to the Phillips curve.\n• Effect on a country’s ability to service international debt positive if denominated in domestic currency but negative if borrowings are in a foreign currency.\n• The impact of the inflow of capital in terms of FDI/MNC and the effect on output, employment and growth.\n• The proportion of international trade in relation to GDP."
+},
+{
+  "id": "on25-43-5",
+  "year": "2025",
+  "paper": "9708/43",
+  "variant": "Oct/Nov",
+  "questionNumber": "5",
+  topic: SyllabusTopic.INTERNATIONAL_AL,
+  "chapter": "11.6 Globalisation",
+  "maxMarks": 20,
+  "questionText": "Evaluate whether the presence of multinational companies (MNCs) in low-income countries is always beneficial.",
+  "markScheme": "AO1 Knowledge and understanding and AO2 Analysis\n• Definitions of a MNC and a low-income country (LIC).\n• Explanation of benefits of MNC to LIC: Development of infrastructure, employment of workers, training and development of workers, expansion of GDP/GNI, increased range of products improvement of SoL.\n• Analysis of presences of MNC: Impact on Actual growth This could be via AD/AS analysis of expansion of NI:\n• Changes in Current Balance and Capital Balance through movement of goods and capital reflected in impact on the Exchange rate through demand and supply of foreign exchange.\n• Impact on employment both positive and negative as demand increases and decreases in the industry(ies) being affected by MNC. Increase in structural unemployment.\n• Analysis of presences of MNC: Impact on Potential growth: Exploration and development of raw materials and education of workforce expanding the production possibility curve. Development of associated infrastructure: roads, rail ports and education and health services.\n\nAO3 Evaluation\n• Substitution of low cost MNC production of goods displacing local owned production.\n• Changes in work and cultural practices and effect on non-material standard of living.\n• Corruption of local officials to gain permission for development.\n• The use of modern manufacturing processes may lead to increases in unemployment.\n• externalities in production/consumption from the manufacturing/use of the goods. Raw materials exports and the problem of the ‘Dutch’ disease of high exchange rate and its impact on decreasing the level of existing exports leading to structural unemployment."
+}
 ];
