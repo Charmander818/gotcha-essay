@@ -1,0 +1,5128 @@
+"use strict";
+import { SyllabusTopic } from "./types";
+export const questions = [
+  {
+    id: "fm23-22-2a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.4 The interaction of demand and supply",
+    maxMarks: 8,
+    questionText: "Explain the functions of price in resource allocation and consider the importance of these functions in relation to the potential effectiveness of a market economy.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A clear knowledge and understanding of at least two functions of price in resource allocation:
+\u2022 rationing (1)
+\u2022 signalling (transmission of preferences) (1) 
+\u2022 incentivising (1)
+Two functions well explained can gain 3 marks; 1 function explained can achieve a maximum of 1 mark.
+
+AO2 Analysis (max 3 marks)
+An analysis of the importance of rationing (1), signalling (transmission of preferences) (1) and incentivising (1) to the operation of a market economy. Note: this must be in the context of a market economy.
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on the importance of at least two functions in relation to the potential effectiveness of a market economy (1) to reach a justified conclusion. (1)`
+  },
+  {
+    id: "fm23-22-2b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.4 Resource allocation in different economic systems",
+    maxMarks: 12,
+    questionText: "Assess whether all market economies should become mixed economies.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 NO: Explanations of why market economies should remain as they are e.g., because there is no (or minimal) government intervention, decisions are taken on the basis of demand and supply, competition is encouraged and so production is more efficient, and consumers and producers act on their own self-interest. 
+\u2022 YES: Explanations of why market economies should become mixed economies e.g., because in a market economy there is non-provision of public goods, the under-consumption of merit goods, the over-consumption of demerit goods and the existence of markets where prices are too low, too high, or too unstable.
+A one-sided response can only gain a maximum of Level 2.
+
+AO3 Evaluation
+Evaluation of whether all market economies should become mixed economies leading to a justified conclusion.
+Points to consider may include whether governments should provide public goods, merit goods, reduce the provision of demerit goods, intervene in the price mechanism etc.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "fm23-22-3a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.3 Addressing income and wealth inequality",
+    maxMarks: 8,
+    questionText: "Explain the possible economic reasons for inequality of income and consider whether inequality of income can benefit an economy.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A clear knowledge and understanding of at least two possible economic reasons for inequality of income, such as whether a person is in employment or unemployed (1), the skills, qualifications and experience of different workers in various occupations and economic sectors (1), whether workers are employed in the public sector or the private sector (1), whether they are employed full-time or part-time (1), the provision of transfer payments (1) and the level and type of taxation. (1) N.B. the question does not stipulate how many reasons should be referred to so two reasons well explained can gain up to 3 marks. 1 reason explained can achieve a maximum of 1 mark.
+
+AO2 Analysis (max 3 marks)
+The focus of this analysis must be on whether income inequality generates benefits to an economy or not. 
+Points may include:
+\u2022 Incentivising workers leading to higher levels of productivity
+\u2022 Encourages enterprise
+\u2022 Encourages workers to retrain/reskill
+\u2022 Demotivates those on the lowest incomes and an increase in crime
+\u2022 Increased government spending on transfer payments leading to an opportunity cost
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on the extent to which inequality of income can benefit an economy (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "fm23-22-3b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "With the help of a diagram, assess whether the introduction of a minimum price in a market can be justified.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Diagram of a minimum price in a market, correctly labelled with an equilibrium price and an equilibrium quantity and showing the existence of a minimum price above what would be the case with no government intervention. 
+Explanation of the potential advantages and benefits of a minimum price, such as making the prices of demerit goods more expensive to discourage consumption and protecting the incomes of producers in that market. 
+Explanation of the potential disadvantages and limitations of a minimum price, such as the creation of excess supply and the greater likelihood of producers becoming less efficient, and of why the introduction of a minimum price might be ineffective. 
+Note: Omission of a diagram/inaccurate diagram can only achieve a maximum of Level 2.
+A one-sided response can only gain a maximum of Level 2.
+
+AO3 Evaluation
+\u2022 Evaluation of the potential effectiveness of the introduction of a minimum price in a market.
+\u2022 Evaluation may contain an assessment of alternative policies but may only be rewarded if the advantages and disadvantages of minimum pricing policy have been discussed.
+\u2022 In conclusion, whether the introduction of a minimum price in a market can be justified. 
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "fm23-22-4a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.2 Introduction to the circular flow of income",
+    maxMarks: 8,
+    questionText: "Explain the circular flow of income in a closed economy and consider the extent to which the circular flow of income changes as an economy becomes an open economy.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A clear knowledge and understanding that the circular flow of income in a closed economy involves households, firms, and the government (1) and has injections of I and G and leakages/withdrawals of S and T (1), so that equilibrium income is where I + G = S + T (1). 
+
+AO2 Analysis (max 3 marks)
+An analysis of how the circular flow of income changes as an economy becomes an open economy, with the introduction of participation in the international economy (1) through the injection of X and the leakage/withdrawal of M (1), so that equilibrium income (is) (now becomes) where I + G + X = S + T + M (1). 
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on the extent to which the circular flow of income changes as an economy becomes an open economy depending on the importance of international net trade (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "fm23-22-4b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.4 Economic growth",
+    maxMarks: 12,
+    questionText: "Assess whether the consequences of economic growth for an economy are always positive.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 The positive consequences of economic growth: an improvement in the standard of living, a reduction in the rate of unemployment, an increase in incomes, an increase in the level of aggregate demand, a possible reduction in income inequality, higher tax revenues which a government could spend on improving public services (such as education and healthcare), and an increase in business confidence leading to greater investment. 
+\u2022 The negative consequences of economic growth: a possible depletion of non-renewable natural resources and damage to the environment, such as through various types of pollution, an unequal sharing of the benefits of economic growth among a population leading to an increase in income inequality and a possible reduction in the quality of life of people through longer working hours and a reduction in the amount of leisure time, plus a shift towards more capital-intensive production. 
+Answers may also refer to the dangers of inflationary pressure.
+A one-sided response can only gain a maximum of Level 2.
+
+AO3 Evaluation
+Points to consider may include:
+\u2022 The degree to which the potential benefits of economic growth are equally shared among a population. 
+\u2022 The extent to which any shift towards more capital- intensive production affects the level of unemployment
+\u2022 Whether long-term economic growth brings about a short-term cost as resources are used to produce capital goods rather than consumer goods
+\u2022 The extent to which the economic growth is sustainable
+\u2022 Which leads to a justified conclusion on whether the consequences of economic growth for an economy are always positive`
+  },
+  {
+    id: "fm23-22-5a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.4 Exchange rates",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain what is meant by an appreciation of a floating exchange rate and consider whether a country can only benefit from the appreciation of its currency.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A clear knowledge and understanding of the meaning of an appreciation of an exchange rate in a floating exchange rate system i.e., the exchange rate rises according to supply and demand of the currency (1). A diagram showing an appreciation of a currency: correct labelling of the axes (the vertical axis needs to be labelled either in terms of two currencies or as exchange rate) (1) and a rise in the value of a currency by a rightward shift of the demand curve and/or a leftward shift of the supply curve with the new equilibrium price shown together with an explanation of a possible cause of either shift (1).
+
+AO2 Analysis (max 3 marks)
+An analysis of the potential advantages of an appreciation, such as a reduction in the prices of imports, both of finished goods and of raw materials and component parts, reducing inflationary pressures in an economy. An analysis of the potential disadvantages of an appreciation, such as an increase in the price of exports making them less competitive. 
+Note: maximum mark of 2 if only advantages or disadvantages discussed.
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on whether the potential advantages of an appreciation of an exchange rate always outweigh the potential disadvantages (1) to reach a conclusion. (1) N.B the significance of elasticities and the MLC may be rewarded but must not be expected as they are A2 topics.`
+  },
+  {
+    id: "fm23-22-5b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.4 Supply-side policy",
+    maxMarks: 12,
+    questionText: "Assess whether supply-side policies are the most effective way to correct a deficit on the current account of the balance of payments of an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Successful supply-side policies will cause a rightward shift in the long-run AS curve, reflecting more efficient production. This would make a country\u2019s products more competitive in international markets and so there is likely to be an increase in net exports, correcting a deficit in the current account. 
+Supply-side policies could include improvements in training and education, making labour markets more flexible, reductions in the powers of trade unions, an increase in competition and a reduction in rules and regulations.
+Potential disadvantages of supply-side policies are that they are essentially a long-run solution and so may take a relatively long period of time to have an impact, such as improvements in training and education. Some of the policies could be quite expensive and so would involve the government in considerable expenditure, money which could have spent elsewhere (giving rise to the issue of opportunity cost).
+Guidance: There are a number of alternative approaches to answering this question. At the simplest level, analysis and evaluation may focus on an assessment of the effectiveness of supply side policies only. Furthermore, this may be expanded to include a direct comparison with the effectiveness of alternative policies such as fiscal, monetary or protectionist policies. In addition, such an assessment may simply be part of evaluation. However, if supply side policies are ignored or receive scant attention then only a Level 2 mark may be awarded.
+A one-sided response can only gain a maximum of Level 2.
+
+AO3 Evaluation
+Points to consider may include:
+the cause of the deficit, the cost and ease of introducing various policies, the possible unintended consequences of introducing policies etc. leading to a justified conclusion as to whether supply-side policies would be the most effective way to correct a deficit in the current account of the balance of payments of an economy.`
+  },
+  {
+    id: "mj23-21-2a",
+    year: "2023",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.5 Production possibility curves",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain the difference between the causes of a movement along, and a shift of, a production possibility curve (PPC) and consider which is likely to have the most immediate impact on an economy.",
+    markScheme: `AO1 Knowledge and understanding (3 marks maximum)
+An understanding of a PPC shown through an accurate diagram, with correctly labelled axes (1), a movement along a PPC showing a trade-off between production on the two axes (1), and a shift of a PPC showing an increase in production of two goods with no trade-off. (1)
+
+AO2 Analysis (3 marks maximum)
+Uses the PPC to explain that a movement along a PPC is caused by a reallocation of resources (1), as resources are shifted between the two types of product, involving an opportunity cost (1), but a shift of a PPC is caused by an increase in the quantity and/or quality of resources, allowing more of both goods to be produced. (1)
+
+AO3 Evaluation (2 marks maximum)
+Offers a valid judgement on whether a movement along, or a shift of, a PPC is likely to have the most immediate impact on an economy (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "mj23-21-2b",
+    year: "2023",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.1 Reasons for government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess whether education should be classified as a public good rather than classified as a merit good.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 Education is classified as a merit good because it is a private good with the characteristics of being both rival and excludable; it can therefore be provided through a market because it is possible to charge a price for it, although it can also be provided by the state.
+\u2022 A public good is distinct from a private good because it has the characteristics of being both non-rival and non-excludable; it is therefore difficult, if not impossible, to charge a price for it due to the existence of the free rider problem; it therefore has to be provided by the state. 
+
+AO3 Evaluation
+\u2022 Public goods can only be provided by the state.
+\u2022 Merit goods will be underprovided in the free market and governments should intervene to increase provision.
+\u2022 However, if the demand for education is extremely low in a country, when provided through a market, a government could decide to provide it entirely through the state.
+\u2022 In conclusion, education should be classified as a merit good rather than as a public good.`
+  },
+  {
+    id: "mj23-21-3a",
+    year: "2023",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 8,
+    questionText: "With the help of a formula, explain the meaning of cross elasticity of demand and consider which determinants are most important in establishing the size and sign of its coefficient.",
+    markScheme: `AO1 Knowledge and understanding (3 marks maximum)
+An understanding of what the cross elasticity of demand measures (1), the formula for cross elasticity of demand (1) and the distinction between positive and negative XED. (1)
+
+AO2 Analysis (3 marks maximum)
+Explanation of why XED can be positive (substitutes) (1), explanation of why XED can be negative (complements) (1) and explanation of determinants establishing its magnitude (the closer the relationship between two products, whether substitutes or complements, the greater the magnitude of the value of XED). (1)
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on the relative importance of the determinants that influence the magnitude of XED and whether it is positive or negative (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "mj23-21-3b",
+    year: "2023",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "With the help of a diagram, assess whether the benefits of a buffer stock scheme for an agricultural product always outweigh its disadvantages.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Diagram of a buffer stock scheme, correctly labelled with an equilibrium (target) price and quantity and with changes to price and quantity when there is an increase and a decrease of supply.
+Explanation of the potential benefits of a buffer stock scheme. 
+Explanation of the disadvantages and limitations associated with a buffer stock scheme and of why such a scheme might be ineffective. 
+
+AO3 Evaluation
+\u2022 Consideration of the potential effectiveness of a buffer stock scheme.
+\u2022 Consideration of whether the benefits of a buffer stock scheme always outweigh its disadvantages. 
+\u2022 In conclusion, whether such a scheme will always be effective for all agricultural products.`
+  },
+  {
+    id: "mj23-21-4a",
+    year: "2023",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 8,
+    questionText: "With the help of an AD/AS diagram(s), explain cost-push inflation and demand-pull inflation in an economy and consider in what circumstances one may be more damaging than the other.",
+    markScheme: `AO1 Knowledge and understanding (3 marks maximum)
+An understanding of the causes of inflation in an economy shown through an accurate diagram with correctly labelled axes (price level and real output) (1), with cost-push inflation shown by a shift of the AS curve to the left (1) and demand-pull inflation shown by a shift of the AD curve to the right. (1)
+
+AO2 Analysis (3 marks maximum)
+\u2022 Uses the diagram to explain the possible damaging effects of cost-push inflation in an economy. (Up to 2 marks)
+\u2022 Uses the diagram to explain the possible damaging effects of demand pull inflation in an economy. (Up to 2 marks)
+
+AO3 Evaluation (2 marks maximum)
+Offers a valid judgement on the comparison of the two causes of inflation in an economy, including the factors that could make one cause more damaging than the other (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "mj23-21-4b",
+    year: "2023",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.3 Monetary policy",
+    maxMarks: 12,
+    questionText: "Assess whether monetary policy or supply-side policy is likely to be more successful in reducing the rate of inflation in an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 The meaning of monetary policy.
+\u2022 The tools of monetary policy appropriate to a contractionary monetary policy: decreases in the money supply and/or an increase in the rate of interest and an appreciation of the exchange rate.
+\u2022 An explanation of the strengths and weaknesses of monetary policy to reduce the rate of inflation in an economy. 
+\u2022 The meaning of supply-side policy.
+\u2022 Examples of supply-side policy to reduce the rate of inflation in an economy, such as making the labour market more flexible, increased expenditure on education and training and promotion of competition in markets.
+\u2022 An explanation of the strengths and weaknesses of supply-side policy to reduce the rate of inflation in an economy. 
+
+AO3 Evaluation
+\u2022 Consideration of whether each policy is appropriate for both types of inflation.
+\u2022 To arrive at a conclusion on whether monetary policy or supply-side policy is likely to be more successful in reducing the rate of inflation in an economy.`
+  },
+  {
+    id: "mj23-21-5a",
+    year: "2023",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.4 Exchange rates",
+    maxMarks: 8,
+    questionText: "With the help of a diagram(s), explain the likely causes of a depreciation of a floating exchange rate and consider whether such a depreciation is always beneficial to an economy.",
+    markScheme: `AO1 Knowledge and understanding (3 marks maximum)
+An understanding of:
+\u2022 the demand for, and the supply of, a currency, shown through an accurate diagram, with correctly labelled axes (1)
+\u2022 correctly labelled demand and supply curves showing appropriate shift(s) (1)
+\u2022 and a fall in the value of the exchange rate. (1)
+
+AO2 Analysis (3 marks maximum)
+Uses the diagram to explain what could cause a shift of the demand curve for the currency to shift to the left and/or a shift of the supply curve of the currency to the right and analyses how these shifts could impact on the value of a currency. Consideration of potential advantages and disadvantages of a depreciation to an economy.
+
+AO3 Evaluation (2 marks maximum)
+Offers a valid judgement on whether the potential benefits of a depreciation of a country\u2019s floating exchange rate always outweigh the potential disadvantages (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "mj23-21-5b",
+    year: "2023",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 12,
+    questionText: "Assess whether the arguments for protectionism in the context of international trade are always stronger than the arguments against.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+The arguments for protectionism/against free trade. These might include:
+\u2022 Infant/sunrise industry argument
+\u2022 Declining/sunset industry argument
+\u2022 Strategic industry argument
+\u2022 To prevent dumping
+\u2022 To reduce a current account deficit
+\u2022 To raise revenue for a government.
+The arguments against protectionism/for free trade. These might include:
+\u2022 Free trade can lead to greater specialisation and, as a consequence, greater output 
+\u2022 Resources are allocated more efficiently
+\u2022 Consumers have a wider range of products to choose from
+\u2022 This can lead to improved standards of living.
+
+AO3 Evaluation
+\u2022 Considers the possible issues of protectionism and the relative strength of the different arguments.
+\u2022 In conclusion, which approach will be better for particular economic situations.`
+  },
+  {
+    id: "mj23-22-2a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.5 Consumer and producer surplus",
+    maxMarks: 8,
+    questionText: "With the help of a diagram(s), explain what is meant by consumer surplus and producer surplus and consider whether a rise in the price of a product because of higher costs of production is likely to always reduce the consumer surplus.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+For a clear understanding of consumer surplus i.e., the difference between the price a consumer is willing to pay for a product and its market price (1). 
+For a clear understanding of producer surplus i.e., the difference between the price a producer is willing to accept and what is actually paid (1). Both clearly shown on an accurately labelled diagram (s) (1)
+
+AO2 Analysis (max 3 marks)
+An accurately labelled diagram(s) showing a shift to the left in the supply curve (1) which explains and shows the extent of the change in consumer surplus for a product with an elastic price elasticity of demand (1) compared to a product with an inelastic price elasticity of demand (1)
+
+AO3 Evaluation (max 2 marks)
+Following suitable analysis of PED, it can be concluded that the overall impact is that consumer surplus will always fall (1) with a conclusion that the extent of the fall is dependent on the value of the price elasticity of demand (1).`
+  },
+  {
+    id: "mj23-22-2b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "A government wishes to keep the price of an essential food, such as rice, affordable to help low-income households. Assess whether a policy of fixing the maximum price for an essential food is likely to be more effective than a policy of making transfer payments to low-income households.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis (max 8 marks)
+The advantages and disadvantages of using a maximum pricing policy may include:
+\u2022 If the price is set below the equilibrium price and quantity, then it will make e.g., rice more affordable.
+\u2022 This will help low-income consumers and improve their living standards and improve their health BUT
+\u2022 It will create a shortage and informal markets may arise.
+\u2022 Governments may have to increase their spending to enforce the legislation.
+\u2022 Rich and poor households gain equally.
+Transfer payments may include:
+\u2022 Unemployment benefits
+\u2022 Pensions
+\u2022 Food vouchers etc.
+The advantages and disadvantages include:
+\u2022 They can be targeted at those most in need.
+\u2022 They can be targeted at the purchase of basic foodstuffs BUT
+\u2022 May be costly and have an opportunity cost.
+\u2022 The policies may not be used for their intended purposes (even vouchers may be sold in illegal markets)
+A one-sided response can only gain a maximum of Level 2.
+
+AO3 Evaluation (max 4 marks)
+\u2022 Consideration of the relative effectiveness of a maximum pricing policy compared with the use of transfer payments.
+\u2022 Consider the impact on low-income consumers of basic foodstuffs
+\u2022 In conclusion, which policy is most likely to be effective in helping low income consumers.`
+  },
+  {
+    id: "mj23-22-3a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.4 The interaction of demand and supply",
+    maxMarks: 8,
+    questionText: "With the help of a diagram(s), explain what is meant by equilibrium in a market, and consider the extent to which the equilibrium price and equilibrium quantity are likely to change for a product following an increase in the wages for labour across the whole economy.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+The equilibrium point is where the quantity demanded equals the quantity supplied (1) and there is no tendency to change in a market (1) with an accurately labelled diagram showing the equilibrium price and equilibrium quantity (1)
+
+AO2 Analysis (max 3 marks)
+Note: there are two possible approaches to answering this question. If both the approach focused on demand-side (inferior and normal goods) and the supply-side approach are attempted, then only the best response should be marked including marks for evaluation.
+EITHER: The demand curve will be expected to shift in this situation. Whether it shifts to the left or to the right will depend on the nature of the product and will shift to the left if it is an inferior good or to the right if it is a normal good. This should be the basis of the discussion. For an accurately labelled diagram demonstrating at least one of the appropriate shift(s) in the demand curve i.e., to the right and / or the left (1) that clearly shows the change in the equilibrium price and the equilibrium quantity for both a normal and inferior good (1) and is accompanied by a clear explanation of both shifts (1).
+OR: The supply curve will be expected to shift to the left in this situation. For a fully accurately labelled diagram that is clearly micro based and focused on the impact on a single product (1) that is used to clearly explain the resulting change in the price depending on whether demand is price elastic or price inelastic) (1) and quantity supplied (depending on whether supply is price elastic or price inelastic/use of buffer stocks/ effect of improved productivity) (1)
+
+AO3 Evaluation (max 2 marks)
+EITHER: The extent of the change will be determined by whether the good is a normal good or an inferior good / the value of ped / the value of YED / the value of PES / the size of the actual change in income. A discussion focused on the extent of change (1) followed by a justified conclusion (1)
+OR: The extent of the change will depend on the importance of wage costs to an individual firm / the significance of PES (1) A discussion focused on the extent of change followed by a justified conclusion (1)`
+  },
+  {
+    id: "mj23-22-3b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.3 Factors of production",
+    maxMarks: 12,
+    questionText: "Entrepreneurs are vital in a modern economy to achieve long run economic growth. Assess whether encouraging entrepreneurship or increasing another of the factors of production will be a more effective way to achieve long run economic growth.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis (max 8 marks)
+The advantages of encouraging entrepreneurship include:
+\u2022 The fact that entrepreneurs are the ones who organise the other three factors of production to produce output in an economy.
+\u2022 They are the ones who take risks and in return receive profit which is the motivation to be successful and so stimulate economic growth.
+\u2022 The fact that entrepreneurs must be creative and innovative to succeed and therefore should have the skills to anticipate current and future needs to be successful and therefore increase the productive potential of an economy and thus stimulate long run economic growth e.g., as measured by a shift to the right of the PPC.
+\u2022 Modern economies are dynamic, ever changing and the need to respond quickly to changes is one that can be met by successful entrepreneurs.
+BUT
+\u2022 There may be a cost in training and educating future entrepreneurs.
+\u2022 The rate of success of a policy to increase entrepreneurship may be low
+\u2022 The success depends on other factors such as the availability of government subsidies etc. which have an opportunity cost as well as the availability and quality of the other factors of production,
+\u2022 Because of high risks, entrepreneurs may seek short run gain which may not encourage long run economic growth and may in fact make it less likely e.g., due to rapid depletion of scarce resources.
+These should be compared with the likely importance and the advantage(s) and disadvantage(s) of increasing one other factor of production i.e., land OR labour OR capital. This may include an assessment of the availability of other factors of production.
+A one-sided response can only gain a maximum of Level 2.
+
+AO3 Evaluation (max 4 marks)
+\u2022 Consideration of the likely importance of increasing entrepreneurship compared to increasing one other factor of production to increase long run economic growth in a modern economy.
+\u2022 In conclusion, which factor of production is likely to be the most important.`
+  },
+  {
+    id: "mj23-22-4a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.1 The reasons for international trade",
+    maxMarks: 8,
+    questionText: "Two countries each produce two products and wish to trade with each other. Explain the difference between the principles of absolute advantage and comparative advantage and consider whether the principle of comparative advantage is always the more important influence when each country is deciding whether to trade with each other.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+Absolute advantage is a situation where, for a given set of resources, one country can produce more of a certain product than another country (1) comparative advantage exists where one country can produce a certain product at a lower opportunity cost than another country (1) plus a simple explanation that one country may have an absolute advantage in both products but the other country may have a lower opportunity cost in producing one of the products (1)
+
+AO2 Analysis (max 3 marks)
+The analysis should consider the advantages and disadvantages of using the principle of comparative advantage in deciding whether to trade or not.
+Maximum of 2 marks for an analysis that only considers the advantages and a maximum of 2 marks for an analysis that only considers the disadvantages.
+Points to consider include (N.B. this list is not exhaustive so allow any reasoned points):
+\u2022 The benefits of specialisation leading to a more efficient allocation of resources
+\u2022 An increase in world output
+\u2022 An increase in employment and living standards BUT
+\u2022 May exhaust finite natural resources due to over specialisation.
+\u2022 Strategic industry argument
+\u2022 Exchange rate may not lie between the opportunity cost ratios. 
+
+AO3 Evaluation (max 2 marks)
+For an answer that clearly compares the advantages and disadvantages of the principle of comparative advantage (1) and uses the analysis to reach a reasoned conclusion as to whether it is always the most important factor to consider (1)`
+  },
+  {
+    id: "mj23-22-4b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 12,
+    questionText: "Assess whether protectionism is the best way to correct a deficit in the current account of the balance of payments.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis (max 8 marks)
+Protectionism can include the use of:
+\u2022 Tariffs
+\u2022 Embargoes
+\u2022 Export subsidies etc.
+Analysis should consider the advantages and disadvantages of such a policy e.g.
+\u2022 Possible retaliation
+\u2022 Possible long-term reliance on such measures that may reduce future competitiveness etc.
+Analysis should also compare this policy with the advantages and disadvantages of another policy e.g., supply side policy, fiscal or monetary policy which may include:
+\u2022 Training and education to improve productivity.
+\u2022 Investment in better infrastructure
+\u2022 Incentives to entrepreneurs etc.
+\u2022 Expenditure dampening.
+\u2022 Encouragement of a depreciation in the exchange rate.
+A one-sided response can only gain a maximum of Level 2.
+
+AO3 Evaluation (max 4 marks)
+\u2022 Consideration of the relative effectiveness of the policies in correcting a deficit in the current account of the balance of payments.
+\u2022 A justified conclusion showing which policy is most likely to be successful in correcting a deficit in the current account of the balance of payments.`
+  },
+  {
+    id: "mj23-22-5a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 8,
+    questionText: "Explain the difference between cost-push and demand-pull inflation and consider which is more likely to occur if there is a depreciation in the exchange rate of a country with few natural resources.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+Cost push inflation is inflation caused by increases in the costs of production (1). Demand pull inflation is caused by increases in AD not matched by equivalent increases in AS (1). A clear explanation of the differences between the two (1)
+
+AO2 Analysis (max 3 marks)
+A depreciation in the exchange rate will lead to a fall in the price of exports for the trading partner and a rise in the price of imports for the country in question. This should be analysed with reference to the impact on the different types of inflation.
+Maximum of 2 marks if only demand-pull inflation is considered and should focus on the impact of the fall in price of exports and the rise in the price of imports and the possible impact on the X -M component of AD and therefore the impact on AD overall. Reference may be made to the PED of exports and the PED of imports.
+Maximum of 2 marks if only cost push inflation is considered. Reference must be made to the importance of imports (1) and the fact that this country has few natural resources which probably means they must be imported for the 2nd mark.
+
+AO3 Evaluation (max 2 marks)
+For an answer that clearly considers the fact that this country has few natural resources (1) to come to a justified conclusion as to which type of inflation is most likely to be the outcome for a country with few natural resources (1)`
+  },
+  {
+    id: "mj23-22-5b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.3 Monetary policy",
+    maxMarks: 12,
+    questionText: "Assess whether monetary policy is the only way to control a high rate of inflation.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis (max 8 marks)
+Explain the advantages and disadvantages of using monetary policy to control high rates of inflation to analyse its effectiveness. Points to consider may include:
+\u2022 The use of interest rates to dampen AD.
+\u2022 Reductions in money supply to dampen AD.
+\u2022 The use of credit regulations to influence bank lending BUT
+\u2022 There is also a time lag between implementing interest rate policy and it taking effect.
+\u2022 Other factors other than interest rates may affect consumer spending and offset the impact of a rise in interest rates e.g., consumer confidence, expectations etc.
+Monetary policy should be compared with the advantages and disadvantages of at least one other appropriate policy e.g., supply side and/or fiscal policy
+A one-sided response can only gain a maximum of Level 2.
+
+AO3 Evaluation (max 4 marks)
+\u2022 Consideration of the relative effectiveness monetary policy to control high rates of inflation compared with at least one other appropriate policy.
+\u2022 Although it is not necessary within the analysis / question, reference may be made to the relative effectiveness of these policies in controlling the different types of inflation.
+\u2022 A justified conclusion showing which policy is most likely to be effective in controlling high rates of inflation.`
+  },
+  {
+    id: "mj23-23-2a",
+    year: "2023",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 8,
+    questionText: "Explain, with the help of examples, the significance of the size and sign of the coefficient of income elasticity of demand for the classification of a good and consider how confident you are of this classification.",
+    markScheme: `AO1 Knowledge and Understanding (max 3marks)
+Knowledge of what is meant by income elasticity of demand (1)
+Formula for calculation of income elasticity of demand (1)
+Meaning of elastic/inelastic income elasticity of demand (1)
+
+AO2 Analysis (max 3 marks)
+Analysis of the significance of the size and sign of the coefficient for normal goods with relevant examples (1)
+Analysis of the significance of the size and sign of the coefficient for necessity goods with relevant examples (1)
+Analysis of the significance of the size and sign of the coefficient for inferior goods with relevant examples (1)
+Analysis of the significance of the size and sign of the coefficient for superior goods with relevant examples (1)
+Award maximum of 1mark for two types of good but with no examples.
+Award maximum of 2 marks for three types of good but with no examples.
+
+AO3 Evaluation (max 2 marks)
+For a brief comment such as 
+\u2022 Classification is dependent on income level of individual/household in case of inferior goods or necessities or superior goods
+\u2022 A necessity for a low-income household could be a normal good for another household
+\u2022 YED is an estimate calculated over separate time periods
+\u2022 Reserve 1 mark for a justified conclusion`
+  },
+  {
+    id: "mj23-23-2b",
+    year: "2023",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.5 Consumer and producer surplus",
+    maxMarks: 12,
+    questionText: "When the price of a product changes, it usually changes the consumer surplus in the market. Assess how variations in price elasticity of demand for a product determine the extent of changes in consumer surplus in a market.",
+    markScheme: `AO1 Knowledge and understanding and AO2Analysis (max 8 marks)
+\u2022 Knowledge and understanding of consumer surplus
+\u2022 Accurate labelled diagram of consumer surplus
+\u2022 Explanation of effects on consumer surplus when the price of a product increases
+\u2022 Explanation of the effects on consumer surplus when the price of a product decreases
+\u2022 Explanation of the change in consumer surplus for a product with a price elastic PED
+\u2022 Explanation of the change in consumer surplus for a product with a price inelastic PED
+\u2022 Comparison of changes in consumer surplus where there are variations in the PED for a product
+Level 2 max for 1 sided answers i.e. those that analyse the impact of elastic or inelastic PED
+
+AO3 Evaluation (max 4 marks)
+\u2022 Change in consumer surplus depends on the relative extent of the price change
+\u2022 Change in consumer surplus also depends on the coefficient of PED
+\u2022 It is assumed that a price change is the only factor that determines a change in consumer demand for a product`
+  },
+  {
+    id: "mj23-23-3a",
+    year: "2023",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.1 Reasons for government intervention in markets",
+    maxMarks: 8,
+    questionText: "Explain why government intervention may be required to provide merit goods and consider why such intervention may not always be successful.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+Government intervention takes place when markets fail (1); nature of information failure (1) examples of merit goods (1) 
+
+AO2 Analysis (max 3 marks)
+Application of reasons for government provision of merit goods to include essential nature of merit goods (1); private sector not willing to fully provide (1); problem of payment for merit goods (1) benefits in terms of society and the economy (1)
+Guidance; Award 1 mark for each example that is explained
+
+AO3 Evaluation (max 2 marks)
+\u2022 Governments may lack the resources to provide sufficient merit goods 
+\u2022 Governments may not have enough information on which merit goods should be provided
+\u2022 Reserve 1 mark for a justified conclusion`
+  },
+  {
+    id: "mj23-23-3b",
+    year: "2023",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess the effectiveness of government intervention through buffer stock schemes in agricultural markets.",
+    markScheme: `AO1 Knowledge and understanding and AO2Analysis (max 8 marks)
+The advantages and disadvantages of a buffer stock scheme in agricultural markets may include
+\u2022 Effective in smoothing out price changes, particularly where these are volatile
+\u2022 Responsive to market conditions
+\u2022 Involves minimum and maximum prices
+\u2022 Storage of products can be used to influence price changes
+\u2022 Can be inefficient when surplus stocks build up
+\u2022 Little incentive for producers to change what they produce
+\u2022 Could lead to waste of perishable products
+Other methods of intervention can include
+\u2022 Subsidies paid to agricultural producers
+\u2022 Tariffs on imports
+\u2022 Export controls
+Advantages and disadvantages include
+\u2022 Less intervention, more emphasis on market forces
+\u2022 Improved security of supply for domestic market
+\u2022 Reduced dependence on imports
+\u2022 Income of efficient farmers can increase
+\u2022 Subsidies involve an opportunity cost
+Level 2 max for 1 sided answers
+
+AO3 Evaluation (max 4 marks)
+\u2022 Consideration of relative effectiveness of buffer stock schemes compared to other methods of intervention
+\u2022 How to determine minimum prices for government intervention
+\u2022 Problem of over-supply and impact on future market prices
+\u2022 Informal markets and scale of subsistence producers can be issues in low-income countries`
+  },
+  {
+    id: "mj23-23-4a",
+    year: "2023",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.2 Introduction to the circular flow of income",
+    maxMarks: 8,
+    questionText: "With the help of a circular flow of income diagram, explain how equilibrium is determined in an open economy and consider whether a budget deficit or a trade deficit is more likely to cause lasting disequilibrium.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+An understanding of the circular flow of income shown through an accurate diagram showing income flows between firms and households (1); correct inclusion of exports and imports (1); correct inclusion of government spending and taxation (1)
+
+AO2 Analysis (max 3 marks)
+Explanation of injections into the circular flow of income;(1); explanation of leakages from the circular flow of income (1); determination of equilibrium in the circular flow of income (1)
+
+AO3 Evaluation (max 2 marks)
+Consideration how a budget deficit or a trade deficit leads to disequilibrium in the circular flow of income (1); consideration which is likely to cause lasting disequilibrium (1) Reserve 1 mark for a justified conclusion`
+  },
+  {
+    id: "mj23-23-4b",
+    year: "2023",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.2 Introduction to the circular flow of income",
+    maxMarks: 12,
+    questionText: "Assess whether an increase in investment in new infrastructure projects will always have a positive impact on the circular flow of income in an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2Analysis (max 8 marks)
+Increased investment in new infrastructure can have a positive and negative impact on the circular flow of income in an economy:
+\u2022 Increased investment can be from firms or government
+\u2022 Household savings can be a source of funds for this investment
+\u2022 Investment is an injection in to the circular flow of income
+\u2022 There is increased payments for factors of production
+\u2022 Households supply factor services to firms in the form of labour, enterprise and capital
+\u2022 In turn, firms provide factor services to implement the investment
+\u2022 Leakages impact on the total flow of funds in the circular flow of income
+\u2022 Taxation on the inputs into the new infrastructure project is a leakage from households and firms to the government
+\u2022 Other leakages are spending on imports of materials to implement the new infrastructure project
+\u2022 Household savings are a leakage from factor income
+\u2022 Equilibrium in the circular flow will depend on the balance between injections and leakages.
+Maximum level 2 for a one-sided response
+
+AO3 Evaluation (max 4 marks)
+\u2022 The circular flow model is a simplified view of reality.
+\u2022 The impact will depend upon the net of injections and leakages.
+\u2022 There could be a negative impact on the circular flow of income if leakages exceed injections.
+\u2022 Most forms of new infrastructure have a negative impact not taken into account by the model
+\u2022 Consideration as to whether all new infrastructure always has a positive impact on the circular flow of income`
+  },
+  {
+    id: "mj23-23-5a",
+    year: "2023",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.3 Monetary policy",
+    maxMarks: 8,
+    questionText: "Explain how monetary policy may be able to reduce the rate of inflation in an economy and consider the likely success of this policy.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+An understanding of monetary policy (1); tools of monetary policy :interest rates, supply of money and regulations (1); nature of a contractionary monetary policy (1)
+
+AO2 Analysis (max 3 marks)
+An explanation of how the tools of monetary policy can be applied to reduce inflation (1); analysis of these changes on aggregate demand and the price level (1); analysis of the effects on output and employment (1). 
+
+AO3 Evaluation (max 2 marks)
+The effectiveness of monetary policy will depend upon the response of consumers and firms, in particular to higher interest rates (1) May also depend on the rate of inflation and its causes (1) Reserve 1 mark for a justified conclusion.`
+  },
+  {
+    id: "mj23-23-5b",
+    year: "2023",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.1 Government macroeconomic policy objectives",
+    maxMarks: 12,
+    questionText: "Assess how governments use macroeconomic intervention to achieve their macroeconomic objectives.",
+    markScheme: `AO1 Knowledge and understanding and AO2Analysis (max 8 marks)
+\u2022 Macroeconomic objective of price stability
+\u2022 Macroeconomic objective of low unemployment
+\u2022 Macroeconomic objective of economic growth
+\u2022 Government budget as a form of intervention
+\u2022 Scope and use of fiscal policy as a form of intervention
+\u2022 Scope and use of monetary policy as a form of intervention
+\u2022 Scope and use of supply-side policy as a form of intervention
+\u2022 Examples of links between macroeconomic objectives and forms of intervention
+\u2022 Other objectives such as distribution of income
+A one-sided response can only gain a maximum mark of Level 2
+
+AO3 Evaluation (max 4 marks)
+\u2022 Consideration of the extent to which macroeconomic intervention allows governments to achieve their macroeconomic policy objectives
+\u2022 Effectiveness of particular interventions in relation to specific macroeconomic objectives`
+  },
+  {
+    id: "on23-21-2a",
+    year: "2023",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.1 Demand and supply curves",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain what could cause an increase in demand for a product and consider whether the impact of an increase in demand on the price of the product will be the same in the short run and the long run.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+An understanding of the demand for a product, shown through an accurate diagram, with correctly labelled axes (1), correctly labelled demand and supply curves and a correctly labelled shift of the demand curve to the right (1) and with equilibrium positions in terms of both price and quantity clearly shown or a movement from E1 to E2. (1)
+
+AO2 Analysis (max 3 marks)
+Uses the diagram to explain what could cause a shift of the demand curve to the right for a product and analyses the causes of an increase in demand for a product.
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on whether the impact of an increase in demand on the price of the product will be the same in the short run and long run (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "on23-21-2b",
+    year: "2023",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 12,
+    questionText: "Assess whether price elasticity of demand (PED) or income elasticity of demand (YED) is likely to be of greater importance to a firm producing cars.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 An understanding of the meaning and formula of PED. 
+\u2022 An understanding of the meaning and formula of YED.
+\u2022 An analysis of how each of these concepts can be applied to the specific context of a firm producing cars.
+Guidance: A clear comparison of the strengths and weaknesses of these two concepts in the context of car production needed to get into Level 3.
+(Up to 8 marks)
+
+AO3 Evaluation (Up to 4 marks)
+\u2022 PED should be easier for a firm to calculate than YED. 
+\u2022 PED will indicate whether price should be increased or decreased. 
+\u2022 However, a firm will need to take into account the availability of substitutes, the amount spent on the product and the time period under consideration.
+\u2022 YED will be helpful in giving a firm an indication of the extent to which a change in income may affect spending on cars. 
+\u2022 However, a firm will need to take into account whether a car is seen as a normal or an inferior good, the proportion of income that is spent on the car and whether an economy is experiencing an upturn or a downturn.
+\u2022 In conclusion, PED is likely to be of greater importance than YED, but YED will still be of some use.`
+  },
+  {
+    id: "on23-21-3a",
+    year: "2023",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 8,
+    questionText: "Explain why a government might decide to increase its direct provision of essential goods and services and consider whether such a policy is always likely to be successful.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+An understanding of the role of the state in providing essential goods and services, such as merit goods (1); these could include education and health care (1) and they could be financed out of money received from taxation. (1)
+Guidance: Allow expenditure by a government on items such as food and shelter.
+
+AO2 Analysis (max 3 marks)
+Up to 2 marks for explaining each essential good or service that a government might decide to increase the direct provision of. 
+Guidance: 2 marks for each well-explained essential good or service provided by the state and 1 mark for each essential good or service provided by the state with limited explanation. 
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on whether an increase in a government\u2019s direct provision of essential goods and services will always be likely to be successful in achieving its objectives in an economy (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "on23-21-3b",
+    year: "2023",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Governments sometimes fix maximum prices on goods for different reasons. Assess whether the use of a maximum price is always advantageous.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+The advantages of a maximum price might include:
+\u2022 The price of certain products, such as essential foods, can be limited by the establishment of a price ceiling.
+\u2022 The effect of this will be to make such items more affordable to people.
+\u2022 This will reduce the extent of poverty in a country.
+The disadvantages of a maximum price might include:
+\u2022 The impact of the maximum price will be to create a situation of excess demand in the market (this needs to be clearly explained).
+\u2022 This could lead to queuing or rationing.
+\u2022 It could lead to the creation of a black or illegal market.
+(Up to 8 marks)
+
+AO3 Evaluation (Up to 4 marks)
+\u2022 Consideration of the relative balance of advantages and disadvantages of the policy. 
+\u2022 Consideration of the impact of this policy on producers and consumers.
+\u2022 In conclusion, consideration of whether the policy will be effective and always advantageous.`
+  },
+  {
+    id: "on23-21-4a",
+    year: "2023",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.2 Fiscal policy",
+    maxMarks: 8,
+    questionText: "Explain the reasons why governments impose taxes and consider whether an increase in income tax is fairer than an increase in sales taxes.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A clear understanding of the various possible reasons why governments impose taxes.
+
+AO2 Analysis (max 3 marks)
+Analysis of the distinction between a direct tax, such as income tax, and an indirect tax, such as a sales tax, with appropriate reference to fairness.
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on whether an increase in income tax is fairer than an increase in sales taxes (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "on23-21-4b",
+    year: "2023",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.2 Fiscal policy",
+    maxMarks: 12,
+    questionText: "Assess whether a government should always aim to balance its budget rather than have a budget surplus or a budget deficit.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 The meaning of a balanced budget.
+\u2022 The significance of a balanced budget.
+\u2022 The meaning of a budget deficit.
+\u2022 Link to expansionary fiscal policy.
+\u2022 Explanation in relation to such aims as reducing the level of unemployment or increasing the rate of economic growth in an economy.
+\u2022 The meaning of a budget surplus.
+\u2022 Link to contractionary fiscal policy.
+\u2022 Explanation in relation to such aims as reducing the rate of inflation or the size of the trade balance through a reduction of imports.
+(Up to 8 marks)
+
+AO3 Evaluation (Up to 4 marks)
+\u2022 Consideration of which fiscal position is appropriate for particular macroeconomic problems.
+\u2022 In conclusion, which approach will be better for particular economic situations.`
+  },
+  {
+    id: "on23-21-5a",
+    year: "2023",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 8,
+    questionText: "Explain the difference between an import tariff and an import quota and consider why a government would choose an import tariff rather than an import quota as a tool of protection in international trade.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+The meaning of an import tariff as a tool of protection. (Up to 2 marks)
+The meaning of an import quota as a tool of protection. (Up to 2 marks)
+(Max 3 marks)
+
+AO2 Analysis (max 3 marks)
+An explanation of the various advantages and disadvantages of an import tariff as a tool of protection in international trade. (Up to 2 marks)
+An explanation of the various advantages and disadvantages of an import quota as a tool of protection in international trade. (Up to 2 marks) 
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on why a government would choose an import tariff rather than an import quota as a tool of protection in international trade (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "on23-21-5b",
+    year: "2023",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.1 The reasons for international trade",
+    maxMarks: 12,
+    questionText: "Assess whether the theories of absolute and comparative advantage are substantially undermined by their various limitations.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 The theory of absolute advantage.
+\u2022 The theory of comparative advantage.
+\u2022 How these theories could be used in the real world.
+\u2022 The assumptions underlying these theories, such as in relation to only two products being traded, the existence of perfect competition in both product and factor markets, no transport costs, production subject to constant returns to scale and no restrictions on trade.
+\u2022 The limitations of these theories, such as in relation to the fact that trade will involve more than two products, perfect competition will not apply to all markets, there will costs of transport, producers may experience economies of scale, reducing the costs of production, and there may well be trade restrictions in different parts of the world in the form of different methods of trade protection.
+(Up to 8 marks)
+
+AO3 Evaluation (Up to 4 marks)
+\u2022 Considers the various assumptions of the theories 
+\u2022 In conclusion, are the theories substantially undermined by their various limitations?`
+  },
+  {
+    id: "on23-22-2a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 8,
+    questionText: "With the help of a formula, explain what is meant by the term price elasticity of demand for a product and consider the extent to which it allows an entrepreneur to determine the effect of price changes on the total expenditure on their product.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+For a clear understanding of the meaning of price elasticity of demand (1) plus an accurate formula (1) plus a clear understanding of what is meant by price elastic and price inelastic that refers to relative proportionate or percentage changes rather than large or small changes (1)
+
+AO2 Analysis (max 3 marks)
+Up to 2 marks for clear analysis of how total expenditure on a product is affected by price changes if the demand is price elastic.
+Up to 2 marks for clear analysis of how total expenditure on a product is affected by price changes if the demand is price inelastic.
+Note: as the question refers to price changes it is expected that answers should consider both price increases and price decreases. If either part of the analysis only considers a price rise or a fall, then a maximum of 1 mark for that part of the analysis. If both parts of the analysis consider a price rise or fall then a maximum mark of 2 i.e., 1 + 1.
+
+AO3 Evaluation (max 2 marks)
+Up to 2 marks for considering the extent to which the concept can help the entrepreneur and making a judgement.
+\u2022 Consideration of the accuracy of the measure and the ease of calculation for an entrepreneur
+\u2022 Consideration of other factors which may affect total expenditure on a product when price changes.
+\u2022 Reserve 1 mark for a conclusion that focuses on the extent to which it allows the entrepreneur to determine the effect of price changes.`
+  },
+  {
+    id: "on23-22-2b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.3 Price elasticity of supply",
+    maxMarks: 12,
+    questionText: "Assess whether the concept of price elasticity of supply or cross elasticity of demand will be the more useful to a business wanting to increase its total sales in a growing economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Analysis of the concept of price elasticity of supply may explain its use in increasing a business\u2019 total sales by examining the following.
+\u2022 Usefulness depends on the type of goods and whether decisions need to be made in the short run or long run.
+\u2022 It may help businesses with regards to stock holding and decisions about which products to focus on
+\u2022 It may help businesses make decisions about productive capacity and whether e.g., to invest in new technology BUT
+\u2022 It depends on the accuracy of the data used to produce the value.
+\u2022 This may change over time and the value may have little value in a growing economy.
+\u2022 Some products, such as agricultural/perishable products, will naturally have a more price inelastic supply and knowledge of the value may have little use.
+Analysis of the concept of cross elasticity of demand may explain its use in increasing a business\u2019s total revenue by examining the following.
+\u2022 It will mean the business understands the relationship between its product and others i.e., whether they are complements or substitutes.
+\u2022 It also measures the closeness of the relationship and informs decisions about how quickly and the extent to which it should react for example if a competitor changes its prices.
+\u2022 It should assist a business to develop a pricing strategy that maximises opportunities to generate more sales BUT
+\u2022 The usefulness depends on the accuracy of the data and in a growing economy, it may not be possible to keep the value up to date. It is therefore often dependent on estimates that may be inaccurate.
+\u2022 Businesses may not be able to act on the data by changing prices if their cost structure cannot be easily changed.
+\u2022 Other variables other than cross elasticity of demand may be more important for example non price determinants such as brand loyalty.
+Better answers will refer directly/implicitly to their usefulness to a business operating in a growing economy. Answers which do not are unlikely to gain more than L3 lower band.
+One sided response i.e., those that only consider one concept or do not analyse the problems of at least one concept will not gain beyond L2.
+
+AO3 Evaluation
+\u2022 Consideration of the likely effectiveness of both measures in increasing total sales in a growing economy that assesses which is most likely to be effective. If there is no direct/implicit reference to a growing economy, then L1 upper maximum.
+\u2022 Candidates may consider an alternative concept e.g., YED to assess whether sales would actually grow in these circumstances,
+\u2022 A justified conclusion which is most likely to be effective.`
+  },
+  {
+    id: "on23-22-3a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.6 Classification of goods and services",
+    maxMarks: 8,
+    questionText: "With the help of examples, explain the difference between free goods and public goods and consider the view that public goods can never be provided in a market economy.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+Free goods are not scarce and have zero opportunity cost/no prices as no factors of production are required to produce them (1)
+Public goods have two main characteristics of non-excludability and non-rivalry with a brief explanation of both terms (1)
+Provide accurate examples of both e.g., fresh air and street lighting respectively (1)
+
+AO2 Analysis (max 3 marks)
+Explanation of why each of the two characteristics of public goods lead to the free rider problem (1 + 1) and why this makes it impossible/unrealistic to charge a price for them so the market economy would not supply them and therefore they must be provided by the government (1)
+
+AO3 Evaluation (max 2 marks)
+\u2022 Consideration of the view that pure public goods can never be provided in a market economy unless they are directly funded by the government (1)
+\u2022 Or could be considered to be quasi or semi-public goods in which case a price could be charged, and they could be provided by a market economy (1)
+\u2022 Reserve one mark for a justified conclusion (1)`
+  },
+  {
+    id: "on23-22-3b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.1 Reasons for government intervention in markets",
+    maxMarks: 12,
+    questionText: "The provision of merit and demerit goods differs from the provision of other private goods. Assess the view that the consequences of imperfect information are more serious in a market economy than in a mixed economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 An analysis of how private goods (which include merit and demerit goods) are allocated within an economy through the demand and supply mechanism.
+\u2022 An explanation of the existence of imperfect information with respect to merit and demerit goods and the associated problems of under or overconsumption.
+\u2022 An explanation of how this is likely to lead different methods of allocation for both merit and demerit goods than for other private goods, (how other private goods are allocated and how this differs from the provision of merit and demerit goods and any other problems that may be associated with their allocation.)
+\u2022 Analysis should consider the consequences of imperfect information in both a market and a mixed economy for the provision of merit and demerit goods compared to other private goods.
+\u2022 Answers which do not compare the provision of merit/demerit goods in both a market economy and a mixed economy cannot gain more than L2.
+
+AO3 Evaluation
+Points to consider include.
+\u2022 Merit goods and demerit goods need government intervention because of the issues of under and over consumption due to imperfect information, so the market economy fails to operate efficiently.
+\u2022 Other types of private good can be efficiently provided by the market economy without government intervention but the process of allocation may mean e.g., low-income groups do not have the same access to certain goods.
+\u2022 Leading to a justified conclusion answering the question of whether the consequences of imperfect information are more serious in a market economy than a in mixed economy.`
+  },
+  {
+    id: "on23-22-4a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.1 The reasons for international trade",
+    maxMarks: 8,
+    questionText: "Explain the difference between the terms of trade and the balance of trade in goods and consider whether an economy should be more concerned about its terms of trade than its balance of trade in goods.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+The term of trade is a numerical measure of the relationship/ratio between export and import prices (1) with an accurate formula showing the measure as an index (1) whereas the balance of trade in goods measures the revenue earned from exports of goods minus the expenditure on imports of goods (1)
+
+AO2 Analysis (max 3 marks)
+Analysis must consider issues concerning both the terms of trade and the balance of trade in goods. These may include:
+\u2022 Up to 2 marks for an analysis of the effects of changes to the terms of trade e.g., relative change in competitiveness, increase in cost-push inflation, effects on balance of trade in goods and services.
+\u2022 Up to 2 marks for an analysis of the effects of changes to the balance of trade e.g., an increase in the demand for exports ceteris paribus may lead to an increase in the balance of trade, impact on employment levels, economic growth, inflation.
+\u2022 MAX 3 marks overall
+
+AO3 Evaluation (max 2 marks)
+Evaluation should use relevant analysis to consider the importance of both measures and make a judgement as to which one may be of most concern to an economy (1). Reserve one mark for a justified conclusion (1).`
+  },
+  {
+    id: "on23-22-4b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.1 The reasons for international trade",
+    maxMarks: 12,
+    questionText: "Assess whether a rise or a fall in the terms of trade will benefit the macroeconomic performance of an open economy that is heavily dependent on international trade.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Better answers will examine the impacts on the wider economy i.e., employment, price stability, economic growth as well the on the current account. Reference will also be made to the dependency on international trade.
+For a rise in the terms of trade:
+\u2022 This may lower inflation if raw material import prices are lower.
+\u2022 Depending on price elasticity of demand, it may lead to economic growth if the income earned from exports increases and a boost to employment.
+\u2022 It may however lead to lower economic growth if it leads to a current account deficit.
+For a fall in the terms of trade:
+\u2022 Exports may be boosted, and this may lead to higher economic growth.
+\u2022 It may reduce a current account deficit.
+\u2022 It may however be a sign of a weak economy with exports that are less in demand and therefore lead to lower economic growth.
+\u2022 If imports are price inelastic, this may lead to import cost-push inflation if the economy is highly dependent on imported goods.
+\u2022 Answers which do not refer to the heavy dependence on international trade cannot gain more than L2.
+\u2022 Answers which only refer to a rise or a fall in the terms of trade cannot gain more than L2.
+\u2022 At least one negative effect in addition to positive effects (either for a rise or a fall in the terms of trade) should be considered within the analysis to gain lower L3.
+
+AO3 Evaluation
+\u2022 Evaluation should consider both price elasticity of demand for exports and imports and the dependency on international trade. N.B. reference to the Marshall-Lerner condition may be rewarded but must not be expected as that is an AL topic.
+\u2022 The benefits and drawbacks of both a rise in the terms of trade and a fall in the terms of trade should be carefully considered and compared to form a judgement about their impact on the wider economy.
+\u2022 This should lead to a considered conclusion about which is more likely to be of benefit.`
+  },
+  {
+    id: "on23-22-5a",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.3 Aggregate Demand and Aggregate Supply analysis",
+    maxMarks: 8,
+    questionText: "With the help of a diagram(s), explain one reason for an increase in aggregate demand and one reason for an increase in aggregate supply and consider whether an increase in aggregate demand will always lead to inflation.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+Aggregate demand is the total demand for an economy\u2019s goods and services at a given price level/it is the total of C + I + G +(X-M) (1)
+Aggregate supply is the total output that producers in an economy are willing and able to supply at a given price level (1)
+An accurate diagram showing AD and AS curves (1)
+
+AO2 Analysis (max 3 marks)
+Analysis must explain a valid cause of an increase in AD (1) and a valid cause of an increase in AS (1) and show these increases by rightward shifts in both curves and the resultant impacts on the price level on an accurate diagram (1)
+
+AO3 Evaluation (max 2 marks)
+Whether an increase in AD will always lead to an increase in the price level (inflation) will depend on the increase in AS and/or the shape of/position on the AS curve (1). This must be clearly explained, and reserve one mark for a valid judgement (1)`
+  },
+  {
+    id: "on23-22-5b",
+    year: "2023",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 12,
+    questionText: "Assess whether the internal effects of inflation are more serious than the external effects of inflation for an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+The internal effects of inflation are those which affect the domestic economy directly and may include:
+\u2022 Income redistribution
+\u2022 Menu costs (or the costs to firms of having to change their prices frequently)
+\u2022 Shoe leather costs (or the inconvenience of having to hold smaller quantities of cash/searching for the best rate of interest)
+\u2022 Uncertainty in transactions
+\u2022 But also, may provide a stimulus for output and be a sign of economic growth.
+The external effects of inflation are those which affect its international trade and may include.
+\u2022 Declining price competitiveness of exports and increased competitiveness for imports
+\u2022 This may increase the current account deficit.
+\u2022 May lead to a depreciation of the exchange rate.
+\u2022 Uncertainty in international transactions
+\u2022 But also, depending on price elasticity of demand, it may boost revenue from exports plus it will improve the terms of trade and may be a sign of increased demand for its goods and further stimulate output.
+\u2022 Both internal and external effects need to be considered to gain more than L2.
+\u2022 One positive effect (in addition to negative effects) only for internal or external can gain low L3.
+\u2022 Positive effects and negative effects analysed for both internal and external can gain top L3.
+
+AO3 Evaluation
+\u2022 Consideration of both the internal and external effects of inflation for an economy
+\u2022 An assessment of which effects are likely to be the most serious. 
+\u2022 A justified conclusion as to which effect is likely to be the most serious.`
+  },
+  {
+    id: "on23-23-2a",
+    year: "2024",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.6 Classification of goods and services",
+    maxMarks: 8,
+    questionText: "With the aid of examples, explain the characteristics of public goods and free goods and consider whether free-of-charge vaccinations offered by a government should be classified as a free good.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+\u2022 Free goods are not scarce and have zero opportunity cost / no prices as no factors of production are required to produce them (1).
+\u2022 Public goods have two main characteristics of non-excludability and non-rivalry with a brief explanation of both terms (1).
+\u2022 Provide accurate examples of both e.g., fresh air and street lighting respectively (1).
+
+AO2 Analysis (max 3 marks)
+\u2022 For example, the vaccine is free at the point of use to the consumer (1). However, there is a cost to the taxpayer (1). This means that there is an opportunity cost to the government as providing the vaccine involves the use of scarce resources (1).
+Alternative approach:
+\u2022 If governments provide free-of-charge vaccinations, then there is no price charged to the consumer (1). This means consumers do not need to use their own their own scarce resources to be vaccinated (1) which means there is no opportunity cost to them because they do not need to make a choice between \u2018consuming\u2019 the vaccine and reducing their consumption of other goods and services (1).
+
+AO3 Evaluation (max 2 marks)
+\u2022 Up to 2 marks for evaluating whether or not free-to-charge vaccinations offered by a government can be considered a free good. For example, there is an opportunity cost to the government as the money spent on buying the vaccine might have been used for spending on another priority e.g. education.`
+  },
+  {
+    id: "on23-23-2b",
+    year: "2024",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess whether the expected benefits of providing healthcare services free-of-charge at the point of use exceed the likely costs.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Potential benefits of providing healthcare services free-of-charge at the point of use include:
+\u2022 It addresses concerns on affordability/inequality to access health care, insurance and information gaps e.g. preventative earlier treatments for elderly and children.
+\u2022 It may also avoid a potential loss of output resulting from worker absenteeism. It increases the likelihood of resources being prioritised to patient need as opposed to profit.
+Potential disadvantages from providing healthcare services free-of-charge at the point of use include:
+\u2022 Demand may exceed supply which may result in increased costs to governments.
+\u2022 Charging consumers will reduce on wastage in terms of \u2018missed\u2019 medical appointments; potential for health inequality resulting in income inequality.
+\u2022 Private firms may be more efficient in providing the healthcare services required in the quantities and regions required. The opportunity cost to the government in terms of reduced spending on roads etc.
+
+AO3 Evaluation
+\u2022 Requires an assessment of whether or not the expected benefits of providing healthcare free of charge at the point of use exceed the likely costs which leads to 
+\u2022 A justified conclusion which may include alternative approaches including a mixture of free and chargeable healthcare.`
+  },
+  {
+    id: "on23-23-3a",
+    year: "2023",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.6 Classification of goods and services",
+    maxMarks: 8,
+    questionText: "Explain why the provision of bus and local rail (mass transit) services in cities is classified as a private good and not a public good and consider why such services might only be provided by the private sector.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\u2022 Explanation of what is meant by excludability/non excludability (1)
+\u2022 Explanation of what is meant by rivalry/non rivalry (1)
+\u2022 Correct application to private and public goods (1)
+
+AO2 Analysis (max 3 marks)
+\u2022 Why is a mass transit service a private good with reference to both characteristics and therefore only provided by the private sector? (up to 2 marks)
+\u2022 Why is a mass transit service not a public good with reference to both characteristics and therefore not provided by the public sector? (up to 2 marks)
+
+AO3 Evaluation (max 2 marks)
+\u2022 Assessment of whether a mass transit service might only be provided by the private sector with 1 mark reserved for a justified conclusion.`
+  },
+  {
+    id: "on23-23-3b",
+    year: "2023",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess whether bus and rail (mass transit) systems in cities should receive substantial subsidies from governments.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis:
+\u2022 Explanation of what is meant by a subsidy (reward accurate diagrams if provided but these are not necessary) with reference to the impact on price and quantity.
+\u2022 Likely advantages of a subsidy for mass transit systems e.g., it can be considered a merit good that helps lower income families, improves labour mobility, reduces road congestion, and improves air quality/reduces the use of private cars which may be considered to be a demerit good.
+\u2022 Likely disadvantages of subsidies e.g., opportunity cost, poor decisions as a result of information failure, government inability to provide funding etc.
+\u2022 If only 1 sided answer i.e., only advantages or disadvantages are discussed, then L2 maximum.
+
+AO3 Evaluation
+\u2022 For an evaluation of the relative importance of the advantages and disadvantages of subsidies that leads to a justified conclusion`
+  },
+  {
+    id: "on23-23-4a",
+    year: "2023",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.5 Unemployment",
+    maxMarks: 8,
+    questionText: "With reference to a country that is known to you, explain the main causes of unemployment and consider which of these causes is most significant.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\u2022 For an understanding of what is meant by/a definition of unemployment (1)
+\u2022 For an understanding of what is meant by at least two types of unemployment (2 \xD7 1)
+
+AO2 Analysis (max 3 marks)
+An analysis of the causes of these two types of unemployment and their significance applied to a named country known to the candidate. (up to 3 marks)
+Note: If only 1 type of unemployment is analysed then 2 marks maximum. If there is no named country, then 1 mark maximum.
+
+AO3 Evaluation (max 2 marks)
+For an evaluation of which cause is the most significant in the named country leading to a justified conclusion (reserve 1 mark).`
+  },
+  {
+    id: "on23-23-4b",
+    year: "2023",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.4 Supply-side policy",
+    maxMarks: 12,
+    questionText: "Assess whether supply-side policy is the only way of reducing long-term unemployment in an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 Analysis of what is meant by supply side policy and how it can be applied to reduce long-term unemployment e.g., by retraining and updating skills, by providing information on job vacancies, by encouraging business start-ups etc.
+\u2022 Analysis of the advantages of using supply side policy e.g., may be non-inflationary, may be more long-term etc.
+\u2022 Analysis of the disadvantages of supply side policy e.g., may take a long time to have an effect, opportunity cost, receptiveness e.g., of the workforce, policies may not work depending on the type of unemployment e.g., demand side policy may be more applicable for cyclical unemployment.
+\u2022 An analysis of the advantages and disadvantages of at least one alternative macroeconomic policy.
+L3 lower-level max if only the advantages and disadvantages of supply side policy are analysed. L2 max if only advantages OR disadvantages of supply side policy are analysed.
+
+AO3 Evaluation
+\u2022 For an evaluation of whether supply side policy is the only way of reducing long term unemployment leading to a reasoned conclusion.`
+  },
+  {
+    id: "on24-21-2a",
+    year: "2024",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.1 Demand and supply curves",
+    maxMarks: 8,
+    questionText: "Explain the determinants of supply for an agricultural product, such as rice, and consider which of these determinants is likely to be of the greatest significance at the present time.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A knowledge and understanding of the determinants of supply for an agricultural product, such as rice (there should be at least two determinants):
+\u2022 physical factors, e.g. climate and soil
+\u2022 institutional factors, e.g. land tenure and land reforms
+\u2022 infrastructural factors, e.g. irrigation and storage facilities
+\u2022 the price of rice and the prices of other agricultural products.
+
+AO2 Analysis (max 3 marks)
+An analysis of the importance of these determinants of supply for an agricultural product, such as rice. For example, if rice is relatively easy to store, the supply will be more elastic.
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on which of these determinants of supply for an agricultural product, such as rice, is likely to be of the greatest significance at the present time (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "on24-21-2b",
+    year: "2024",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.3 Price elasticity of supply",
+    maxMarks: 12,
+    questionText: "Assess whether the supply of agricultural products is likely to be more price elastic or less price elastic than the supply of manufactured products.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+A knowledge and understanding and analysis of possible factors affecting the PES of agricultural products and manufactured products, including:
+\u2022 the number of producers
+\u2022 the existence of spare capacity
+\u2022 the ease of storing stocks
+\u2022 the time period
+\u2022 the extent of factor mobility
+\u2022 the length of the production process.
+Answers should analyse how PES is affected by each of these, with a clear distinction between the two types of products.
+
+AO3 Evaluation
+\u2022 Evaluation of whether the supply of agricultural products is likely to be more price elastic or less price elastic than the supply of manufactured products.
+\u2022 In conclusion, PES for agricultural products is likely to be less elastic than the PES for manufactured products.`
+  },
+  {
+    id: "on24-21-3a",
+    year: "2024",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.5 Production possibility curves",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain the significance of a position within a market economy\u2019s production possibility curve (PPC) and consider whether such a position is likely to be permanent.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A diagram of a PPC:
+\u2022 the axes of the PPC are appropriately labelled, such as manufactured/agricultural goods or consumer/capital goods or Good A/Good B (1)
+\u2022 the PPC will need to touch both axes (1)
+\u2022 a position within a PPC is clearly shown. (1)
+
+AO2 Analysis (max 3 marks)
+An analysis of the significance of a position within/inside a PPC:
+\u2022 a position where an economy is using its resources inefficiently
+\u2022 where not all available resources are being utilised 
+\u2022 where the output of both products is lower than it would be if all available resources were being used
+\u2022 there should be some reference to permanency.
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on whether such a position is likely to be permanent (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "on24-21-3b",
+    year: "2024",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.4 Resource allocation in different economic systems",
+    maxMarks: 12,
+    questionText: "Assess whether consumers always benefit when the government of a mixed economy reduces the role of the market mechanism in allocating resources.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+The advantages of the market mechanism in a mixed economy might include:
+\u2022 Decisions are made by individual consumers and individual producers who act in their own self-interest.
+\u2022 Resources are allocated by a price mechanism without the need for very much government intervention.
+The disadvantages of the market mechanism in a mixed economy might include:
+\u2022 Some products will be underprovided and underconsumed, e.g. a merit good such as education, while some products will be overprovided and overconsumed, e.g. a demerit good such as tobacco.
+\u2022 Some products will not be provided, e.g. a public good such as police. 
+The advantages of government intervention in a mixed economy might include:
+\u2022 Government intervention in the allocation of resources means it can take decisions in the national interest.
+\u2022 The government could create a more equitable distribution of income. 
+The disadvantages of government intervention in a mixed economy might include:
+\u2022 Government control could lead to an inefficient allocation of resources.
+\u2022 Lack of competition/profit motive could lead to products of lower quality.
+
+AO3 Evaluation
+\u2022 Evaluation of relative balance of advantages and disadvantages of each. 
+\u2022 In conclusion, consideration of whether consumers will always benefit when the government of a mixed economy reduces the role of the market mechanism in allocating resources.`
+  },
+  {
+    id: "on24-21-4a",
+    year: "2024",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.4 Economic growth",
+    maxMarks: 8,
+    questionText: "Explain two possible causes of economic growth and consider whether the consequences of economic growth for an economy will always be positive.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A knowledge and understanding of what is meant by economic growth (1) and two possible causes of economic growth, such as: 
+\u2022 an increase in the number of workers 
+\u2022 an improvement in the quality of workers, e.g. in terms an increase in education and/or training
+\u2022 a greater commitment to research and development 
+\u2022 an improvement in the state of technology 
+\u2022 investment in capital stock 
+\u2022 increased mobility/flexibility of factors of production 
+\u2022 development of new export markets.
+(Up to 2 marks)
+
+AO2 Analysis (max 3 marks)
+An analysis of the possible consequences of economic growth for an economy, both positive and negative, such as:
+\u2022 leads to an increase in the standard of living
+\u2022 could lead to a decrease in unemployment
+\u2022 may lead to a depletion of resources and to environmental damage
+\u2022 there could be a reduction in the quality of life, e.g. less leisure time.
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on whether the consequences of economic growth for an economy will always be positive (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "on24-21-4b",
+    year: "2024",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.2 Fiscal policy",
+    maxMarks: 12,
+    questionText: "Assess whether a government should always aim for an expansionary fiscal policy rather than a contractionary fiscal policy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Explanation of when an expansionary fiscal policy would be appropriate, and how such a policy would work, such as:
+\u2022 to increase aggregate demand (AD)
+\u2022 to increase economic growth
+\u2022 to increase employment
+\u2022 to increase inflation
+\u2022 to encourage exports and imports.
+Explanation of when a contractionary fiscal policy would be appropriate, and how such a policy would work, such as: 
+\u2022 to reduce aggregate demand (AD)
+\u2022 to reduce economic growth
+\u2022 to reduce employment
+\u2022 to reduce inflation
+\u2022 to discourage exports and imports.
+
+AO3 Evaluation
+\u2022 Consideration of when a government should aim for an expansionary policy and when a government should aim for a contractionary one. 
+\u2022 In conclusion, which approach will be better for particular economic situations.`
+  },
+  {
+    id: "on24-21-5a",
+    year: "2024",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.1 The reasons for international trade",
+    maxMarks: 8,
+    questionText: "Explain the potential advantages of free trade and consider whether such advantages are always greater than the potential disadvantages of free trade.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A knowledge and understanding of at least two potential advantages of free trade, such as:
+\u2022 an increase in world output
+\u2022 a wider range of products for consumers to choose from
+\u2022 an improved standard of living.
+
+AO2 Analysis (max 3 marks)
+An explanation of at least two potential disadvantages of free trade and how these contrast with the potential advantages of free trade, such as:
+\u2022 free trade involves specialisation which could mean that some economic sectors are allowed to run down, leading to higher unemployment
+\u2022 overreliance on some commodities could be risky
+\u2022 potential security risk if vital resources are imported.
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on whether the potential advantages of free trade are always greater than the potential disadvantages of free trade (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "on24-21-5b",
+    year: "2024",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.3 Current account of the balance of payments",
+    maxMarks: 12,
+    questionText: "Assess whether an economy will always benefit from having a surplus on the current account of its balance of payments.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Potential benefits:
+\u2022 A country will have surplus foreign exchange which it could use to invest in other countries.
+\u2022 A high level of exports could lead to an increase in jobs in the export sector.
+\u2022 Lower spending on imports may mean that people are buying more domestic goods which could also increase employment.
+\u2022 It could stimulate economic growth.
+Potential disadvantages:
+\u2022 A current account surplus could be a sign of weak domestic demand with lower consumer spending and this could reduce domestic employment.
+\u2022 It could lead to lower economic growth.
+\u2022 The surplus could have been caused by a recession in the economy.
+\u2022 It can contribute to lower output and employment in those countries with a current account deficit. 
+
+AO3 Evaluation
+\u2022 Considers the potential benefits and disadvantages of the surplus.
+\u2022 Considers the size of the surplus and the possible reasons for it.
+\u2022 In conclusion, will an economy always benefit from having a surplus?`
+  },
+  {
+    id: "on24-22-2a",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.1 Demand and supply curves",
+    maxMarks: 8,
+    questionText: "With the help of a diagram(s), briefly explain how the cause of a movement along the demand curve differs from the cause of a shift in the demand curve and consider the impact on the demand for one good of price changes in other goods.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+\u2022 An accurate demand (and supply) diagram/or 2 separate diagrams clearly demonstrating a movement and a shift (1). NB: it is not essential to show the supply curve or changing price and output.
+\u2022 Explanation that a movement occurs due to a change in price (1) and that a shift occurs due to a change in a non-price factor (1).
+
+AO2 Analysis (max 3 marks)
+Candidates may analyse the impact on the demand for one good as a result of whether they are substitutes or complements of other goods (of any valid relationships between goods):
+This will include an analysis of the impact on demand for one good because of e.g.:
+\u2022 Price changes and the availability of complements (a negative value indicates a complement) e.g. a rise in the price of the complement would be expected to reduce the demand for the \u2018other good\u2019.
+\u2022 Price changes and the availability of substitutes (a positive value indicates a substitute) e.g. a rise in the price of the substitute would be expected to increase the demand for the \u2018other good\u2019.
+\u2022 For example, an increase in the price of a complement good is likely to reduce the demand of the good (1) due to the nature of the joint demand between both goods (1). 
+\u2022 For example, a rise in the price of a substitute good is likely to increase the demand for the other good (1) if the consumer now sees the other good as a direct replacement (1).
+\u2022 Note: Diagrams are not essential. 
+Note: Maximum of 2 marks if only one relationship is analysed. References to changes in income/fashion/tastes/attitudes must not be rewarded.
+
+AO3 Evaluation (max 2 marks)
+Up to 2 marks for considering the overall impact of these two factors depending on the size and values of the XED coefficients on the demand for one product (1) leading to a valid conclusion about the overall size of the impact of changes in the price of \u2018other goods (1).`
+  },
+  {
+    id: "on24-22-2b",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 12,
+    questionText: "Assess whether knowledge of income elasticity of demand or price elasticity of demand for its product is more useful to a business aiming to increase the total expenditure on its product during a period of economic growth.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Responses should focus on how the two measures are used rather than displaying merely knowledge and must relate to a period of economic growth which may lead to rising incomes and prices.
+\u2022 Advantages and disadvantages of using income elasticity of demand include the opportunity to classify products as normal or inferior goods and may influence what type of goods to produce. The measure may be less useful in terms of pricing decisions and may be based on historical data which may be inaccurate.
+\u2022 Advantages and disadvantages of using price elasticity of demand include the opportunity to measure the impact of price changes but again suffer from the use of historical data which may be inappropriate in a time of economic growth and rising incomes which could affect PED values.
+Accept any valid analysis that relates to the use of these measures during a period of economic growth and their impact on the aim of increasing sales revenue.
+
+AO3 Evaluation
+\u2022 Requires an assessment of the use of both measures in comparison with each other in terms of their usefulness to a business aiming to increase sales revenue in a period of economic growth. Leading to
+\u2022 A justified conclusion as to which is the most useful method.`
+  },
+  {
+    id: "on24-22-3a",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.5 Production possibility curves",
+    maxMarks: 8,
+    questionText: "With the help of a production possibility curve (PPC) diagram(s), explain the difference between constant and increasing opportunity costs and consider how choices in deciding which type of goods to produce in the short run may influence future economic growth.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+\u2022 Accurately drawn and labelled production possibility diagram \u2013 curved to show (and be identified as) increasing opportunity cost (1) and \u2013 straight line to show (and be identified as) constant opportunity cost (1).
+N.B., axes must be labelled as products and not simply A and B or X and Y and the curves must touch both axes.
+\u2022 Explanation for the difference between constant and increasing opportunity cost. For example, constant opportunity cost demonstrates no change in the rate of trade off whereas increasing opportunity costs demonstrate an increase rate in the trade off between the two products (1).
+
+AO2 Analysis (max 3 marks)
+For example, future economic growth will be influenced by the choices an economy makes about the split between consumer spending and capital spending (1). If a country decides to focus its spending and output on consumer goods, then this may create growth in the short run but may not be sustainable (1). A decision to focus on spending and output of capital goods, this may have a short run negative impact on economic growth but should create more long-term sustainable growth as output may expand (1).
+
+AO3 Evaluation (max 2 marks)
+Up to 2 marks for valid evaluation which is clearly based on the analysis (1) leading to a valid conclusion (1).`
+  },
+  {
+    id: "on24-22-3b",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.4 Resource allocation in different economic systems",
+    maxMarks: 12,
+    questionText: "Assess whether a market economy is always the best economic system to effectively answer the three basic questions of resource allocation.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 The advantages and disadvantages of the market system in deciding what to produce, how to produce and for whom to produce should focus on the price mechanism without any government involvement.
+\u2022 May include discussion of the profit motive, consumer sovereignty, consumer choice, overproduction of demerit goods, underproduction of merit goods, lack of public goods etc.
+\u2022 A comparison with another market system e.g., planned economy or mixed economy is needed to answer the question \u2018always the best\u2019.
+
+AO3 Evaluation
+\u2022 Requires an assessment of the strengths and weaknesses of at least one other type of economic system in answering the three basic questions of resource allocation. Leading to
+\u2022 A justified conclusion as to whether the market economy is always the best economic system.`
+  },
+  {
+    id: "on24-22-4a",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.5 Unemployment",
+    maxMarks: 8,
+    questionText: "Explain two methods of measuring unemployment and consider the extent of the possible difficulties in obtaining an accurate measurement of unemployment.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+The question refers to methods of measurement and not types of unemployment. Answers focused on types and not measures cannot answer the question without any reference to methods of measurement and must not be rewarded.
+For the identification of 2 methods of measuring unemployment (1) plus for a brief explanation of both measures 2x(1).
+Guidance for explanation marks:
+The two most used measures are the claimant count measure which is a measure based on those claiming benefits (1) and the labour force measure which is a measure of unemployment based on a survey that identifies people who are actively seeking a job (1). However, if the meaning of these measures is clearly understood then they do not need to explicitly refer to the terms.
+
+AO2 Analysis (max 3 marks)
+\u2022 The difficulties in obtaining an accurate measurement using both methods should be considered. e.g., the claimant count figure may omit people actively looking for a job and may include people who are, in reality, not looking for a job.
+\u2022 Whereas the labour force measure is based on sampling which may not be entirely accurate due to sampling errors and/or problems associated with data collection in general.
+Note: maximum of 2 marks if the difficulties of only one method of measurement are analysed.
+
+AO3 Evaluation (max 2 marks)
+An assessment of the difficulties of both measures is required with an overall assessment of the extent of the possible difficulties (1), leading to a valid conclusion (1).`
+  },
+  {
+    id: "on24-22-4b",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.4 Supply-side policy",
+    maxMarks: 12,
+    questionText: "Assess whether supply-side policy is likely to be equally successful in reducing both structural and cyclical unemployment.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 The discussion should focus on the strengths and weaknesses of supply side policy to solve both cyclical/demand-deficient and structural unemployment. 
+\u2022 For example, supply side policies may be used to encourage investment into education and training and infrastructure to solve structural problems in the economy and hence structural unemployment.
+\u2022 However, supply side policies may be less successful in solving cyclical/demand deficient unemployment as they have less impact on the level of aggregate demand (AD) \u2013 unless for example, if they involve a direct injection of government spending due to the additional investment.
+\u2022 Other disadvantages include the potential cost of the policy and the time taken for the policy to be effective.
+\u2022 Although not necessary, other demand side policies, e.g., fiscal and monetary policies, may be analysed to explain the possible disadvantages of supply side policy. This is an acceptable approach.
+
+AO3 Evaluation
+\u2022 Requires an assessment of the advantages and disadvantages of supply side policies in solving both types of unemployment. Leading to
+\u2022 An overall conclusion as to whether supply side policy is always (more) likely to be equally (more) successful in solving both types of unemployment.`
+  },
+  {
+    id: "on24-22-5a",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.2 Fiscal policy",
+    maxMarks: 8,
+    questionText: "With the help of examples, explain the difference between the marginal rate of taxation and the average rate of taxation and consider whether a government should decide to increase the rate of indirect tax to raise additional revenue.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+\u2022 Accurate knowledge and understanding of marginal rate of tax (MRT). That is an understanding that it is the proportion of extra income taken in tax (1).
+\u2022 Accurate knowledge and understanding of average rate of tax (ART) i.e., an understanding that it is the proportion of the whole of income that is taxed (1).
+\u2022 An accurate example (which may be numerical/graphical) of each type of tax. MRT \u2013 a person earns an extra \xA3100 and \xA340 is taken as tax then the marginal rate is 40%. ART \u2013 an individual with total earnings of \xA310 000, total tax paid \xA33000 the average rate is 30% (1).
+
+AO2 Analysis (max 3 marks)
+Discussion is likely to focus on whether the gains in revenue exceed the disadvantages of the indirect taxes:
+\u2022 easier and quicker to put in place than direct taxes
+\u2022 they may be less easy to avoid than direct taxes
+\u2022 however, they are often seen as regressive and can lead to a higher MRT for poorer households
+\u2022 their effectiveness in raising revenue depends on PED
+\u2022 they may also lead to cost push inflation
+Note: if only the advantages or disadvantages are considered, maximum mark of 2
+
+AO3 Evaluation (max 2 marks)
+An assessment of the strengths and weaknesses of using indirect taxes to raise additional government revenue (1), leading to a valid conclusion (1).`
+  },
+  {
+    id: "on24-22-5b",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.2 Fiscal policy",
+    maxMarks: 12,
+    questionText: "Assess whether the achievement of a balanced budget should always be a main government macroeconomic objective.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 This question is asking whether a balanced budget should always be a main objective rather than the main objective and consequently an analysis of the importance of other government macroeconomic objectives is not essential.
+\u2022 An analysis which directly compares the strengths and weaknesses and uses of a balanced budget with a budget in surplus and deficit may gain access to Level 3 and full marks.
+\u2022 The strengths of a balanced budget may include stability and may encourage both domestic and inward investment, but it may not be sufficiently flexible to deal with changing economic conditions e.g., unemployment and inflation.
+\u2022 A budget deficit may enable, e.g., economic growth or reduce unemployment but may be unsustainable in the long run.
+\u2022 A budget surplus may be necessary to solve inflation, but this may cause opportunity costs due to a lack of government spending.
+\u2022 Analysis of other government macroeconomic objectives may be rewarded but only in the context of a balanced or unbalanced budget e.g., the problems of achieving other objectives if the sole aim is a balanced budget. These may include difficulties in controlling inflation, unemployment, creating actual economic growth etc.
+
+AO3 Evaluation
+\u2022 An overall assessment of whether the achievement of a balanced budget should always be a main government macroeconomic objective.
+\u2022 If part of the analysis, this should also include an assessment of the difficulties of achieving other objectives against the desirability of a balanced budget to gain higher level evaluation marks.
+\u2022 Leading to an overall and balanced conclusion.`
+  },
+  {
+    id: "on24-23-2a",
+    year: "2023",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.3 Price elasticity of supply",
+    maxMarks: 8,
+    questionText: "The price elasticity of supply (PES) for a new smartphone is estimated to be 0.8 in the short run and 1.8 in the long run. Explain what these estimates mean for producers and consumers of smartphones and consider why the estimates differ.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+Meaning of price elasticity of supply (1) an accurate formula (1) an explanation of what is meant by elastic/inelastic based on the responsiveness of changes in supply to changes in price (1).
+
+AO2 Analysis (max 3 marks)
+Analysis of why the values may differ due to e.g., the time period, level of stock, changes in the production process etc. Up to 2 marks for each reason explained. Maximum of 3 marks overall
+
+AO3 Evaluation (max 2 marks)
+An assessment as to why the impact on consumers and producers may differ according to these different estimates e.g., on availability, pricing and investment decisions.`
+  },
+  {
+    id: "on24-23-2b",
+    year: "2023",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 12,
+    questionText: "Assess whether knowledge and understanding of price elasticity of demand (PED) or cross elasticity of demand (XED) is likely to be more useful to a producer of smartphones.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 Analysis of the benefits of using PED for a smartphone producer e.g., for raising / decreasing the price to maximise revenue.
+\u2022 Analysis of the limitations of the use of using PED e.g., the figures are only estimates and may change over time.
+\u2022 Analysis of the benefits of using XED for a smartphone producer e.g., to determine whether it is a complement or a substitute for a product produced e.g., by a different business to enable it to react to competitor pricing decisions.
+\u2022 Analysis of the limitations of using XED e.g., other factors may have a greater influence e.g., brand loyalty to a competitor.
+If limitations of only one measure are analysed then L3 mid-point maximum. If only one measure is analysed or no reference to smartphone producers then L2 maximum.
+
+AO3 Evaluation
+\u2022 Assessment of whether PED or XED is more useful to the producer.
+\u2022 Need to use other sources of information in decision-making \u2013 e.g., YED.
+\u2022 Justified conclusion.`
+  },
+  {
+    id: "on24-23-4a",
+    year: "2024",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 8,
+    questionText: "In 2021, year-on-year inflation in many economies increased to a level not experienced for fifty years. With the help of a diagram, explain what is meant by cost-push inflation and consider whether this type of inflation has affected your own economy since 2021.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\u2022 An explanation of cost-push inflation \u2013 when the price level rises due to higher costs of production and raw materials (1).
+\u2022 An accurate aggregate and aggregate supply diagram showing a shift to the left of the short run AS curve (1). 
+\u2022 This results in a rise in the price level and a contraction/movement along the aggregate demand (AD) curve (1).
+
+AO2 Analysis (max 3 marks)
+Points to consider:
+\u2022 For example, an increase in wages/salaries increases the firm\u2019s costs of production (1). Firms will look to pass these additional costs onto its customers which increase the price of all goods and services (1).
+\u2022 Increased import prices (due to a depreciation of the domestic currency) (1) will increase the costs of production to firms that are reliant on other countries to produce raw materials/price inelastic demand for imports (1).
+
+AO3 Evaluation (max 2 marks)
+\u2022 Evaluation should explain the extent to which inflation in the named economy is the result of cost-push factors as opposed to demand pull causes (1), leading to a justified conclusion (1).
+N.B: if the evaluation is not in the context of a named economy, then no evaluation marks can be awarded.`
+  },
+  {
+    id: "on24-23-4b",
+    year: "2024",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 12,
+    questionText: "Assess whether the potential benefits of an increasing rate of inflation outweigh the potential costs for an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Potential benefits of an increasing rate of inflation include:
+\u2022 It stimulates output \u2013 a low and stable inflation rate caused by existing demand may make firms feel more optimistic about the future and encourage them to invest to expand their business. 
+\u2022 A possible reduction in the burden of debt. If inflation is rising faster than the nominal rate of interest on previous borrowing then real interest rates become negative which may stimulate consumer expenditure which, in turn, could lead to higher output and employment. 
+Potential costs of an increasing rate of inflation include:
+\u2022 A reduction in net exports as rising inflation rates may reduce the international competitiveness of a country resulting in reduced export revenue and increased import expenditure.
+\u2022 Fiscal drag \u2013 if tax rates are not increased in line with inflation, then people are \u2018dragged\u2019 (pulled) into higher tax brackets. As such, lower proportions of any increase in incomes are enjoyed by the taxpayer.
+
+AO3 Evaluation
+Requires an assessment of the benefits and costs of increasing rate of inflation (which may refer to specific groups) which leads to a justified conclusion as to which the benefits outweigh the potential costs.`
+  },
+  {
+    id: "on24-23-5a",
+    year: "2024",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 8,
+    questionText: "Explain two methods of protection in international trade and consider which of these is likely to have the bigger impact on employment and output in the economy which imposes them.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\u2022 Protectionism is when governments attempt to protect domestic businesses against foreign competition (1). 
+\u2022 Explanation of two methods of protection \u2013 e.g., tariffs, import quotas, export subsidies, embargoes, excessive administrative burdens (\u2018red tape\u2019) and how each method distorts the free market/supports domestic production (1+1).
+
+AO2 Analysis (max 3 marks overall)
+Points to consider:
+\u2022 An explanation of how each method affects domestic employment (1+1). For example, tariffs increase import prices and encourage expenditure switching to domestic production. This increases the level of employment as more workers are recruited to meet the additional output. 
+\u2022 However, if the demand for imports is price inelastic in demand, then the reduction in imports may be less (1), therefore domestic output (and employment) may not rise as much as when compared to import quotas (1). 
+
+AO3 Evaluation (max 2 marks)
+\u2022 Evaluation should consider which method is likely to have the biggest impact on employment (1), leading to a justified conclusion (1).`
+  },
+  {
+    id: "on24-23-5b",
+    year: "2024",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 12,
+    questionText: "Assess whether protectionism is always the best way of reducing a deficit on the current account of the balance of payments.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Protectionism:
+\u2022 Advantages of protectionism \u2013 for example, tariffs can reduce the value of imports in the short term as infant industries grow and gain the economies of scale to enable them to be internationally price competitive. This reduction in foreign dependency will reduce the value of imports which (ceteris paribus) reduce a deficit on the current account.
+\u2022 Problems of protectionism includes \u2013 the ability to reduce the value of imports will be influenced by the price elasticity of demand for imports. Moreover, the possibility of retaliation thereby reducing the value of exports. This may not only limit any reduction in the current account deficit but may hinder a government\u2019s ability to achieve other macroeconomic objectives \u2013 e.g., reducing the level of unemployment or possibility of increasing cost-push inflation.
+\u2022 Alternative policies that may be considered include contractionary monetary policy \u2013 higher interest rates will increase the cost of debt and mortgage repayments and leave people with less money to spend. Therefore, this will reduce their consumption of imports, improving the current account. 
+\u2022 Problems of the alternative policy \u2013 for example, an increase in interest rates will tend to cause hot money flows and therefore an appreciation in the exchange rate. This appreciation makes exports less competitive, and imports more attractive. Assuming demand is relatively elastic, this appreciation will worsen the current account.
+
+AO3 Evaluation
+\u2022 Requires an assessment of the protectionism and at least one other policy in reducing a current account deficit which leads to 
+\u2022 A justified conclusion as to which policy may be best way to reduce economic growth or whether a combination of policies might be more appropriate.`
+  },
+  {
+    id: "fm25-22-2b",
+    year: "2025",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.5 Production possibility curves",
+    maxMarks: 12,
+    questionText: "Assess whether a shift to the right of a PPC is only caused by an increase in the quantity of resources.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 An increase in the quantity of resources: an increase in the quantity of land, labour, capital or enterprise would enable an economy to produce more of all goods and so the PPC shifts outwards.
+\u2022 An increase in the quality of resources: it is not only an increase in the quantity of resources that can cause a shift to the right of a PPC; if there is an increase in the quality and productivity of the factors of production, this will also lead to a shift to the right of a PPC.
+\u2022 Technological change: this could be a cause of a shift to the right of a PPC.
+
+AO3 Evaluation
+\u2022 Evaluation of the influence of both the quantity and the quality of resources/factors of production in bringing about a shift to the right of a PPC.
+\u2022 Evaluation of the potential influence of both the quantity and quality of resources in expanding an economy\u2019s productive capacity through the increased availability and quality of inputs.`
+  },
+  {
+    id: "mj25-21-2a",
+    year: "2025",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.5 Production possibility curves",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain the reasons for a movement within a production possibility curve (PPC) and a shift of a PPC and consider the extent to which opportunity cost determines the shape of a PPC.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A knowledge and understanding of a PPC diagram:
+\u2022 Vertical axis correctly labelled, e.g. Good Y, Consumer Goods, Agricultural Goods. (1)
+\u2022 Horizontal axis correctly labelled, e.g. Good X, Capital Goods, Manufactured Goods. (1)
+\u2022 PPC touches both axes. (1)
+
+AO2 Analysis (max 3 marks)
+An analysis of the reasons for a movement within a PPC and a shift of a PPC:
+\u2022 Movement within a PPC is caused by a reallocation of existing resources. (1)
+\u2022 A shift of a PPC is the result of an increase in the quantity and/or quality of resources or the impact of an improvement in technology. (1)
+\u2022 A shift of a PPC does not involve the concept of opportunity cost because with the use of additional resources, more of two goods could be produced. (1)
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on the extent to which opportunity cost determines the shape of a PPC, distinguishing between constant opportunity costs (a straight line) and increasing opportunity costs (a curve) (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "mj25-21-3a",
+    year: "2025",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain how changes in a subsidy can influence the price and quantity sold of a product in a market and consider how expenditure on a subsidy is affected by the price elasticity of demand for the product.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A knowledge and understanding of a subsidy diagram:
+\u2022 Axes correctly labelled (vertical axis: Price, horizontal axis: Quantity) and demand and supply curves correctly labelled. (1)
+\u2022 An increase in a subsidy causing the supply curve to shift to the right bringing about a fall in price and a rise in quantity with new equilibrium positions (for price and for quantity) clearly shown. (1)
+\u2022 A decrease in a subsidy would cause the supply curve to shift to the left, raising price and lowering quantity with new equilibrium positions (for price and for quantity) clearly shown. (1)
+
+AO2 Analysis (max 3 marks)
+An analysis of the impact of a subsidy in a market:
+\u2022 A subsidy is a sum of money paid by a government to a producer. (1)
+\u2022 The effect of an increase in a subsidy is that the price charged to a consumer will be lower than it would otherwise have been, leading to an increase in quantity; this may be done to keep down the price, and encourage the consumption, of certain products. (1)
+\u2022 The effect of a decrease in a subsidy would have the opposite effect. (1)
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on how expenditure on a subsidy is affected by the price elasticity of demand for the product (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "mj25-21-3b",
+    year: "2025",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess whether an increase in the tax on a demerit good is always the best way to reduce the consumption of such a product.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Explanation of the potential advantages and benefits of an increase in the tax on a demerit good:
+\u2022 The increase in the indirect tax will increase the price of the product.
+\u2022 The increase in price is likely to decrease the consumption of the product.
+Explanation of the potential disadvantages and limitations of an increase in the tax on a demerit good:
+\u2022 The demand for the demerit good may be relatively inelastic meaning that the increase in tax will only have a relatively slight impact.
+\u2022 Other methods may be more effective in decreasing consumption, such as an information campaign to make consumers more aware of the potential disadvantages of consuming a demerit good or the establishment of a minimum price for a demerit good.
+
+AO3 Evaluation
+\u2022 Evaluation of the potential effectiveness of an increase in the tax on a demerit good.
+\u2022 Evaluation of whether other methods, such as an information/education campaign, might be more effective. 
+\u2022 In conclusion, whether an increase in the tax on a demerit good is always the best way to decrease the consumption of such a good.`
+  },
+  {
+    id: "mj25-21-4a",
+    year: "2025",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.2 Introduction to the circular flow of income",
+    maxMarks: 8,
+    questionText: "Explain how the circular flow of income in an economy changes when that economy moves from a closed to an open economy and consider what determines the extent of this change.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A knowledge and understanding of the meaning of the circular flow of income in an economy:
+\u2022 The way in which income flows around an economy, from firms to households and back to firms in a continuous process. (1)
+\u2022 Payments are made to factors of production in the form of income, profit and rent. (1)
+\u2022 Payments from all these sources are spent on goods and services.(1)
+
+AO2 Analysis (max 3 marks)
+An analysis of injections and withdrawals/leakages as an economy moves from a closed economy to an open economy:
+\u2022 CLOSED ECONOMY \u2013 Injections: Investment (I) and Government spending (G)
+\u2022 Withdrawals/leakages: Savings (S) and Taxes (T)
+\u2022 OPEN ECONOMY \u2013 Injections: Spending on exports (X) is added to I and G
+\u2022 Withdrawals/leakages: Spending on imports (M) is added to S and T
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on what determines the extent of the change from a closed to an open economy (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "mj25-21-4b",
+    year: "2025",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 12,
+    questionText: "Assess whether the potential benefits of free trade always outweigh the arguments for protectionism.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Explanation of the potential benefits of free trade:
+\u2022 Increase in world output.
+\u2022 Resources are allocated more efficiently as a result of specialisation.
+\u2022 Production can be at lower cost.
+\u2022 Consumers can have a wider range of products to choose from.
+\u2022 There can be a substantial increase in economic growth.
+\u2022 There can be an improved standard of living.
+Explanation of the arguments for protectionism:
+\u2022 Infant industry argument: infant or sunrise industries are protected to allow them to be able to compete with already established firms.
+\u2022 Declining or sunset industries: these can be protected to give time for the factors of production to be transferred to alternative uses.
+\u2022 Strategic industries: these can be protected because of their importance to an economy.
+\u2022 Current account deficit: protectionism may be used to reduce a deficit.
+\u2022 Anti-dumping: protection against firms selling at a price below cost.
+
+AO3 Evaluation
+\u2022 Consideration of the relative strength of the two sets of arguments. 
+\u2022 Consideration of who may benefit from free trade and protectionism. 
+\u2022 In conclusion, whether the potential benefits of free trade always outweigh the arguments for protectionism.`
+  },
+  {
+    id: "mj25-21-5a",
+    year: "2025",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.2 Fiscal policy",
+    maxMarks: 8,
+    questionText: "Explain the difference between a budget surplus and a budget deficit and consider the extent to which a budget surplus is better than a budget deficit.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+A knowledge and understanding of a government budget. (1)
+A knowledge and understanding of a budget surplus. (1)
+A knowledge and understanding of a budget deficit. (1)
+
+AO2 Analysis (max 3 marks)
+An analysis of the budget position:
+\u2022 The benefits and limitations of a budget surplus. (2)
+\u2022 The benefits and limitations of a budget deficit. (2)
+
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on the extent to which a budget surplus is better than a budget deficit (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "mj25-21-5b",
+    year: "2025",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.2 Fiscal policy",
+    maxMarks: 12,
+    questionText: "Assess whether expansionary fiscal policy always benefits an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Potential advantages of an expansionary fiscal policy:
+\u2022 Lower taxes/higher government spending will increase AD in an economy.
+\u2022 Higher AD could lead to lower unemployment.
+Potential disadvantages of an expansionary fiscal policy:
+\u2022 The budget deficit will need to be financed, which will increase the national debt.
+\u2022 The increase in AD could be inflationary. 
+
+AO3 Evaluation
+\u2022 The effect on an economy will depend on the extent of the expansionary fiscal policy.
+\u2022 A recognition that expansionary fiscal policy can have both advantages and disadvantages.
+\u2022 In conclusion, whether an expansionary fiscal policy is always beneficial to an economy.`
+  },
+  {
+    id: "mj25-22-2a",
+    year: "2025",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.3 Price elasticity of supply",
+    maxMarks: 8,
+    questionText: "Semi-conductors are widely used in the production of many types of electronic goods such as smartphones. It has been estimated that the price elasticity of supply for semi-conductors is 0.2 in the short run and 0.8 in the long run. Explain what these estimates mean for producers of smartphones that use semi-conductors and consider the significance of the long run estimate.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+Meaning of price elasticity of supply (1) an accurate formula (1) an explanation of what is meant by price inelastic supply based on an increase in price leading to a proportionately smaller increase in quantity supplied. (1).
+
+AO2 Analysis (max 3 marks)
+Analysis of why the values may differ due to e.g., the time period, level of stock, changes in the production process etc. Up to 2 marks for each reason explained. Maximum of 3 marks overall.
+
+AO3 Evaluation (max 2 marks)
+An assessment of the significance of the long run estimate \u2013 e.g. possible shortages in the production of goods that require semi-conductors (1); investment into improving supply chains (1); investment into expanding capacity (1).`
+  },
+  {
+    id: "mj25-22-2b",
+    year: "2025",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.4 The interaction of demand and supply",
+    maxMarks: 12,
+    questionText: "Assess the likely effects on resource allocation of a continuing increase in demand for semi-conductors.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 An analysis of the impact of continuing increases in the demand for semi-conductors. For example, the rationing function of the price mechanism will result in rising prices for the semi-conductors to remove the excess demand; the incentive function \u2013 rising prices will encourage producers to investigate ways to increase production levels; the signaling function \u2013 rising prices may encourage more firms to enter the market.
+\u2022 However, the effects on resource allocation may depend on the availability of silicon, the costs of extraction, time lags and government legislation to limit environmental damage.
+
+AO3 Evaluation
+That clearly analyses at both sides of the question and comes to a valid conclusion.`
+  },
+  {
+    id: "mj25-22-3a",
+    year: "2025",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.1 Reasons for government intervention in markets",
+    maxMarks: 8,
+    questionText: "Explain what is meant by a merit good, why governments provide merit goods such as healthcare free of charge and consider why such provision may not always be successful.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+A merit good is thought to be desirable but is underprovided/underconsumed (1) due to information failure/a lack of awareness/better than is realised (1) By providing healthcare free of charge, the government encourages greater consumption and improves overall welfare (1).
+
+AO2 Analysis (max 3 marks)
+For example, an explanation that some healthcare services, such as vaccinations, act as public goods because they are non-excludable and non-rival meaning that they will not be provided by the private sector (1). Governments provide them to prevent under-provision and protect overall public health (1); Government provision removes financial barriers, ensuring fair access and reducing inequality (1).
+
+AO3 Evaluation (max 2 marks)
+\u2022 Up to 2 marks for evaluating whether or not government provision of healthcare free of charge may not always be successful. For example, if individuals continue not to see the benefits of healthcare, then providing it free of charge may not see an increase in its consumption (1); time, travel or waiting costs may discourage people from using free healthcare services despite no direct charge (1).`
+  },
+  {
+    id: "mj25-22-3b",
+    year: "2025",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess whether a charge made for healthcare at the point of use is likely to be more beneficial to consumers and providers than if healthcare is available to all free of charge.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Analysis should focus on the extent to which this is beneficial to consumers and providers. For example charging a fee:
+\u2022 Discourages unnecessary or excessive use of healthcare services, helping to prevent resource wastage and long waiting times.
+\u2022 Generates funds that can be reinvested into improving healthcare quality and infrastructure, benefiting both consumers and providers in the long term
+\u2022 Reduces the financial strain on government budgets, allowing funds to be allocated to other public services or targeted subsidies for those in genuine need
+Considering the problems, for example charging fees:
+\u2022 Increase inequality in access as charging fees is likely to disproportionately affect low-income individuals
+\u2022 Some individuals may avoid seeking care due to cost, even when treatment is essential, which could lead to worsened health outcomes and higher long-term healthcare costs
+
+AO3 Evaluation
+That clearly analyses and compares the extent to which charging for healthcare at the point of use is more beneficial to consumers and providers together with the associated problems and comes to a valid conclusion to answer the question.`
+  },
+  {
+    id: "mj25-22-4a",
+    year: "2025",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 8,
+    questionText: "With the help of an AD / AS diagram (s), explain one demand- side and one supply- side cause of deflation and consider which is likely to be more damaging to an economy.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+For an understanding of what is meant by deflation (1) An accurate AD / AS diagram showing a fall in the general price level due to a left shift in the AD curve (1). An accurate AD / AS diagram showing a fall in the general price level due to a right shift in the AS curve (1).
+
+AO2 Analysis (max 3 marks)
+As indicated by the diagram, a fall in AD is also associated with a fall in GDP and employment levels. Analysis should focus on why this may be considered damaging to an economy. For example, this may lead to a fall in economic growth / a recession (1) which may lead to a rise in unemployment (1) (up to 2 marks). On the other hand, the rightward shift in AS will lead to an increase in GDP and employment and why this may be considered beneficial to an economy.
+
+AO3 Evaluation (max 2 marks)
+That clearly considers both causes and assesses how damaging they are to an economy.`
+  },
+  {
+    id: "mj25-22-4b",
+    year: "2025",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.2 Fiscal policy",
+    maxMarks: 12,
+    questionText: "Assess the extent to which using fiscal policy would be the best way to reduce a high rate of inflation.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Use of fiscal policy will involve increasing levels of taxation and reducing government spending. The advantages include the fact that it is relatively quick and can be effective particularly if dealing with demand-pull inflation. However, it will reduce economic growth and may lead to unemployment, It will also be less effective if the main cause is cost-push inflation.
+These advantages and disadvantages must be analysed against an alternative policy or policies. These are likely to be supply-side or monetary policies.
+
+AO3 Evaluation
+That clearly compares the analysis of using fiscal policy with using at least one other policy and reaches a justified conclusion as to which is the best way.`
+  },
+  {
+    id: "mj25-22-5a",
+    year: "2025",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.4 Exchange rates",
+    maxMarks: 8,
+    questionText: "With the help of a diagram (s), explain two ways in which a fall in the balance of trade in goods may affect the value of a floating exchange rate and consider the extent to which a change in the relative rate of interest between two countries may have a greater impact on the exchange rate.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+A fully labelled diagram (1) showing and explaining that, as a result of an increase in the demand for imports this may increase the supply of currency and therefore lead to a fall in the price of the currency (1) and for showing and explaining that a fall in the demand for exports may reduce the demand for the currency and therefore lead to a fall in the price of the currency (1).
+
+AO2 Analysis (max 3 marks)
+Analysis that assesses the impact of changes in the relative interest rates on the demand and supply of the currency due to e.g., hot money flows for example, as the relative rate of interest increases in one country this may mean more overseas\u2019 residents want to move their savings to that country (1) increasing demand for the currency and increasing the exchange rate (1).
+
+AO3 Evaluation (max 2 marks)
+An assessment of the extent to which changes in the relative rates of interest may have a greater effect on a floating exchange rate than a fall in the balance of trade in goods (1) leading to an overall conclusion (1)`
+  },
+  {
+    id: "mj25-22-5b",
+    year: "2025",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.3 Current account of the balance of payments",
+    maxMarks: 12,
+    questionText: "Assess whether an improvement in the terms of trade or a surplus on the current account of the balance of payments is of more benefit to an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 Analysis of the benefits of a positive terms of trade may include the ability to purchase more imports and therefore boost living standards. It may also strengthen the reputation / provide reassurance of the stability of the country in question and lead to a rise in FDI. However, it may arise from inflation and not be linked to greater competitiveness. It may lead to a current account deficit if exports fall.
+\u2022 Analysis of the benefits of a current account surplus may include economic growth and a rise in employment. Again, it may lead to a strengthening of the reputation / provide reassurance of the stability of the country in question. However, it may be the result of obtaining growth through exports leaving little for the domestic population and hence a fall in living standards. It may also be inflationary.
+
+AO3 Evaluation
+For a clear comparison of the analysis of the benefits and drawbacks of both scenarios leading to a justified conclusion.`
+  },
+  {
+    id: "mj25-23-2a",
+    year: "2025",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.6 Classification of goods and services",
+    maxMarks: 8,
+    questionText: "With the help of examples, explain the difference between public goods and free goods and consider whether a market economy can ever produce public goods.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+For a clear explanation that free goods are those that are not scarce / have zero opportunity cost / no factors of production are involved in producing them (1) and public goods are those that have the characteristics of non-excludability and non-rivalry (separately explained) (1). For appropriate examples of both types of goods, e.g., fresh air as a free good and national defence as a public good 
+
+AO2 Analysis (max 3 marks)
+The characteristics of public goods make it easy for consumers to not pay for goods and services making it difficult for firms to charge a price / recognition of the free rider problem (1) meaning that people can enjoy the benefits without paying for it / firms are unable to make a profit (1) meaning that a market economy is unlikely to provide them (1).
+
+AO3 Evaluation (max 2 marks)
+Unless there is some method of effectively charging consumers by making public goods excludable OR receiving e.g., a subsidy from the government to produce them OR businesses are genuinely motivated to act in the interests of the public, (1) it is unlikely that a market economy could ever produce public goods (1).`
+  },
+  {
+    id: "mj25-23-2b",
+    year: "2025",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess the extent to which a government can ensure that both merit and demerit goods are produced in desirable quantities.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Merit goods are those considered desirable by society but are under consumed and therefore the quantity of consumption and production should be encouraged whereas demerit goods are those considered undesirable by society but are over consumed and therefore the quantity of consumption and production should be discouraged.
+Analysis should focus on the extent to which this is achievable. For example:
+\u2022 Use of subsidies / maximum prices / taxation / minimum prices.
+\u2022 Direct provision of merit goods.
+\u2022 Providing information on the benefits of merit goods / drawbacks of demerit goods.
+Considering the problems, for example:
+\u2022 PED together with the receptiveness of consumers e.g., towards consuming more merit goods / fewer demerit goods.
+\u2022 The drawbacks of policies of minimum prices and maximum prices explained including costs of enforcement.
+
+AO3 Evaluation
+That clearly analyses and compares both the extent of how both are achievable together with the associated problems and comes to a valid conclusion to answer the question.`
+  },
+  {
+    id: "mj25-23-3a",
+    year: "2025",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.3 Price elasticity of supply",
+    maxMarks: 8,
+    questionText: "Explain three reasons, associated with costs of production, why the supply curve for a particular market may shift to the right and consider the extent to which government microeconomic policy may also shift the supply curve for a particular market to the right.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+For an explanation of e.g., a fall in wage rates, an increase in worker productivity, a fall in raw material costs, a fall in costs of distribution, improvements in technology etc. explaining why they may shift the supply curve to the right (1 \xD7 3).
+
+AO2 Analysis (max 3 marks)
+Guidance:
+The effect depends on the government policy used however it must be targeted at a particular market. Government microeconomic policy may include indirect taxes, subsidies, maximum and minimum prices, direct provision, regulations, provision of information and buffer stock schemes. Candidates should analyse at least one of these policies to consider the extent to which it may shift the supply curve for a particular market to the right.
+For example, the government may intervene by providing subsidies to education providers (1) which may increase the supply of education to the market and shift the supply curve to the right (1) however, the extent to which this will occur will depend on e.g., the size of the subsidy.
+
+AO3 Evaluation (max 2 marks)
+The extent to which the discussed policy will shift the supply curve to the right for a particular market will depend upon the responsiveness of the market itself. It may also depend on how the market may be affected by other government microeconomic policies.`
+  },
+  {
+    id: "mj25-23-3b",
+    year: "2025",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.3 Price elasticity of supply",
+    maxMarks: 12,
+    questionText: "Assess the extent to which knowledge of a product's price elasticity of supply is the most useful measure of elasticity to a firm needing to react quickly to changes in its market.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 An analysis of the usefulness of using PES that considers the strengths and weaknesses of the approach. For example, it lets the business know how quickly it can react to changes in price, but this may be of little use if production times are slow or it is not possible to hold stocks e.g., if perishable.
+\u2022 This needs to be compared with the usefulness of another measure of elasticity but must be in the context of a business needing to react quickly to changes in the market. E.g., YED may be useful in a recession, but this may depend on the ability to switch to inferior goods.
+
+AO3 Evaluation
+That clearly analyses at least two sides to the question and comes to a valid conclusion.`
+  },
+  {
+    id: "mj25-23-4a",
+    year: "2025",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.4 Economic growth",
+    maxMarks: 8,
+    questionText: "Explain two causes of economic growth and consider the extent to which their impact can be measured.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+\u2022 Economic growth is the increase in the real value of goods and services produced in an economy over time (1). Explanation of two causes \u2013 e.g. Increase in AD \u2013 higher real wages, direct tax cuts, lower interest rates; increases in LRAS \u2013 increased investment, increased productivity (1+1).
+
+AO2 Analysis (max 3 marks)
+\u2022 An explanation of how each cause increases economic growth (1+1). For example, reductions in income tax will reduce disposable income thereby increasing AD and economic growth. However, if high levels of job insecurity exists then the increase in consumption/AD/economic growth may be less (1). Alternatively, the ability to measure the impact will be affected by the size of the hidden/informal economy (1).
+
+AO3 Evaluation (max 2 marks)
+\u2022 Evaluation should consider the extent to which the causes can be measured \u2013 size of hidden/informal economy.
+\u2022 1 mark reserved for a justified conclusion.`
+  },
+  {
+    id: "mj25-23-4b",
+    year: "2025",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.4 Economic growth",
+    maxMarks: 12,
+    questionText: "Assess the extent to which economic growth is always beneficial for the people and government in an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Potential benefits of increasing economic growth. For example:
+\u2022 Economic growth often leads to increased real GDP per capita, allowing consumers to enjoy more goods and services and improve their quality of life.
+\u2022 As output increases, firms typically need more workers, leading to more job opportunities and reduced unemployment.
+Potential costs of increasing economic growth include:
+\u2022 Economic growth can disproportionately benefit the wealthy, leading to a widening gap between rich and poor, with some groups not experiencing the same level of improvement.
+\u2022 Increased production and consumption associated with growth can lead to higher pollution levels, depletion of natural resources, and other environmental harm.
+
+AO3 Evaluation
+Requires an assessment of the benefits and costs of increased economic growth (which may refer to specific groups) which leads to a justified conclusion as to whether or not economic growth is always beneficial`
+  },
+  {
+    id: "mj25-23-5a",
+    year: "2025",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.1 The reasons for international trade",
+    maxMarks: 8,
+    questionText: "The terms of trade index for an economy changed from 105 to 110 in a given year. Explain two likely reasons for this change and consider the extent to which the change is likely to benefit the current account of the balance of payments of this economy.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+\u2022 An accurate definition of the terms of trade OR an accurate formula (1)
+\u2022 Understanding that there is likely to be an improvement in the terms of trade if export prices rise (1) relative to import prices (1).
+
+AO2 Analysis (max 3 marks)
+\u2022 Higher exports prices allow the country to receive a higher income from selling the same quantity of goods and services abroad. This increase in export revenue improves the current account balance (1).
+\u2022 When the cost of importing goods decreases, the country can now import the same quantity of goods at a lower price, resulting in lower import expenditure and an improvement in the current account balance (1).
+
+AO3 Evaluation (max 2 marks)
+\u2022 That assesses the extent to which an improvement in the terms of trade will benefit the balance of payments and reaches a conclusion as to whether this is of benefit to an economy (1). Reserve 1 mark for a valid conclusion.`
+  },
+  {
+    id: "mj25-23-5b",
+    year: "2025",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.1 The reasons for international trade",
+    maxMarks: 12,
+    questionText: "Assess whether government policy can influence an economy's comparative advantage in a good or service.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 Understanding of how government policy can influence an economy\u2019s comparative advantage in a good or service. For example:
+\u2022 By investing in education and training, governments can improve the skills of the workforce, which can enhance productivity in certain industries.
+\u2022 Government support for R&D can lead to innovation, which might give a country a technological advantage in certain sectors.
+\u2022 Understanding of potential problems for governments in influencing an economy\u2019s comparative advantage in a good or service:
+\u2022 Many government policies, such as investment in education, infrastructure, or research and development (R&D), take a long time to affect the opportunity cost of producing a good or service
+
+AO3 Evaluation
+Requires an assessment of the extent to which government policy can influence an economy\u2019s comparative advantage in a good or service which leads to a justified conclusion as to which perspective is most likely to prevail.`
+  },
+  {
+    id: "custom-1764404718817",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.4 Economic growth",
+    maxMarks: 8,
+    questionText: "With the help of an aggregate demand and aggregate supply diagram, explain how a decrease in interest rates could cause economic growth and consider whether economic growth will always result in inflation.",
+    markScheme: `Follow the point-based marking guidance at the top of this mark scheme and 
+award:
+up to 3 marks for AO1 Knowledge and understanding up to 3 marks for AO2 
+Analysis
+up to 2 marks for AO3 Evaluation.
+AO1 Knowledge and Understanding (max 3 marks)
+A clear understanding of what is meant by:
+\u2022 economic growth (1)
+\u2022 inflation (1)
+\u2022 interest rates (1)
+\u2022 through an accurate diagram, correctly labelled axes, and equilibrium 
+price level and real GDP (1).
+AO2 Analysis (max 3 marks)
+Uses the diagram(s) to explain how a decrease in interest rates will impact on 
+saving/borrowing (1) that cause will either cause an increase in 
+consumption/investment/next exports (1) which causes an increase in 
+economic growth/real GDP (1).
+AO3 Evaluation (max 2 marks)
+One mark for a valid explanation that rise in inflation assumes that the 
+economy is operating at full capacity; the growth may be focused on capital 
+intensive industries (1) or that the source of the growth may be long term in 
+nature (1). The second mark is for a justified conclusion.`
+  },
+  {
+    id: "custom-1764464898995",
+    year: "2024",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.6 Classification of goods and services",
+    maxMarks: 8,
+    questionText: "With the use of examples, explain the difference between public goods \nand merit goods and consider whether markets will always provide \nenough of both goods.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks) 
+\uF0B7 For the use of accurate examples of BOTH merit goods and public goods 
+(1). 
+\uF0B7 For clearly explaining the characteristics of public goods i.e., non-rivalry 
+and non-excludable (1). 
+\uF0B7 For clearly explaining the characteristics of merit goods i.e., better than 
+people realise and under consumed / underproduced due to information 
+failure (1). 
+AO2 Analysis (max 3 marks) 
+\uF0B7 A market economy is less likely to produce enough of both goods due to 
+the lack of a profit motive unless heavily subsidised. 
+\uF0B7 A mixed economy may produce enough due to government involvement 
+and the welfare motive but may be constrained by limits on government 
+spending. 
+Note: Analysis should consider at least 2 markets. If only 1 market is analysed, 
+then 2 marks maximum for analysis and 0 for evaluation. 
+AO3 Evaluation (max 2 marks) 
+Offers a valid evaluation of whether enough of both types of good can be 
+produced in at least 2 markets (1) reaching a valid conclusion (1)`
+  },
+  {
+    id: "custom-1764464986836",
+    year: "2024",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.4 Resource allocation in different economic systems",
+    maxMarks: 12,
+    questionText: "Assess whether a planned economic system should always switch to a \nmixed economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis 
+Analysis of both the potential advantages and disadvantages of a
+planned economic system including the emphasis on welfare and 
+provision of public and merit goods. However, the lack of competition may 
+mean a lack of efficient allocation of goods etc. 
+Analysis of both the potential advantages and disadvantages of a 
+mixed economy including the fact that it possibly contains the best 
+features of both a planned and a market economy, but this depends on 
+how mixed it actually is. This may also include an assessment of the ease 
+of the switch itself. 
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question. 
+Level 2 responses may contain some inaccuracies and will be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question. 
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question. 
+AO3 Evaluation 
+For an evaluation of both the advantages and disadvantages of planned 
+and mixed economies leading to: 
+A valid conclusion.`
+  },
+  {
+    id: "custom-1764465039620",
+    year: "2024",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 8,
+    questionText: "With the help of a formula, explain what is meant by the income \nelasticity of demand for a product and consider the extent to which \ndemand for the product will always rise at the same rate as the income \nof its consumers.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks) 
+For an accurate formula of YED (1). For clear and accurate knowledge and 
+explanation of what is meant by YED (1) including the difference between 
+elastic and inelastic YED (1). 
+AO2 Analysis (max 3 marks) 
+For a clear understanding and explanation that this depends on the coefficient 
+value of YED (1) and analysis of the different outcomes depending on whether 
+the product is normal (positive coefficient) (1) or inferior (negative coefficient) 
+(1). 
+AO3 Evaluation (max 2 marks) 
+For a considered evaluation of the possible outcomes (1) leading to a valid 
+conclusion (1).`
+  },
+  {
+    id: "custom-1764465092178",
+    year: "2024",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 12,
+    questionText: "Assess the extent to which price elasticity of supply or cross elasticity \nof demand is most useful to businesses.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis 
+\uF0B7 An assessment of the usefulness of PES e.g., it estimates how quickly a 
+business will take to respond to changes in demand, levels of stock it can 
+hold etc., but this is only an estimate and may change. 
+\uF0B7 An assessment of the usefulness of XED e.g., it tells the business 
+whether their product is a substitute (positive XED) or a complement 
+(negative XED) and how close the relationship is and hence its sensitivity 
+to the actions of other businesses, but the speed of change may mean it 
+is quickly out of date.AO3 Evaluation 
+\uF0B7 For a full evaluation of the usefulness of both measurements compared 
+with each other leading to: 
+\uF0B7 A valid conclusion`
+  },
+  {
+    id: "custom-1764465159719",
+    year: "2024",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.3 Aggregate Demand and Aggregate Supply analysis",
+    maxMarks: 8,
+    questionText: "Explain three of the components of aggregate demand and consider the \nextent to which they may be increased without leading to inflation.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks) 
+For a clear and accurate explanation of three components of aggregate 
+demand i.e., consumer spending, investment, government spending and / or 
+net exports (1 \uF0B4 3). 
+Note. Q4(b) lists three components of AD so any AO1 marks CANNOT be 
+awarded for simply mentioning a component.
+AO2 Analysis (max 3 marks) 
+For an analysis that explains that one cause of inflation is a situation where AD 
+rises more than AS (1) but also considers why this may or may not occur e.g., 
+the economy is operating at less than capacity, some of the increase in AD also 
+increases AS etc. 
+ (up to 2 marks) 
+Note. If both scenarios are considered, then full marks may be awarded. For 
+one-sided answers, maximum mark of 1. 
+AO3 Evaluation (max 2 marks) 
+For an answer that clearly considers both sides (1) leading to a valid 
+conclusion (1).`
+  },
+  {
+    id: "custom-1764465252243",
+    year: "2024",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.2 Fiscal policy",
+    maxMarks: 12,
+    questionText: "The Chinese government has re-emphasised its commitment to \nrebalancing the economy from one focused mainly on investment and \nexports to one aiming to increase the proportion spent on domestic \nconsumption. \nAssess the extent to which it would be possible to achieve this by fiscal \npolicy alone.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis 
+\uF0B7 The analysis must focus on the usefulness of using fiscal policy to 
+rebalance the economy in the way suggested. Domestic consumption can 
+be boosted by a number of fiscal policies including policies on taxation and 
+government spending, but the main problem would be achieving this in a 
+sustainable way. 
+\uF0B7 This analysis must be compared with alternative policies including 
+supply-side policies and monetary policies plus fiscal policies with a 
+supply-side content.AO3 Evaluation 
+\uF0B7 For a full evaluation of more than one type of policy that clearly assesses 
+and compares the potential usefulness of them to rebalance the Chinese 
+economy leading to a:valid conclusion.`
+  },
+  {
+    id: "custom-1764465290183",
+    year: "2024",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.5 Unemployment",
+    maxMarks: 8,
+    questionText: "Explain three causes of unemployment and consider which cause is \nlikely to be most damaging to a high-income economy.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks) 
+For a clear and accurate explanation of three causes of unemployment from 
+frictional, structural, cyclical (demand deficient), seasonal or technological 
+(3\uF0B41). 
+AO2 Analysis (max 3 marks) 
+Each cause identified must be analysed, and judgements made about how 
+damaging it might be for a high-income economy (3\uF0B41). For example, points to 
+consider may include: 
+\uF0B7 Frictional unemployment may be dependent on information provision. 
+\uF0B7 Structural unemployment may be permanent and difficult to solve. 
+\uF0B7 Cyclical unemployment depends on the economic cycle. 
+\uF0B7 Seasonal depends on alternative sources of employment. 
+\uF0B7 Technological depends on occupational or geographical immobility of 
+labour. 
+AO3 Evaluation (max 2 marks) 
+For an answer that clearly assesses how damaging each cause may be to a 
+high-income developed economy in comparison with each other (1) that leads 
+to a justified conclusion as to which may be the most damaging (1)`
+  },
+  {
+    id: "custom-1764465353716",
+    year: "2024",
+    paper: "9708/21",
+    variant: "May/June",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.1 Government macroeconomic policy objectives",
+    maxMarks: 10,
+    questionText: "Assess which expansionary macroeconomic policy would be most likely \nto enable a government to meet its economic objective of a low rate of \nunemployment.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis 
+\uF0B7 The analysis must focus on the advantages and disadvantages of using at 
+least two expansionary macroeconomic policies to keep unemployment 
+low. For example, one policy might be an expansionary supply-side policy 
+with an emphasis on training and education which would allow people to be 
+more employable, e.g., by having more relevant skills but it may be timeconsuming and costly. 
+\uF0B7 This chosen policy must then be contrasted with an alternative policy / 
+policies. For example, expansionary monetary policy may be suggested 
+with the use of low interest rates to encourage investment and boost 
+employment, but the investment may be directed towards more capitalintensive production. 
+Note. The focus of the question must be on how a low rate of unemployment 
+may be achieved.AO3 Evaluation: 
+\uF0B7 That clearly compares the likely success of at least two expansionary 
+macroeconomic policies that leads to: 
+\uF0B7 A valid conclusion as to which policy would be most likely to meet the 
+economic objective of a low rate of unemployment. 
+\uF0B7 Accept all valid responses.`
+  },
+  {
+    id: "custom-1764466213433",
+    year: "2024",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.3 Addressing income and wealth inequality",
+    maxMarks: 8,
+    questionText: "Explain how the Gini coefficient is used to measure income inequality \nand consider the relative strength of two economic reasons suggested \nfor such inequality in a low-income country.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks) 
+For a clear understanding of what the Gini coefficient is e.g., it is a numerical 
+measure of the extent of income inequality in an economy (1) if there is no 
+inequality the value will be zero and at the other extreme, if all income is 
+earned by one person the value will be one (1) For an explanation that the 
+nearer the value is to zero income is more equally distributed and/or the 
+nearer the value is to one the more it is unequally distributed (1). 
+AO2 Analysis (max 3 marks) 
+Reasons may include: 
+\uF0B7 A lack of employment opportunities e.g., which will mean that income 
+levels are low (1) which may be more of a problem in low-income 
+countries because industry may be less well developed (1). 
+\uF0B7 Poor vocational training e.g., leading to fewer people being able to 
+develop their skills and earn a higher income (1). This may be more of a 
+problem in such countries because of the lack of finance to provide such 
+training. (1) 
+\uF0B7 A lack of investment in education and health e.g., meaning that some 
+people may not receive a better level of education or may suffer long term 
+health issues which will lower their potential income levels. (1) This may 
+be more common in such countries due to a lack of government budget 
+(1)
+\uF0B7 Other reasons include: 
+\uF0B7 Poor infrastructure 
+\uF0B7 Lack of access to loan finance 
+Analysis must focus on the strength of two of these reasons in a low-income 
+country. Maximum of 2 marks if only one reason considered. 
+One mark per reason explained (+1) if clearly related to a low-income 
+country. 
+Accept any valid reason provided it is explained in terms of economics. 
+Maximum of 2 marks if only one reason is considered. 
+AO3 Evaluation (max 2 marks) 
+Up to 2 marks for evaluating the relative strength of the two reasons with 1 
+mark reserved for a balanced judgement as to which may be the most likely 
+reason in a low-income economy`
+  },
+  {
+    id: "custom-1764466248644",
+    year: "2024",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.3 Addressing income and wealth inequality",
+    maxMarks: 12,
+    questionText: "Assess the extent to which government policies to redistribute income \nand wealth are likely to be successful.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis 
+Policies may include: 
+\uF0B7 Minimum wage rates 
+\uF0B7 Transfer payments 
+\uF0B7 Progressive income taxes 
+\uF0B7 State provision of essential goods and services 
+\uF0B7 Investment in infrastructure 
+Accept any valid policies but the analysis must focus on how they may be 
+used to redistribute income and wealth and their advantages and 
+disadvantages to be credited. 
+E.g., A minimum wage rate that is set above the equilibrium, should increase 
+the income levels of those on the lowest levels and therefore possibly ensure 
+that poverty is reduced. However, if everyone\u2019s income levels increased, this 
+will not have a redistribution effect. It will not impact on the self-employed. It 
+may lead to unemployment and more poverty leading to less redistribution if 
+businesses cannot afford the higher rates. 
+E.g., Progressive income taxes should ensure that those on lower incomes 
+pay less tax as a percentage of income than those on higher incomes. This 
+should have a redistributive effect. However, those on higher incomes may 
+have the ability to reduce their tax burden or may simply leave the country. It 
+may also reduce incentives to earn more. 
+Note: if only one policy is considered, the maximum level will be Level 2. 
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question. 
+Level 2 responses may contain some inaccuracies and will be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question. 
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.AO3 Evaluation 
+\uF0B7 Requires an assessment of the likely success of more than one 
+government policy leading to 
+\uF0B7 A justified conclusion as to whether such policies are ever likely to be 
+successful. 
+A one-sided response cannot gain any marks for evaluation. 
+Please use a text box to show the mark split e.g., L2 5 L1 2`
+  },
+  {
+    id: "custom-1764466284650",
+    year: "2024",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.6 Classification of goods and services",
+    maxMarks: 8,
+    questionText: "With the help of an example of each, explain the difference between a \nmerit good and a demerit good and consider whether a subsidy given to \na merit good will always be effective in increasing its consumption.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks) 
+A merit good is thought to be desirable but is underprovided / underconsumed 
+due to information failure/a lack of awareness/better than is realised (1) 
+whereas a demerit good is thought to be undesirable but is overprovided / 
+overconsumed due to information failure/a lack of awareness/worse than is 
+realised (1) Third mark to be awarded for valid examples of both a merit and 
+a demerit good. (1) 
+AO2 Analysis (max 3 marks) 
+\uF0B7 Points to consider: 
+\uF0B7 A subsidy may encourage poorer households to consume more merit 
+goods as the reason for underconsumption may be unaffordability as it 
+reduces the price of merit goods. (1)
+\uF0B7 However, quantity demanded may be price inelastic meaning it is less 
+responsive to price changes so quantity demanded will be less 
+responsive to the change in price/the rise in quantity demanded would be 
+less than the decrease in price. (1)
+\uF0B7 The problem of information failure persists meaning that consumers 
+remain unaware of the benefits and therefore do not increase 
+consumption, regardless of the fall in price. (1)
+AO3 Evaluation (max 2 marks) 
+\uF0B7 For a balanced evaluation of whether a subsidy will always be effective 
+with 1 mark reserved for a justified conclusion.`
+  },
+  {
+    id: "custom-1764466320438",
+    year: "2024",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess whether fixing a minimum price is likely to be the best policy to \nreduce the consumption of a demerit good.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis 
+\uF0B7 Use of minimum pricing to increase the price of the demerit good and 
+reduce consumption. 
+\uF0B7 Problems of using minimum pricing may include discussions around 
+inelastic PED, problem of information failure persists, informal markets 
+may appear etc. 
+\uF0B7 Alternative policies that may be considered include increasing indirect 
+taxes, education, provision of information and analysis should focus on 
+the advantages and disadvantages of such policies in reducing the 
+consumption of demerit goods. 
+\uF0B7 Points to consider will include ease of introducing the policy, time and 
+cost, reception by consumers etc. 
+\uF0B7 Accept any valid policies but the analysis must focus on how they may 
+reduce the consumption of demerit goods and discuss their advantages 
+and disadvantages. 
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question. 
+Level 2 responses may contain some inaccuracies and will be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question. 
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question. 
+AO3 Evaluation 
+\uF0B7 Requires an assessment of at least one other policy to be compared 
+against minimum pricing policy which leads to
+\uF0B7 A justified conclusion as to whether a minimum pricing is the best policy 
+to reduce the consumption of demerit goods.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1764466352683",
+    year: "2024",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.2 Introduction to the circular flow of income",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain what is meant by the circular flow of \nincome in an open economy and consider the extent to which it can \nexplain economic growth in such an economy.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks) 
+A simple circular flow diagram (1) that clearly shows/ explains separately that 
+expenditure flows from households to firms (1) and that income flows from 
+firms to households (1) Note:, this is all that is required for the knowledge 
+and understanding marks regardless of the complexity of the diagram.
+AO2 Analysis (max 3 marks) 
+\uF0B7 The first two marks are for an analysis of injections greater than 
+withdrawals and how this leads to economic growth/increase in national 
+income and (1) for an analysis of withdrawals greater than injections and 
+how this leads to a fall in economic growth/national income (1). 
+\uF0B7 Reference must be made in some way to the fact that in open economy 
+injections include income from exports and that leakages includes 
+expenditure on imports along with at least one other example of an 
+injection and one other example of a leakage for the (1). 
+AO3 Evaluation (max 2 marks) 
+\uF0B7 Evaluation should explain how the relative sizes of injections and 
+leakages will lead either to economic growth or a fall in economic growth 
+with 1 mark reserved for a justified conclusion.`
+  },
+  {
+    id: "custom-1764466397438",
+    year: "2024",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.4 Supply-side policy",
+    maxMarks: 12,
+    questionText: "Assess whether supply-side policy is the most effective way to achieve \nlong-run economic growth.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis 
+\uF0B7 Long-run economic growth is likely to need both growth of AD and AS 
+\uF0B7 Analysis of the role of supply side policy in achieving long-run economic 
+growth and its advantages and disadvantages. E.g., supply side policy 
+such as training and education is more likely to increase AS, but this can 
+also lead to an increase in AD, for example as better training leads to an 
+increase in income and therefore an increase in consumer spending. It is 
+also less likely to result in inflation. However, it is costly and will take time. 
+\uF0B7 Analysis of the extent to which supply side policy can lead to growth in 
+both AD and AS. For an explanation that a problem with supply side 
+policy is that it is less effective in directly increasing the level of AD. 
+\uF0B7 Analysis of at least one alternative policy e.g., fiscal policy or monetary 
+policy and how they may achieve long-run economic growth, together 
+with their advantages and disadvantages e.g., fiscal policy such as a 
+reduction in income tax is more likely to increase AD and can be relatively 
+quick. It may also indirectly lead to an increase in AS if more people are 
+encouraged to enter the workforce. However, if AS does not increase, it 
+may be inflationary. It may also reduce the amount available for 
+government spending. 
+\uF0B7 Analysis of the extent to which these policies can lead to growth in both 
+AD and AS. For an explanation that a problem with such policies is that 
+they are less effective in directly increasing the level of AS. 
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question. 
+Level 2 responses may contain some inaccuracies and will be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question. 
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.AO3 Evaluation 
+\uF0B7 Requires an assessment of at least one other government policy to be 
+compared against supply side policy in achieving long-run economic 
+growth which leads to 
+\uF0B7 A justified conclusion as to whether supply side policy is the most 
+effective way to achieve long-run economic growth or whether a different 
+policy / combination of policies may be more successful that takes into 
+account the advantages and disadvantages of such policies in increasing 
+both AS and AD. 
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1764466434121",
+    year: "2024",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 8,
+    questionText: "Explain what is meant by the term protectionism and consider the \neffectiveness of using tariffs as a method of protectionism.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks) 
+Protectionism is when governments attempt to protect domestic businesses 
+against foreign competition (1). It seeks to reduce the impact of the free 
+market/ restrict free trade (1) by increasing the price competitiveness of 
+domestic businesses against foreign competitors (1). 
+AO2 Analysis (max 3 marks) 
+\uF0B7 An explanation of how tariffs work (diagram will help although this is not 
+essential) as a method of protectionism i.e., increasing prices of imports 
+and increasing the price competitiveness of domestic businesses. NB: no 
+marks for a diagram unless it is used to explain the impact on the price of 
+imports and how it protects domestic businesses. Up to 2 marks e.g., for 
+an explanation of how tariffs increase the price of imports (1) and how 
+this protects domestic businesses as it increases their price 
+competitiveness (1)
+\uF0B7 Problems may include possible retaliation, inelastic PED for imports, 
+possible cost push inflationary pressure. Up to 2 marks e.g., retaliation 
+by other countries may offset the impact, if the demand for imports is 
+price inelastic then imports may not fall and domestic businesses will not 
+benefit, if the impact is on imported raw materials, this will lead to cost 
+push inflation and domestic businesses who rely on such imports will not 
+benefit. 
+\uF0B7 If only uses or problems of tariffs are discussed, maximum mark of 
+2. 
+AO3 Evaluation (max 2 marks) 
+\uF0B7 Evaluation should consider how effective tariffs may be considering both 
+how they can protect domestic businesses and the associated problems 
+with 1 mark reserved for a justified conclusion.`
+  },
+  {
+    id: "custom-1764466475125",
+    year: "2024",
+    paper: "9708/22",
+    variant: "May/June",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 12,
+    questionText: "Assess whether free trade is always better than a policy of \nprotectionism for a developing economy that wishes to trade \ninternationally",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis 
+\uF0B7 Analysis of the advantages and disadvantages of free trade and
+\uF0B7 Analysis of the advantages and disadvantages of protectionism 
+\uF0B7 Both in the context of a developing economy. 
+Guidance: 
+The advantages of free trade may include: 
+\uF0B7 Efficient allocation of resources due to specialisation and comparative 
+advantage. 
+\uF0B7 An opportunity to take advantage of different factor endowments. 
+\uF0B7 Competitive pressure to keep costs down / increase efficiency / lower 
+prices for consumers. 
+\uF0B7 Higher output / economies of scale and increased choice and availability 
+for consumers. 
+\uF0B7 Disadvantages may include: 
+\uF0B7 Over exploitation of scarce resources. 
+\uF0B7 Closure of domestic industries and /or problems for developing industries 
+leading to unemployment particularly in a developing economy. 
+\uF0B7 Dumping / unfair competition. 
+\uF0B7 It is likely that the advantages of protectionism will result from the 
+disadvantages of free trade and the disadvantages of protectionism will 
+result from the advantages of free trade. 
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question. 
+Level 2 responses may contain some inaccuracies and will be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question. 
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question. 
+NOTE: if the analysis is not in the context of a developing economy, 
+then L2 maximum.AO3 Evaluation 
+\uF0B7 Requires an assessment of the advantages and disadvantages of both 
+free trade and protectionism in the context of a developing economy and 
+a comparison of both policies which leads to 
+\uF0B7 A justified conclusion as to which policy may be best for a developing 
+economy that wishes to trade internationally. 
+\uF0B7 Note: if the evaluation is not in the context of a developing 
+economy, then no evaluation marks can be awarded.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1764467347029",
+    year: "2024",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.1 Demand and supply curves",
+    maxMarks: 8,
+    questionText: "From 2030, the only new car production allowed in the United Kingdom \n(UK) will be for electric cars. \nExcluding the price of electric cars, explain the determinants of demand \nfor electric cars and consider which of these determinants is likely to be \nof greatest significance at the present time.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks) 
+Knowledge and understanding of income, price and availability of substitutes 
+and fashion, taste and attitudes. 
+For an explanation of what is meant by the role of income, price and 
+availability of substitutes, complements, fashion, taste, and attitudes as 
+determinants of demand. (1x3) 
+AO2 Analysis (max 3 marks) 
+For analysis of the significance at the present time of at least 2 of these 
+determinants. e.g., attitudes may have a great significance because of an 
+increased awareness of the impact on the environment. e.g., income may 
+have a great significance if economies are in recession. e.g., if petrol prices 
+rise leading to a fall in demand for petrol-driven cars then the demand for 
+electric cars may rise. 
+Up to 2 marks for any developed point. 
+AO3 Evaluation (max 2 marks) 
+For a clear consideration which of the determinants is likely to be the most 
+significant at the present time. Reserve 1 mark for a justified conclusion.`
+  },
+  {
+    id: "custom-1764467372727",
+    year: "2024",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 12,
+    questionText: "Assess whether cross elasticity of demand is likely to be more \nimportant in determining the demand for electric cars than income \nelasticity of demand .",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis 
+\uF0B7 Explanation of what is meant by cross elasticity of demand. 
+\uF0B7 The significance of the price and availability of substitute models of both 
+petrol and electric cars and their complements e.g., petrol and charging 
+points etc. 
+\uF0B7 The weaknesses of the concept. 
+\uF0B7 Explanation of what is meant by income elasticity of demand. 
+\uF0B7 The significance of income in the decision to purchase an electric car 
+including the relationship of changes in income to changes in demand. 
+\uF0B7 The weaknesses of the concept. 
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question. 
+Level 2 responses may contain some inaccuracies and will be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question. 
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question. 
+AO3 Evaluation 
+That clearly assesses the extent to which cross elasticity of demand is likely 
+to be more important than income elasticity of demand in determining the 
+demand for electric cars by comparing the significance and weaknesses of 
+both concepts and reaches a justified conclusion.`
+  },
+  {
+    id: "custom-1764467408173",
+    year: "2024",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.4 Resource allocation in different economic systems",
+    maxMarks: 8,
+    questionText: "Use a production possibility curve (PPC) diagram to explain how a \ngovernment in a mixed economy might allocate more resources to \nconsumption and less resources to investment and consider a limitation \nof this approach to resource allocation.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks) 
+\uF0B7 For a fully accurate diagram that is clearly labeled as consumer goods 
+and capital goods with the curve touching both axes. (1)
+\uF0B7 The diagram must show the movement from capital goods to consumer 
+goods e.g., by means of an arrow (1)
+\uF0B7 Accompanied by an explanation that this is a movement along the curve 
+(rather than a shift). (1)
+AO2 Analysis (max 3 marks 
+Of how a government might allocate more resources to consumption and less 
+to investment e.g.: 
+\uF0B7 By reducing taxes on income / consumer expenditure. (1)
+\uF0B7 By increasing government expenditure to provide subsidies for 
+consumers. (1)
+\uF0B7 By reducing government support to businesses for investment. (1) 
+(Maximum of 2 marks overall)
+\uF0B7 PLUS 1 mark if shown on a diagram as either a movement along the 
+curve or shift within the curve that is clearly explained.
+AO3 Evaluation (max 2 marks) 
+For a clear assessment of the limitations of this approach including an 
+assessment of time lags, the possible response of businesses and 
+consumers etc. Reserve 1 mark for a justified conclusion`
+  },
+  {
+    id: "custom-1764467476501",
+    year: "2024",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess whether producers are the only ones to benefit when an \neconomy decides to allocate additional resources to investment.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\uF0B7 For an explanation / analysis of the benefits and costs to a producer e.g., 
+producers will benefit as additional investment is likely to reduce costs of 
+production, make them more price competitive both domestically and 
+internationally, increase their profits etc. Costs may include the fact that 
+taxes may have to rise to fund the additional investment, much of the 
+growth will be international so businesses who focus on the domestic 
+market may not benefit. 
+\uF0B7 For an explanation/ analysis of the benefits and costs to the consumer 
+e.g., in the long term this may lead to wider choice and lower prices but in 
+the short term, taxes may increase to fund the additional investment, 
+there may be fewer goods available to consumers and higher prices. 
+\uF0B7 For an explanation/ analysis of the benefits and costs to a government 
+e.g., an increase in tax revenue in the long-term but an increase in 
+expenditure in the short-term. 
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question. 
+Level 2 responses may contain some inaccuracies and will be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question. 
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question 
+AO3 Evaluation 
+For an assessment of whether producers are the only ones to benefit from 
+additional investment compared to consumers and the government which may
+depend on the level of development of economy and extent of government 
+involvement.`
+  },
+  {
+    id: "custom-1764467509995",
+    year: "2024",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.3 Aggregate Demand and Aggregate Supply analysis",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain how increases in aggregate demand \naffect the level of real output and the price level in an economy and \nconsider when such increases may become a problem.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\uF0B7 An understanding of the components of AD i.e., C+G+I+X-M. (1)
+\uF0B7 An accurately labeled AD/AS diagram showing the initial equilibrium 
+point. (1) 
+\uF0B7 That also shows a shift or shifts to the right of the AD curve and the 
+subsequent changes in the price level and real GDP. (1)
+AO2 Analysis (max 3 marks)
+\uF0B7 For an explanation of why AD might increase. (1)
+\uF0B7 For an explanation of why this increase may not cause problems such as 
+inflation e.g., because of the shape of the AS curve, because AS may 
+increase in line with AD if the increase is due to an increase in I. (1)
+\uF0B7 For an explanation of why it may cause problems e.g., the economy is at 
+full capacity and AS cannot increase. (1)
+AO3 Evaluation (max 2 marks)
+For valid evaluation e.g., a recognition that increases in AD may result in an 
+inflationary increase in the price level beyond the full employment level of 
+output. Reserve 1 mark for a justified conclusion.`
+  },
+  {
+    id: "custom-1764467541490",
+    year: "2024",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.5 Unemployment",
+    maxMarks: 12,
+    questionText: "Assess whether increases in aggregate demand are the best way of \nreducing unemployment in a high-income country.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\uF0B7 An understanding of what is meant by unemployment and the main types 
+in a high-income economy. 
+\uF0B7 For a recognition that increases in aggregate demand arise normally from 
+fiscal and / or monetary policy. 
+\uF0B7 An analysis of how policies to increase AD e.g., by reducing taxes, 
+increasing government spending, reducing interest rates etc., may reduce 
+cyclical unemployment but may not reduce structural unemployment. 
+\uF0B7 An analysis of how supply side policy may reduce unemployment by 
+influencing AS e.g., through training and education, deregulation etc., but 
+has limitations e.g., it is a long-term approach and may be costly and 
+does not address the issue of falls in AD responsible for cyclical 
+unemployment 
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question. 
+Level 2 responses may contain some inaccuracies and will be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question. 
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question. 
+L2 max if no reference to high-income countries 
+AO3 Evaluation 
+For a clear assessment as to whether increases in AD compared with 
+increases in AS are the best way to reduce unemployment in a high-income 
+economy leading to a justified conclusion. 
+N.B. if no reference to a high-income country, no evaluation marks may 
+be awarded`
+  },
+  {
+    id: "custom-1764467597137",
+    year: "2024",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.5 Policies to correct imbalances in the current account of the balance of payments",
+    maxMarks: 8,
+    questionText: "Explain two possible causes of a change in the terms of trade in an \neconomy and consider which of these causes is likely to be more \nimportant for low-income countries.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\uF0B7 Explanation of what is meant by the terms of trade i.e., the ratio of export 
+price index to the import price index. (1)
+\uF0B7 It measures the number of exports that have to be sold to buy a given 
+number of imports. (1)
+\uF0B7 Terms of trade are said to improve when the ratio increases and / or to 
+deteriorate when the ratio falls. (1) 
+AO2 Analysis (max 3 marks)
+\uF0B7 The two main causes of changes in the terms of trade occur e.g., when 
+there is an increase in export prices and a fall in import prices. Such 
+changes are often the result of changes in the demand for exports and 
+the demand for imports. (1) 
+\uF0B7 Low-income countries are more likely to export primary goods and to 
+import manufactured goods. The demand for primary goods may be lower 
+than that for manufactured goods when income rises, e.g., for agricultural 
+goods, so import prices may fall and terms of trade deteriorates. (1) 
+\uF0B7 However, commodity prices such as oil may have an inelastic demand 
+and prices may rise leading to an improvement in terms of trade. (1) . 
+AO3 Evaluation (max 2 marks)
+For evaluation that considers the significance of changes in terms of trade 
+for low-income countries that are producers of food stuffs and similar 
+products compared to the benefits for low-income countries that have exports 
+of products such as minerals that are in high demand in high-income 
+countries. Reserve 1 mark for a justified conclusion.`
+  },
+  {
+    id: "custom-1764467624350",
+    year: "2024",
+    paper: "9708/23",
+    variant: "May/June",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 12,
+    questionText: "Assess the extent to which different tools of protection can impact on \nthe terms of trade in an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis 
+\uF0B7 An explanation of what is meant by tools of protection. 
+\uF0B7 Explanation of the different tools of protection and how they may impact 
+the terms of trade. 
+\uF0B7 Examples include tariffs which are used to increase import prices which 
+will reduce the terms of trade but may improve them if domestic 
+producers including infant industries are encouraged to invest and build 
+up demand and increase export prices. However, retaliation and inelastic 
+PED for imports may reduce the positive impact. 
+\uF0B7 Other examples include import quotas, embargoes, exchange rate 
+manipulation etc. At least one additional tool should be explained and 
+analysed in terms of its advantages and disadvantages in relation to its 
+impact on the terms of trade. 
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question. 
+Level 2 responses may contain some inaccuracies and will be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question. 
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question. 
+AO3 Evaluation
+Evaluation must focus on the impact of the tools of protection on the terms of 
+trade. This should lead to a justified conclusion. 
+Accept all valid responses. 
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1764467799981",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 8,
+    questionText: "With the help of a demand and supply diagram, explain how the \nintroduction of an indirect tax affects equilibrium in a market and\nconsider the extent to which the incidence of the tax will fall on the \nconsumer.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+An accurate definition of an indirect tax (1) shown through an accurate 
+diagram, correctly labelled axes and equilibrium price and quantity (1). 
+Understanding that indirect taxes are used to discourage the consumption of 
+demerit goods (1).
+AO2 Analysis (max 3 marks)
+Uses the diagram to explain that an indirect tax shifts the supply curve to the 
+left (1), which causes an increase in the price of the good to the consumer (1) 
+and reduces the quantity demanded (1).
+AO3 Evaluation (max 2 marks)
+One mark for a valid explanation that the incidence of tax borne by the 
+consumer will depend on the PED of the product (1), (and that the more price 
+inelastic demand is the greater the proportion of the tax is passed onto the 
+consumer (1)), with a second mark for a justified conclusion.`
+  },
+  {
+    id: "custom-1764467830306",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess whether the improved provision of information is likely to be the \nbest method to reduce the consumption of demerit goods.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 The meaning of improved provision of information
+\u2022 How improved information would reduce the consumption of demerit 
+goods; consumers are aware of the \u2018true\u2019 costs from consuming demerit 
+goods and respond by reducing their demand \u2013 this may include a shift to 
+the left of the demand curve, or a shift to left of the MPC curve
+\u2022 An explanation of the limitations of improved information \u2013 habitual 
+consumption, peer pressure, irrational behaviour
+\u2022 An explanation of an alternative policy \u2013 taxation, minimum prices, 
+regulation backed by fines.
+AO3 Evaluation
+\u2022 Consideration that fully assesses the relative effectiveness of the policies 
+analysed in reducing the consumption of demerit goods and arrives at a 
+reasoned conclusion concerning whether improved provision of 
+information is the \u2018best\u2019 approach.`
+  },
+  {
+    id: "custom-1764467855981",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 8,
+    questionText: "With the help of a formula, explain the meaning of income elasticity of \ndemand and consider the extent to which a rise in income will increase \nthe consumption of all goods and services.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+An accurate definition of income elasticity of demand (1) and accurate formula 
+(1). Understanding of the difference between normal and inferior goods (1).
+AO2 Analysis (max 3 marks)
+Normal goods have a positive value (1). Uses a diagram (upwards sloping 
+income demand curve) or the formula to show why an increase in income 
+increases the consumption of such goods (1) \u2013 this should be justified with an 
+appropriate example (1).
+AO3 Evaluation (max 2 marks)
+One mark for a valid explanation that if the good is inferior good then the 
+demand for the good will fall when incomes rise (1) as consumers adjust their 
+spending habits and consumer more normal/luxury goods. The second mark 
+is for a justified conclusion.`
+  },
+  {
+    id: "custom-1764467883712",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 12,
+    questionText: "Assess whether an estimate of the price elasticity of demand for a \nproduct is likely to be more useful to a firm than an estimate of its price \nelasticity of supply",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 The meaning of the terms PED/PES
+\u2022 How PED estimates would be useful to business owners \u2013it would 
+indicate the likely changes to revenue in response to changes in the price 
+of a product.
+\u2022 An explanation of the limitations of PED estimates \u2013 does not consider 
+the prices of complements/substitutes; income level of the consumer; 
+trends; ignores the relevance of costs so changes to profits are uncertain.
+\u2022 An explanation of how PES estimates would be useful to business 
+owners - the potential to invest in spare capacity which can be used if 
+demand rises; increase overtime payments to increase production; 
+whether or not to outsource to other firms who can meet supply.
+\u2022 An explanation of the limitations of PES estimates \u2013 e.g., practical ability 
+to increase the PES; the associated costs in making supply more 
+elastic/responsive.
+AO3 Evaluation
+\u2022 Consideration that fully assesses the relative effectiveness of both 
+PED/PES estimates and their implications for business decision-making 
+and arrives at a reasoned conclusion concerning which concept (or 
+otherwise) is most useful.`
+  },
+  {
+    id: "custom-1764467908593",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.4 Exchange rates",
+    maxMarks: 8,
+    questionText: "Explain what is meant by a depreciation of the exchange rate and\nconsider whether a depreciation is likely to increase domestic real \noutput.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+An accurate definition the exchange rate (1). Understanding that there is likely 
+to be a depreciation of the exchange rate if the demand for a currency falls (1) 
+or there is an increase in the supply of a currency (1).
+AO2 Analysis (max 3 marks)
+A depreciation of the exchange rate will reduce (increase) the perceived price 
+of exports (imports) (1) which will increase the value of both (X-M) and 
+aggregate demand (1) and increase the rate of domestic real output (1).
+AO3 Evaluation (max 2 marks)
+One mark for a valid explanation that this assumes that the economy is not 
+operating at full capacity (1) or depends on the elasticity of demand for goods 
+that are traded internationally (1). The second mark is for a justified 
+conclusion.`
+  },
+  {
+    id: "custom-1764467934880",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.5 Policies to correct imbalances in the current account of the balance of payments",
+    maxMarks: 12,
+    questionText: "Assess whether contractionary fiscal policy is likely to be the best way \nto reduce a current account deficit on the balance of payments.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 Understanding of the terms fiscal policy/current account deficit.
+\u2022 How contractionary fiscal policy might reduce a current account deficit \u2013
+this may include increased taxation might reduce imports/reduce 
+demand-pull inflationary pressure resulting in improved international price 
+competitiveness.
+\u2022 An explanation of the limitations of fiscal policy \u2013 impact on domestic 
+growth, unemployment.
+\u2022 An explanation of an alternative policy \u2013 monetary and/or supply side 
+policies, minimum prices, regulation backed by fines.
+AO3 Evaluation
+\u2022 Consideration that fully assesses the relative effectiveness of the policies 
+analysed in reducing a current account deficit and arrives at a reasoned 
+conclusion concerning whether fiscal policy is the \u2018best\u2019 approach.`
+  },
+  {
+    id: "custom-1764467962157",
+    year: "2024",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.4 Economic growth",
+    maxMarks: 12,
+    questionText: "Assess whether economic growth is always desirable for an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 The meaning of the term economic growth.
+\u2022 An explanation of the potential benefits of economic growth for an 
+economy \u2013 higher incomes, reduction in unemployment, improved 
+government finances, increased international competitiveness, increases 
+in both consumer and business confidence, increased life expectancy.
+\u2022 An explanation of the costs of economic growth for an economy \u2013
+inflation, current account deficits, inequality, pollution.
+AO3 Evaluation
+\u2022 Consideration that fully assesses the relative perspectives of economic 
+growth for an economy and arrives at a reasoned conclusion concerning 
+which viewpoint (or otherwise) is most likely.`
+  },
+  {
+    id: "custom-1764468086199",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.5 Production possibility curves",
+    maxMarks: 8,
+    questionText: "With the help of a production possibility curve (PPC) diagram, explain \nthe terms scarcity and choice and consider the extent to which every \nchoice has an equal opportunity cost.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+An accurate PPC diagram \u2013 a concave or straight-line curve that meets both 
+axes with appropriate and correctly labelled axes (1); explanation of scarcity 
+and / or opportunity cost (1) and how the scarcity in factor 
+endowments/scarce results and infinite wants results in choices having to be 
+made (1).
+AO2 Analysis (max 3 marks)
+If the candidates uses a straight line PPC
+Uses the diagram to explain that scarcity is shown as a point on the straight 
+line PPC (1); the opportunity cost of changing production combinations is 
+shown as a movement along the PPC (1), the opportunity cost is equal due to 
+the negative one gradient of the PPC (accept constant trade off although not 
+strictly true) (1)
+If the candidates uses a concave PPC
+Uses the diagram to explain that scarcity is shown as a point on the concave 
+PPC (1); the opportunity cost of changing production combinations is shown 
+as a movement along the PPC (1), the opportunity cost is not equal due to the 
+increased trade-off the greater the proportion of resources allocated to the 
+production of a good (1)
+AO3 Evaluation (max 2 marks)
+One mark for a valid explanation that the extent to which each choice has an 
+equal opportunity cost depends on the shape of the PPC (1) or whether or not 
+there are unused factors of production when the choice is being made (1).
+Reserve 1 mark for a justified conclusion.`
+  },
+  {
+    id: "custom-1764468111958",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.4 Resource allocation in different economic systems",
+    maxMarks: 12,
+    questionText: "Assess whether the allocation of resources by the free market is always \ndesirable for an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+An understanding of the term free market economy
+An explanation of the potential advantages of a free market economy \u2013
+efficient allocation of scarce resources, competitive prices and increased 
+choice for consumers, increased innovation and invention, increased 
+investment (via the profit motive), reduction in monopoly power 
+An explanation of the potential disadvantages of a free market economy \u2013
+under-provision of merit goods/overproduction of demerit goods, absence of 
+public goods, negative externalities, private sector monopolies, increased 
+income and wealth inequalities
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+Consideration that fully assesses the extent to which the allocation of 
+resources in the free market is always desirable.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1764468130473",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.6 Classification of goods and services",
+    maxMarks: 8,
+    questionText: "Explain what is meant by a public good and a private good (economic \ngood) and consider the extent to which a beach could be described as a \npublic good.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+Explanation of rivalrous/non rivalrous (1) Explanation of excludable/non 
+excludable (1) Correctly applied to a public good and a private good (economic 
+good) to explain the difference (1)
+AO2 Analysis (max 3 marks)
+The extent to which a beach might be rivalrous (1); the extent to which a 
+beach might be excludable (1); the alternatives are also considered (1)
+AO3 Evaluation (max 2 marks)
+One mark for a valid explanation that the extent a beach could be described 
+as a public good (e.g. a quasi-public good). Reserve one mark for a justified 
+conclusion.`
+  },
+  {
+    id: "custom-1764468161612",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess whether a subsidy is likely to be the best method to increase the \nconsumption of merit goods.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+The meaning of the terms subsidy/merit goods
+An explanation of how a subsidy would reduce the costs of production which 
+would, in turn, reduce the price and increase the quantity demanded.
+An explanation of potential problems from using subsidies \u2013 opportunity cost 
+of increased government spending, increased dependency, incorrect 
+targeting, when to remove provision.
+An explanation of alternative methods e.g. improved information but the 
+analysis must focus on how the method would increase the consumption of 
+merit goods.
+Accept any valid policies but the analysis must focus on how they may 
+increase the consumption of merit goods and discuss their advantages and 
+disadvantages.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+Consideration that fully assesses the relative effectiveness of subsidies with 
+at least one other method and arrives at a reasoned conclusion - for example, 
+the relevance of elasticities of demand
+A justified conclusion as to whether introducing subsidies is the best method 
+to increase the consumption of merit goods.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1764468257868",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.5 Policies to correct imbalances in the current account of the balance of payments",
+    maxMarks: 8,
+    questionText: "With the help of a formula, explain two reasons for an improvement in \nthe terms of trade and consider the extent to which an improvement in \nthe terms of trade will benefit an economy.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+An accurate definition of the terms of trade OR An accurate formula (1)
+Understanding that there is likely to be an improvement in the terms of trade if 
+export prices rise (1) relative to import prices (1).
+AO2 Analysis (max 3 marks)
+An improvement in the terms of trade means that a unit of export buys 
+relatively more imports (1) which may lead to an improvement in living 
+standards (1) as imported goods appear cheaper to consumers (1). BUT this 
+may lead to a current account deficit (1) MAX 2 if only benefits considered
+AO3 Evaluation (max 2 marks)
+That assesses the advantages and disadvantages of an improvement in the 
+terms of trade in terms of e.g., levels of unemployment and PED values and 
+reaches a conclusion as to whether this is of benefit to an economy. Reserve 1 
+mark for a valid conclusion.`
+  },
+  {
+    id: "custom-1764468318362",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.5 Policies to correct imbalances in the current account of the balance of payments",
+    maxMarks: 12,
+    questionText: "Assess whether the consequences of free trade are always positive for \nan economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Understanding of the terms free trade
+How free trade may benefit an economy \u2013 this may include \u2013 increased 
+economic growth, reduction in unemployment, improved public finances, 
+improved balance of payments.
+An explanation of the drawbacks of free trade \u2013 reduced domestic growth, 
+increases in structural unemployment, over reliance on other countries for 
+goods not produced domestically, possibility of current account deficit.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider both the potential positives and negatives 
+and will be balanced. Explanations of points raised will be offered and will be 
+accurate and relevant to the question.
+AO3 Evaluation
+Consideration that fully assesses the consequences of free trade and arrives 
+at a reasoned conclusion concerning whether it is always positive \u2013 this may 
+include reference to availability of factor endowments, how \u2018open\u2019 an economy 
+is, stage of development etc.
+A one-sided response cannot gain any marks for evaluation`
+  },
+  {
+    id: "custom-1764468341875",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.2 Fiscal policy",
+    maxMarks: 8,
+    questionText: "With the help of an AD/AS diagram, explain what is meant by an \nexpansionary fiscal policy and consider the extent to which an \nexpansionary fiscal policy will increase the level of aggregate demand.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+A clear understanding of what is meant by:
+Expansionary fiscal policy being an increase in government spending and/or 
+reduction in tax rates (1)
+Aggregate demand is the total demand for an economy\u2019s goods and services 
+at a given price level / it is the total of C + I + G +(X-M) (1)
+An accurate diagram showing AD and AS curves (1)
+AO2 Analysis (max 3 marks)
+An explanation of how a decrease in income tax (for example) will increase 
+disposable income (1) that cause an increase in consumption/which (as a 
+component of AD) causes an increase in aggregate demand (1). A diagram 
+showing a rightwards shift in the AD curve (1).
+AO3 Evaluation (max 2 marks)
+One mark for an explanation of whether expansionary fiscal policy will 
+increase the level of aggregate demand (1). One mark for a justified 
+conclusion.`
+  },
+  {
+    id: "custom-1764468363957",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Feb/March",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.4 Supply-side policy",
+    maxMarks: 12,
+    questionText: "Assess whether supply-side policy is the best method to reduce the rate \nof inflation.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+The meaning of the terms supply-side policy and inflation
+An explanation of how supply-side policy would reduce the rate of inflation 
+from increasing the productive capacity of an economy \u2013 e.g., improving the 
+quality of factors of production via \u2013 education and training, improved health 
+provision, development of infrastructure (road/rail links, broadband)
+An explanation of the drawbacks of using supply-side policy to reduce the rate 
+of inflation \u2013 significant time lags, opportunity cost of government spending, 
+lack of retained profit for firms to train staff, the quality of education and 
+training, possible increase in government debt.
+An explanation of the advantages and disadvantages of at least one 
+alternative policy that might be used to reduce the rate of inflation e.g., 
+monetary and/or fiscal policy.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+Consideration that fully assesses the relative effectiveness of supply side 
+policy to reduce the rate of inflation compared with at least one other policy 
+and arrives at a reasoned conclusion concerning whether the supply side 
+policy is the \u2018best\u2019 policy.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1764470334825",
+    year: "2025",
+    paper: "9708/24",
+    variant: "May/June",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 8,
+    questionText: "With the help of a formula, explain the meaning of price elasticity of \ndemand and consider the significance to a firm of having price elastic or \nprice inelastic demand for its product.",
+    markScheme: `AO1 Knowledge and understanding (max 3marks)
+\u2022 It measures the responsiveness of changes in demand to changes in 
+price (1)
+\u2022 Correct formula (1)
+\u2022 Meaning of price elastic and price inelastic in terms of the percentage / 
+proportionate response of changes in demand to changes in price (1)
+AO2 Analysis (max 3 marks)
+\u2022 Analysis of the impact of rising OR falling prices on the demand for a 
+firm\u2019s products when PED is inelastic (1)
+\u2022 Analysis of the impact of rising OR falling prices on the demand for a 
+firm\u2019s products when PED is elastic (1)
+\u2022 Analysis of the effect of both rising and falling prices on the demand for a 
+firm\u2019s products when PED is both elastic and inelastic (3).
+AO3 Evaluation (max 2 marks)
+That offers a valid judgement on the importance of the distinction between 
+price elastic and price inelastic demand for determining the impact of price 
+changes on the sales of a firm\u2019s products. 
+1 mark for assessing what a firm should do to influence demand/spending 
+when demand is elastic. 1 mark for assessing what a firm should do to 
+influence demand/spending when demand is inelastic.`
+  },
+  {
+    id: "custom-1764470394856",
+    year: "2025",
+    paper: "9708/24",
+    variant: "May/June",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess whether governments should always support the provision of \nmerit goods in markets such as those for education or health care.",
+    markScheme: `AO1 Knowledge and understanding and AO2Analysis
+\u2022 An understanding of what is meant by merit goods
+\u2022 An understanding of the reasons why governments should support the 
+provision of merit goods, including:
+\u2022 The perceived benefits of merit goods and their underconsumption due to 
+information failure / price etc., meaning that governments should support 
+their provision e.g., through direct provision, subsidies, the provision of 
+information etc.
+\u2022 HOWEVER, the reasons why governments should not always support the 
+provision of merit goods include:
+\u2022 Government inefficiency, the opportunity cost of not spending money on 
+alternative projects, the lack of government funding to finance this 
+provision leading to a possible budget deficit. 
+\u2022 Information failure may still exist. 
+\u2022 Private provision may be possible and more efficient.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and / or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider benefits/drawbacks etc. and will be 
+balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.AO3 Evaluation
+That clearly assesses whether governments should always support the 
+provision of merit goods such as education and health care by considering the 
+advantages and disadvantages of doing so and reaches a valid conclusion.
+one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1764470428333",
+    year: "2025",
+    paper: "9708/24",
+    variant: "May/June",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.5 Consumer and producer surplus",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain the impact of introducing an effective \nminimum price of a product and consider the effect on the consumer \nsurplus for that product.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\u2022 For an accurately drawn supply and demand diagram (1)
+\u2022 Showing a minimum price above the equilibrium and the resultant 
+increase in supply and fall in demand (1)
+\u2022 An explanation that this will lead to supply exceeding demand leading to 
+a surplus in the market (1)
+Max 3 marks
+AO2 Analysis (max 3 marks)
+\u2022 An explanation of what is meant by consumer surplus (1)
+\u2022 Use of the diagram to clearly show the fall in consumer surplus (1)
+\u2022 An explanation to clearly explain why consumer surplus will fall (1)
+Max 3 marks
+AO3 Evaluation (max 2 marks)
+That clearly considers the overall effect on consumer surplus of introducing a 
+minimum price (it will fall) but the extent of the fall will be affected e.g., by 
+PED.`
+  },
+  {
+    id: "custom-1764470457536",
+    year: "2025",
+    paper: "9708/24",
+    variant: "May/June",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.3 Addressing income and wealth inequality",
+    maxMarks: 12,
+    questionText: "Assess whether a minimum wage policy is the best way to redistribute \nincome in an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2Analysis
+\u2022 An understanding of what is meant by a minimum wage policy
+\u2022 An explanation of the benefits of using a minimum wage policy to 
+redistribute income. These may include:
+\u2022 It may raise the relative wages of the lower paid, provides an incentive to 
+enter the labour market, and may redistribute profits from employers to 
+workers.
+\u2022 An explanation of the possible disadvantages of using a minimum wage 
+policy to redistribute income. These may include:
+\u2022 It may lead to inflation so low-income earners may not benefit, it may 
+cause unemployment, higher paid workers may be able to maintain 
+differentials so income is not redistributed, it may not be enforced.
+\u2022 The policy MUST be compared to at least one other policy to redistribute 
+income, for example the use of transfer payments, progressive income, 
+inheritance and capital taxes and / or state provision of essential goods 
+and services. The advantages and disadvantages of the chosen 
+alternative/s must be analysed.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and / or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+That clearly assesses the advantages and disadvantages of using a minimum 
+wage policy to redistribute income in an economy and compares this to the 
+advantages and disadvantages of using at least one other government policy 
+and reaches a valid conclusion as to whether minimum wage policy is the 
+best way to redistribute income in an economy.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1764470490855",
+    year: "2025",
+    paper: "9708/24",
+    variant: "May/June",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.GOVT_MACRO,
+    chapter: "5.4 Supply-side policy",
+    maxMarks: 8,
+    questionText: "Explain why expenditure on education and training is a supply-side \npolicy and consider why its impact on the general price level may differ \nbetween the short run and the long run.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\u2022 Supply side policy consists of government policy tools designed to 
+increase aggregate supply (1)
+\u2022 The effect is to shift the aggregate supply curve to the right (1)
+\u2022 Government spending on education and training should increase worker 
+skills and productivity and therefore increase a country\u2019s productive 
+capacity and therefore increase AS / shift the LRAS curve to the right (1)
+AO2 Analysis (max 3 marks)
+\u2022 In the short run, increased government expenditure will increase the level 
+of AD which may lead to an increase in inflation and the general price 
+level. (up to 2 marks)
+\u2022 In the long run, increased expenditure on education and training should 
+increase productivity and productive capacity and the shift in LRAS 
+should lower the general price level. (up to 2 marks)
+AO3 Evaluation (max 2 marks)
+\u2022 That offers an overall assessment as to whether expenditure on 
+education and training will have a different impact on the price level in the 
+long run compared to the short run. 
+\u2022 For example, if the expenditure is ineffective and does not have the 
+intended impact on productive capacity and productivity, this may simply 
+increase the general price level.
+\u2022 For example, time-lags mean short-run impact is minimal as the policy 
+will only take effect in the long-run.
+Reserve 1 mark for a justified conclusion.`
+  },
+  {
+    id: "custom-1764470518368",
+    year: "2025",
+    paper: "9708/24",
+    variant: "May/June",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 12,
+    questionText: "Assess whether the consequences of inflation in an economy are \nalways negative.",
+    markScheme: `AO1 Knowledge and understanding and AO2Analysis
+\u2022 An understanding of inflation
+\u2022 Explanation of possible negative consequences of inflation in an 
+economy, for example, the uncompetitiveness of exports leading to a 
+worsening of the current account of the balance of payments, shoe 
+leather costs arising from searching for better returns, menu costs arising 
+from continually changing prices, planning difficulties arising from the 
+uncertainty caused by inflation and a redistribution of income, e.g. those 
+on fixed incomes will lose out. 
+\u2022 Explanation of possible positive consequences of inflation in an 
+economy, such as an increase in borrowing arising from debt being less 
+in real terms, an increase in the profits of firms, possibly leading to more 
+workers being employed, and an increase in the value of assets, such as 
+property
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and / or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+That clearly assesses whether the consequences of inflation are always 
+negative by considering both the negative and positive consequences and 
+reaches a valid conclusion as to whether the consequences are always 
+negative.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1764470554000",
+    year: "2025",
+    paper: "9708/24",
+    variant: "May/June",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.5 Policies to correct imbalances in the current account of the balance of payments",
+    maxMarks: 8,
+    questionText: "With the help of a formula, explain the causes of an improvement in the \nterms of trade in an economy and consider whether such an \nimprovement can ever be harmful to an economy.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\u2022 For an accurate formula i.e., index of export prices / index of import prices 
+(1)
+\u2022 An improvement is when the value / ratio increases (1)
+\u2022 An improvement is when export prices rise and / or import prices fall (1)
+AO2 Analysis (max 3 marks)
+For example:
+\u2022 An improvement in the terms of trade may be seen to be beneficial as 
+more imports can be purchased from the same volume of imports (1)
+\u2022 However, an increase in export prices may lead to fewer exports in the 
+long run (1)
+\u2022 Which may lead to a current account deficit which may be considered 
+harmful (1)
+AO3 Evaluation (max 2 marks)
+That offers an overall assessment as to whether an improvement in the terms 
+of trade can ever be harmful to an economy. 
+Reserve 1 mark for a justified conclusion.`
+  },
+  {
+    id: "custom-1764470588830",
+    year: "2025",
+    paper: "9708/24",
+    variant: "May/June",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.4 Exchange rates",
+    maxMarks: 12,
+    questionText: "Assess whether the depreciation of an exchange rate is always \nbeneficial to an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2Analysis
+\u2022 An understanding of what is meant by a depreciation of the exchange 
+rate
+\u2022 Explanation of the potential advantages of the depreciation of an 
+exchange rate: It can lead to an increase in a country\u2019s exports because 
+the prices of these products are less than they were previously; this can 
+help to reduce a current account deficit on an economy\u2019s balance of 
+payments; an increase in exports can stimulate an increase in aggregate 
+demand (AD).
+\u2022 Explanation of the potential disadvantages of the depreciation of an 
+exchange rate: It will have the effect of making imports more expensive, 
+both of finished products and of raw materials; if raw materials are more 
+expensive, this will increase the cost of production of domestic firms, and 
+this could bring about cost-push inflation.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and / or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation (max 4 marks)
+That offers an overall assessment as to whether a depreciation in the 
+exchange rate is always beneficial to an economy by assessing both the 
+advantages and disadvantages of the depreciation and also considering the 
+significance of PED values for both exports and imports and reaches a valid 
+conclusion.`
+  },
+  {
+    id: "custom-1764485522632",
+    year: "2023",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.5 Policies to correct imbalances in the current account of the balance of payments",
+    maxMarks: 8,
+    questionText: "Explain how import tariffs might correct an imbalance in the current \naccount of the balance of payments and consider whether these tariffs \nare the best way of correcting such an imbalance.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\u2022 What is meant by an import tariff (1)
+\u2022 What is measured by the current account of the balance of payments (1)
+\u2022 What is meant by an imbalance in the current account of the balance of 
+payments in terms of a surplus or deficit. (1)
+AO2 Analysis (max 3 marks)
+For an analysis of how import tariffs will affect the prices of imports (1) and 
+how this may affect domestic consumption on imports (1) and how this may 
+correct the imbalance (1)
+Note: a diagram may be useful but cannot be expected.
+AO3 Evaluation (max 2 marks)
+Final effect is uncertain e.g., as a result of the PED for imports (1); other 
+policies can be used (1); whether trading competitors retaliate (1). Reserve 
+(1) for a justified conclusion.`
+  },
+  {
+    id: "custom-1764485643062",
+    year: "2023",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.5 Policies to correct imbalances in the current account of the balance of payments",
+    maxMarks: 12,
+    questionText: "A country has a persistent deficit on the current account of its balance \nof payments.\nAssess the likely consequences for the domestic and external economy \nof this country.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 Explanation of what is meant by a persistent deficit on the current 
+account of the balance of payments.
+\u2022 Analysis of the consequences of a persistent deficit on the domestic 
+economy e.g., in terms of employment levels, economic growth, inflation, 
+living standards, government budget, business confidence, possible need 
+to restructure the economy etc.
+\u2022 Analysis of the consequences of a persistent deficit on the external 
+economy e.g., exchange rates, ability to trade, need for imports, debt 
+interest, etc.
+Note: accept answers that refer to the impact on other economies when 
+another economy has a persistent current account deficit.
+Max L 2 if only the consequences on the domestic or the external economy 
+are considered.
+AO3 Evaluation
+That clearly considers the likely consequences on both parts of the economy 
+and comes to a conclusion as to the most likely consequences.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1764486302616",
+    year: "2024",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.3 Addressing income and wealth inequality",
+    maxMarks: 8,
+    questionText: "Explain two economic reasons for inequality in the distribution of \nincome and wealth and consider why inequality in the distribution of \nwealth cannot easily be measured.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\u2022 An explanation of how inequality of income and wealth means an uneven 
+distribution of income and wealth among a population (1).
+\u2022 An explanation of two reasons for income and wealth inequality.
+\u2013 For example: Poor education and training results in the individual 
+gaining fewer/less marketable skills that prevents them from applying 
+for jobs with higher salaries (1).
+\u2013 Low rates of saving which makes it increasingly difficult to buy 
+property. Wealth inequality widens as rising property prices not only 
+make it more difficult to purchase a property, but benefits those who 
+are already property owners (1).
+AO2 Analysis (max 3 marks)
+Points to consider may include (other difficulties may be considered):
+\u2022 Wealth is comprised from many sources housing assets, savings, 
+financial instruments, pensions, and different countries have different 
+ways of measuring it (1). 
+\u2022 Some wealth may not be included in any calculation should wealthy 
+individuals legally use tax havens to reduce the value of their wealth (1). 
+\u2022 Ownership of wealth may be transferred to family members to reduce the 
+value of personal wealth value (1).
+AO3 Evaluation (max 2 marks)
+\u2022 For a balanced evaluation of whether wealth inequality cannot always 
+easily be measured (1), leading to a justified conclusion (1).`
+  },
+  {
+    id: "custom-1764486336236",
+    year: "2024",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.3 Addressing income and wealth inequality",
+    maxMarks: 12,
+    questionText: "Assess which policies are likely to be most effective in redistributing \nincome.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Polices may include:
+\u2022 Use of policies to redistribute income. For example, the introduction of a 
+minimum wage (or increase an existing minimum wage) will increase the 
+wage of the lowest earners and reduce the difference between the 
+highest and lowest earners.
+\u2022 Problems of minimum wages include the possibility of increasing costpush inflation, higher rates of unemployment and that in some countries 
+only a small proportion of the population are in receipt of the minimum 
+wage.
+\u2022 Alternative policies that may be considered include progressive tax 
+systems \u2013 by increasing the number of tax brackets or increasing the 
+higher tax rates will reduce the post-tax income of higher earners and 
+reduce the difference between the highest and lowest earners. 
+\u2022 Problems of the alternative policy \u2013 for example, increased incentives for 
+individuals to seek ways to legally avoid the higher tax rates. Increased 
+administrative costs associated with implementing new systems for 
+income assessment and tax collection.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+\u2022 Requires an assessment of at least two policies to be compared against 
+each other which leads to
+\u2022 A justified conclusion as to which policy (or combination) is most likely to 
+be most effective in redistributing income.
+Accept all valid responses.
+Note: A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1775615746835",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 8,
+    questionText: "With the help of a formula, explain what is meant by price elasticity of \ndemand for a product and consider the importance of time in \ndetermining whether demand for the product is likely to be relatively \nprice elastic or relatively price inelastic.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\u2022 A knowledge and understanding of the formula for calculating price 
+elasticity of demand: percentage change in the quantity demanded of a 
+product divided by percentage change in the price of the product. (1)
+\u2022 If the PED value is greater than one, the demand is price elastic, which 
+means that percentage change in demand is greater than percentage 
+change in price. (1)
+\u2022 if the PED value is between zero and one, the demand is price inelastic, 
+which means that percentage change in demand is less than percentage 
+change in price. (1)
+AO2 Analysis (max 3 marks)
+An analysis of the importance of time in determining PED:
+\u2022 Demand for a product is likely to be more inelastic in the short run than in 
+the long run. (1)
+\u2022 In the long run, consumers have more time to think about possible 
+alternatives to a product. (1)
+\u2022 Habit is more likely to influence the short-run pattern of consumption, 
+making demand less likely to be affected by price changes. (1)
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on the importance of time in determining whether 
+demand for the product was likely to be relatively price elastic or relatively 
+price inelastic (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "custom-1775615779893",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 12,
+    questionText: "Assess whether knowledge of a product\u2019s income elasticity of demand \nis more important to a firm producing it than knowledge of its cross \nelasticity of demand.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 A knowledge and understanding and analysis of income elasticity of
+demand (YED), such as in relation to whether a product is a normal 
+good, where YED will be positive, or an inferior good, where YED will be 
+negative and an analysis of the importance of it to a firm, i.e. the extent of 
+its importance.
+\u2022 A knowledge and understanding and analysis of cross elasticity of
+demand (XED), such as in relation to whether two goods are substitutes, 
+where XED will be positive, or complements, where XED will be negative 
+and an analysis of the importance of it to a firm, i.e. the extent of its 
+importance
+(Up to 8 marks)
+Level 1 responses will be assertive and lacking in explanations/mainly 
+descriptive and/or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and will be one-sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies/concepts etc. and will be 
+balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+Evaluation of whether YED or XED is likely to be more important for a firm 
+producing a product to reach a conclusion. 
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.
+(Up to 4 marks)`
+  },
+  {
+    id: "custom-1775615821751",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.6 Classification of goods and services",
+    maxMarks: 8,
+    questionText: "With the help of examples, explain the nature and characteristics of free \ngoods and private goods (economic goods) and consider the significance of the distinction between these two types of good.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+Free goods:
+\u2022 A free good is one which is consumed by people without a situation of 
+scarcity arising, i.e. there is enough of the good to satisfy everybody and 
+it has no opportunity cost, such as sunlight. (1)
+Private goods (economic goods):
+\u2022 A private or economic good is one which is consumed by an individual for 
+their own private benefit, such as clothing. (1)
+Use of appropriate examples of each type of good to support the 
+explanations. (1)
+AO2 Analysis (max 3 marks)
+Free goods:
+\u2022 As a free good is not scarce, it does not require a market. The supply of 
+the good equals the demand for it at zero price. It takes no factors of 
+production to produce a free good and so there is no opportunity cost 
+involved; analysis of the significance of there being no opportunity cost.
+Private (economic) goods:
+\u2022 Excludability: people can be excluded from consuming it if they do not 
+pay the required price for it.
+\u2022 Rivalry: the consumption of a private good by one person reduces its 
+availability for other people, i.e. there is rivalry in such a situation because 
+consumers are in competition with other consumers to consume a particular product.
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on the significance of the distinction between the two 
+types of good (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "custom-1775615952382",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.6 Classification of goods and services",
+    maxMarks: 12,
+    questionText: "Assess whether education should be classified as a public good or a merit good.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Public good:
+\u2022 In contrast to private goods, public goods are provided by society as a 
+whole so that everyone can benefit from them.
+\u2022 Non-excludability: once a public good has been provided for one person, 
+it is not possible to stop other people from benefiting from such a good 
+(i.e. no one is excluded) (this would not apply to education).
+\u2022 Non-rivalry: as more people consumer the public good, the benefit to 
+those already consuming it is not reduced (i.e. consumption by one 
+person does not prevent others from consuming it).
+\u2022 Non-rejectability: even if a person does not want the public good, they are 
+not actually able to reject it.
+\u2022 Free rider issue: it is impossible to exclude a person who has not paid.
+Merit good:
+\u2022 A merit good is a particular type of private good.
+\u2022 Like other private goods, a merit good is both rival and excludable.
+\u2022 What distinguishes a merit good is under-consumption if provided through 
+the private sector as a result of imperfect information in the market, such 
+as education (there has to be a clear focus on education throughout 
+the answer).
+(Up to 8 marks)
+Level 1 responses will be assertive and lacking in explanations/mainly 
+descriptive and/or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and will be one-sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies/concepts etc. and will be 
+balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.AO3 Evaluation
+\u2022 Evaluation of the distinction between the features and characteristics of a 
+public good and a merit good. 
+\u2022 In conclusion, education is provided through both the public sector and 
+the private sector and so should be considered as a merit good rather 
+than a public good.
+Accept all valid responses. A one-sided response cannot gain any marks for 
+evaluation. (Up to 4 marks)`
+  },
+  {
+    id: "custom-1775615994156",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.5 Unemployment",
+    maxMarks: 8,
+    questionText: "Explain the possible causes of frictional unemployment and technological unemployment and consider whether some element of frictional unemployment is inevitable in an economy.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+\u2022 A knowledge and understanding of what unemployment means in 
+general. (1)
+\u2022 One cause of frictional unemployment: it is temporary and at any point 
+in time, there will be workers transferring between jobs; this could occur 
+simply because an individual wishes to improve their job prospects and 
+needs to spend time searching for a new job; there will be some 
+unemployment while the transfer between jobs takes place. Searching 
+may take some time if information about the availability of jobs is not very 
+good. Frictional unemployment can include not only search 
+unemployment, but also casual unemployment and seasonal 
+unemployment. (1)
+\u2022 One cause of technological unemployment is a type of structural 
+unemployment that arises from the introduction of technology, when 
+existing workers do not have the skills to operate the new technology; 
+This is caused when developments in technology and working practices 
+cause some workers to lose their jobs as they are replaced by capital 
+investment. (1)
+AO2 Analysis (max 3 marks)
+An analysis of whether some element of frictional unemployment is 
+inevitable, e.g. it would depend on the quality of information available about 
+vacancies and the extent to which workers would be keen to change from one 
+job to another. Is it always likely to occur? Candidates need to analyse the 
+extent to which it is or is not inevitable.
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on whether some element of frictional unemployment 
+is inevitable in an economy (1) to reach a conclusion. (1)`
+  },
+  {
+    id: "custom-1775616026902",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.5 Unemployment",
+    maxMarks: 12,
+    questionText: "Assess whether the consequences of technological unemployment are \nlikely to be more serious than those of cyclical unemployment.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Technological unemployment:
+\u2022 Workers are unemployed as a result of a change in the pattern of 
+production when machines replace labour in the productive process.
+\u2022 New skills are required to use the capital equipment.
+\u2022 Such unemployment is due to technical progress; if workers cannot move 
+from one industry to another because of a lack of the required skills, they 
+will become technologically unemployed.
+Cyclical unemployment:
+\u2022 Workers are unemployed because of a deficiency in aggregate demand, 
+i.e. there are insufficient jobs in an economy.
+\u2022 Whereas technological unemployment affects workers in particular 
+industries, cyclical or demand-deficient unemployment affects the whole 
+economy with job losses across a number of industries as firms reduce 
+their output.
+Focus of analysis should be the relative seriousness of the two types of 
+unemployment. i.e. which is more serious and why.
+(Up to 8 marks)
+Level 1 responses will be assertive and lacking in explanations/mainly 
+descriptive and/or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and will be one-sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies/concepts etc. and will be 
+balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+\u2022 Consideration of whether the consequences of technological 
+unemployment are likely to be more serious than those of cyclical 
+unemployment to reach a conclusion.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation. (Up to 4 marks)`
+  },
+  {
+    id: "custom-1775616071669",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 8,
+    questionText: "Explain two tools of protection used by a country when trading \ninternationally and consider whether one is likely to have more of an \nimpact on the country\u2019s economy than the other.",
+    markScheme: `AO1 Knowledge and understanding (max 3 marks)
+An explanation of what is meant by protectionism in general, i.e. to protect 
+domestic industries from international competition. (1)
+An explanation of two tools of protection used by a country when trading 
+internationally, including tariffs, import quotas, export subsidies, embargoes 
+and excessive administrative burdens (\u2018red tape\u2019). (1 \uF0B4 2)
+AO2 Analysis (max 3 marks)
+An analysis of the two tools and how they impact an economy as methods of 
+protection (a maximum of 2 marks if only one tool of protection is analysed).
+AO3 Evaluation (max 2 marks)
+Offers a valid judgement on whether one of the tools of protection is likely to 
+have more of an impact on the country than the other (1) to reach a 
+conclusion. (1)`
+  },
+  {
+    id: "custom-1775616098807",
+    year: "2025",
+    paper: "9708/21",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.2 Protectionism",
+    maxMarks: 12,
+    questionText: "Assess whether all consumers, all producers and the government in a \ncountry will benefit equally from protectionism.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Consumers:
+\u2022 Consumers are likely to be worse off as a result of protectionist 
+measures. There may be a restriction of choice. In the case of a tariff, 
+consumer surplus will be lower after a tariff is imposed because 
+consumers will pay a higher price but will consume less (i.e. there will be 
+a redistribution of income away from consumers).
+Producers:
+\u2022 Producers may gain from protectionism as there will be a higher producer 
+surplus with producers gaining at the expense of consumers (i.e. there 
+will be a redistribution of income towards producers). However, 
+protectionism may reduce the incentive to be eff icient, e.g. potential 
+benefits of the infant industry argument may not materialise.
+Government:
+\u2022 A government can receive revenue from a tariff. There may be an 
+improvement in the balance of trade if protectionism is successful in 
+reducing imports. However, whether domestic production will be able to 
+compensate for this will depend on the elasticity of supply.
+(Up to 8 marks)
+Level 1 responses will be assertive and lacking in explanations/mainly 
+descriptive and/or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and will be one-sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies/concepts etc. and will be 
+balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+\u2022 Consideration of whether all consumers, all producers and the 
+government in a country will benefit equally from protectionism to reach a 
+conclusion. 
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation. (Up to 4 marks)`
+  },
+  {
+    id: "custom-1775616264871",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.5 Consumer and producer surplus",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain the difference between producer \nsurplus and consumer surplus and consider the extent to which \nproducers always gain when the price of a product increases due to \nhigher costs of production.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+For an fully accurately drawn diagram that clearly shows the area of consumer 
+surplus below the demand curve and producer surplus above the supply curve 
+(1) and that clearly explains that consumer surplus represents the difference 
+between what a consumer is prepared to pay for a product and its market price 
+(1) and that producer surplus represents the difference between what a 
+producer is willing to accept and what is actually paid (1).
+AO2 Analysis (max 3 marks)
+For a correct diagram showing the effect of the higher cost of production on the 
+price of the product (1) and explains the impact on the producer in terms of an 
+increase /fall in revenue if the PED is inelastic (1) or elastic (1). The impact may 
+also depend on whether PES is elastic / inelastic affecting the producer\u2019s ability 
+to respond to the price increase (1)
+Guidance: The same diagram can be used for both Knowledge and 
+Understanding and analysis.
+AO3 Evaluation (max 2 marks)
+The extent to which producers will always gain will depend on the value of PED 
+(1) the value of PES (1) leading to a reasoned conclusion (1)`
+  },
+  {
+    id: "custom-1775616303216",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.2 Price elasticity, income elasticity and cross elasticity of demand",
+    maxMarks: 12,
+    questionText: "Assess the view that a business should be more concerned about the \nincome elasticity of demand for its product than its cross elasticity of \ndemand when incomes are falling.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 Analysis of the advantages and disadvantages of using income elasticity 
+of demand. For example, it lets the business know whether it produces 
+inferior or normal goods and therefore what to produce more of when 
+incomes are falling but businesses may not be so flexible. Alternatively, 
+the predictions may be incorrect or the same measurement may not be 
+applicable to all households.
+\u2022 Analysis of the advantages and disadvantages of using cross elasticity of 
+demand. For example, for substitutes, it allows businesses to track the 
+actions of competitors when incomes are falling. For complements, 
+businesses can try to ensure they are aware of the impact on their own 
+products depending on the impact on the complement. However, data 
+may be out of date and make it unreliable.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+Guidance: Answers that do not refer to falling incomes cannot gain more than 
+a mid-Level 2 mark.
+AO3 Evaluation
+That clearly analyses both sides of the question and comes to a valid 
+conclusion.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1775616333716",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.5 Production possibility curves",
+    maxMarks: 8,
+    questionText: "With the help of a diagram, explain the difference between a movement \nalong a production possibility curve (PPC) and a shift of this curve and \nconsider whether a decision to produce more of one product will always \nincur an equal opportunity cost.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+For a fully accurately labelled diagram showing 2 products (not X and Y, P and 
+Q etc.) (1) and an explanation that a movement means a decision to produce 
+more of one product than another (1) and an explanation that a shift means that 
+more (or less) of both products can be produced due to a change in productive 
+capacity (1). Also accept a diagram showing an accurate shift in the PPC along 
+with an explanation that this results from increased/decreased resources in the 
+economy (1).
+AO2 Analysis (max 3 marks)
+For analysis that clearly explains what is meant by opportunity cost (1) and fully 
+explains what is meant by increasing opportunity cost in terms of rate of which 
+one product is given up for another product (1) and by a constant opportunity 
+cost in terms of the rate of which one product is given up for another product (1)
+AO3 Evaluation (max 2 marks)
+For evaluation that explains that whether the opportunity cost is equal will 
+depend on the ease of transferring production resources from one product to 
+another (1) and reaches a justified conclusion (1)`
+  },
+  {
+    id: "custom-1775616370812",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.BASIC_IDEAS,
+    chapter: "1.5 Production possibility curves",
+    maxMarks: 12,
+    questionText: "Assess the extent to which it is always necessary to increase the size of \nthe labour factor of production in order to cause an outward shift of the \nproduction possibility curve.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Responses should be aware that the question is focused on factors of 
+production that cause an outward shift of the PPC i.e., an overall increase in 
+potential output. Points to consider in the discussion may include: -
+\u2022 the ease of increasing the labour force through e.g., increasing the 
+retirement age, attracting more people into the labour force etc.
+\u2022 the quality of the labour force including the importance of education and 
+training
+\u2022 the importance of at least one other factor of production e.g., enterprise, 
+capital and /or land
+The analysis should focus on the necessity of increasing the size of the labour 
+force to increase potential output and compare this with the advantages and 
+disadvantages of increasing at least one other factor of production.
+For example:
+\u2022 An increase in the size of the labour force provides more workers 
+therefore increasing the number of goods and services that can be 
+produced
+\u2022 This will increase total output if other factors of production are maintained
+\u2022 This will lead to an increase in economic growth and an outward shift in 
+the production possibility curve
+However:
+\u2022 An increase in the labour force may not be possible
+\u2022 Other factors of production may be more important, for example, 
+enterprise, capital and /or land
+\u2022 It may be more advantageous to develop the productivity of the existing 
+labour force through training, better technology etc.
+\u2022 This depends however on the receptiveness of the workforce along with 
+the availability of enterprise skills, capital and land.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+That clearly analyses both sides of the question and comes to a valid 
+conclusion.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1775616408996",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.3 Current account of the balance of payments",
+    maxMarks: 8,
+    questionText: "Explain three components of the current account of the balance of \npayments and consider the extent to which a depreciation in the \nexchange rate will always lead to a surplus on the current account.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+Knowledge and basic understanding of 3 components of the current account. 
+The component must be identified by name together with a brief explanation by 
+name i.e., 3 from 
+\u2022 Trade in goods \u2013 the value of physical goods e.g., computers
+\u2022 Trade in services \u2013 the value of invisible goods e.g., insurance/tourism
+\u2022 Primary income \u2013 e.g., the dividend income earned from overseas
+investments
+\u2022 Secondary income \u2013 e.g., the income from overseas aid or worker 
+remittances sent back to their own country. (3 \uF0B4 1)
+AO2 Analysis (max 3 marks)
+A depreciation in the exchange rate will make exports appear cheaper and/or 
+imports more expensive (1), this should increase export revenue and/or reduce 
+import expenditure and lead to a surplus (1). Also other components of the 
+current account may influence whether the current account goes into surplus or 
+not (1). N.B. if the impact of other sections of the current account are not 
+considered, maximum mark of 2.
+AO3 Evaluation (max 2 marks)
+Of an overall assessment of the extent to which a depreciation in the exchange 
+rate will always lead to a surplus on the current account \u2013 for example, 
+reference may be made to the relevance of PED values and also the value of 
+other sections of the current account. Reserve 1 mark for a valid conclusion.`
+  },
+  {
+    id: "custom-1775616449773",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.5 Policies to correct imbalances in the current account of the balance of payments",
+    maxMarks: 12,
+    questionText: "Assess the extent to which the use of supply-side policy would be the \nbest way to reduce a deficit on the current account of the balance of \npayments.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+An analysis of the advantages and disadvantages of using supply-side policy 
+to reduce a deficit e.g.,
+\u2022 It is likely to be more effective in the long run and less costly to the 
+economy.
+\u2022 it may reduce the possibility of retaliation by other countries BUT
+\u2022 it will have an opportunity cost and is not likely to be a short-term solution.
+Examples of supply side policy may include:
+\u2022 Investment in education and training to improve worker productivity and 
+entrepreneurship which may reduce costs and lead to increased 
+competitiveness of domestic goods, therefore increasing exports and 
+reducing imports
+\u2022 Export subsidies and subsidies for domestic industries competing against 
+imported goods
+\u2022 Policies to reduce red tape and bureaucracy to encourage competition to 
+reduce costs
+\u2022 Investment in infrastructure to reduce costs of production
+However:
+\u2022 They take time and can be costly, which is unlikely to reduce a deficit in 
+the short term
+\u2022 Other policies such as contractionary fiscal and monetary policy may 
+work more quickly together with protectionist policies e.g., tariffs and 
+currency depreciation. These policies should be analysed in terms of their 
+strengths and weaknesses in reducing a current account deficit.
+Guidance: Answers that do not refer to the policies in terms of reducing a 
+current account deficit cannot gain more than a mid-Level 2 mark.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+That clearly analyses both sides of the question and comes to a valid 
+conclusion.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1775616480369",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.3 Aggregate Demand and Aggregate Supply analysis",
+    maxMarks: 8,
+    questionText: "With the help of an AD /AS diagram, explain why two components of AD \nmay increase and consider the extent to which an increase in AD will \nalways lead to inflation.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+An accurately labelled AD/AS diagram e.g., axes labelled price level and GDP 
+showing an increase in AD and the increase in the price level (1) plus two 
+components from consumption, investment, government spending and net 
+exports and briefly explain why each may increase (2 x1)
+AO2 Analysis (max 3 marks)
+A rise in AD will lead to possible demand-pull inflation (1). However, the extent 
+to which this may occur depends on the position of AD in relation to AS (1). It 
+also depends on the supply side effect of the increase in AD e.g., government 
+spending on subsidies may increase LRAS and therefore minimise any 
+inflationary pressure (1).
+AO3 Evaluation (max 2 marks)
+For an overall assessment of the possible impacts which may result in inflation 
+or not. Reserve 1 mark for a valid conclusion.`
+  },
+  {
+    id: "custom-1775616519246",
+    year: "2025",
+    paper: "9708/22",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 12,
+    questionText: "Assess the view that the effects of a high rate of inflation are always more damaging for consumers than for firms.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+For consumers problems include:
+\u2022 A loss of purchasing power that particularly affects fixed income earners 
+and those with weak wage bargaining power
+\u2022 Fiscal drag pulling individuals into higher tax brackets
+\u2022 Shoe leather costs 
+\u2022 A loss of consumer confidence particularly at a time of high rates of 
+inflation leading to an increased use of alternative methods of payment
+However
+\u2022 Consumers with debts gain as the value of their debts is eroded with 
+inflation
+\u2022 Consumers with assets gain e.g., house owners
+For firms problems include:
+\u2022 A loss of sales domestically and overseas due to higher prices / loss of 
+competitiveness
+\u2022 Menu costs
+\u2022 Increased costs of production due to raw material costs and wages rising. 
+\u2022 At a time of high inflation, this will lead to a loss of confidence and lower 
+investment
+\u2022 Inflationary noise leading to poor decision making
+However
+\u2022 If it is demand led and sales increase, then firms will make increased 
+profits.
+\u2022 If the price level is rising at a faster rate than production costs then profits 
+will rise.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+Guidance: Answers that refer to a moderate or low rate of inflation cannot 
+gain more than mid-level 2 mark.
+AO3 Evaluation
+That clearly considers and compares both sides of the analysis and reaches a 
+justified conclusion.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1776301491184",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "2(a)",
+    topic: SyllabusTopic.PRICE_SYSTEM,
+    chapter: "2.4 The interaction of demand and supply",
+    maxMarks: 8,
+    questionText: "In 2022 the supply of root ginger from Nigeria, Africa\u2019s largest producer, \nfell by 20%. Market demand was expected to grow by more than 5%.\nWith the help of a demand and supply diagram, explain how the market \nequilibrium for root ginger in Nigeria is likely to change and consider \nhow certain you are of the new market price.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+An accurate definition of equilibrium. A fully labelled, accurate diagram 
+showing understanding that the decrease in supply will shift the supply curve 
+to the left (1) and the increase in demand will shift the demand curve to the 
+right (1). This can be shown on 2 separate diagrams. 
+AO2 Analysis (max 3 marks)
+Analysis of how the decrease in supply is likely to increase the price of root 
+ginger; an analysis of how the increase in demand is likely to increase the 
+price of root ginger. Up to 2 marks for each reason explained. Maximum of 3 
+marks overall.
+AO3 Evaluation (max 2 marks)
+An assessment of the significance that the overall impact on the equilibrium 
+will depend on the relative size of both shifts and/or the relevance of the PED 
+and PES`
+  },
+  {
+    id: "custom-1776301544544",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "2(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.2 Methods and effects of government intervention in markets",
+    maxMarks: 12,
+    questionText: "Assess the ways in which producers of root ginger might be able to \nstabilise their incomes.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 An analysis of the at least 2 ways in which producers or root ginger might 
+be able to stabilise their income. For example, using their land for other 
+purposes, diversifying or benefitting from government interventions. 
+These interventions may include: 
+Subsidies
+\u2022 Provision of financial support to help producers cover costs and maintain 
+stable incomes.
+\u2022 Encourage production by making ginger farming more profitable.
+\u2022 Can be expensive for the government to maintain long-term.
+\u2022 May encourage overproduction, leading to wasted resources or falling 
+market prices.
+Minimum Price
+\u2022 Guarantees a minimum income for producers, stabilizing their earnings.
+\u2022 Encourages consistent production levels.
+\u2022 May lead to surpluses if minimum price is above equilibrium.
+\u2022 Government may need to buy excess ginger, increasing costs.
+Buffer Stock Systems
+\u2022 Helps smooth out price fluctuations by buying surplus and releasing stock 
+during shortages.
+\u2022 Provides income stability for producers during periods of low demand.
+\u2022 Requires significant storage and management costs.
+\u2022 Risk of losses if stored ginger spoils or market conditions change.
+Guidance: The assessment of both perspectives must be in the context of 
+stabilising the income of root ginger producers and not a general 
+explanation of a range of policies. A response that fails to do this is unlikely 
+to achieve above a mid-Level 2 mark.`
+  },
+  {
+    id: "custom-1776301574545",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "3(a)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.3 Addressing income and wealth inequality",
+    maxMarks: 8,
+    questionText: "The Gini coefficient for South Korea was estimated to be 0.39 in 2019 \nand 0.33 in 2022.\nExplain what the data means, how it might be used by the government \nof South Korea and consider its usefulness.",
+    markScheme: `Follow the point-based marking guidance at the top of this mark scheme and 
+award:
+up to 3 marks for AO1 Knowledge and understanding up to 3 marks for AO2 
+Analysis up to 2 marks for AO3 Evaluation.
+AO1 Knowledge and Understanding (max 3 marks)
+Meaning of what the Gini coefficient is (1). It ranges from 0 to 1, where 0 
+represents complete equality and 1 represents complete inequality (1). A fall 
+in the Gini coefficient from 0.39 to 0.33 indicates that income became more 
+evenly distributed among the population of South Korea between 2019 and 
+2022. (1)
+AO2 Analysis (max 3 marks)
+\u2022 The government could use this information to evaluate the success of 
+policies aimed at reducing income inequality, such as progressive 
+taxation or transfer payments. (1)
+\u2022 The data might also guide future policy decisions, for example deciding 
+whether to increase social welfare spending or adjust tax rates to 
+maintain or further reduce inequality. (1)
+\u2022 However, its usefulness will be dependent in both the accuracy of and 
+confidence in the data. (1)
+8
+AO3 Evaluation (max 2 marks)
+\u2022 The Gini coefficient is useful for showing changes in overall inequality, 
+but it does not indicate which income groups have gained or lost. (1)
+\u2022 It also ignores other dimensions of inequality, such as wealth inequality or 
+access to education and healthcare, which can limit its usefulness for 
+policy-making. (1)
+\u2022 Despite these limitations, it remains a valuable indicator for comparing 
+inequality over time and across countries. (1)`
+  },
+  {
+    id: "custom-1776301616626",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "3(b)",
+    topic: SyllabusTopic.GOVT_MICRO,
+    chapter: "3.3 Addressing income and wealth inequality",
+    maxMarks: 12,
+    questionText: "Assess why it is easier for a government such as that of South Korea to \nredistribute income rather than redistribute wealth.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Redistributing Income
+\u2022 Governments can change the level of direct taxation and transfer payments 
+such as benefits or subsidies, allowing income redistribution through 
+existing fiscal systems.
+\u2022 Income is received regularly and recorded through wages or salaries, 
+making it easier for governments to measure and adjust policies quickly.
+However
+\u2022 High-income earners may respond to redistributive tax policies by avoiding 
+or evading taxes, reducing the effectiveness of redistribution.
+\u2022 Increasing taxes on higher earners or firms may discourage work and 
+investment, leading to lower economic growth and government revenue.
+Redistributing wealth
+\u2022 Wealth can be redistributed through inheritance or property taxes, which 
+directly target accumulated assets rather than annual income.
+\u2022 Governments can promote asset ownership among lower-income groups 
+through housing schemes, education access, or small business grants.
+However
+\u2022 Wealth is often difficult to measure accurately, especially in the form of 
+private businesses, offshore accounts, or property, making taxation 
+complex.
+\u2022 Wealthy individuals often have political influence and legal means to 
+resist or reduce the impact of wealth taxes, limiting the government\u2019s 
+ability to redistribute effectively.
+AO3 Evaluation
+That clearly analyses at both sides of each perspective question and comes 
+to a valid conclusion.
+A one-sided response that does not contain both perspectives of each 
+option cannot gain any marks for evaluation.
+Accept all valid responses.`
+  },
+  {
+    id: "custom-1776301646463",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "4(a)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 8,
+    questionText: "For your economy or for one that is known to you, explain three causes \nof inflation and consider which of these causes is likely to be most \nimportant in 2025.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+\u2022 Inflation is a sustained rise in the general price level (1).
+\u2022 Understanding of three causes of inflation. The cause must be identified 
+by name together with a brief explanation\u2013e.g. demand-pull inflation 
+when aggregate demand increases faster than aggregate supply, e.g., 
+due to higher consumer spending, government expenditure etc. (1). Costpush inflation when rising costs of production result in firms raising prices 
+(1).
+Up to 2 marks maximum for each cause, with an overall maximum of 3 
+knowledge marks.
+AO2 Analysis (max 3 marks)
+\u2022 An explanation of the identified cause of inflation for a named economy. 
+For example, a reduction in income tax increases disposable income, 
+leading to higher consumption, which raises aggregate demand and can 
+cause an increase in the price level/demand pull inflation (1 + 1). 
+However, if high levels of job insecurity exists then the increase in 
+consumption/AD/demand-pull inflation may be less important (1). 
+AO3 Evaluation (max 2 marks)
+\u2022 Evaluation should consider the extent to which a single cause can be 
+identified as being the most important.
+\u2022 1 mark reserved for a justified conclusion.`
+  },
+  {
+    id: "custom-1776301683390",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "4(b)",
+    topic: SyllabusTopic.MACROECONOMY,
+    chapter: "4.6 Price stability",
+    maxMarks: 12,
+    questionText: "Assess whether supply-side policy or demand-side policy is the better \nway of reducing this inflation.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Possible reasons why supply-side policies are the best way to reduce 
+demand-pull inflation:
+\u2022 They increase productive capacity (aggregate supply), helping meet higher 
+demand without causing price rises.
+\u2022 Improved efficiency and productivity lower production costs, reducing 
+inflationary pressure in the long term.
+However
+\u2022 They take a long time to have an effect, so they may not reduce inflation 
+quickly.
+\u2022 Some policies, like education or infrastructure investment, are expensive 
+and may not guarantee results.
+Possible reasons why demand-side policies are the best way to reduce 
+demand-pull inflation:
+\u2022 Higher interest rates reduce consumer and business borrowing, lowering 
+consumption and investment, which reduces aggregate demand and 
+inflationary pressure.
+\u2022 Increasing taxes reduces disposable income, leading to lower consumer 
+spending and weaker aggregate demand.
+However
+\u2022 They can also reduce output and employment, leading to slower economic 
+growth and higher unemployment.
+\u2022 Time lags may occur before interest rate or tax changes have a noticeable 
+effect on spending and inflation
+Potential reasons why supply-side policies are the best way to reduce 
+cost-push inflation:
+\u2022 Increasing investment in training and technology can raise productivity, 
+allowing firms to produce more with the same resources, helping reduce 
+cost pressures.
+\u2022 Improving transport and infrastructure reduces distribution costs for firms, 
+helping lower overall production costs and ease inflationary pressure.
+However
+\u2022 They take a long time to show results, so they are not effective in reducing 
+inflation in the short term.
+\u2022 External factors like rising oil prices or imported inflation cannot be 
+controlled by domestic supply-side policies
+Guidance: The assessment of both perspectives must be in the context of 
+the reducing inflation and not a general explanation of both policies. A 
+response that fails to do this is unlikely to achieve above a mid-Level 2 mark.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will be 
+balanced. Explanations of points raised will be offered and will be accurate and 
+relevant to the question.
+AO3 Evaluation
+Requires an assessment of how both supply-side policy and demand-side 
+policy may reduce \u2018this inflation\u2019 which leads to a justified conclusion as to 
+which policy is the better way for the identified country.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.`
+  },
+  {
+    id: "custom-1776301722298",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "5(a)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.3 Current account of the balance of payments",
+    maxMarks: 8,
+    questionText: "Explain two reasons why an economy may have a deficit on the current \naccount of its balance of payments and consider whether its \ngovernment is likely to be concerned about this deficit.",
+    markScheme: `AO1 Knowledge and Understanding (max 3 marks)
+The current account records trade in goods and services, primary income, and 
+secondary income between countries/A current account deficit occurs when the 
+value of imports of goods or services, primary and secondary income exceeds 
+the value of exports (1). Two marks for an accurate explanation of two 
+reasons\u2013e.g., low international competitiveness, (1) - if the country experiences 
+strong domestic growth. (1)
+AO2 Analysis (max 3 marks)
+An explanation of why the government is likely to be concerned at about this 
+deficit. For example, a current account deficit could lead to downward pressure 
+on the exchange rate, making imports more expensive and potentially causing 
+inflation (1). Persistent deficits may reduce confidence among foreign investors, 
+limiting inflows of capital needed to finance growth (1). However, the 
+government may not be concerned if the deficit is temporary or caused by for 
+example, high investment imports that may boost future productive capacity (1)
+A max of 2 marks for either perspective.
+AO3 Evaluation (max 2 marks)
+An assessment of the extent that the government is likely to be concerned. For 
+example, the level of concern will depend on the size, duration and cause of the 
+deficit and how it is financed (1).`
+  },
+  {
+    id: "custom-1776301759356",
+    year: "2025",
+    paper: "9708/23",
+    variant: "Oct/Nov",
+    questionNumber: "5(b)",
+    topic: SyllabusTopic.INTERNATIONAL,
+    chapter: "6.5 Policies to correct imbalances in the current account of the balance of payments",
+    maxMarks: 12,
+    questionText: "Assess whether it is better to use protectionist policies or \ncontractionary policies to reduce a deficit on the current account of the \nbalance of payments.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Possible reasons why protectionist policies are the best way to reduce a 
+deficit on the current account of the balance of payments.
+\u2022 They may reduce the value of imports, which helps to lower the current 
+account deficit by limiting the outflow of money from the economy.
+\u2022 They may protect domestic industries from foreign competition, allowing 
+local firms to grow and potentially increase exports in the future.
+However
+\u2022 They can raise prices for consumers, as tariffs or quotas make imported 
+goods more expensive, reducing consumer welfare.
+\u2022 Other countries may retaliate with their own trade barriers, which could 
+reduce exports and harm the economy further.
+Possible reasons why contractionary policies are the best way to reduce 
+a deficit on the current account of the balance of payments.
+\u2022 They can reduce domestic demand, which lowers imports and helps 
+decrease the current account deficit.
+\u2022 They may help control inflation by reducing spending in the economy, 
+which can stabilise the exchange rate and make exports more 
+competitive.
+However
+\u2022 They can slow economic growth and increase unemployment, as lower 
+demand reduces output in domestic industries.
+\u2022 They may reduce consumer and business confidence, which can further 
+decrease spending and investment, worsening the economic slowdown.
+Guidance: The assessment of both perspectives must be in the context of 
+the reducing a current account deficit and not a general explanation of 
+both policies.
+Level 1 responses will be assertive and lacking in explanations / mainly 
+descriptive and/or or mainly lacking in relevance to the question.
+Level 2 responses may contain some inaccuracies and may be one sided. 
+Analysis will be explained at least in part and will be largely relevant to the 
+question.
+Level 3 responses will consider alternative policies / concepts etc. and will 
+be balanced. Explanations of points raised will be offered and will be accurate 
+and relevant to the question.
+AO3 Evaluation
+Requires an assessment of whether it is better to use protectionist policies or 
+contractionary policies to reduce a deficit on the current account of the 
+balance of payments. For example\u2013Protectionist policies may work more 
+quickly to reduce imports and protect domestic industries, but they risk 
+retaliation from other countries and higher prices for consumers. Alternatively, 
+contractionary policies may take longer to reduce the deficit but may help 
+control inflation, though they may slow economic growth and increase 
+unemployment.
+Accept all valid responses.
+A one-sided response cannot gain any marks for evaluation.
+Accept all valid responses.`
+  },
+  {
+    id: "custom-1778313208081",
+    year: "2023",
+    paper: "9708/41",
+    variant: "May/June",
+    questionNumber: "2",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+    maxMarks: 20,
+    questionText: "To improve allocative efficiency economists frequently advise governments to remove existing subsidies to the private sector providers of education.\nWith the help of a diagram, evaluate this advice.",
+    markScheme: `Use Table A: AO1 Knowledge and understanding and AO2 Analysis and 
+Table B: AO3 Evaluation to mark candidate responses to this question.
+AO1 and AO2 out of 14 marks. AO3 out of 6 marks.
+Indicative content
+Responses may include:
+AO1 Knowledge and understanding and AO2 Analysis
+\u2022 The distinction between public and private ownership should be clearly 
+explained
+\u2022 Education should be identified as a merit good and the significance of 
+merit goods explained.
+\u2022 The links between a merit good, positive externalities and allocative 
+efficiency should be analysed.
+\u2022 Analysis of the relationship between the private provision of education, 
+the use of subsidies and potential efficient outcomes should be provided.
+\u2022 A diagram should be provided to illustrate the impact of a subsidy on the 
+provision of education by the private sector
+Where no diagram \u2013 max marks top L2
+AO3 Evaluation
+\u2022 The use of subsidies to encourage the provision of education in the 
+private sector might not be entirely successful because of the difficulties 
+involved when attempting to assess the precise level of subsidy required 
+to achieve an allocatively efficient outcome.
+\u2022 Subsidies provided by the public sector are often expensive and their use 
+will automatically create opportunity costs. For example, money spent on 
+state subsidies to health care
+\u2022 Subsidies in the private sector will mean that access to education is still 
+based on an ability to pay, this might create inequitable outcomes in 
+society.
+\u2022 The pursuit of profit supported by subsidies might enable private firms to 
+cut costs and reduce any unnecessary bureaucracy thus leading to a 
+more efficient use of scarce resources.
+\u2022 Direct state provision of education might lead to less efficient outcomes 
+and reduce the time taken to ensure a high standard of education is 
+available on an equal basis throughout the population. 
+\u2022 A conclusion should be attempted which examines the net benefits of 
+each alternative i.e. private or public sector provision of education.
+\u2022 Also, the impact on price and output in some circumstances takes a long 
+time to become effective.
+\u2022 Advertising is often costly and it is not always certain that it will have a 
+sufficiently persuasive effect to ensure the correct level of output / 
+consumption is reached
+\u2022 It is possible to show that government intervention can reduce the level of 
+inefficiency caused by the existence of negative externalities, but it is not 
+clear whether the net effect of government intervention will always be 
+positive. Some types of intervention will be more effective than others 
+depending on the nature of the good / service under consideration.
+Accept all valid responses.`
+  },
+  {
+    id: "custom-1778313325875",
+    year: "2023",
+    paper: "9708/41",
+    variant: "May/June",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.8 Differing objectives and policies of firms",
+    maxMarks: 20,
+    questionText: "Some firms frequently use price discrimination.\nAssess the view that when this occurs, price discrimination will always \nbenefit the producer at the expense of the consumer and society.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 The key characteristics for effective price discrimination (PD) to take 
+place. (Ability to set price, separable markets with different price 
+elasticities of demand)
+\u2022 The use of practical examples to illustrate the meaning of PD.
+\u2022 An explanation / analysis of at least one model of PD to show the effects 
+on the producer in terms of price, output and profit.
+\u2022 An explanation / analysis of PD on the consumer in terms of price and 
+quantity demanded.
+\u2022 The use of relevant labelled diagrams (not mandatory)
+AO3 Evaluation
+If firms are rational profit \u2013 maximisers, the firms must benefit from their action 
+therefore the initial point that the producer will always benefit is true.
+As total spending on the good / service takes place this represents a transfer 
+of consumer surplus to the producers.
+But it depends on whether the firms gain at the expense of consumer and 
+society.
+If the price discrimination exists between domestic and foreign markets The 
+producer may also be able to drive competition from the foreign market if it 
+charges high domestic prices / recovers overheads domestically. This may 
+improve a country\u2019s balance of payments.
+Some consumers gain and some lose. The lower price in the low PED market 
+will benefit those consumers in that market whilst the opposite occurs in the 
+High PED market.
+The increase in profits may allow the producer to increase its research and 
+development leading to innovative production techniques which lower long 
+term costs \u2013 dynamic efficiency. The benefits of the dynamic efficiency may 
+be enjoyed by consumers / society as lower prices.
+The assessment of the statement should conclude with the view that it should 
+benefit the producer as a matter of rationality but whether this is always at 
+the expense of consumers / society is debateable.
+Accept all valid responses.`
+  },
+  {
+    id: "custom-1778313531984",
+    year: "2023",
+    paper: "9708/41",
+    variant: "May/June",
+    questionNumber: "4",
+    topic: SyllabusTopic.GOVT_MACRO_AL,
+    chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+    maxMarks: 20,
+    questionText: "An increase in a government\u2019s budget surplus will increase unemployment in the short run but it will make it easier to control a balance of payments deficit in the long run.\nEvaluate this statement.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 Knowledge of what is meant by a budget surplus, in relation to the 
+difference between government expenditure and government income.
+\u2022 Reference to links between a government surplus, aggregate monetary 
+demand and unemployment.
+\u2022 Explanation of the specific type of unemployment that might relate to an 
+increase in a governments budget surplus.
+\u2022 Analysis of the links between changes in interest rates and 
+unemployment in the short run.
+\u2022 Explanation of some of the key elements of the balance of payments 
+accounts and how they might be influenced by changes in fiscal policy.
+\u2022 Analysis of the links between a budget surplus and the control of a 
+balance of payments in the long run
+AO3 Evaluation
+\u2022 The impact of a budget surplus in the short run on the level of 
+unemployment will depend upon the main cause of the existing level of 
+unemployment.
+\u2022 A budget surplus is more likely to have a negative effect on 
+unemployment when an economy has a lot of existing spare capacity.
+\u2022 If structural factors are responsible for unemployment, supply side 
+policies might be more effective.
+\u2022 A budget surplus might lead to lower interest rates and cause problems 
+for specific industries within an economy. For example, low interest rates 
+might cause a boom in the housing market.
+\u2022 If a budget surplus leads to a subsequent fall in interest rate, this might 
+ultimately make it more difficult to control a balance of payments in the 
+long run.
+\u2022 A conclusion should make an attempt to make an overall comparison 
+between the use of monetary policy and alternative fiscal or supply side 
+policies. A judgement should be made which directly addresses the 
+statement in question.
+Accept all valid responses`
+  },
+  {
+    id: "custom-1778313737037",
+    year: "2023",
+    paper: "9708/41",
+    variant: "May/June",
+    questionNumber: "5",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.3 Economic development",
+    maxMarks: 20,
+    questionText: "To what extent do you agree that an increase in productivity will lead to a higher standard of living in low-income countries.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+\u2022 An increase in productivity will occur when there is an increase in output 
+per unit of input in a given time period.
+\u2022 Key characteristics of low-income countries would include: low levels of 
+productivity, relatively low levels of GDP per capita and a significant 
+proportion of the labour force working in the primary sector
+\u2022 Low-income countries often fail to generate a sufficient level of savings to 
+generate sufficient investment to promote an increase in productivity
+\u2022 Access to material goods and essential services such as health and 
+education is frequently used as a measure of living standards in lowincome economies.
+\u2022 Globalisation can lead to economic dependency and significant 
+imbalances of trade which, in the long run, might have a negative effect 
+on living standards in low-income countries.
+AO3 Evaluation
+\u2022 Low-income countries might increase productivity due the transfer of new 
+technology from high income countries, however this might lead to a 
+substitution of capital for labour thus increasing the level of 
+unemployment.
+\u2022 An increase in Foreign Direct Investment (FDI) might lead to the 
+exploitation of the indigenous raw materials, thus leading to a long run 
+decline in economic growth.
+\u2022 Increases in productivity might provide opportunities to create more real 
+wealth but it will still depend upon a government in a low \u2013 income 
+country to ensure that any increases in wealth lead to equitable 
+outcomes.
+\u2022 It is relatively easy to link an increase in productivity to the availability of 
+more goods, however living standards are also influenced by an increase 
+in the provision of services such as health and education. It is not easy to 
+measure change
+\u2022 In conclusion, it is clear that there is a potential role for an increase in 
+productivity to influence living standards in low re \u2013 income countries but 
+this will depend on many factors which have been referred to above, 
+some of which might have a less direct positive impact.`
+  }
+];

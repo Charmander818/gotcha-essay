@@ -4974,113 +4974,7 @@ to achieve an allocatively efficient outcome.
 will automatically create opportunity costs. For example, money spent on 
 state subsidies to health care
 • Subsidies in the private sector will mean that access to education is still 
-based on an ability to pay, this might create inequitable outcomes in 
-society.
-• The pursuit of profit supported by subsidies might enable private firms to 
-cut costs and reduce any unnecessary bureaucracy thus leading to a 
-more efficient use of scarce resources.
-• Direct state provision of education might lead to less efficient outcomes 
-and reduce the time taken to ensure a high standard of education is 
-available on an equal basis throughout the population. 
-• A conclusion should be attempted which examines the net benefits of 
-each alternative i.e. private or public sector provision of education.
-• Also, the impact on price and output in some circumstances takes a long 
-time to become effective.
-• Advertising is often costly and it is not always certain that it will have a 
-sufficiently persuasive effect to ensure the correct level of output / 
-consumption is reached
-• It is possible to show that government intervention can reduce the level of 
-inefficiency caused by the existence of negative externalities, but it is not 
-clear whether the net effect of government intervention will always be 
-positive. Some types of intervention will be more effective than others 
-depending on the nature of the good / service under consideration.
-Accept all valid responses.`
-  },
-  {
-    id: "custom-1778313325875",
-    year: "2023",
-    paper: "9708/41",
-    variant: "May/June",
-    questionNumber: "3",
-    topic: SyllabusTopic.PRICE_SYSTEM_AL,
-    chapter: "7.8 Differing objectives and policies of firms",
-    maxMarks: 20,
-    questionText: "Some firms frequently use price discrimination.\nAssess the view that when this occurs, price discrimination will always \nbenefit the producer at the expense of the consumer and society.",
-    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
-• The key characteristics for effective price discrimination (PD) to take 
-place. (Ability to set price, separable markets with different price 
-elasticities of demand)
-• The use of practical examples to illustrate the meaning of PD.
-• An explanation / analysis of at least one model of PD to show the effects 
-on the producer in terms of price, output and profit.
-• An explanation / analysis of PD on the consumer in terms of price and 
-quantity demanded.
-• The use of relevant labelled diagrams (not mandatory)
-AO3 Evaluation
-If firms are rational profit – maximisers, the firms must benefit from their action 
-therefore the initial point that the producer will always benefit is true.
-As total spending on the good / service takes place this represents a transfer 
-of consumer surplus to the producers.
-But it depends on whether the firms gain at the expense of consumer and 
-society.
-If the price discrimination exists between domestic and foreign markets The 
-producer may also be able to drive competition from the foreign market if it 
-charges high domestic prices / recovers overheads domestically. This may 
-improve a country’s balance of payments.
-Some consumers gain and some lose. The lower price in the low PED market 
-will benefit those consumers in that market whilst the opposite occurs in the 
-High PED market.
-The increase in profits may allow the producer to increase its research and 
-development leading to innovative production techniques which lower long 
-term costs – dynamic efficiency. The benefits of the dynamic efficiency may 
-be enjoyed by consumers / society as lower prices.
-The assessment of the statement should conclude with the view that it should 
-benefit the producer as a matter of rationality but whether this is always at 
-the expense of consumers / society is debateable.
-Accept all valid responses.`
-  },
-  {
-    id: "custom-1778313531984",
-    year: "2023",
-    paper: "9708/41",
-    variant: "May/June",
-    questionNumber: "4",
-    topic: SyllabusTopic.GOVT_MACRO_AL,
-    chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
-    maxMarks: 20,
-    questionText: "An increase in a government’s budget surplus will increase unemployment in the short run but it will make it easier to control a balance of payments deficit in the long run.\nEvaluate this statement.",
-    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
-• Knowledge of what is meant by a budget surplus, in relation to the 
-difference between government expenditure and government income.
-• Reference to links between a government surplus, aggregate monetary 
-demand and unemployment.
-• Explanation of the specific type of unemployment that might relate to an 
-increase in a governments budget surplus.
-• Analysis of the links between changes in interest rates and 
-unemployment in the short run.
-• Explanation of some of the key elements of the balance of payments 
-accounts and how they might be influenced by changes in fiscal policy.
-• Analysis of the links between a budget surplus and the control of a 
-balance of payments in the long run
-AO3 Evaluation
-• The impact of a budget surplus in the short run on the level of 
-unemployment will depend upon the main cause of the existing level of 
-unemployment.
-• A budget surplus is more likely to have a negative effect on 
-unemployment when an economy has a lot of existing spare capacity.
-• If structural factors are responsible for unemployment, supply side 
-policies might be more effective.
-• A budget surplus might lead to lower interest rates and cause problems 
-for specific industries within an economy. For example, low interest rates 
-might cause a boom in the housing market.
-• If a budget surplus leads to a subsequent fall in interest rate, this might 
-ultimately make it more difficult to control a balance of payments in the 
-long run.
-• A conclusion should make an attempt to make an overall comparison 
-between the use of monetary policy and alternative fiscal or supply side 
-policies. A judgement should be made which directly addresses the 
-statement in question.
-Accept all valid responses`
+based on the ability to pay and not on the need to learn. Inefficiencies and inequalities might remain.`
   },
   {
     id: "custom-1778313737037",
@@ -5101,7 +4995,7 @@ proportion of the labour force working in the primary sector
 • Low-income countries often fail to generate a sufficient level of savings to 
 generate sufficient investment to promote an increase in productivity
 • Access to material goods and essential services such as health and 
-education is frequently used as a measure of living standards in lowincome economies.
+education is frequently used as a measure of living standards in low income economies.
 • Globalisation can lead to economic dependency and significant 
 imbalances of trade which, in the long run, might have a negative effect 
 on living standards in low-income countries.
@@ -5125,5 +5019,1441 @@ measure change
 productivity to influence living standards in low re – income countries but 
 this will depend on many factors which have been referred to above, 
 some of which might have a less direct positive impact.`
+  },
+  {
+    id: "custom-1778313737038",
+    year: "2023",
+    paper: "9708/42",
+    variant: "Feb/March",
+    questionNumber: "2",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+    maxMarks: 20,
+    questionText: "The use of air travel leads to market failure caused by negative externalities.\nWith the help of a diagram, assess the extent to which a government can intervene to correct this market failure.",
+    markScheme: `AO1 Knowledge and understanding and AO2Analysis
+
+• Market fail• It is possible to show that government intervention can reduce the level of inefficiency caused by the existence of negative externalities, but it is not clear whether the net effect of government intervention will always be positive. Some types of intervention will be more effective than others depending on the nature of the good/service under consideration.`
+  },
+  {
+    id: "custom-1778313737039",
+    year: "2023",
+    paper: "9708/42",
+    variant: "Feb/March",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.7 Oligopoly",
+    maxMarks: 20,
+    questionText: "Some firms in oligopoly markets choose to collude rather than engage in price competition. This will lead to higher prices and a less efficient allocation of resources.\nEvaluate this statement.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• The key characteristics of an oligopoly market should be described.
+• Collusion should be explained and compared to the alternative of price competition.
+• Some explanation of what is meant by an efficient allocation of resources.
+• Analysis of the links between collusion, higher prices and allocative efficiency should be provided.
+• Analysis of alternative price and non-price competitive approaches by oligopolistic firms should be discussed.
+• A large, dominant organization might have less incentive to operate efficiently and X inefficiencies might occur.
+
+AO3 Evaluation
+
+• Colluding oligopolistic firms might argue that an increase in size will lead to more opportunities to provide a wide range of goods and therefore more consumer choice.
+• It is possible that collusion will lead to an increase in dynamic efficiency and this increase would allow long term more investment and ultimately lower prices. A supporting diagram can be provided.
+• Such a decision will enable the firms to benefit from economies of scale. For example, reducing managerial inefficiencies. This could also lead to lower prices.
+• Any potential negative effects of collusion can be accounted for by government intervention and regulation after the collusion has taken place.
+• A conclusion should refer to the preceding analysis and then make some attempt to make a judgement whether, on balance, collusion will have a net negative effect on prices and/or efficiency.`
+  },
+  {
+    id: "custom-1778313737040",
+    year: "2023",
+    paper: "9708/42",
+    variant: "Feb/March",
+    questionNumber: "4",
+    topic: SyllabusTopic.GOVT_MACRO_AL,
+    chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+    maxMarks: 20,
+    questionText: "Expenditure-reducing policies will reduce a balance of payments deficit but this will also cause significant unemployment.\nEvaluate this statement.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Expenditure reducing policies will be defined by the relationship between changes in aggregate demand and changes in the demand for imports.
+• Examples of expenditure reducing policies such as an increase in interest rates or a deflationary fiscal policy will be provided.
+• A consideration of and an explanation of the type of unemployment that might occur.
+• Analysis of the use of specific policy instruments and their impact on reducing a balance of payments should be provided.
+• Analysis of the potential impact of expenditure reducing policies on unemployment will be considered. For example, an increase in interest rates will decrease investment expenditure, decrease aggregate spending which will include spending on imports therefore helping to reduce a balance of payments deficit.
+
+AO3 Evaluation
+
+• The impact of expenditure reducing policies will depend upon the state of the economy when these policies are introduced. For example, raising interest rates when an economy is experiencing high levels of inflation and a positive output gap will have a limited effect on unemployment.
+• If contractionary fiscal policies are used the impact on unemployment will depend upon the main cause of the existing level of unemployment.
+• Contractionary demand side policies might also be accompanied by positive supply side policies which might simultaneously reduce structural unemployment.
+• Expenditure reducing policies might lead to the substitution of domestically produced goods for goods which were previously imported.`
+  },
+  {
+    id: "custom-1778313737041",
+    year: "2023",
+    paper: "9708/42",
+    variant: "Feb/March",
+    questionNumber: "5",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.1 Economic growth and economic development",
+    maxMarks: 20,
+    questionText: "Assess the impact of globalisation on the standard of living in low-income countries.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Globalisation would promote free trade, free movement of capital and labour and the transfer of technology. Cultural and political ties would be strengthened.
+• Key characteristics of low-income countries would include: low levels of productivity; high dependency ratios; low GDP per capita; significant dependence on producing and exporting primary goods.
+• Low living standards are generally associated with: high poverty levels; inequality; poor housing, education and health; and rapid population growth.
+• An improvement in living standards is very closely linked with an improvement in economic performance. An improvement in economic performance is measured by increases in GDP per capita and changes in productivity which enable changes in GDP to be achieved.
+• Globalization through trade and technology transfer should provide opportunities to create more real wealth.
+• Higher levels of tax revenue are likely to be received by a low-income country's government. This will enable more expenditure on health, housing and education as well as increased access to more consumer goods. These improvements are generally associated with a rise in the standard of living.
+
+AO3 Evaluation
+
+• The links between globalisation and GDP and an increase in living standards in low-income countries are not clear. Sometimes, labour is exploited by more advanced, higher income countries.
+• Globalisation can lead to economic dependency and significant imbalances of trade which, in the long run, might have a negative effect on living standards in low-income countries.
+• Higher skilled work might be provided through the global transfer of labour therefore training of the indigenous population does not take place.
+• In some cases, individual firms in low-income countries might be outcompeted and go out of business. Unemployment might then rise and living standards might fall.
+• In conclusion, it is clear that there is a potential role for globalisation to improve the standard of living but this will depend on many factors which have been referred to above, some of which might have an overall negative impact. Also, it is very important to ensure that an appropriate measure of the standard of living is used, one which does not rely entirely on the material benefits gained by globalisation.`
+  }
+,
+  {
+    id: "custom-1778313739000",
+    year: "2023",
+    paper: "9708/41",
+    variant: "May/June",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.6 Monopoly",
+    maxMarks: 20,
+    questionText: "Some firms frequently use price discrimination.\nAssess the view that when this occurs, price discrimination will always benefit the producer at the expense of the consumer and society.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• The key characteristics for effective price discrimination (PD) to take place. (Ability to set price, separable markets with different price elasticities of demand)
+• The use of practical examples to illustrate the meaning of PD.
+• An explanation / analysis of at least one model of PD to show the effects on the producer in terms of price, output and profit.
+• An explanation / analysis of PD on the consumer in terms of price and quantity demanded.
+• The use of relevant labelled diagrams (not mandatory)
+
+AO3 Evaluation
+
+• If firms are rational profit – maximisers, the firms must benefit from their action therefore the initial point that the producer will always benefit is true.
+• As total spending on the good / service takes place this represents a transfer of consumer surplus to the producers.
+• But it depends on whether the firms gain at the expense of consumer and society.
+• If the price discrimination exists between domestic and foreign markets The producer may also be able to drive competition from the foreign market if it charges high domestic prices / recovers overheads domestically. This may improve a country's balance of payments.
+• Some consumers gain and some lose. The lower price in the low PED market will benefit those consumers in that market whilst the opposite occurs in the High PED market.
+• The increase in profits may allow the producer to increase its research and development leading to innovative production techniques which lower long term costs – dynamic efficiency. The benefits of the dynamic efficiency may be enjoyed by consumers / society as lower prices.
+• The assessment of the statement should conclude with the view that it should benefit the producer as a matter of rationality but whether this is always at the expense of consumers / society is debateable.`
+  },
+  {
+    id: "custom-1778313739001",
+    year: "2023",
+    paper: "9708/41",
+    variant: "May/June",
+    questionNumber: "4",
+    topic: SyllabusTopic.GOVT_MACRO_AL,
+    chapter: "10.2 Macroeconomic policies",
+    maxMarks: 20,
+    questionText: "An increase in a government's budget surplus will increase unemployment in the short run but it will make it easier to control a balance of payments deficit in the long run.\nEvaluate this statement.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Knowledge of what is meant by a budget surplus, in relation to the difference between government expenditure and government income.
+• Reference to links between a government surplus, aggregate monetary demand and unemployment.
+• Explanation of the specific type of unemployment that might relate to an increase in a governments budget surplus.
+• Analysis of the links between changes in interest rates and unemployment in the short run.
+• Explanation of some of the key elements of the balance of payments accounts and how they might be influenced by changes in fiscal policy.
+• Analysis of the links between a budget surplus and the control of a balance of payments in the long run.
+
+AO3 Evaluation
+
+• The impact of a budget surplus in the short run on the level of unemployment will depend upon the main cause of the existing level of unemployment.
+• A budget surplus is more likely to have a negative effect on unemployment when an economy has a lot of existing spare capacity.
+• If structural factors are responsible for unemployment, supply side policies might be more effective.
+• A budget surplus might lead to lower interest rates and cause problems for specific industries within an economy. For example, low interest rates might cause a boom in the housing market.
+• If a budget surplus leads to a subsequent fall in interest rate, this might ultimately make it more difficult to control a balance of payments in the long run.
+• A conclusion should make an attempt to make an overall comparison between the use of monetary policy and alternative fiscal or supply side policies. A judgement should be made which directly addresses the statement in question.`
+  },
+  {
+    id: "custom-1778313739002",
+    year: "2023",
+    paper: "9708/42",
+    variant: "May/June",
+    questionNumber: "2",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+    maxMarks: 20,
+    questionText: "The increased use of electric vehicles (EVs) is encouraged as part of governments' climate change policies because they create fewer negative externalities than diesel and petrol (gas) vehicles.\nEvaluate, with the help of diagrams, two policies that a government may use to encourage the use of EVs.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Market failure regarding this question would relate to allocative inefficiency. Market failure can be explained by defining allocative efficiency and linking this to the requirement to allocate resources to maximise consumer satisfaction. This can be supported by a diagram illustrating a level of output where AR = MC or MSB = MSC which is consistent with an outcome that achieves allocative efficiency.
+• Negative externalities occur when the when the consumption/use of a good produces a cost to society which is greater than that received by an individual producer MPB > MSB or MSC >MPC. This is sometimes described as a negative 'spill-over' effect. The negative externality leads to an over production of the good.
+• Government intervention takes place to address the failure of market forces to allocate resources efficiently. In this case positive externalities would lead to under-consumption of a good or service.
+• Different types of government intervention can be used to correct the under-production of output to enable consumer satisfaction to be maximised.
+• Forms of government intervention might include: the use of subsidies for consumers to increase consumption and also producers to change production methods, use of positive advertising; the direct provision of goods and services such as alternative transport methods. Indirect taxation. Nudge theory effects.
+• A clearly labelled, accurate diagram can be used to show the impact of a positive/negative externality on the level of output and the welfare change will be identified.
+• The diagram could show the market equilibrium point which does not take into account the existence of a negative consumption externality and may compare this with the allocatively efficient level of output when the negative externality is taken into account. The diagram may be amended or re-drawn to show the impact of a chosen policy(ies) and the impact on consumption or production shown.
+• Reference to the diagram and the outcomes it illustrates is made in the text.
+
+AO3 Evaluation
+
+• A government might introduce a subsidy to encourage producers to increase output to enable allocative efficiency, however it is difficult to measure the precise value of the subsidy. Subsidies are costly in that the funds might have been used by governments for other purposes. This means governments will have to make a value judgement when deciding whether to provide a subsidy.
+• Also, the impact on price and output in some circumstances takes a long time to become effective.
+• Advertising is often costly and it is not always certain that it will have a sufficiently persuasive effect to ensure the correct level of output/ consumption is reached.
+• Direct provision is also costly and sometimes less efficient than that provided through market forces.
+• It is possible to show that government intervention can reduce the level of inefficiency caused by the existence of positive externalities but it is not clear whether the net effect of government intervention will always be positive. Some types of intervention will be more effective than others depending on the nature of the good/service under consideration.`
+  },
+  {
+    id: "custom-1778313739003",
+    year: "2023",
+    paper: "9708/42",
+    variant: "May/June",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.2 Market structure",
+    maxMarks: 20,
+    questionText: "Evaluate, with the help of a diagram(s) how total market demand and minimum efficient scale may determine the form of market structure in an industry.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• The concepts of increasing/constant/decreasing returns to scale and the minimum efficient scale (MES) of production the level of output where LRAC are initially minimized.
+• The explanation of a number of examples of economies of scale: division of labour, financial, marketing, managerial technical and their impact on the long run average cost curve (LRAC).
+• An analysis of the relationship between total demand for a product and the minimum efficient scale effectively total demand divided by MES to give the maximum number of firms who could operate at the MES.
+• A description of different forms of market structure eg perfect competition, monopolistic competition, oligopoly or monopoly.
+• An analysis of the relationship between the MES and the market demand determining the number of firms many/a few/one equivalent to perfect competition, monopolistic competition, oligopoly or monopoly.
+• Examples MES and market demand. MES = 50% therefore in theory 2 firms – a duopoly MES 2% therefore 50 firms perfect/monopolistic competition.
+• Relevant diagram for economies of scale with indication of MES and demand curve.
+
+AO3 Evaluation
+
+• MES is not static and may change over time eg technological change.
+• The definition of the market will affect the calculation of the relationship. The village shop which operates at a small scale is appropriate for the village market.
+• Markets will still exist where particular firms produce small scale high-cost items e.g. luxury cars or designer clothes to satisfy a niche portion of a bigger market.`
+  },
+  {
+    id: "custom-1778313739004",
+    year: "2023",
+    paper: "9708/42",
+    variant: "May/June",
+    questionNumber: "4",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.1 Economic growth and economic development",
+    maxMarks: 20,
+    questionText: "Consider the extent to which the depreciation of its foreign exchange rate contributes to the economic growth of a low-income country.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Knowledge and understanding of the effect of depreciation on the external value of a country's currency (exchange rate - ER), economic growth and low-income country
+• Analysis of this effect on the price of exports (X) and imports (M) and the effect on their demand and supply, links to aggregate demand (AD) through the balance of payments effect (X-M)
+• Candidates may refer to this in terms of injections and leakages and their effect on AD
+• AD and AS diagram showing this may be used to show the effect on the level of national income.
+• Alternatively, the analysis of the increased injection may be through the multiplier effect and/or the 45° diagram.
+• A clear link must be made between the effect of the depreciation and the level of economic growth, the type of economic growth: actual or potential should be made.
+
+AO3 Evaluation
+
+• The ability of supply capacity in the low-income country to react to the effect of the depreciation.
+• The nature of many developing countries exports of agricultural commodities being price inelastic in supply compared with oil exports.
+• The short run effects on employment (positive) and inflation (negative)
+• Beneficial effect on ability to service international debt positive if denominated in domestic currency but negative if borrowings are in a foreign currency.`
+  },
+  {
+    id: "custom-1778313739005",
+    year: "2023",
+    paper: "9708/42",
+    variant: "May/June",
+    questionNumber: "5",
+    topic: SyllabusTopic.GOVT_MACRO_AL,
+    chapter: "10.2 Macroeconomic policies",
+    maxMarks: 20,
+    questionText: "Evaluate the effectiveness of using monetary policy to reduce the rate of inflation and how this policy may affect a government's ability to achieve its other macroeconomic aims.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• A knowledge of monetary policies which might include interest rate, money supply, exchange rates and reserve asset ratio policy.
+• A definition of inflation and a statement of a government's macroeconomic aims: eg low unemployment, economic growth and balance of payments equilibrium.
+• An explanation of the impact of higher interest rates to reduce inflation either through consumer demand or its impact on investment. This can be shown either through the monetary transmission mechanism analysis or AS/AD analysis.
+• Alternative macroeconomic aims of the government are identified for example economic growth, unemployment and balance of payments.
+• The model employed to analyse the reduction in inflation is applied to the alternative aims to find the outcomes.
+• Phillips curve analysis may be used to demonstrate the relationship between inflation and employment to illustrate the unlikelihood of both low inflation and low unemployment being achieved together.
+
+AO3 Evaluation
+
+• Evaluation may be concerned with either the analysis used to reduce inflation or the ability to meet all the macroeconomic aims.
+• An initial analysis of the monetary policy to reducing the level of inflation which may be in terms of how accurate the central bank is in determining the increase in the rate of interest/reserve asset ratio required or reduction in the money supply.
+• The time lags between policy implementation and outcome may also be discussed.
+• Expectations and the role they play in determining policy outcomes.
+• The model(s) employed will show either the effect of the policy on the alternative aims and requires an explicit comment on whether this enables the alternative to be achieved or not.
+• Two examples of a contradiction in the simultaneous achievement of the aims need to be shown and commented upon.
+• The short and long run implications of inflation reduction on achieving the alternative aims might be evaluated.
+• The Phillips curve relationship may be criticised from the "rational expectations" viewpoint.
+• The short run and long run effects of the chosen inflation policy can be compared in terms of actual and potential reduction/increase in economic growth.
+• The relationship between the rate of inflation, the exchange rate and the balance of payments including the Marshall-Lerner effect.`
+  },
+  {
+    id: "custom-1778313739006",
+    year: "2023",
+    paper: "9708/43",
+    variant: "May/June",
+    questionNumber: "2",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+    maxMarks: 20,
+    questionText: "To improve allocative efficiency economists frequently advise governments to remove existing subsidies to the private sector providers of education.\nWith the help of a diagram, evaluate this advice.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• The distinction between public and private ownership should be clearly explained
+• Education should be identified as a merit good and the significance of merit goods explained.
+• The links between a merit good, positive externalities and allocative efficiency should be analysed.
+• Analysis of the relationship between the private provision of education, the use of subsidies and potential efficient outcomes should be provided.
+• A diagram should be provided to illustrate the impact of a subsidy on the provision of education by the private sector
+
+AO3 Evaluation
+
+• The use of subsidies to encourage the provision of education in the private sector might not be entirely successful because of the difficulties involved when attempting to assess the precise level of subsidy required to achieve an allocatively efficient outcome.
+• Subsidies provided by the public sector are often expensive and their use will automatically create opportunity costs. For example, money spent on state subsidies to health care
+• Subsidies in the private sector will mean that access to education is still based on an ability to pay, this might create inequitable outcomes in society.
+• The pursuit of profit supported by subsidies might enable private firms to cut costs and reduce any unnecessary bureaucracy thus leading to a more efficient use of scarce resources.
+• Direct state provision of education might lead to less efficient outcomes and reduce the time taken to ensure a high standard of education is available on an equal basis throughout the population.
+• A conclusion should be attempted which examines the net benefits of each alternative i.e. private or public sector provision of education.
+• Also, the impact on price and output in some circumstances takes a long time to become effective.
+• Advertising is often costly and it is not always certain that it will have a sufficiently persuasive effect to ensure the correct level of output / consumption is reached
+• It is possible to show that government intervention can reduce the level of inefficiency caused by the existence of negative externalities, but it is not clear whether the net effect of government intervention will always be positive. Some types of intervention will be more effective than others depending on the nature of the good / service under consideration.`
+  },
+  {
+    id: "custom-1778313739007",
+    year: "2023",
+    paper: "9708/43",
+    variant: "May/June",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.6 Monopoly",
+    maxMarks: 20,
+    questionText: "Some firms frequently use price discrimination.\nAssess the view that when this occurs, price discrimination will always benefit the producer at the expense of the consumer and society.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• The key characteristics for effective price discrimination (PD) to take place. (Ability to set price, separable markets with different price elasticities of demand)
+• The use of practical examples to illustrate the meaning of PD.
+• An explanation / analysis of at least one model of PD to show the effects on the producer in terms of price, output and profit.
+• An explanation / analysis of PD on the consumer in terms of price and quantity demanded.
+• The use of relevant labelled diagrams (not mandatory)
+
+AO3 Evaluation
+
+• If firms are rational profit – maximisers, the firms must benefit from their action therefore the initial point that the producer will always benefit is true.
+• As total spending on the good / service takes place this represents a transfer of consumer surplus to the producers.
+• But it depends on whether the firms gain at the expense of consumer and society.
+• If the price discrimination exists between domestic and foreign markets The producer may also be able to drive competition from the foreign market if it charges high domestic prices / recovers overheads domestically. This may improve a country's balance of payments.
+• Some consumers gain and some lose. The lower price in the low PED market will benefit those consumers in that market whilst the opposite occurs in the High PED market.
+• The increase in profits may allow the producer to increase its research and development leading to innovative production techniques which lower long term costs – dynamic efficiency. The benefits of the dynamic efficiency may be enjoyed by consumers / society as lower prices.
+• The assessment of the statement should conclude with the view that it should benefit the producer as a matter of rationality but whether this is always at the expense of consumers / society is debateable.`
+  },
+  {
+    id: "custom-1778313739008",
+    year: "2023",
+    paper: "9708/43",
+    variant: "May/June",
+    questionNumber: "4",
+    topic: SyllabusTopic.GOVT_MACRO_AL,
+    chapter: "10.2 Macroeconomic policies",
+    maxMarks: 20,
+    questionText: "An increase in a government's budget surplus will increase unemployment in the short run but it will make it easier to control a balance of payments deficit in the long run.\nEvaluate this statement.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Knowledge of what is meant by a budget surplus, in relation to the difference between government expenditure and government income.
+• Reference to links between a government surplus, aggregate monetary demand and unemployment.
+• Explanation of the specific type of unemployment that might relate to an increase in a governments budget surplus.
+• Analysis of the links between changes in interest rates and unemployment in the short run.
+• Explanation of some of the key elements of the balance of payments accounts and how they might be influenced by changes in fiscal policy.
+• Analysis of the links between a budget surplus and the control of a balance of payments in the long run.
+
+AO3 Evaluation
+
+• The impact of a budget surplus in the short run on the level of unemployment will depend upon the main cause of the existing level of unemployment.
+• A budget surplus is more likely to have a negative effect on unemployment when an economy has a lot of existing spare capacity.
+• If structural factors are responsible for unemployment, supply side policies might be more effective.
+• A budget surplus might lead to lower interest rates and cause problems for specific industries within an economy. For example, low interest rates might cause a boom in the housing market.
+• If a budget surplus leads to a subsequent fall in interest rate, this might ultimately make it more difficult to control a balance of payments in the long run.
+• A conclusion should make an attempt to make an overall comparison between the use of monetary policy and alternative fiscal or supply side policies. A judgement should be made which directly addresses the statement in question.`
+  },
+  {
+    id: "custom-1778313739009",
+    year: "2023",
+    paper: "9708/43",
+    variant: "May/June",
+    questionNumber: "5",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.1 Economic growth and economic development",
+    maxMarks: 20,
+    questionText: "To what extent do you agree that an increase in productivity will lead to a higher standard of living in low-income countries.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• An increase in productivity will occur when there is an increase in output per unit of input in a given time period.
+• Key characteristics of low-income countries would include: low levels of productivity, relatively low levels of GDP per capita and a significant proportion of the labour force working in the primary sector
+• Low-income countries often fail to generate a sufficient level of savings to generate sufficient investment to promote an increase in productivity
+• Access to material goods and essential services such as health and education is frequently used as a measure of living standards in low-income economies.
+• Globalisation can lead to economic dependency and significant imbalances of trade which, in the long run, might have a negative effect on living standards in low-income countries.
+
+AO3 Evaluation
+
+• Low-income countries might increase productivity due the transfer of new technology from high income countries, however this might lead to a substitution of capital for labour thus increasing the level of unemployment.
+• An increase in Foreign Direct Investment (FDI) might lead to the exploitation of the indigenous raw materials, thus leading to a long run decline in economic growth.
+• Increases in productivity might provide opportunities to create more real wealth but it will still depend upon a government in a low – income country to ensure that any increases in wealth lead to equitable outcomes.
+• It is relatively easy to link an increase in productivity to the availability of more goods, however living standards are also influenced by an increase in the provision of services such as health and education. It is not easy to measure change
+• In conclusion, it is clear that there is a potential role for an increase in productivity to influence living standards in low re – income countries but this will depend on many factors which have been referred to above, some of which might have a less direct positive impact.`
+  },
+  {
+    id: "custom-1778313739010",
+    year: "2023",
+    paper: "9708/41",
+    variant: "Oct/Nov",
+    questionNumber: "2",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+    maxMarks: 20,
+    questionText: "The provision of health care by the public sector is inefficient, therefore all health care should be provided by firms operating in the private sector.\nEvaluate this comment.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• The distinction between public and private ownership should be clearly explained.
+• Health care should be identified as a merit good and the significance of merit goods explained.
+• The links between a merit good, positive externalities and allocative efficiency should be analysed.
+• Analysis of the relationship between the public provision of health care and efficient outcomes should be provided.
+• Analysis of the possible causes of inefficiency relating to the provision of health care by the public sector
+
+AO3 Evaluation
+
+• Private providers of health care are unlikely to provide an allocatively efficient level of health care because of a failure to take into account the additional benefits of positive externalities.
+• Private firms are likely to aim for profit maximization and this might lead to a higher cost of receiving health care.
+• If access to health care in the private sector is based on an ability to pay, this might create inequitable outcomes in society.
+• The pursuit of profit might lead private firms to cut costs and reduce any unnecessary bureaucracy thus leading to a more efficient use of scarce resources.
+• The substitution of public provision by private provision might enable additional resources to become available in the public sector.
+• A conclusion should be attempted which examines the net benefits of each alternative ie private or public sector provision of health care.
+• Also, the impact on price and output in some circumstances takes a long time to become effective.
+• Advertising is often costly and it is not always certain that it will have a sufficiently persuasive effect to ensure the correct level of output/consumption is reached.
+• It is possible to show that government intervention can reduce the level of inefficiency caused by the existence of negative externalities but it is not clear whether the net effect of government intervention will always be positive. Some types of intervention will be more effective than others depending on the nature of the good/service under consideration.`
+  },
+  {
+    id: "custom-1778313739011",
+    year: "2023",
+    paper: "9708/41",
+    variant: "Oct/Nov",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.6 Monopoly",
+    maxMarks: 20,
+    questionText: "A government allows the merger of two large firms in the same industry.\nWith the help of a diagram evaluate the view that this merger should not have been allowed.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• This merger is an example of horizontal integration where two firms merge at the same level in the production cycle.
+• Mergers of two large firms producing similar goods, at the same level in the production cycle is likely to lead to a monopoly market structure.
+• Monopoly providers, through market dominance, can raise prices and drive smaller firms out of business. A diagram might provide supporting analysis.
+• Given the nature of the goods provided, this merger might also lead to significantly less choice.
+• A large, dominant organization might have less incentive to operate efficiently and X inefficiencies might occur.
+• Analysis of the potential negative impact on the local labour market.
+NOTE: Limit of Level 2 if no relevant diagram
+
+AO3 Evaluation
+
+• Merging firms might argue that an increase in size will lead to more opportunities to provide a wide range of goods and therefore more consumer choice.
+• Also, it is possible that the merger will lead to an increase in dynamic efficiency and this increase would allow long term more investment and ultimately lower prices. A supporting diagram can be provided.
+• Such a merger will enable the firms to benefit from economies of scale. For example, reducing managerial inefficiencies. This could also lead to lower prices.
+• Any potential negative effects of this merger can be accounted for by government intervention and regulation when the merger takes place.
+• A conclusion should refer to the preceding analysis and then make some attempt to make a judgement whether, on balance, the merger should proceed.`
+  },
+  {
+    id: "custom-1778313739012",
+    year: "2023",
+    paper: "9708/41",
+    variant: "Oct/Nov",
+    questionNumber: "4",
+    topic: SyllabusTopic.GOVT_MACRO_AL,
+    chapter: "10.2 Macroeconomic policies",
+    maxMarks: 20,
+    questionText: "Assess the extent to which monetary policy can be used effectively to solve the problem of unemployment.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Knowledge of different types of monetary instruments, including: the use of interest rate changes; changes in the money supply and the use of exchange rate changes.
+• Reference to problems associated with unemployment, primarily the inefficient use of national resources
+• Explanation of some of the different causes of unemployment
+• Analysis of the links between changes in interest rates and unemployment
+• Analysis of the links between control of the money supply and or the use of exchange rates to reduce the level of unemployment
+
+AO3 Evaluation
+
+• The effectiveness of monetary policy is likely to depend to some extent upon the cause of unemployment. Monetary policy can be used to influence aggregate monetary demand which will be more effective dealing with cyclical unemployment.
+• The use of some monetary instruments might have a negative effect on macroeconomic aims. For example, reducing interest rates might depreciate the currency and potentially promote either cost push or demand-pull inflation.
+• Alternative policies might be more effective if structural factors are responsible for unemployment. In this case, supply-side policies might be more effective.
+• Lowering interest rates might cause problems for specific industries within an economy. For example, low interest rates might cause a boom in the housing market.
+• A conclusion should make an attempt to make an overall comparison between the use of monetary policy and alternative fiscal or supply side policies. A judgement should be made which directly addresses the statement in question.`
+  },
+  {
+    id: "custom-1778313739013",
+    year: "2023",
+    paper: "9708/41",
+    variant: "Oct/Nov",
+    questionNumber: "5",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.1 Economic growth and economic development",
+    maxMarks: 20,
+    questionText: "To what extent do you agree with the view that globalisation benefits high-income countries at the expense of low-income countries?\nAssess the contribution of Foreign Direct Investment (FDI) to the improvement of the standard of living in low-income countries.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Globalisation would promote free trade, free movement of capital and labour and the transfer of technology. Cultural and political ties would be strengthened.
+• Key characteristics of low-income countries would include: low levels of productivity; high dependency ratios; low GDP per capita; significant dependence on producing and exporting primary goods.
+• High-income countries are likely to benefit from access to a wide range of goods and services and access to good health care and education.
+• Comparative advantage allows high-income countries to increase their standard of living by providing access to cheap raw materials produced in low-income countries.
+• Globalisation can lead to economic dependency and significant imbalances of trade which, in the long run, might have a negative effect on living standards in low-income countries.
+
+Key terms 'Foreign Direct Investment' (FDI) and 'low-income countries' may be identified and explained before considering the main issues that might influence the discussion.
+
+• FDI is long-term investment usually by multinational companies (MNCs) in countries abroad.
+• This type of investment would normally be in fixed capital such as machinery and building factories.
+• Key characteristics of low-income countries would include: low levels of productivity; high dependency ratios; low GDP per capita; significant dependence on producing and exporting primary goods.
+• Low living standards are generally associated with: high poverty levels; inequality; poor housing, education and health; and rapid population growth.
+• An improvement in living standards is very closely linked with an improvement in economic performance. An improvement in economic performance is measured by increases in GDP per capita and changes in productivity which enable changes in GDP to be achieved.
+• FDI mainly takes place in the secondary (manufacturing) sector of a low-income economy and focuses on the provision of new technology, building new factories and training the work force. As a result of this type of investment it is likely that productivity, output, employment and income levels will rise.
+• More real wealth will be created and higher levels of tax revenue are likely to be received by a low-income country's government. This will enable more expenditure on health, housing and education as well as increased access to more consumer goods. These improvements are generally associated with a rise in the standard of living.
+
+However, an overreliance on FDI by a low-income economy might mean neglecting more important domestic macroeconomic policies, which might have a negative impact on the economy in the long run.
+
+AO3 Evaluation
+
+• The links between globalization and the costs/benefits imposed on low-income countries is not clear. For example, low-income countries might benefit significantly from the transfer of new technology from high income countries.
+• Higher skilled work might be provided through the global transfer of labour therefore helping to train the indigenous population.
+• Globalisation through trade and technology transfer should provide opportunities to create more real wealth which can then be used to provide merit goods such as health care and education.
+• In some cases, individual firms in low-income countries might gain access to large markets in high-income countries which will subsequently allow new businesses to grow.
+• In conclusion, it is clear that there is a potential role for globalisation to benefit both high and low-income countries, but this will depend on many factors which have been referred to above, some of which might have an overall positive impact.`
+  },
+  {
+    id: "custom-1778313739014",
+    year: "2023",
+    paper: "9708/42",
+    variant: "Oct/Nov",
+    questionNumber: "2",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.1 Utility and consumer behaviour",
+    maxMarks: 20,
+    questionText: "Evaluate the use of indifference curve analysis to derive the demand curve for a normal good and the demand curve for an inferior good.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Assumptions of indifference curve analysis including:
+• rational consumers who prefer more to less,
+• a two-good world,
+• the prices of the goods are (initially) constant,
+• the goods can be substituted for each other,
+• transitivity, if there is indifference between A and B and indifference between B and C, there is indifference between A and C
+• perfect knowledge of the market.
+• Definition of an indifference curve (IC), explanation of convex IC and analysis of rising levels of satisfaction and the creation of an IC map.
+• Definition of a budget line (BL) and analysis of rising/falling income levels on the BL and consumption
+• Explanation of the substitution effect (SE) and the income effect (YE) when the price of a good changes.
+• Analysis of the effect of a positive and negative YE when combined with the SE to account for a normal and inferior good.
+• The combination of the IC and BL maps to show point of tangency between IC and BL to give a combination of the 2 goods that gives the highest level of satisfaction given the level of income.
+
+AO3 Evaluation
+
+• Consumer rationality: indifference analysis assumes that consumers act rationally. They are of a calculating mind, carrying numerous combinations of different commodities in their heads, can substitute one for the other, compare their total utilities and make a rational choice between various combinations of goods.
+• As the effect of a reduction in price is an increase in demand for both a normal and inferior good (except in the case of Giffen good) it is not possible to know whether a good is normal or inferior.
+• It is difficult to apply the concept of substitutability to goods such as consumable durables, which are one-off indivisible purchases and the choice is between, for example, 1 fridge and 4 weeks' food.
+• A consumer is faced with a much more complex world than the two-good world of the model because a consumer buys not just two but a large number of commodities to satisfy their innumerable wants.
+• IC analysis is a static analysis and consumer preferences may change over time.`
+  },
+  {
+    id: "custom-1778313739015",
+    year: "2023",
+    paper: "9708/42",
+    variant: "Oct/Nov",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.5 Perfect competition",
+    maxMarks: 20,
+    questionText: "The model of perfect competition is the ideal form of market structure because it is the most efficient.\nWith the help of diagrams, evaluate this statement.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Definitions of productive and allocative efficiency with diagrams.
+• Reference to the short run and long run
+• Definition of perfect competition, explanation of the assumptions of the perfectly competitive market in terms of number of participants, freedom of entry and exit.
+• An analysis of how the assumptions lead to the equilibrium position in perfect competition and the implications of this in terms of productive and allocative efficiency.
+• Diagrams to show short run profits, long run profits and resolution to normal profits.
+
+AO3 Evaluation
+
+• Evaluation may be concerned with the realism of perfect competition as a model of economic behaviour or its ability to achieve economic efficiency.
+• A demonstration of the model of perfect competition to set a standard of equilibrium at which both productive and allocative efficiency occur.
+• A comparison of other market competitive structures outcome(s) with the efficiency suggested by perfect competition.
+• Relevance to real world activity and the paucity of real-world examples of perfect competition.
+• The impact of monopoly profits on the ability to spend on research and development (R&D), and the implications for dynamic efficiency.`
+  },
+  {
+    id: "custom-1778313739016",
+    year: "2023",
+    paper: "9708/42",
+    variant: "Oct/Nov",
+    questionNumber: "4",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.3 Role of multinational companies (MNCs)",
+    maxMarks: 20,
+    questionText: "The presence of multinational corporations (MNCs) in a low-income country always promotes economic growth in that country.\nEvaluate this statement.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Transference of skills and knowledge: managerial and workshop.
+• Increased tax base giving opportunities to government to invest in the economy.
+• Definitions of MNC and short term (actual) and long-term (potential) economic growth.
+• Impact of foreign direct investment (FDI) on a country's aggregate supply/PPF. Analysis may be in terms of the multiplier, the circular flow of income or AD/AS.
+• The improvement of education and health and the promotion of long term growth
+
+AO3 Evaluation
+
+• Evasion of enhanced legal limits in home country: environmental impact - FDI can be used to export 'dirty' industry and transfer negative externalities to another country. Evasion of home employment/health and safety laws which increase costs.
+• Destruction of host country's indigenous industry by large scale MNC production. Negative impact on employment exceeds benefit of MNC employment.
+• The MNC may establish a local monopoly that exploits the consumers with higher prices and lower output.
+• MNC may practice transfer pricing to remove profits from developing country to tax haven.
+• The impact on macroeconomic aims of the government is analysed.
+• The jobs created in the local environment may be low-skilled, with the multinational employing expatriate workers for the more senior and skilled roles.`
+  },
+  {
+    id: "custom-1778313739017",
+    year: "2023",
+    paper: "9708/42",
+    variant: "Oct/Nov",
+    questionNumber: "5",
+    topic: SyllabusTopic.MACROECONOMY_AL,
+    chapter: "9.1 National income statistics",
+    maxMarks: 20,
+    questionText: "Consider the relative merits of gross national income (GNI) and the multidimensional poverty index (MPI) as measures of the standard of living.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Definition of GNI: the total income earned within a country in a year plus net receipts from abroad of compensation of employees, property income and net taxes less subsidies on production. This is an aggregate measure of an economy's income.
+• GNI measures in monetary terms.
+• For many developing countries which rely on remittances from overseas workers, this will boost the value of GNI.
+• Other countries that have invested overseas will receive a stream of dividends and interest that boosts their GNI.
+• Definition of the MPI
+• Some explicit breakdown of the categories which are involved in the construction of MPI
+• Health: 1/3rd weighting includes child mortality and nutrition (1/6th each);
+• Education: 1/3rd weighting includes years of schooling and school attendance (1/6th each); and
+• Standard of living 1/3 weighting includes cooking fuel, sanitation, drinking water, electricity, housing and assets (1/18th each).
+• The measures are fundamentally different in their approaches GNI is concerned with money values whilst MPI is concerned with the adequacy of provision of a number of essential services and goods linked to the Millennium Development Goals.
+
+AO3 Evaluation
+
+Evaluation may be by individual measure or by comparing the measures.
+• GNI The comprehensiveness of the data collection:
+• The GNI figures needs deflating for the effects of price increases and changes in the population to achieve real GNI per head, which allows for comparisons over time.
+• The range of incomes which are included 'the dark economy', illegal activity – drugs crime etc. the ability to count all income flows between countries.
+• Incomes from activities that produce negative externalities or are the result of monopoly profits increase the GNI but reduce the level of economic efficiency.
+• Real GNI per head can be used as a simple measure of economic growth but lacks a distributional measure. Additional measures such as the Gini coefficient need to be calculated to gain a measure of the distributional effect of a given GNI. Both these measures are averages which disguise a wide range of individual circumstances.
+• The data collection for MPI is more complex than for GNI. The criteria for GNI are well established and are given.
+• Monetary-based poverty measures can omit a lot. The overlap between monetary and non-monetary measures of poverty is not perfect. In most cases, not all individuals who are income-poor are multidimensionally poor and not all multidimensionally poor individuals are income-poor. Both monetary and non-monetary measures of poverty are needed to better inform the policies intended to address the needs and deprivations faced by poor populations.
+• Economic growth does not always reduce poverty or deprivation. Several studies have found that economic growth is not strongly associated with a reduction in other deprivations, such as child malnutrition or child mortality.
+• Real GNI per head data is available for 188 (most) countries of the world whilst MPI data is only available for 103 poorer countries.
+• MPI for education measures inputs not outputs, attending school is not the same as learning to read.`
+  },
+  {
+    id: "custom-1778313739018",
+    year: "2023",
+    paper: "9708/43",
+    variant: "Oct/Nov",
+    questionNumber: "2",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+    chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+    maxMarks: 20,
+    questionText: "Pollution is caused when consumers or producers make decisions based on self-interest. This is a sign of market failure.\nWith help of a diagram evaluate the extent to which government policies should rely upon market forces to address this market failure.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• An explanation of the link between pollution and market failure.
+• Recognition that pollution can be caused by production or consumption.
+• Explanation of negative externalities
+• Use of a diagram to analyse the links between negative externalities and market failure.
+• Analysis of how market forces can be used to solve the problem of market failure, caused by negative externalities.
+
+AO3 Evaluation
+
+• Private firms are likely to aim for profit maximisation and this might lead to these firms focusing upon private costs and ignoring social cost.
+• The use of taxation to influence price and output is unlikely to remove all market inefficiency because it is very difficult to measure the correct amount of taxation that should be applied.
+• The use of minimum prices would only be partially effective and might have significant effects on firm's profits and employment.
+• Alternatives to the use of the price mechanism might, in some circumstance, allow a government to achieve a more precise control of negative externalities. For example, through the use of a complete ban of consumption/production.
+• A conclusion should be attempted which examines the net benefits of each alternative i.e. through direct government intervention or through the use of market forces.
+• Also, the impact on price and output in some circumstances takes a long time to become effective.
+• Advertising is often costly and it is not always certain that it will have a sufficiently persuasive effect to ensure the correct level of output/consumption is reached.
+• It is possible to show that government intervention can reduce the level of inefficiency caused by the existence of negative externalities but it is not clear whether the net effect of government intervention will always be positive. Some types of intervention will be more effective than others depending on the nature of the good/service under consideration.`
+  },
+  {
+    id: "custom-1778313739019",
+    year: "2023",
+    paper: "9708/43",
+    variant: "Oct/Nov",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.7 Oligopoly",
+    maxMarks: 20,
+    questionText: "Evaluate the view that monopolistically competitive firms will always charge lower prices and operate more efficiently than a monopoly firm.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Characteristics of a monopolistically competitive market should be described.
+• Difference between short run and long run profit maximizing output in monopolistically competitive markets.
+• A monopoly market should be described, including main characteristics and key difference between this type of market and monopolistic competition i.e. barriers to entry.
+• Different types of efficiency should be identified and explained.
+• Analysis should discuss the links between monopoly and higher prices and inefficiency. This analysis can then be used to compare both monopoly and monopolistically competitive markets.
+• Analysis should then be used to compare short run and long run outcomes on both types of market.
+
+AO3 Evaluation
+
+• Some monopolies might invest in new technology and achieve dynamic efficiency. This will enable lower average total costs and an opportunity to pass the benefits of lower costs on in the form of lower prices.
+• Similarly, monopolies might benefit from economies of scale which might also lead to lower prices.
+• Monopolistically competitive firms might incur additional costs through the need to engage in non-price competition. This might lead to higher prices.
+• Monopolistically competitive firms will achieve productive efficiency in the long run but a profit maximizing firm will not operate at an allocatively efficient level of output.
+• A conclusion should attempt to address each element of the statement by addressing both price levels and efficiency outcomes in relation to both types of market structure. The key word 'always' should be considered in the light of the preceding argument.`
+  },
+  {
+    id: "custom-1778313739020",
+    year: "2023",
+    paper: "9708/43",
+    variant: "Oct/Nov",
+    questionNumber: "4",
+    topic: SyllabusTopic.GOVT_MACRO_AL,
+    chapter: "10.2 Macroeconomic policies",
+    maxMarks: 20,
+    questionText: "With the help of a diagram, assess the effectiveness of the use of fiscal policy to close a negative output gap in an economy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Fiscal policy would require a government to use taxation and government expenditure changes to influence key macroeconomic goals such as inflation, economic growth and the level of employment.
+• An output gap will show the difference between the actual output of an economy and its potential output.
+• A negative output will indicate that there is spare capacity in an economy which will be primarily due to insufficient aggregate monetary demand. A relevant diagram can be used to illustrate this gap.
+• Analysis can be used to show how a government will be able to significantly influence aggregate demand by either increase its expenditure or reducing the overall level of taxation.
+• A budget deficit will inject additional demand into an economy which will have a magnified effect on output, income and employment due to the positive contribution of a multiplier effect.
+
+AO3 Evaluation
+
+• Fiscal policy could help to close a negative output gap by increasing a government's budget deficit but this may lead to higher interest rates and crowding out in the private sector.
+• It is difficult for a government to produce an accurate forecast of the magnitude of the output gap.
+• Although a budget deficit might help to reduce a negative output gap in the short run, if the deficit is financed by increasing the money supply, this might lead to inflation in the long run.
+• Alternative policies such as supply-side policies might be more effective by closing the output gap while avoiding the risk of inflation in the long run.
+• Expansionary fiscal policies used to close an output gap might lead to an increase in the demand for imports and subsequently, a negative impact on the country's balance of payments.
+• While the long-run impact on the current account is dependent upon respective export/import price elasticities of demand, it is also important to recognise that if raw materials such as oil constitute a significant proportion of the value of imports then the price elasticity of demand for imports is likely to be low.
+• The long-run impact on inflation will be influenced by the current state of the economy when the devaluation takes place. For example, if there is a significant amount of spare capacity, the effect on Aggregate Demand of a lower price of exports might be limited.
+• It could also be noted that a government which chooses to use a policy of devaluation is perhaps prioritising the need to correct a balance of payments disequilibrium at the possible expense of other key macroeconomic goals such as controlling inflation.
+• Based on the evidence/analysis provided, it is not clear whether a devaluation of the currency will solve a persistent current account deficit in either the short run or the long run. Similarly, the impact on the general price level will depend on a number of variables which are difficult to predict or measure accurately.`
+  },
+  {
+    id: "custom-1778313739021",
+    year: "2023",
+    paper: "9708/43",
+    variant: "Oct/Nov",
+    questionNumber: "5",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.1 Economic growth and economic development",
+    maxMarks: 20,
+    questionText: "Assess the impact of international aid on the standard of living in low-income countries.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+
+• Aid can be defined as any assistance given to a country that would not be provided through normal market forces.
+• There are two main types of aid, humanitarian aid; development aid. Development aid would include many different types including: long term loans; tied aid; bilateral aid and multilateral aid.
+• Key characteristics of low-income countries would include: low levels of productivity; high dependency ratios; low GDP per capita; significant dependence on producing and exporting primary goods.
+• Low living standards are generally associated with: high poverty levels; inequality; poor housing, education and health; and rapid population grow.
+• Aid that focuses on the provision of new technology, building new factories and training the work force is likely that productivity, output, employment and income levels will rise.
+• Aid can increase real wealth and higher levels of tax revenue are likely to be received by a low-income country's government. This will enable more expenditure on health, housing and education as well as increased access to more consumer goods. These improvements are generally associated with a rise in the standard of living.
+
+AO3 Evaluation
+
+• The links between an increase in aid and an increase in living standards are not clear. Sometimes aid only reaches a relatively small section of the population. For example, due to corruption.
+• Different types of aid might produce different outcomes. For example, aid in the form of long-term loans might make it more difficult for low-income countries to escape the cycle of poverty.
+• Aid is sometimes given for political reasons rather than the low-income countries where the need is the greatest.
+• Tied aid might mean that low--income countries receiving such aid have to purchase goods and services from the donor country which are more expensive.
+• Long term dependency upon aid might lead to a welfare mentality and reduce levels of innovation in the low-income country.
+• A conclusion might attempt to form an overall judgement on the short term and long-term efficacy of development aid in relation to the improvement of living standards in low-income countries.`
+  }
+,
+  {
+    id: "fm24-42-2",
+    year: "2024",
+    paper: "9708/42",
+    variant: "Feb/March",
+    questionNumber: "2",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+    chapter: "8.1 Market failure",
+    maxMarks: 20,
+    questionText: "With the help of a diagram, assess the effectiveness of a government’s intervention in the price mechanism to address the causes of climate change.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• An explanation of the link between climate change and negative externalities.
+• Explanation of negative externalities
+• Recognition that negative externalities can be caused by production or consumption.
+• Use of a diagram to show the links between climate change and negative externalities
+• Analysis of how market forces can be used to address the consequences of climate change.
+
+AO3 Evaluation
+• The link between climate change on negative externalities is very difficult to accurately establish
+• It is also extremely difficult to measure negative externalities
+• The use of taxation to influence price and output is unlikely to remove all negative externalities because it is very difficult to measure the correct amount of taxation that should be applied.
+• The use of minimum prices to reduce negative externalities would only be partially effective and might have significant effects on firm’s profits and employment.
+• Alternatives to the use of the price mechanism might, in some circumstance, allow a government to achieve a more precise control of negative externalities. For example, through the use of a complete ban of consumption/production.
+• A conclusion should be attempted which examines the net benefits of each alternative i.e. through direct government intervention or through the use of market forces.`
+  },
+  {
+    id: "fm24-42-3",
+    year: "2024",
+    paper: "9708/42",
+    variant: "Feb/March",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.2 Trade unions",
+    maxMarks: 20,
+    questionText: "The introduction of a trade union into a perfectly competitive labour market will always lead to higher wage levels and a higher level of unemployment. With the help of a diagram, evaluate this statement.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Characteristics of a perfectly competitive labour market should be described.
+• The role and main aims of a trade union should be outlined, emphasising the importance of their role in wage bargaining.
+• A diagram should be provided which shows how wages are determined in a perfectly competitive labour market and how this impacts upon the wage and level of employment within each firm.
+• Analysis should discuss alternative ways in which a trade union might affect wages and employment. References might be made to factors which affect both the supply of and demand for labour.
+• Analysis should then be used to determine the extent to which the intervention of a trade union can influence wage and employment levels in a perfectly competitive labour market.
+
+AO3 Evaluation
+• In some cases, the introduction of trade unions might lead to an increase in the productivity of the workforce through the provision of better training. Although an increase in productivity might also be produced by substituting capital for labour which might lead to an increase in unemployment.
+• Trade unions might gain higher wages for labour but because this makes capital relatively cheaper, machines might be substituted for labour which will further reduce employment.
+• The impact of higher wages on employment will also depend upon how easy it is to substitute capital for labour and the existing proportion of capital to labour in the particular industry.
+• If trade unions manage to bargain for higher wages but the new wage is above the market equilibrium, there will be an excess supply of labour at the new wage leading to higher unemployment. The extent of this impact will be determined by the relative elasticities of supply of and demand for labour
+• A conclusion should attempt to address each element of the statement. The key word ‘always’ should be considered in the light of the preceding argument.`
+  },
+  {
+    id: "fm24-42-4",
+    year: "2024",
+    paper: "9708/42",
+    variant: "Feb/March",
+    questionNumber: "4",
+    topic: SyllabusTopic.GOVT_MACRO_AL,
+    chapter: "10.1 Macroeconomic policies",
+    maxMarks: 20,
+    questionText: "With the help of a diagram, assess the effectiveness of government policies which might be used to reduce cost push inflation.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• A clear outline of different causes inflation and why inflation might cause problems.
+• A more detailed explanation of the causes of cost push inflation, supported by an accurately labelled diagram
+• A description of alternative policies that a government might use to reduce cost push inflation
+• Analysis can be used to show how a government will be able to increase aggregate supply, in the long term, by increasing productivity through direct investment. For example, by increasing expenditure on education/infrastructure. This analysis might also be supported by a relevant diagram
+• In the short term, a government might focus on attempting to reduce the cost of producing goods and services by introducing widespread subsidies, reducing indirect taxation, removing tariffs on key imports or the use of incomes policies.
+
+AO3 Evaluation
+• Increasing the use of subsidies and/or decreasing the use of indirect taxation is likely to have a negative effect on a government’s budget. For example, increasing the budget deficit and subsequently increasing the need for more government borrowing.
+• Removing tariffs is likely to have a negative effect on the incomes and output of domestic producers and possibly lead to an increase in unemployment
+• The introduction of incomes policies is likely to lead to opposition from trade Unions and the possibility of industrial disruption.
+• Long run supply-side policies are likely to focus on attempts to increase productivity. This frequently involves significant investment in new technology which will lead to a rise in unemployment in the short run
+• Other policies which might be used in the long run might include immediate investment in skills training and improving the quality of the infrastructure. Skills training is expensive and hence has a high initial opportunity cost. While the immediate effect of an increase in expenditure on improving the infrastructure is likely to increase aggregate demand and add to the inflationary pressure
+• A conclusion should attempt to assess the relative effectiveness of each type of policy approach and consider which approach is likely to be the most effective in the short run and then compare this with possible outcomes that might be achieved in the long run.`
+  },
+  {
+    id: "fm24-42-5",
+    year: "2024",
+    paper: "9708/42",
+    variant: "Feb/March",
+    questionNumber: "5",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.1 Globalisation",
+    maxMarks: 20,
+    questionText: "Globalisation will help to achieve economic growth in high-income economies and this will automatically improve living standards. Evaluate this statement.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Globalisation would promote free trade, free movement of capital and labour and the transfer technology. Cultural and political ties would be strengthened.
+• Key characteristics of high-income countries would include: high levels of productivity; high GDP per capita; significant dependence on producing and exporting secondary/tertiary goods/services.
+• High living standards are generally associated with: low poverty levels; advanced infrastructure; good housing, education and health; and low infant mortality rates.
+• Economic growth is usually measured by changes in real GDP per capita in a specific time period.
+• An improvement in living standards is very closely linked with an improvement in economic performance. An improvement in economic performance is measured by increases in GDP per capita.
+• Globalisation through trade and technology transfer should provide opportunities to create more real wealth. 
+• Higher levels of tax revenue are likely to be received by a high-income country’s government. This will enable more expenditure on health, housing and education as well as increased access to more consumer goods. These improvements are generally associated with a rise in the standard of living.
+
+AO3 Evaluation
+• The links between an increase in economic growth and an increase in living standards are not clear. Economic growth is a quantitative measure not a qualitative measure
+• Economic growth which depends upon globalisation would increase long distance transport which would create more negative externalities.
+• It is not clear how any benefits of economic growth might be used in a high-income economy
+• Globalisation might lead to an increase in cheap imports from low-income economies which might lead to higher levels of unemployment in more advanced economies.
+• A conclusion might attempt to form an overall judgement on the short term and long-term benefits of globalisation in relation to the improvement of living standards in high-income countries. Also a judgement should consider whether this will automatically improve living standards.`
+  },
+  {
+    id: "mj24-41-2",
+    year: "2024",
+    paper: "9708/41",
+    variant: "May/June",
+    questionNumber: "2",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.1 Market structures",
+    maxMarks: 20,
+    questionText: "The long-term equilibrium position in perfect competition is frequently used to illustrate efficient resource allocation in a free market economy. Explain why this is so and consider what prevents efficiency from being achieved.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Explanation of allocative and productive efficiency.
+Diagram and/or explanation of the long term equilibrium in perfect competition
+Efficiency may not be achieved because of
+• Market failure, explained by reference to possible excessive profits, the need for very large investments, the existence of externalities, merit goods and of the need for public goods.
+• Government intervention can help overcome this by regulation, taxation, subsides, or ownership aimed at achieving productive and allocative efficiency.
+
+AO3 Evaluation (max 6 marks)
+• The concepts of allocative and productive efficiency are mainly theoretical and rest upon fine calculations of marginal changes or precise allocations of costs.
+• Government intervention in the production of a good or service does not necessarily achieve productive or allocative efficiency – there may be government failure.`
+  },
+  {
+    id: "mj24-41-3",
+    year: "2024",
+    paper: "9708/41",
+    variant: "May/June",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.1 Consumer behaviour",
+    maxMarks: 20,
+    questionText: "With the help of an indifference curve diagram, assess the extent to which a rise in price would affect the demand for a normal good differently from the demand for a Giffen good.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Diagram showing Indifference curves, budget lines and price lines.
+• Changes in budget lines representing a rise in price.
+• Diagrams of resultant path of consumption showing differences in substitution and income effects for normal and Giffen goods.
+• Comment on changes in overall demand based on changes in income and substitution effects.
+• Up to Level 2 only if no diagram.
+
+AO3 Evaluation (max 6 marks)
+• Comment on extent of changes would vary depending on the price elasticity of demand
+• It would also depend on the slope of the indifference curve and the marginal rate of substitution.`
+  },
+  {
+    id: "mj24-41-4",
+    year: "2024",
+    paper: "9708/41",
+    variant: "May/June",
+    questionNumber: "4",
+    topic: SyllabusTopic.MACROECONOMY_AL,
+    chapter: "9.2 Economic growth",
+    maxMarks: 20,
+    questionText: "In many countries increased government spending is regarded as a cause of economic growth. It is sensible, therefore, for a government to spend more to increase economic growth as it is good for its country. To what extent do you agree with this argument?",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Comment on the meaning of economic growth and its measurement and a discussion on the effect of increased government spending. Extra government spending should increase total demand by consumers and businesses, which could allow investment, research, further production and economic growth.
+• Distinguish between actual and potential growth
+• Reference to the multiplier.
+• However, if there is limited spare productive capacity, extra spending might not result in further output but in rising prices, or increased imports with consequent effects on the balance of payments and long-term international competitiveness.
+• Also depends on the amount of capital, education and skills of work-force, size of work-force, availability of resources. The ability to combine the factors of production. Access to finance, types of business structure available FDI. Access to new technology.
+
+AO3 Evaluation (max 6 marks)
+• Some evaluation would be included in the above discussion. For the evaluation marks there should be a recognition of both sides of the argument and a final conclusion as to which is dominant.
+• Issues may include higher prices; potential for income inequality; environment degradation; over consumption of scarce resources.`
+  },
+  {
+    id: "mj24-41-5",
+    year: "2024",
+    paper: "9708/41",
+    variant: "May/June",
+    questionNumber: "5",
+    topic: SyllabusTopic.MACROECONOMY_AL,
+    chapter: "9.1 National income statistics",
+    maxMarks: 20,
+    questionText: "National income statistics are often used as a measure of the standard of living. Consider to what extent national income statistics can be used to compare the standard of living between low-incomes and high-income and countries.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Definition of standard of living
+• Distinction between high/low income countries eg per capita income
+• The answer should provide reasons for the difficulties of comparison of different countries due to culture, climate, subsistence sector, informal economy, difficulty of data collection, distribution of income, exchange rates, purchasing power.
+Comment on which measures of national income should be used.
+
+AO3 Evaluation (max 6 marks)
+Assessment of the link between using national income figures and the standard of living.
+Alternative measures to develop the extent national income statistics can be used in relation to low/high income and countries`
+  },
+  {
+    id: "mj24-42-2",
+    year: "2024",
+    paper: "9708/42",
+    variant: "May/June",
+    questionNumber: "2",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+    chapter: "8.1 Market failure",
+    maxMarks: 20,
+    questionText: "Market failure exists in all economies. Evaluate, with the aid of a diagram(s), the meaning of market failure and two policies a government may use to correct market failure.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Identification and explanation of market failure regarding this question may relate to allocative inefficiency, productive inefficiency or information failure. Market failure can be explained by defining allocative efficiency and linking this to the requirement to allocate resources to maximise consumer satisfaction. This can be supported by a diagram illustrating a level of output where AR = MC or MSB = MSC which is consistent with an outcome that achieves allocative efficiency.
+• Productive inefficiency occurs when the firm is not producing at its minimum average costs. Forms of competition other than perfect competition may be used to show both the lack of allocative and productive efficiency.
+• Government intervention takes place to address the failure of market forces to allocate resources efficiently. In this case positive externalities would lead to under-consumption of a good or service. The negative externality leads to an over production of the good.
+• A wide range of government intervention can be used to correct market failure. These may include: subsidies to increase consumption, indirect taxation producers, use of advertising, the direct provision of goods and services, price restrictions/quantity direction
+A clearly labelled, accurate diagram can be used to show the impact of a positive/negative externality on the level of output and the welfare change will be identified.
+• The diagram could show the market equilibrium point which does not take into account the existence of market failure and may compare this with the efficient level of output when the market failure is taken into account.
+• The diagram may be amended or re-drawn to show the impact of a chosen policy(ies) and the impact on consumption or production shown.
+• Reference to the diagram and the outcomes it illustrates showed be made in the text.
+
+AO3 Evaluation
+• A government might introduce a subsidy/indirect tax to encourage consumers/producers to change behaviour, however it is difficult to measure the precise value of the subsidy/indirect tax.
+• Subsidies are costly in that the funds might have been used by governments for other purposes. This means governments will have to make a value judgement when deciding whether to provide a subsidy.
+• Indirect taxes may be used to offset the effect of the market failure.
+• Also, the impact on price and output in some circumstances takes a long time to become effective depending on the length of contract or production process.
+• Advertising is often costly and it is not always certain that it will have a sufficiently persuasive effect to ensure the correct level of output/consumption is reached.
+• Direct provision is also costly and sometimes less efficient than that provided through market forces.
+• It is possible to show that government intervention can reduce the level of inefficiency caused by the existence of positive externalities, but it is not clear whether the net effect of government intervention will always be positive. Some types of intervention will be more effective than others depending on the nature of the good/service under consideration.`
+  },
+  {
+    id: "mj24-42-3",
+    year: "2024",
+    paper: "9708/42",
+    variant: "May/June",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.1 Market structures",
+    maxMarks: 20,
+    questionText: "Evaluate, with the aid of a diagram(s), whether excess profit (super-normal profit) is always necessary for the continued existence of firms in perfect competition and monopoly.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Definitions of perfect competition and monopoly. The assumptions/characteristics of perfect competition and monopoly. Understanding of the difference between the short run (SR) and the long run (LR).
+• The implications of the assumptions/characteristics for changes in the SR/LR
+• Analysis of the short-run equilibrium for both a perfectly competitive firm and a monopoly.
+• Illustration of the ability of firms in both forms of market structure to earn excess profits in the short run and long run. Consideration of the long-run: the change in equilibrium for a perfectly competitive firm and the lack of change in that of a monopoly.
+• The diagram could show the market equilibrium for both the short-run and long-run for both perfect competition and monopoly.
+• Reference to the diagram(s) and the outcomes illustrated should be made in the text.
+
+AO3 Evaluation
+• SNP are not controlled by the firm in perfect competition but a product of increased demand to which the firm reacts by equating MR to MC. The nature of SNP is transitory.
+• In monopoly the firm will secure long-term SNP by pursuing profit maximization MR = MC. SNP are long term.
+• The monopolist may use the SNP to realise dynamic efficiency such as investing in better production techniques.
+• The monopolist may not fully exploit the ability to extract SNP but may pursue alternative strategies such as sales revenue maximization.
+• Natural monopoly may exist and therefore SNP may not be earned.
+• Monopolies may not necessarily earn supernormal profits.`
+  },
+  {
+    id: "mj24-42-4",
+    year: "2024",
+    paper: "9708/42",
+    variant: "May/June",
+    questionNumber: "4",
+    topic: SyllabusTopic.GOVT_MACRO_AL,
+    chapter: "10.1 Macroeconomic policies",
+    maxMarks: 20,
+    questionText: "In 2022, many countries experienced a high rate of inflation caused by disruptions to the supply of goods and services arising from the Covid-19 pandemic and the conflict between Russia and Ukraine. In one country, the government cut taxes and the central bank raised interest rates. Evaluate the likely impact of these policies on that government’s ability to control inflation.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• An understanding that the stated causes of inflation are due to a reduction in supply for the countries experiencing the inflation. This may be regarded as cost-push/imported inflation.
+• Analysis of the effect of the causes in terms of an aggregate supply (AS)/aggregate demand (AD) analysis or a Leakages and Injections approach.
+• An explanation of the impact of tax reduction on consumer demand or retained profits for industry.
+• An explanation of the impact of higher interest rates either on consumer demand or on investment. This can be developed either through the monetary transmission mechanism analysis or AS/AD analysis.
+• An explanation of the impact of lower taxes on consumer demand or on investment. This can be developed through AS/AD analysis.
+• AS/AD Explanation and analysis of the effects of tax reductions and Interest rate on economic growth and unemployment/equality.
+
+AO3 Evaluation
+• Evaluation may be concerned with the effects of the changes produced by the two policies and the effects on the analyses used to reduce inflation.
+• An initial analysis of the policy approach to reducing the level of inflation which may be in terms of how accurate the government is in determining the amount of spending reduction or increase in the rate of interest required.
+• An initial analysis of the policy approach to reducing the level of inflation which may be in terms of how accurate the government is in determining the amount of spending reduction or increase in the rate of interest required.
+• The time lags between policy implementation and outcome may also be discussed as might expectation and the role they play in determining policy outcomes.
+• Recognition that the policies are concerned with AD and the problems are largely due to supply shortages.
+• The short run and long run implications of the policies on achieving the alternative aims may be evaluated.
+• The opportunity costs of policies may be commented upon.`
+  },
+  {
+    id: "mj24-42-5",
+    year: "2024",
+    paper: "9708/42",
+    variant: "May/June",
+    questionNumber: "5",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.1 Globalisation",
+    maxMarks: 20,
+    questionText: "Evaluate the likely impact of globalisation on a low-income country’s standard of living.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Definitions of globalisation in terms of the development of world-wide international trade links: the flow of goods, services capital and people between countries. The sub-division of manufacturing processes which are then undertaken in different countries. Candidates may quote phone, car manufacturing, world football brands, law firms as examples.
+• Definition of a low income country.
+• An understanding of the difference effects of globalisation as resource extraction and manufacturing activity.
+• Definition of the standard of living in terms of both material real GNI per head and what that may purchase and non-material improvements in life: social, health education and working conditions.
+• Effect of globalisation of long term (potential) economic growth shown by a rightward shift of the production possibility frontier (PPF).
+• Sources of funding for globalisation: government foreign aid, MNCs and Commercial loans.
+• Analysis of investment on a country’s national income reference to the circular flow of income Injections, the Multiplier, or an AD/AS analysis.
+• The analysis extends to explain the effect on other economic variables: employment, interest rates, the balance of payments.
+• Impact of increased investment on a country ‘s aggregate supply/PPF.
+
+AO3 Evaluation
+• Destruction of host country’s indigenous industry by large scale production. Negative impact on employment exceeds benefit of employment.
+• Globalisation may establish a local Monopoly which exploits the consumers with higher prices and lower output.
+• Globalisation may lead to MNC using transfer pricing to remove profits from developing country to tax haven reducing the ability of a developing country to invest in education and health.
+• The jobs created may be low-skilled with the multinational employing expatriate workers for the more senior and skilled roles.
+• Resources are exploited without regard for local customs. Iron ore extraction in Australia destroyed sacred aboriginal site. The forcible removal of indigenous people to allow for resource extraction.
+• Private capital is often reluctant to allow debt forgiveness when economic trouble affects a country e.g., Sri Lanka.
+• The positive and negative effects on economic variables: employment, interest rates, the balance of payments.`
+  },
+  {
+    id: "mj24-43-2",
+    year: "2024",
+    paper: "9708/43",
+    variant: "May/June",
+    questionNumber: "2",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.1 Market structures",
+    maxMarks: 20,
+    questionText: "The long-term equilibrium position in perfect competition is frequently used to illustrate efficient resource allocation in a free market economy. Explain why this is so and consider what prevents efficiency from being achieved.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+Explanation of allocative and productive efficiency.
+Diagram and/or explanation of the long term equilibrium in perfect competition
+Efficiency may not be achieved because of
+• Market failure, explained by reference to possible excessive profits, the need for very large investments, the existence of externalities, merit goods and of the need for public goods.
+• Government intervention can help overcome this by regulation, taxation, subsides, or ownership aimed at achieving productive and allocative efficiency.
+
+AO3 Evaluation (max 6 marks)
+• The concepts of allocative and productive efficiency are mainly theoretical and rest upon fine calculations of marginal changes or precise allocations of costs.
+• Government intervention in the production of a good or service does not necessarily achieve productive or allocative efficiency – there may be government failure.`
+  },
+  {
+    id: "mj24-43-3",
+    year: "2024",
+    paper: "9708/43",
+    variant: "May/June",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.1 Consumer behaviour",
+    maxMarks: 20,
+    questionText: "With the help of an indifference curve diagram, assess the extent to which a rise in price would affect the demand for a normal good differently from the demand for a Giffen good.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Diagram showing Indifference curves, budget lines and price lines.
+• Changes in budget lines representing a rise in price.
+• Diagrams of resultant path of consumption showing differences in substitution and income effects for normal and Giffen goods.
+• Comment on changes in overall demand based on changes in income and substitution effects.
+• Up to Level 2 only if no diagram.
+
+AO3 Evaluation (max 6 marks)
+• Comment on extent of changes would vary depending on the price elasticity of demand
+• It would also depend on the slope of the indifference curve and the marginal rate of substitution.`
+  },
+  {
+    id: "mj24-43-4",
+    year: "2024",
+    paper: "9708/43",
+    variant: "May/June",
+    questionNumber: "4",
+    topic: SyllabusTopic.MACROECONOMY_AL,
+    chapter: "9.2 Economic growth",
+    maxMarks: 20,
+    questionText: "In many countries increased government spending is regarded as a cause of economic growth. It is sensible, therefore, for a government to spend more to increase economic growth as it is good for its country. To what extent do you agree with this argument?",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Comment on the meaning of economic growth and its measurement and a discussion on the effect of increased government spending. Extra government spending should increase total demand by consumers and businesses, which could allow investment, research, further production and economic growth.
+• Distinguish between actual and potential growth
+• Reference to the multiplier.
+• However, if there is limited spare productive capacity, extra spending might not result in further output but in rising prices, or increased imports with consequent effects on the balance of payments and long-term international competitiveness.
+• Also depends on the amount of capital, education and skills of work-force, size of work-force, availability of resources. The ability to combine the factors of production. Access to finance, types of business structure available FDI. Access to new technology.
+
+AO3 Evaluation (max 6 marks)
+• Some evaluation would be included in the above discussion. For the evaluation marks there should be a recognition of both sides of the argument and a final conclusion as to which is dominant.
+• Issues may include higher prices; potential for income inequality; environment degradation; over consumption of scarce resources.`
+  },
+  {
+    id: "mj24-43-5",
+    year: "2024",
+    paper: "9708/43",
+    variant: "May/June",
+    questionNumber: "5",
+    topic: SyllabusTopic.MACROECONOMY_AL,
+    chapter: "9.1 National income statistics",
+    maxMarks: 20,
+    questionText: "National income statistics are often used as a measure of the standard of living. Consider to what extent national income statistics can be used to compare the standard of living between low-incomes and high-income and countries.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Definition of standard of living
+• Distinction between high/low income countries e.g. per capita income
+• The answer should provide reasons for the difficulties of comparison of different countries due to culture, climate, subsistence sector, informal economy, difficulty of data collection, distribution of income, exchange rates, purchasing power.
+Comment on which measures of national income should be used.
+
+AO3 Evaluation (max 6 marks)
+Assessment of the link between using national income figures and the standard of living.
+Alternative measures to develop the extent national income statistics can be used in relation to low/high income and countries`
+  }
+,
+  {
+    id: "on24-41-2",
+    year: "2024",
+    paper: "9708/41",
+    variant: "Oct/Nov",
+    questionNumber: "2",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+    chapter: "8.1 Market failure",
+    maxMarks: 20,
+    questionText: "Governments in many countries are promoting policies that reduce the impact of the negative externalities. Evaluate, using appropriate diagram(s), the extent to which two policies used to reduce negative externalities can also improve allocative efficiency.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Definitions of negative externalities.
+• Explanation of negative externalities with example(s).
+• Analysis of the effects on output and price of negative externalities leading to over-production and under-pricing of goods and implication for allocative efficiency.
+• Identification, application and analysis of two policies which may reduce negative externalities.
+• Candidates may refer to: indirect taxation of activity, subsidies of alternative, prohibition of activities, improved information, pollution permits.
+Note: Maximum L2 if no diagram
+
+AO3 Evaluation
+• Evaluation may refer to direct cost of implementation, extent of impact on allocative efficiency, effect on production costs, local effects on employment, or regressive/progressive income effects.
+• Information failure preventing the extent of the negative externality being known.`
+  },
+  {
+    id: "on24-41-3",
+    year: "2024",
+    paper: "9708/41",
+    variant: "Oct/Nov",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.1 Market structures",
+    maxMarks: 20,
+    questionText: "Evaluate the consequences for the price and output of a firm if it changes its objective from profit maximisation to sales maximisation as a response to the principal-agent problem.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Definition/explanation of profit and sales maximisation (SM).
+• Explanation of the meaning of principal-agent problem.
+• Analysis of the profit maximisation in terms of MR = MC and the equilibrium price and output of the firm.
+• Analysis of the SM in terms of AR = AC and the equilibrium price and output of the firm.
+• Comparison of the price and output decisions of the alternative objectives.
+• Relevant diagrams may be used.
+
+AO3 Evaluation
+• Profit maximisation results in a higher price and lower quantity than SM.
+• Welfare benefits to consumer, as producer surplus is transferred to consumer.
+• Greater equality.
+• Misdirection of resources to SM firms therefore reduction in allocative efficiency.`
+  },
+  {
+    id: "on24-41-4",
+    year: "2024",
+    paper: "9708/41",
+    variant: "Oct/Nov",
+    questionNumber: "4",
+    topic: SyllabusTopic.MACROECONOMY_AL,
+    chapter: "9.3 Unemployment",
+    maxMarks: 20,
+    questionText: "In periods of rising and persistent inflation, consumers and workers change their expectations of the future rate of inflation. Evaluate, with the help of a diagram(s), the consequences of these changes of expectations for fiscal policy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Definition of inflation, non-accelerating inflation rate of unemployment.
+• Expectations mean consumers and workers change their view on the future rate of inflation based upon their experience of past inflation rates.
+• Use of AD, AS analysis to show how inflation occurs. This may be referred to as cost push/demand pull inflation.
+• Explanation of Phillips curve in terms of the trade-off between wage growth/inflation and employment. This becomes a cost-push view of inflation as workers pursue higher wages to compensate for higher prices (the wage/cost spiral).
+• Analysis of Fiscal policy on changing unemployment/inflation.
+• Impact of changing expectations on the fall in unemployment and the rate of inflation
+Note: Maximum L2 if no diagram
+
+AO3 Evaluation
+• Changing expectations means that the anticipated fall in unemployment is temporary as consumers and workers negotiate higher wages to offset the past inflation.
+• Fiscal policy can no longer be used to reduce unemployment.
+• The shape of the AS curve – whether it is horizontal or vertical in the short-run. Keynesians argue AS is more elastic in the SR
+• Expansionary fiscal and monetary should not be used as they only create higher inflation.
+• Phillips curve relationship may no longer be valid. In the 1970s there was high inflation and high unemployment, in the 2000s there was low unemployment and low inflation.
+• In the 1960s/1970s there was more structural strength between wages and inflation as there was a larger proportion of unionised labour and the ability of workers to negotiate higher wages was stronger.
+• Since the 1950s when the Phillips curve relationship was determined, there has been a significant increase in world trade and development of MNC the supply of labour is no longer limited by national borders.
+• To achieve low inflation and low unemployment policies which stimulate economic growth and supply-side policies which reduce capacity restraints are needed.`
+  },
+  {
+    id: "on24-41-5",
+    year: "2024",
+    paper: "9708/41",
+    variant: "Oct/Nov",
+    questionNumber: "5",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.1 Globalisation",
+    maxMarks: 20,
+    questionText: "In recent years many countries have joined or established a free trade area (FTA). Evaluate, with the help of a diagram(s), whether membership of an FTA is always beneficial to a country.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Definition of an FTA.
+• Examples of FTA.
+• Definition of a tariff and explanation of its impact on imports/exports.
+• Definition of non-tariff barriers and their impact.
+• Analysis of pre and post common tariff trade.
+• An appropriate diagram to show effect on domestic output of imposition and the common tariff of an FTA. Use of diagram to show the beneficial effect on consumer surplus.
+• Lower prices leading to more consumer surplus/greater allocative efficiency.
+• Benefits of greater economies of scale – productive efficiency increases.
+Note: Maximum L2 if no diagram
+
+AO3 Evaluation
+Microeconomic:
+• Impact depends on PED/PES for the products/services in the membership of the FTA. More inelastic PED/PES the smaller the quantity effects will be and the lower the benefits. Some countries may have very strong preference for domestically produced goods and services and the removal of tariffs has minimal effects.
+• The change in demand from domestic goods to imported goods will cause structural unemployment.
+• The removal of barriers may enable a country to ‘export’ some forms of production which are highly polluting to fellow FTA members.
+• Cheaper costs of production due to cheaper raw materials/components lowering domestic costs and increasing export competitiveness.
+Macroeconomic:
+• Effect depends on the marginal propensity to export/import (MPX/M). If the net effect is that (X – M) increases, there will be a positive effect on aggregate demand.
+• Similarly a net increase in employment will lead to an increase in consumption (C) and a positive multiplier effect.
+• Both the points above may be explained using a diagram.`
+  },
+  {
+    id: "on24-42-2",
+    year: "2024",
+    paper: "9708/42",
+    variant: "Oct/Nov",
+    questionNumber: "2",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.1 Consumer behaviour",
+    maxMarks: 20,
+    questionText: "Evaluate whether marginal utility theory can fully explain the link between the changing price of a good and quantity demanded of that good.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Definitions of marginal and total utility.
+• Explanation of total utility and diminishing marginal utility. 
+• Analysis of the effect of a change in price through the equi-marginal principle and illustration of the effect with a diagram. 
+• Diagram of the falling demand curve v price, which can apply to both normal and inferior (non-Giffen) goods but the theory does not distinguish between them.
+
+AO3 Evaluation
+• Discussion of the validity of the rational consumer. Imperfect information, bounded rationality, impact of advertising.
+• Unable to distinguish between the income and substitution effects and therefore does not account for Giffen goods. 
+• The difficulty of the ceteris paribus assumption that other things do not change when in practice they do. Each change would require a re-estimation of the demand schedule. 
+• The assumption that money has constant utility. Is the last dollar of someone earning $10 000 the same value as someone earning $100 000.
+• Difficulty of MU theory accounting for the purchase of a one-off good e.g. a house.`
+  },
+  {
+    id: "on24-42-3",
+    year: "2024",
+    paper: "9708/42",
+    variant: "Oct/Nov",
+    questionNumber: "3",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+    chapter: "8.2 Policies",
+    maxMarks: 20,
+    questionText: "Privatisation is often required by the International Monetary Fund (IMF) and the World Bank before they are prepared to offer support to countries requiring loans, grants, debt relief and debt cancellation programs. Evaluate the view that privatisation will always improve the allocation of resources in a country.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Definition/explanation of privatisation: the selling of state-owned corporations (the meaning of the term can include the provision of services and goods by private firms). 
+• Explanation of productive/allocative efficiency. X-inefficiency. 
+• A model of monopolistic competition/oligopoly/monopoly is used to analyse the effects on efficiency of shifting to privatised economy
+• Definition/explanation of a market economy.
+• Development of benefits of privatisation:
+– Greater competition in the market if an industry is privatised as competing firms.
+– Greater scrutiny of operation by shareholders should hold the company to account and increase efficiency.
+– Wider access to funds - not dependent on a government’s wider economic concerns.
+• Analysis may be in terms of comparing the monopoly model with one which is more competitive e.g. monopolistic competition or oligopoly and drawing the relevant inferences.
+• Relevant diagrams correctly drawn and labelled with accurate reference to them in the text.
+• Reduction in the need for the government to finance the activity and the implications for fiscal policy.
+• A further source of funds for the government that can be used to repay government debt and reduce the burden of interest payments. The funds can be devoted to education/health services improving economic development.
+• The cost of a loss-making state industry is no longer borne by the general tax-payer.
+
+AO3 Evaluation
+• Evaluation against productive, allocative and/or dynamic efficiency.
+• Privatisation may lead to the break-up of a natural monopoly e.g. railways/water pipelines. The problem of the ‘final mile delivery’.
+• A state monopoly may simply be replaced with a private monopoly. Competition may be unrealistic due to high barriers to entry (BTE).
+• Many privatisations are accompanied by an industry regulator which suggests that the privatisation needs policing. The amount and direction of investment, and the pricing strategy are reviewed to maintain the industry’s efficiency.
+• Equity the transfer of profitable state-owned assets to private individuals means the contribution they might make to the state funds are lost.
+• Often there is a loss of employment in the industry and the burden of unemployment pay falls on the government raising the fiscal deficit or requiring more borrowing.
+• Private firms are only concerned with private costs and benefits, they ignore negative externalities and their consequences.`
+  },
+  {
+    id: "on24-42-4",
+    year: "2024",
+    paper: "9708/42",
+    variant: "Oct/Nov",
+    questionNumber: "4",
+    topic: SyllabusTopic.MACROECONOMY_AL,
+    chapter: "9.1 National income statistics",
+    maxMarks: 20,
+    questionText: "The table below contains some key economic data for Mexico in 2020: \nGross National Income (GNI): 18.5 billion pesos\nnominal wages: +2.8%\ndisposable income: +1.2%\nunemployment rate: 4.2%\npopulation growth rate: 1.1%\ninflation rate: 3.4%\nEvaluate the use of these statistics in assessing the standard of living in Mexico in 2020.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+SoL within Mexico 
+• Definitions of material and non-material standard of living (SoL) and GNI explanation of the difference in their meanings.
+• Definition and explanation of the other data given.
+• The meaning and development of the data and the implication of the value given for SoL.
+• A developed analysis of the links between each of the data given and the SoL.
+
+AO3 Evaluation
+• Data does not specify precise time periods, therefore it’s not possible to tell whether the position has improved or not with respect of GNI or the other data given. 
+• Can point out that population size rather than population change would be a better measure together with a base year price index to allow real GNI per capita to be calculated to indicate the material SoL. 
+• Wages and disposable income and the unemployment rate would indicate the change in the material SoL.
+• The changes in wages in comparison with inflation suggests there is a fall in real income.
+• The need for other measures: education, health, life expectancy, hours worked etc. which influence the non-material SoL e.g., HDI, MEW or MPI.`
+  },
+  {
+    id: "on24-42-5",
+    year: "2024",
+    paper: "9708/42",
+    variant: "Oct/Nov",
+    questionNumber: "5",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.3 Economic development",
+    maxMarks: 20,
+    questionText: "Between 2010 and 2020, very low interest rates encouraged low-income countries to borrow money from foreign investors and governments to finance long-term economic growth. Evaluate this approach to promoting long-term economic growth.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Definition and explanation of long-term economic growth as a function of more inputs such as labour, land, and equipment creating an outwards shift of the productive possibility curve. Economic growth is measurable in terms of increases in real GDP.
+• Many developing countries are characterised by low incomes which prevent savings and the funds needed to finance investment and economic growth. Funding is needed to finance the investment and technological aspects of economic growth which comes from internal sources (savings) or from foreign lending/investment.
+• Foreign investment may be from governments (e.g. China’s Belt and Roads initiative), international agencies (e.g. International Bank for Reconstruction and Development (IBRD)) or sovereign wealth funds. Governments borrow from other governments and international agencies to invest in infrastructure and other development projects which under lie economic growth. 
+• Private capital investment via multinational corporations (e.g. Toyota, Intel). MNC investment is usually in factories, plant and machinery which increase output directly.
+• Candidates may analyse the effects of the increase in investment through aggregate supply and demand analysis.
+• Successful investment requires a return (marginal efficiency of capital (MEC)) which exceeds the rate of interest that has been relatively easy to obtain. 
+• The effects of rising interest rates on developing countries: Many developing countries will suffer from falling exchange rates, especially if US$ interest rates rise this will increase the US$ funding cost of borrowings. The balance of payments (X-M) will deteriorate. 
+• Accept references to IMF and World Bank lending investment funds.
+
+AO3 Evaluation
+• Impact depends on the proportion of funding which comes from abroad and how much is locally sourced. If domestic funds are not available, then how else will the growth be funded.
+• The quality of the investment projects and the likelihood of realising a profit will affect the ability to cover the increase in interest rates. In some cases ‘vanity projects’ with little long-term economic benefit are funded (Roads to Nowhere) which enhance the standing of the government amongst its supporters but have no economic benefit.
+• The short-term effects of the project in terms of raising aggregate demand may be of limited benefit to the borrower if the lender requires much of the construction and materials to be sourced from them. This will have a negative effect on the current account of the balance of payments.
+• Higher interest rates in high income countries will raise the cost of borrowing by the low-income country. This means the cost of financing projects has risen representing an opportunity cost for borrowing. The balance of payments current account will deteriorate as the higher interest is paid. 
+• Many low-income countries may be affected by a commodity price slump which reduces export earnings and depreciates a floating exchange rate making interest rate and capital repayment more expensive.`
+  },
+  {
+    id: "on24-43-2",
+    year: "2024",
+    paper: "9708/43",
+    variant: "Oct/Nov",
+    questionNumber: "2",
+    topic: SyllabusTopic.GOVT_MICRO_AL,
+    chapter: "8.1 Market failure",
+    maxMarks: 20,
+    questionText: "Negative externalities of production cause market failure. With the help of a diagram, assess the extent to which the introduction of indirect taxation is likely to address this cause of market failure.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Market failure regarding this question would relate to allocative inefficiency. Market failure can be explained by defining allocative efficiency and linking this to the requirement to allocate resources to maximise consumer satisfaction.
+• This can be supported by a diagram illustrating a level of output where AR = MC which is consistent with an outcome that achieves allocative efficiency.
+• Negative externalities occur when the consumption/production of a good produces a cost to society which is greater than that incurred by an individual consumer/producer. This is sometimes described as a negative ‘spill-over’ effect.
+• One form of government intervention might be the introduction of indirect taxation. A clearly labelled, accurate diagram can be used to show the impact of an indirect taxation on the level of output and efficiency.
+• Analysis would use this to show the impact of an indirect tax on the PC curve.
+• Further analysis should then identify the links between the indirect tax and the behaviour of firms. This would link the creation of negative externalities to the benefits of removing them and then linking this to addressing this cause of market failure.
+N.B: L2 max if no or incorrect diagram provided.
+
+AO3 Evaluation
+• A government might introduce indirect taxation however it is difficult to determine the extent of the taxation necessary which will address the issue of market failure without causing other problems, for example, an increase in unemployment.
+• Also, the impact of indirect taxation in some circumstances takes a long time to become effective.
+• Some large firms might produce and sell products which have an inelastic demand therefore this would be unlikely to have a significant impact on output and efficiency.
+• The introduction of indirect taxation might be costly and unnecessarily bureaucratic, as well as being difficult to monitor and enforce.
+• It might be that government intervention based on the use of alternative more direct approaches such as the use of pollution permit might be more effective.
+• Indirect taxation is regressive and might unfairly penalise lower income groups.
+• A conclusion should consider alternatives, compare these with the use of indirect taxation and attempt to form some judgement regarding the effectiveness of this type of policy.`
+  },
+  {
+    id: "on24-43-3",
+    year: "2024",
+    paper: "9708/43",
+    variant: "Oct/Nov",
+    questionNumber: "3",
+    topic: SyllabusTopic.PRICE_SYSTEM_AL,
+    chapter: "7.2 Labour market",
+    maxMarks: 20,
+    questionText: "Wages in a perfectly competitive labour market will always be higher than wages in a monopsony labour market. With the help of a diagram evaluate this statement.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Characteristics of a perfectly competitive labour market should be described. This should be supported by a relevant diagram.
+• An explanation of how monopsony markets work should be provided, emphasising the importance of how wages are determined in this type of market.
+• A diagram should be provided which shows a monopsony labour market and used to show how wages and level of employment are determined.
+• Analysis should refer to the factors which affect both the supply of and demand for labour in both these types of labour market.
+Note: L2 max if no or incorrect diagram provided.
+
+AO3 Evaluation
+• Evaluation should then be used to link external factors which might affect final wage levels in both markets. For example, Trades Union or government intervention.
+In some cases, the intervention of Trades Union might lead to an increase in the productivity of the workforce through the provision of better training. This would support that wages would be higher in a perfectly competitive labour market.
+• Although a monopsony labour market model would predict lower wages due to buyer power on the part of monopsony firms, other factors will still determine the extent to which monopsony market wages will remain low. For example, the ease with which capital can be substituted for labour.
+• Also, the existing proportion of capital to labour in the particular industry will influence the extent to which wages might rise in either market.
+• Accusations of labour exploitation might lead to government intervention in a monopsony labour market. A minimum wage might be fixed that it is higher than wages gained in a perfectly competitive labour market.
+• Trades Unions might also intervene in monopsony markets and enable workers to gain higher wages through collective bargaining.
+• Higher wages might not be sustainable in the long run in perfectly competitive markets, due to increases in the supply of labour responding to the opportunity to gain higher wages.
+• A conclusion should attempt to address each element of the statement. The key word ‘always’ should be considered in the light of the question preceding argument.`
+  },
+  {
+    id: "on24-43-4",
+    year: "2024",
+    paper: "9708/43",
+    variant: "Oct/Nov",
+    questionNumber: "4",
+    topic: SyllabusTopic.MACROECONOMY_AL,
+    chapter: "9.4 Money and inflation",
+    maxMarks: 20,
+    questionText: "Central banks can control the money supply. An increase in the money supply will cause inflation, therefore central banks can control inflation. Evaluate this statement.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• A definition of what is meant by inflation.
+• An explanation of what constitutes the key components of the money supply. This should primarily consist of commercial bank balances held at the central bank plus all bank deposits held in the commercial banks.
+• Examples of the instruments available to use by the central bank to control the money supply. Reference to and explanation of Open Market operations/Quantitative Easing, plus the use of changes in interest rates should be made and explained.
+• The potential link between changes in the money supply and/or changes in the rate of interest rate and inflation should be examined.
+• Analysis of the use of specific monetary policy instruments and their impact on reducing the money supply should be provided. For example, examining the links between the sale of long-term government securities and changes in the level of bank deposits.
+• Analysis of how changes in interest rates/money supply might impact upon the level of aggregate demand and inflation.
+
+AO3 Evaluation
+• The money supply is very difficult to measure, thus there are many different definitions of what might constitute the money supply.
+• The link between changes in the money and changes in the price level is not altogether clear.
+• The link between changes in the rate of interest and changes in the money supply are not always clear. For example, an increase in the rate of interest might lead to an increase in savings. This would cause bank deposits and therefore, the money supply to rise.
+• The effectiveness of the use of monetary policy to control inflation will also depend upon the cause of inflation. For example, demand pull inflation might be controlled more effectively by the use of contractionary fiscal policy.
+• A conclusion should use the preceding discussion to decide the extent to which this type of monetary is likely to be used effectively to control inflation.`
+  },
+  {
+    id: "on24-43-5",
+    year: "2024",
+    paper: "9708/43",
+    variant: "Oct/Nov",
+    questionNumber: "5",
+    topic: SyllabusTopic.INTERNATIONAL_AL,
+    chapter: "11.1 Globalisation",
+    maxMarks: 20,
+    questionText: "Some high-income countries have introduced high tariffs on some imports to reduce the negative effects of globalisation on their economies. With the help of a diagram, evaluate this policy.",
+    markScheme: `AO1 Knowledge and understanding and AO2 Analysis
+• Globalisation would promote free trade, free movement of capital and labour and the transfer of technology.
+• Key characteristics of high-income countries would include: high levels of productivity; high dependency ratios; high GDP per capita; significant dependence on international trade.
+• One of the main potential negative effects of globalisation on high-income economies might be caused by the import of goods produced at low cost by other countries. This might cause a rise in unemployment.
+• Analysis should be provided to show the impact of selective tariffs on imports into high-income countries. A clear, accurately labelled diagram should be provided to underpin this analysis.
+• Further analysis should be provided to illustrate the potential impact on different stakeholders of these tariffs. For example, an increase in tax revenue can be re-invested into the economy to promote long term economic growth.
+N.B: L2 max if no or incorrect diagram provided.
+
+AO3 Evaluation
+• The imposition of tariffs may lead to retaliation by other countries, possibly leading to a trade war and misallocation of resources.
+• Restricting imports and subsequent trade diversion will reduce allocative and productive efficiently and lead to a net welfare loss.
+• Tariffs will lead to higher prices for both consumers and producers due to lack of international competition.
+• In some cases, higher tariffs will lead to higher costs which could lead to higher prices, falling demand and ultimately increase the level of unemployment.
+• Although tariffs might reduce the negative effects of globalisation, they might also remove some existing benefits of globalisation. For example, by reducing choice for consumers.
+• Protecting inefficient domestic firms by using tariffs is likely to have a negative effect on the economy in the long term.
+• A conclusion should attempt to use cost/benefit analysis and use the preceding analysis to examine the net effect of the introduction of selective tariffs by high-income countries on their economies.`
   }
 ];
