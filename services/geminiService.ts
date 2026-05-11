@@ -195,16 +195,18 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
     - [ ] [Evaluation Requirement] - [State if student evaluated it]
 
     ### 3. Paragraph-by-Paragraph Critique
-    *Go through the student's main paragraphs. Provide detailed feedback based on the following criteria:*
-    *   **Logic Chain Completeness:** Point out exactly where the logic breaks or jumps. Explain the missing steps explicitly to make the chain robust.
-    *   **Redundant Wording:** Identify any filler words, repetitive phrasing, or unnecessary statements and suggest how to cut them.
-    *   **Professional Economic Terms:** Upgrade the student's casual vocabulary. If they say "people buy less", correct it to "quantity demanded contracts". If they say "companies make less", correct it to "profit margins are squeezed/supply contracts", etc.
+    *Go through the student's main paragraphs. Provide highly detailed and specific feedback based on the following criteria:*
+    *   **Logic Chain Completeness:** Point out exactly where the logic breaks or jumps. Explain the missing steps explicitly to show how the logic chain can be more complete and robust.
+    *   **Redundant Wording:** Identify any filler words, repetitive phrasing, or unnecessary statements. Explicitly quote the exact wording that is redundant and state that it can be omitted.
+    *   **Professional Economic Terms:** Upgrade the student's casual vocabulary to professional expressions. Point out exactly which phrases can be more professional and provide the specific economic terms to replace them (e.g., correct "people buy less" to "quantity demanded contracts").
     *   **EV Traps:** Explicitly call out if they fell into a 0-point EV trap.
     
+    **Formatting Rule:** NEVER output empty parentheses like "()" or empty brackets. If there are no redundant words or terms to upgrade in a paragraph, simply do not mention them.
+    
     *Format your critique like this:*
-    - **Para 1:** [Feedback on definition/intro. e.g., "Good definition of Inflation, but you used excessive wording here: '...'. Just say '...'.]
-    - **Para 2:** [Feedback on Analysis. e.g., "Logic Gap: You said interest rates rise -> investment falls, but you missed the transmission mechanism. You should state: interest rates rise -> cost of borrowing increases -> expected return on investment (MEC) falls below the interest rate -> investment projects are abandoned.", "Upgrade wording: Change 'businesses spend less' to 'a reduction in capital expenditure'."]
-    - **Para 3:** [Feedback on Counter-argument/Evaluation. e.g., "You fell into the 'it depends' trap. Contextualize it: ..."]
+    - **Para 1:** [Feedback on definition/intro. e.g., "Good definition of Inflation. Redundant Wording: You used excessive wording: 'which means that'. This can be omitted."]
+    - **Para 2:** [Feedback on Analysis. e.g., "Logic Chain Completeness: You said interest rates rise -> investment falls, but this logic chain can be more complete. You must include the transmission mechanism: interest rates rise -> cost of borrowing increases -> expected return on investment (MEC) falls -> investment projects are abandoned.", "Professional Economic Terms: The expression 'businesses spend less' can be more professional by changing it to 'a reduction in capital expenditure'."]
+    - **Para 3:** [Feedback on Counter-argument/Evaluation...]
 
     ### 4. Estimated Mark & Breakdown
     **Total: X / ${question.maxMarks}**

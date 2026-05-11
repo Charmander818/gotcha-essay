@@ -1,0 +1,1103 @@
+7.1 Utility
+7.1.1. Definition and calculation
+of total utility and marginal
+utility
+• the meaning of total utility and marginal utility
+• how to calculate total utility and marginal utility
+7.1.2 Diminishing marginal
+utility
+• the law of diminishing marginal utility
+7.1.3 The equi-marginal
+principle
+• the equi-marginal principle
+• how to apply the equi-marginal principle to explain consumer
+equilibrium
+7.1.4 Derivation of an individual
+demand curve
+• how marginal utility and the equi-marginal principle can be used
+to derive an individual demand curve
+7.1.5 Limitations of marginal
+utility and its assumptions of
+rational behaviour
+• why consumers may not be capable of putting their wants in
+rank order
+• why consumers may not be capable of assigning a value for their
+satisfaction
+• why consumers do not always behave in a rational way
+7.2 Indifference curves and budget lines
+7.2.1 Meaning of an indifference
+curve and a budget line
+• what is shown in an indifference curve
+• what is shown by a budget line
+7.2.2 Causes of a shift in the
+budget line
+• how an increase in consumer’s income causes a shift in the budget
+line in the case of normal goods
+• how an increase in consumer’s income causes a shift in the budget
+line in the case of inferior goods
+7.2.3 Income, substitution and
+price effects for normal, inferior
+and Giffen goods
+• the substitution effect of a price change
+• the income effect of a price change
+• the combined income and substitution effects of a price change
+for normal goods
+• the combined income and substitution effects of a price change
+for inferior goods
+• the combined income and substitution effects of a price change
+for Giffen goods
+7.2.4 Limitations of the model of
+indifference curves
+• why consumers are not always rational in their choices
+• that choices are made between just two goods and not all goods
+purchased by consumers
+• that an indifference curve is a theoretical concept that is impossible
+to model in practice
+7.3 Efficiency and market failure
+7.3.1 Definitions of productive
+efficiency and allocative
+efficiency
+• the meaning of productive efficiency
+• the meaning of allocative efficiency
+• economic efficiency
+7.3.2 Conditions for productive
+efficiency and allocative
+efficiency
+• productive efficiency for a firm
+• productive efficiency for an economy
+• allocative efficiency for consumers
+7.3.3 Pareto optimality • the concept of Pareto optimality
+7.3.4 Definition of dynamic
+efficiency
+• the meaning of dynamic efficiency
+7.3.5 Definition of market failure • the meaning of market failure
+7.3.6 Reasons for market failure • that market failure occurs when there are externalities in a
+market, when merit goods and demerit goods are provided, when
+public goods and quasi-public goods are provided, when there is
+information failure, when adverse selection and moral hazard are
+present or when there is abuse of monopoly power
+7.4 Private costs and benefits, externalities and social costs and benefits
+7.4.1 Definition and calculation
+of social costs (SC) as the sum of
+private costs (PC) and external
+costs (EC), including marginal
+social costs (MSC), marginal
+private costs (MPC) and
+marginal external costs (MEC)
+• the meaning of social costs: the sum of private costs and external
+costs
+• the meaning of marginal social costs: the sum of marginal private
+costs and marginal external costs
+7.4.2 Definition and calculation
+of social benefits (SB) as the
+sum of private benefits (PB) and
+external benefits (EB), including
+marginal social benefits (MSB),
+marginal private benefits (MPB)
+and marginal external benefits
+(MEB)
+• the meaning of social benefits: the sum of private benefits and
+external benefits
+• the meaning of marginal social benefits: the sum of marginal
+private benefits and marginal external benefits
+7.4.3 Definition of positive
+externality and negative
+externality
+• the meaning of an externality
+• the nature of a positive externality
+• the nature of a negative externality
+7.4.4 Positive and negative
+externalities of both
+consumption and production
+• consumption externalities
+• production externalities
+• positive consumption externalities
+• negative consumption externalities
+• positive production externalities
+• negative production externalities
+7.4.5 Deadweight welfare
+losses arising from positive and
+negative externalities
+• the concept of a deadweight welfare loss
+• how deadweight losses arise from positive externalities
+• how deadweight losses arise from negative externalities
+7.4.6 Asymmetric information
+and moral hazard
+• the concept of asymmetric information
+• moral hazard as a consequence of information failure
+7.4.7 Use of costs and benefits
+in analysing decisions
+(knowledge of net present value
+is not required)
+• the nature and scope of cost-benefit analysis
+• the use of cost-benefit analysis to analyse decision-making
+• the benefit: cost ratio
+7.5 Types of cost, revenue and profit, short-run and long-run production
+7.5.1 Short-run production
+function:
+• fixed and variable factors of
+production
+• definition and calculation
+of total product, average
+product and marginal
+product
+• law of diminishing returns
+(law of variable proportions)
+• the difference between fixed and variable factors of production
+• a production function
+• total product, average product, marginal product and how each
+is calculated
+• the law of diminishing returns
+7.5.2 Short-run cost function:
+• definition and calculation of
+fixed costs (FC) and variable
+costs (VC)
+• definition and calculation of
+total, average and marginal
+costs (TC, AC, MC), including
+average total cost (ATC),
+total and average fixed
+costs (TFC, AFC) and total
+and average variable costs
+(TVC, AVC)
+• explanation of shape of
+short-run average cost and
+marginal cost curves
+• the difference between fixed costs and variable costs, and how
+each is calculated
+• the meaning of total costs, average costs and marginal costs,
+and how each is calculated
+• the meaning of average total costs, average total fixed costs,
+average fixed costs, total variable costs and average variable costs,
+and how each is calculated
+• the shape of the short-run average cost curve
+• the shape of marginal cost curves
+7.5.3 Long-run production
+function:
+• no fixed factors of
+production
+• returns to scale
+• why all factors of production are variable
+• increasing and decreasing returns to scale
+7.5.4 Long-run cost function:
+• explanation of shape of
+long-run
+• average cost curve
+• concept of minimum
+efficient scale
+• the shape of the long run average cost curve
+• the concept of minimum efficient scale
+7.5.5 Relationship between
+economies of scale and
+decreasing average costs
+• short-run cost curves with different levels of fixed-factor input
+• the long-run average cost curve as an ‘envelope’ of short-run
+average total cost curves
+7.5.6 Internal and external
+economies of scale
+• the meaning of internal economies of scale
+• the benefits of internal economies of scale
+• the technical, purchasing, marketing, managerial and financial
+economies of scale
+• the meaning of external economies of scale
+• the benefits of external economies of scale
+• the economies of concentration, technology and skills
+7.5.7 Internal and external
+diseconomies of scale
+• the meaning of internal diseconomies of scale
+• examples and effects of internal diseconomies of scale
+• the meaning of external diseconomies of scale
+• examples and effects of external diseconomies of scale
+7.5.8 Definition and calculation
+of revenue: total, average and
+marginal revenue (TR, AR, MR)
+• the meaning of total revenue, average revenue and marginal revenue,
+and how each is calculated
+7.5.9 Definition of normal,
+supernormal and subnormal
+profit
+• the meaning of normal profit
+• the meaning of supernormal profit
+• the meaning of subnormal profit
+7.5.10 Calculation of
+supernormal and subnormal
+profit
+• how supernormal and subnormal profit are calculated
+7.6 Different market structures
+7.6.1 Perfect competition
+and imperfect competition:
+monopoly, monopolistic
+competition, oligopoly and
+natural monopoly
+• the meaning of market structure
+• the essential features of perfect competition
+• why other markets are referred to as imperfect competition
+7.6.2 Structure of listed
+markets as explained by
+number of buyers and sellers,
+product differentiation, degree
+of freedom of entry and
+availability of information
+• the characteristics of perfect competition, monopoly, monopolistic
+competition, oligopoly and natural monopoly in terms of the number
+of firms, product differentiation, barriers to entry, control over prices,
+and availability of information
+7.6.3 Barriers to entry and exit:
+• legal barriers
+• market barriers
+• cost barriers
+• physical barriers
+• the meaning of barriers to entry and barriers to exit
+• the legal, market, cost, and physical barriers to entry
+• sunk costs as a barrier to exit
+7.6.4 Performance of firms in
+different market structures:
+• revenues and revenue
+curves
+• output in the short run and
+the long run
+• profits in the short run and
+the long run
+• shutdown price in the short
+run and the long run
+• derivation of a firm’s
+supply curve in a perfectly
+competitive market
+• efficiency and X-inefficiency
+in the short run and the long
+run
+• contestable markets:
+features and implications
+• price competition and non-price competition
+• collusion and the Prisoner’s
+Dilemma in oligopolistic
+markets, including a
+two-player pay-off matrix
+• the performance of firms in perfect competition, monopoly,
+monopolistic competition, oligopoly and natural monopoly
+with respect to revenue, output and profits in the short run
+and in the long run
+• the shutdown price in the short run and in the long run
+• how a firm’s supply curve is derived in a perfectly competitive market
+• efficiency in perfect competition and other market structures
+in the short run and in the long run
+• X-inefficiency
+• the concept of contestability in a market
+• the conditions for a perfectly contestable market
+• price competition and non-price competition in different market
+structures
+• collusion in oligopolistic markets
+• the kinked demand curve model and its relevance in oligopolistic
+markets
+• the Prisoner’s Dilemma and its relevance to oligopolistic behaviour
+7.6.5 Definition and calculation
+of the concentration ratio
+• the meaning of a concentration ratio
+• the calculation of a concentration ratio in terms of the biggest three,
+four or five firms in a market
+• concentration ratios and market structures
+7.7 Growth and survival of firms
+7.7.1 Reasons for different sizes
+of firms
+• why most firms remain small
+• why some firms experience growth in size and profits
+7.7.2 Internal growth of
+firms: organic growth and
+diversification
+• the reasons for organic growth
+• the reasons for diversification including economies of scope
+7.7.3 External growth of firms
+– integration, mergers and
+takeovers:
+• methods of integration:
+• horizontal
+• vertical (forwards and
+backwards)
+• conglomerate
+• reasons for integration
+• consequences of integration
+• the process of horizontal integration
+• the process of vertical integration, forwards and backwards
+• conglomerate growth
+• the reasons for integration
+• the consequences of integration
+7.7.4 Cartels:
+• conditions for an effective
+cartel
+• consequences of a cartel
+• the conditions that make a cartel effective
+• the positive and negative consequences of a cartel
+7.7.5 Principal-agent problem
+arising from differing objectives
+of shareholders/owners and
+managers
+• why there is a principal-agent problem
+• the link to asymmetric information
+7.8 Differing objectives and policies of firms
+7.8.1 Traditional profit
+maximisation objective of firms
+• the conditions for profit maximisation as an objective of firms
+• why firms do not operate at the profit maximisation level of output
+7.8.2 An understanding of other
+objectives of firms:
+• survival
+• profit satisficing
+• sales maximisation
+• revenue maximisation
+• behavioural objectives
+• survival
+• profit satisficing
+• sales maximisation
+• revenue maximisation
+7.8.3 Price discrimination – first,
+second and third degree:
+• conditions for effective price
+discrimination
+• consequences of price
+discrimination
+• the meaning of price discrimination
+• first, second and third degree price discrimination
+• the conditions for effective price discrimination
+• the consequences of price discrimination for consumers
+and producers
+7.8.4 Other pricing policies:
+• limit pricing
+• predatory pricing
+• price leadership
+• limit pricing
+• predatory pricing
+• price leadership
+7.8.5 Relationship between
+price elasticity of demand and a
+firm’s revenue:
+• in a normal downward
+sloping demand curve
+• in a kinked demand curve
+• the relationship between price elasticity of demand, marginal
+revenue and total revenue
+• the special case of the kinked demand curve model
+8.1 Government policies to achieve efficient resource allocation to tackle different forms of market failure
+8.1.1 Application and
+effectiveness of measures to
+tackle different forms of market
+failure:
+• specific and ad valorem
+indirect taxes
+• subsidies
+• price controls
+• production quotas
+• prohibitions and licences
+• regulation and deregulation
+• direct provision
+• pollution permits
+• property rights
+• nationalisation and
+privatisation
+• provision of information
+• behavioural insights and
+‘nudge’ theory
+market failure due to negative production externalities:
+• specific and ad valorem indirect taxes (green taxes), regulations,
+property rights, pollution permits, licensing
+• market failure due to negative consumption externalities: specific
+indirect taxes, minimum price controls, provision of information,
+production quotas
+• market failure due to positive production externalities: subsidies,
+provision of information
+• market failure due to positive consumption externalities: direct
+provision, subsidies
+• other measures to correct market failure: nationalisation,
+privatisation and deregulation
+• ‘Nudge’ theory as a means of providing information to tackle
+market failure
+8.1.2 Government failure in
+microeconomic intervention:
+• definition of government
+failure
+• causes of government failure
+• consequences of
+government failure
+• the meaning of government failure
+• the causes of government failure, including lack
+of information
+• the consequences of government failure
+• the unintended consequences and policy conflict
+8.2 Equity and redistribution of income and wealth
+8.2.1 Difference between equity
+and equality
+• equity
+• equality
+• the difference between equity and equality
+8.2.2 Difference between equity
+and efficiency
+• the difference between equity and efficiency
+8.2.3 Distinction between
+absolute poverty and relative
+poverty
+• extreme poverty
+• the international poverty line
+• the meaning of absolute poverty
+• the meaning of relative poverty
+8.2.4 The poverty trap • the meaning of the poverty trap
+• the significance in terms of benefit payments
+8.2.5 Policies towards equity
+and equality for example:
+• negative income tax
+• universal benefits and
+means-tested benefits
+• universal basic income
+• universal benefits, means-tested benefits, negative income tax,
+universal basic income
+• the balance between progressive and regressive taxation
+8.3 Labour market forces and government intervention
+8.3.1 Demand for labour as a
+derived demand
+• why the demand for labour is a derived demand
+8.3.2 Factors affecting the
+demand for labour in a firm or
+an occupation
+• factors such as the wage rate, productivity of labour and the
+demand for the product
+8.3.3. Causes of shifts and
+movements along the demand
+curve for labour in a firm or
+occupation
+• the causes of a shift in the demand curve for labour
+• how a change in the wage rate causes a movement along the
+demand curve for labour
+8.3.4 Marginal revenue product
+(MRP) theory:
+• definition and calculation of
+marginal revenue product
+• derivation of an individual
+firm’s demand for labour
+using marginal revenue
+product
+• the meaning of MRP and its calculation
+• how MRP can be used to derive a firm’s demand curve for labour
+8.3.5 Factors affecting the
+supply of labour to a firm or to
+an occupation:
+• wage and non-wage factors
+• wage rates in other occupations
+• skills and qualifications
+• non-pecuniary benefits
+8.3.6 Causes of shifts in and
+movements along the supply
+curve of labour in a firm or
+occupation
+• the causes of a shift in the supply curve
+• how a change in the wage rate causes a movement along the supply
+curve for labour
+8.3.7 Wage determination in
+perfect markets:
+• equilibrium wage rate and
+employment in a labour
+market
+• equilibrium in the labour market
+• the effects of an increase in the demand for labour on the wage rate
+and employment
+• the effects of an increase in the supply of labour on the wage rate
+and employment
+8.3.8 Wage determination in
+imperfect markets:
+• influence of trade unions
+on wage determination and
+employment in a labour
+market
+• influence of government on
+wage determination and
+employment in a labour
+market using a national
+minimum wage
+• influence of monopsony
+employers on wage
+determination and
+employment in a labour
+market
+• the influence and effects of trade unions on wage determination
+and employment
+• the significance of the elasticity of demand for labour
+• the influence of government and the effects of a national
+minimum wage
+• the influence of monopsony employers on wage determination
+and employment
+8.3.9 Determination of wage
+differentials by labour market
+forces
+• the meaning of wage differentials
+• the causes of wage differentials: demand and supply factors
+8.3.10 Transfer earnings and
+economic rent:
+• definition of transfer
+earnings
+• definition of economic rent
+• factors affecting transfer
+earnings and economic rent
+in an occupation
+• the meaning of transfer earnings
+• the meaning of economic rent
+• the use of transfer earnings and economic rent to explain differences
+in earnings
+• the importance of price elasticity of supply
+9.1 The circular flow of income
+9.1.1 The multiplier process:
+• definition of the multiplier
+• formulae for and calculation
+of multiplier in a closed and
+open economy, with and
+without a government sector
+• calculation of:
+– average and marginal
+propensities to save (aps
+and mps)
+– average and marginal
+propensities to consume
+(apc and mpc)
+– average and marginal
+propensities to import
+(apm and mpm)
+– average and marginal
+rates of tax (art and mrt)
+• national income
+determination using AD and
+income approach with the
+multiplier process
+• calculation of effect of
+changing AD on national
+income using the multiplier
+• the meaning of the multiplier
+• the formula and how to calculate the multiplier in a closed and open
+economy, with and without a government sector
+• how to calculate average and marginal propensities to save (aps and
+mps), average and marginal propensities to consume (apc and mpc),
+average and marginal propensities to import (apm and mpm) and
+average and marginal propensities to tax (apt and mpt)
+• national income determination
+• the Keynsian 45°diagram
+• how to calculate the effect of changing Aggregate Demand on
+national income using the multiplier
+• the reasons for variations in the size of the multiplier
+9.1.2 Components of
+Aggregate Demand and their
+determinants:
+• consumption function:
+autonomous and induced
+consumer expenditure
+• savings function:
+autonomous and induced
+savings
+• autonomous and induced
+investment; the accelerator
+• government spending
+• net exports (exports minus
+imports)
+• consumption function-autonomous and induced consumer
+expenditure
+• savings function-autonomous and induced savings
+• investment-autonomous and induced investment as explained
+through the accelerator process
+• government spending
+• net exports (X–M)
+9.1.3 Full employment level of
+national income and equilibrium
+level of national income:
+• inflationary and deflationary
+gaps
+• the meaning of full employment level of national income
+• the meaning of equilibrium level of national income
+• why an inflationary gap occurs
+• why a deflationary gap occurs
+9.2 Economic growth and sustainability
+9.2.1 Actual growth versus
+potential growth in national
+output
+• actual economic growth
+• potential economic growth
+9.2.2 Positive and negative
+output gaps
+• the conditions for a positive output gap
+• the conditions for a negative output gap
+9.2.3 Business (trade) cycle:
+• phases of the cycle
+• causes of the cycle
+• role of automatic stabilisers
+• the meaning of the business cycle
+• the phases of the cycle
+• the causes of the cycle
+• the role of automatic stabilisers and their effects on real GDP,
+employment and the price level
+9.2.4 Policies to promote
+economic growth and their
+effectiveness
+• how to increase the quantity of factor inputs to promote economic
+growth
+• supply-side policies to increase productive capacity in the economy
+9.2.5 Inclusive economic
+growth:
+• definition of inclusive
+economic growth
+• impact of economic growth
+on equity and equality
+• policies to promote inclusive
+growth
+• the meaning of inclusive economic growth
+• the impact of inclusive economic growth on equity and equality
+• the policies to promote inclusive economic growth by sharing
+the benefits of growth more widely
+9.2.6 Sustainable economic
+growth:
+• definition of sustainable
+economic growth
+• using and conserving
+resources
+• impact of economic growth
+on the environment and
+climate change
+• policies to mitigate the
+impact of economic growth
+on the environment and
+climate change
+• the meaning of sustainable economic growth
+• how to use and conserve resources as a means of making growth
+more sustainable
+• the impact of economic growth on the environment and climate
+change
+• the policies to mitigate the impact of economic growth on the
+environment and climate change
+• the economic policies to reduce carbon emissions
+9.3 Employment/unemployment
+9.3.1 Definition of full
+employment
+• the meaning of full employment
+• the problem of specifying a particular percentage
+9.3.2 Equilibrium and
+disequilibrium unemployment
+(including hysteresis)
+• the meaning of equilibrium unemployment
+• the meaning of disequilibrium unemployment
+• the meaning of hysteresis: unemployment caused by a fall in AD
+which persists when jobs become available
+9.3.3 Voluntary and involuntary
+unemployment
+• voluntary unemployment
+• involuntary unemployment
+• the differences in terms of types of unemployment
+9.3.4 Natural rate of
+unemployment:
+• definition
+• determinants
+• policy implications
+• the meaning of natural rate of unemployment
+• the supply-side factors underpinning the determinants of the natural
+rate of unemployment
+• policy approaches for reducing the natural rate of unemployment
+9.3.5 Patterns and trends in
+(un)employment
+• the similarities and differences in the patterns and trends of
+employment between countries
+• the similarities and differences in the patterns and trends of
+unemployment between countries
+• the problems of making comparisons
+9.3.6 Mobility of labour:
+• forms of labour mobility:
+geographical and
+occupational
+• factors affecting labour
+mobility
+• geographical mobility of labour
+• occupational mobility of labour
+• the factors affecting geographical mobility
+of labour
+• the factors affecting the occupational mobility
+of labour
+9.3.7 Policies to reduce
+unemployment of labour and
+their effectiveness
+• the expansionary fiscal and monetary policies to reduce cyclical
+unemployment
+• the supply-side-policies to reduce frictional and structural
+unemployment
+• the criteria for measuring the effectiveness of policy responses
+9.4 Money and banking
+9.4.1 Definition, functions and
+characteristics of money
+• what is meant by money
+• the functions of money
+• the characteristics of money
+9.4.2 Definition of money supply • money supply as the total amount of money in an economy
+• narrow money
+• broad money
+9.4.3 Quantity theory of money
+(MV = PT)
+• the statement of the Fisher equation, MV=PT
+• the link between inflation and changes in the money supply
+9.4.4 Functions of commercial
+banks:
+• providing deposit accounts
+(demand deposit account,
+savings account)
+• lending money (overdrafts,
+loans)
+• holding or providing cash,
+securities, loans, deposits,
+equity
+• reserve ratio and capital
+ratio
+• objectives of commercial
+banks: liquidity, security,
+profitability
+• the provision of demand deposit accounts, savings accounts
+• the lending of money as overdrafts and loans
+• the holding or provision of cash, securities, loans, deposits, equity
+• the significance of the reserve ratio and capital ratio
+• the objectives of commercial banks in terms of liquidity, security
+and profitability
+9.4.5 Cause and changes in
+the money supply in an open
+economy:
+• commercial banks as
+sources of credit creation
+and the bank credit
+multiplier
+• role of a central bank
+• government deficit financing
+• quantitative easing
+• changes in the balance of
+payments
+• commercial banks as a source of credit creation
+• the workings of the bank credit multiplier
+• the role of the central bank in issuing currency and as banker to the
+government and commercial banks
+• the meaning of government deficit financing through issuing bonds
+• the meaning of quantitative easing and its use in encouraging
+commercial banks to lend money
+• the relationship between the domestic money supply and changes
+to a floating or fixed exchange rate
+9.4.6 Policies to reduce inflation
+and their effectiveness
+• the use of monetary policies to influence aggregate demand and
+hence inflation-interest rate changes and credit creation
+• how the effectiveness depends on many factors such as correct
+identification of the type of inflation and the responses of consumers
+and firms to changes in interest rates and credit controls
+9.4.7 Demand for money:
+liquidity preference theory
+• the motives for holding money: transactions, precautionary and
+speculative motives
+• the shape of the liquidity preference curve
+9.4.8 Interest rate
+determination: loanable funds
+theory and Keynesian theory
+• the loanable funds theory of interest rate determination through
+the demand and supply of loanable funds
+• the Keynsian theory of interest rate determination through the
+demand and supply of money
+• the significance of the liquidity trap
+10.1 Government macroeconomic policy objectives
+10.1.1 Objectives in terms of
+inflation, balance of payments,
+unemployment, growth,
+development, sustainability
+and redistribution of income
+and wealth
+• a stable price level
+• how to avoid large changes in the current account of the balance
+of payments
+• low unemployment
+• economic growth
+• a rise in the quality of life
+• sustainable development that does not harm the needs of future
+generations
+• the redistribution of income and wealth
+10.2 Links between macroeconomic problems and their interrelatedness
+10.2.1 Relationship between the
+internal value of money and the
+external value of money
+• how a fall in the internal value of money affects exports and the
+exchange rate
+• how a fall in the exchange rate affects the internal value of money
+10.2.2 Relationship between
+the balance of payments and
+inflation
+• how domestic inflation is likely to lead to a current account deficit
+• how a current account surplus may cause inflation
+10.2.3 Relationship between
+growth and inflation
+• how a high rate of inflation could reduce the rate of economic growth
+• how a rise in the growth rate could increase inflation
+10.2.4 Relationship between
+growth and the balance
+of payments
+• how changes in the unemployment rate can affect the rate of inflation
+• how export-led growth can lead to an improvement in the balance
+of trade
+10.2.5 Relationship between
+inflation and unemployment:
+• traditional Phillips curve
+• expectations-augmented
+Phillips curve (short- and
+long-run Phillips curve)
+• how changes in the unemployment rate can affect the rate of inflation
+• the traditional Phillips curve and trade-offs between inflation and
+unemployment over time
+• the expectations-augmented Phillips curve as a means of showing
+a short run trade-off between inflation and unemployment
+10.3 Effectiveness of policy options to meet all macroeconomic objectives
+10.3.1 Effectiveness of different
+policies in relation to different
+macroeconomic objectives:
+• fiscal policy including Laffer
+curve analysis
+• monetary policy
+• supply-side policy including
+market-based and
+interventionist policies
+• exchange rate policy
+• international trade policy
+• fiscal policy: crowding out and crowding in, time lags and unexpected
+responses from firms and consumers
+• the Laffer curve
+• the effectiveness of fiscal policy in increasing economic growth and
+stabilising prices and the balance of payments
+• monetary policy: time lags, the liquidity trap and unexpected responses
+• the effectiveness of monetary policy in promoting economic growth
+and reducing unemployment
+• the issues of demand-pull inflation and increasing deficit on the
+current account of the balance of payments
+• supply-side policy: market-based and interventionist possibilities
+• the effectiveness of supply-side policy in increasing economic growth
+and reducing inflation
+• the issues with respect to lower unemployment and the
+redistribution of income and wealth
+• the effectiveness of exchange rate policy in improving the current
+account of the balance of payments, increasing economic growth
+and reducing unemployment
+• the issue of cost-push inflation
+• the effectiveness of international trade policy for increasing
+economic growth
+• sustainability issues arising from increasing international trade
+10.3.2 Problems and conflicts
+arising from the outcome of
+these policies
+• low unemployment and price stability
+• economic growth and balance of payments changes
+• economic growth and sustainability
+• economic growth and the redistribution of income and wealth
+10.3.3 Existence of government
+failure in macroeconomic
+policies
+• time lags
+• the lack of adequate information
+• political pressures
+11.1 Policies to correct disequilibrium in the balance of payments
+11.1.1 Components of the
+balance of payments accounts:
+current account, financial
+account and capital account
+• the meaning of current account, financial account, capital account,
+net errors and omissions
+• the meaning of disequilibrium in the balance of payments
+11.1.2 Effect of fiscal, monetary,
+supply-side, protectionist and
+exchange rate policies on the
+balance of payments
+• the scope for using fiscal and monetary policies to reduce a current
+account deficit or surplus
+• the scope for using supply-side policies to improve international
+competitiveness
+• the scope for using protectionist policies to reduce spending on
+imports and increase spending on domestic goods
+• the scope for using exchange rate policies to reduce a balance
+of trade deficit
+11.1.3 Difference between
+expenditure-switching and
+expenditure-reducing policies
+• the causes of a deficit on the current account of the balance
+of payments
+• the meaning and use of expenditure-switching policies
+• the meaning and use of expenditure-reducing policies
+11.2 Exchange rates
+11.2.1 Measurement of
+exchange rates:
+• distinction between nominal
+and real exchange rates
+• trade-weighted exchange
+rates
+• nominal and real exchange rates
+• how to calculate a real exchange rate
+• trade-weighted exchange rates
+11.2.2 Determination of
+exchange rates under fixed and
+managed systems
+• the nature of a fixed exchange rate system
+• the nature of a managed exchange rate system
+• the role of government and market forces
+11.2.3 Distinction between
+revaluation and devaluation of
+a fixed exchange rate
+• the meaning of persistent disequilibrium in the current account
+of the balance of payments
+• revaluation as a way of raising the price of a currency
+• devaluation as a way of reducing the price of a currency
+11.2.4 Changes in the exchange
+rate in different exchange rate
+systems
+• the changes in the demand and supply of a currency in a floating
+exchange rate system
+• the role of government and the central bank in managing change
+in a fixed exchange rate system
+11.2.5 The effects of changing
+exchange rates on the external
+economy using Marshall-Lerner
+and J curve analysis
+• the J-curve effect of a fall in the exchange rate on the current account
+of the balance of payments
+• the Marshall-Lerner condition
+11.3 Economic development
+11.3.1 Classification of
+economies in terms of their
+level of development
+• the meaning of development
+• developed, developing and emerging economies
+• the problems of classification
+11.3.2 Classification of
+economies in terms of their
+level of national income
+• the use of GDP per head
+• the use of GNI per head
+• World Bank country classification
+11.3.3 Indicators of living
+standards and economic
+development:
+• monetary indicators
+including real per capita
+national income statistics
+(GDP, GNI, NNI) and
+purchasing power parity
+• issues of comparison using
+monetary indicators
+• non-monetary indicators
+• composite indicators:
+– Human Development
+Index (HDI)
+– Measure of Economic
+Welfare (MEW)
+– Multidimensional
+Poverty Index (MPI)
+• the Kuznets curve
+• monetary indicators (GDP, GNI and NNI)
+• the problems of comparison such as informal economy, data
+accuracy and exchange rate changes
+• purchasing power parity
+• non-monetary indicators
+• composite indicators such as the Human Development Index,
+Measure of Economic Welfare and the Multidimensional Poverty Index
+11.3.4 Comparison of economic
+growth rates and living
+standards:
+• over time
+• between countries
+• comparisons over time and associated problems
+• comparisons between countries and associated problems
+11.4 Characteristics of countries at different levels of development
+11.4.1 Population growth and
+structure:
+• measurement and causes of
+changes in birth rate, death
+rate, infant mortality and net
+migration
+• optimum population
+• level of urbanisation
+• the demographic factors such as birth rate, death rate, infant
+mortality and net migration
+• interpretation of population pyramids
+• dependency rates
+• the concept of an optimum population
+• population change and urbanisation
+11.4.2 Income distribution:
+• calculation of Gini coefficient
+and Lorenz curve analysis
+• the calculation of a Gini coefficient
+• what is shown on a Lorenz curve
+11.4.3 Economic structure:
+• employment composition:
+primary, secondary and
+tertiary sectors
+• pattern of trade at different
+levels of development
+• employment in different sectors of an economy
+• employment characteristics of countries at different levels
+of development
+• trade patterns of countries at different levels of development
+11.5 Relationship between countries at different levels of development
+11.5.1 International aid:
+• forms of aid
+• reasons for giving aid
+• effects of aid
+• importance of aid
+• forms of aid such as tied aid, untied aid, bilateral aid, multilateral
+aid and voluntary aid
+• Official Development Assistance
+• the reasons for giving aid
+• the effects of aid on recipient countries
+11.5.2 Trade and investment • the benefits of trade for low- and middle-income countries
+• the problems of specialisation, especially in agricultural goods
+• investment flows between countries
+• the relative merits of trade and aid strategies
+• fair trade schemes
+11.5.3 Role of multinational
+companies (MNCs):
+• definition of MNC
+• activities of MNCs
+• consequences of MNCs
+• the meaning of an MNC
+• the activities of MNCs
+• the consequences of MNC’s for recipient countries and home country
+of MNC
+11.5.4 Foreign direct investment
+(FDI):
+• definition of FDI
+• consequences of FDI
+• the meaning of FDI
+• the motivation for FDI flows from a developing economy standpoint
+• the consequences of FDI for recipient economy and elsewhere
+11.5.5 External debt:
+• causes of debt
+• consequences of debt
+• the causes of external debt
+• the consequences of external debt
+• the debt crisis
+11.5.6 Role of International
+Monetary Fund (IMF)
+• the provision of short-term assistance for countries experiencing
+balance of payments problems
+11.5.7 Role of World Bank • the provision of longer-term funding for projects to promote
+development
+11.6 Globalisation
+11.6.1 Meaning of globalisation
+and its causes and
+consequences
+• what is meant by globalisation
+• the causes of globalisation such as reduction in trade barriers,
+improved telecommunications, reduced supply chain costs,
+deregulation of financial markets, technological change
+• the consequences of globalisation such as improved living standards,
+FDI, interdependence of economies, greater variety of products
+• the threats to increased globalisation
+11.6.2 Distinction between
+a free trade area, a customs
+union, a monetary union and a
+full economic union
+• the meaning of economic integration
+• the notion of a free trade area and specialisation
+• a customs union and the function of a common external tariff
+• the features of a monetary union with a common currency
+and exchange rate
+• the features of a full economic and monetary union
+11.6.3 Trade creation and trade
+diversion
+• the meaning of trade creation and its effects on producers
+and consumers
+• the meaning of trade diversion and its effects on producers
+and consumers
