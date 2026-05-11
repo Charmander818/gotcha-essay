@@ -4945,7 +4945,7 @@ Accept all valid responses.`
     variant: "May/June",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.3 Efficiency and market failure",
+  "chapter": "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "To improve allocative efficiency economists frequently advise governments to remove existing subsidies to the private sector providers of education.\nWith the help of a diagram, evaluate this advice.",
     markScheme: `Use Table A: AO1 Knowledge and understanding and AO2 Analysis and 
@@ -4983,7 +4983,7 @@ based on the ability to pay and not on the need to learn. Inefficiencies and ine
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.3 Economic development",
+  "chapter": "11.3 Economic development",
     maxMarks: 20,
     questionText: "To what extent do you agree that an increase in productivity will lead to a higher standard of living in low-income countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5027,7 +5027,7 @@ some of which might have a less direct positive impact.`
     variant: "Feb/March",
     questionNumber: "2",
     topic: SyllabusTopic.GOVT_MICRO_AL,
-  chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+  "chapter": "8.1 Government policies to achieve efficient resource allocation and correct market failure",
     maxMarks: 20,
     questionText: "The use of air travel leads to market failure caused by negative externalities.\nWith the help of a diagram, assess the extent to which a government can intervene to correct this market failure.",
     markScheme: `AO1 Knowledge and understanding and AO2Analysis
@@ -5041,7 +5041,7 @@ some of which might have a less direct positive impact.`
     variant: "Feb/March",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.6 Different market structures",
+  "chapter": "7.6 Different market structures",
     maxMarks: 20,
     questionText: "Some firms in oligopoly markets choose to collude rather than engage in price competition. This will lead to higher prices and a less efficient allocation of resources.\nEvaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5068,7 +5068,7 @@ AO3 Evaluation
     variant: "Feb/March",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "Expenditure-reducing policies will reduce a balance of payments deficit but this will also cause significant unemployment.\nEvaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5093,7 +5093,7 @@ AO3 Evaluation
     variant: "Feb/March",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.3 Economic development",
+  "chapter": "11.3 Economic development",
     maxMarks: 20,
     questionText: "Assess the impact of globalisation on the standard of living in low-income countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5121,7 +5121,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.8 Differing objectives and policies of firms",
+  "chapter": "7.8 Differing objectives and policies of firms",
     maxMarks: 20,
     questionText: "Some firms frequently use price discrimination.\nAssess the view that when this occurs, price discrimination will always benefit the producer at the expense of the consumer and society.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5149,7 +5149,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "An increase in a government's budget surplus will increase unemployment in the short run but it will make it easier to control a balance of payments deficit in the long run.\nEvaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5177,7 +5177,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "2",
     topic: SyllabusTopic.GOVT_MICRO_AL,
-  chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+  "chapter": "8.1 Government policies to achieve efficient resource allocation and correct market failure",
     maxMarks: 20,
     questionText: "The increased use of electric vehicles (EVs) is encouraged as part of governments' climate change policies because they create fewer negative externalities than diesel and petrol (gas) vehicles.\nEvaluate, with the help of diagrams, two policies that a government may use to encourage the use of EVs.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5206,7 +5206,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.6 Different market structures",
+  "chapter": "7.6 Different market structures",
     maxMarks: 20,
     questionText: "Evaluate, with the help of a diagram(s) how total market demand and minimum efficient scale may determine the form of market structure in an industry.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5232,7 +5232,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.3 Economic development",
+  "chapter": "11.3 Economic development",
     maxMarks: 20,
     questionText: "Consider the extent to which the depreciation of its foreign exchange rate contributes to the economic growth of a low-income country.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5258,7 +5258,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "Evaluate the effectiveness of using monetary policy to reduce the rate of inflation and how this policy may affect a government's ability to achieve its other macroeconomic aims.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5290,7 +5290,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.3 Efficiency and market failure",
+  "chapter": "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "To improve allocative efficiency economists frequently advise governments to remove existing subsidies to the private sector providers of education.\nWith the help of a diagram, evaluate this advice.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5320,7 +5320,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.8 Differing objectives and policies of firms",
+  "chapter": "7.8 Differing objectives and policies of firms",
     maxMarks: 20,
     questionText: "Some firms frequently use price discrimination.\nAssess the view that when this occurs, price discrimination will always benefit the producer at the expense of the consumer and society.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5348,7 +5348,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "An increase in a government's budget surplus will increase unemployment in the short run but it will make it easier to control a balance of payments deficit in the long run.\nEvaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5376,7 +5376,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.3 Economic development",
+  "chapter": "11.3 Economic development",
     maxMarks: 20,
     questionText: "To what extent do you agree that an increase in productivity will lead to a higher standard of living in low-income countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5402,7 +5402,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.3 Efficiency and market failure",
+  "chapter": "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "The provision of health care by the public sector is inefficient, therefore all health care should be provided by firms operating in the private sector.\nEvaluate this comment.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5432,7 +5432,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.6 Different market structures",
+  "chapter": "7.6 Different market structures",
     maxMarks: 20,
     questionText: "A government allows the merger of two large firms in the same industry.\nWith the help of a diagram evaluate the view that this merger should not have been allowed.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5460,7 +5460,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "Assess the extent to which monetary policy can be used effectively to solve the problem of unemployment.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5486,7 +5486,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.3 Economic development",
+  "chapter": "11.3 Economic development",
     maxMarks: 20,
     questionText: "To what extent do you agree with the view that globalisation benefits high-income countries at the expense of low-income countries?\nAssess the contribution of Foreign Direct Investment (FDI) to the improvement of the standard of living in low-income countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5524,7 +5524,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.2 Indifference curves and budget lines",
+  "chapter": "7.2 Indifference curves and budget lines",
     maxMarks: 20,
     questionText: "Evaluate the use of indifference curve analysis to derive the demand curve for a normal good and the demand curve for an inferior good.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5557,7 +5557,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.6 Different market structures",
+  "chapter": "7.6 Different market structures",
     maxMarks: 20,
     questionText: "The model of perfect competition is the ideal form of market structure because it is the most efficient.\nWith the help of diagrams, evaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5583,7 +5583,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.5 Relationship between countries at different levels of development",
+  "chapter": "11.5 Relationship between countries at different levels of development",
     maxMarks: 20,
     questionText: "The presence of multinational corporations (MNCs) in a low-income country always promotes economic growth in that country.\nEvaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5610,7 +5610,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.MACROECONOMY_AL,
-  chapter: "9.1 The circular flow of income",
+  "chapter": "9.1 The circular flow of income",
     maxMarks: 20,
     questionText: "Consider the relative merits of gross national income (GNI) and the multidimensional poverty index (MPI) as measures of the standard of living.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5647,7 +5647,7 @@ Evaluation may be by individual measure or by comparing the measures.
     variant: "Oct/Nov",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.3 Efficiency and market failure",
+  "chapter": "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "Pollution is caused when consumers or producers make decisions based on self-interest. This is a sign of market failure.\nWith help of a diagram evaluate the extent to which government policies should rely upon market forces to address this market failure.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5676,7 +5676,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.6 Different market structures",
+  "chapter": "7.6 Different market structures",
     maxMarks: 20,
     questionText: "Evaluate the view that monopolistically competitive firms will always charge lower prices and operate more efficiently than a monopoly firm.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5703,7 +5703,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "With the help of a diagram, assess the effectiveness of the use of fiscal policy to close a negative output gap in an economy.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5733,7 +5733,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.3 Economic development",
+  "chapter": "11.3 Economic development",
     maxMarks: 20,
     questionText: "Assess the impact of international aid on the standard of living in low-income countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5762,7 +5762,7 @@ AO3 Evaluation
     variant: "Feb/March",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.3 Efficiency and market failure",
+  "chapter": "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "With the help of a diagram, assess the effectiveness of a government’s intervention in the price mechanism to address the causes of climate change.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5787,7 +5787,7 @@ AO3 Evaluation
     variant: "Feb/March",
     questionNumber: "3",
     topic: SyllabusTopic.GOVT_MICRO_AL,
-  chapter: "8.3 Labour market forces and government intervention",
+  "chapter": "8.3 Labour market forces and government intervention",
     maxMarks: 20,
     questionText: "The introduction of a trade union into a perfectly competitive labour market will always lead to higher wage levels and a higher level of unemployment. With the help of a diagram, evaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5811,7 +5811,7 @@ AO3 Evaluation
     variant: "Feb/March",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-  chapter: "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
+  "chapter": "10.3 Effectiveness of policy options to meet all macroeconomic objectives",
     maxMarks: 20,
     questionText: "With the help of a diagram, assess the effectiveness of government policies which might be used to reduce cost push inflation.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5836,7 +5836,7 @@ AO3 Evaluation
     variant: "Feb/March",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.6 Globalisation",
+  "chapter": "11.6 Globalisation",
     maxMarks: 20,
     questionText: "Globalisation will help to achieve economic growth in high-income economies and this will automatically improve living standards. Evaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5862,7 +5862,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.6 Different market structures",
+  "chapter": "7.6 Different market structures",
     maxMarks: 20,
     questionText: "The long-term equilibrium position in perfect competition is frequently used to illustrate efficient resource allocation in a free market economy. Explain why this is so and consider what prevents efficiency from being achieved.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5883,7 +5883,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.2 Indifference curves and budget lines",
+  "chapter": "7.2 Indifference curves and budget lines",
     maxMarks: 20,
     questionText: "With the help of an indifference curve diagram, assess the extent to which a rise in price would affect the demand for a normal good differently from the demand for a Giffen good.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5904,7 +5904,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.MACROECONOMY_AL,
-  chapter: "9.2 Economic growth and sustainability",
+  "chapter": "9.2 Economic growth and sustainability",
     maxMarks: 20,
     questionText: "In many countries increased government spending is regarded as a cause of economic growth. It is sensible, therefore, for a government to spend more to increase economic growth as it is good for its country. To what extent do you agree with this argument?",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5925,7 +5925,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.MACROECONOMY_AL,
-  chapter: "9.1 The circular flow of income",
+  "chapter": "9.1 The circular flow of income",
     maxMarks: 20,
     questionText: "National income statistics are often used as a measure of the standard of living. Consider to what extent national income statistics can be used to compare the standard of living between low-incomes and high-income and countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5945,7 +5945,7 @@ Alternative measures to develop the extent national income statistics can be use
     variant: "May/June",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.3 Efficiency and market failure",
+  "chapter": "7.3 Efficiency and market failure",
     maxMarks: 20,
     questionText: "Market failure exists in all economies. Evaluate, with the aid of a diagram(s), the meaning of market failure and two policies a government may use to correct market failure.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -5974,7 +5974,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.6 Different market structures",
+  "chapter": "7.6 Different market structures",
     maxMarks: 20,
     questionText: "Evaluate, with the aid of a diagram(s), whether excess profit (super-normal profit) is always necessary for the continued existence of firms in perfect competition and monopoly.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6000,7 +6000,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.GOVT_MACRO_AL,
-  chapter: "10.2 Links between macroeconomic problems and their interrelatedness",
+  "chapter": "10.2 Links between macroeconomic problems and their interrelatedness",
     maxMarks: 20,
     questionText: "In 2022, many countries experienced a high rate of inflation caused by disruptions to the supply of goods and services arising from the Covid-19 pandemic and the conflict between Russia and Ukraine. In one country, the government cut taxes and the central bank raised interest rates. Evaluate the likely impact of these policies on that government’s ability to control inflation.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6027,7 +6027,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.6 Globalisation",
+  "chapter": "11.6 Globalisation",
     maxMarks: 20,
     questionText: "Evaluate the likely impact of globalisation on a low-income country’s standard of living.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6057,7 +6057,7 @@ AO3 Evaluation
     variant: "May/June",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.6 Different market structures",
+  "chapter": "7.6 Different market structures",
     maxMarks: 20,
     questionText: "The long-term equilibrium position in perfect competition is frequently used to illustrate efficient resource allocation in a free market economy. Explain why this is so and consider what prevents efficiency from being achieved.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6078,7 +6078,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.2 Indifference curves and budget lines",
+  "chapter": "7.2 Indifference curves and budget lines",
     maxMarks: 20,
     questionText: "With the help of an indifference curve diagram, assess the extent to which a rise in price would affect the demand for a normal good differently from the demand for a Giffen good.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6099,7 +6099,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "4",
     topic: SyllabusTopic.MACROECONOMY_AL,
-  chapter: "9.2 Economic growth and sustainability",
+  "chapter": "9.2 Economic growth and sustainability",
     maxMarks: 20,
     questionText: "In many countries increased government spending is regarded as a cause of economic growth. It is sensible, therefore, for a government to spend more to increase economic growth as it is good for its country. To what extent do you agree with this argument?",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6120,7 +6120,7 @@ AO3 Evaluation (max 6 marks)
     variant: "May/June",
     questionNumber: "5",
     topic: SyllabusTopic.MACROECONOMY_AL,
-  chapter: "9.1 The circular flow of income",
+  "chapter": "9.1 The circular flow of income",
     maxMarks: 20,
     questionText: "National income statistics are often used as a measure of the standard of living. Consider to what extent national income statistics can be used to compare the standard of living between low-incomes and high-income and countries.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6141,7 +6141,7 @@ Alternative measures to develop the extent national income statistics can be use
     variant: "Oct/Nov",
     questionNumber: "2",
     topic: SyllabusTopic.GOVT_MICRO_AL,
-  chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+  "chapter": "8.1 Government policies to achieve efficient resource allocation and correct market failure",
     maxMarks: 20,
     questionText: "Governments in many countries are promoting policies that reduce the impact of the negative externalities. Evaluate, using appropriate diagram(s), the extent to which two policies used to reduce negative externalities can also improve allocative efficiency.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6163,7 +6163,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "3",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.6 Different market structures",
+  "chapter": "7.6 Different market structures",
     maxMarks: 20,
     questionText: "Evaluate the consequences for the price and output of a firm if it changes its objective from profit maximisation to sales maximisation as a response to the principal-agent problem.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6187,7 +6187,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.MACROECONOMY_AL,
-  chapter: "9.3 Employment/unemployment",
+  "chapter": "9.3 Employment/unemployment",
     maxMarks: 20,
     questionText: "In periods of rising and persistent inflation, consumers and workers change their expectations of the future rate of inflation. Evaluate, with the help of a diagram(s), the consequences of these changes of expectations for fiscal policy.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6216,7 +6216,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.6 Globalisation",
+  "chapter": "11.6 Globalisation",
     maxMarks: 20,
     questionText: "In recent years many countries have joined or established a free trade area (FTA). Evaluate, with the help of a diagram(s), whether membership of an FTA is always beneficial to a country.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6248,7 +6248,7 @@ Macroeconomic:
     variant: "Oct/Nov",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.1 Utility",
+  "chapter": "7.1 Utility",
     maxMarks: 20,
     questionText: "Evaluate whether marginal utility theory can fully explain the link between the changing price of a good and quantity demanded of that good.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6271,7 +6271,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "3",
     topic: SyllabusTopic.GOVT_MICRO_AL,
-  chapter: "8.1 Government policies to achieve efficient resource allocation and correct market failure",
+  "chapter": "8.1 Government policies to achieve efficient resource allocation and correct market failure",
     maxMarks: 20,
     questionText: "Privatisation is often required by the International Monetary Fund (IMF) and the World Bank before they are prepared to offer support to countries requiring loans, grants, debt relief and debt cancellation programs. Evaluate the view that privatisation will always improve the allocation of resources in a country.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6305,7 +6305,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.MACROECONOMY_AL,
-  chapter: "9.1 The circular flow of income",
+  "chapter": "9.1 The circular flow of income",
     maxMarks: 20,
     questionText: "The table below contains some key economic data for Mexico in 2020: \nGross National Income (GNI): 18.5 billion pesos\nnominal wages: +2.8%\ndisposable income: +1.2%\nunemployment rate: 4.2%\npopulation growth rate: 1.1%\ninflation rate: 3.4%\nEvaluate the use of these statistics in assessing the standard of living in Mexico in 2020.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6329,7 +6329,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.3 Economic development",
+  "chapter": "11.3 Economic development",
     maxMarks: 20,
     questionText: "Between 2010 and 2020, very low interest rates encouraged low-income countries to borrow money from foreign investors and governments to finance long-term economic growth. Evaluate this approach to promoting long-term economic growth.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6356,7 +6356,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "2",
     topic: SyllabusTopic.PRICE_SYSTEM_AL,
-  chapter: "7.4 Private costs and benefits, externalities and social costs and benefits",
+  "chapter": "7.4 Private costs and benefits, externalities and social costs and benefits",
     maxMarks: 20,
     questionText: "Negative externalities of production cause market failure. With the help of a diagram, assess the extent to which the introduction of indirect taxation is likely to address this cause of market failure.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6384,7 +6384,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "3",
     topic: SyllabusTopic.GOVT_MICRO_AL,
-  chapter: "8.3 Labour market forces and government intervention",
+  "chapter": "8.3 Labour market forces and government intervention",
     maxMarks: 20,
     questionText: "Wages in a perfectly competitive labour market will always be higher than wages in a monopsony labour market. With the help of a diagram evaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6411,7 +6411,7 @@ In some cases, the intervention of Trades Union might lead to an increase in the
     variant: "Oct/Nov",
     questionNumber: "4",
     topic: SyllabusTopic.MACROECONOMY_AL,
-  chapter: "9.4 Money and banking",
+  "chapter": "9.4 Money and banking",
     maxMarks: 20,
     questionText: "Central banks can control the money supply. An increase in the money supply will cause inflation, therefore central banks can control inflation. Evaluate this statement.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6436,7 +6436,7 @@ AO3 Evaluation
     variant: "Oct/Nov",
     questionNumber: "5",
     topic: SyllabusTopic.INTERNATIONAL_AL,
-  chapter: "11.6 Globalisation",
+  "chapter": "11.6 Globalisation",
     maxMarks: 20,
     questionText: "Some high-income countries have introduced high tariffs on some imports to reduce the negative effects of globalisation on their economies. With the help of a diagram, evaluate this policy.",
     markScheme: `AO1 Knowledge and understanding and AO2 Analysis
@@ -6475,7 +6475,7 @@ AO3 Evaluation
   "paper": "9708/42",
   "variant": "Feb/March",
   "questionNumber": "3",
-  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  topic: SyllabusTopic.GOVT_MICRO_AL,
   "chapter": "8.3 Labour market forces and government intervention",
   "maxMarks": 20,
   "questionText": "With the help of a diagram, evaluate the consequences of imposing an effective minimum wage on the employment level and the wage level in a monopsony labour market.",
@@ -6572,7 +6572,7 @@ AO3 Evaluation
   "paper": "9708/42",
   "variant": "May/June",
   "questionNumber": "3",
-  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  topic: SyllabusTopic.GOVT_MICRO_AL,
   "chapter": "8.3 Labour market forces and government intervention",
   "maxMarks": 20,
   "questionText": "The average wage of chief executives in large companies in a country is over 100 times greater than the average wage of their employees. Assess how economic theory can account for this variation in average wages.",
@@ -6620,7 +6620,7 @@ AO3 Evaluation
   "paper": "9708/43",
   "variant": "May/June",
   "questionNumber": "3",
-  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  topic: SyllabusTopic.GOVT_MICRO_AL,
   "chapter": "8.3 Labour market forces and government intervention",
   "maxMarks": 20,
   "questionText": "Evaluate whether the marginal revenue product theory (MRP) always explains the differences in wages.",
@@ -6766,7 +6766,7 @@ AO3 Evaluation
   "paper": "9708/43",
   "variant": "Oct/Nov",
   "questionNumber": "3",
-  topic: SyllabusTopic.PRICE_SYSTEM_AL,
+  topic: SyllabusTopic.GOVT_MICRO_AL,
   "chapter": "8.3 Labour market forces and government intervention",
   "maxMarks": 20,
   "questionText": "The average wage of chief executives in large companies in a country is over 100 times greater than the average wage of their employees. Assess how economic theory can account for this variation in average wages.",

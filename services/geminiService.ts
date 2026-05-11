@@ -28,29 +28,29 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
     **CRITICAL EXAMINER INSTRUCTIONS (MUST FOLLOW):**
     - **Context:** AS and A Level economics involves severe strictness ('压分'). Examiners look for flaws to DENY marks. A perfect essay must be entirely bulletproof.
     ${question.maxMarks === 20 
-      ? `- **Grading Structure (20 Marks Total):**
-      - **AO1+2 (Max 14, Level 3):** Detailed knowledge and understanding, fully developed explanations. Analysis is developed, detailed, and makes accurate and relevant use of economic concepts, theories, and tools (diagrams) which are fully explained. Well-organised, logical, and coherent.
-      - **AO3 (Max 6, Level 2):** Provides a justified conclusion/judgement addressing specific question requirements. Makes developed, reasoned, and well-supported evaluative comment(s).
+      ? `- **A-Level Grading Structure (20 Marks Total) - From Paper 4 Examiner Report 2023:**
+      - **AO1+2 (Max 14, Level 4):** You must reach Level 4 by providing clear/relevant definitions, accurately drawn and labeled diagrams (e.g., axes, P1, P2) which MUST be explicitly referred to and utilized in the text. The analysis must trace the FULL mechanism (e.g., monetary transmission mechanism, AD/AS framework) without logical gaps. Do not rely on generic learnt notes; adapt perfectly to the specific question.
+      - **AO3 (Max 6, Level 2):** You must reach Level 2 Evaluation by avoiding generic statements. Evaluative comments must have sufficient depth, synthesising alternative views (e.g., short-run vs long-run, magnitude, overriding macroeconomic aims) leading to a reasoned, well-supported final conclusion answering the question.
     
-    **To write a perfect 20-mark A-Level essay, your essay MUST strictly follow this 5-part structure:**
+    **To write a perfect 20-mark A-Level essay, your essay MUST strictly follow the 6-part framework:**
     1. **Introduction:**
        - Approach to the question (e.g. tell the examiner you recognize the core topics, like "Climate change is caused by negative production externality...").
        - Evaluation framework (e.g., "These policies can be addressed in terms of feasibility, effectiveness and side effects.")
        - Direct answer to the question in one sentence (e.g., "This essay argues that indirect tax is a more effective policy.")
     2. **Definition (AO1):**
        - Define ALL terms in the prompt, regardless of whether they are AS or A2 concepts.
-       - Even if no obvious keywords, define terms relevant to the chapter (e.g. for a labour question, define MRP and labour supply; for resource allocation, define productive/allocative efficiency).
-    3. **Thesis & Anti-thesis (AO2/AO3):**
-       - Always start with Thesis (directly answering the question), followed by Anti-thesis (the counter-arguments).
-       - Ensure you answer EVERY part/statement of the question. For example, if a statement says "A causes B, therefore C can control D", you must address "Does A cause B?" AND "Can C control D?".
-       - Each point MUST have a complete logical chain.
-       - Provide at least 2 to 3 fully explained Anti-thesis points.
-    4. **Synthesis (AO3):**
-       - Compare the differing views, policies, or impacts. Which is best and why? Usually structured around a "depends on" argument.
-    5. **Conclusion:**
+       - Even if no obvious keywords, define terms relevant to the chapter.
+    3. **Thesis (AO2):**
+       - Directly answer the question using the core theory. Explain FULL mechanisms step-by-step.
+       - MUST include a high-quality Diagram (described clearly) and utilize/refer to it continuously in your analysis.
+    4. **Anti-thesis (AO2/AO3):**
+       - The counter-arguments or alternative perspectives.
+       - Ensure you answer EVERY part/statement of the question. Provide at least 2 to 3 fully explained counter-points or alternative policies.
+    5. **Synthesis (AO3):**
+       - Compare the differing views, policies, or impacts in depth to reach A-Level AO3 Level 2 standard. Which is best and why? (e.g. depends on price elasticity, Marshall-Lerner condition, time lags).
+    6. **Conclusion:**
        - **State the final answer** to the question clearly.
-       - **Justify** using a summary of your key arguments.
-       - NEVER introduce new content in the conclusion. If you synthesized or provided an anti-thesis, it must have been fully explained earlier.`
+       - **Justify** using a summary of your key arguments without introducing new analytical points.`
       : `- **Marking Strategy:** 12-mark questions are graded based on Levels. To hit the maximum marks, your essay MUST satisfy:
       - **AO1+2 (Max 8, Level 3):** Detailed knowledge and understanding, fully developed explanations. Analysis is developed, detailed, and makes accurate and relevant use of economic concepts, theories, and tools (diagrams) which are fully explained. Well-organised, logical, and coherent.
       - **AO3 (Max 4, Level 2):** Provides a justified conclusion/judgement addressing specific question requirements. Makes developed, reasoned, and well-supported evaluative comment(s).
@@ -137,12 +137,13 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
       - Did they ignore plurals (e.g., only discussed one market when asked for "markets")? Penalize.
       - For policy questions, did they consider FEAST criteria (Feasibility, Effectiveness, Appropriateness, Side effects, Time lag)? Praise if yes, suggest if no.
       ${question.maxMarks === 20 ? 
-      `- For 20-mark A-Level questions specifically:
+      `- For 20-mark A-Level questions specifically (Based on Examiner Reports):
         - Did they start with an Introduction (Approach, Evaluation framework, direct Answer)? Praise if excellent, but point out if completely missing.
-        - Did they define ALL ALL ALL key terms? Penalize if they skipped obvious terms or chapter-based core terms (e.g. didn't define MRP for labour).
-        - Did they write Thesis and Anti-thesis addressing EVERY statement in the prompt? Penalize if they ignored half the prompt.
-        - Did they provide Synthesis (comparing views/policies usually with a depends-on framework)? Penalize if missing.
-        - Did their Conclusion ONLY state the final answer and justify using summary, without introducing new content? Penalize if they introduced new content.`
+        - Did they define ALL key terms clearly at the start? Penalize if they skipped obvious terms.
+        - DIAGRAM CHECK: Did they draw a diagram? Is it accurately drawn and labeled (e.g. axes, P1, P2)? Is it explicitly referred to and utilized in their written analysis? Penalize heavily if they just dump a diagram without utilizing it in the text.
+        - ANALYSIS CHECK: Did they trace out the FULL mechanism (e.g., monetary transmission mechanism, AD/AS shifts) or instead just provide descriptive/asserted jumps? Penalize over-reliance on generic learnt notes.
+        - Did they follow the 6-part framework ensuring Thesis, Anti-thesis, and Synthesis are present and fully answer EVERY statement in the prompt?
+        - Did they reach Level 2 EV by providing deep evaluative comments (e.g. comparing time lags, exact magnitudes, elasticity) rather than vague 'it depends' statements?`
       : `- For 12-mark questions specifically:
         - Did they define ALL key terms in AO1? Penalize if not.
         - Did they write exactly one point per paragraph in AO2? Penalize if they mixed points.
@@ -161,12 +162,13 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
     - **CRITICAL:** The Mark Scheme provides a list of *possible* valid points. The student DOES NOT need to cover every single point in the mark scheme.
     ${question.maxMarks === 20 
       ? `- **AO1 (Knowledge) + AO2 (Analysis):** Marks awarded via Level descriptors (Max 14 marks).
-          - Level 3 (11-14 marks): Detailed knowledge/understanding, fully developed explanations. Analysis is developed, detailed, makes accurate/relevant use of concepts. Well-organised.
-          - Level 2 (6-10 marks): Some relevant concepts, limited/overgeneralised explanations. Analysis generally accurate but little detail.
-          - Level 1 (1-5 marks): Few knowledge points, significant errors, descriptive analysis.
+          - Level 4 (12-14 marks): Excellent knowledge/understanding, fully developed analysis tracing full mechanisms (e.g., MTM, EV impact). Accurate, well-utilized diagrams integrated into text.
+          - Level 3 (9-11 marks): Good knowledge, generally developed explanations but may lack depth in some mechanisms. Diagrams present but may have minor omissions or weak text integration.
+          - Level 2 (6-8 marks): Some relevant concepts, limited/overgeneralised explanations. Descriptive rather than analytical. Diagrams unused or flawed.
+          - Level 1 (1-5 marks): Few knowledge points, significant errors, overly descriptive.
          - **AO3 (Evaluation):** Marks awarded via Level descriptors (Max 6 marks).
-          - Level 2 (4-6 marks): Justified conclusion addressing specific requirements. Developed, reasoned, well-supported evaluative comment(s).
-          - Level 1 (1-3 marks): Vague conclusion. Simple evaluative comments with no development.`
+          - Level 2 (4-6 marks): Justified conclusion addressing specific requirements. Developed, reasoned, well-supported evaluative comment(s) exploring magnitude, conflicts of aims, elasticity, etc.
+          - Level 1 (1-3 marks): Vague conclusion. Simple, generalized evaluative comments with little contextual development.`
       : question.maxMarks === 12 
       ? `- **AO1 (Knowledge) + AO2 (Analysis):** Marks awarded via Level descriptors (Max 8 marks).
           - Level 3 (6-8 marks): Detailed knowledge/understanding, fully developed explanations, developed and detailed analysis using economic concepts. Well-organised.
@@ -253,8 +255,8 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
     2. **Scoring:** Estimate marks based on CIE standards:
        - **CRITICAL:** The Mark Scheme provides a list of *possible* valid points. The student DOES NOT need to cover every single point in the mark scheme to get full marks.
        ${is20Mark
-         ? `- AO1 + AO2 combined (Max 14): Graded on a Level 1-3 scale. Detail and logical chains push them to Level 3 (11-14).
-- AO3 (Max 6): Graded on a Level 1-2 scale. Detailed, well-supported conclusions push them to Level 2 (4-6).`
+         ? `- AO1 + AO2 combined (Max 14): Graded on a Level 1-4 scale. Full logical mechanisms (like MTM) and explicitly utilized, well-labeled diagrams with strong adaptation to the prompt push them to Level 4 (12-14).
+- AO3 (Max 6): Graded on a Level 1-2 scale. Detailed, well-supported conclusions and high-level synthesis (magnitude, overriding aims, SR vs LR) push them to Level 2 (4-6). Avoid generic 'it depends' templates.`
          : is12Mark 
          ? `- AO1 + AO2 combined (Max 8): Graded on a Level 1-3 scale. Detail and logical chains push them to Level 3 (6-8).
 - AO3 (Max 4): Graded on a Level 1-2 scale. Detailed, well-supported conclusions push them to Level 2 (3-4).`
@@ -262,10 +264,10 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
     
     3. **Advice:** Give ONE short, encouraging sentence on what to do next (e.g. "Good definition, now draw the AD/AS diagram" or "Logic Gap: Explain WHY consumption falls").
        ${is20Mark ? `
-       - For 20-mark essays, remind them to structure their essay correctly (Intro, Definition, Thesis/Anti-thesis, Synthesis, Conclusion).
-       - Ensure they define all terms (even AS-level ones).
-       - Ensure they are answering EVERY part of the statement if applicable.
-       - Remind them to compare policies/arguments in synthesis instead of just using generic 'depends on' phrasing.
+       - For 20-mark A-Level essays, remind them to structure their essay using the 6-part framework (Intro, Definition, Thesis, Anti-thesis, Synthesis, Conclusion).
+       - Check if they are actually *utilizing* diagrams in their analysis text, not just dumping them. Diagrams must be fully labeled.
+       - Look for gaps in their analytical mechanisms (e.g. skipping steps in explaining a policy's impact).
+       - Ensure they evaluate specific contexts (reaching Level 2 AO3) rather than using generic templates.
        ` : is12Mark ? `
        - Ensure they define ALL key terms for AO1.
        - Ensure each AO2 paragraph has exactly one point, starting with a topic sentence, followed by a complete logical chain and economic terms.
@@ -514,12 +516,13 @@ export const analyzeExamStrategy = async (marks: number, questions: Question[]):
     Address:
     1. Structure: How many paragraphs? What should each contain?
        ${marks === 20 ? `
-       - 20-mark A Level essays MUST follow a 5-part structure: Introduction, Definition, Thesis/Anti-thesis, Synthesis, Conclusion.
+       - 20-mark A Level essays MUST follow a 6-part structure: Introduction, Definition, Thesis, Anti-thesis, Synthesis, Conclusion.
        - The Introduction states the approach, evaluation framework and answers directly.
+       - Every thesis should include a well-drawn, labeled diagram explicitly referenced in the analysis. Complete mechanism chains (e.g., MTM, AD/AS) MUST be demonstrated.
        - EVERY part of the statement must be addressed with Thesis and Counter-arguments.
-       - A summary/depends-on synthesis must compare arguments directly.
+       - A synthesis must dive deep into evaluation (reaching Level 2) and compare arguments specifically based on time lags, magnitude, elasticity, or conflicting macroeconomic aims.
        - The Conclusion summarizes without introducing new material.
-       - CRITICAL: The Mark Scheme lists *possible* points. Students DO NOT need to cover every point to get full marks, as long as they meet the required length of well-developed points.`
+       - CRITICAL: The Mark Scheme lists *possible* points. Students DO NOT need to cover every point to get full marks, as long as they provide well-developed, analytical points correctly tailored to the specific question context.`
        : marks === 12 ? `
        - AO1 MUST define ALL key terms in the question.
        - Each AO2 paragraph MUST contain ONLY ONE point, starting with a topic sentence, followed by a complete logical chain and economic terms.
