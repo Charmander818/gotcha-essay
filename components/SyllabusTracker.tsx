@@ -2,9 +2,11 @@
 import React, { useState } from 'react';
 import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
 import { SyllabusStatus, LogicChainItem, CustomSyllabusPoint } from '../types';
-import { generateSyllabusLogicChain } from '../services/geminiService';
+import { generateSyllabusLogicChain, generateWorksheet } from '../services/geminiService';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { PREFILLED_DEFINITIONS } from '../syllabusDefinitions';
+import { PREFILLED_WORKSHEETS } from '../worksheetData';
 
 interface Props {
   statusMap: Record<string, SyllabusStatus>;
@@ -33,6 +35,14 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
   const [newChainContext, setNewChainContext] = useState("");
   const [chainLoading, setChainLoading] = useState(false);
   const [chainError, setChainError] = useState(false);
+
+  // Worksheet State
+  const [worksheetModalData, setWorksheetModalData] = useState<{ sectionId: string, subTitle: string, points: string[] } | null>(null);
+  const [worksheetInstructions, setWorksheetInstructions] = useState("");
+  const [isGeneratingWorksheet, setIsGeneratingWorksheet] = useState(false);
+  const [worksheetContent, setWorksheetContent] = useState("");
+  const [worksheetAnswerKey, setWorksheetAnswerKey] = useState("");
+  const [worksheetTab, setWorksheetTab] = useState<'worksheet' | 'answerKey'>('worksheet');
 
   const toggleSection = (id: string) => {
     setExpandedSections(prev => ({ ...prev, [id]: !prev[id] }));
@@ -166,6 +176,111 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
           setNewPointText("");
           setAddingToSubsection(null);
       }
+  };
+
+  const handleGenerateWorksheet = async () => {
+    if (!worksheetModalData) return;
+    setIsGeneratingWorksheet(true);
+    setWorksheetContent("");
+
+    try {
+      const chapterName = `${worksheetModalData.sectionId} - ${worksheetModalData.subTitle}`;
+      const points = worksheetModalData.points.join("\n");
+      
+      let syllabusContent = "";
+      worksheetModalData.points.forEach((point, i) => {
+          const uniqueId = `${worksheetModalData.sectionId}-${worksheetModalData.subTitle}-${i}`;
+          const data = statusMap[uniqueId];
+          let def = data?.ao1Definition || data?.ao1Notes;
+          
+          if (!def && PREFILLED_DEFINITIONS[uniqueId]) {
+              def = PREFILLED_DEFINITIONS[uniqueId];
+          }
+          if (!def) def = "(No definition saved)";
+
+          syllabusContent += `Point: ${point}\nDefinition: ${def}\n\n`;
+      });
+
+      const result = await generateWorksheet(chapterName, points, syllabusContent, worksheetInstructions);
+      setWorksheetContent(result.worksheet);
+      setWorksheetAnswerKey(result.answerKey);
+      setWorksheetTab('worksheet');
+      
+      const worksheetKey = `WORKSHEET-${worksheetModalData.sectionId}-${worksheetModalData.subTitle}`;
+      onUpdateStatus(prev => ({
+        ...prev,
+        [worksheetKey]: {
+          ...prev[worksheetKey],
+          status: prev[worksheetKey]?.status || null,
+          worksheetContent: result.worksheet,
+          worksheetAnswerKey: result.answerKey
+        }
+      }));
+    } catch(e) {
+      alert("Failed to generate worksheet.");
+    }
+    setIsGeneratingWorksheet(false);
+  };
+
+  const handlePrintWorksheet = () => {
+    const printWindow = window.open('', '_blank');
+    if (printWindow) {
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>Worksheet: ${worksheetModalData?.subTitle}</title>
+            <style>
+              body { font-family: 'Inter', sans-serif; padding: 40px; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; }
+              h1, h2, h3 { color: #1e3a8a; }
+              table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+              th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+              ol, ul { margin-bottom: 20px; }
+              .markdown-body { padding: 20px; }
+              @media print {
+                body { padding: 0; }
+                button { display: none; }
+              }
+            </style>
+          </head>
+          <body>
+            <button onclick="window.print()" style="padding: 10px 20px; margin-bottom: 20px; cursor: pointer; background: #6366f1; color: white; border: none; border-radius: 4px;">Print Worksheet</button>
+            <div id="content"></div>
+          </body>
+        </html>
+      `);
+      
+      const contentDiv = document.getElementById('rendered-worksheet');
+      if (contentDiv) {
+         printWindow.document.getElementById('content')!.innerHTML = contentDiv.innerHTML;
+      }
+      printWindow.document.close();
+    }
+  };
+
+  const handleExportWorksheetWord = () => {
+    if (!worksheetModalData) return;
+    const contentDiv = document.getElementById('rendered-worksheet');
+    if (!contentDiv) return;
+
+    const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>${worksheetModalData.subTitle} Worksheet</title>
+    <style>
+      body { font-family: 'Calibri', sans-serif; font-size: 11pt; }
+      table { border-collapse: collapse; width: 100%; margin-bottom: 20pt; }
+      table, th, td { border: 1pt solid black; }
+      th, td { padding: 5pt; text-align: left; }
+      h1, h2, h3 { color: #2e74b5; }
+    </style>
+    </head><body>`;
+    const footer = "</body></html>";
+    const sourceHTML = header + contentDiv.innerHTML + footer;
+    
+    const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+    const fileDownload = document.createElement("a");
+    document.body.appendChild(fileDownload);
+    fileDownload.href = source;
+    fileDownload.download = `${worksheetModalData.subTitle}_Worksheet_${worksheetTab}.doc`;
+    fileDownload.click();
+    document.body.removeChild(fileDownload);
   };
 
   const handleExportHandbook = (sectionId: string, subTitle: string, points: string[]) => {
@@ -371,14 +486,35 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                             </button>
                             
                             {isSubExpanded && (
-                                <button 
-                                    onClick={() => handleExportHandbook(section.id, sub.title, sub.points)}
-                                    className="p-1.5 bg-white text-blue-600 rounded hover:bg-blue-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1"
-                                    title="Export Revision Handbook"
-                                >
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                                    Handbook
-                                </button>
+                                <div className="flex gap-2">
+                                    <button 
+                                        onClick={(e) => { 
+                                          e.stopPropagation(); 
+                                          setWorksheetModalData({ sectionId: section.id, subTitle: sub.title, points: sub.points });
+                                          
+                                          const key = `WORKSHEET-${section.id}-${sub.title}`;
+                                          const existingData = statusMap[key];
+                                          const prefilledData = PREFILLED_WORKSHEETS[key];
+                                          setWorksheetContent(existingData?.worksheetContent || prefilledData?.worksheetContent || ""); 
+                                          setWorksheetAnswerKey(existingData?.worksheetAnswerKey || prefilledData?.worksheetAnswerKey || "");
+                                          setWorksheetInstructions("");
+                                          setWorksheetTab('worksheet');
+                                        }}
+                                        className="p-1.5 bg-white text-purple-600 rounded hover:bg-purple-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1"
+                                        title="Generate Worksheet"
+                                    >
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                                        Worksheet
+                                    </button>
+                                    <button 
+                                        onClick={() => handleExportHandbook(section.id, sub.title, sub.points)}
+                                        className="p-1.5 bg-white text-blue-600 rounded hover:bg-blue-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1"
+                                        title="Export Revision Handbook"
+                                    >
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                                        Handbook
+                                    </button>
+                                </div>
                             )}
                         </div>
                         
@@ -538,6 +674,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                           <div className="bg-white p-3 rounded border border-green-100">
                               <div className="prose prose-blue max-w-none text-sm leading-7">
                                   <ReactMarkdown 
+                                    remarkPlugins={[remarkGfm]}
                                     components={{
                                         p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
                                         li: ({node, ...props}) => <li className="mb-1" {...props} />
@@ -584,6 +721,96 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
           </div>
         </div>
       )}
+
+      {/* Worksheet Generator Modal */}
+      {worksheetModalData && (
+        <div className="fixed inset-0 bg-slate-900/50 flex items-center justify-center z-[100] p-4">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] flex flex-col">
+            <div className="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50 rounded-t-xl">
+              <div>
+                <h3 className="text-lg font-bold text-slate-800">Generate Worksheet for {worksheetModalData.subTitle}</h3>
+                <p className="text-xs text-slate-500">Provide textbook materials below to generate a student worksheet based on syllabus points.</p>
+              </div>
+              <button onClick={() => setWorksheetModalData(null)} className="text-slate-400 hover:text-red-500 transition-colors">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+            </div>
+            
+            <div className="flex-1 overflow-hidden flex flex-col md:flex-row">
+              <div className="w-full md:w-1/3 p-6 border-r border-slate-200 overflow-y-auto space-y-4">
+                <div>
+                  <p className="text-sm text-slate-600 mb-4">
+                    The AI will use the AO1 definitions and AO2 logic chains you have saved in this section to generate the worksheet.
+                  </p>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Additional Instructions (Optional)</label>
+                  <textarea 
+                    className="w-full h-32 p-3 text-sm border border-slate-300 rounded resize-none focus:ring-2 focus:ring-purple-500 outline-none"
+                    placeholder="E.g., Include multiple-choice questions..."
+                    value={worksheetInstructions}
+                    onChange={(e) => setWorksheetInstructions(e.target.value)}
+                  />
+                </div>
+                <button 
+                  onClick={handleGenerateWorksheet}
+                  disabled={isGeneratingWorksheet}
+                  className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded transition-colors disabled:opacity-50"
+                >
+                  {isGeneratingWorksheet ? "Generating..." : "Generate Worksheet"}
+                </button>
+              </div>
+              
+              <div className="w-full md:w-2/3 p-6 bg-slate-50 overflow-y-auto flex flex-col">
+                {isGeneratingWorksheet ? (
+                  <div className="flex-1 flex flex-col items-center justify-center text-purple-500">
+                    <svg className="animate-spin w-8 h-8 mb-4 border-t-2 border-purple-500 rounded-full border-r-transparent" viewBox="0 0 24 24"></svg>
+                    <p className="font-medium">Synthesizing textbook content and syllabus points...</p>
+                  </div>
+                ) : worksheetContent ? (
+                  <>
+                    <div className="flex justify-between items-center mb-4">
+                      <div className="flex bg-slate-200 p-1 rounded-lg">
+                        <button 
+                          onClick={() => setWorksheetTab('worksheet')}
+                          className={`px-4 py-1.5 text-xs font-bold rounded-md transition-colors ${worksheetTab === 'worksheet' ? 'bg-white text-purple-600 shadow-sm' : 'text-slate-600 hover:text-slate-800'}`}
+                        >
+                          Worksheet
+                        </button>
+                        <button 
+                          onClick={() => setWorksheetTab('answerKey')}
+                          className={`px-4 py-1.5 text-xs font-bold rounded-md transition-colors ${worksheetTab === 'answerKey' ? 'bg-white text-purple-600 shadow-sm' : 'text-slate-600 hover:text-slate-800'}`}
+                        >
+                          Answer Key
+                        </button>
+                      </div>
+                      <div className="flex gap-2">
+                        <button onClick={handleExportWorksheetWord} className="px-3 py-1.5 bg-blue-100 text-blue-700 text-xs font-bold rounded shadow-sm hover:bg-blue-200 flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                          Word
+                        </button>
+                        <button onClick={handlePrintWorksheet} className="px-3 py-1.5 bg-slate-200 text-slate-800 text-xs font-bold rounded shadow-sm hover:bg-slate-300 flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
+                          Print
+                        </button>
+                      </div>
+                    </div>
+                    <div id="rendered-worksheet" className="prose prose-sm max-w-none bg-white p-6 rounded border border-slate-200 min-h-[400px]">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {worksheetTab === 'worksheet' ? worksheetContent : worksheetAnswerKey}
+                      </ReactMarkdown>
+                    </div>
+                  </>
+                ) : (
+                  <div className="flex-1 flex flex-col items-center justify-center text-slate-400 p-8 text-center">
+                    <svg className="w-12 h-12 mb-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    <p>Click "Generate" to create a worksheet from your saved syllabus content.</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

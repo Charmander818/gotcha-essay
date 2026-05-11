@@ -14,10 +14,11 @@ interface Props {
 type Tab = 'checklist' | 'definitions';
 
 const SyllabusExportModal: React.FC<Props> = ({ isOpen, onClose, baseChecklist, customPoints, currentStatus, baseDefinitions }) => {
-  const [activeTab, setActiveTab] = useState<Tab>('checklist');
+  const [activeTab, setActiveTab] = useState<'checklist' | 'definitions' | 'worksheets'>('checklist');
   const [copied, setCopied] = useState(false);
   const [generatedChecklistCode, setGeneratedChecklistCode] = useState("");
   const [generatedDefCode, setGeneratedDefCode] = useState("");
+  const [generatedWorksheetCode, setGeneratedWorksheetCode] = useState("");
 
   useEffect(() => {
     if (isOpen) {
@@ -29,6 +30,7 @@ const SyllabusExportModal: React.FC<Props> = ({ isOpen, onClose, baseChecklist, 
     // 1. Generate Checklist Code
     // We will accumulate definitions here as we calculate the new structure
     const exportDefinitions: Record<string, string> = { ...baseDefinitions };
+    const exportWorksheets: Record<string, { worksheetContent: string, worksheetAnswerKey: string }> = {};
 
     const mergedSections = baseChecklist.map(section => {
         const mergedSubsections = section.subsections.map(sub => {
@@ -79,6 +81,19 @@ const SyllabusExportModal: React.FC<Props> = ({ isOpen, onClose, baseChecklist, 
         return { ...section, subsections: mergedSubsections };
     });
 
+    // Capture Worksheets
+    Object.keys(currentStatus).forEach(key => {
+        if (key.startsWith("WORKSHEET-")) {
+            const data = currentStatus[key];
+            if (data.worksheetContent || data.worksheetAnswerKey) {
+                exportWorksheets[key] = {
+                    worksheetContent: data.worksheetContent || "",
+                    worksheetAnswerKey: data.worksheetAnswerKey || ""
+                };
+            }
+        }
+    });
+
     const checklistCode = `
 import { SyllabusSection } from "./types";
 
@@ -94,12 +109,18 @@ export const SYLLABUS_CHECKLIST: SyllabusSection[] = ${JSON.stringify(mergedSect
 export const PREFILLED_DEFINITIONS: Record<string, string> = ${JSON.stringify(exportDefinitions, null, 2)};
 `;
     setGeneratedDefCode(defCode);
+
+    // 3. Generate Worksheets Code
+    const worksheetCodeStr = `
+export const PREFILLED_WORKSHEETS: Record<string, { worksheetContent: string, worksheetAnswerKey: string }> = ${JSON.stringify(exportWorksheets, null, 2)};
+`;
+    setGeneratedWorksheetCode(worksheetCodeStr);
   };
 
   if (!isOpen) return null;
 
-  const activeCode = activeTab === 'checklist' ? generatedChecklistCode : generatedDefCode;
-  const filename = activeTab === 'checklist' ? 'syllabusChecklistData.ts' : 'syllabusDefinitions.ts';
+  const activeCode = activeTab === 'checklist' ? generatedChecklistCode : activeTab === 'definitions' ? generatedDefCode : generatedWorksheetCode;
+  const filename = activeTab === 'checklist' ? 'syllabusChecklistData.ts' : activeTab === 'definitions' ? 'syllabusDefinitions.ts' : 'worksheetData.ts';
 
   const handleCopy = () => {
     navigator.clipboard.writeText(activeCode);
@@ -136,6 +157,12 @@ export const PREFILLED_DEFINITIONS: Record<string, string> = ${JSON.stringify(ex
                  className={`px-4 py-2 text-sm font-bold rounded-lg border-b-2 transition-colors ${activeTab === 'definitions' ? 'border-purple-600 text-purple-600 bg-purple-50' : 'border-transparent text-slate-500 hover:bg-slate-50'}`}
                >
                    2. syllabusDefinitions.ts
+               </button>
+               <button 
+                 onClick={() => { setActiveTab('worksheets'); setCopied(false); }}
+                 className={`px-4 py-2 text-sm font-bold rounded-lg border-b-2 transition-colors ${activeTab === 'worksheets' ? 'border-green-600 text-green-600 bg-green-50' : 'border-transparent text-slate-500 hover:bg-slate-50'}`}
+               >
+                   3. worksheetData.ts
                </button>
            </div>
         </div>

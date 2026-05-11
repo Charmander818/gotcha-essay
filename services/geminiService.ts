@@ -642,6 +642,58 @@ export const evaluateSyllabusChain = async (topicTitle: string, point: string, s
   }
 };
 
+export const generateWorksheet = async (chapter: string, syllabusPoints: string, syllabusContent: string, additionalInstructions: string): Promise<{ worksheet: string, answerKey: string }> => {
+  try {
+    checkForApiKey();
+    const prompt = `
+      You are an expert Cambridge A-Level Economics Teacher.
+      Your task is to generate a comprehensive, printable student worksheet (homework assignment) AND its corresponding Answer Key, based strictly on the provided chapter, syllabus learning objectives, and syllabus content (definitions).
+
+      **Chapter:** ${chapter}
+      
+      **Syllabus Points (Learning Objectives):**
+      ${syllabusPoints}
+      
+      **Syllabus Content (Definitions / Notes):**
+      ${syllabusContent}
+      
+      **Additional Instructions:**
+      ${additionalInstructions || "None"}
+      
+      **Requirements for the Worksheet:**
+      1. Structure the worksheet clearly so a student can print it and fill it in.
+      2. Include a "Definitions (AO1)" section where students must define the key terms. You MUST use the exact syllabus content provided. DO NOT add any economic terms or concepts not present in the provided syllabus points and content.
+      3. The worksheet MUST cover ALL the syllabus points and ALL the provided AO1 definitions. Do not leave any knowledge gaps.
+      4. Include an "Economic Logic Chains (AO2)" section. Provide the start and end of a phenomenon, or partial chains, and ask the student to fill in the missing intermediate steps.
+      5. Include a "Mind Map / Synthesis" section or an essay planning section.
+      6. Use standard unicode arrows (→, ↑, ↓) instead of LaTeX for chains if applicable.
+      
+      **CRITICAL OUTPUT FORMAT:**
+      You MUST output the worksheet, then exactly this delimiter:
+      ===ANSWER_KEY===
+      Then output the answer key for the worksheet (which would be used by the teacher for grading).
+      Output everything in clean Markdown format.
+      Make sure to use Markdown tables properly (include newlines before the table starts).
+    `;
+
+    const ai = getAI();
+    const response = await ai.models.generateContent({
+      model: 'gemini-3-flash-preview',
+      contents: prompt,
+    });
+    
+    const text = response.text || "";
+    const parts = text.split("===ANSWER_KEY===");
+    return {
+      worksheet: parts[0] ? parts[0].trim() : "Failed to generate worksheet.",
+      answerKey: parts[1] ? parts[1].trim() : "Answer key not generated."
+    };
+  } catch (error) {
+    console.error("Worksheet Generation Error:", error);
+    throw new Error("Failed to generate worksheet.");
+  }
+};
+
 export const generateChatResponse = async (prompt: string): Promise<string> => {
   try {
     checkForApiKey();

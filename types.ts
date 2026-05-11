@@ -113,6 +113,10 @@ export interface SyllabusStatus {
   ao1Definition?: string; // Formal textbook definition
   ao2Chains?: LogicChainItem[]; // List of specific logic chains
   
+  // Worksheet data (typically stored with a special key like WORKSHEET-{sectionId}-{subTitle})
+  worksheetContent?: string;
+  worksheetAnswerKey?: string;
+  
   // Legacy fields (kept for backward compatibility with existing saves)
   userChain?: string;
   modelChain?: string;

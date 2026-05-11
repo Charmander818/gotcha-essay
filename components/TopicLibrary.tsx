@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { generateChatResponse } from '../services/geminiService';
 import { Question } from '../types';
 
@@ -139,7 +140,7 @@ Make it dense, practical, and highly relevant for A-Level exams. No fluff, just 
       <div className="flex-1 overflow-auto bg-white border border-slate-200 rounded-xl shadow-sm p-8">
         {libraries[selectedTopic] ? (
           <div className="markdown-body prose prose-slate prose-headings:text-slate-800 prose-a:text-blue-600 max-w-none">
-            <ReactMarkdown>{libraries[selectedTopic]}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{libraries[selectedTopic]}</ReactMarkdown>
           </div>
         ) : (
           <div className="h-full flex flex-col items-center justify-center text-slate-400">
