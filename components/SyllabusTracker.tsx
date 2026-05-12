@@ -190,7 +190,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
       let syllabusContent = "";
       
       const sectionKey = `SUBSECTION-${worksheetModalData.sectionId}-${worksheetModalData.subTitle}`;
-      const examGuide = statusMap[sectionKey]?.examGuide || "";
+      const examGuide = statusMap[sectionKey]?.ao1Definition || statusMap[sectionKey]?.examGuide || "";
       if (examGuide) {
           syllabusContent += `EXAM GUIDE (Exam requirements and tips):\n${examGuide}\n\n`;
       }
@@ -311,7 +311,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
       let html = `<h1 style="color:#1e3a8a; border-bottom: 2px solid #1e3a8a;">Revision Handbook: ${subTitle}</h1>`;
       
       const sectionKey = `SUBSECTION-${sectionId}-${subTitle}`;
-      const examGuide = statusMap[sectionKey]?.examGuide || "";
+      const examGuide = statusMap[sectionKey]?.ao1Definition || statusMap[sectionKey]?.examGuide || "";
       if (examGuide) {
           html += `<div style="background-color: #fffbeb; border: 1px solid #fcd34d; padding: 15px; margin-bottom: 20px; border-radius: 6px;">
               <h2 style="color: #d97706; font-size: 14pt; margin-top: 0; margin-bottom: 10px;">Exam Guide</h2>
@@ -607,29 +607,15 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                                 </button>
                             )}
 
-                            {/* Exam Guide */}
+                            {/* Exam Guide Row */}
                             <div className="mt-6 pt-4 border-t border-slate-200">
-                                <h5 className="text-xs font-bold text-amber-600 uppercase mb-2 flex items-center gap-2">
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-                                    Exam Guide
-                                </h5>
-                                <p className="text-[10px] text-slate-500 mb-2">Paste exam tips, past paper requirements, or specific test points here. This will be used when generating worksheets.</p>
-                                <textarea 
-                                    className="w-full text-sm p-3 border border-amber-200 bg-amber-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
-                                    placeholder="Enter exam guide..."
-                                    rows={4}
-                                    value={statusMap[`SUBSECTION-${section.id}-${sub.title}`]?.examGuide || ""}
-                                    onChange={(e) => {
-                                        const sectionKey = `SUBSECTION-${section.id}-${sub.title}`;
-                                        onUpdateStatus(prev => ({
-                                            ...prev,
-                                            [sectionKey]: {
-                                                ...prev[sectionKey] || { status: null },
-                                                examGuide: e.target.value
-                                            }
-                                        }));
-                                    }}
-                                />
+                                <h5 className="text-[10px] font-bold text-amber-600 uppercase mb-2">Exam Guide (Click to Edit)</h5>
+                                {renderPointRow(
+                                    section.id, 
+                                    sub.title, 
+                                    `SUBSECTION-${section.id}-${sub.title}`, 
+                                    `Exam Guide: ${sub.title}`
+                                )}
                             </div>
                           </div>
                         )}
