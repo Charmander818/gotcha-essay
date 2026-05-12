@@ -117,6 +117,9 @@ export interface SyllabusStatus {
   worksheetContent?: string;
   worksheetAnswerKey?: string;
   
+  // Subsection level data
+  examGuide?: string;
+  
   // Legacy fields (kept for backward compatibility with existing saves)
   userChain?: string;
   modelChain?: string;
