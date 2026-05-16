@@ -105,12 +105,12 @@
           "1.6.2 Nature and definition of public goods: the problems of public goods provision, including free riders",
           "1.6.2 Nature and definition of public goods: quasi-public goods",
           "1.6.2 Nature and definition of public goods: application to examples",
-          "1.6.3 Nature and definition of merit goods: under-consumption as a result of imperfect information in the market: the meaning of merit goods",
-          "1.6.3 Nature and definition of merit goods: under-consumption as a result of imperfect information in the market: why there is under-consumption due to imperfect information in the market",
-          "1.6.3 Nature and definition of merit goods: under-consumption as a result of imperfect information in the market: application to examples",
-          "1.6.4 Nature and definition of demerit goods: overconsumption as a result of imperfect information in the market: the meaning of demerit goods",
-          "1.6.4 Nature and definition of demerit goods: overconsumption as a result of imperfect information in the market: why there is over-consumption due to imperfect information in the market",
-          "1.6.4 Nature and definition of demerit goods: overconsumption as a result of imperfect information in the market: application to examples"
+          "1.6.3 Nature and definition of merit goods - under-consumption as a result of imperfect information in the market: the meaning of merit goods",
+          "1.6.3 Nature and definition of merit goods - under-consumption as a result of imperfect information in the market: why there is under-consumption due to imperfect information in the market",
+          "1.6.3 Nature and definition of merit goods - under-consumption as a result of imperfect information in the market: application to examples",
+          "1.6.4 Nature and definition of demerit goods - overconsumption as a result of imperfect information in the market: the meaning of demerit goods",
+          "1.6.4 Nature and definition of demerit goods - overconsumption as a result of imperfect information in the market: why there is over-consumption due to imperfect information in the market",
+          "1.6.4 Nature and definition of demerit goods - overconsumption as a result of imperfect information in the market: application to examples"
         ]
       }
     ]
@@ -168,13 +168,10 @@
           "2.2.3 Significance of relative percentage changes, the size and sign of the coefficient of: cross elasticity of demand",
           "2.2.3 Significance of relative percentage changes, the size and sign of the coefficient of: how the relative size of price, quantity and income changes affects the size of elasticity coefficients",
           "2.2.3 Significance of relative percentage changes, the size and sign of the coefficient of: the significance of the sign in the coefficients of YED and XED",
-          "2.2.4 Descriptions of elasticity values: perfectly elastic, (highly) elastic, unitary elasticity, (highly) inelastic, perfectly inelastic: elastic and inelastic",
-          "2.2.4 Descriptions of elasticity values: perfectly elastic, (highly) elastic, unitary elasticity, (highly) inelastic, perfectly inelastic: perfectly elastic and perfectly inelastic",
-          "2.2.4 Descriptions of elasticity values: perfectly elastic, (highly) elastic, unitary elasticity, (highly) inelastic, perfectly inelastic: unit elasticity",
+          "2.2.4 Descriptions of elasticity values - perfectly elastic, (highly) elastic, unitary elasticity, (highly) inelastic, perfectly inelastic: elastic and inelastic",
+          "2.2.4 Descriptions of elasticity values - perfectly elastic, (highly) elastic, unitary elasticity, (highly) inelastic, perfectly inelastic: perfectly elastic and perfectly inelastic",
+          "2.2.4 Descriptions of elasticity values - perfectly elastic, (highly) elastic, unitary elasticity, (highly) inelastic, perfectly inelastic: unit elasticity",
           "2.2.5 Variation in price elasticity along the length of a straight-line demand curve: how PED varies with a downward movement along the length of a straight-line demand curve",
-          "2.2.6 Factors affecting: price elasticity of demand",
-          "2.2.6 Factors affecting: income elasticity of demand",
-          "2.2.6 Factors affecting: cross elasticity of demand",
           "2.2.6 Factors affecting: PED: availability and attractiveness of substitutes, relative expense of the product and time period",
           "2.2.6 Factors affecting: YED: whether the good is a normal good or an inferior good or a necessity",
           "2.2.6 Factors affecting: XED: the extent to which two goods are substitutes or complements",
@@ -218,9 +215,7 @@
           "2.4.3 Relationships between different markets: alternative demand (substitutes)",
           "2.4.3 Relationships between different markets: derived demand",
           "2.4.3 Relationships between different markets: joint supply",
-          "2.4.3 Relationships between different markets: alternative demand",
-          "2.4.3 Relationships between different markets: joint demand",
-          "2.4.4 Functions of price in resource allocation: rationing, signalling (transmission of preferences) and incentivising: the role of prices in the allocation of resources"
+          "2.4.4 Functions of price in resource allocation - rationing, signalling (transmission of preferences) and incentivising: the role of prices in the allocation of resources"
         ]
       },
       {
@@ -268,7 +263,9 @@
           "3.2.4 Maximum and minimum prices: the effects of maximum price control in a market",
           "3.2.4 Maximum and minimum prices: why governments impose a minimum price in a market",
           "3.2.4 Maximum and minimum prices: the effects of minimum price control in a market",
-          "3.2.5 Buffer stock schemes why a buffer stock scheme is needed: how a buffer stock scheme works"
+          "3.2.5 Buffer stock schemes : why a buffer stock scheme is needed",
+          "3.2.5 Buffer stock schemes : how a buffer stock scheme works",
+          "3.2.6 Provision of information : how governments provide information"
         ]
       },
       {
@@ -281,9 +278,6 @@
           "3.3.2 Measuring income and wealth inequality: the Gini coefficient",
           "3.3.3 Economic reasons for inequality of income and wealth: the economic reasons for inequality of income",
           "3.3.3 Economic reasons for inequality of income and wealth: the economic reasons for inequality of wealth",
-          "3.3.4 Policies to redistribute income and wealth: minimum wage",
-          "3.3.4 Policies to redistribute income and wealth: transfer payments",
-          "3.3.4 Policies to redistribute income and wealth: progressive income taxes, inheritance and capital taxes",
           "3.3.4 Policies to redistribute income and wealth: state provision of essential goods and services",
           "3.3.4 Policies to redistribute income and wealth: the concept of a minimum wage",
           "3.3.4 Policies to redistribute income and wealth: how transfer payments work",
@@ -303,9 +297,6 @@
         "title": "4.1 National income statistics",
         "points": [
           "4.1.1 Meaning of national income: what is meant by national income",
-          "4.1.2 Measurement of national income: Gross Domestic Product (GDP)",
-          "4.1.2 Measurement of national income: Gross National Income (GNI)",
-          "4.1.2 Measurement of national income: Net National Income (NNI)",
           "4.1.2 Measurement of national income: Gross Domestic Product (GDP) and how it is measured",
           "4.1.2 Measurement of national income: Gross National Income (GNI) and how it is measured",
           "4.1.2 Measurement of national income: Net National Income (NNI) and how it is measured",
@@ -322,10 +313,10 @@
         "id": "4.2",
         "title": "4.2 Introduction to the circular flow of income",
         "points": [
-          "4.2.1 Circular flow of income in a closed economy and in an open economy: the flow of income between households, firms and government and the international economy: the concept of the circular flow of income",
-          "4.2.1 Circular flow of income in a closed economy and in an open economy: the flow of income between households, firms and government and the international economy: the circular flow of income in a closed economy",
-          "4.2.1 Circular flow of income in a closed economy and in an open economy: the flow of income between households, firms and government and the international economy: the circular flow of income in an open economy",
-          "4.2.1 Circular flow of income in a closed economy and in an open economy: the flow of income between households, firms and government and the international economy: income flows between households, firms, government and the international economy",
+          "4.2.1 Circular flow of income in a closed economy and in an open economy - the flow of income between households, firms and government and the international economy: the concept of the circular flow of income",
+          "4.2.1 Circular flow of income in a closed economy and in an open economy - the flow of income between households, firms and government and the international economy: the circular flow of income in a closed economy",
+          "4.2.1 Circular flow of income in a closed economy and in an open economy - the flow of income between households, firms and government and the international economy: the circular flow of income in an open economy",
+          "4.2.1 Circular flow of income in a closed economy and in an open economy - the flow of income between households, firms and government and the international economy: income flows between households, firms, government and the international economy",
           "4.2.2 Injections and leakages (multiplier not required): the meaning of injections into the circular flow of income",
           "4.2.2 Injections and leakages (multiplier not required): the meaning of leakages from the circular flow of income",
           "4.2.2 Injections and leakages (multiplier not required): injections and leakages in a closed economy",
@@ -339,8 +330,8 @@
         "title": "4.3 Aggregate Demand and Aggregate Supply analysis",
         "points": [
           "4.3.1 Definition of Aggregate Demand (AD): what is meant by Aggregate Demand",
-          "4.3.2 Components of AD and their meaning: AD = C + I + G + (X – M): the components of AD: C, I, G, (X – M)",
-          "4.3.2 Components of AD and their meaning: AD = C + I + G + (X – M): the meaning of components",
+          "4.3.2 Components of AD and their meaning - AD = C + I + G + (X – M): the components of AD: C, I, G, (X – M)",
+          "4.3.2 Components of AD and their meaning - AD = C + I + G + (X – M): the meaning of components",
           "4.3.3 Determinants of AD (detailed knowledge of the components of AD is not required): the determinants of C, I, G, (X – M)",
           "4.3.4 Shape of the AD curve (downward sloping): why the AD curve is downward sloping",
           "4.3.5 Causes of a shift in the AD curve: the causes of an increase in AD",
@@ -387,10 +378,10 @@
           "4.5.2 Measures of unemployment, with reference to possible difficulties in measurement: the rate of unemployment",
           "4.5.2 Measures of unemployment, with reference to possible difficulties in measurement: measures of unemployment",
           "4.5.2 Measures of unemployment, with reference to possible difficulties in measurement: difficulties in measuring unemployment",
-          "4.5.3 Causes and types of unemployment: frictional, structural, cyclical, seasonal and technological: frictional unemployment",
-          "4.5.3 Causes and types of unemployment: frictional, structural, cyclical, seasonal and technological: structural unemployment",
-          "4.5.3 Causes and types of unemployment: frictional, structural, cyclical, seasonal and technological: cyclical unemployment",
-          "4.5.3 Causes and types of unemployment: frictional, structural, cyclical, seasonal and technological: technological unemployment",
+          "4.5.3 Causes and types of unemployment - frictional, structural, cyclical, seasonal and technological: frictional unemployment",
+          "4.5.3 Causes and types of unemployment - frictional, structural, cyclical, seasonal and technological: structural unemployment",
+          "4.5.3 Causes and types of unemployment - frictional, structural, cyclical, seasonal and technological: cyclical unemployment",
+          "4.5.3 Causes and types of unemployment - frictional, structural, cyclical, seasonal and technological: technological unemployment",
           "4.5.4 Consequences of unemployment: the consequences of unemployment for individuals, firms and the economy"
         ]
       },
@@ -403,8 +394,6 @@
           "4.6.1 Definition of inflation, deflation, disinflation: an inflation rate",
           "4.6.1 Definition of inflation, deflation, disinflation: the meaning of deflation",
           "4.6.1 Definition of inflation, deflation, disinflation: the meaning of disinflation",
-          "4.6.2 Measurement of changes in the price level: consumer price index (CPI)",
-          "4.6.2 Measurement of changes in the price level: possible difficulties in measurement",
           "4.6.2 Measurement of changes in the price level: the price level",
           "4.6.2 Measurement of changes in the price level: how a consumer price index is calculated",
           "4.6.2 Measurement of changes in the price level: the difficulties in measuring changes in the price level",
@@ -412,8 +401,8 @@
           "4.6.4 Causes of inflation: cost-push inflation",
           "4.6.4 Causes of inflation: demand-pull inflation",
           "4.6.4 Causes of inflation: monetary inflation",
-          "4.6.5 Consequences of inflation: cost-push and demand-pull inflation: the costs of inflation for individuals, firms and the economy",
-          "4.6.5 Consequences of inflation: cost-push and demand-pull inflation: the benefits of inflation for individuals, firms and the economy"
+          "4.6.5 Consequences of inflation - cost-push and demand-pull inflation: the costs of inflation for individuals, firms and the economy",
+          "4.6.5 Consequences of inflation - cost-push and demand-pull inflation: the benefits of inflation for individuals, firms and the economy"
         ]
       }
     ]
@@ -426,9 +415,9 @@
         "id": "5.1",
         "title": "5.1 Government macroeconomic policy objectives",
         "points": [
-          "5.1.1 Use of government policy to achieve macroeconomic objectives: price stability, low unemployment, economic growth (policy conflicts and trade-offs are not required): the objective of price stability",
-          "5.1.1 Use of government policy to achieve macroeconomic objectives: price stability, low unemployment, economic growth (policy conflicts and trade-offs are not required): the objective of low unemployment",
-          "5.1.1 Use of government policy to achieve macroeconomic objectives: price stability, low unemployment, economic growth (policy conflicts and trade-offs are not required): the objective of economic growth"
+          "5.1.1 Use of government policy to achieve macroeconomic objectives - price stability, low unemployment, economic growth (policy conflicts and trade-offs are not required): the objective of price stability",
+          "5.1.1 Use of government policy to achieve macroeconomic objectives - price stability, low unemployment, economic growth (policy conflicts and trade-offs are not required): the objective of low unemployment",
+          "5.1.1 Use of government policy to achieve macroeconomic objectives - price stability, low unemployment, economic growth (policy conflicts and trade-offs are not required): the objective of economic growth"
         ]
       },
       {
@@ -465,9 +454,9 @@
         "title": "5.3 Monetary policy",
         "points": [
           "5.3.1 Definition of monetary policy: price and quantity of money",
-          "5.3.2 Tools of monetary policy: interest rates, money supply and credit regulations: interest rates",
-          "5.3.2 Tools of monetary policy: interest rates, money supply and credit regulations: money supply",
-          "5.3.2 Tools of monetary policy: interest rates, money supply and credit regulations: credit regulations",
+          "5.3.2 Tools of monetary policy - interest rates, money supply and credit regulations: interest rates",
+          "5.3.2 Tools of monetary policy - interest rates, money supply and credit regulations: money supply",
+          "5.3.2 Tools of monetary policy - interest rates, money supply and credit regulations: credit regulations",
           "5.3.3 Distinction between expansionary and contractionary monetary policy: expansionary monetary policy and when it is used",
           "5.3.3 Distinction between expansionary and contractionary monetary policy: contractionary monetary policy and when it is used",
           "5.3.4 AD/AS analysis of the impact of expansionary and contractionary monetary policy on the equilibrium national income and the level of real output, the price level and employment: the impact on national income",
@@ -482,9 +471,9 @@
         "points": [
           "5.4.1 Meaning of supply-side policy, in terms of its effect on LRAS curves: the purpose of increasing Aggregate Supply",
           "5.4.1 Meaning of supply-side policy, in terms of its effect on LRAS curves: the shift to right of LRAS",
-          "5.4.2 Objectives of supply-side policy: increasing productivity and productive capacity: increasing productivity",
-          "5.4.2 Objectives of supply-side policy: increasing productivity and productive capacity: increasing productive capacity",
-          "5.4.2 Objectives of supply-side policy: increasing productivity and productive capacity: the effect on competitiveness",
+          "5.4.2 Objectives of supply-side policy - increasing productivity and productive capacity: increasing productivity",
+          "5.4.2 Objectives of supply-side policy - increasing productivity and productive capacity: increasing productive capacity",
+          "5.4.2 Objectives of supply-side policy - increasing productivity and productive capacity: the effect on competitiveness",
           "5.4.3 Tools of supply side policy, for example training, infrastructure development, support for technological improvement: education and training",
           "5.4.3 Tools of supply side policy, for example training, infrastructure development, support for technological improvement: infrastructure development",
           "5.4.3 Tools of supply side policy, for example training, infrastructure development, support for technological improvement: the support for technological improvement",
@@ -512,9 +501,6 @@
           "6.1.2 Benefits of specialisation and free trade (trade liberalisation), including the trading possibility curve: the meaning of free trade (trade liberalisation)",
           "6.1.2 Benefits of specialisation and free trade (trade liberalisation), including the trading possibility curve: the benefits of free trade for consumers, producers and the economy",
           "6.1.2 Benefits of specialisation and free trade (trade liberalisation), including the trading possibility curve: the trading possibility curve",
-          "6.1.3 Exports, imports and the terms of trade: measurement of the terms of trade",
-          "6.1.3 Exports, imports and the terms of trade: causes of changes in the terms of trade",
-          "6.1.3 Exports, imports and the terms of trade: impact of changes in the terms of trade",
           "6.1.3 Exports, imports and the terms of trade: the measurement of the terms of trade",
           "6.1.3 Exports, imports and the terms of trade: the causes of changes in the terms of trade",
           "6.1.3 Exports, imports and the terms of trade: the impact of changes in the terms of trade",
@@ -527,11 +513,6 @@
         "title": "6.2 Protectionism",
         "points": [
           "6.2.1 Meaning of protectionism in the context of international trade: the protection of domestic industries from foreign competition",
-          "6.2.2 Different tools of protection and their impact: tariffs",
-          "6.2.2 Different tools of protection and their impact: import quotas",
-          "6.2.2 Different tools of protection and their impact: export subsidies",
-          "6.2.2 Different tools of protection and their impact: embargoes",
-          "6.2.2 Different tools of protection and their impact: excessive administrative burdens (‘red tape’)",
           "6.2.2 Different tools of protection and their impact: tariffs and their impact",
           "6.2.2 Different tools of protection and their impact: import quotas and their impact",
           "6.2.2 Different tools of protection and their impact: export subsidies and their impact",
@@ -553,10 +534,6 @@
           "6.3.2 Calculation of: balance of trade in services",
           "6.3.2 Calculation of: balance of trade in goods and services",
           "6.3.2 Calculation of: current account balance (CAB)",
-          "6.3.2 Calculation of: the balance of trade in goods",
-          "6.3.2 Calculation of: the balance of trade in services",
-          "6.3.2 Calculation of: the balance of trade in goods and services",
-          "6.3.2 Calculation of: the current account balance",
           "6.3.3 Causes of imbalances in the current account of the balance of payments: the causes of a current account deficit",
           "6.3.3 Causes of imbalances in the current account of the balance of payments: the causes of a current account surplus",
           "6.3.4 Consequences of imbalances in the current account of the balance of payments for the domestic and external economy: the consequences of a current account deficit",
@@ -571,9 +548,9 @@
           "6.4.2 Determination of a floating foreign exchange rate: the role of demand and supply in the determination of a foreign exchange rate",
           "6.4.3 Distinction between depreciation and appreciation of a floating exchange rate: the meaning of depreciation of a floating exchange rate",
           "6.4.3 Distinction between depreciation and appreciation of a floating exchange rate: the meaning of appreciation of a floating exchange rate",
-          "6.4.4 Causes of changes in a floating exchange rate: demand and supply of the currency: changes in the demand for a currency",
-          "6.4.4 Causes of changes in a floating exchange rate: demand and supply of the currency: changes in the supply of a currency",
-          "6.4.4 Causes of changes in a floating exchange rate: demand and supply of the currency: ‘hot money’ flows",
+          "6.4.4 Causes of changes in a floating exchange rate - demand and supply of the currency: changes in the demand for a currency",
+          "6.4.4 Causes of changes in a floating exchange rate - demand and supply of the currency: changes in the supply of a currency",
+          "6.4.4 Causes of changes in a floating exchange rate - demand and supply of the currency: ‘hot money’ flows",
           "6.4.5 AD/AS analysis of the impact of exchange rate changes on the domestic economy’s equilibrium national income and the level of real output, the price level and employment: the impact on equilibrium national income",
           "6.4.5 AD/AS analysis of the impact of exchange rate changes on the domestic economy’s equilibrium national income and the level of real output, the price level and employment: the impact on level of real output",
           "6.4.5 AD/AS analysis of the impact of exchange rate changes on the domestic economy’s equilibrium national income and the level of real output, the price level and employment: the impact on the price level",
@@ -640,7 +617,10 @@
           "7.3.2 Conditions for productive efficiency and allocative efficiency: productive efficiency for a firm",
           "7.3.2 Conditions for productive efficiency and allocative efficiency: productive efficiency for an economy",
           "7.3.2 Conditions for productive efficiency and allocative efficiency: allocative efficiency for consumers",
-          "7.3.4 Definition of dynamic efficiency: the meaning of dynamic efficiency"
+          "7.3.3 Pareto optimality: the concept of Pareto optimality",
+          "7.3.4 Definition of dynamic efficiency: the meaning of dynamic efficiency",
+          "7.3.5 Definition of market failure: the meaning of market failure",
+          "7.3.6 Reasons for market failure: that market failure occurs when there are externalities in a market, when merit goods and demerit goods are provided, when public goods and quasi-public goods are provided, when there is information failure, when adverse selection and moral hazard are present or when there is abuse of monopoly power"
         ]
       },
       {
