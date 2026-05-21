@@ -696,6 +696,105 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
   }
 };
 
+export const generateTeachingPPTData = async (chapter: string, syllabusPoints: string, syllabusContent: string, questionBankData: string): Promise<any[]> => {
+  try {
+    checkForApiKey();
+    const prompt = `
+      You are an expert Cambridge A-Level Economics Teacher. 
+      Your task is to generate a comprehensive, professional Teaching Presentation (PPT) based on the provided chapter, syllabus learning objectives, textbook content, and relevant questions.
+      
+      **Chapter:** ${chapter}
+      
+      **Syllabus Points (Learning Objectives):**
+      ${syllabusPoints}
+      
+      **Textbook Content / Definitions:**
+      ${syllabusContent}
+      
+      **Question Bank Questions for this Topic (to be included as practice slides):**
+      ${questionBankData}
+      
+      **Requirements:**
+      1. Create a logical progression of slides: Title -> Objectives -> Concepts (Definitions & AO2 Analysis) -> Example/Diagram references -> Exam Practice Questions from the provided Question Bank.
+      2. Content must be very professional and strictly follow the A-Level syllabus without knowledge omissions. Add logical progression (e.g., Cause -> Effect) rather than just listing syllabus points.
+      3. Structure the presentation using groups, not just top-level bullet points. Divide big topics logically. Make sure text is structured well.
+      4. For practice slides, include the question on one slide, and the key parts of the mark scheme (suggested answer) on the following slide or in the notes.
+      5. DO NOT make up generic knowledge not in the syllabus. Explain mechanisms clearly.
+      6. DO NOT use markdown inside the content strings, just plain strings.
+
+      **Return JSON format ONLY:**
+      An array of slides, where each slide follows this strict JSON structure:
+      [
+        {
+          "title": "Slide Title",
+          "layout": "standard", // "title" (for section headers), "standard" (for concepts), or "practice" (for questions)
+          "contentGroups": [
+            {
+              "heading": "Optional Subheading (e.g., Definition, Key Factors)",
+              "bullets": ["Main point 1", "Main point 2: explanation", "Logical consequence..."]
+            }
+          ],
+          "notes": "Speaker notes, detailed examiner tips, or mark scheme details for this slide."
+        }
+      ]
+    `;
+
+    const ai = getAI();
+    const response = await ai.models.generateContent({
+      model: 'gemini-3.5-flash',
+      contents: prompt,
+      config: {
+        responseMimeType: "application/json"
+      }
+    });
+    
+    const text = response.text || "[]";
+    const jsonString = text.replace(/```json/g, '').replace(/```/g, '').trim();
+    return JSON.parse(jsonString);
+  } catch (error) {
+    console.error("PPT Generation Error:", error);
+    throw new Error("Failed to generate PPT data.");
+  }
+};
+
+export const generateMindmapData = async (chapter: string, syllabusPoints: string, syllabusContent: string): Promise<string> => {
+  try {
+    checkForApiKey();
+    const prompt = `
+      You are an expert Cambridge A-Level Economics Teacher. 
+      Your task is to generate a comprehensive markdown-based mindmap for the provided chapter, syllabus learning objectives, and textbook content.
+      
+      **Chapter:** ${chapter}
+      
+      **Syllabus Points (Learning Objectives):**
+      ${syllabusPoints}
+      
+      **Textbook Content / Definitions:**
+      ${syllabusContent}
+      
+      **Requirements:**
+      1. Use purely markdown nested bullet points (e.g. \`# Chapter Name\`, \`## Main Topic\`, \`- Subtopic\`, \`  - Detail\`).
+      2. The structure should reflect a logical hierarchy of causes, effects, definitions, and components.
+      3. This will be converted into a Markmap or imported as a mindmap into software like XMind, so keep the points concise but informative.
+      4. DO NOT wrap the markdown in \`\`\`markdown\`\`\` backticks—just return the raw markdown string. 
+      5. The root element must be a single H1 (\`# \`) representing the chapter name.
+    `;
+
+    const ai = getAI();
+    const response = await ai.models.generateContent({
+      model: 'gemini-3.5-flash',
+      contents: prompt,
+    });
+    
+    let text = response.text || "";
+    text = text.replace(/```markdown/g, '').replace(/```/g, '').trim();
+    return text;
+  } catch (error) {
+    console.error("Mindmap Generation Error:", error);
+    throw new Error("Failed to generate Mindmap data.");
+  }
+};
+
 export const generateChatResponse = async (prompt: string): Promise<string> => {
   try {
     checkForApiKey();

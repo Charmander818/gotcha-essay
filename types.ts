@@ -116,6 +116,8 @@ export interface SyllabusStatus {
   // Worksheet data (typically stored with a special key like WORKSHEET-{sectionId}-{subTitle})
   worksheetContent?: string;
   worksheetAnswerKey?: string;
+  teachingPPT?: any[];
+  mindmap?: string;
   
   // Subsection level data
   examGuide?: string;

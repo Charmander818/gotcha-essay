@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
 import { SyllabusStatus, LogicChainItem, CustomSyllabusPoint } from '../types';
-import { generateSyllabusLogicChain, generateWorksheet } from '../services/geminiService';
+import { generateSyllabusLogicChain, generateWorksheet, generateTeachingPPTData, generateMindmapData } from '../services/geminiService';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { PREFILLED_DEFINITIONS } from '../syllabusDefinitions';
 import { PREFILLED_WORKSHEETS } from '../worksheetData';
+import pptxgen from "pptxgenjs";
+import { questions } from '../data';
 
 interface Props {
   statusMap: Record<string, SyllabusStatus>;
@@ -43,6 +45,12 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
   const [worksheetContent, setWorksheetContent] = useState("");
   const [worksheetAnswerKey, setWorksheetAnswerKey] = useState("");
   const [worksheetTab, setWorksheetTab] = useState<'worksheet' | 'answerKey'>('worksheet');
+
+  // PPT State
+  const [isGeneratingPPT, setIsGeneratingPPT] = useState<string | null>(null);
+
+  // Mindmap State
+  const [isGeneratingMindmap, setIsGeneratingMindmap] = useState<string | null>(null);
 
   const toggleSection = (id: string) => {
     setExpandedSections(prev => ({ ...prev, [id]: !prev[id] }));
@@ -227,6 +235,193 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
       alert("Failed to generate worksheet.");
     }
     setIsGeneratingWorksheet(false);
+  };
+
+  const generatePPTFile = async (chapterName: string, subTitle: string, slidesData: any[]) => {
+      // Generate actual .pptx using PptxGenJS
+      const ppt = new pptxgen();
+      
+      ppt.layout = 'LAYOUT_16x9';
+      ppt.defineSlideMaster({
+        title: 'MASTER_SLIDE',
+        background: { color: 'FFFFFF' },
+        objects: [
+          { rect: { x: 0, y: 0, w: '100%', h: 0.8, fill: { color: '1e3a8a' } } },
+          { text: { text: chapterName, options: { x: 0.5, y: 0.2, w: 5, h: 0.4, color: 'FFFFFF', fontSize: 18, fontFace: 'Arial', bold: true } } }
+        ]
+      });
+
+      slidesData.forEach((slide: any) => {
+        const pptSlide = ppt.addSlide({ masterName: 'MASTER_SLIDE' });
+        
+        // Title
+        pptSlide.addText(slide.title || "Untitled Slide", {
+          x: 0.5, y: 1.0, w: '90%', h: 0.8, 
+          fontSize: 28, bold: true, color: '1e3a8a', fontFace: 'Arial'
+        });
+
+        // Content
+        if (slide.contentGroups && Array.isArray(slide.contentGroups)) {
+          let currentY = 2.0;
+          slide.contentGroups.forEach((group: any) => {
+             if (group.heading) {
+                pptSlide.addText(group.heading, {
+                   x: 0.5, y: currentY, w: '90%', h: 0.4,
+                   fontSize: 20, bold: true, color: '333333', fontFace: 'Arial'
+                });
+                currentY += 0.5;
+             }
+             if (group.bullets && Array.isArray(group.bullets)) {
+                const bulletText = group.bullets.map((b: string) => ({ text: b, options: { bullet: true } }));
+                pptSlide.addText(bulletText, {
+                   x: 0.8, y: currentY, w: '85%',
+                   fontSize: 18, color: '555555', fontFace: 'Arial', valign: 'top', align: 'left',
+                   lineSpacing: 28, margin: 10
+                });
+                // Approximate height addition based on number of bullets
+                currentY += (group.bullets.length * 0.4) + 0.2;
+             }
+          });
+        } else if (slide.content && Array.isArray(slide.content)) {
+          // Fallback for old format
+          const contentText = slide.content.map((c: string) => ({ text: c, options: { bullet: true } }));
+          pptSlide.addText(contentText, {
+            x: 0.8, y: 2.2, w: '85%', h: '60%', 
+            fontSize: 20, color: '555555', fontFace: 'Arial', valign: 'top', align: 'left'
+          });
+        }
+
+        // Notes
+        if (slide.notes) {
+          pptSlide.addNotes(slide.notes);
+        }
+      });
+
+      await ppt.writeFile({ fileName: `Teaching_PPT_${subTitle.replace(/[^a-z0-9]/gi, '_')}.pptx` });
+  };
+
+  const handleDownloadPPT = async (sectionId: string, subTitle: string) => {
+      const sectionKey = `SUBSECTION-${sectionId}-${subTitle}`;
+      const existingData = statusMap[sectionKey]?.teachingPPT;
+      if (existingData) {
+          const chapterName = `${sectionId} - ${subTitle}`;
+          await generatePPTFile(chapterName, subTitle, existingData);
+      }
+  };
+
+  const handleGeneratePPT = async (sectionId: string, subTitle: string, points: string[]) => {
+    setIsGeneratingPPT(subTitle);
+    try {
+      const chapterName = `${sectionId} - ${subTitle}`;
+      const pointsString = points.join("\n");
+      
+      let syllabusContent = "";
+      const sectionKey = `SUBSECTION-${sectionId}-${subTitle}`;
+      const examGuide = statusMap[sectionKey]?.ao1Definition || statusMap[sectionKey]?.examGuide || "";
+      if (examGuide) {
+          syllabusContent += `EXAM GUIDE:\n${examGuide}\n\n`;
+      }
+      points.forEach((point, i) => {
+          const uniqueId = `${sectionId}-${subTitle}-${i}`;
+          const data = statusMap[uniqueId];
+          let def = data?.ao1Definition || data?.ao1Notes;
+          if (!def && PREFILLED_DEFINITIONS[uniqueId]) def = PREFILLED_DEFINITIONS[uniqueId];
+          if (!def) def = "(No definition saved)";
+          syllabusContent += `Point: ${point}\nDefinition: ${def}\n\n`;
+      });
+
+      // Find relevant questions from the databank
+      const relevantQuestions = questions.filter(q => q.chapter.startsWith(sectionId));
+      let questionBankData = relevantQuestions.map(q => `Q: ${q.questionText}\nMarks: ${q.maxMarks}\nMS: ${q.markScheme}`).join("\n\n---\n\n");
+      if (!questionBankData) questionBankData = "No specific questions found for this topic.";
+
+      // 1. Generate PPT data (JSON array of slides) via Gemini
+      const slidesData = await generateTeachingPPTData(chapterName, pointsString, syllabusContent, questionBankData);
+
+      // Save to statusMap to allow backup and restore
+      onUpdateStatus(prev => ({
+        ...prev,
+        [sectionKey]: {
+          ...prev[sectionKey],
+          teachingPPT: slidesData
+        }
+      }));
+
+      // 2. Generate actual .pptx using PptxGenJS
+      await generatePPTFile(chapterName, subTitle, slidesData);
+
+    } catch (error) {
+      console.error(error);
+      alert("Failed to generate PPT. Please check the API key and try again.");
+    }
+    setIsGeneratingPPT(null);
+  };
+
+  const handleDownloadMindmap = (sectionId: string, subTitle: string) => {
+      const sectionKey = `SUBSECTION-${sectionId}-${subTitle}`;
+      const existingData = statusMap[sectionKey]?.mindmap;
+      if (existingData) {
+          const blob = new Blob([existingData], { type: 'text/markdown' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `Mindmap_${subTitle.replace(/[^a-z0-9]/gi, '_')}.md`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+      }
+  };
+
+  const handleGenerateMindmap = async (sectionId: string, subTitle: string, points: string[]) => {
+    setIsGeneratingMindmap(subTitle);
+    try {
+      const chapterName = `${sectionId} - ${subTitle}`;
+      const pointsString = points.join("\n");
+      
+      let syllabusContent = "";
+      const sectionKey = `SUBSECTION-${sectionId}-${subTitle}`;
+      const examGuide = statusMap[sectionKey]?.ao1Definition || statusMap[sectionKey]?.examGuide || "";
+      if (examGuide) {
+          syllabusContent += `EXAM GUIDE:\n${examGuide}\n\n`;
+      }
+      points.forEach((point, i) => {
+          const uniqueId = `${sectionId}-${subTitle}-${i}`;
+          const data = statusMap[uniqueId];
+          let def = data?.ao1Definition || data?.ao1Notes;
+          if (!def && PREFILLED_DEFINITIONS[uniqueId]) def = PREFILLED_DEFINITIONS[uniqueId];
+          if (!def) def = "(No definition saved)";
+          syllabusContent += `Point: ${point}\nDefinition: ${def}\n\n`;
+      });
+
+      // 1. Generate Mindmap data (Markdown) via Gemini
+      const mindmapMarkdown = await generateMindmapData(chapterName, pointsString, syllabusContent);
+
+      // Save to statusMap to allow backup and restore
+      onUpdateStatus(prev => ({
+        ...prev,
+        [sectionKey]: {
+          ...prev[sectionKey],
+          mindmap: mindmapMarkdown
+        }
+      }));
+
+      // 2. Trigger Download
+      const blob = new Blob([mindmapMarkdown], { type: 'text/markdown' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `Mindmap_${subTitle.replace(/[^a-z0-9]/gi, '_')}.md`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+    } catch (error) {
+      console.error(error);
+      alert("Failed to generate Mindmap. Please check the API key and try again.");
+    }
+    setIsGeneratingMindmap(null);
   };
 
   const handlePrintWorksheet = () => {
@@ -531,6 +726,94 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                                         Handbook
                                     </button>
+                                    
+                                    {statusMap[`SUBSECTION-${section.id}-${sub.title}`]?.teachingPPT ? (
+                                        <>
+                                            <button 
+                                                onClick={() => handleDownloadPPT(section.id, sub.title)}
+                                                className="p-1.5 bg-white text-orange-600 rounded hover:bg-orange-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1"
+                                                title="Download Saved PPT"
+                                            >
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                                                PPT
+                                            </button>
+                                            <button 
+                                                onClick={() => {
+                                                    if(confirm("This will overwrite your saved PPT. Continue?")) {
+                                                        handleGeneratePPT(section.id, sub.title, sub.points);
+                                                    }
+                                                }}
+                                                disabled={isGeneratingPPT === sub.title}
+                                                className="p-1.5 bg-white text-slate-500 rounded hover:bg-slate-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1 disabled:opacity-50"
+                                                title="Regenerate PPT"
+                                            >
+                                                {isGeneratingPPT === sub.title ? (
+                                                    <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" /></svg>
+                                                ) : (
+                                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                                                )}
+                                                Regen PPT
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <button 
+                                            onClick={() => handleGeneratePPT(section.id, sub.title, sub.points)}
+                                            disabled={isGeneratingPPT === sub.title}
+                                            className="p-1.5 bg-white text-orange-600 rounded hover:bg-orange-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1 disabled:opacity-50"
+                                            title="Generate Teaching PPT"
+                                        >
+                                            {isGeneratingPPT === sub.title ? (
+                                                <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" /></svg>
+                                            ) : (
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>
+                                            )}
+                                            Generate PPT
+                                        </button>
+                                    )}
+
+                                    {statusMap[`SUBSECTION-${section.id}-${sub.title}`]?.mindmap ? (
+                                        <>
+                                            <button 
+                                                onClick={() => handleDownloadMindmap(section.id, sub.title)}
+                                                className="p-1.5 bg-white text-green-600 rounded hover:bg-green-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1"
+                                                title="Download Saved Mindmap (.md)"
+                                            >
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                                                Mindmap
+                                            </button>
+                                            <button 
+                                                onClick={() => {
+                                                    if(confirm("This will overwrite your saved Mindmap. Continue?")) {
+                                                        handleGenerateMindmap(section.id, sub.title, sub.points);
+                                                    }
+                                                }}
+                                                disabled={isGeneratingMindmap === sub.title}
+                                                className="p-1.5 bg-white text-slate-500 rounded hover:bg-slate-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1 disabled:opacity-50"
+                                                title="Regenerate Mindmap"
+                                            >
+                                                {isGeneratingMindmap === sub.title ? (
+                                                    <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" /></svg>
+                                                ) : (
+                                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                                                )}
+                                                Regen Mindmap
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <button 
+                                            onClick={() => handleGenerateMindmap(section.id, sub.title, sub.points)}
+                                            disabled={isGeneratingMindmap === sub.title}
+                                            className="p-1.5 bg-white text-green-600 rounded hover:bg-green-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1 disabled:opacity-50"
+                                            title="Generate Mindmap (.md)"
+                                        >
+                                            {isGeneratingMindmap === sub.title ? (
+                                                <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" /></svg>
+                                            ) : (
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c-1.105 0-2-.895-2-2 0-1.105.895-2 2-2s2 .895 2 2c0 1.105-.895 2-2 2zm12-3c-1.105 0-2-.895-2-2 0-1.105.895-2 2-2s2 .895 2 2c0 1.105-.895 2-2 2z" /></svg>
+                                            )}
+                                            Generate Mindmap
+                                        </button>
+                                    )}
                                 </div>
                             )}
                         </div>
