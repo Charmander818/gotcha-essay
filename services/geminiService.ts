@@ -701,7 +701,7 @@ export const generateTeachingPPTData = async (chapter: string, syllabusPoints: s
     checkForApiKey();
     const prompt = `
       You are an expert Cambridge A-Level Economics Teacher. 
-      Your task is to generate a comprehensive, professional Teaching Presentation (PPT) based on the provided chapter, syllabus learning objectives, textbook content, and relevant questions.
+      Your task is to generate a comprehensive, highly professional Teaching Presentation (PPT) based on the provided chapter, syllabus learning objectives, textbook content, and relevant questions.
       
       **Chapter:** ${chapter}
       
@@ -715,11 +715,11 @@ export const generateTeachingPPTData = async (chapter: string, syllabusPoints: s
       ${questionBankData}
       
       **Requirements:**
-      1. Create a logical progression of slides: Title -> Objectives -> Concepts (Definitions & AO2 Analysis) -> Example/Diagram references -> Exam Practice Questions from the provided Question Bank.
-      2. Content must be very professional and strictly follow the A-Level syllabus without knowledge omissions. Add logical progression (e.g., Cause -> Effect) rather than just listing syllabus points.
-      3. Structure the presentation using groups, not just top-level bullet points. Divide big topics logically. Make sure text is structured well.
-      4. For practice slides, include the question on one slide, and the key parts of the mark scheme (suggested answer) on the following slide or in the notes.
-      5. DO NOT make up generic knowledge not in the syllabus. Explain mechanisms clearly.
+      1. This PPT is for a real classroom. The flow should be: Title -> Learning Objectives -> Core Concepts (Definitions, Mechanisms, AO2 Analysis, Diagrams) -> Real-World Examples -> Exam Practice Questions.
+      2. Content must be highly professional and strictly follow the Cambridge A-Level syllabus without knowledge omissions. Break down complex concepts (like "Stage 1", "Stage 2", Cause-and-Effect chains) into distinct bullets.
+      3. Structure the presentation using logically divided content groups on each slide. Do not create a massive wall of text. Keep text digestible.
+      4. Use crisp, concise bullet points. Avoid extremely long sentences.
+      5. For practice slides, include the Exam Question on one slide, and the key parts of the Mark Scheme (model answer) on the following slide.
       6. DO NOT use markdown inside the content strings, just plain strings.
 
       **Return JSON format ONLY:**
@@ -730,8 +730,8 @@ export const generateTeachingPPTData = async (chapter: string, syllabusPoints: s
           "layout": "standard", // "title" (for section headers), "standard" (for concepts), or "practice" (for questions)
           "contentGroups": [
             {
-              "heading": "Optional Subheading (e.g., Definition, Key Factors)",
-              "bullets": ["Main point 1", "Main point 2: explanation", "Logical consequence..."]
+              "heading": "Optional Subheading (e.g., Definition, Key Factors) - leave empty if not needed",
+              "bullets": ["Crisp main point 1", "Point 2: Clear explanation", "Logical consequence..."]
             }
           ],
           "notes": "Speaker notes, detailed examiner tips, or mark scheme details for this slide."

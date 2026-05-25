@@ -246,8 +246,8 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
         title: 'MASTER_SLIDE',
         background: { color: 'FFFFFF' },
         objects: [
-          { rect: { x: 0, y: 0, w: '100%', h: 0.8, fill: { color: '1e3a8a' } } },
-          { text: { text: chapterName, options: { x: 0.5, y: 0.2, w: 5, h: 0.4, color: 'FFFFFF', fontSize: 18, fontFace: 'Arial', bold: true } } }
+          { rect: { x: 0, y: 0, w: '100%', h: 0.8, fill: { color: 'c8e4e8' } } },
+          { text: { text: chapterName, options: { x: 0.5, y: 0.2, w: 5, h: 0.4, color: '1e3a8a', fontSize: 16, fontFace: 'Arial', bold: true } } }
         ]
       });
 
@@ -256,38 +256,33 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
         
         // Title
         pptSlide.addText(slide.title || "Untitled Slide", {
-          x: 0.5, y: 1.0, w: '90%', h: 0.8, 
-          fontSize: 28, bold: true, color: '1e3a8a', fontFace: 'Arial'
+          x: 0.5, y: 0.9, w: '90%', h: 0.6, 
+          fontSize: 24, bold: true, color: '1e3a8a', fontFace: 'Arial'
         });
 
         // Content
         if (slide.contentGroups && Array.isArray(slide.contentGroups)) {
-          let currentY = 2.0;
+          const textItems: any[] = [];
           slide.contentGroups.forEach((group: any) => {
              if (group.heading) {
-                pptSlide.addText(group.heading, {
-                   x: 0.5, y: currentY, w: '90%', h: 0.4,
-                   fontSize: 20, bold: true, color: '333333', fontFace: 'Arial'
-                });
-                currentY += 0.5;
+                textItems.push({ text: group.heading, options: { bold: true, fontFace: 'Arial', fontSize: 18, color: '222222', breakLine: true } });
              }
              if (group.bullets && Array.isArray(group.bullets)) {
-                const bulletText = group.bullets.map((b: string) => ({ text: b, options: { bullet: true } }));
-                pptSlide.addText(bulletText, {
-                   x: 0.8, y: currentY, w: '85%',
-                   fontSize: 18, color: '555555', fontFace: 'Arial', valign: 'top', align: 'left',
-                   lineSpacing: 28, margin: 10
+                group.bullets.forEach((b: string) => {
+                   textItems.push({ text: b, options: { bullet: true, indentLevel: group.heading ? 1 : 0, fontFace: 'Arial', fontSize: 16, color: '444444', breakLine: true } });
                 });
-                // Approximate height addition based on number of bullets
-                currentY += (group.bullets.length * 0.4) + 0.2;
              }
+          });
+          pptSlide.addText(textItems, {
+            x: 0.5, y: 1.6, w: '90%', h: '75%', 
+            valign: 'top', align: 'left', margin: 10
           });
         } else if (slide.content && Array.isArray(slide.content)) {
           // Fallback for old format
-          const contentText = slide.content.map((c: string) => ({ text: c, options: { bullet: true } }));
+          const contentText = slide.content.map((c: string) => ({ text: c, options: { bullet: true, breakLine: true } }));
           pptSlide.addText(contentText, {
-            x: 0.8, y: 2.2, w: '85%', h: '60%', 
-            fontSize: 20, color: '555555', fontFace: 'Arial', valign: 'top', align: 'left'
+            x: 0.5, y: 1.6, w: '90%', h: '75%', 
+            fontSize: 16, color: '444444', fontFace: 'Arial', valign: 'top', align: 'left'
           });
         }
 
