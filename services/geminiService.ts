@@ -716,11 +716,12 @@ export const generateTeachingPPTData = async (chapter: string, syllabusPoints: s
       
       **Requirements:**
       1. This PPT is for a real classroom. The flow should be: Title -> Learning Objectives -> Core Concepts (Definitions, Mechanisms, AO2 Analysis, Diagrams) -> Real-World Examples -> Exam Practice Questions.
-      2. Content must be highly professional and strictly follow the Cambridge A-Level syllabus without knowledge omissions. Break down complex concepts (like "Stage 1", "Stage 2", Cause-and-Effect chains) into distinct bullets.
-      3. Structure the presentation using logically divided content groups on each slide. Do not create a massive wall of text. Keep text digestible.
-      4. Use crisp, concise bullet points. Avoid extremely long sentences.
-      5. For practice slides, include the Exam Question on one slide, and the key parts of the Mark Scheme (model answer) on the following slide.
-      6. DO NOT use markdown inside the content strings, just plain strings.
+      2. Content must be highly professional and strictly follow the Cambridge A-Level syllabus without knowledge omissions. 
+      3. CRITICAL: Break down complex concepts, sequential processes (like "Stage 1", "Stage 2", "Stage 3"), and Cause-and-Effect chains into distinct, separate bullet points. NEVER combine multiple stages or steps into a single long paragraph or single bullet point.
+      4. Structure the presentation using logically divided content groups on each slide. Do not create a massive wall of text. Keep text digestible.
+      5. Use crisp, concise bullet points. Avoid extremely long sentences.
+      6. For practice slides, include the Exam Question on one slide, and the key parts of the Mark Scheme (model answer) on the following slide.
+      7. DO NOT use markdown inside the content strings, just plain strings.
 
       **Return JSON format ONLY:**
       An array of slides, where each slide follows this strict JSON structure:

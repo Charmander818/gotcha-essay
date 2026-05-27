@@ -246,18 +246,33 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
         title: 'MASTER_SLIDE',
         background: { color: 'FFFFFF' },
         objects: [
-          { rect: { x: 0, y: 0, w: '100%', h: 0.8, fill: { color: 'c8e4e8' } } },
-          { text: { text: chapterName, options: { x: 0.5, y: 0.2, w: 5, h: 0.4, color: '1e3a8a', fontSize: 16, fontFace: 'Arial', bold: true } } }
+          { rect: { x: 0, y: 0, w: '100%', h: 0.9, fill: { color: 'c8e4e8' } } }
         ]
       });
 
-      slidesData.forEach((slide: any) => {
+      // Always add Chapter Title Slide first
+      const titleSlide = ppt.addSlide();
+      titleSlide.background = { color: '1e3a8a' }; 
+      titleSlide.addText(chapterName, { 
+          x: '10%', y: '40%', w: '80%', h: 1.5,
+          fontSize: 40, bold: true, color: 'FFFFFF', align: 'center', fontFace: 'Arial', valign: 'middle'
+      });
+
+      slidesData.forEach((slide: any, index: number) => {
+        // Skip Gemini's title slide if it generated one to avoid duplicates
+        if (index === 0 && (slide.layout === 'title' || (slide.contentGroups?.length === 0 && slide.content?.length === 0))) {
+           if (slide.notes) {
+              titleSlide.addNotes(slide.notes);
+           }
+           return; 
+        }
+
         const pptSlide = ppt.addSlide({ masterName: 'MASTER_SLIDE' });
         
-        // Title
+        // Title in the cyan bar
         pptSlide.addText(slide.title || "Untitled Slide", {
-          x: 0.5, y: 0.9, w: '90%', h: 0.6, 
-          fontSize: 24, bold: true, color: '1e3a8a', fontFace: 'Arial'
+          x: 0.5, y: 0.15, w: '90%', h: 0.6, 
+          fontSize: 24, bold: true, color: '1e3a8a', fontFace: 'Arial', valign: 'middle'
         });
 
         // Content
@@ -274,15 +289,15 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
              }
           });
           pptSlide.addText(textItems, {
-            x: 0.5, y: 1.6, w: '90%', h: '75%', 
+            x: 0.5, y: 1.1, w: '90%', h: '80%', 
             valign: 'top', align: 'left', margin: 10
           });
         } else if (slide.content && Array.isArray(slide.content)) {
           // Fallback for old format
           const contentText = slide.content.map((c: string) => ({ text: c, options: { bullet: true, breakLine: true } }));
           pptSlide.addText(contentText, {
-            x: 0.5, y: 1.6, w: '90%', h: '75%', 
-            fontSize: 16, color: '444444', fontFace: 'Arial', valign: 'top', align: 'left'
+            x: 0.5, y: 1.1, w: '90%', h: '80%', 
+            fontSize: 16, color: '444444', fontFace: 'Arial', valign: 'top', align: 'left', margin: 10
           });
         }
 
@@ -733,11 +748,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                                                 PPT
                                             </button>
                                             <button 
-                                                onClick={() => {
-                                                    if(confirm("This will overwrite your saved PPT. Continue?")) {
-                                                        handleGeneratePPT(section.id, sub.title, sub.points);
-                                                    }
-                                                }}
+                                                onClick={() => handleGeneratePPT(section.id, sub.title, sub.points)}
                                                 disabled={isGeneratingPPT === sub.title}
                                                 className="p-1.5 bg-white text-slate-500 rounded hover:bg-slate-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1 disabled:opacity-50"
                                                 title="Regenerate PPT"
@@ -777,11 +788,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                                                 Mindmap
                                             </button>
                                             <button 
-                                                onClick={() => {
-                                                    if(confirm("This will overwrite your saved Mindmap. Continue?")) {
-                                                        handleGenerateMindmap(section.id, sub.title, sub.points);
-                                                    }
-                                                }}
+                                                onClick={() => handleGenerateMindmap(section.id, sub.title, sub.points)}
                                                 disabled={isGeneratingMindmap === sub.title}
                                                 className="p-1.5 bg-white text-slate-500 rounded hover:bg-slate-100 transition-colors shadow-sm text-xs font-bold flex items-center gap-1 disabled:opacity-50"
                                                 title="Regenerate Mindmap"
