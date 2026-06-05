@@ -57,6 +57,7 @@ export const MCQBank: React.FC = () => {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [newAnnotation, setNewAnnotation] = useState<string>('');
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   
   // Bulk Answers State
   const [bulkAnswers, setBulkAnswers] = useState<Record<string, string>>({});
@@ -220,6 +221,17 @@ export const MCQBank: React.FC = () => {
     }
   };
 
+  const toggleStar = async (e: React.MouseEvent, q: MCQ) => {
+      e.stopPropagation();
+      e.preventDefault();
+      try {
+          await saveMCQ({ ...q, isStarred: !q.isStarred });
+          await loadMCQs();
+      } catch (err) {
+          console.error("Failed to toggle star", err);
+      }
+  };
+
   const handleAnswer = (ans: 'A' | 'B' | 'C' | 'D') => {
     const currentQ = filteredMcqs[currentIndex];
     if (ans === currentQ.correctAnswer) {
@@ -271,6 +283,7 @@ export const MCQBank: React.FC = () => {
 
   const filteredMcqs = mcqs.filter(q => {
       if (selectedFilterValue === 'All') return true;
+      if (selectedFilterValue === 'Starred') return q.isStarred;
       if (selectedFilterType === 'PAPER') return q.paper === selectedFilterValue;
       if (selectedFilterType === 'TOPIC') return q.topic === selectedFilterValue;
       return true;
@@ -283,6 +296,14 @@ export const MCQBank: React.FC = () => {
       const currentQ = filteredMcqs[currentIndex];
       return (
           <div className="max-w-4xl mx-auto p-4 md:p-8 space-y-6">
+              {zoomedImage && (
+                  <div 
+                      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 cursor-zoom-out"
+                      onClick={() => setZoomedImage(null)}
+                  >
+                      <img src={zoomedImage} className="max-w-full max-h-full object-contain bg-white p-2 rounded shadow-2xl" alt="Zoomed" />
+                  </div>
+              )}
               <div className="flex justify-between items-center mb-6">
                  <div>
                      <h2 className="text-2xl font-bold text-slate-800">Practice Mode</h2>
@@ -291,9 +312,16 @@ export const MCQBank: React.FC = () => {
                  <button onClick={() => { setIsPracticing(false); setFeedback(null); }} className="px-4 py-2 border rounded hover:bg-slate-50">Exit Practice</button>
               </div>
 
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                  <div className="flex justify-center mb-8">
-                     <img src={currentQ.imageUrl} alt="Question" className="max-w-full max-h-[500px] object-contain border rounded shadow-sm" />
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 relative">
+                  <button 
+                      onClick={(e) => toggleStar(e, currentQ)} 
+                      className="absolute top-4 left-4 z-10 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow border border-slate-200 transition-transform active:scale-95"
+                      title="Toggle Star"
+                  >
+                      <span className={currentQ.isStarred ? 'text-amber-400 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.4rem' }}>🌟</span>
+                  </button>
+                  <div className="flex justify-center mb-8 cursor-zoom-in" onClick={() => setZoomedImage(currentQ.imageUrl)}>
+                     <img src={currentQ.imageUrl} alt="Question" className="max-w-full max-h-[500px] object-contain border rounded shadow-sm hover:opacity-90 transition-opacity" />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
@@ -336,9 +364,9 @@ export const MCQBank: React.FC = () => {
 
   // Sidebar Layout
   return (
-    <div className="flex h-full bg-slate-50 overflow-hidden">
+    <div className="flex bg-slate-50 min-h-full items-start">
         {/* Sidebar */}
-        <div className="w-64 bg-white border-r border-slate-200 flex flex-col h-full overflow-hidden shrink-0">
+        <div className="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 sticky top-0" style={{ height: 'calc(100vh - 72px)' }}>
             <div className="p-4 border-b border-slate-200">
                 <h2 className="font-bold text-lg text-slate-800">MCQ Library</h2>
                 <div className="flex gap-1 mt-2 p-1 bg-slate-100 rounded-lg">
@@ -347,9 +375,14 @@ export const MCQBank: React.FC = () => {
                 </div>
             </div>
             <div className="flex-1 overflow-y-auto p-2 space-y-1">
-                <button onClick={() => setSelectedFilterValue('All')} className={`w-full text-left px-3 py-2 rounded text-sm ${selectedFilterValue === 'All' ? 'bg-blue-50 text-blue-700 font-bold' : 'text-slate-700 hover:bg-slate-100'}`}>
+                <button onClick={() => setSelectedFilterValue('All')} className={`w-full text-left px-3 py-2 rounded text-sm mb-1 ${selectedFilterValue === 'All' ? 'bg-blue-50 text-blue-700 font-bold' : 'text-slate-700 hover:bg-slate-100'}`}>
                     All Questions ({mcqs.length})
                 </button>
+                <button onClick={() => setSelectedFilterValue('Starred')} className={`w-full text-left px-3 py-2 rounded text-sm flex justify-between items-center ${selectedFilterValue === 'Starred' ? 'bg-amber-50 text-amber-700 font-bold' : 'text-slate-700 hover:bg-slate-100'}`}>
+                    <span>Starred Questions</span>
+                    <span>🌟</span>
+                </button>
+                <div className="my-2 border-b border-slate-100"></div>
                 {selectedFilterType === 'PAPER' ? (
                     Array.from(new Set(PAPER_CODES.map(c => c.split(' ')[0]))).sort((a,b) => b.localeCompare(a)).map(year => (
                         <div key={year} className="mb-1">
@@ -399,7 +432,16 @@ export const MCQBank: React.FC = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 h-full overflow-y-auto p-4 md:p-8 space-y-8">
+        <div className="flex-1 h-full overflow-y-auto p-4 md:p-8 space-y-8 relative">
+            {zoomedImage && (
+                <div 
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 cursor-zoom-out"
+                    onClick={() => setZoomedImage(null)}
+                >
+                    <img src={zoomedImage} className="max-w-full max-h-full object-contain bg-white p-2 rounded shadow-2xl" alt="Zoomed" />
+                </div>
+            )}
+
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                   <h1 className="text-3xl font-bold tracking-tight text-slate-900">{selectedFilterValue === 'All' ? 'All MCQs' : selectedFilterValue}</h1>
@@ -532,9 +574,18 @@ export const MCQBank: React.FC = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 {filteredMcqs.map(q => (
-                    <div key={q.id} className="bg-white border rounded-xl overflow-hidden shadow-sm flex flex-col group transition-shadow hover:shadow-md">
-                        <div className="h-48 bg-slate-100 flex items-center justify-center p-2 relative overflow-hidden text-center">
-                            <img src={q.imageUrl} alt={`Q${q.questionNum}`} className="max-w-full max-h-full object-contain mix-blend-multiply" />
+                    <div key={q.id} className="bg-white border rounded-xl overflow-hidden shadow-sm flex flex-col group transition-shadow hover:shadow-md relative">
+                        <button 
+                            onClick={(e) => toggleStar(e, q)} 
+                            className="absolute top-2 left-2 z-10 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm border border-slate-200 transition-transform active:scale-95"
+                        >
+                            <span className={q.isStarred ? 'text-amber-400 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.2rem' }}>🌟</span>
+                        </button>
+                        <div 
+                            className="h-48 bg-slate-100 flex items-center justify-center p-2 relative overflow-hidden text-center cursor-zoom-in group/img"
+                            onClick={() => setZoomedImage(q.imageUrl)}
+                        >
+                            <img src={q.imageUrl} alt={`Q${q.questionNum}`} className="max-w-full max-h-full object-contain mix-blend-multiply transition-transform group-hover/img:scale-[1.02]" />
                             <div className="absolute top-2 right-2 bg-white px-2 py-1 text-sm font-bold rounded shadow-sm text-green-700 border border-green-200 z-10 opacity-90">
                                 Ans: {q.correctAnswer}
                             </div>

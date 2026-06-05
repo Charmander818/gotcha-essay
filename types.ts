@@ -144,4 +144,5 @@ export interface MCQ {
   topic: string;
   correctAnswer: 'A' | 'B' | 'C' | 'D';
   annotation?: string;
+  isStarred?: boolean;
 }
