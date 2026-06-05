@@ -317,7 +317,8 @@ export const MCQBank: React.FC = () => {
       }
       const currentQ = filteredMcqs[currentIndex];
       return (
-          <div className="max-w-4xl mx-auto p-4 md:p-8 space-y-6">
+          <div className="h-full w-full overflow-y-auto bg-slate-50">
+            <div className="max-w-4xl mx-auto p-4 md:p-8 space-y-6">
               {zoomedImage && (
                   <div 
                       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 cursor-zoom-out"
@@ -380,15 +381,16 @@ export const MCQBank: React.FC = () => {
                       </div>
                   )}
               </div>
+            </div>
           </div>
       );
   }
 
   // Sidebar Layout
   return (
-    <div className="flex bg-slate-50 min-h-full items-start">
+    <div className="flex h-full w-full bg-slate-50">
         {/* Sidebar */}
-        <div className="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 sticky top-0" style={{ height: 'calc(100vh - 72px)' }}>
+        <div className="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 h-full">
             <div className="p-4 border-b border-slate-200">
                 <h2 className="font-bold text-lg text-slate-800">MCQ Library</h2>
                 <div className="flex border-b border-slate-200 mt-3 mb-2">
