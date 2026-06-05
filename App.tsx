@@ -13,6 +13,7 @@ import { PolicyFeastViewer } from './components/PolicyFeastViewer';
 import { CoreConceptViewer } from './components/CoreConceptViewer';
 import ExamTrends from './components/ExamTrends';
 import { TopicLibrary } from './components/TopicLibrary';
+import { MCQBank } from './components/MCQBank';
 import AddQuestionModal from './components/AddQuestionModal';
 import CodeExportModal from './components/CodeExportModal';
 import SyllabusExportModal from './components/SyllabusExportModal'; // New Import
@@ -502,7 +503,7 @@ const App: React.FC = () => {
     );
   }
 
-  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.POLICY_FEAST || mode === AppMode.CORE_CONCEPTS || mode === AppMode.EXAM_TRENDS || mode === AppMode.TOPIC_LIBRARY;
+  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.POLICY_FEAST || mode === AppMode.CORE_CONCEPTS || mode === AppMode.EXAM_TRENDS || mode === AppMode.TOPIC_LIBRARY || mode === AppMode.MCQ_BANK;
 
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50">
@@ -634,6 +635,16 @@ const App: React.FC = () => {
             >
                 Library
             </button>
+            <button
+                onClick={() => setMode(AppMode.MCQ_BANK)}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
+                  mode === AppMode.MCQ_BANK
+                    ? 'bg-purple-600 text-white shadow-sm' 
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+            >
+                MCQs
+            </button>
             
             <div className="w-px bg-slate-300 mx-1"></div>
 
@@ -684,6 +695,8 @@ const App: React.FC = () => {
                 <ExamTrends questions={allQuestions} />
             ) : mode === AppMode.TOPIC_LIBRARY ? (
                 <div className="p-8 h-full bg-slate-50"><TopicLibrary questions={allQuestions} /></div>
+            ) : mode === AppMode.MCQ_BANK ? (
+                <div className="flex-1 bg-slate-50 overflow-y-auto"><MCQBank /></div>
             ) : selectedQuestion ? (
               <div className="p-8">
                 {mode === AppMode.GENERATOR && (

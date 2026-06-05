@@ -84,7 +84,8 @@ export enum AppMode {
   POLICY_FEAST = "Policy FEAST",
   CORE_CONCEPTS = "Core Concepts",
   EXAM_TRENDS = "Exam Trends & Prediction",
-  TOPIC_LIBRARY = "Topic Library (Cheat Sheets)"
+  TOPIC_LIBRARY = "Topic Library (Cheat Sheets)",
+  MCQ_BANK = "MCQ Bank"
 }
 
 export interface SyllabusItem {
@@ -133,4 +134,13 @@ export interface CustomSyllabusPoint {
   id: string;
   text: string;
   subsectionId: string;
+}
+
+export interface MCQ {
+  id: string;
+  paper: string;
+  questionNum: number;
+  imageUrl: string; 
+  topic: string;
+  correctAnswer: 'A' | 'B' | 'C' | 'D';
 }
