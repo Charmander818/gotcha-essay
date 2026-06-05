@@ -3,6 +3,7 @@ import { MCQ } from '../types';
 import { getMCQs, saveMCQ, deleteMCQ, getAllMCQsForExport, restoreMCQsFromImport } from '../utils/indexedDB';
 import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
 import { exportPracticeBook } from '../utils/mcqExport';
+import { AutoPDFImport } from './AutoPDFImport';
 
 const PAPER_CODES = [
   "2021 F/M 12", "2021 M/J 11", "2021 M/J 12", "2021 M/J 13", "2021 O/N 11", "2021 O/N 12", "2021 O/N 13",
@@ -57,6 +58,7 @@ export const MCQBank: React.FC = () => {
   const [newCorrectAnswer, setNewCorrectAnswer] = useState<'A' | 'B' | 'C' | 'D'>('A');
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [showAutoImport, setShowAutoImport] = useState(false);
   const [newAnnotation, setNewAnnotation] = useState<string>('');
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   
@@ -563,6 +565,12 @@ export const MCQBank: React.FC = () => {
                     >
                         {isAdding ? 'Cancel Adding' : '+ Add Question'}
                     </button>
+                    <button 
+                      onClick={() => setShowAutoImport(true)} 
+                      className="px-4 py-2 bg-fuchsia-50 border border-fuchsia-200 text-fuchsia-700 rounded-lg hover:bg-fuchsia-100 font-medium transition-colors flex items-center gap-2"
+                    >
+                        <span>🪄 Auto PDF Slicer</span>
+                    </button>
                     <div className="flex bg-emerald-50 rounded-lg border border-emerald-200 overflow-hidden">
                         <button 
                           onClick={() => exportPracticeBook(filteredMcqs, selectedFilterValue === 'All' ? 'All Questions' : selectedFilterValue, false)}
@@ -735,6 +743,13 @@ export const MCQBank: React.FC = () => {
             </div>
             
             <div className="pb-16" /> {/* Spacer */}
+            
+            {showAutoImport && (
+                <AutoPDFImport 
+                    onComplete={() => { setShowAutoImport(false); loadMCQs(); }} 
+                    onCancel={() => setShowAutoImport(false)} 
+                />
+            )}
         </div>
     </div>
   );

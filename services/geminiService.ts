@@ -796,6 +796,50 @@ export const generateMindmapData = async (chapter: string, syllabusPoints: strin
   }
 };
 
+export const extractMCQsFromImage = async (base64Image: string): Promise<any> => {
+  try {
+    checkForApiKey();
+    const prompt = `
+      Analyze this page of an A-Level Economics multiple choice exam.
+      Return a JSON array of questions found on this page.
+      For each question, provide:
+      - "questionNum": The numeric question number (integer).
+      - "topic": Briefly classify the specific economics topic (e.g., "Price Elasticity of Demand", "Opportunity Cost").
+      - "bbox": A precise bounding box [ymin, xmin, ymax, xmax] normalized to 0-1000. Ensure the bounding box fully encapsulates the question number, the question text, ALL diagrams/tables associated with it, and ALL four options (A, B, C, D). Give it a slight padding so options aren't cut off. Do NOT overlap with other questions.
+      
+      If the page contains no multiple-choice questions (e.g., blank, entirely instructions, or a cover page), return an empty array [].
+    `;
+    
+    // Validate image format
+    if (!base64Image.includes(';base64,')) {
+         throw new Error("Invalid base64 image format");
+    }
+    
+    const [mimeTypePrefix, base64Data] = base64Image.split(';base64,');
+    const mimeType = mimeTypePrefix.split(':')[1];
+    
+    const ai = getAI();
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: {
+         parts: [
+             { text: prompt },
+             { inlineData: { mimeType, data: base64Data } }
+         ]
+      },
+      config: { responseMimeType: "application/json" }
+    });
+    
+    const text = response.text || "[]";
+    // Handle potential markdown wrappers if returned
+    const jsonString = text.replace(/```json/g, '').replace(/```/g, '').trim();
+    return JSON.parse(jsonString);
+  } catch (error) {
+    console.error("MCQ Extraction Error:", error);
+    throw new Error("Failed to extract MCQs from the image. Check your API key and connection.");
+  }
+};
+
 export const generateChatResponse = async (prompt: string): Promise<string> => {
   try {
     checkForApiKey();
