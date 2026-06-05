@@ -145,4 +145,5 @@ export interface MCQ {
   correctAnswer: 'A' | 'B' | 'C' | 'D';
   annotation?: string;
   isStarred?: boolean;
+  isProblematic?: boolean;
 }

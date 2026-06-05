@@ -233,6 +233,17 @@ export const MCQBank: React.FC = () => {
       }
   };
 
+  const toggleProblematic = async (e: React.MouseEvent, q: MCQ) => {
+      e.stopPropagation();
+      e.preventDefault();
+      try {
+          await saveMCQ({ ...q, isProblematic: !q.isProblematic });
+          await loadMCQs();
+      } catch (err) {
+          console.error("Failed to toggle problematic", err);
+      }
+  };
+
   const handleAnswer = (ans: 'A' | 'B' | 'C' | 'D') => {
     const currentQ = filteredMcqs[currentIndex];
     if (ans === currentQ.correctAnswer) {
@@ -251,6 +262,18 @@ export const MCQBank: React.FC = () => {
       setIsPracticing(false);
       setCurrentIndex(0);
     }
+  };
+
+  const prevQuestion = () => {
+    setFeedback(null);
+    if (currentIndex > 0) {
+      setCurrentIndex(prev => prev - 1);
+    }
+  };
+
+  const jumpToQuestion = (index: number) => {
+    setFeedback(null);
+    setCurrentIndex(index);
   };
 
   const exportDB = async () => {
@@ -290,6 +313,7 @@ export const MCQBank: React.FC = () => {
 
       if (selectedFilterValue === 'All') return true;
       if (selectedFilterValue === 'Starred') return q.isStarred;
+      if (selectedFilterValue === 'Problematic') return q.isProblematic;
       if (selectedFilterType === 'PAPER') return q.paper === selectedFilterValue;
       if (selectedFilterType === 'TOPIC') return q.topic === selectedFilterValue;
       return true;
@@ -335,14 +359,51 @@ export const MCQBank: React.FC = () => {
                  <button onClick={() => { setIsPracticing(false); setFeedback(null); }} className="px-4 py-2 border rounded hover:bg-slate-50">Exit Practice</button>
               </div>
 
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 relative">
-                  <button 
-                      onClick={(e) => toggleStar(e, currentQ)} 
-                      className="absolute top-4 left-4 z-10 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow border border-slate-200 transition-transform active:scale-95"
-                      title="Toggle Star"
-                  >
-                      <span className={currentQ.isStarred ? 'text-amber-400 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.4rem' }}>🌟</span>
+              {/* Question Navigation Bar */}
+              <div className="bg-white p-2 rounded-lg shadow-sm border border-slate-200 mb-6 flex items-center justify-between">
+                  <button onClick={prevQuestion} disabled={currentIndex === 0} className="p-2 text-slate-500 hover:text-slate-800 disabled:opacity-30">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
                   </button>
+                  
+                  <div className="flex-1 overflow-x-auto flex gap-1 px-4 scrollbar-hide py-1">
+                      {filteredMcqs.map((q, idx) => (
+                          <button
+                              key={q.id}
+                              onClick={() => jumpToQuestion(idx)}
+                              className={`w-8 h-8 shrink-0 rounded-full text-xs font-bold transition-all
+                                  ${currentIndex === idx 
+                                      ? 'bg-blue-600 text-white shadow-md scale-110' 
+                                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}
+                                  ${q.isProblematic ? 'ring-2 ring-red-400 ring-offset-1' : ''}
+                              `}
+                          >
+                              {idx + 1}
+                          </button>
+                      ))}
+                  </div>
+
+                  <button onClick={nextQuestion} disabled={currentIndex === filteredMcqs.length - 1} className="p-2 text-slate-500 hover:text-slate-800 disabled:opacity-30">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  </button>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 relative">
+                  <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
+                      <button 
+                          onClick={(e) => toggleStar(e, currentQ)} 
+                          className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow border border-slate-200 transition-transform active:scale-95"
+                          title="Toggle Star"
+                      >
+                          <span className={currentQ.isStarred ? 'text-amber-400 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.4rem' }}>🌟</span>
+                      </button>
+                      <button 
+                          onClick={(e) => toggleProblematic(e, currentQ)} 
+                          className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow border border-slate-200 transition-transform active:scale-95"
+                          title="Mark as Problematic / Removed"
+                      >
+                          <span className={currentQ.isProblematic ? 'text-red-500 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.4rem' }}>⚠️</span>
+                      </button>
+                  </div>
                   <div className="flex justify-center mb-8 cursor-zoom-in" onClick={() => setZoomedImage(currentQ.imageUrl)}>
                      <img src={currentQ.imageUrl} alt="Question" className="max-w-full max-h-[500px] object-contain border rounded shadow-sm hover:opacity-90 transition-opacity" />
                   </div>
@@ -423,6 +484,10 @@ export const MCQBank: React.FC = () => {
                 <button onClick={() => setSelectedFilterValue('Starred')} className={`w-full text-left px-3 py-2 rounded text-sm flex justify-between items-center ${selectedFilterValue === 'Starred' ? 'bg-amber-50 text-amber-700 font-bold' : 'text-slate-700 hover:bg-slate-100'}`}>
                     <span>Starred {selectedLevel} Questions</span>
                     <span>🌟</span>
+                </button>
+                <button onClick={() => setSelectedFilterValue('Problematic')} className={`w-full text-left px-3 py-2 rounded text-sm flex justify-between items-center ${selectedFilterValue === 'Problematic' ? 'bg-red-50 text-red-700 font-bold' : 'text-slate-700 hover:bg-slate-100'}`}>
+                    <span>Removed {selectedLevel} Questions</span>
+                    <span>⚠️</span>
                 </button>
                 <div className="my-2 border-b border-slate-100"></div>
                 {selectedFilterType === 'PAPER' ? (
@@ -617,12 +682,22 @@ export const MCQBank: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 {filteredMcqs.map(q => (
                     <div key={q.id} className="bg-white border rounded-xl overflow-hidden shadow-sm flex flex-col group transition-shadow hover:shadow-md relative">
-                        <button 
-                            onClick={(e) => toggleStar(e, q)} 
-                            className="absolute top-2 left-2 z-10 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm border border-slate-200 transition-transform active:scale-95"
-                        >
-                            <span className={q.isStarred ? 'text-amber-400 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.2rem' }}>🌟</span>
-                        </button>
+                        <div className="absolute top-2 left-2 z-10 flex flex-col gap-1">
+                            <button 
+                                onClick={(e) => toggleStar(e, q)} 
+                                className="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm border border-slate-200 transition-transform active:scale-95"
+                                title="Toggle Star"
+                            >
+                                <span className={q.isStarred ? 'text-amber-400 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.2rem' }}>🌟</span>
+                            </button>
+                            <button 
+                                onClick={(e) => toggleProblematic(e, q)} 
+                                className="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm border border-slate-200 transition-transform active:scale-95"
+                                title="Mark as Problematic / Removed"
+                            >
+                                <span className={q.isProblematic ? 'text-red-500 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.2rem' }}>⚠️</span>
+                            </button>
+                        </div>
                         <div 
                             className="h-48 bg-slate-100 flex items-center justify-center p-2 relative overflow-hidden text-center cursor-zoom-in group/img"
                             onClick={() => setZoomedImage(q.imageUrl)}
