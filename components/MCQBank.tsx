@@ -353,7 +353,16 @@ export const MCQBank: React.FC = () => {
               )}
               <div className="flex justify-between items-center mb-6">
                  <div>
-                     <h2 className="text-2xl font-bold text-slate-800">Practice Mode</h2>
+                     <div className="flex items-center gap-3 mb-1">
+                         <h2 className="text-2xl font-bold text-slate-800">Practice Mode</h2>
+                         <button 
+                             onClick={(e) => toggleProblematic(e, currentQ)} 
+                             className="flex items-center justify-center transition-transform hover:scale-110"
+                             title="Mark as Problematic / Removed"
+                         >
+                             <span className={currentQ.isProblematic ? 'text-red-500 drop-shadow-sm' : 'text-slate-300 grayscale opacity-50 hover:opacity-100'} style={{ fontSize: '1.2rem' }}>⚠️</span>
+                         </button>
+                     </div>
                      <p className="text-slate-500">Question {currentIndex + 1} of {filteredMcqs.length} • Paper: {currentQ.paper}</p>
                  </div>
                  <button onClick={() => { setIsPracticing(false); setFeedback(null); }} className="px-4 py-2 border rounded hover:bg-slate-50">Exit Practice</button>
@@ -395,13 +404,6 @@ export const MCQBank: React.FC = () => {
                           title="Toggle Star"
                       >
                           <span className={currentQ.isStarred ? 'text-amber-400 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.4rem' }}>🌟</span>
-                      </button>
-                      <button 
-                          onClick={(e) => toggleProblematic(e, currentQ)} 
-                          className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow border border-slate-200 transition-transform active:scale-95"
-                          title="Mark as Problematic / Removed"
-                      >
-                          <span className={currentQ.isProblematic ? 'text-red-500 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.4rem' }}>⚠️</span>
                       </button>
                   </div>
                   <div className="flex justify-center mb-8 cursor-zoom-in" onClick={() => setZoomedImage(currentQ.imageUrl)}>
@@ -690,13 +692,6 @@ export const MCQBank: React.FC = () => {
                             >
                                 <span className={q.isStarred ? 'text-amber-400 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.2rem' }}>🌟</span>
                             </button>
-                            <button 
-                                onClick={(e) => toggleProblematic(e, q)} 
-                                className="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm border border-slate-200 transition-transform active:scale-95"
-                                title="Mark as Problematic / Removed"
-                            >
-                                <span className={q.isProblematic ? 'text-red-500 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.2rem' }}>⚠️</span>
-                            </button>
                         </div>
                         <div 
                             className="h-48 bg-slate-100 flex items-center justify-center p-2 relative overflow-hidden text-center cursor-zoom-in group/img"
@@ -709,7 +704,12 @@ export const MCQBank: React.FC = () => {
                         </div>
                         <div className="p-4 flex-1 flex flex-col pt-3">
                             <div className="flex justify-between items-start mb-2">
-                               <h3 className="font-bold text-lg text-slate-900">Q{q.questionNum}</h3>
+                               <div className="flex items-center gap-2">
+                                  <h3 className="font-bold text-lg text-slate-900">Q{q.questionNum}</h3>
+                                  <button onClick={(e) => toggleProblematic(e, q)} title="Mark as Problematic / Removed" className="hover:scale-110 transition-transform">
+                                      <span className={q.isProblematic ? 'text-red-500 drop-shadow-sm' : 'text-slate-300 grayscale opacity-50 hover:opacity-100'} style={{ fontSize: '1.1rem' }}>⚠️</span>
+                                  </button>
+                               </div>
                                <div className="flex gap-1 items-center">
                                    {q.annotation && <span className="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded border border-amber-200 shadow-sm" title="Has Annotation">📝 Note</span>}
                                    <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded font-bold border border-slate-200">{q.paper}</span>
