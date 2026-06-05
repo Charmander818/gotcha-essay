@@ -143,4 +143,5 @@ export interface MCQ {
   imageUrl: string; 
   topic: string;
   correctAnswer: 'A' | 'B' | 'C' | 'D';
+  annotation?: string;
 }

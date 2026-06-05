@@ -56,6 +56,7 @@ export const MCQBank: React.FC = () => {
   const [newCorrectAnswer, setNewCorrectAnswer] = useState<'A' | 'B' | 'C' | 'D'>('A');
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [newAnnotation, setNewAnnotation] = useState<string>('');
   
   // Bulk Answers State
   const [bulkAnswers, setBulkAnswers] = useState<Record<string, string>>({});
@@ -71,6 +72,7 @@ export const MCQBank: React.FC = () => {
   const startAdding = () => {
       setEditingId(null);
       setImagePreview(null);
+      setNewAnnotation('');
       if (isAdding) {
           setIsAdding(false);
           return;
@@ -165,6 +167,7 @@ export const MCQBank: React.FC = () => {
       imageUrl: imagePreview,
       topic: newTopic,
       correctAnswer: newCorrectAnswer,
+      annotation: newAnnotation,
     };
     await saveMCQ(newMcq);
     await loadMCQs();
@@ -173,12 +176,14 @@ export const MCQBank: React.FC = () => {
         setEditingId(null);
         setIsAdding(false);
         setImagePreview(null);
+        setNewAnnotation('');
         alert("Updated Successfully!");
     } else {
         // Auto-prepare for next question
         const nextQNum = newQuestionNum + 1;
         setNewQuestionNum(nextQNum);
         setImagePreview(null);
+        setNewAnnotation('');
         if(fileInputRef.current) fileInputRef.current.value = "";
         
         // Synchronously set the next correct answer if we have bulk data
@@ -197,6 +202,7 @@ export const MCQBank: React.FC = () => {
       setNewTopic(q.topic);
       setNewCorrectAnswer(q.correctAnswer);
       setImagePreview(q.imageUrl);
+      setNewAnnotation(q.annotation || '');
       window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -312,6 +318,12 @@ export const MCQBank: React.FC = () => {
                           <p className={`text-lg font-bold ${feedback === 'correct' ? 'text-green-600' : 'text-red-500'}`}>
                               {feedback === 'correct' ? 'Correct!' : `Incorrect. The correct answer is ${currentQ.correctAnswer}`}
                           </p>
+                          {currentQ.annotation && (
+                              <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-700 w-full text-left">
+                                  <span className="font-bold text-slate-900 block mb-1">Explanation / Notes:</span>
+                                  <span className="whitespace-pre-wrap">{currentQ.annotation}</span>
+                              </div>
+                          )}
                           <button onClick={nextQuestion} className="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 shadow-sm">
                               {currentIndex < filteredMcqs.length - 1 ? 'Next Question →' : 'Finish Practice'}
                           </button>
@@ -400,13 +412,25 @@ export const MCQBank: React.FC = () => {
                     >
                         {isAdding ? 'Cancel Adding' : '+ Add Question'}
                     </button>
-                    <button 
-                      onClick={() => exportPracticeBook(filteredMcqs, selectedFilterValue === 'All' ? 'Complete Practice Book' : selectedFilterValue)}
-                      disabled={filteredMcqs.length === 0}
-                      className="px-4 py-2 bg-white text-emerald-700 border border-emerald-200 rounded-lg hover:bg-emerald-50 font-bold transition-colors disabled:opacity-50"
-                    >
-                        Export PDF/Book
-                    </button>
+                    <div className="flex bg-emerald-50 rounded-lg border border-emerald-200 overflow-hidden">
+                        <button 
+                          onClick={() => exportPracticeBook(filteredMcqs, selectedFilterValue === 'All' ? 'All Questions' : selectedFilterValue, false)}
+                          disabled={filteredMcqs.length === 0}
+                          className="px-4 py-2 text-emerald-700 hover:bg-emerald-100 font-bold text-sm transition-colors disabled:opacity-50"
+                          title="Export Clean Practice Version"
+                        >
+                            Export Practice
+                        </button>
+                        <div className="w-[1px] bg-emerald-200"></div>
+                        <button 
+                          onClick={() => exportPracticeBook(filteredMcqs, selectedFilterValue === 'All' ? 'All Questions' : selectedFilterValue, true)}
+                          disabled={filteredMcqs.length === 0}
+                          className="px-4 py-2 text-emerald-700 hover:bg-emerald-100 font-bold text-sm transition-colors disabled:opacity-50"
+                          title="Export with Explanations/Annotations"
+                        >
+                            Export Annotated
+                        </button>
+                    </div>
                     <button 
                       onClick={() => { setCurrentIndex(0); setIsPracticing(true); }}
                       disabled={filteredMcqs.length === 0}
@@ -469,6 +493,15 @@ export const MCQBank: React.FC = () => {
                                     ))}
                                 </select>
                             </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Annotation / Explanation (Optional)</label>
+                                <textarea 
+                                    value={newAnnotation} 
+                                    onChange={e => setNewAnnotation(e.target.value)} 
+                                    className="w-full p-2 border rounded bg-slate-50 text-xs min-h-[60px]"
+                                    placeholder="Enter any notes or explanations for this question..."
+                                />
+                            </div>
                             <button onClick={handleSave} className={`w-full py-3 mt-2 text-white font-bold rounded-lg shadow-sm transition-transform active:scale-[0.98] ${editingId ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-600 hover:bg-green-700'}`}>
                                 {editingId ? 'Update Question' : 'Save Question'}
                             </button>
@@ -509,7 +542,10 @@ export const MCQBank: React.FC = () => {
                         <div className="p-4 flex-1 flex flex-col pt-3">
                             <div className="flex justify-between items-start mb-2">
                                <h3 className="font-bold text-lg text-slate-900">Q{q.questionNum}</h3>
-                               <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded font-bold border border-slate-200">{q.paper}</span>
+                               <div className="flex gap-1 items-center">
+                                   {q.annotation && <span className="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded border border-amber-200 shadow-sm" title="Has Annotation">📝 Note</span>}
+                                   <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded font-bold border border-slate-200">{q.paper}</span>
+                               </div>
                             </div>
                             <p className="text-xs text-slate-500 mb-4 line-clamp-2 leading-relaxed" title={q.topic}>{q.topic}</p>
                             
