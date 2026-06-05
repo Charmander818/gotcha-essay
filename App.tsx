@@ -16,12 +16,12 @@ import { TopicLibrary } from './components/TopicLibrary';
 import { MCQBank } from './components/MCQBank';
 import AddQuestionModal from './components/AddQuestionModal';
 import CodeExportModal from './components/CodeExportModal';
-import SyllabusExportModal from './components/SyllabusExportModal'; // New Import
+import SyllabusExportModal from './components/SyllabusExportModal';
 import { Question, AppMode, QuestionState, TopicAnalysisData, SyllabusStatus, CustomSyllabusPoint } from './types';
 import { questions as initialQuestions } from './data';
 import { generateModelAnswer, generateClozeExercise } from './services/geminiService';
-import { SYLLABUS_CHECKLIST } from './syllabusChecklistData'; // Import for export merging
-import { PREFILLED_DEFINITIONS } from './syllabusDefinitions'; // Import for export merging
+import { SYLLABUS_CHECKLIST } from './syllabusChecklistData';
+import { PREFILLED_DEFINITIONS } from './syllabusDefinitions';
 
 const STORAGE_KEY_CUSTOM_QUESTIONS = 'cie_econ_custom_questions_v2';
 const STORAGE_KEY_DELETED_IDS = 'cie_econ_deleted_ids_v1';
@@ -41,6 +41,9 @@ const App: React.FC = () => {
   });
   const [passwordInput, setPasswordInput] = useState("");
   const [authError, setAuthError] = useState("");
+
+  // --- Global Navigation State ---
+  const [mainModule, setMainModule] = useState<'ESSAY' | 'MCQ' | 'SYLLABUS'>('ESSAY');
 
   // --- Application State ---
   const [customQuestions, setCustomQuestions] = useState<Question[]>(() => {
@@ -503,31 +506,63 @@ const App: React.FC = () => {
     );
   }
 
-  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.POLICY_FEAST || mode === AppMode.CORE_CONCEPTS || mode === AppMode.EXAM_TRENDS || mode === AppMode.TOPIC_LIBRARY || mode === AppMode.MCQ_BANK;
+  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.POLICY_FEAST || mode === AppMode.CORE_CONCEPTS || mode === AppMode.EXAM_TRENDS || mode === AppMode.TOPIC_LIBRARY;
 
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50">
-      <Sidebar 
-        questions={allQuestions}
-        onSelectQuestion={(q) => {
-            if (isGlobalMode) setMode(AppMode.GENERATOR);
-            setSelectedQuestion(q);
-        }} 
-        selectedQuestionId={selectedQuestion?.id || null}
-        onAddQuestionClick={() => { setQuestionToEdit(null); setIsModalOpen(true); }}
-        onDeleteQuestion={handleDeleteQuestion}
-        onEditQuestion={(q) => { setQuestionToEdit(q); setIsModalOpen(true); }}
-        questionStates={questionStates}
-        onExportAll={handleExportAll}
-        onExportExcel={handleExportExcel}
-        onBatchGenerate={handleBatchGenerate}
-        isBatchProcessing={isBatchProcessing}
-        batchProgress={batchProgress}
-        onOpenCodeExport={() => setIsCodeExportOpen(true)}
-      />
-      
-      <main className="flex-1 flex flex-col h-screen overflow-hidden">
-        <header className="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between flex-shrink-0 z-10">
+      {/* Global Navigation Bar */}
+      <div className="w-16 bg-slate-900 flex flex-col items-center py-6 gap-6 z-50 shadow-xl shrink-0">
+         <button 
+            onClick={() => setMainModule('ESSAY')}
+            className={`flex flex-col items-center gap-1 w-full py-2 border-r-2 ${mainModule === 'ESSAY' ? 'border-purple-500 text-purple-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`}
+            title="Essay & Paper 2, 4"
+         >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+            <span className="text-[10px] font-bold tracking-wider">ESSAY</span>
+         </button>
+         
+         <button 
+            onClick={() => setMainModule('MCQ')}
+            className={`flex flex-col items-center gap-1 w-full py-2 border-r-2 ${mainModule === 'MCQ' ? 'border-purple-500 text-purple-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`}
+            title="Multiple Choice Questions"
+         >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+            <span className="text-[10px] font-bold tracking-wider">MCQ</span>
+         </button>
+
+         <button 
+            onClick={() => setMainModule('SYLLABUS')}
+            className={`flex flex-col items-center gap-1 w-full py-2 border-r-2 ${mainModule === 'SYLLABUS' ? 'border-purple-500 text-purple-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`}
+            title="Syllabus Tracker & Cheat Sheets"
+         >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+            <span className="text-[10px] font-bold tracking-wider">SYLLABUS</span>
+         </button>
+      </div>
+
+      {mainModule === 'ESSAY' ? (
+        <>
+          <Sidebar 
+            questions={allQuestions}
+            onSelectQuestion={(q) => {
+                if (isGlobalMode) setMode(AppMode.GENERATOR);
+                setSelectedQuestion(q);
+            }} 
+            selectedQuestionId={selectedQuestion?.id || null}
+            onAddQuestionClick={() => { setQuestionToEdit(null); setIsModalOpen(true); }}
+            onDeleteQuestion={handleDeleteQuestion}
+            onEditQuestion={(q) => { setQuestionToEdit(q); setIsModalOpen(true); }}
+            questionStates={questionStates}
+            onExportAll={handleExportAll}
+            onExportExcel={handleExportExcel}
+            onBatchGenerate={handleBatchGenerate}
+            isBatchProcessing={isBatchProcessing}
+            batchProgress={batchProgress}
+            onOpenCodeExport={() => setIsCodeExportOpen(true)}
+          />
+          
+          <main className="flex-1 flex flex-col h-screen overflow-hidden">
+            <header className="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between flex-shrink-0 z-10">
           <div className="flex items-center gap-4">
             {mode === AppMode.TOPIC_ANALYSIS ? (
                 <div>
@@ -575,16 +610,6 @@ const App: React.FC = () => {
           </div>
 
           <div className="flex bg-slate-100 p-1 rounded-lg overflow-x-auto gap-1">
-            <button
-                onClick={() => setMode(AppMode.SYLLABUS_TRACKER)}
-                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
-                  mode === AppMode.SYLLABUS_TRACKER
-                    ? 'bg-purple-600 text-white shadow-sm' 
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-            >
-                Syllabus
-            </button>
             <button
                 onClick={() => setMode(AppMode.TOPIC_ANALYSIS)}
                 className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
@@ -635,16 +660,6 @@ const App: React.FC = () => {
             >
                 Library
             </button>
-            <button
-                onClick={() => setMode(AppMode.MCQ_BANK)}
-                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
-                  mode === AppMode.MCQ_BANK
-                    ? 'bg-purple-600 text-white shadow-sm' 
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-            >
-                MCQs
-            </button>
             
             <div className="w-px bg-slate-300 mx-1"></div>
 
@@ -667,15 +682,7 @@ const App: React.FC = () => {
 
         <div className="flex-1 overflow-y-auto p-0 relative">
           <div className="h-full">
-            {mode === AppMode.SYLLABUS_TRACKER ? (
-                <SyllabusTracker 
-                  statusMap={syllabusStatus}
-                  onUpdateStatus={setSyllabusStatus}
-                  customPoints={customSyllabusPoints}
-                  onAddPoint={handleAddSyllabusPoint}
-                  onDeletePoint={handleDeleteSyllabusPoint}
-                />
-            ) : mode === AppMode.TOPIC_ANALYSIS ? (
+            {mode === AppMode.TOPIC_ANALYSIS ? (
                <div className="p-8">
                <TopicAnalyzer 
                   initialTopic={selectedQuestion?.topic} 
@@ -695,8 +702,6 @@ const App: React.FC = () => {
                 <ExamTrends questions={allQuestions} />
             ) : mode === AppMode.TOPIC_LIBRARY ? (
                 <div className="p-8 h-full bg-slate-50"><TopicLibrary questions={allQuestions} /></div>
-            ) : mode === AppMode.MCQ_BANK ? (
-                <div className="flex-1 bg-slate-50 overflow-y-auto"><MCQBank /></div>
             ) : selectedQuestion ? (
               <div className="p-8">
                 {mode === AppMode.GENERATOR && (
@@ -775,8 +780,47 @@ const App: React.FC = () => {
             </div>
         )}
 
-        {/* Footer for Syllabus Mode */}
-        {mode === AppMode.SYLLABUS_TRACKER && (
+      </main>
+
+      <AddQuestionModal 
+        isOpen={isModalOpen} 
+        onClose={() => { setIsModalOpen(false); setQuestionToEdit(null); }} 
+        onSave={handleSaveQuestion}
+        initialQuestion={questionToEdit}
+      />
+
+      <CodeExportModal
+         isOpen={isCodeExportOpen}
+         onClose={() => setIsCodeExportOpen(false)}
+         questions={allQuestions}
+      />
+
+      <SyllabusExportModal
+         isOpen={isSyllabusExportOpen}
+         onClose={() => setIsSyllabusExportOpen(false)}
+         baseChecklist={SYLLABUS_CHECKLIST}
+         customPoints={customSyllabusPoints}
+         currentStatus={syllabusStatus}
+         baseDefinitions={PREFILLED_DEFINITIONS}
+      />
+      </>
+      ) : mainModule === 'SYLLABUS' ? (
+        <div className="flex-1 w-full bg-slate-50 flex flex-col overflow-hidden relative">
+            <header className="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between flex-shrink-0 z-10">
+                <div>
+                    <h2 className="text-lg font-bold text-slate-800">Syllabus Logic Trainer</h2>
+                    <p className="text-sm text-slate-500">Knowledge Checklist & Chain Building</p>
+                </div>
+            </header>
+            <div className="flex-1 overflow-y-auto">
+                <SyllabusTracker 
+                  statusMap={syllabusStatus}
+                  onUpdateStatus={setSyllabusStatus}
+                  customPoints={customSyllabusPoints}
+                  onAddPoint={handleAddSyllabusPoint}
+                  onDeletePoint={handleDeleteSyllabusPoint}
+                />
+            </div>
             <div className="border-t border-slate-200 bg-white p-3 px-6 flex justify-between items-center z-20 shadow-lg">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Syllabus Data Options</span>
                 <div className="flex gap-3">
@@ -808,30 +852,20 @@ const App: React.FC = () => {
                     </button>
                 </div>
             </div>
-        )}
-      </main>
-
-      <AddQuestionModal 
-        isOpen={isModalOpen} 
-        onClose={() => { setIsModalOpen(false); setQuestionToEdit(null); }} 
-        onSave={handleSaveQuestion}
-        initialQuestion={questionToEdit}
-      />
-
-      <CodeExportModal
-         isOpen={isCodeExportOpen}
-         onClose={() => setIsCodeExportOpen(false)}
-         questions={allQuestions}
-      />
-
-      <SyllabusExportModal
-         isOpen={isSyllabusExportOpen}
-         onClose={() => setIsSyllabusExportOpen(false)}
-         baseChecklist={SYLLABUS_CHECKLIST}
-         customPoints={customSyllabusPoints}
-         currentStatus={syllabusStatus}
-         baseDefinitions={PREFILLED_DEFINITIONS}
-      />
+            <SyllabusExportModal
+               isOpen={isSyllabusExportOpen}
+               onClose={() => setIsSyllabusExportOpen(false)}
+               baseChecklist={SYLLABUS_CHECKLIST}
+               customPoints={customSyllabusPoints}
+               currentStatus={syllabusStatus}
+               baseDefinitions={PREFILLED_DEFINITIONS}
+            />
+        </div>
+      ) : (
+        <div className="flex-1 w-full bg-slate-50 overflow-hidden relative">
+           <MCQBank />
+        </div>
+      )}
     </div>
   );
 };

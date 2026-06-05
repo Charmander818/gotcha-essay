@@ -38,6 +38,7 @@ export const MCQBank: React.FC = () => {
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
 
   // Filters & Navigation
+  const [selectedLevel, setSelectedLevel] = useState<'AS' | 'AL'>('AS');
   const [selectedFilterType, setSelectedFilterType] = useState<'PAPER' | 'TOPIC'>('PAPER');
   const [selectedFilterValue, setSelectedFilterValue] = useState<string>('All');
 
@@ -281,13 +282,34 @@ export const MCQBank: React.FC = () => {
       if(importFileRef.current) importFileRef.current.value = "";
   };
 
+  const isASCode = (paper: string) => paper.split(' ')[2]?.startsWith('1');
+
   const filteredMcqs = mcqs.filter(q => {
+      const qLevel = isASCode(q.paper) ? 'AS' : 'AL';
+      if (qLevel !== selectedLevel) return false;
+
       if (selectedFilterValue === 'All') return true;
       if (selectedFilterValue === 'Starred') return q.isStarred;
       if (selectedFilterType === 'PAPER') return q.paper === selectedFilterValue;
       if (selectedFilterType === 'TOPIC') return q.topic === selectedFilterValue;
       return true;
   });
+
+  const levelFilteredPaperCodes = PAPER_CODES.filter(c => {
+      const paperNum = c.split(' ')[2];
+      return selectedLevel === 'AS' ? paperNum?.startsWith('1') : paperNum?.startsWith('3');
+  });
+
+  const levelFilteredTopics = ALL_TOPICS.filter(t => t.type === selectedLevel);
+  
+  useEffect(() => {
+     if (levelFilteredPaperCodes.length > 0 && !levelFilteredPaperCodes.includes(newPaper)) {
+         setNewPaper(levelFilteredPaperCodes[0]);
+     }
+     if (levelFilteredTopics.length > 0 && !levelFilteredTopics.find(t => t.text === newTopic)) {
+         setNewTopic(levelFilteredTopics[0].text);
+     }
+  }, [selectedLevel]);
 
   if (isPracticing) {
       if (filteredMcqs.length === 0) {
@@ -369,6 +391,24 @@ export const MCQBank: React.FC = () => {
         <div className="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 sticky top-0" style={{ height: 'calc(100vh - 72px)' }}>
             <div className="p-4 border-b border-slate-200">
                 <h2 className="font-bold text-lg text-slate-800">MCQ Library</h2>
+                <div className="flex border-b border-slate-200 mt-3 mb-2">
+                   <button
+                     onClick={() => { setSelectedLevel('AS'); setSelectedFilterValue('All') }}
+                     className={`flex-1 pb-1 text-xs font-semibold rounded-t transition-all border-b-2 ${
+                       selectedLevel === 'AS' ? 'border-blue-600 text-blue-600' : 'border-transparent text-slate-500 hover:text-slate-700'
+                     }`}
+                   >
+                     AS Level
+                   </button>
+                   <button
+                     onClick={() => { setSelectedLevel('AL'); setSelectedFilterValue('All') }}
+                     className={`flex-1 pb-1 text-xs font-semibold rounded-t transition-all border-b-2 ${
+                       selectedLevel === 'AL' ? 'border-purple-600 text-purple-600' : 'border-transparent text-slate-500 hover:text-slate-700'
+                     }`}
+                   >
+                     A Level
+                   </button>
+                </div>
                 <div className="flex gap-1 mt-2 p-1 bg-slate-100 rounded-lg">
                    <button onClick={() => {setSelectedFilterType('PAPER'); setSelectedFilterValue('All')}} className={`flex-1 py-1 text-xs font-bold rounded-md ${selectedFilterType === 'PAPER' ? 'bg-white shadow' : 'text-slate-500'}`}>Papers</button>
                    <button onClick={() => {setSelectedFilterType('TOPIC'); setSelectedFilterValue('All')}} className={`flex-1 py-1 text-xs font-bold rounded-md ${selectedFilterType === 'TOPIC' ? 'bg-white shadow' : 'text-slate-500'}`}>Topics</button>
@@ -376,15 +416,15 @@ export const MCQBank: React.FC = () => {
             </div>
             <div className="flex-1 overflow-y-auto p-2 space-y-1">
                 <button onClick={() => setSelectedFilterValue('All')} className={`w-full text-left px-3 py-2 rounded text-sm mb-1 ${selectedFilterValue === 'All' ? 'bg-blue-50 text-blue-700 font-bold' : 'text-slate-700 hover:bg-slate-100'}`}>
-                    All Questions ({mcqs.length})
+                    All {selectedLevel} Questions ({mcqs.filter(m => isASCode(m.paper) === (selectedLevel === 'AS')).length})
                 </button>
                 <button onClick={() => setSelectedFilterValue('Starred')} className={`w-full text-left px-3 py-2 rounded text-sm flex justify-between items-center ${selectedFilterValue === 'Starred' ? 'bg-amber-50 text-amber-700 font-bold' : 'text-slate-700 hover:bg-slate-100'}`}>
-                    <span>Starred Questions</span>
+                    <span>Starred {selectedLevel} Questions</span>
                     <span>🌟</span>
                 </button>
                 <div className="my-2 border-b border-slate-100"></div>
                 {selectedFilterType === 'PAPER' ? (
-                    Array.from(new Set(PAPER_CODES.map(c => c.split(' ')[0]))).sort((a,b) => b.localeCompare(a)).map(year => (
+                    Array.from(new Set(levelFilteredPaperCodes.map(c => c.split(' ')[0]))).sort((a,b) => b.localeCompare(a)).map(year => (
                         <div key={year} className="mb-1">
                             <button 
                                 onClick={() => setExpandedYears(prev => ({...prev, [year]: !prev[year]}))}
@@ -395,7 +435,7 @@ export const MCQBank: React.FC = () => {
                             </button>
                             {expandedYears[year] && (
                                 <div className="pl-2 mt-1 space-y-1 border-l-2 border-slate-100 ml-2 mb-2">
-                                    {PAPER_CODES.filter(c => c.startsWith(year)).map(code => {
+                                    {levelFilteredPaperCodes.filter(c => c.startsWith(year)).map(code => {
                                         const count = mcqs.filter(m => m.paper === code).length;
                                         return (
                                             <button key={code} onClick={() => setSelectedFilterValue(code)} className={`w-full text-left px-2 py-1.5 rounded text-xs leading-tight ${selectedFilterValue === code ? 'bg-blue-50 text-blue-700 font-bold' : 'text-slate-600 hover:bg-slate-100'}`}>
@@ -408,7 +448,7 @@ export const MCQBank: React.FC = () => {
                         </div>
                     ))
                 ) : (
-                    ALL_TOPICS.map(topic => {
+                    levelFilteredTopics.map(topic => {
                         const count = mcqs.filter(m => m.topic === topic.text).length;
                         return (
                             <button key={topic.id} onClick={() => setSelectedFilterValue(topic.text)} className={`w-full text-left px-3 py-2 rounded text-xs leading-tight ${selectedFilterValue === topic.text ? 'bg-blue-50 text-blue-700 font-bold' : 'text-slate-700 hover:bg-slate-100'}`}>
@@ -507,13 +547,13 @@ export const MCQBank: React.FC = () => {
                             <div>
                                 <label className="block text-sm font-medium text-slate-700 mb-1">Paper Reference</label>
                                 <select value={newPaper} onChange={e => setNewPaper(e.target.value)} className="w-full p-2 border rounded">
-                                    {PAPER_CODES.map(code => <option key={code} value={code}>{code}</option>)}
+                                    {levelFilteredPaperCodes.map(code => <option key={code} value={code}>{code}</option>)}
                                 </select>
                             </div>
                             <div className="flex gap-4">
                                 <div className="w-1/3">
                                     <label className="block text-sm font-medium text-slate-700 mb-1">Q Num</label>
-                                    <input type="number" value={newQuestionNum} onChange={e => setNewQuestionNum(Number(e.target.value))} className="w-full p-2 border rounded" min={1} max={30} />
+                                    <input type="number" value={newQuestionNum} onChange={e => setNewQuestionNum(Number(e.target.value))} className="w-full p-2 border rounded" min={1} max={40} />
                                 </div>
                                 <div className="w-2/3">
                                     <label className="block text-sm font-medium text-slate-700 mb-1 text-blue-700">Correct Answer {bulkAnswers[newPaper] ? '(Auto-filled)' : ''}</label>
@@ -526,11 +566,11 @@ export const MCQBank: React.FC = () => {
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Topic Chapter (AS / AL)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Topic Chapter ({selectedLevel})</label>
                                 <select value={newTopic} onChange={e => setNewTopic(e.target.value)} className="w-full p-2 border rounded bg-slate-50 text-xs">
-                                    {ALL_TOPICS.map(t => (
+                                    {levelFilteredTopics.map(t => (
                                         <option key={t.id} value={t.text}>
-                                            [{t.type}] {t.parent} &gt; {t.text}
+                                            {t.parent} &gt; {t.text}
                                         </option>
                                     ))}
                                 </select>
