@@ -743,7 +743,7 @@ export const generateTeachingPPTData = async (chapter: string, syllabusPoints: s
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3-flash-preview',
       contents: prompt,
       config: {
         responseMimeType: "application/json"
@@ -784,7 +784,7 @@ export const generateMindmapData = async (chapter: string, syllabusPoints: strin
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3-flash-preview',
       contents: prompt,
     });
     
@@ -823,7 +823,7 @@ export const extractMCQsFromImage = async (base64Image: string): Promise<any> =>
     
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3-flash-preview',
       contents: {
          parts: [
              { text: prompt },
@@ -837,9 +837,9 @@ export const extractMCQsFromImage = async (base64Image: string): Promise<any> =>
     // Handle potential markdown wrappers if returned
     const jsonString = text.replace(/```json/g, '').replace(/```/g, '').trim();
     return JSON.parse(jsonString);
-  } catch (error) {
+  } catch (error: any) {
     console.error("MCQ Extraction Error:", error);
-    throw new Error("Failed to extract MCQs from the image. Check your API key and connection.");
+    throw new Error(`Failed to extract MCQs from the image. Details: ${error.message || error}`);
   }
 };
 
