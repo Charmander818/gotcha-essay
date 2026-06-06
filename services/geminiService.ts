@@ -859,6 +859,56 @@ export const extractMCQsFromImage = async (base64Image: string, retries = 3): Pr
   }
 };
 
+export const extractDescriptionForMCQ = async (base64Image: string, retries = 3): Promise<string> => {
+  try {
+    checkForApiKey();
+    const prompt = `
+      Analyze this image of a SINGLE multiple-choice question for an Economics exam.
+      Provide a short, specific description of the key concept being tested (e.g., "Positive and Normative Statements", "Price Elasticity calculation", "Opportunity Cost on PPC"). 
+      This will be used for keyword searching.
+      Return ONLY the plain description text, nothing else. Keep it under 8 words.
+    `;
+    
+    if (!base64Image.includes(';base64,')) {
+         throw new Error("Invalid base64 image format");
+    }
+    
+    const [mimeTypePrefix, base64Data] = base64Image.split(';base64,');
+    const mimeType = mimeTypePrefix.split(':')[1];
+    
+    const ai = getAI();
+    let response;
+    
+    for (let i = 0; i < retries; i++) {
+        try {
+            response = await ai.models.generateContent({
+              model: 'gemini-3-flash-preview',
+              contents: {
+                 parts: [
+                     { text: prompt },
+                     { inlineData: { mimeType, data: base64Data } }
+                 ]
+              }
+            });
+            break;
+        } catch (err: any) {
+            if (i === retries - 1) throw err;
+            if (err?.status === "RESOURCE_EXHAUSTED" || err?.status === 429 || err?.message?.includes("429") || err?.message?.includes("Quota exceeded")) {
+                const waitTime = Math.pow(2, i) * 5000;
+                console.warn(`Rate limited. Retrying in ${waitTime/1000}s...`);
+                await new Promise(resolve => setTimeout(resolve, waitTime));
+            } else {
+                throw err;
+            }
+        }
+    }
+    return response?.text?.trim() || "Unclassified Concept";
+  } catch (error: any) {
+    console.error("MCQ Description Extraction Error:", error);
+    throw new Error(`Failed to extract description. Details: ${error.message || error}`);
+  }
+};
+
 export const generateChatResponse = async (prompt: string): Promise<string> => {
   try {
     checkForApiKey();

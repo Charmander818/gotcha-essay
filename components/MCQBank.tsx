@@ -5,6 +5,7 @@ import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
 import { exportPracticeBook } from '../utils/mcqExport';
 import { ALL_TOPICS } from '../utils/topicHelpers';
 import { AutoPDFImport } from './AutoPDFImport';
+import { extractDescriptionForMCQ } from '../services/geminiService';
 
 const PAPER_CODES = [
   "2021 F/M 12", "2021 M/J 11", "2021 M/J 12", "2021 M/J 13", "2021 O/N 11", "2021 O/N 12", "2021 O/N 13",
@@ -62,6 +63,9 @@ export const MCQBank: React.FC = () => {
   // Bulk Answers State
   const [bulkAnswers, setBulkAnswers] = useState<Record<string, string>>({});
   const [bulkInput, setBulkInput] = useState('');
+  
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [analyzeProgress, setAnalyzeProgress] = useState({ current: 0, total: 0 });
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const importFileRef = useRef<HTMLInputElement>(null);
@@ -257,6 +261,40 @@ export const MCQBank: React.FC = () => {
       } catch (err) {
           console.error("Failed to toggle problematic", err);
       }
+  };
+
+  const handleAnalyzeDescriptions = async () => {
+    // Collect MCQs currently filtered that have an image but NO description
+    const toAnalyze = filteredMcqs.filter(q => q.imageUrl && !q.description);
+    if (toAnalyze.length === 0) {
+      alert("No questions found in this view that need a description.");
+      return;
+    }
+    
+    if (!confirm(`Found ${toAnalyze.length} questions without a description. This will call the Gemini API ${toAnalyze.length} times. Proceed?`)) {
+      return;
+    }
+
+    setIsAnalyzing(true);
+    setAnalyzeProgress({ current: 0, total: toAnalyze.length });
+
+    let count = 0;
+    for (const q of toAnalyze) {
+       try {
+           const desc = await extractDescriptionForMCQ(q.imageUrl);
+           if (desc) {
+               await saveMCQ({ ...q, description: desc });
+           }
+       } catch (err) {
+           console.error(`Failed to analyze description for Question ${q.questionNum}:`, err);
+       }
+       count++;
+       setAnalyzeProgress({ current: count, total: toAnalyze.length });
+    }
+    
+    setIsAnalyzing(false);
+    await loadMCQs();
+    alert("Analysis complete!");
   };
 
   const handleAnswer = (ans: 'A' | 'B' | 'C' | 'D') => {
@@ -573,8 +611,8 @@ export const MCQBank: React.FC = () => {
                 </div>
             )}
 
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div className="flex-1">
+            <div className="flex flex-col xl:flex-row justify-between items-start xl:items-end gap-6 mb-4">
+                <div className="flex-1 w-full xl:w-auto">
                   <h1 className="text-3xl font-bold tracking-tight text-slate-900">{selectedFilterValue === 'All' ? 'All MCQs' : selectedFilterValue}</h1>
                   <p className="text-slate-500 mt-1">{filteredMcqs.length} questions available.</p>
                   <div className="mt-4 max-w-sm">
@@ -584,13 +622,31 @@ export const MCQBank: React.FC = () => {
                               placeholder="Search by keyword, concept or description..."
                               value={searchQuery}
                               onChange={(e) => setSearchQuery(e.target.value)}
-                              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 border-slate-300"
+                              className="w-full pl-10 pr-10 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 border-slate-300"
                           />
                           <svg className="w-5 h-5 absolute left-3 top-2.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                          {searchQuery && (
+                              <button 
+                                  onClick={() => setSearchQuery('')}
+                                  className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 focus:outline-none"
+                                  title="Clear search"
+                              >
+                                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                              </button>
+                          )}
                       </div>
                   </div>
                 </div>
-                <div className="flex gap-2 self-start md:self-center flex-wrap">
+                <div className="flex gap-2 self-start xl:self-end flex-wrap">
+                    {selectedFilterType === 'PAPER' && selectedFilterValue !== 'All' && (
+                        <button 
+                            onClick={handleAnalyzeDescriptions} 
+                            disabled={isAnalyzing}
+                            className="px-4 py-2 bg-gradient-to-r from-purple-100 to-fuchsia-100 border border-purple-200 text-purple-700 rounded-lg hover:from-purple-200 hover:to-fuchsia-200 font-medium transition-colors disabled:opacity-50"
+                        >
+                            {isAnalyzing ? `Analyzing... (${analyzeProgress.current}/${analyzeProgress.total})` : 'Auto-Extract Descriptions'}
+                        </button>
+                    )}
                     <button 
                       onClick={startAdding} 
                       className="px-4 py-2 bg-indigo-50 border border-indigo-200 text-indigo-700 rounded-lg hover:bg-indigo-100 font-medium transition-colors"
@@ -601,7 +657,7 @@ export const MCQBank: React.FC = () => {
                       onClick={() => setShowAutoImport(true)} 
                       className="px-4 py-2 bg-fuchsia-50 border border-fuchsia-200 text-fuchsia-700 rounded-lg hover:bg-fuchsia-100 font-medium transition-colors flex items-center gap-2"
                     >
-                        <span>🪄 Auto PDF Slicer</span>
+                        <span>Auto PDF Slicer</span>
                     </button>
                     <div className="flex bg-emerald-50 rounded-lg border border-emerald-200 overflow-hidden">
                         <button 

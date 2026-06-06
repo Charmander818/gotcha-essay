@@ -4,6 +4,7 @@ export const ALL_TOPICS: { id: string, text: string, type: 'AS' | 'AL', parent: 
 SYLLABUS_CHECKLIST.forEach(section => {
   const type = parseInt(section.id) <= 6 ? 'AS' : 'AL';
   section.subsections.forEach(sub => {
-    ALL_TOPICS.push({ id: sub.id, text: `${sub.id} ${sub.title}`, type, parent: section.title });
+    // sub.title already includes the id (e.g. "1.1 Scarcity...")
+    ALL_TOPICS.push({ id: sub.id, text: sub.title, type, parent: section.title });
   });
 });

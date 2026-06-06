@@ -23,7 +23,18 @@ export const getMCQs = async (): Promise<MCQ[]> => {
     const transaction = db.transaction(STORE_NAME, 'readonly');
     const store = transaction.objectStore(STORE_NAME);
     const request = store.getAll();
-    request.onsuccess = () => resolve(request.result);
+    request.onsuccess = () => {
+        const mcqs: MCQ[] = request.result;
+        // Fix for old duplicated topics before resolving
+        const fixedMcqs = mcqs.map(q => {
+            if (q.topic) {
+                // regex fixes "1.1 1.1 Scarcity" into "1.1 Scarcity"
+                q.topic = q.topic.replace(/^(\d+\.\d+)\s+\1\s+/, '$1 ');
+            }
+            return q;
+        });
+        resolve(fixedMcqs);
+    };
     request.onerror = () => reject(request.error);
   });
 };
