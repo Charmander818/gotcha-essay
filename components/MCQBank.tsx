@@ -611,77 +611,69 @@ export const MCQBank: React.FC = () => {
                 </div>
             )}
 
-            <div className="flex flex-col xl:flex-row justify-between items-start xl:items-end gap-6 mb-4">
-                <div className="flex-1 w-full xl:w-auto">
-                  <h1 className="text-3xl font-bold tracking-tight text-slate-900">{selectedFilterValue === 'All' ? 'All MCQs' : selectedFilterValue}</h1>
-                  <p className="text-slate-500 mt-1">{filteredMcqs.length} questions available.</p>
-                  <div className="mt-4 max-w-sm">
-                      <div className="relative">
-                          <input 
-                              type="text" 
-                              placeholder="Search by keyword, concept or description..."
-                              value={searchQuery}
-                              onChange={(e) => setSearchQuery(e.target.value)}
-                              className="w-full pl-10 pr-10 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 border-slate-300"
-                          />
-                          <svg className="w-5 h-5 absolute left-3 top-2.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                          {searchQuery && (
-                              <button 
-                                  onClick={() => setSearchQuery('')}
-                                  className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 focus:outline-none"
-                                  title="Clear search"
-                              >
-                                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                              </button>
-                          )}
-                      </div>
-                  </div>
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-4">
+                <div className="flex-1 w-full flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+                    <div className="flex flex-wrap items-baseline gap-3">
+                        <h1 className="text-2xl font-bold tracking-tight text-slate-900 whitespace-nowrap">{selectedFilterValue === 'All' ? 'All MCQs' : selectedFilterValue}</h1>
+                        <p className="text-slate-500 text-sm whitespace-nowrap m-0">{filteredMcqs.length} questions</p>
+                    </div>
+                    <div className="w-full max-w-sm sm:ml-4">
+                        <div className="relative">
+                            <input 
+                                type="text" 
+                                placeholder="Search by keyword, concept or description..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full pl-9 pr-9 py-1.5 text-sm border rounded-lg focus:ring-2 focus:ring-blue-500 border-slate-300"
+                            />
+                            <svg className="w-4 h-4 absolute left-3 top-2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                            {searchQuery && (
+                                <button 
+                                    onClick={() => setSearchQuery('')}
+                                    className="absolute right-3 top-2 text-slate-400 hover:text-slate-600 focus:outline-none"
+                                    title="Clear search"
+                                >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                                </button>
+                            )}
+                        </div>
+                    </div>
                 </div>
-                <div className="flex gap-2 self-start xl:self-end flex-wrap">
+                
+                <div className="flex flex-wrap gap-2 w-full lg:w-auto lg:max-w-[460px] justify-start lg:justify-end shrink-0">
                     {selectedFilterType === 'PAPER' && selectedFilterValue !== 'All' && (
                         <button 
                             onClick={handleAnalyzeDescriptions} 
                             disabled={isAnalyzing}
-                            className="px-4 py-2 bg-gradient-to-r from-purple-100 to-fuchsia-100 border border-purple-200 text-purple-700 rounded-lg hover:from-purple-200 hover:to-fuchsia-200 font-medium transition-colors disabled:opacity-50"
+                            className="flex-1 min-w-[120px] px-3 py-1.5 text-sm bg-gradient-to-r from-purple-100 to-fuchsia-100 border border-purple-200 text-purple-700 rounded-lg hover:from-purple-200 hover:to-fuchsia-200 font-medium transition-colors disabled:opacity-50 whitespace-nowrap text-center"
                         >
-                            {isAnalyzing ? `Analyzing... (${analyzeProgress.current}/${analyzeProgress.total})` : 'Auto-Extract Descriptions'}
+                            {isAnalyzing ? `Analyzing...` : 'Auto-Extract'}
                         </button>
                     )}
                     <button 
                       onClick={startAdding} 
-                      className="px-4 py-2 bg-indigo-50 border border-indigo-200 text-indigo-700 rounded-lg hover:bg-indigo-100 font-medium transition-colors"
+                      className="flex-1 min-w-[120px] px-3 py-1.5 text-sm bg-indigo-50 border border-indigo-200 text-indigo-700 rounded-lg hover:bg-indigo-100 font-medium transition-colors whitespace-nowrap text-center"
                     >
-                        {isAdding ? 'Cancel Adding' : '+ Add Question'}
+                        {isAdding ? 'Cancel' : '+ Add Question'}
                     </button>
                     <button 
                       onClick={() => setShowAutoImport(true)} 
-                      className="px-4 py-2 bg-fuchsia-50 border border-fuchsia-200 text-fuchsia-700 rounded-lg hover:bg-fuchsia-100 font-medium transition-colors flex items-center gap-2"
+                      className="flex-1 min-w-[120px] px-3 py-1.5 text-sm bg-fuchsia-50 border border-fuchsia-200 text-fuchsia-700 rounded-lg hover:bg-fuchsia-100 font-medium transition-colors whitespace-nowrap text-center"
                     >
-                        <span>Auto PDF Slicer</span>
+                        Auto PDF Slicer
                     </button>
-                    <div className="flex bg-emerald-50 rounded-lg border border-emerald-200 overflow-hidden">
-                        <button 
-                          onClick={() => exportPracticeBook(filteredMcqs, selectedFilterValue === 'All' ? 'All Questions' : selectedFilterValue, false)}
-                          disabled={filteredMcqs.length === 0}
-                          className="px-4 py-2 text-emerald-700 hover:bg-emerald-100 font-bold text-sm transition-colors disabled:opacity-50"
-                          title="Export Clean Practice Version"
-                        >
-                            Export Practice
-                        </button>
-                        <div className="w-[1px] bg-emerald-200"></div>
-                        <button 
-                          onClick={() => exportPracticeBook(filteredMcqs, selectedFilterValue === 'All' ? 'All Questions' : selectedFilterValue, true)}
-                          disabled={filteredMcqs.length === 0}
-                          className="px-4 py-2 text-emerald-700 hover:bg-emerald-100 font-bold text-sm transition-colors disabled:opacity-50"
-                          title="Export with Explanations/Annotations"
-                        >
-                            Export Annotated
-                        </button>
-                    </div>
+                    <button 
+                      onClick={() => exportPracticeBook(filteredMcqs, selectedFilterValue === 'All' ? 'All Questions' : selectedFilterValue, true)}
+                      disabled={filteredMcqs.length === 0}
+                      className="flex-1 min-w-[120px] px-3 py-1.5 text-sm bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-lg hover:bg-emerald-100 font-bold transition-colors disabled:opacity-50 whitespace-nowrap text-center"
+                      title="Export with Explanations/Annotations"
+                    >
+                        Export Annotated
+                    </button>
                     <button 
                       onClick={() => { setCurrentIndex(0); setIsPracticing(true); }}
                       disabled={filteredMcqs.length === 0}
-                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-bold transition-colors disabled:opacity-50"
+                      className="flex-1 min-w-[120px] px-3 py-1.5 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-bold transition-colors disabled:opacity-50 whitespace-nowrap text-center"
                     >
                         Practice ({filteredMcqs.length})
                     </button>
