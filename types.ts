@@ -142,6 +142,7 @@ export interface MCQ {
   questionNum: number;
   imageUrl: string; 
   topic: string;
+  description?: string;
   correctAnswer: 'A' | 'B' | 'C' | 'D';
   annotation?: string;
   isStarred?: boolean;

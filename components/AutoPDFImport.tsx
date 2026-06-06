@@ -2,9 +2,9 @@ import React, { useState, useRef } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { extractMCQsFromImage } from '../services/geminiService';
 import { saveMCQ } from '../utils/indexedDB';
-import { MCQ } from '../types';
+import { MCQ, SyllabusTopic } from '../types';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`;
+pdfjsLib.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
 
 interface DraftMCQ {
   id: string;
@@ -12,11 +12,16 @@ interface DraftMCQ {
   questionNum: number;
   imageUrl: string;
   topic: string;
+  description?: string;
   correctAnswer: 'A' | 'B' | 'C' | 'D';
+  annotation?: string;
 }
 
-export const AutoPDFImport: React.FC<{ onComplete: () => void, onCancel: () => void }> = ({ onComplete, onCancel }) => {
-  const [paperCode, setPaperCode] = useState('');
+export const AutoPDFImport: React.FC<{ initialPaperCode: string, onComplete: () => void, onCancel: () => void }> = ({ initialPaperCode, onComplete, onCancel }) => {
+  const [step, setStep] = useState<number>(1);
+  const [paperCode, setPaperCode] = useState(initialPaperCode);
+  const [bulkAnswers, setBulkAnswers] = useState<string>('');
+  const [parsedAnswers, setParsedAnswers] = useState<('A'|'B'|'C'|'D')[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [progress, setProgress] = useState('');
   const [drafts, setDrafts] = useState<DraftMCQ[]>([]);
@@ -24,13 +29,24 @@ export const AutoPDFImport: React.FC<{ onComplete: () => void, onCancel: () => v
   
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const handleNextStep2 = () => {
+      if (!paperCode) {
+          setError("Paper code is required.");
+          return;
+      }
+      setError(null);
+      setStep(2);
+  };
+
+  const handleNextStep3 = () => {
+      const answers = bulkAnswers.replace(/[^A-D]/gi, '').toUpperCase().split('') as ('A'|'B'|'C'|'D')[];
+      setParsedAnswers(answers);
+      setStep(3);
+  };
+
   const processPDF = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (!paperCode) {
-      alert("Please enter a Paper Code first.");
-      return;
-    }
 
     setIsProcessing(true);
     setProgress("Loading PDF...");
@@ -89,23 +105,28 @@ export const AutoPDFImport: React.FC<{ onComplete: () => void, onCancel: () => v
                        ctx.drawImage(canvas, sx, sy, sw, sh, 0, 0, sw, sh);
                        const croppedBase64 = cropCanvas.toDataURL('image/jpeg', 0.9);
                        
+                       const qNum = eq.questionNum || newDrafts.length + 1;
                        newDrafts.push({
                            id: crypto.randomUUID(),
                            paper: paperCode,
-                           questionNum: eq.questionNum || newDrafts.length + 1,
+                           questionNum: qNum,
                            topic: eq.topic || "Unclassified",
+                           description: eq.description || "",
                            imageUrl: croppedBase64,
-                           correctAnswer: 'A' // default
+                           correctAnswer: parsedAnswers[qNum - 1] || 'A',
+                           annotation: ''
                        });
                    }
                }
            }
-        } catch (err) {
-           console.error("Skipping page due to API error", err);
+        } catch (err: any) {
+           console.error("Stopping process due to API error", err);
+           throw err; // Forward error to stop the entire processing loop
         }
       }
       
       setDrafts(prev => [...prev, ...newDrafts.sort((a,b) => a.questionNum - b.questionNum)]);
+      setStep(4);
     } catch (err: any) {
       setError(err.message || "Failed to process PDF");
     } finally {
@@ -146,81 +167,148 @@ export const AutoPDFImport: React.FC<{ onComplete: () => void, onCancel: () => v
        <div className="bg-white rounded-xl shadow-xl w-full max-w-5xl h-[90vh] flex flex-col overflow-hidden">
            <div className="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50">
                <div>
-                  <h2 className="text-2xl font-bold text-slate-800">Auto PDF Slicer</h2>
-                  <p className="text-slate-500 text-sm">Upload a past paper PDF and AI will automatically crop questions and classify topics.</p>
+                  <h2 className="text-2xl font-bold text-slate-800">Auto PDF Slicer Wizard</h2>
+                  <p className="text-slate-500 text-sm">Step {step} of 4</p>
                </div>
                <button onClick={onCancel} className="text-slate-400 hover:text-slate-600">
                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                </button>
            </div>
            
-           <div className="p-6 overflow-y-auto flex-1 bg-slate-100">
-               {error && <div className="bg-red-50 text-red-600 p-4 rounded mb-6 border border-red-200">{error}</div>}
-               
-               <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm mb-6 flex gap-4 items-end">
-                  <div className="flex-1">
-                      <label className="block text-sm font-bold text-slate-700 mb-1">Paper Code (e.g. 9708_m23_qp_12)</label>
-                      <input 
-                          type="text" 
-                          value={paperCode}
-                          onChange={e => setPaperCode(e.target.value)}
-                          className="w-full border p-2 rounded focus:ring-2 focus:ring-blue-500 border-slate-300" 
-                          placeholder="Enter paper code here"
-                      />
-                  </div>
-                  <div className="flex-1">
-                      <label className="block text-sm font-bold text-slate-700 mb-1">Select Question Paper PDF</label>
-                      <input 
-                          type="file" 
-                          accept="application/pdf"
-                          ref={fileInputRef}
-                          onChange={processPDF}
-                          disabled={isProcessing || !paperCode}
-                          className="w-full border p-1 rounded file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 disabled:opacity-50" 
-                      />
-                  </div>
+           <div className="p-6 overflow-y-auto flex-1 bg-slate-100 flex flex-col items-center">
+               <div className="w-full max-w-3xl">
+                   {error && <div className="bg-red-50 text-red-600 p-4 rounded mb-6 border border-red-200">{error}</div>}
+                   
+                   {step === 1 && (
+                       <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm animate-in fade-in slide-in-from-bottom-4">
+                           <h3 className="text-xl font-bold text-slate-800 mb-2">Step 1: Confirm Paper Code</h3>
+                           <p className="text-slate-500 mb-6">Select the paper you are going to import questions into.</p>
+                           <label className="block text-sm font-bold text-slate-700 mb-2">Paper Code (e.g. 9708_m23_qp_12)</label>
+                           <input 
+                               type="text" 
+                               value={paperCode}
+                               onChange={e => setPaperCode(e.target.value)}
+                               className="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 border-slate-300 text-lg mb-6" 
+                               placeholder="Enter paper code here"
+                           />
+                           <div className="flex justify-end">
+                               <button onClick={handleNextStep2} className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700">Next Step</button>
+                           </div>
+                       </div>
+                   )}
+
+                   {step === 2 && (
+                       <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm animate-in fade-in slide-in-from-bottom-4">
+                           <h3 className="text-xl font-bold text-slate-800 mb-2">Step 2: Enter Answers</h3>
+                           <p className="text-slate-500 mb-6">Paste the answer string for the 30 questions. This will auto-fill the correct answers.</p>
+                           <label className="block text-sm font-bold text-slate-700 mb-2">Answers String (e.g. C A B ...)</label>
+                           <textarea 
+                               value={bulkAnswers}
+                               onChange={e => setBulkAnswers(e.target.value)}
+                               className="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 border-slate-300 font-mono tracking-widest uppercase mb-2 h-32" 
+                               placeholder="Paste answers here..."
+                           />
+                           <p className="text-xs text-slate-500 font-medium mb-6">Detected {bulkAnswers.replace(/[^A-D]/gi, '').length} answers.</p>
+                           
+                           <div className="flex justify-between">
+                               <button onClick={() => setStep(1)} className="text-slate-600 px-4 py-2 rounded hover:bg-slate-100 font-bold">Back</button>
+                               <button onClick={handleNextStep3} className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700">Next Step</button>
+                           </div>
+                       </div>
+                   )}
+
+                   {step === 3 && (
+                       <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm animate-in fade-in slide-in-from-bottom-4">
+                           <h3 className="text-xl font-bold text-slate-800 mb-2">Step 3: Upload PDF</h3>
+                           <p className="text-slate-500 mb-6">Upload the question paper PDF. Please wait while AI extracts and crops the questions.</p>
+                           
+                           {!isProcessing ? (
+                               <>
+                                 <label className="block text-sm font-bold text-slate-700 mb-2">Select Question Paper PDF</label>
+                                 <input 
+                                     type="file" 
+                                     accept="application/pdf"
+                                     ref={fileInputRef}
+                                     onChange={processPDF}
+                                     className="w-full border p-4 border-dashed border-slate-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors mb-6" 
+                                 />
+                                 <div className="flex justify-between mt-4">
+                                     <button onClick={() => setStep(2)} className="text-slate-600 px-4 py-2 rounded hover:bg-slate-100 font-bold">Back</button>
+                                 </div>
+                               </>
+                           ) : (
+                               <div className="bg-blue-50 text-blue-700 p-6 rounded-lg border border-blue-200 flex flex-col items-center justify-center gap-4 animate-pulse h-48">
+                                   <svg className="animate-spin h-10 w-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                   </svg>
+                                   <span className="font-bold text-lg">{progress}</span>
+                               </div>
+                           )}
+                       </div>
+                   )}
                </div>
 
-               {isProcessing && (
-                   <div className="bg-blue-50 text-blue-700 p-4 rounded border border-blue-200 flex items-center gap-3 animate-pulse">
-                       <svg className="animate-spin h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                       </svg>
-                       <span className="font-bold">{progress}</span>
+               {step === 4 && drafts.length === 0 && (
+                   <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4">
+                       <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm text-center">
+                           <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                           </div>
+                           <h3 className="text-xl font-bold text-slate-800 mb-2">No Questions Extracted</h3>
+                           <p className="text-slate-500 mb-6">We couldn't extract any questions from this PDF. This could be due to an API restriction or the PDF format.</p>
+                           <button onClick={() => setStep(3)} className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700">Try Again</button>
+                       </div>
                    </div>
                )}
 
-               {drafts.length > 0 && (
-                   <div>
-                       <div className="flex justify-between items-center mb-4">
-                           <h3 className="font-bold text-lg">Extracted Questions ({drafts.length})</h3>
-                           <button onClick={handleSaveAll} disabled={isProcessing} className="bg-emerald-600 text-white px-4 py-2 rounded font-bold hover:bg-emerald-700 shadow-sm disabled:opacity-50">
-                               Import All to Bank
+               {step === 4 && drafts.length > 0 && (
+                   <div className="w-full animate-in fade-in slide-in-from-bottom-4">
+                       <div className="flex justify-between items-center mb-4 bg-white p-4 rounded-xl border shadow-sm sticky top-0 z-10">
+                           <div>
+                               <h3 className="font-bold text-lg">Step 4: Review and Edit</h3>
+                               <p className="text-sm text-slate-500">Check extracted questions, add explanations, and save.</p>
+                           </div>
+                           <button onClick={handleSaveAll} disabled={isProcessing} className="bg-emerald-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-emerald-700 shadow-sm disabled:opacity-50">
+                               {isProcessing ? 'Saving...' : 'Save All & Exit'}
                            </button>
                        </div>
                        
-                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                            {drafts.map((draft, idx) => (
                                <div key={draft.id} className="bg-white border rounded shadow-sm flex flex-col p-4 relative">
                                    <button 
                                       onClick={() => removeDraft(draft.id)}
-                                      className="absolute top-2 right-2 text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-1 rounded-full px-2 text-xs font-bold transition-colors"
+                                      className="absolute top-2 right-2 text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-1 rounded-full px-3 text-xs font-bold transition-colors"
                                    >
                                        Remove
                                    </button>
-                                   <div className="font-bold text-slate-800 mb-2">Q{draft.questionNum} (Extracted)</div>
+                                   <div className="font-bold text-slate-800 mb-2">Q{draft.questionNum}</div>
                                    <div className="bg-slate-100 p-2 rounded mb-3 flex items-center justify-center min-h-[150px]">
                                        <img src={draft.imageUrl} alt="Extracted" className="max-w-full max-h-[300px] object-contain border bg-white" />
                                    </div>
-                                   <div className="space-y-2 mt-auto">
+                                   <div className="space-y-3 mt-auto">
                                        <div>
                                            <label className="text-xs font-bold text-slate-500 mb-1 block">Topic Classification</label>
-                                           <input 
-                                                type="text" 
+                                           <select 
                                                 value={draft.topic} 
                                                 onChange={e => updateDraft(draft.id, 'topic', e.target.value)}
-                                                className="w-full border p-1 rounded text-sm bg-blue-50 border-blue-200 focus:bg-white"
+                                                className="w-full border p-1 border-blue-200 rounded text-sm bg-blue-50 focus:bg-white"
+                                           >
+                                               {Object.values(SyllabusTopic).map(t => (
+                                                   <option key={t} value={t}>{t}</option>
+                                               ))}
+                                               <option value="Unclassified">Unclassified</option>
+                                           </select>
+                                       </div>
+                                       <div>
+                                           <label className="text-xs font-bold text-slate-500 mb-1 block">Concept Description</label>
+                                           <input 
+                                                type="text" 
+                                                value={draft.description || ''} 
+                                                onChange={e => updateDraft(draft.id, 'description', e.target.value)}
+                                                className="w-full border p-1 border-blue-200 rounded text-sm bg-blue-50 focus:bg-white"
+                                                placeholder="e.g. Positive and Normative Statements"
                                            />
                                        </div>
                                        <div className="flex gap-2">
@@ -234,11 +322,12 @@ export const AutoPDFImport: React.FC<{ onComplete: () => void, onCancel: () => v
                                                 />
                                             </div>
                                             <div className="flex-1">
-                                                <label className="text-xs font-bold text-slate-500 mb-1 block">Default Answer</label>
+                                                <label className="text-xs font-bold text-slate-500 mb-1 block">Answer</label>
                                                 <select
                                                     value={draft.correctAnswer}
                                                     onChange={(e) => updateDraft(draft.id, 'correctAnswer', e.target.value)}
-                                                    className="w-full border p-1 rounded text-sm"
+                                                    className="w-full border p-1 rounded text-sm font-bold"
+                                                    style={{color: draft.correctAnswer ? '#059669' : ''}}
                                                 >
                                                     <option value="A">A</option>
                                                     <option value="B">B</option>
@@ -246,6 +335,16 @@ export const AutoPDFImport: React.FC<{ onComplete: () => void, onCancel: () => v
                                                     <option value="D">D</option>
                                                 </select>
                                             </div>
+                                       </div>
+                                       <div>
+                                            <label className="text-xs font-bold text-slate-500 mb-1 block">Explanation / Annotation</label>
+                                            <textarea 
+                                                value={draft.annotation || ''} 
+                                                onChange={e => updateDraft(draft.id, 'annotation', e.target.value)}
+                                                className="w-full border p-2 rounded text-sm"
+                                                placeholder="Add explanation for this question..."
+                                                rows={2}
+                                            />
                                        </div>
                                    </div>
                                </div>

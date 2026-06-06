@@ -42,6 +42,7 @@ export const MCQBank: React.FC = () => {
   const [selectedLevel, setSelectedLevel] = useState<'AS' | 'AL'>('AS');
   const [selectedFilterType, setSelectedFilterType] = useState<'PAPER' | 'TOPIC'>('PAPER');
   const [selectedFilterValue, setSelectedFilterValue] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Year grouping for sidebar
   const [expandedYears, setExpandedYears] = useState<Record<string, boolean>>(() => {
@@ -55,6 +56,7 @@ export const MCQBank: React.FC = () => {
   const [newPaper, setNewPaper] = useState(PAPER_CODES[0]);
   const [newQuestionNum, setNewQuestionNum] = useState<number>(1);
   const [newTopic, setNewTopic] = useState<string>(ALL_TOPICS[0].text);
+  const [newDescription, setNewDescription] = useState<string>('');
   const [newCorrectAnswer, setNewCorrectAnswer] = useState<'A' | 'B' | 'C' | 'D'>('A');
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -77,6 +79,7 @@ export const MCQBank: React.FC = () => {
       setEditingId(null);
       setImagePreview(null);
       setNewAnnotation('');
+      setNewDescription('');
       if (isAdding) {
           setIsAdding(false);
           return;
@@ -170,6 +173,7 @@ export const MCQBank: React.FC = () => {
       questionNum: newQuestionNum,
       imageUrl: imagePreview,
       topic: newTopic,
+      description: newDescription,
       correctAnswer: newCorrectAnswer,
       annotation: newAnnotation,
     };
@@ -181,6 +185,7 @@ export const MCQBank: React.FC = () => {
         setIsAdding(false);
         setImagePreview(null);
         setNewAnnotation('');
+        setNewDescription('');
         alert("Updated Successfully!");
     } else {
         // Auto-prepare for next question
@@ -188,6 +193,7 @@ export const MCQBank: React.FC = () => {
         setNewQuestionNum(nextQNum);
         setImagePreview(null);
         setNewAnnotation('');
+        setNewDescription('');
         if(fileInputRef.current) fileInputRef.current.value = "";
         
         // Synchronously set the next correct answer if we have bulk data
@@ -204,6 +210,7 @@ export const MCQBank: React.FC = () => {
       setNewPaper(q.paper);
       setNewQuestionNum(q.questionNum);
       setNewTopic(q.topic);
+      setNewDescription(q.description || '');
       setNewCorrectAnswer(q.correctAnswer);
       setImagePreview(q.imageUrl);
       setNewAnnotation(q.annotation || '');
@@ -312,6 +319,13 @@ export const MCQBank: React.FC = () => {
   const filteredMcqs = mcqs.filter(q => {
       const qLevel = isASCode(q.paper) ? 'AS' : 'AL';
       if (qLevel !== selectedLevel) return false;
+      
+      if (searchQuery) {
+          const lowerQuery = searchQuery.toLowerCase();
+          if (!q.description?.toLowerCase().includes(lowerQuery) && !q.topic.toLowerCase().includes(lowerQuery)) {
+              return false;
+          }
+      }
 
       if (selectedFilterValue === 'All') return true;
       if (selectedFilterValue === 'Starred') return q.isStarred;
@@ -554,11 +568,23 @@ export const MCQBank: React.FC = () => {
             )}
 
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
+                <div className="flex-1">
                   <h1 className="text-3xl font-bold tracking-tight text-slate-900">{selectedFilterValue === 'All' ? 'All MCQs' : selectedFilterValue}</h1>
                   <p className="text-slate-500 mt-1">{filteredMcqs.length} questions available.</p>
+                  <div className="mt-4 max-w-sm">
+                      <div className="relative">
+                          <input 
+                              type="text" 
+                              placeholder="Search by keyword, concept or description..."
+                              value={searchQuery}
+                              onChange={(e) => setSearchQuery(e.target.value)}
+                              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 border-slate-300"
+                          />
+                          <svg className="w-5 h-5 absolute left-3 top-2.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                      </div>
+                  </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 self-start md:self-center flex-wrap">
                     <button 
                       onClick={startAdding} 
                       className="px-4 py-2 bg-indigo-50 border border-indigo-200 text-indigo-700 rounded-lg hover:bg-indigo-100 font-medium transition-colors"
@@ -653,6 +679,16 @@ export const MCQBank: React.FC = () => {
                                 </select>
                             </div>
                             <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Concept Description (Searchable)</label>
+                                <input 
+                                    type="text" 
+                                    value={newDescription} 
+                                    onChange={e => setNewDescription(e.target.value)} 
+                                    placeholder="e.g. Positive and Normative Statements"
+                                    className="w-full p-2 border rounded bg-slate-50 text-xs"
+                                />
+                            </div>
+                            <div>
                                 <label className="block text-sm font-medium text-slate-700 mb-1">Annotation / Explanation (Optional)</label>
                                 <textarea 
                                     value={newAnnotation} 
@@ -723,7 +759,10 @@ export const MCQBank: React.FC = () => {
                                    <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded font-bold border border-slate-200">{q.paper}</span>
                                </div>
                             </div>
-                            <p className="text-xs text-slate-500 mb-4 line-clamp-2 leading-relaxed" title={q.topic}>{q.topic}</p>
+                            <p className="text-xs text-slate-500 mb-1 line-clamp-2 leading-relaxed" title={q.topic}>{q.topic}</p>
+                            {q.description && (
+                                <p className="text-xs font-medium text-slate-700 bg-slate-100 px-2 py-1 rounded inline-block self-start mb-2">{q.description}</p>
+                            )}
                             
                             <div className="mt-auto pt-3 border-t flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
                                 <span className="text-[10px] text-slate-400">ID: {q.id.slice(-6)}</span>
@@ -746,6 +785,7 @@ export const MCQBank: React.FC = () => {
             
             {showAutoImport && (
                 <AutoPDFImport 
+                    initialPaperCode={selectedFilterType === 'PAPER' && selectedFilterValue !== 'All' && selectedFilterValue !== 'Starred' && selectedFilterValue !== 'Problematic' ? selectedFilterValue : ''}
                     onComplete={() => { setShowAutoImport(false); loadMCQs(); }} 
                     onCancel={() => setShowAutoImport(false)} 
                 />
