@@ -1,6 +1,7 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 import { Question, ClozeBlank, ClozeFeedback, TopicAnalysisData } from "../types";
+import { ALL_TOPICS } from "../utils/topicHelpers";
 
 // Helper to ensure we have a client. 
 const getAI = () => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
@@ -804,8 +805,8 @@ export const extractMCQsFromImage = async (base64Image: string): Promise<any> =>
       Return a JSON array of questions found on this page.
       For each question, provide:
       - "questionNum": The numeric question number (integer).
-      - "topic": Choose the most appropriate general topic chapter for this question from this list:
-        ["1. Basic Economic Ideas", "2. The Price System & Microeconomy", "3. Govt Micro Intervention", "4. The Macroeconomy", "5. Govt Macro Intervention", "6. International Economic Issues", "7. The Price System & Microeconomy (AL)", "8. Govt Micro Intervention (AL)", "9. The Macroeconomy (AL)", "10. Govt Macro Intervention (AL)", "11. International Economic Issues (AL)"]. If you are unsure, pick the closest one.
+      - "topic": Choose the most appropriate specific topic for this question from this exact list:
+        ${JSON.stringify(ALL_TOPICS.map(t => t.text))}. If you are unsure, pick the closest one.
       - "description": Provide a short, specific description of the key concept being tested (e.g., "Positive and Normative Statements", "Price Elasticity calculation", "Opportunity Cost on PPC"). This will be used for keyword searching.
       - "bbox": A precise bounding box [ymin, xmin, ymax, xmax] normalized to 0-1000. Ensure the bounding box fully encapsulates the question number, the question text, ALL diagrams/tables associated with it, and ALL four options (A, B, C, D). Give it a slight padding so options aren't cut off. Do NOT overlap with other questions.
       

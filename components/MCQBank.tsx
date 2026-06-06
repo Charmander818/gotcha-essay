@@ -3,6 +3,7 @@ import { MCQ } from '../types';
 import { getMCQs, saveMCQ, deleteMCQ, getAllMCQsForExport, restoreMCQsFromImport } from '../utils/indexedDB';
 import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
 import { exportPracticeBook } from '../utils/mcqExport';
+import { ALL_TOPICS } from '../utils/topicHelpers';
 import { AutoPDFImport } from './AutoPDFImport';
 
 const PAPER_CODES = [
@@ -23,13 +24,7 @@ const PAPER_CODES = [
     return a.substring(5).localeCompare(b.substring(5));
 });
 
-const ALL_TOPICS: { id: string, text: string, type: 'AS' | 'AL', parent: string }[] = [];
-SYLLABUS_CHECKLIST.forEach(section => {
-  const type = parseInt(section.id) <= 6 ? 'AS' : 'AL';
-  section.subsections.forEach(sub => {
-    ALL_TOPICS.push({ id: sub.id, text: sub.title, type, parent: section.title });
-  });
-});
+ 
 
 export const MCQBank: React.FC = () => {
   const [mcqs, setMcqs] = useState<MCQ[]>([]);
@@ -202,9 +197,11 @@ export const MCQBank: React.FC = () => {
     }
   };
 
-  const startEdit = (e: React.MouseEvent, q: MCQ) => {
-      e.stopPropagation();
-      e.preventDefault();
+  const startEdit = (e: React.MouseEvent | null, q: MCQ) => {
+      if (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
       setIsAdding(true);
       setEditingId(q.id);
       setNewPaper(q.paper);
@@ -215,6 +212,15 @@ export const MCQBank: React.FC = () => {
       setImagePreview(q.imageUrl);
       setNewAnnotation(q.annotation || '');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateEdit = (direction: 'next' | 'prev') => {
+      const currentIndex = filteredMcqs.findIndex(q => q.id === editingId);
+      if (currentIndex === -1) return;
+      const targetIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
+      if (targetIndex >= 0 && targetIndex < filteredMcqs.length) {
+          startEdit(null, filteredMcqs[targetIndex]);
+      }
   };
 
   const handleDelete = async (e: React.MouseEvent, id: string) => {
@@ -629,7 +635,27 @@ export const MCQBank: React.FC = () => {
             {isAdding && (
                 <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 animate-in fade-in slide-in-from-top-4">
                     <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-xl font-bold">{editingId ? 'Edit Question' : 'Add New Question'}</h2>
+                        <div className="flex items-center gap-4">
+                             <h2 className="text-xl font-bold">{editingId ? 'Edit Question' : 'Add New Question'}</h2>
+                             {editingId && (
+                                 <div className="flex items-center gap-1 bg-white border rounded-lg overflow-hidden shadow-sm">
+                                     <button 
+                                         onClick={() => navigateEdit('prev')}
+                                         disabled={filteredMcqs.findIndex(q => q.id === editingId) <= 0}
+                                         className="px-3 py-1 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:hover:bg-white text-slate-600 font-medium text-sm transition-colors border-r"
+                                     >
+                                         ← Prev
+                                     </button>
+                                     <button 
+                                         onClick={() => navigateEdit('next')}
+                                         disabled={filteredMcqs.findIndex(q => q.id === editingId) === -1 || filteredMcqs.findIndex(q => q.id === editingId) === filteredMcqs.length - 1}
+                                         className="px-3 py-1 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:hover:bg-white text-slate-600 font-medium text-sm transition-colors"
+                                     >
+                                         Next →
+                                     </button>
+                                 </div>
+                             )}
+                        </div>
                         
                         <div className="flex items-center gap-2 bg-white p-2 rounded border text-sm">
                             <span className="font-medium text-slate-600">Bulk Answers:</span>

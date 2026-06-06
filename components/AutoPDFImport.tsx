@@ -2,7 +2,8 @@ import React, { useState, useRef } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { extractMCQsFromImage } from '../services/geminiService';
 import { saveMCQ } from '../utils/indexedDB';
-import { MCQ, SyllabusTopic } from '../types';
+import { MCQ } from '../types';
+import { ALL_TOPICS } from '../utils/topicHelpers';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
 
@@ -295,8 +296,8 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, onComplete: () 
                                                 onChange={e => updateDraft(draft.id, 'topic', e.target.value)}
                                                 className="w-full border p-1 border-blue-200 rounded text-sm bg-blue-50 focus:bg-white"
                                            >
-                                               {Object.values(SyllabusTopic).map(t => (
-                                                   <option key={t} value={t}>{t}</option>
+                                               {ALL_TOPICS.map(t => (
+                                                   <option key={t.text} value={t.text}>{t.text}</option>
                                                ))}
                                                <option value="Unclassified">Unclassified</option>
                                            </select>
