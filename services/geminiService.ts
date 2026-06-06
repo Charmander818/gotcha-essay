@@ -797,7 +797,7 @@ export const generateMindmapData = async (chapter: string, syllabusPoints: strin
   }
 };
 
-export const extractMCQsFromImage = async (base64Image: string): Promise<any> => {
+export const extractMCQsFromImage = async (base64Image: string, retries = 3): Promise<any> => {
   try {
     checkForApiKey();
     const prompt = `
@@ -822,18 +822,34 @@ export const extractMCQsFromImage = async (base64Image: string): Promise<any> =>
     const mimeType = mimeTypePrefix.split(':')[1];
     
     const ai = getAI();
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: {
-         parts: [
-             { text: prompt },
-             { inlineData: { mimeType, data: base64Data } }
-         ]
-      },
-      config: { responseMimeType: "application/json" }
-    });
+    let response;
     
-    const text = response.text || "[]";
+    for (let i = 0; i < retries; i++) {
+        try {
+            response = await ai.models.generateContent({
+              model: 'gemini-3-flash-preview',
+              contents: {
+                 parts: [
+                     { text: prompt },
+                     { inlineData: { mimeType, data: base64Data } }
+                 ]
+              },
+              config: { responseMimeType: "application/json" }
+            });
+            break; // Success
+        } catch (err: any) {
+            if (i === retries - 1) throw err;
+            if (err?.status === "RESOURCE_EXHAUSTED" || err?.status === 429 || err?.message?.includes("429") || err?.message?.includes("Quota exceeded")) {
+                const waitTime = Math.pow(2, i) * 10000; // wait 10s, 20s
+                console.warn(`Rate limited. Retrying in ${waitTime/1000}s...`);
+                await new Promise(resolve => setTimeout(resolve, waitTime));
+            } else {
+                throw err;
+            }
+        }
+    }
+    
+    const text = response?.text || "[]";
     // Handle potential markdown wrappers if returned
     const jsonString = text.replace(/```json/g, '').replace(/```/g, '').trim();
     return JSON.parse(jsonString);
