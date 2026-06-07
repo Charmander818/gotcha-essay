@@ -829,7 +829,12 @@ export const extractMCQsFromImage = async (base64Image: string, paperCode: strin
         - "GDP at Basic Prices: Calculating value by adjusting market prices for indirect taxes and subsidies."
         - "Real vs. Nominal GDP: Adjusting national output for changes in the general price level (inflation)."
         This will be used for keyword searching, so be as descriptive as possible.
-      - "bbox": A precise bounding box [ymin, xmin, ymax, xmax] normalized to 0-1000. Ensure the bounding box fully encapsulates the question number, the question text, ALL diagrams/tables associated with it, and ALL four options (A, B, C, D). Give it a slight padding so options aren't cut off. Do NOT overlap with other questions.
+      - "bbox": A precise bounding box [ymin, xmin, ymax, xmax] normalized to 0-1000. Follow these strict cropping rules:
+        1. Start (ymin): Identify the question number (e.g., 1, 2, 3...) as the starting position. Add a tight 10-20 pixel top margin above it.
+        2. Content: The box must contain exactly ONE complete question: the stem, any diagrams/tables, and options A, B, C, D. 
+        3. End (ymax): It must stop exactly at the last line of option D. Add a tight 10-20 pixel bottom margin. 
+        4. Unified Width (xmin, xmax): Must be identical for all questions on the page. The left boundary (xmin) must align with the global left margin of the page's text block. The right boundary (xmax) must align with the global right margin of the page's text block.
+        5. Forbidden Elements: DO NOT include the next question's number, page numbers, headers, footers, or large empty whitespace.
       
       If the page contains no multiple-choice questions (e.g., blank, entirely instructions, or a cover page), return an empty array [].
     `;
