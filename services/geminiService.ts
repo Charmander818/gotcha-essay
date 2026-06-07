@@ -89,7 +89,7 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-pro',
+    model: 'gemini-3.1-pro-preview',
     contents: prompt,
   });
   return response.text || "Failed to generate essay.";
@@ -222,7 +222,7 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-pro',
+    model: 'gemini-3.1-pro-preview',
     contents: {
         parts: [
             { text: prompt },
@@ -292,7 +292,7 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-pro',
+    model: 'gemini-3.1-pro-preview',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -341,7 +341,7 @@ export const generateClozeExercise = async (text: string): Promise<{ textWithBla
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-1.5-flash',
+    model: 'gemini-3.5-flash',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -395,7 +395,7 @@ export const evaluateClozeAnswers = async (blanks: ClozeBlank[], userAnswers: Re
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-1.5-flash',
+    model: 'gemini-3.5-flash',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -446,7 +446,7 @@ export const improveLogicChain = async (input: string): Promise<string> => {
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-1.5-flash',
+    model: 'gemini-3.5-flash',
     contents: prompt,
   });
   return response.text || "Could not improve chain.";
@@ -493,7 +493,7 @@ export const analyzeTopic = async (topic: string, questions: Question[]): Promis
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-1.5-flash',
+    model: 'gemini-3.5-flash',
     contents: prompt,
     config: { responseMimeType: "application/json" }
   });
@@ -546,7 +546,7 @@ export const analyzeExamStrategy = async (marks: number, questions: Question[]):
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-1.5-flash',
+    model: 'gemini-3.5-flash',
     contents: prompt,
   });
   return response.text || "Analysis failed.";
@@ -576,7 +576,7 @@ export const generateSyllabusLogicChain = async (topicTitle: string, point: stri
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-3.5-flash',
       contents: prompt,
     });
     return response.text || "Error generating chain.";
@@ -605,7 +605,7 @@ export const generateSyllabusDefinition = async (topicTitle: string, point: stri
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-3.5-flash',
       contents: prompt,
     });
     return response.text || "Error generating definition.";
@@ -635,7 +635,7 @@ export const evaluateSyllabusChain = async (topicTitle: string, point: string, s
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-3.5-flash',
       contents: prompt,
     });
     return response.text || "Error evaluating chain.";
@@ -681,7 +681,7 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-3.5-flash',
       contents: prompt,
     });
     
@@ -743,7 +743,7 @@ export const generateTeachingPPTData = async (chapter: string, syllabusPoints: s
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-3.5-flash',
       contents: prompt,
       config: {
         responseMimeType: "application/json"
@@ -784,7 +784,7 @@ export const generateMindmapData = async (chapter: string, syllabusPoints: strin
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-3.5-flash',
       contents: prompt,
     });
     
@@ -797,7 +797,7 @@ export const generateMindmapData = async (chapter: string, syllabusPoints: strin
   }
 };
 
-export const extractMCQsFromImage = async (base64Image: string, retries = 3): Promise<any> => {
+export const extractMCQsFromImage = async (base64Image: string, retries = 5): Promise<any> => {
   try {
     checkForApiKey();
     const prompt = `
@@ -827,7 +827,7 @@ export const extractMCQsFromImage = async (base64Image: string, retries = 3): Pr
     for (let i = 0; i < retries; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-1.5-flash',
+              model: 'gemini-3.5-flash',
               contents: {
                  parts: [
                      { text: prompt },
@@ -840,7 +840,7 @@ export const extractMCQsFromImage = async (base64Image: string, retries = 3): Pr
         } catch (err: any) {
             if (i === retries - 1) throw err;
             if (err?.status === "RESOURCE_EXHAUSTED" || err?.status === 429 || err?.message?.includes("429") || err?.message?.includes("Quota exceeded")) {
-                const waitTime = Math.pow(2, i) * 10000; // wait 10s, 20s
+                const waitTime = 15000 + (Math.pow(2, i) * 10000); // Wait 25s, 35s, 55s...
                 console.warn(`Rate limited. Retrying in ${waitTime/1000}s...`);
                 await new Promise(resolve => setTimeout(resolve, waitTime));
             } else {
@@ -882,7 +882,7 @@ export const extractDescriptionForMCQ = async (base64Image: string, retries = 3)
     for (let i = 0; i < retries; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-1.5-flash',
+              model: 'gemini-3.5-flash',
               contents: {
                  parts: [
                      { text: prompt },
@@ -914,7 +914,7 @@ export const generateChatResponse = async (prompt: string): Promise<string> => {
     checkForApiKey();
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-3.5-flash',
       contents: prompt,
     });
     return response.text || "";

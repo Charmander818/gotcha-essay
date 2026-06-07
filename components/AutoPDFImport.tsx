@@ -77,6 +77,13 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, onComplete: () 
         
         setProgress(`Extracting questions from page ${pageNum}...`);
         
+        // Anti-Rate Limit Delay (wait ~4.5 seconds between pages to respect 15 RPM free tier limit)
+        if (pageNum > 1) {
+            setProgress(`Pacing API requests... waiting 4.5s before page ${pageNum}`);
+            await new Promise(resolve => setTimeout(resolve, 4500));
+            setProgress(`Extracting questions from page ${pageNum}...`);
+        }
+        
         try {
            const extractedQuestions = await extractMCQsFromImage(base64Image);
            if (extractedQuestions && extractedQuestions.length > 0) {
