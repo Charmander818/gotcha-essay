@@ -848,7 +848,7 @@ export const extractMCQsFromImage = async (base64Image: string, paperCode: strin
     for (let i = 0; i < retries; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-3.5-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
@@ -903,7 +903,7 @@ export const extractDescriptionForMCQ = async (base64Image: string, retries = 3)
     for (let i = 0; i < retries; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-3.5-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
