@@ -18,7 +18,7 @@ interface DraftMCQ {
   annotation?: string;
 }
 
-export const AutoPDFImport: React.FC<{ initialPaperCode: string, onComplete: () => void, onCancel: () => void }> = ({ initialPaperCode, onComplete, onCancel }) => {
+export const AutoPDFImport: React.FC<{ initialPaperCode: string, level?: 'AS' | 'AL', onComplete: () => void, onCancel: () => void }> = ({ initialPaperCode, level, onComplete, onCancel }) => {
   const [step, setStep] = useState<number>(1);
   const [paperCode, setPaperCode] = useState(initialPaperCode);
   const [bulkAnswers, setBulkAnswers] = useState<string>('');
@@ -85,15 +85,24 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, onComplete: () 
         }
         
         try {
-           const extractedQuestions = await extractMCQsFromImage(base64Image);
+           const extractedQuestions = await extractMCQsFromImage(base64Image, paperCode, level);
            if (extractedQuestions && extractedQuestions.length > 0) {
-               for (const eq of extractedQuestions) {
-                   if (!eq.bbox || eq.bbox.length !== 4) continue;
-                   
-                   // Crop the specific region
-                   // bbox is [ymin, xmin, ymax, xmax] from 0-1000
-                   const [ymin, xmin, ymax, xmax] = eq.bbox;
-                   const y = (ymin / 1000) * canvas.height;
+               // Find uniform width for all questions on this page
+               const validBboxes = extractedQuestions.filter((eq: any) => eq.bbox && eq.bbox.length === 4);
+               if (validBboxes.length > 0) {
+                   const pageMinX = Math.min(...validBboxes.map((eq: any) => eq.bbox[1]));
+                   const pageMaxX = Math.max(...validBboxes.map((eq: any) => eq.bbox[3]));
+
+                   for (const eq of extractedQuestions) {
+                       if (!eq.bbox || eq.bbox.length !== 4) continue;
+                       
+                       // Crop the specific region, using uniform left and right boundaries
+                       // bbox is [ymin, xmin, ymax, xmax] from 0-1000
+                       const [ymin, originalXmin, ymax, originalXmax] = eq.bbox;
+                       const xmin = pageMinX;
+                       const xmax = pageMaxX;
+                       
+                       const y = (ymin / 1000) * canvas.height;
                    const x = (xmin / 1000) * canvas.width;
                    const h = ((ymax - ymin) / 1000) * canvas.height;
                    const w = ((xmax - xmin) / 1000) * canvas.width;
@@ -127,6 +136,7 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, onComplete: () 
                    }
                }
            }
+               }
         } catch (err: any) {
            console.error("Stopping process due to API error", err);
            throw err; // Forward error to stop the entire processing loop

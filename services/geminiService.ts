@@ -797,17 +797,38 @@ export const generateMindmapData = async (chapter: string, syllabusPoints: strin
   }
 };
 
-export const extractMCQsFromImage = async (base64Image: string, retries = 5): Promise<any> => {
+export const extractMCQsFromImage = async (base64Image: string, paperCode: string = "", level?: 'AS' | 'AL', retries = 5): Promise<any> => {
   try {
     checkForApiKey();
+
+    let levelFilter = "";
+    let filteredTopics = ALL_TOPICS;
+    
+    // Use explicit level, or attempt to infer A-Level vs AS-Level from paper code.
+    // AS codes typically start with 1 or 2 (e.g. 11, 12, 13, 14, 21...) or include " 1" / " 2"
+    // AL codes typically start with 3 or 4 (e.g. 31, 32, 33, 34...) or include " 3" / " 4"
+    if (level === 'AS' || paperCode.includes(" 1") || paperCode.includes(" 2") || /^[12]\d/.test(paperCode)) {
+        levelFilter = "This is an AS Level paper. You MUST only select topics from the AS Level topics list.";
+        filteredTopics = ALL_TOPICS.filter(t => t.type === 'AS');
+    } else if (level === 'AL' || paperCode.includes(" 3") || paperCode.includes(" 4") || /^[34]\d/.test(paperCode)) {
+        levelFilter = "This is an AL (A Level) paper. You MUST only select topics from the AL topics list.";
+        filteredTopics = ALL_TOPICS.filter(t => t.type === 'AL');
+    }
+
     const prompt = `
       Analyze this page of an A-Level Economics multiple choice exam.
       Return a JSON array of questions found on this page.
       For each question, provide:
       - "questionNum": The numeric question number (integer).
       - "topic": Choose the most appropriate specific topic for this question from this exact list:
-        ${JSON.stringify(ALL_TOPICS.map(t => t.text))}. If you are unsure, pick the closest one.
-      - "description": Provide a short, specific description of the key concept being tested (e.g., "Positive and Normative Statements", "Price Elasticity calculation", "Opportunity Cost on PPC"). This will be used for keyword searching.
+        ${JSON.stringify(filteredTopics.map(t => t.text))}. If you are unsure, pick the closest one.
+        ${levelFilter}
+      - "description": Provide a detailed, specific description of the key concept being tested in this exact format "General Concept: Specific calculation or identification being tested". 
+        Examples:
+        - "Consumer Surplus & Indirect Tax: Identifying the geometric area of surplus lost when a tax shifts the supply curve."
+        - "GDP at Basic Prices: Calculating value by adjusting market prices for indirect taxes and subsidies."
+        - "Real vs. Nominal GDP: Adjusting national output for changes in the general price level (inflation)."
+        This will be used for keyword searching, so be as descriptive as possible.
       - "bbox": A precise bounding box [ymin, xmin, ymax, xmax] normalized to 0-1000. Ensure the bounding box fully encapsulates the question number, the question text, ALL diagrams/tables associated with it, and ALL four options (A, B, C, D). Give it a slight padding so options aren't cut off. Do NOT overlap with other questions.
       
       If the page contains no multiple-choice questions (e.g., blank, entirely instructions, or a cover page), return an empty array [].

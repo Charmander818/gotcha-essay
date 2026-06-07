@@ -181,11 +181,9 @@ export const MCQBank: React.FC = () => {
     await loadMCQs();
     
     if (editingId) {
-        setEditingId(null);
-        setIsAdding(false);
-        setImagePreview(null);
-        setNewAnnotation('');
-        setNewDescription('');
+        // DO NOT reset editing state here, so the user can use Next/Prev
+        // setEditingId(null);
+        // setIsAdding(false);
         alert("Updated Successfully!");
     } else {
         // Auto-prepare for next question
@@ -816,9 +814,16 @@ export const MCQBank: React.FC = () => {
                                     placeholder="Enter any notes or explanations for this question..."
                                 />
                             </div>
-                            <button onClick={handleSave} className={`w-full py-3 mt-2 text-white font-bold rounded-lg shadow-sm transition-transform active:scale-[0.98] ${editingId ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-600 hover:bg-green-700'}`}>
-                                {editingId ? 'Update Question' : 'Save Question'}
-                            </button>
+                            <div className="flex gap-2 mt-2">
+                                <button onClick={handleSave} className={`flex-1 w-full py-3 text-white font-bold rounded-lg shadow-sm transition-transform active:scale-[0.98] ${editingId ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-600 hover:bg-green-700'}`}>
+                                    {editingId ? 'Update Question' : 'Save Question'}
+                                </button>
+                                {editingId && (
+                                    <button onClick={startAdding} className="py-3 px-6 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded-lg shadow-sm transition-colors">
+                                        Close
+                                    </button>
+                                )}
+                            </div>
                         </div>
 
                         <div className="border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center p-4 bg-white min-h-[300px] text-center overflow-hidden">
@@ -905,6 +910,7 @@ export const MCQBank: React.FC = () => {
             {showAutoImport && (
                 <AutoPDFImport 
                     initialPaperCode={selectedFilterType === 'PAPER' && selectedFilterValue !== 'All' && selectedFilterValue !== 'Starred' && selectedFilterValue !== 'Problematic' ? selectedFilterValue : ''}
+                    level={selectedLevel}
                     onComplete={() => { setShowAutoImport(false); loadMCQs(); }} 
                     onCancel={() => setShowAutoImport(false)} 
                 />
