@@ -826,12 +826,12 @@ export const MCQBank: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center p-4 bg-white min-h-[300px] text-center overflow-hidden">
+                        <div className="border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center p-2 bg-white min-h-[400px] text-center overflow-hidden">
                             {imagePreview ? (
-                                <div className="relative w-full h-full flex items-center justify-center group">
-                                    <img src={imagePreview} alt="Preview" className="max-h-[300px] object-contain" />
+                                <div className="relative w-full h-full flex flex-col items-center group">
+                                    <img src={imagePreview} alt="Preview" className="w-full h-auto max-h-[600px] object-contain" />
                                     <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity rounded">
-                                         <button onClick={() => setImagePreview(null)} className="px-4 py-2 bg-white text-red-600 font-bold rounded">Remove</button>
+                                         <button onClick={() => setImagePreview(null)} className="px-4 py-2 bg-white text-red-600 font-bold rounded shadow">Remove</button>
                                     </div>
                                 </div>
                             ) : (

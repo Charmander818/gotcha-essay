@@ -144,7 +144,38 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, level?: 'AS' | 
         }
       }
       
-      setDrafts(prev => [...prev, ...newDrafts.sort((a,b) => a.questionNum - b.questionNum)]);
+      // Fill gaps for missing questions
+      const sortedDrafts = newDrafts.sort((a,b) => a.questionNum - b.questionNum);
+      const FinalDrafts: DraftMCQ[] = [];
+      
+      if (sortedDrafts.length > 0) {
+          const maxQ = Math.max(30, sortedDrafts[sortedDrafts.length - 1].questionNum); // Expect at least 30 questions
+          for (let i = 1; i <= maxQ; i++) {
+              const existing = sortedDrafts.find(d => d.questionNum === i);
+              if (existing) {
+                  FinalDrafts.push(existing);
+              } else {
+                  FinalDrafts.push({
+                      id: crypto.randomUUID(),
+                      paper: paperCode,
+                      questionNum: i,
+                      topic: "Unclassified",
+                      description: "Image not recognized. Please scan manually or paste later.",
+                      imageUrl: "",
+                      correctAnswer: parsedAnswers[i - 1] || 'A',
+                      annotation: ''
+                  });
+              }
+          }
+      }
+
+      setDrafts(prev => {
+          const combined = [...prev, ...FinalDrafts];
+          // Remove duplicates if same questionNum
+          const unique = new Map<number, DraftMCQ>();
+          combined.forEach(d => unique.set(d.questionNum, d));
+          return Array.from(unique.values()).sort((a,b) => a.questionNum - b.questionNum);
+      });
       setStep(4);
     } catch (err: any) {
       setError(err.message || "Failed to process PDF");
@@ -303,8 +334,15 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, level?: 'AS' | 
                                        Remove
                                    </button>
                                    <div className="font-bold text-slate-800 mb-2">Q{draft.questionNum}</div>
-                                   <div className="bg-slate-100 p-2 rounded mb-3 flex items-center justify-center min-h-[150px]">
-                                       <img src={draft.imageUrl} alt="Extracted" className="max-w-full max-h-[300px] object-contain border bg-white" />
+                                   <div className="bg-slate-100 p-2 rounded mb-3 flex items-center justify-center min-h-[250px] relative">
+                                       {draft.imageUrl ? (
+                                           <img src={draft.imageUrl} alt="Extracted" className="w-full max-h-[500px] object-contain border bg-white" />
+                                       ) : (
+                                           <div className="text-center p-4">
+                                               <p className="text-slate-400 font-bold mb-2">No Image Extracted.</p>
+                                               <p className="text-sm text-slate-500">Question missed by AI. Card created as placeholder. You can paste an image later in the Edit screen.</p>
+                                           </div>
+                                       )}
                                    </div>
                                    <div className="space-y-3 mt-auto">
                                        <div>
