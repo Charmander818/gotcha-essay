@@ -5,7 +5,8 @@ import { saveMCQ } from '../utils/indexedDB';
 import { MCQ } from '../types';
 import { ALL_TOPICS } from '../utils/topicHelpers';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
+import pdfWorkerSrc from 'pdfjs-dist/build/pdf.worker.min.js?url';
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerSrc;
 
 interface DraftMCQ {
   id: string;
