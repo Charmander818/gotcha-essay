@@ -59,6 +59,7 @@ export const MCQBank: React.FC = () => {
   const [showAutoImport, setShowAutoImport] = useState(false);
   const [newAnnotation, setNewAnnotation] = useState<string>('');
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+  const [viewingMCQ, setViewingMCQ] = useState<MCQ | null>(null);
   
   // Bulk Answers State
   const [bulkAnswers, setBulkAnswers] = useState<Record<string, string>>({});
@@ -624,6 +625,75 @@ export const MCQBank: React.FC = () => {
                 </div>
             )}
 
+            {viewingMCQ && (
+                <div className="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center p-4 sm:p-6 overflow-y-auto cursor-auto" onClick={(e) => {
+                    if (e.target === e.currentTarget) setViewingMCQ(null);
+                }}>
+                    <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full flex flex-col max-h-full overflow-hidden relative" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex justify-between items-center p-4 sm:p-6 border-b border-slate-100 bg-slate-50 relative">
+                            <div>
+                                <div className="flex items-center gap-3 mb-1">
+                                    <h2 className="text-2xl font-bold text-slate-900">Q{viewingMCQ.questionNum}</h2>
+                                    <span className="text-sm font-bold bg-slate-200 text-slate-700 px-2 py-0.5 rounded">{viewingMCQ.paper}</span>
+                                    {viewingMCQ.isProblematic && <span className="text-sm text-red-500 bg-red-50 px-2 py-0.5 rounded font-bold">⚠️ Removed</span>}
+                                    {viewingMCQ.isStarred && <span className="text-sm text-amber-600 bg-amber-50 px-2 py-0.5 rounded font-bold">🌟 Starred</span>}
+                                </div>
+                                <p className="text-sm text-slate-500">{viewingMCQ.topic}</p>
+                            </div>
+                            <button onClick={() => setViewingMCQ(null)} className="absolute top-4 right-4 p-2 bg-white hover:bg-slate-100 rounded-full text-slate-400 hover:text-slate-600 shadow-sm border border-slate-200 transition-colors">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                            </button>
+                        </div>
+                        
+                        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
+                            <div className="bg-slate-100 rounded-xl p-4 flex justify-center items-center">
+                                <img src={viewingMCQ.imageUrl} alt={`Question ${viewingMCQ.questionNum}`} className="max-w-full rounded shadow-sm object-contain max-h-[60vh] bg-white border border-slate-200" />
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="bg-blue-50 border border-blue-100 p-4 rounded-xl">
+                                    <h3 className="text-sm font-bold text-blue-800 mb-2 uppercase tracking-wide">Correct Answer</h3>
+                                    <div className="text-2xl font-black text-blue-600">{viewingMCQ.correctAnswer}</div>
+                                </div>
+                                
+                                {viewingMCQ.description && (
+                                    <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+                                        <h3 className="text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Concept</h3>
+                                        <p className="text-slate-700 text-sm">{viewingMCQ.description}</p>
+                                    </div>
+                                )}
+                            </div>
+
+                            {viewingMCQ.annotation ? (
+                                <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl">
+                                    <h3 className="text-sm font-bold text-amber-800 mb-2 uppercase tracking-wide flex items-center gap-2">
+                                        <span className="text-lg">📝</span> Note / Explanation
+                                    </h3>
+                                    <p className="text-amber-900 whitespace-pre-wrap leading-relaxed text-sm">{viewingMCQ.annotation}</p>
+                                </div>
+                            ) : (
+                                <div className="border border-dashed border-slate-200 p-4 rounded-xl text-center text-slate-400">
+                                    <p className="text-sm">No annotation provided for this question.</p>
+                                </div>
+                            )}
+                        </div>
+                        
+                        <div className="p-4 sm:p-6 border-t border-slate-100 bg-slate-50 flex justify-between items-center">
+                            <span className="text-xs text-slate-400">ID: {viewingMCQ.id.slice(-6)}</span>
+                            <button 
+                                onClick={(e) => {
+                                    setViewingMCQ(null);
+                                    startEdit(e, viewingMCQ);
+                                }}
+                                className="bg-white border border-slate-300 shadow-sm text-slate-700 font-bold py-2 px-6 rounded-lg hover:bg-slate-50 transition-colors"
+                            >
+                                Edit Question
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-4">
                 <div className="flex-1 w-full flex flex-col sm:flex-row gap-3 items-start sm:items-center">
                     <div className="flex flex-wrap items-baseline gap-3">
@@ -871,7 +941,7 @@ export const MCQBank: React.FC = () => {
                                 Ans: {q.correctAnswer}
                             </div>
                         </div>
-                        <div className="p-4 flex-1 flex flex-col pt-3">
+                        <div className="p-4 flex-1 flex flex-col pt-3 cursor-pointer" onClick={() => setViewingMCQ(q)}>
                             <div className="flex justify-between items-start mb-2">
                                <div className="flex items-center gap-2">
                                   <h3 className="font-bold text-lg text-slate-900">Q{q.questionNum}</h3>
