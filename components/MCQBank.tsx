@@ -53,7 +53,7 @@ export const MCQBank: React.FC = () => {
   const [newQuestionNum, setNewQuestionNum] = useState<number>(1);
   const [newTopic, setNewTopic] = useState<string>(ALL_TOPICS[0].text);
   const [newDescription, setNewDescription] = useState<string>('');
-  const [newCorrectAnswer, setNewCorrectAnswer] = useState<'A' | 'B' | 'C' | 'D'>('A');
+  const [newCorrectAnswer, setNewCorrectAnswer] = useState<'A' | 'B' | 'C' | 'D' | 'X'>('A');
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [showAutoImport, setShowAutoImport] = useState(false);
@@ -97,14 +97,14 @@ export const MCQBank: React.FC = () => {
       }
   };
 
-  const getAnswerFromBulkContent = (paper: string, qNum: number, bulkData: Record<string, string>): 'A'|'B'|'C'|'D'|null => {
+  const getAnswerFromBulkContent = (paper: string, qNum: number, bulkData: Record<string, string>): 'A'|'B'|'C'|'D'|'X'|null => {
       if (bulkData[paper]) {
          const ansString = bulkData[paper];
          const index = qNum - 1;
          if (index >= 0 && index < ansString.length) {
              const char = ansString.charAt(index).toUpperCase();
-             if (['A','B','C','D'].includes(char)) {
-                 return char as 'A'|'B'|'C'|'D';
+             if (['A','B','C','D','X'].includes(char)) {
+                 return char as 'A'|'B'|'C'|'D'|'X';
              }
          }
       }
@@ -782,6 +782,7 @@ export const MCQBank: React.FC = () => {
                                         <option value="B">B</option>
                                         <option value="C">C</option>
                                         <option value="D">D</option>
+                                        <option value="X">X (Removed/Missing)</option>
                                     </select>
                                 </div>
                             </div>

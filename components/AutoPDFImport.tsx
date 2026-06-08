@@ -15,7 +15,7 @@ interface DraftMCQ {
   imageUrl: string;
   topic: string;
   description?: string;
-  correctAnswer: 'A' | 'B' | 'C' | 'D';
+  correctAnswer: 'A' | 'B' | 'C' | 'D' | 'X';
   annotation?: string;
 }
 
@@ -23,7 +23,7 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, level?: 'AS' | 
   const [step, setStep] = useState<number>(1);
   const [paperCode, setPaperCode] = useState(initialPaperCode);
   const [bulkAnswers, setBulkAnswers] = useState<string>('');
-  const [parsedAnswers, setParsedAnswers] = useState<('A'|'B'|'C'|'D')[]>([]);
+  const [parsedAnswers, setParsedAnswers] = useState<('A'|'B'|'C'|'D'|'X')[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [progress, setProgress] = useState('');
   const [drafts, setDrafts] = useState<DraftMCQ[]>([]);
@@ -41,7 +41,7 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, level?: 'AS' | 
   };
 
   const handleNextStep3 = () => {
-      const answers = bulkAnswers.replace(/[^A-D]/gi, '').toUpperCase().split('') as ('A'|'B'|'C'|'D')[];
+      const answers = bulkAnswers.replace(/[^A-DX]/gi, '').toUpperCase().split('') as ('A'|'B'|'C'|'D'|'X')[];
       setParsedAnswers(answers);
       setStep(3);
   };
@@ -258,7 +258,7 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, level?: 'AS' | 
                                className="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 border-slate-300 font-mono tracking-widest uppercase mb-2 h-32" 
                                placeholder="Paste answers here..."
                            />
-                           <p className="text-xs text-slate-500 font-medium mb-6">Detected {bulkAnswers.replace(/[^A-D]/gi, '').length} answers.</p>
+                           <p className="text-xs text-slate-500 font-medium mb-6">Detected {bulkAnswers.replace(/[^A-DX]/gi, '').length} answers.</p>
                            
                            <div className="flex justify-between">
                                <button onClick={() => setStep(1)} className="text-slate-600 px-4 py-2 rounded hover:bg-slate-100 font-bold">Back</button>
@@ -390,6 +390,7 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, level?: 'AS' | 
                                                     <option value="B">B</option>
                                                     <option value="C">C</option>
                                                     <option value="D">D</option>
+                                                    <option value="X">X (Removed/Missing)</option>
                                                 </select>
                                             </div>
                                        </div>

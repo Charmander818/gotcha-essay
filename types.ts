@@ -143,7 +143,7 @@ export interface MCQ {
   imageUrl: string; 
   topic: string;
   description?: string;
-  correctAnswer: 'A' | 'B' | 'C' | 'D';
+  correctAnswer: 'A' | 'B' | 'C' | 'D' | 'X';
   annotation?: string;
   isStarred?: boolean;
   isProblematic?: boolean;
