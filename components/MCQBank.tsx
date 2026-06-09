@@ -711,7 +711,7 @@ export const MCQBank: React.FC = () => {
                             {viewingMCQ.aiExplanation ? (
                                 <div className="bg-purple-50 border border-purple-200 p-4 rounded-xl">
                                     <h3 className="text-sm font-bold text-purple-800 mb-2 uppercase tracking-wide flex items-center gap-2">
-                                        <span className="text-lg">🤖</span> AI 讲解 (AI Explanation)
+                                        AI Explanation
                                     </h3>
                                     <div className="text-purple-900 whitespace-pre-wrap leading-relaxed text-sm font-serif">
                                         {viewingMCQ.aiExplanation}
@@ -724,8 +724,7 @@ export const MCQBank: React.FC = () => {
                                         disabled={isGeneratingExp}
                                         className="bg-purple-100 text-purple-700 hover:bg-purple-200 font-bold py-2 px-6 rounded-lg transition-colors shadow-sm disabled:opacity-50 flex items-center gap-2"
                                     >
-                                        <span className="text-lg">🤖</span>
-                                        {isGeneratingExp ? '正在生成 AI 讲解...' : '获取 AI 中文讲解'}
+                                        {isGeneratingExp ? 'Generating Explanation...' : 'Generate Explanation'}
                                     </button>
                                 </div>
                             )}
