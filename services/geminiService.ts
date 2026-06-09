@@ -807,10 +807,10 @@ export const extractMCQsFromImage = async (base64Image: string, paperCode: strin
     // Use explicit level, or attempt to infer A-Level vs AS-Level from paper code.
     // AS codes typically start with 1 or 2 (e.g. 11, 12, 13, 14, 21...) or include " 1" / " 2"
     // AL codes typically start with 3 or 4 (e.g. 31, 32, 33, 34...) or include " 3" / " 4"
-    if (level === 'AS' || paperCode.includes(" 1") || paperCode.includes(" 2") || /^[12]\d/.test(paperCode)) {
+    if (level === 'AS' || (!level && (paperCode.includes(" 1") || paperCode.includes(" 2") || /\b[12]\d\b/.test(paperCode) || paperCode.includes("qp_1") || paperCode.includes("qp_2")))) {
         levelFilter = "This is an AS Level paper. You MUST only select topics from the AS Level topics list.";
         filteredTopics = ALL_TOPICS.filter(t => t.type === 'AS');
-    } else if (level === 'AL' || paperCode.includes(" 3") || paperCode.includes(" 4") || /^[34]\d/.test(paperCode)) {
+    } else if (level === 'AL' || (!level && (paperCode.includes(" 3") || paperCode.includes(" 4") || /\b[34]\d\b/.test(paperCode) || paperCode.includes("qp_3") || paperCode.includes("qp_4")))) {
         levelFilter = "This is an AL (A Level) paper. You MUST only select topics from the AL topics list.";
         filteredTopics = ALL_TOPICS.filter(t => t.type === 'AL');
     }

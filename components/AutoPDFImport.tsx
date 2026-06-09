@@ -352,7 +352,7 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, level?: 'AS' | 
                                                 onChange={e => updateDraft(draft.id, 'topic', e.target.value)}
                                                 className="w-full border p-1 border-blue-200 rounded text-sm bg-blue-50 focus:bg-white"
                                            >
-                                               {ALL_TOPICS.map(t => (
+                                               {ALL_TOPICS.filter(t => !level || t.type === level).map(t => (
                                                    <option key={t.text} value={t.text}>{t.text}</option>
                                                ))}
                                                <option value="Unclassified">Unclassified</option>
