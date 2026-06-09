@@ -994,7 +994,7 @@ export const generateExplanationForMCQ = async (base64Image: string, correctAnsw
   }
 };
 
-export const generateDescriptionForMCQ = async (base64Image: string, level?: 'AS' | 'AL'): Promise<string> => {
+export const generateAnalysisForMCQ = async (base64Image: string, level?: 'AS' | 'AL'): Promise<{ topic: string, description: string }> => {
   try {
     checkForApiKey();
     if (!base64Image.includes('base64,')) {
@@ -1004,17 +1004,26 @@ export const generateDescriptionForMCQ = async (base64Image: string, level?: 'AS
     const mimeType = mimeTypePrefix.split(':')[1];
     
     let levelFilter = "This is an A-Level paper.";
-    if (level === 'AS') levelFilter = "This is an AS Level paper.";
-    else if (level === 'AL') levelFilter = "This is an AL (A2 Level) paper.";
+    let filteredTopics = ALL_TOPICS;
+
+    if (level === 'AS') {
+        levelFilter = "This is an AS Level paper.";
+        filteredTopics = ALL_TOPICS.filter(t => t.type === 'AS');
+    } else if (level === 'AL') {
+        levelFilter = "This is an AL (A2 Level) paper.";
+        filteredTopics = ALL_TOPICS.filter(t => t.type === 'AL');
+    }
 
     const prompt = `
       Analyze this image of an Economics multiple-choice question.
       ${levelFilter}
-      Provide ONLY a detailed, specific description of the key concept being tested in this exact format: "General Concept: Specific calculation or identification being tested".
-      Examples:
-      - "Consumer Surplus & Indirect Tax: Identifying the geometric area of surplus lost when a tax shifts the supply curve."
-      - "GDP at Basic Prices: Calculating value by adjusting market prices for indirect taxes and subsidies."
-      Do not include the question number or anything else, just the description.
+      Return a JSON object with strictly two keys: "topic" and "description".
+      - "topic": Choose the most appropriate specific topic for this question from this exact list:
+        ${JSON.stringify(filteredTopics.map(t => t.text))}. If you are unsure, pick the closest one.
+      - "description": Provide ONLY a detailed, specific description of the key concept being tested in this exact format: "General Concept: Specific calculation or identification being tested".
+        Examples:
+        - "Consumer Surplus & Indirect Tax: Identifying the geometric area of surplus lost when a tax shifts the supply curve."
+        - "GDP at Basic Prices: Calculating value by adjusting market prices for indirect taxes and subsidies."
     `;
 
     const ai = getAI();
@@ -1029,6 +1038,9 @@ export const generateDescriptionForMCQ = async (base64Image: string, level?: 'AS
                      { text: prompt },
                      { inlineData: { mimeType, data: base64Data } }
                  ]
+              },
+              config: {
+                responseMimeType: "application/json",
               }
             });
             break;
@@ -1037,10 +1049,20 @@ export const generateDescriptionForMCQ = async (base64Image: string, level?: 'AS
             await new Promise(resolve => setTimeout(resolve, 2000));
         }
     }
-    return response?.text?.trim() || "Unclassified Concept";
+    
+    const textResult = response?.text?.trim() || "{}";
+    try {
+        const parsed = JSON.parse(textResult);
+        return {
+            topic: parsed.topic || "Unclassified",
+            description: parsed.description || "Unclassified Concept"
+        };
+    } catch {
+        return { topic: "Unclassified", description: textResult };
+    }
   } catch (error: any) {
-    console.error("AI Description Error:", error);
-    throw new Error(`Failed to generate description.`);
+    console.error("AI Analysis Error:", error);
+    throw new Error(`Failed to generate analysis.`);
   }
 };
 

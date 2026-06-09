@@ -5,7 +5,7 @@ import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
 import { exportPracticeBook } from '../utils/mcqExport';
 import { ALL_TOPICS } from '../utils/topicHelpers';
 import { AutoPDFImport } from './AutoPDFImport';
-import { generateDescriptionForMCQ, generateExplanationForMCQ } from '../services/geminiService';
+import { generateAnalysisForMCQ, generateExplanationForMCQ } from '../services/geminiService';
 
 const PAPER_CODES = [
   "2021 F/M 12", "2021 M/J 11", "2021 M/J 12", "2021 M/J 13", "2021 O/N 11", "2021 O/N 12", "2021 O/N 13",
@@ -125,14 +125,15 @@ export const MCQBank: React.FC = () => {
     setMcqs(loaded.sort((a,b) => a.questionNum - b.questionNum));
   };
 
-  const handleGenerateDescription = async () => {
+  const handleGenerateAnalysis = async () => {
       if (!imagePreview) return;
       setIsGeneratingDesc(true);
       try {
-          const desc = await generateDescriptionForMCQ(imagePreview, selectedLevel);
-          setNewDescription(desc);
+          const result = await generateAnalysisForMCQ(imagePreview, selectedLevel);
+          setNewDescription(result.description);
+          setNewTopic(result.topic);
       } catch (e) {
-          alert("Failed to generate description.");
+          alert("Failed to analyze question.");
       } finally {
           setIsGeneratingDesc(false);
       }
@@ -909,7 +910,17 @@ export const MCQBank: React.FC = () => {
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Topic Chapter ({selectedLevel})</label>
+                                <div className="flex justify-between items-center mb-1">
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">Topic Chapter ({selectedLevel})</label>
+                                    <button 
+                                        type="button" 
+                                        onClick={handleGenerateAnalysis} 
+                                        disabled={!imagePreview || isGeneratingDesc}
+                                        className="text-xs bg-purple-100 text-purple-700 hover:bg-purple-200 font-bold px-2 py-1 rounded transition-colors disabled:opacity-50"
+                                    >
+                                        {isGeneratingDesc ? 'Analyzing...' : 'AI Auto-Fill (Topic & Concept)'}
+                                    </button>
+                                </div>
                                 <select value={newTopic} onChange={e => setNewTopic(e.target.value)} className="w-full p-2 border rounded bg-slate-50 text-xs">
                                     {levelFilteredTopics.map(t => (
                                         <option key={t.id} value={t.text}>
@@ -919,17 +930,7 @@ export const MCQBank: React.FC = () => {
                                 </select>
                             </div>
                             <div>
-                                <div className="flex justify-between items-center mb-1">
-                                    <label className="block text-sm font-medium text-slate-700">Concept Description (Searchable)</label>
-                                    <button 
-                                        type="button" 
-                                        onClick={handleGenerateDescription} 
-                                        disabled={!imagePreview || isGeneratingDesc}
-                                        className="text-xs bg-purple-100 text-purple-700 hover:bg-purple-200 font-bold px-2 py-1 rounded transition-colors disabled:opacity-50"
-                                    >
-                                        {isGeneratingDesc ? 'Generating...' : 'AI Generate'}
-                                    </button>
-                                </div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Concept Description (Searchable)</label>
                                 <input 
                                     type="text" 
                                     value={newDescription} 
