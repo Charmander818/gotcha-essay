@@ -145,6 +145,7 @@ export interface MCQ {
   description?: string;
   correctAnswer: 'A' | 'B' | 'C' | 'D' | 'X';
   annotation?: string;
+  aiExplanation?: string;
   isStarred?: boolean;
   isProblematic?: boolean;
 }

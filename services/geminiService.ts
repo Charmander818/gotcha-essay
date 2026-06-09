@@ -949,3 +949,99 @@ export const generateChatResponse = async (prompt: string): Promise<string> => {
     throw new Error("Failed to generate response.");
   }
 };
+
+export const generateExplanationForMCQ = async (base64Image: string, correctAnswer: string): Promise<string> => {
+  try {
+    checkForApiKey();
+    if (!base64Image.includes('base64,')) {
+      throw new Error("Invalid base64 image data.");
+    }
+    const [mimeTypePrefix, base64Data] = base64Image.split(';base64,');
+    const mimeType = mimeTypePrefix.split(':')[1];
+    
+    const prompt = `
+      You are an expert Cambridge A-Level Economics teacher.
+      Below is an image of a multiple-choice question. The correct answer is ${correctAnswer === 'X' ? 'unknown (the question might be invalid or removed)' : correctAnswer}.
+      Please provide a detailed, easy-to-understand explanation for this question in Chinese.
+      Explain why the correct answer is right (if known), and carefully explain why each of the other options is incorrect. 
+      Format your response with clear bullet points for each option (A, B, C, D).
+    `;
+
+    const ai = getAI();
+    let response;
+    
+    for (let i = 0; i < 3; i++) {
+        try {
+            response = await ai.models.generateContent({
+              model: 'gemini-3.1-pro-preview',
+              contents: {
+                 parts: [
+                     { text: prompt },
+                     { inlineData: { mimeType, data: base64Data } }
+                 ]
+              }
+            });
+            break;
+        } catch (err: any) {
+            if (i === 2) throw err;
+            await new Promise(resolve => setTimeout(resolve, 2000));
+        }
+    }
+    return response?.text || "生成讲解失败。";
+  } catch (error: any) {
+    console.error("AI Explanation Error:", error);
+    throw new Error(`Failed to generate explanation.`);
+  }
+};
+
+export const generateDescriptionForMCQ = async (base64Image: string, level?: 'AS' | 'AL'): Promise<string> => {
+  try {
+    checkForApiKey();
+    if (!base64Image.includes('base64,')) {
+      throw new Error("Invalid base64 image data.");
+    }
+    const [mimeTypePrefix, base64Data] = base64Image.split(';base64,');
+    const mimeType = mimeTypePrefix.split(':')[1];
+    
+    let levelFilter = "This is an A-Level paper.";
+    if (level === 'AS') levelFilter = "This is an AS Level paper.";
+    else if (level === 'AL') levelFilter = "This is an AL (A2 Level) paper.";
+
+    const prompt = `
+      Analyze this image of an Economics multiple-choice question.
+      ${levelFilter}
+      Provide ONLY a detailed, specific description of the key concept being tested in this exact format: "General Concept: Specific calculation or identification being tested".
+      Examples:
+      - "Consumer Surplus & Indirect Tax: Identifying the geometric area of surplus lost when a tax shifts the supply curve."
+      - "GDP at Basic Prices: Calculating value by adjusting market prices for indirect taxes and subsidies."
+      Do not include the question number or anything else, just the description.
+    `;
+
+    const ai = getAI();
+    let response;
+    
+    for (let i = 0; i < 3; i++) {
+        try {
+            response = await ai.models.generateContent({
+              model: 'gemini-3.1-flash-lite',
+              contents: {
+                 parts: [
+                     { text: prompt },
+                     { inlineData: { mimeType, data: base64Data } }
+                 ]
+              }
+            });
+            break;
+        } catch (err: any) {
+            if (i === 2) throw err;
+            await new Promise(resolve => setTimeout(resolve, 2000));
+        }
+    }
+    return response?.text?.trim() || "Unclassified Concept";
+  } catch (error: any) {
+    console.error("AI Description Error:", error);
+    throw new Error(`Failed to generate description.`);
+  }
+};
+
+

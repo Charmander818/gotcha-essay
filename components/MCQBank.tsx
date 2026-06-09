@@ -5,7 +5,7 @@ import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
 import { exportPracticeBook } from '../utils/mcqExport';
 import { ALL_TOPICS } from '../utils/topicHelpers';
 import { AutoPDFImport } from './AutoPDFImport';
-import { extractDescriptionForMCQ } from '../services/geminiService';
+import { generateDescriptionForMCQ, generateExplanationForMCQ } from '../services/geminiService';
 
 const PAPER_CODES = [
   "2021 F/M 12", "2021 M/J 11", "2021 M/J 12", "2021 M/J 13", "2021 O/N 11", "2021 O/N 12", "2021 O/N 13",
@@ -31,6 +31,8 @@ export const MCQBank: React.FC = () => {
   const [mcqs, setMcqs] = useState<MCQ[]>([]);
   const [isAdding, setIsAdding] = useState(false);
   const [isPracticing, setIsPracticing] = useState(false);
+  const [isGeneratingDesc, setIsGeneratingDesc] = useState(false);
+  const [isGeneratingExp, setIsGeneratingExp] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
 
@@ -121,6 +123,35 @@ export const MCQBank: React.FC = () => {
   const loadMCQs = async () => {
     const loaded = await getMCQs();
     setMcqs(loaded.sort((a,b) => a.questionNum - b.questionNum));
+  };
+
+  const handleGenerateDescription = async () => {
+      if (!imagePreview) return;
+      setIsGeneratingDesc(true);
+      try {
+          const desc = await generateDescriptionForMCQ(imagePreview, selectedLevel);
+          setNewDescription(desc);
+      } catch (e) {
+          alert("Failed to generate description.");
+      } finally {
+          setIsGeneratingDesc(false);
+      }
+  };
+
+  const handleGenerateExplanation = async () => {
+      if (!viewingMCQ || !viewingMCQ.imageUrl) return;
+      setIsGeneratingExp(true);
+      try {
+          const exp = await generateExplanationForMCQ(viewingMCQ.imageUrl, viewingMCQ.correctAnswer);
+          const updated = { ...viewingMCQ, aiExplanation: exp };
+          await saveMCQ(updated);
+          setViewingMCQ(updated);
+          setMcqs(prev => prev.map(m => m.id === updated.id ? updated : m));
+      } catch (e) {
+          alert("Failed to generate AI explanation.");
+      } finally {
+          setIsGeneratingExp(false);
+      }
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -676,6 +707,28 @@ export const MCQBank: React.FC = () => {
                                     <p className="text-sm">No annotation provided for this question.</p>
                                 </div>
                             )}
+
+                            {viewingMCQ.aiExplanation ? (
+                                <div className="bg-purple-50 border border-purple-200 p-4 rounded-xl">
+                                    <h3 className="text-sm font-bold text-purple-800 mb-2 uppercase tracking-wide flex items-center gap-2">
+                                        <span className="text-lg">🤖</span> AI 讲解 (AI Explanation)
+                                    </h3>
+                                    <div className="text-purple-900 whitespace-pre-wrap leading-relaxed text-sm font-serif">
+                                        {viewingMCQ.aiExplanation}
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="flex justify-center mt-2">
+                                    <button 
+                                        onClick={handleGenerateExplanation} 
+                                        disabled={isGeneratingExp}
+                                        className="bg-purple-100 text-purple-700 hover:bg-purple-200 font-bold py-2 px-6 rounded-lg transition-colors shadow-sm disabled:opacity-50 flex items-center gap-2"
+                                    >
+                                        <span className="text-lg">🤖</span>
+                                        {isGeneratingExp ? '正在生成 AI 讲解...' : '获取 AI 中文讲解'}
+                                    </button>
+                                </div>
+                            )}
                         </div>
                         
                         <div className="p-4 sm:p-6 border-t border-slate-100 bg-slate-50 flex justify-between items-center">
@@ -867,7 +920,17 @@ export const MCQBank: React.FC = () => {
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Concept Description (Searchable)</label>
+                                <div className="flex justify-between items-center mb-1">
+                                    <label className="block text-sm font-medium text-slate-700">Concept Description (Searchable)</label>
+                                    <button 
+                                        type="button" 
+                                        onClick={handleGenerateDescription} 
+                                        disabled={!imagePreview || isGeneratingDesc}
+                                        className="text-xs bg-purple-100 text-purple-700 hover:bg-purple-200 font-bold px-2 py-1 rounded transition-colors disabled:opacity-50"
+                                    >
+                                        {isGeneratingDesc ? 'Generating...' : 'AI Generate'}
+                                    </button>
+                                </div>
                                 <input 
                                     type="text" 
                                     value={newDescription} 
