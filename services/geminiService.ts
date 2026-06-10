@@ -973,7 +973,7 @@ export const generateExplanationForMCQ = async (base64Image: string, correctAnsw
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-3.5-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
@@ -982,17 +982,19 @@ export const generateExplanationForMCQ = async (base64Image: string, correctAnsw
               }
             });
             break;
-        } catch (err: any) {
-            if (i === 2) throw err;
-            await new Promise(resolve => setTimeout(resolve, 2000));
-        }
+          } catch (err: any) {
+              if (i === 2) {
+                  return `AI 生成失败 (API Error / Rate Limit): ${err?.message || err}`;
+              }
+              await new Promise(resolve => setTimeout(resolve, 2000));
+          }
+      }
+      return response?.text || "生成讲解失败。";
+    } catch (error: any) {
+      console.error("AI Explanation Error:", error);
+      return `Failed to generate explanation: ${error.message || error}`;
     }
-    return response?.text || "生成讲解失败。";
-  } catch (error: any) {
-    console.error("AI Explanation Error:", error);
-    throw new Error(`Failed to generate explanation.`);
-  }
-};
+  };
 
 export const generateAnalysisForMCQ = async (base64Image: string, level?: 'AS' | 'AL'): Promise<{ topic: string, description: string }> => {
   try {

@@ -148,8 +148,9 @@ export const MCQBank: React.FC = () => {
           await saveMCQ(updated);
           setViewingMCQ(updated);
           setMcqs(prev => prev.map(m => m.id === updated.id ? updated : m));
-      } catch (e) {
-          alert("Failed to generate AI explanation.");
+      } catch (e: any) {
+          console.error(e);
+          alert(`Failed to generate AI explanation. ${e?.message || e}`);
       } finally {
           setIsGeneratingExp(false);
       }
