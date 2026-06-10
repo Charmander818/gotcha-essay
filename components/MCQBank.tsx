@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Markdown from 'react-markdown';
 import { MCQ } from '../types';
 import { getMCQs, saveMCQ, deleteMCQ, getAllMCQsForExport, restoreMCQsFromImport } from '../utils/indexedDB';
 import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
@@ -712,11 +713,20 @@ export const MCQBank: React.FC = () => {
 
                             {viewingMCQ.aiExplanation ? (
                                 <div className="bg-purple-50 border border-purple-200 p-4 rounded-xl">
-                                    <h3 className="text-sm font-bold text-purple-800 mb-2 uppercase tracking-wide flex items-center gap-2">
-                                        AI Explanation
-                                    </h3>
-                                    <div className="text-purple-900 whitespace-pre-wrap leading-relaxed text-sm font-serif">
-                                        {viewingMCQ.aiExplanation}
+                                    <div className="flex justify-between items-center mb-2">
+                                        <h3 className="text-sm font-bold text-purple-800 uppercase tracking-wide flex items-center gap-2">
+                                            AI Explanation
+                                        </h3>
+                                        <button 
+                                            onClick={handleGenerateExplanation} 
+                                            disabled={isGeneratingExp}
+                                            className="text-xs bg-purple-200 text-purple-800 hover:bg-purple-300 font-bold py-1 px-3 rounded transition-colors disabled:opacity-50"
+                                        >
+                                            {isGeneratingExp ? 'Generating...' : 'Regenerate'}
+                                        </button>
+                                    </div>
+                                    <div className="text-purple-900 leading-relaxed text-sm prose prose-sm prose-purple max-w-none">
+                                        <Markdown>{viewingMCQ.aiExplanation}</Markdown>
                                     </div>
                                 </div>
                             ) : (
