@@ -89,7 +89,7 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3.5-flash',
     contents: prompt,
   });
   return response.text || "Failed to generate essay.";
@@ -222,7 +222,7 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3.5-flash',
     contents: {
         parts: [
             { text: prompt },
@@ -292,7 +292,7 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.1-pro-preview',
+    model: 'gemini-3.5-flash',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -973,7 +973,7 @@ export const generateExplanationForMCQ = async (base64Image: string, correctAnsw
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-3.1-pro-preview',
+              model: 'gemini-3.5-flash',
               contents: {
                  parts: [
                      { text: prompt },
