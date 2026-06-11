@@ -89,7 +89,7 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.5-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
   });
   return response.text || "Failed to generate essay.";
@@ -222,7 +222,7 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.5-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: {
         parts: [
             { text: prompt },
@@ -292,7 +292,7 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.5-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -341,7 +341,7 @@ export const generateClozeExercise = async (text: string): Promise<{ textWithBla
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.5-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -395,7 +395,7 @@ export const evaluateClozeAnswers = async (blanks: ClozeBlank[], userAnswers: Re
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.5-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -446,7 +446,7 @@ export const improveLogicChain = async (input: string): Promise<string> => {
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.5-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
   });
   return response.text || "Could not improve chain.";
@@ -493,7 +493,7 @@ export const analyzeTopic = async (topic: string, questions: Question[]): Promis
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.5-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
     config: { responseMimeType: "application/json" }
   });
@@ -546,7 +546,7 @@ export const analyzeExamStrategy = async (marks: number, questions: Question[]):
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-3.5-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
   });
   return response.text || "Analysis failed.";
@@ -572,11 +572,12 @@ export const generateSyllabusLogicChain = async (topicTitle: string, point: stri
       4. If a Definition (AO1) is provided above, ensure the logic chain builds directly upon it.
       5. Keep it concise but rigorous.
       6. Output ONLY the chain, no intro/outro.
+      7. IMPORTANT: DO NOT use markdown formatting such as asterisks (*) or hashes (#). Use plain text only.
     `;
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     return response.text || "Error generating chain.";
@@ -605,7 +606,7 @@ export const generateSyllabusDefinition = async (topicTitle: string, point: stri
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     return response.text || "Error generating definition.";
@@ -635,7 +636,7 @@ export const evaluateSyllabusChain = async (topicTitle: string, point: string, s
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     return response.text || "Error evaluating chain.";
@@ -681,7 +682,7 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     
@@ -743,7 +744,7 @@ export const generateTeachingPPTData = async (chapter: string, syllabusPoints: s
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
       config: {
         responseMimeType: "application/json"
@@ -784,7 +785,7 @@ export const generateMindmapData = async (chapter: string, syllabusPoints: strin
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     
@@ -940,7 +941,7 @@ export const generateChatResponse = async (prompt: string): Promise<string> => {
     checkForApiKey();
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     return response.text || "";
@@ -964,7 +965,8 @@ export const generateExplanationForMCQ = async (base64Image: string, correctAnsw
       Below is an image of a multiple-choice question. The correct answer is ${correctAnswer === 'X' ? 'unknown (the question might be invalid or removed)' : correctAnswer}.
       Please provide a detailed, easy-to-understand explanation for this question in Chinese.
       Explain why the correct answer is right (if known), and carefully explain why each of the other options is incorrect. 
-      Format your response with clear bullet points for each option (A, B, C, D).
+      Format your response with clear plain-text bullet points (e.g. "A: ...", "B: ...").
+      IMPORTANT: DO NOT use markdown formatting such as asterisks (*) or hashes (#). Use plain text only.
     `;
 
     const ai = getAI();
