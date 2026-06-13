@@ -1096,8 +1096,8 @@ export const parseBulkEssays = async (rawText: string, level: 'AS' | 'A Level'):
       
       Instructions:
       1. Extract each distinct sub-question as a separate item (e.g. 2(a), 2(b)).
-      2. Identify the Question Text.
-      3. Identify the Mark Scheme specific to that question.
+      2. Identify the Question Text EXACTLY as it appears in the text.
+      3. Identify the Mark Scheme specific to that question. You MUST extract the entire mark scheme content EXACTLY verbatim. DO NOT summarize, paraphrase, shorten, or alter the mark scheme in any way. Keep the full raw text for the mark scheme.
       4. Auto-classify the best matching "topic" and "chapter" from the list above.
       5. Identify the max marks (e.g. 8 for (a), 12 for (b), or 20).
       6. Provide a clean JSON array output.
