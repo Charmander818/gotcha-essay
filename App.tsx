@@ -164,6 +164,20 @@ const App: React.FC = () => {
     }));
   };
 
+  const handleSaveMultipleQuestions = (newQuestions: Question[]) => {
+    setCustomQuestions(prev => {
+      let filtered = [...prev];
+      for (const question of newQuestions) {
+         if (deletedIds.includes(question.id)) {
+            setDeletedIds(d => d.filter(id => id !== question.id));
+         }
+         filtered = filtered.filter(q => q.id !== question.id);
+         filtered.push(question);
+      }
+      return filtered;
+    });
+  };
+
   const handleSaveQuestion = (question: Question) => {
     if (deletedIds.includes(question.id)) {
         setDeletedIds(prev => prev.filter(id => id !== question.id));
@@ -786,6 +800,7 @@ const App: React.FC = () => {
         isOpen={isModalOpen} 
         onClose={() => { setIsModalOpen(false); setQuestionToEdit(null); }} 
         onSave={handleSaveQuestion}
+        onSaveMultiple={handleSaveMultipleQuestions}
         initialQuestion={questionToEdit}
       />
 

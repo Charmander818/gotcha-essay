@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Question, SyllabusTopic } from '../types';
 import { SYLLABUS_STRUCTURE, Level } from '../syllabusData';
+import { parseBulkEssays } from '../services/geminiService';
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
   onSave: (question: Question) => void;
+  onSaveMultiple?: (questions: Question[]) => void;
   initialQuestion?: Question | null;
 }
 
-const AddQuestionModal: React.FC<Props> = ({ isOpen, onClose, onSave, initialQuestion }) => {
+const AddQuestionModal: React.FC<Props> = ({ isOpen, onClose, onSave, onSaveMultiple, initialQuestion }) => {
   const [level, setLevel] = useState<Level>("AS");
+  const [isBulkMode, setIsBulkMode] = useState(false);
+  const [bulkText, setBulkText] = useState("");
+  const [isParsing, setIsParsing] = useState(false);
   
   const defaultState = {
     year: new Date().getFullYear().toString(),
@@ -123,6 +128,36 @@ const AddQuestionModal: React.FC<Props> = ({ isOpen, onClose, onSave, initialQue
     ? ['2', '3', '4', '5'] 
     : ['2(a)', '2(b)', '3(a)', '3(b)', '4(a)', '4(b)', '5(a)', '5(b)'];
 
+  const handleBulkParse = async () => {
+    if (!bulkText.trim()) return;
+    setIsParsing(true);
+    try {
+      const parsedItems = await parseBulkEssays(bulkText, level);
+      if (parsedItems && parsedItems.length > 0 && onSaveMultiple) {
+         const newQuestions: Question[] = parsedItems.map((item, index) => ({
+             id: `custom-bulk-${Date.now()}-${index}`,
+             year: formData.year,
+             paper: formData.paper,
+             variant: formData.variant,
+             questionNumber: item.questionNumber || String(index + 1),
+             topic: item.topic || formData.topic,
+             chapter: item.chapter || formData.chapter,
+             maxMarks: item.maxMarks || 8,
+             questionText: item.questionText || '',
+             markScheme: item.markScheme || ''
+         }));
+         onSaveMultiple(newQuestions);
+         onClose();
+      } else {
+         alert("Could not parse any questions. Please check the format.");
+      }
+    } catch (err: any) {
+      alert("Failed to parse: " + err.message);
+    } finally {
+      setIsParsing(false);
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
       <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto custom-scroll">
@@ -131,14 +166,19 @@ const AddQuestionModal: React.FC<Props> = ({ isOpen, onClose, onSave, initialQue
             <h2 className="text-xl font-bold text-slate-800">
               {initialQuestion ? 'Edit Question' : 'Add Custom Question'}
             </h2>
-            <p className="text-xs text-slate-400 mt-1">Select syllabus level to populate topics</p>
+            <div className="flex gap-2 mt-2">
+               <button onClick={() => setIsBulkMode(false)} className={`text-xs font-bold px-2 py-1 rounded ${!isBulkMode ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-500'}`}>Single</button>
+               {!initialQuestion && (
+                 <button onClick={() => setIsBulkMode(true)} className={`text-xs font-bold px-2 py-1 rounded ${isBulkMode ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-500'}`}>Bulk Add Paper</button>
+               )}
+            </div>
           </div>
           <button onClick={onClose} className="text-slate-400 hover:text-slate-600">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
         
-        <form onSubmit={handleSubmit} className="p-6 space-y-5">
+        <div className="p-6 space-y-5">
           {/* Level Switcher */}
           <div className="flex justify-center mb-2">
             <div className="bg-slate-100 p-1 rounded-lg flex">
@@ -163,98 +203,144 @@ const AddQuestionModal: React.FC<Props> = ({ isOpen, onClose, onSave, initialQue
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
-            <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Year</label>
-              <input type="text" required value={formData.year} onChange={e => setFormData({...formData, year: e.target.value})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" />
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Paper Code</label>
-              <input type="text" required value={formData.paper} onChange={e => setFormData({...formData, paper: e.target.value})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" />
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Variant</label>
-              <select value={formData.variant} onChange={e => setFormData({...formData, variant: e.target.value as any})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all">
-                <option>Feb/March</option>
-                <option>May/June</option>
-                <option>Oct/Nov</option>
-              </select>
-            </div>
-          </div>
+          {isBulkMode ? (
+            <>
+              <div className="grid grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Year</label>
+                  <input type="text" value={formData.year} onChange={e => setFormData({...formData, year: e.target.value})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Paper Code</label>
+                  <input type="text" value={formData.paper} onChange={e => setFormData({...formData, paper: e.target.value})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Variant</label>
+                  <select value={formData.variant} onChange={e => setFormData({...formData, variant: e.target.value as any})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all">
+                    <option>Feb/March</option>
+                    <option>May/June</option>
+                    <option>Oct/Nov</option>
+                  </select>
+                </div>
+              </div>
+              <div className="pt-2">
+                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Raw Paper Text (Questions + Mark Schemes)</label>
+                <textarea 
+                  rows={10} 
+                  value={bulkText} 
+                  onChange={e => setBulkText(e.target.value)} 
+                  placeholder="Paste the entire paper's questions and mark scheme here..."
+                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" 
+                />
+              </div>
+              <div className="pt-4 flex justify-end gap-3 border-t border-slate-100">
+                <button type="button" onClick={onClose} className="px-4 py-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors">Cancel</button>
+                <button 
+                   type="button" 
+                   onClick={handleBulkParse} 
+                   disabled={isParsing || !bulkText}
+                   className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors shadow-lg shadow-blue-200"
+                >
+                  {isParsing ? 'Parsing Auto-Chapters...' : 'Parse & Add Paper'}
+                </button>
+              </div>
+            </>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Year</label>
+                  <input type="text" required value={formData.year} onChange={e => setFormData({...formData, year: e.target.value})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Paper Code</label>
+                  <input type="text" required value={formData.paper} onChange={e => setFormData({...formData, paper: e.target.value})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Variant</label>
+                  <select value={formData.variant} onChange={e => setFormData({...formData, variant: e.target.value as any})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all">
+                    <option>Feb/March</option>
+                    <option>May/June</option>
+                    <option>Oct/Nov</option>
+                  </select>
+                </div>
+              </div>
 
-          <div className="space-y-4 border-t border-slate-100 pt-4">
-            <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Topic Section ({level})</label>
-              <select 
-                value={formData.topic} 
-                onChange={e => handleTopicChange(e.target.value as SyllabusTopic)} 
-                className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all"
-              >
-                {currentTopics.map(t => (
-                  <option key={t} value={t}>{t}</option>
-                ))}
-              </select>
-            </div>
-            
-            <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Chapter / Sub-topic</label>
-              <select
-                value={formData.chapter}
-                onChange={e => setFormData({...formData, chapter: e.target.value})}
-                className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all"
-              >
-                 <option value="" disabled>Select a chapter...</option>
-                 {currentChapters.map((c: string) => (
-                   <option key={c} value={c}>{c}</option>
-                 ))}
-              </select>
-            </div>
-          </div>
+              <div className="space-y-4 border-t border-slate-100 pt-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Topic Section ({level})</label>
+                  <select 
+                    value={formData.topic} 
+                    onChange={e => handleTopicChange(e.target.value as SyllabusTopic)} 
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  >
+                    {currentTopics.map(t => (
+                      <option key={t} value={t}>{t}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Chapter / Sub-topic</label>
+                  <select
+                    value={formData.chapter}
+                    onChange={e => setFormData({...formData, chapter: e.target.value})}
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  >
+                     <option value="" disabled>Select a chapter...</option>
+                     {currentChapters.map((c: string) => (
+                       <option key={c} value={c}>{c}</option>
+                     ))}
+                  </select>
+                </div>
+              </div>
 
-          <div className="grid grid-cols-2 gap-4 border-t border-slate-100 pt-4">
-             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Question No.</label>
-              <select 
-                required 
-                value={formData.questionNumber} 
-                onChange={e => handleQuestionNumberChange(e.target.value)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all"
-              >
-                <option value="" disabled>Select Number...</option>
-                {questionNumberOptions.map(q => (
-                  <option key={q} value={q}>{q}</option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Max Marks</label>
-              <input 
-                type="number" 
-                required 
-                value={formData.maxMarks} 
-                onChange={e => setFormData({...formData, maxMarks: parseInt(e.target.value)})} 
-                className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" 
-              />
-            </div>
-          </div>
+              <div className="grid grid-cols-2 gap-4 border-t border-slate-100 pt-4">
+                 <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Question No.</label>
+                  <select 
+                    required 
+                    value={formData.questionNumber} 
+                    onChange={e => handleQuestionNumberChange(e.target.value)}
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  >
+                    <option value="" disabled>Select Number...</option>
+                    {questionNumberOptions.map(q => (
+                      <option key={q} value={q}>{q}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Max Marks</label>
+                  <input 
+                    type="number" 
+                    required 
+                    value={formData.maxMarks} 
+                    onChange={e => setFormData({...formData, maxMarks: parseInt(e.target.value)})} 
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" 
+                  />
+                </div>
+              </div>
 
-          <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Question Text</label>
-            <textarea required rows={3} value={formData.questionText} onChange={e => setFormData({...formData, questionText: e.target.value})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" />
-          </div>
+              <div>
+                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Question Text</label>
+                <textarea required rows={3} value={formData.questionText} onChange={e => setFormData({...formData, questionText: e.target.value})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" />
+              </div>
 
-          <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Mark Scheme Content</label>
-            <textarea required rows={5} placeholder="Paste the relevant mark scheme guidance here..." value={formData.markScheme} onChange={e => setFormData({...formData, markScheme: e.target.value})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg font-mono text-xs focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" />
-          </div>
+              <div>
+                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Mark Scheme Content</label>
+                <textarea required rows={5} placeholder="Paste the relevant mark scheme guidance here..." value={formData.markScheme} onChange={e => setFormData({...formData, markScheme: e.target.value})} className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg font-mono text-xs focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none transition-all" />
+              </div>
 
-          <div className="pt-4 flex justify-end gap-3 border-t border-slate-100">
-            <button type="button" onClick={onClose} className="px-4 py-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors">Cancel</button>
-            <button type="submit" className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
-              {initialQuestion ? 'Save Changes' : 'Add Question'}
-            </button>
-          </div>
-        </form>
+              <div className="pt-4 flex justify-end gap-3 border-t border-slate-100">
+                <button type="button" onClick={onClose} className="px-4 py-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors">Cancel</button>
+                <button type="submit" className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
+                  {initialQuestion ? 'Save Changes' : 'Add Question'}
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
       </div>
     </div>
   );

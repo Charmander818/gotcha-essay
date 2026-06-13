@@ -1070,4 +1070,82 @@ export const generateAnalysisForMCQ = async (base64Image: string, level?: 'AS' |
   }
 };
 
+export const parseBulkEssays = async (rawText: string, level: 'AS' | 'A Level'): Promise<any[]> => {
+  try {
+    checkForApiKey();
+    const isAL = level === 'A Level';
+    
+    // Import here to avoid circular dependency issues if any
+    const { SYLLABUS_STRUCTURE } = await import('../syllabusData');
+    
+    const chaptersMap = isAL ? SYLLABUS_STRUCTURE['A Level'].chapters : SYLLABUS_STRUCTURE['AS'].chapters;
+    let chaptersContext = '';
+    for (const [topic, chapters] of Object.entries(chaptersMap)) {
+      chaptersContext += `Topic: ${topic}\nChapters:\n${(chapters as string[]).map(c => `- ${c}`).join('\n')}\n\n`;
+    }
+
+    const prompt = `
+      You are an expert Cambridge Economics parser.
+      The user is pasting a block of raw text that contains an ENTIRE paper of Essay Questions AND their corresponding Mark Schemes.
+      Your task is to extract every single structured essay question (e.g., 2a, 2b, 3a, 3b) along with its mark scheme, marks, and auto-classify its syllabus topic.
+
+      Syllabus Level: ${level}
+
+      Available Topics and Chapters:
+      ${chaptersContext}
+      
+      Instructions:
+      1. Extract each distinct sub-question as a separate item (e.g. 2(a), 2(b)).
+      2. Identify the Question Text.
+      3. Identify the Mark Scheme specific to that question.
+      4. Auto-classify the best matching "topic" and "chapter" from the list above.
+      5. Identify the max marks (e.g. 8 for (a), 12 for (b), or 20).
+      6. Provide a clean JSON array output.
+
+      Return ONLY a JSON array of objects with this exact format:
+      [
+        {
+          "questionNumber": "2(a)",
+          "questionText": "...",
+          "markScheme": "...",
+          "topic": "...",
+          "chapter": "...",
+          "maxMarks": 8
+        }
+      ]
+    `;
+
+    const ai = getAI();
+    let response;
+    
+    for (let i = 0; i < 3; i++) {
+        try {
+            response = await ai.models.generateContent({
+              model: 'gemini-3.1-pro',
+              contents: [
+                { text: prompt },
+                { text: rawText }
+              ],
+              config: {
+                responseMimeType: "application/json"
+              }
+            });
+            break;
+        } catch (err) {
+            if (i === 2) throw err;
+            await new Promise(resolve => setTimeout(resolve, 3000));
+        }
+    }
+
+    const resultText = response?.text;
+    if (!resultText) throw new Error("Empty response from AI");
+    
+    return JSON.parse(resultText);
+
+  } catch (error: any) {
+    console.error("Bulk Essay Parse Error:", error);
+    throw new Error(`Failed to parse bulk essays. Details: ${error.message || error}`);
+  }
+};
+
 

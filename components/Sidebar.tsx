@@ -19,7 +19,7 @@ interface SidebarProps {
 }
 
 type FilterMode = 'all' | 'saved' | 'custom';
-type SortOption = 'syllabus' | 'year' | 'marks';
+type SortOption = 'syllabus' | 'paper';
 
 interface QuestionCardProps {
   q: Question;
@@ -122,11 +122,6 @@ const Sidebar: React.FC<SidebarProps> = ({
   const [selectedLevel, setSelectedLevel] = useState<Level>('AS');
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>('syllabus');
-  
-  // New Filter States
-  const [yearFilter, setYearFilter] = useState<string>('all');
-  const [seasonFilter, setSeasonFilter] = useState<string>('all');
-  const [paperFilter, setPaperFilter] = useState<string>('all');
 
   // Collapse state for chapters: Key = "TopicName-ChapterName"
   const [expandedChapters, setExpandedChapters] = useState<Record<string, boolean>>({});
@@ -153,15 +148,6 @@ const Sidebar: React.FC<SidebarProps> = ({
       // 1. Level Filter
       if (!validTopics.has(q.topic)) return false;
 
-      // 2. Year Filter
-      if (yearFilter !== 'all' && q.year !== yearFilter) return false;
-
-      // 3. Season Filter
-      if (seasonFilter !== 'all' && q.variant !== seasonFilter) return false;
-
-      // 4. Paper Filter
-      if (paperFilter !== 'all' && q.paper !== paperFilter) return false;
-
       // 5. Search Filter
       if (lowerQuery) {
         const textMatch = q.questionText.toLowerCase().includes(lowerQuery);
@@ -186,7 +172,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
       return true;
     });
-  }, [questions, selectedLevel, searchQuery, filterMode, questionStates, yearFilter, seasonFilter, paperFilter]);
+  }, [questions, selectedLevel, searchQuery, filterMode, questionStates]);
 
 
   // --- Grouping & Sorting Logic ---
@@ -211,23 +197,40 @@ const Sidebar: React.FC<SidebarProps> = ({
     return groups;
   }, [filteredQuestions, sortOption, selectedLevel]);
 
-  // 2. Flat List View (Sorted by Year or Marks)
-  const flatSortedQuestions = useMemo(() => {
-    if (sortOption === 'syllabus') return null;
+  // 2. Paper View (Nested: Year -> Paper -> Questions)
+  const paperGroups = useMemo<Record<string, Record<string, Question[]>> | null>(() => {
+    if (sortOption !== 'paper') return null;
 
-    return [...filteredQuestions].sort((a, b) => {
-      if (sortOption === 'year') {
-        // Sort by Year Descending, then by Paper
-        if (b.year !== a.year) return b.year.localeCompare(a.year);
-        return a.paper.localeCompare(b.paper);
-      }
-      if (sortOption === 'marks') {
-        // Sort by Marks Descending
-        return b.maxMarks - a.maxMarks;
-      }
-      return 0;
+    const groups: Record<string, Record<string, Question[]>> = {};
+
+    filteredQuestions.forEach(q => {
+      const year = q.year;
+      if (!groups[year]) groups[year] = {};
+      
+      const paperNum = q.paper.includes('/') ? q.paper.split('/')[1] : q.paper;
+      const paperLabel = `${q.variant} ${paperNum}`;
+      
+      if (!groups[year][paperLabel]) groups[year][paperLabel] = [];
+      groups[year][paperLabel].push(q);
     });
+
+    return groups;
   }, [filteredQuestions, sortOption]);
+
+  const getSortedPapers = (papersObj: Record<string, Question[]>) => {
+    const variantOrder: Record<string, number> = { "Feb/March": 1, "May/June": 2, "Oct/Nov": 3 };
+    return Object.keys(papersObj).sort((a, b) => {
+      const partsA = a.split(' ');
+      const partsB = b.split(' ');
+      const variantA = partsA[0];
+      const variantB = partsB[0];
+      
+      if (variantOrder[variantA] !== variantOrder[variantB]) {
+          return (variantOrder[variantA] || 99) - (variantOrder[variantB] || 99);
+      }
+      return partsA[1].localeCompare(partsB[1], undefined, { numeric: true });
+    });
+  };
 
 
   // Helper: Sort chapters logically (1.2 before 1.10) using numeric sorting
@@ -249,21 +252,22 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   // Auto-expand chapter when a question is selected
   useEffect(() => {
-    if (selectedQuestionId && sortOption === 'syllabus') {
+    if (selectedQuestionId) {
       const q = questions.find(q => q.id === selectedQuestionId);
-      if (q && SYLLABUS_STRUCTURE[selectedLevel].topics.includes(q.topic)) {
-        const key = `${q.topic}-${q.chapter || "General"}`;
-        setExpandedChapters(prev => ({ ...prev, [key]: true }));
+      if (q) {
+        if (sortOption === 'syllabus' && SYLLABUS_STRUCTURE[selectedLevel].topics.includes(q.topic)) {
+          const key = `${q.topic}-${q.chapter || "General"}`;
+          setExpandedChapters(prev => ({ ...prev, [key]: true }));
+        } else if (sortOption === 'paper') {
+          const paperNum = q.paper.includes('/') ? q.paper.split('/')[1] : q.paper;
+          const key = `${q.year}-${q.variant} ${paperNum}`;
+          setExpandedChapters(prev => ({ ...prev, [key]: true }));
+        }
       }
     }
   }, [selectedQuestionId, sortOption, questions, selectedLevel]);
 
-  const hasActiveFilters = yearFilter !== 'all' || seasonFilter !== 'all' || paperFilter !== 'all' || searchQuery !== '';
-
   const clearFilters = () => {
-    setYearFilter('all');
-    setSeasonFilter('all');
-    setPaperFilter('all');
     setSearchQuery('');
   };
 
@@ -310,46 +314,6 @@ const Sidebar: React.FC<SidebarProps> = ({
            </button>
         </div>
 
-        {/* Year, Season & Paper Filters */}
-        <div className="relative">
-          {hasActiveFilters && (
-            <button 
-              onClick={clearFilters}
-              className="absolute -top-7 right-0 text-[10px] bg-slate-200 hover:bg-slate-300 text-slate-600 px-2 py-0.5 rounded-full flex items-center gap-1 transition-colors"
-              title="Clear all filters"
-            >
-              <span>Clear</span>
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
-          )}
-          <div className="grid grid-cols-2 gap-2">
-              <select 
-                value={yearFilter} 
-                onChange={(e) => setYearFilter(e.target.value)}
-                className="bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5"
-              >
-                  <option value="all">All Years</option>
-                  {availableYears.map(y => <option key={y} value={y}>{y}</option>)}
-              </select>
-              <select 
-                value={seasonFilter} 
-                onChange={(e) => setSeasonFilter(e.target.value)}
-                className="bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5"
-              >
-                  <option value="all">All Seasons</option>
-                  {availableSeasons.map(s => <option key={s} value={s}>{s}</option>)}
-              </select>
-              <select 
-                value={paperFilter} 
-                onChange={(e) => setPaperFilter(e.target.value)}
-                className="col-span-2 bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5"
-              >
-                  <option value="all">All Papers</option>
-                  {availablePapers.map(p => <option key={p} value={p}>{p}</option>)}
-              </select>
-          </div>
-        </div>
-
         {/* Search Bar */}
         <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-2.5 flex items-center pointer-events-none">
@@ -380,8 +344,7 @@ const Sidebar: React.FC<SidebarProps> = ({
            <div className="flex-1 flex gap-1">
              {[
                { id: 'syllabus', label: 'Topic' },
-               { id: 'year', label: 'Year' },
-               { id: 'marks', label: 'Marks' }
+               { id: 'paper', label: 'Paper' }
              ].map((opt) => (
                <button
                  key={opt.id}
@@ -497,22 +460,71 @@ const Sidebar: React.FC<SidebarProps> = ({
            </>
         )}
 
-        {/* FLAT VIEW (Year / Marks) */}
-        {sortOption !== 'syllabus' && flatSortedQuestions && (
-           <div className="space-y-1 mt-2">
-              {flatSortedQuestions.map(q => (
-                 <QuestionCard 
-                   key={q.id} 
-                   q={q} 
-                   onSelectQuestion={onSelectQuestion}
-                   selectedQuestionId={selectedQuestionId}
-                   onEditQuestion={onEditQuestion}
-                   onDeleteQuestion={onDeleteQuestion}
-                   questionStates={questionStates}
-                   sortOption={sortOption}
-                 />
-              ))}
-           </div>
+        {/* PAPER VIEW (Nested) */}
+        {sortOption === 'paper' && paperGroups && (
+           <>
+             {Object.keys(paperGroups).sort((a, b) => b.localeCompare(a)).map(year => {
+               const papers = paperGroups[year];
+               const yearTotalQuestions = Object.values(papers).reduce((acc: number, curr: Question[]) => acc + curr.length, 0);
+
+               return (
+                 <div key={year} className="mb-6">
+                   <div className="flex items-center justify-between mb-2 sticky top-0 bg-white/95 py-1 z-10">
+                     <h2 className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">
+                       {year}
+                     </h2>
+                     <span className="text-[9px] font-bold text-slate-300 bg-slate-50 px-1.5 py-0.5 rounded">
+                       {yearTotalQuestions}
+                     </span>
+                   </div>
+                   
+                   {getSortedPapers(papers).map(paper => {
+                     const paperQuestions = papers[paper];
+                     const paperKey = `${year}-${paper}`;
+                     const isExpanded = !!expandedChapters[paperKey];
+
+                     return (
+                       <div key={paper} className="mb-2 pl-2 border-l-2 border-slate-100 ml-1">
+                         <button 
+                           onClick={() => toggleChapter(year, paper)}
+                           className="w-full text-left flex items-center justify-between group py-1.5 px-2 rounded-md hover:bg-slate-50 transition-colors mb-1"
+                         >
+                            <div className="flex items-center gap-1.5 overflow-hidden">
+                                <span className={`text-slate-400 transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`}>
+                                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                                </span>
+                                <h3 className="text-[11px] font-bold text-slate-600 truncate" title={paper}>
+                                  {paper}
+                                </h3>
+                            </div>
+                            <span className="flex-shrink-0 bg-slate-100 text-slate-500 text-[9px] font-bold px-1.5 py-0.5 rounded-full group-hover:bg-slate-200 transition-colors">
+                              {paperQuestions.length}
+                            </span>
+                         </button>
+                         
+                         {isExpanded && (
+                           <div className="pl-2 animate-fade-in-down">
+                             {[...paperQuestions].sort((a,b) => a.questionNumber.localeCompare(b.questionNumber, undefined, {numeric: true})).map(q => (
+                               <QuestionCard 
+                                 key={q.id} 
+                                 q={q} 
+                                 onSelectQuestion={onSelectQuestion}
+                                 selectedQuestionId={selectedQuestionId}
+                                 onEditQuestion={onEditQuestion}
+                                 onDeleteQuestion={onDeleteQuestion}
+                                 questionStates={questionStates}
+                                 sortOption={sortOption}
+                               />
+                             ))}
+                           </div>
+                         )}
+                       </div>
+                     );
+                   })}
+                 </div>
+               );
+             })}
+           </>
         )}
 
         {/* Empty State */}
