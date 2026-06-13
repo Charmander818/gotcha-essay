@@ -1121,7 +1121,7 @@ export const parseBulkEssays = async (rawText: string, level: 'AS' | 'A Level'):
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-3.1-pro',
+              model: 'gemini-3.1-flash-lite',
               contents: [
                 { text: prompt },
                 { text: rawText }
