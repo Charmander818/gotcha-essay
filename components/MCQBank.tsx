@@ -443,6 +443,23 @@ export const MCQBank: React.FC = () => {
      }
   }, [selectedLevel]);
 
+  const viewingIndex = viewingMCQ ? filteredMcqs.findIndex(m => m.id === viewingMCQ.id) : -1;
+  const hasNextMCQ = viewingIndex !== -1 && viewingIndex < filteredMcqs.length - 1;
+  const hasPrevMCQ = viewingIndex !== -1 && viewingIndex > 0;
+
+  useEffect(() => {
+      const handleKeyDown = (e: KeyboardEvent) => {
+          if (!viewingMCQ) return;
+          if (e.key === 'ArrowRight' && hasNextMCQ) {
+              setViewingMCQ(filteredMcqs[viewingIndex + 1]);
+          } else if (e.key === 'ArrowLeft' && hasPrevMCQ) {
+              setViewingMCQ(filteredMcqs[viewingIndex - 1]);
+          }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [viewingMCQ, hasNextMCQ, hasPrevMCQ, filteredMcqs, viewingIndex]);
+
   if (isPracticing) {
       if (filteredMcqs.length === 0) {
           return <div className="p-8 text-center"><p>No questions found for this selection.</p><button onClick={() => setIsPracticing(false)} className="px-4 py-2 mt-4 bg-blue-600 text-white rounded">Back</button></div>;
@@ -680,8 +697,18 @@ export const MCQBank: React.FC = () => {
                         </div>
                         
                         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
-                            <div className="bg-slate-100 rounded-xl p-4 flex justify-center items-center">
+                            <div className="bg-slate-100 rounded-xl p-4 flex justify-center items-center relative group">
+                                {hasPrevMCQ && (
+                                    <button onClick={() => setViewingMCQ(filteredMcqs[viewingIndex - 1])} className="absolute left-2 sm:left-4 p-2 bg-white/90 hover:bg-white rounded-full text-slate-800 shadow-md border border-slate-200 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
+                                    </button>
+                                )}
                                 <img src={viewingMCQ.imageUrl} alt={`Question ${viewingMCQ.questionNum}`} className="max-w-full rounded shadow-sm object-contain max-h-[60vh] bg-white border border-slate-200" />
+                                {hasNextMCQ && (
+                                    <button onClick={() => setViewingMCQ(filteredMcqs[viewingIndex + 1])} className="absolute right-2 sm:right-4 p-2 bg-white/90 hover:bg-white rounded-full text-slate-800 shadow-md border border-slate-200 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+                                    </button>
+                                )}
                             </div>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

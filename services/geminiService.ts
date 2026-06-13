@@ -961,12 +961,12 @@ export const generateExplanationForMCQ = async (base64Image: string, correctAnsw
     const mimeType = mimeTypePrefix.split(':')[1];
     
     const prompt = `
-      You are an expert Cambridge A-Level Economics teacher.
-      Below is an image of a multiple-choice question. The correct answer is ${correctAnswer === 'X' ? 'unknown (the question might be invalid or removed)' : correctAnswer}.
+      Below is an image of a multiple-choice question for Cambridge Economics. The correct answer is ${correctAnswer === 'X' ? 'unknown (the question might be invalid or removed)' : correctAnswer}.
       Please provide a detailed, easy-to-understand explanation for this question in Chinese.
       Explain why the correct answer is right (if known), and carefully explain why each of the other options is incorrect. 
       Format your response with clear plain-text bullet points (e.g. "A: ...", "B: ...").
       IMPORTANT: DO NOT use markdown formatting such as asterisks (*) or hashes (#). Use plain text only.
+      IMPORTANT: DO NOT start with any conversational intro (e.g., "我是老师..." or "好的..."). Just output the explanation directly.
     `;
 
     const ai = getAI();
