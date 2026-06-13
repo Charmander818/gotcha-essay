@@ -67,10 +67,6 @@ export const MCQBank: React.FC = () => {
   // Bulk Answers State
   const [bulkAnswers, setBulkAnswers] = useState<Record<string, string>>({});
   const [bulkInput, setBulkInput] = useState('');
-  
-  // Bulk Update State
-  const [showBulkDescriptions, setShowBulkDescriptions] = useState(false);
-  const [bulkDescriptionsInput, setBulkDescriptionsInput] = useState('');
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const importFileRef = useRef<HTMLInputElement>(null);
@@ -295,54 +291,6 @@ export const MCQBank: React.FC = () => {
       } catch (err) {
           console.error("Failed to toggle problematic", err);
       }
-  };
-
-  const handleParseBulkDescriptions = async () => {
-    if (!bulkDescriptionsInput.trim()) {
-        alert("Please paste descriptions first.");
-        return;
-    }
-    
-    // Parse descriptions
-    const lines = bulkDescriptionsInput.split('\n');
-    let currentQNum: number | null = null;
-    let descMap: Record<number, string> = {};
-
-    // Standard pattern matching numbers followed by dot/space
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        // Match: "1. ", "Question 1:", "01)", "1 " etc.
-        const match = line.match(/^\s*(?:Question|Q)?\s*(\d+)[:.)\]\-\s]+(.*)/i);
-        if (match) {
-            currentQNum = parseInt(match[1]);
-            descMap[currentQNum] = match[2];
-        } else if (currentQNum) {
-            descMap[currentQNum] += '\n' + line;
-        }
-    }
-
-    const toUpdate = [];
-    for (const q of filteredMcqs) {
-        if (descMap[q.questionNum] !== undefined) {
-            toUpdate.push({ ...q, description: descMap[q.questionNum].trim() });
-        }
-    }
-
-    if (toUpdate.length === 0) {
-        alert("No matching questions found in current view to update. Make sure question numbers match.");
-        return;
-    }
-
-    let updateCount = 0;
-    for (const q of toUpdate) {
-        await saveMCQ(q);
-        updateCount++;
-    }
-
-    await loadMCQs();
-    alert(`Successfully updated ${updateCount} descriptions!`);
-    setShowBulkDescriptions(false);
-    setBulkDescriptionsInput('');
   };
 
   const handleAnswer = (ans: 'A' | 'B' | 'C' | 'D') => {
@@ -815,14 +763,6 @@ export const MCQBank: React.FC = () => {
                 </div>
                 
                 <div className="flex flex-wrap gap-2 w-full lg:w-auto lg:max-w-[460px] justify-start lg:justify-end shrink-0">
-                    {selectedFilterType === 'PAPER' && selectedFilterValue !== 'All' && (
-                        <button 
-                            onClick={() => setShowBulkDescriptions(true)} 
-                            className="flex-1 min-w-[120px] px-3 py-1.5 text-sm bg-gradient-to-r from-purple-100 to-fuchsia-100 border border-purple-200 text-purple-700 rounded-lg hover:from-purple-200 hover:to-fuchsia-200 font-medium transition-colors disabled:opacity-50 whitespace-nowrap text-center"
-                        >
-                            Bulk Descriptions
-                        </button>
-                    )}
                     <button 
                       onClick={startAdding} 
                       className="flex-1 min-w-[120px] px-3 py-1.5 text-sm bg-indigo-50 border border-indigo-200 text-indigo-700 rounded-lg hover:bg-indigo-100 font-medium transition-colors whitespace-nowrap text-center"
@@ -841,7 +781,7 @@ export const MCQBank: React.FC = () => {
                       className="flex-1 min-w-[120px] px-3 py-1.5 text-sm bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-lg hover:bg-emerald-100 font-bold transition-colors disabled:opacity-50 whitespace-nowrap text-center"
                       title="Export with Explanations/Annotations"
                     >
-                        Export Annotated
+                        Export
                     </button>
                     <button 
                       onClick={() => { setCurrentIndex(0); setIsPracticing(true); }}
@@ -852,37 +792,6 @@ export const MCQBank: React.FC = () => {
                     </button>
                 </div>
             </div>
-
-            {showBulkDescriptions && (
-                <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
-                   <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-3xl max-h-[90vh] flex flex-col">
-                       <h2 className="text-xl font-bold mb-4">Bulk Update Descriptions</h2>
-                       <p className="text-sm text-slate-500 mb-4 whitespace-normal">
-                           Paste all 30 question descriptions here. The system will parse them based on question numbers (e.g. <code>1. Which of the following...</code> or <code>Question 1: ...</code>) and automatically update all matching questions in the current Paper.
-                       </p>
-                       <textarea
-                           className="flex-1 min-h-[400px] w-full p-4 border rounded-lg text-sm mb-4 font-mono leading-relaxed resize-none focus:ring-2 focus:ring-blue-500"
-                           placeholder={"1. What is the fundamental problem of economics?\n2. A country is producing at a point inside its production possibility curve...\n3. Which policy is likely to increase the economy's long-run growth rate?\n..."}
-                           value={bulkDescriptionsInput}
-                           onChange={e => setBulkDescriptionsInput(e.target.value)}
-                       />
-                       <div className="flex justify-end gap-3 text-sm font-medium mt-auto">
-                           <button 
-                               onClick={() => setShowBulkDescriptions(false)}
-                               className="px-6 py-2 border rounded hover:bg-slate-50"
-                           >
-                               Cancel
-                           </button>
-                           <button 
-                               onClick={handleParseBulkDescriptions}
-                               className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                           >
-                               Update Descriptions
-                           </button>
-                       </div>
-                   </div>
-                </div>
-            )}
 
             {isAdding && (
                 <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 animate-in fade-in slide-in-from-top-4">

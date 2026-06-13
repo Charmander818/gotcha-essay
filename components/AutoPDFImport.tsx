@@ -217,7 +217,7 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, level?: 'AS' | 
        <div className="bg-white rounded-xl shadow-xl w-full max-w-5xl h-[90vh] flex flex-col overflow-hidden">
            <div className="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50">
                <div>
-                  <h2 className="text-2xl font-bold text-slate-800">Auto PDF Slicer Wizard</h2>
+                  <h2 className="text-2xl font-bold text-slate-800">Auto PDF Slicer</h2>
                   <p className="text-slate-500 text-sm">Step {step} of 4</p>
                </div>
                <button onClick={onCancel} className="text-slate-400 hover:text-slate-600">
