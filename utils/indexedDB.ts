@@ -1,4 +1,5 @@
 import { MCQ } from '../types';
+import { initialMCQs } from '../mcqData';
 
 const DB_NAME = 'cie_econ_mcq_db';
 const STORE_NAME = 'mcqs';
@@ -23,8 +24,18 @@ export const getMCQs = async (): Promise<MCQ[]> => {
     const transaction = db.transaction(STORE_NAME, 'readonly');
     const store = transaction.objectStore(STORE_NAME);
     const request = store.getAll();
-    request.onsuccess = () => {
-        const mcqs: MCQ[] = request.result;
+    request.onsuccess = async () => {
+        let mcqs: MCQ[] = request.result;
+        
+        // If DB is empty and we have hardcoded initialMCQs, bootstrap them
+        if (mcqs.length === 0 && initialMCQs && initialMCQs.length > 0) {
+            console.log("Empty DB, bootstrapping from mcqData.ts...");
+            for (const item of initialMCQs) {
+                await saveMCQ(item);
+            }
+            mcqs = [...initialMCQs];
+        }
+
         // Fix for old duplicated topics before resolving
         const fixedMcqs = mcqs.map(q => {
             if (q.topic) {

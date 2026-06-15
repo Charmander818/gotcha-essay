@@ -13,20 +13,40 @@ const isMicro = (topic: SyllabusTopic) => [
   SyllabusTopic.GOVT_MICRO_AL
 ].includes(topic);
 
+const isAL = (topic: SyllabusTopic) => [
+  SyllabusTopic.PRICE_SYSTEM_AL,
+  SyllabusTopic.GOVT_MICRO_AL,
+  SyllabusTopic.MACROECONOMY_AL,
+  SyllabusTopic.GOVT_MACRO_AL,
+  SyllabusTopic.INTERNATIONAL_AL
+].includes(topic);
+
 const ExamTrends: React.FC<ExamTrendsProps> = ({ questions }) => {
   // Aggregate data
   const stats = useMemo(() => {
-    const microCounts = new Map<string, number>();
-    const macroCounts = new Map<string, number>();
+    const asMicroCounts = new Map<string, number>();
+    const alMicroCounts = new Map<string, number>();
+    const asMacroCounts = new Map<string, number>();
+    const alMacroCounts = new Map<string, number>();
     const yearChapterMap = new Map<string, Map<string, number>>();
 
     questions.forEach(q => {
       // Micro / Macro separation by Chapter
       const micro = isMicro(q.topic);
+      const isALTopic = isAL(q.topic);
+
       if (micro) {
-        microCounts.set(q.chapter, (microCounts.get(q.chapter) || 0) + 1);
+        if (isALTopic) {
+          alMicroCounts.set(q.chapter, (alMicroCounts.get(q.chapter) || 0) + 1);
+        } else {
+          asMicroCounts.set(q.chapter, (asMicroCounts.get(q.chapter) || 0) + 1);
+        }
       } else {
-        macroCounts.set(q.chapter, (macroCounts.get(q.chapter) || 0) + 1);
+        if (isALTopic) {
+          alMacroCounts.set(q.chapter, (alMacroCounts.get(q.chapter) || 0) + 1);
+        } else {
+          asMacroCounts.set(q.chapter, (asMacroCounts.get(q.chapter) || 0) + 1);
+        }
       }
 
       // Year -> Chapter count
@@ -37,11 +57,13 @@ const ExamTrends: React.FC<ExamTrendsProps> = ({ questions }) => {
       yMap.set(q.chapter, (yMap.get(q.chapter) || 0) + 1);
     });
 
-    const sortedMicro = Array.from(microCounts.entries()).sort((a, b) => b[1] - a[1]);
-    const sortedMacro = Array.from(macroCounts.entries()).sort((a, b) => b[1] - a[1]);
+    const sortedASMicro = Array.from(asMicroCounts.entries()).sort((a, b) => b[1] - a[1]);
+    const sortedALMicro = Array.from(alMicroCounts.entries()).sort((a, b) => b[1] - a[1]);
+    const sortedASMacro = Array.from(asMacroCounts.entries()).sort((a, b) => b[1] - a[1]);
+    const sortedALMacro = Array.from(alMacroCounts.entries()).sort((a, b) => b[1] - a[1]);
     const years = Array.from(yearChapterMap.keys()).sort((a, b) => b.localeCompare(a));
 
-    return { sortedMicro, sortedMacro, yearChapterMap, years };
+    return { sortedASMicro, sortedALMicro, sortedASMacro, sortedALMacro, yearChapterMap, years };
   }, [questions]);
 
   // Prediction Logic
@@ -123,12 +145,14 @@ const ExamTrends: React.FC<ExamTrendsProps> = ({ questions }) => {
     <div className="max-w-5xl mx-auto py-8">
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-slate-800 tracking-tight">Exam Trends & Statistics</h2>
-        <p className="text-slate-500 mt-1">Precise subtopic frequency analysis categorized by Microeconomics and Macroeconomics.</p>
+        <p className="text-slate-500 mt-1">Precise subtopic frequency analysis categorized by AS/AL Level and Micro/Macroeconomics.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        {renderFrequencyChart("Microeconomics Frequency", stats.sortedMicro, true)}
-        {renderFrequencyChart("Macroeconomics Frequency", stats.sortedMacro, false)}
+        {renderFrequencyChart("AS Level - Microeconomics", stats.sortedASMicro, true)}
+        {renderFrequencyChart("AS Level - Macroeconomics", stats.sortedASMacro, false)}
+        {renderFrequencyChart("A Level - Microeconomics", stats.sortedALMicro, true)}
+        {renderFrequencyChart("A Level - Macroeconomics", stats.sortedALMacro, false)}
       </div>
 
       {/* Year-by-Year Trend */}
