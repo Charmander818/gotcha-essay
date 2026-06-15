@@ -671,6 +671,7 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
       4. Include an "Economic Logic Chains (AO2)" section. Provide the start and end of a phenomenon, or partial chains, and ask the student to fill in the missing intermediate steps.
       5. Include a "Mind Map / Synthesis" section or an essay planning section.
       6. Use standard unicode arrows (→, ↑, ↓) instead of LaTeX for chains if applicable.
+      7. CRITICAL FORMATTING: Do NOT use long sequences of underscores (e.g., \`_____________\`) to create writing spaces for students, as it breaks MS Word formatting. Instead, just leave a blank space or use short brackets like \`[        ]\` to indicate where students should write. Maintain clean, standard markdown lists without orphaned numbers or broken lines.
       
       **CRITICAL OUTPUT FORMAT:**
       You MUST output the worksheet, then exactly this delimiter:

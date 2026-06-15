@@ -476,11 +476,13 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
 
     const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>${worksheetModalData.subTitle} Worksheet</title>
     <style>
-      body { font-family: 'Calibri', sans-serif; font-size: 11pt; }
+      * { font-family: 'Calibri', sans-serif !important; }
+      body { font-family: 'Calibri', sans-serif !important; font-size: 11pt; }
+      p, h1, h2, h3, h4, li, span, div, td, th { font-family: 'Calibri', sans-serif !important; }
       table { border-collapse: collapse; width: 100%; margin-bottom: 20pt; }
       table, th, td { border: 1pt solid black; }
       th, td { padding: 5pt; text-align: left; }
-      h1, h2, h3 { color: #2e74b5; }
+      h1, h2, h3 { color: #2e74b5; font-family: 'Calibri', sans-serif !important; }
     </style>
     </head><body>`;
     const footer = "</body></html>";
@@ -499,7 +501,9 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
       // Logic same as before...
       const header = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>${subTitle} Revision Handbook</title>
       <style>
-        body { font-family: 'Calibri', sans-serif; font-size: 10pt; }
+        * { font-family: 'Calibri', sans-serif !important; }
+        body { font-family: 'Calibri', sans-serif !important; font-size: 10pt; }
+        p, h1, h2, h3, h4, li, span, div, td, th { font-family: 'Calibri', sans-serif !important; }
         table { border-collapse: collapse; width: 100%; }
         th, td { border: 1px solid #94a3b8; padding: 12px; vertical-align: top; }
         th { background-color: #f1f5f9; text-align: left; }
