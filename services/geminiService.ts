@@ -666,12 +666,13 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
       
       **Requirements for the Worksheet:**
       1. Structure the worksheet clearly so a student can print it and fill it in.
-      2. Include a "Definitions (AO1)" section where students must define the key terms. You MUST use the exact syllabus content provided. DO NOT add any economic terms or concepts not present in the provided syllabus points and content.
-      3. The worksheet MUST cover ALL the syllabus points and ALL the provided AO1 definitions. Do not leave any knowledge gaps.
-      4. Include an "Economic Logic Chains (AO2)" section. Provide the start and end of a phenomenon, or partial chains, and ask the student to fill in the missing intermediate steps.
-      5. Include a "Mind Map / Synthesis" section or an essay planning section.
-      6. Use standard unicode arrows (→, ↑, ↓) instead of LaTeX for chains if applicable.
-      7. CRITICAL FORMATTING: Do NOT use long sequences of underscores (e.g., \`_____________\`) to create writing spaces for students, as it breaks MS Word formatting. Instead, just leave a blank space or use short brackets like \`[        ]\` to indicate where students should write. Maintain clean, standard markdown lists without orphaned numbers or broken lines.
+      2. **Exhaustive Knowledge Coverage (CRITICAL):** The worksheet MUST comprehensively cover ALL the syllabus points and ALL the provided AO1 definitions without leaving any knowledge gaps. Systematically create questions that test every single concept mentioned in the syllabus content.
+      3. **Definitions (AO1):** Include a section where students must define key terms based exactly on the syllabus content provided.
+      4. **Graphs & Diagrams (AO2/AO3 - CRITICAL):** Include a dedicated "Diagram Drawing & Analysis" section. You MUST exhaustively cover ALL possible permutations and graphical scenarios for the topic (e.g., if the topic is indifference curves, include separate drawing tasks for income increase/decrease + normal/inferior goods, and price increase/decrease + normal/inferior/Giffen goods). Prompt the student to label all axes, curves, and equilibrium points.
+      5. **Economic Logic Chains (AO2):** Provide partial chains and ask the student to fill in the missing intermediate steps. Cover all major economic transmission mechanisms in this topic.
+      6. **Tables / Comparisons:** Where applicable, use fill-in-the-blank tables for students to compare properties or contrast effects (e.g., directions of Substitution Effect vs Income Effect).
+      7. Use standard unicode arrows (→, ↑, ↓) instead of LaTeX for chains if applicable.
+      8. CRITICAL FORMATTING: Do NOT use long sequences of underscores (e.g., \`_____________\`) to create writing spaces for students, as it breaks MS Word formatting. Instead, just leave a blank space or use short brackets like \`[        ]\` to indicate where students should write. Maintain clean, standard markdown lists without orphaned numbers or broken lines.
       
       **CRITICAL OUTPUT FORMAT:**
       You MUST output the worksheet, then exactly this delimiter:
@@ -683,7 +684,7 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.1-flash-lite',
+      model: 'gemini-3.1-pro',
       contents: prompt,
     });
     
