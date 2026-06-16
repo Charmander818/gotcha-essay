@@ -231,8 +231,8 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
           worksheetAnswerKey: result.answerKey
         }
       }));
-    } catch(e) {
-      alert("Failed to generate worksheet.");
+    } catch(e: any) {
+      alert(`Failed to generate worksheet: ${e.message || "Unknown error"}`);
     }
     setIsGeneratingWorksheet(false);
   };
