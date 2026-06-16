@@ -43,16 +43,22 @@ const EssayImprover: React.FC<Props> = ({
 
   // Sync state if props change
   useEffect(() => {
-    setAnswers(userAnswers || {});
-    if (clozeData) setMode('practice');
+    if (userAnswers) {
+        setAnswers(userAnswers);
+    } else {
+        setAnswers({});
+    }
+    if (clozeData) {
+        setMode('practice');
+    }
   }, [userAnswers, question.id, clozeData]);
 
   // Initialize manual text when entering creation mode
   useEffect(() => {
-    if (modelEssay && !manualText) {
+    if (modelEssay && !manualText && mode === 'manual_creating') {
         setManualText(modelEssay);
     }
-  }, [modelEssay]);
+  }, [modelEssay, mode]);
 
   const ensureModelEssay = async (): Promise<string> => {
     if (modelEssay) return modelEssay;
