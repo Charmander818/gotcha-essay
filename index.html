@@ -6,8 +6,125 @@
     <title>CIE Economics Essay Master</title>
     <!-- Tailwind is kept via CDN for simplicity, though best practice is usually via postcss -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              purple: {
+                50: 'var(--theme-50)',
+                100: 'var(--theme-100)',
+                200: 'var(--theme-200)',
+                300: 'var(--theme-300)',
+                400: 'var(--theme-400)',
+                500: 'var(--theme-500)',
+                600: 'var(--theme-600)',
+                700: 'var(--theme-700)',
+                800: 'var(--theme-800)',
+                900: 'var(--theme-900)',
+              },
+              indigo: {
+                50: 'var(--theme-alt-50)',
+                100: 'var(--theme-alt-100)',
+                500: 'var(--theme-alt-500)',
+              }
+            }
+          }
+        }
+      }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+      :root {
+        /* Default Lavender (Purple) theme */
+        --theme-50: #faf5ff;
+        --theme-100: #f3e8ff;
+        --theme-200: #e9d5ff;
+        --theme-300: #d8b4fe;
+        --theme-400: #c084fc;
+        --theme-500: #a855f7;
+        --theme-600: #9333ea;
+        --theme-700: #7e22ce;
+        --theme-800: #6b21a8;
+        --theme-900: #581c87;
+        
+        --theme-alt-50: #eef2ff;
+        --theme-alt-100: #e0e7ff;
+        --theme-alt-500: #6366f1;
+      }
+
+      /* Matcha (淡雅绿) */
+      [data-theme="matcha"] {
+        --theme-50: #f7fcf8;
+        --theme-100: #ecfaef;
+        --theme-200: #d4f2dc;
+        --theme-300: #aee3be;
+        --theme-400: #7dcb98;
+        --theme-500: #52af75;
+        --theme-600: #3c905b;
+        --theme-700: #33734b;
+        --theme-800: #2d5c3e;
+        --theme-900: #264c35;
+
+        --theme-alt-50: #f4fbf7;
+        --theme-alt-100: #e5f6eb;
+        --theme-alt-500: #22c55e;
+      }
+
+      /* Sakura (樱花粉) */
+      [data-theme="sakura"] {
+        --theme-50: #fff5f7;
+        --theme-100: #ffe6ed;
+        --theme-200: #ffcddc;
+        --theme-300: #ffa1bd;
+        --theme-400: #ff6896;
+        --theme-500: #f63c76;
+        --theme-600: #de1f5a;
+        --theme-700: #bb1144;
+        --theme-800: #9b123c;
+        --theme-900: #821536;
+
+        --theme-alt-50: #fff1f2;
+        --theme-alt-100: #ffe4e6;
+        --theme-alt-500: #f43f5e;
+      }
+
+      /* Mist (雾霾蓝) */
+      [data-theme="mist"] {
+        --theme-50: #f4f6f8;
+        --theme-100: #e5eaef;
+        --theme-200: #cbd6e2;
+        --theme-300: #a7bbcf;
+        --theme-400: #7e9ab7;
+        --theme-500: #607d9c;
+        --theme-600: #4a6280;
+        --theme-700: #3c5068;
+        --theme-800: #344356;
+        --theme-900: #2e394a;
+
+        --theme-alt-50: #f0f4f8;
+        --theme-alt-100: #d9e2ec;
+        --theme-alt-500: #486581;
+      }
+
+      /* Latte (奶咖色 / Minimalist) */
+      [data-theme="latte"] {
+        --theme-50: #faf9f8;
+        --theme-100: #f4f1ee;
+        --theme-200: #e8e1da;
+        --theme-300: #d5c8be;
+        --theme-400: #bfaaa0;
+        --theme-500: #aa9084;
+        --theme-600: #907468;
+        --theme-700: #765c53;
+        --theme-800: #624e47;
+        --theme-900: #52423c;
+
+        --theme-alt-50: #fdf8f6;
+        --theme-alt-100: #eaddd7;
+        --theme-alt-500: #b48572;
+      }
+
       body {
         font-family: 'Inter', sans-serif;
       }
@@ -26,6 +143,13 @@
         background: #94a3b8;
       }
     </style>
+    <script>
+      // Apply theme from localStorage before React loads to prevent flicker
+      const savedTheme = localStorage.getItem('app-theme') || 'lavender';
+      if (savedTheme !== 'lavender') {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    </script>
 <script type="importmap">
 {
   "imports": {
