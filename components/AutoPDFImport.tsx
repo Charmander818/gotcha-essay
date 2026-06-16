@@ -220,7 +220,7 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, level?: 'AS' | 
                   <h2 className="text-2xl font-bold text-slate-800">Auto PDF Slicer</h2>
                   <p className="text-slate-500 text-sm">Step {step} of 4</p>
                </div>
-               <button onClick={onCancel} className="text-slate-400 hover:text-slate-600">
+               <button onClick={onCancel} className="text-blue-400 hover:text-blue-600">
                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                </button>
            </div>
@@ -319,7 +319,7 @@ export const AutoPDFImport: React.FC<{ initialPaperCode: string, level?: 'AS' | 
                                <h3 className="font-bold text-lg">Step 4: Review and Edit</h3>
                                <p className="text-sm text-slate-500">Check extracted questions, add explanations, and save.</p>
                            </div>
-                           <button onClick={handleSaveAll} disabled={isProcessing} className="bg-emerald-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-emerald-700 shadow-sm disabled:opacity-50">
+                           <button onClick={handleSaveAll} disabled={isProcessing} className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 shadow-sm disabled:opacity-50">
                                {isProcessing ? 'Saving...' : 'Save All & Exit'}
                            </button>
                        </div>

@@ -108,7 +108,7 @@ Make it dense, practical, and highly relevant for A-Level exams. No fluff, just 
           <button
             onClick={handleGenerate}
             disabled={isGenerating}
-            className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-lg font-medium shadow-sm transition-colors disabled:opacity-50 whitespace-nowrap"
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-medium shadow-sm transition-colors disabled:opacity-50 whitespace-nowrap"
           >
             {isGenerating ? (
               <span className="flex items-center gap-2">

@@ -5,6 +5,8 @@ import { SyllabusStatus, LogicChainItem, CustomSyllabusPoint } from '../types';
 import { generateSyllabusLogicChain, generateWorksheet, generateTeachingPPTData, generateMindmapData } from '../services/geminiService';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { PREFILLED_DEFINITIONS } from '../syllabusDefinitions';
 import { PREFILLED_WORKSHEETS } from '../worksheetData';
 import pptxgen from "pptxgenjs";
@@ -441,6 +443,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
         <html>
           <head>
             <title>Worksheet: ${worksheetModalData?.subTitle}</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ALjG0Oux014Fq/X3S020k0N++LwYxtn92vrv12NE//g" crossorigin="anonymous">
             <style>
               body { font-family: 'Inter', sans-serif; padding: 40px; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; }
               h1, h2, h3 { color: #1e3a8a; }
@@ -926,7 +929,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
               <h3 className="text-sm font-bold text-blue-900 uppercase tracking-wider">Revision Card</h3>
               <p className="text-xs text-blue-700 mt-1 max-w-md truncate" title={activeTrainingPoint.topic}>{activeTrainingPoint.topic}</p>
             </div>
-            <button onClick={closeTrainer} className="text-slate-400 hover:text-slate-600">
+            <button onClick={closeTrainer} className="text-blue-400 hover:text-blue-600">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
@@ -946,14 +949,14 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                   <div className="flex gap-2">
                     <button 
                         onClick={handleCleanFormat}
-                        className="text-[10px] font-bold px-3 py-1.5 rounded transition-colors border bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+                        className="text-[10px] font-bold px-3 py-1.5 rounded transition-colors border bg-white text-blue-600 border-blue-200 hover:bg-blue-50"
                         title="Remove extra line breaks from copied text"
                     >
                         Clean Format
                     </button>
                     <button 
                         onClick={handleManualSaveDefinition}
-                        className={`text-[10px] font-bold px-3 py-1.5 rounded transition-colors border ${defSaved ? 'bg-green-100 text-green-700 border-green-200' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}`}
+                        className={`text-[10px] font-bold px-3 py-1.5 rounded transition-colors border ${defSaved ? 'bg-blue-100 text-blue-700 border-blue-200' : 'bg-white text-blue-600 border-blue-200 hover:bg-blue-50'}`}
                     >
                         {defSaved ? "Saved!" : "Save Definition"}
                     </button>
@@ -991,7 +994,8 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                           <div className="bg-white p-3 rounded border border-green-100">
                               <div className="prose prose-blue max-w-none text-sm leading-7">
                                   <ReactMarkdown 
-                                    remarkPlugins={[remarkGfm]}
+                                    remarkPlugins={[remarkGfm, remarkMath]}
+                                    rehypePlugins={[rehypeKatex]}
                                     components={{
                                         p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
                                         li: ({node, ...props}) => <li className="mb-1" {...props} />
@@ -1018,7 +1022,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                       <button 
                         onClick={handleAddChain}
                         disabled={chainLoading}
-                        className="bg-green-600 hover:bg-green-700 text-white text-xs font-bold px-3 py-1 rounded transition-colors disabled:opacity-50"
+                        className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded transition-colors disabled:opacity-50"
                       >
                         {chainLoading ? "..." : "Generate Chain"}
                       </button>
@@ -1070,7 +1074,7 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                 <button 
                   onClick={handleGenerateWorksheet}
                   disabled={isGeneratingWorksheet}
-                  className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded transition-colors disabled:opacity-50"
+                  className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded transition-colors disabled:opacity-50"
                 >
                   {isGeneratingWorksheet ? "Generating..." : "Generate Worksheet"}
                 </button>
@@ -1104,14 +1108,17 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                           Word
                         </button>
-                        <button onClick={handlePrintWorksheet} className="px-3 py-1.5 bg-slate-200 text-slate-800 text-xs font-bold rounded shadow-sm hover:bg-slate-300 flex items-center gap-2">
+                        <button onClick={handlePrintWorksheet} className="px-3 py-1.5 bg-blue-200 text-blue-800 text-xs font-bold rounded shadow-sm hover:bg-blue-300 flex items-center gap-2">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
                           Print
                         </button>
                       </div>
                     </div>
                     <div id="rendered-worksheet" className="prose prose-sm max-w-none bg-white p-6 rounded border border-slate-200 min-h-[400px]">
-                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      <ReactMarkdown 
+                        remarkPlugins={[remarkGfm, remarkMath]}
+                        rehypePlugins={[rehypeKatex]}
+                      >
                         {worksheetTab === 'worksheet' ? worksheetContent : worksheetAnswerKey}
                       </ReactMarkdown>
                     </div>

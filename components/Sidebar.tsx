@@ -554,28 +554,28 @@ const Sidebar: React.FC<SidebarProps> = ({
              <button
                onClick={onBatchGenerate}
                disabled={isBatchProcessing}
-               className="px-2 py-1.5 bg-white border border-slate-200 text-slate-700 text-[10px] font-bold uppercase tracking-wide rounded shadow-sm hover:bg-slate-50 disabled:opacity-50"
+               className="px-2 py-1.5 bg-white border border-blue-200 text-blue-700 text-[10px] font-bold uppercase tracking-wide rounded shadow-sm hover:bg-blue-50 disabled:opacity-50"
              >
                Auto-Gen
              </button>
              <button
                onClick={onExportAll}
                disabled={isBatchProcessing}
-               className="px-2 py-1.5 bg-slate-800 text-white text-[10px] font-bold uppercase tracking-wide rounded shadow-sm hover:bg-slate-700 disabled:opacity-50"
+               className="px-2 py-1.5 bg-blue-800 text-white text-[10px] font-bold uppercase tracking-wide rounded shadow-sm hover:bg-blue-700 disabled:opacity-50"
              >
                Word
              </button>
              <button
                onClick={onExportExcel}
                disabled={isBatchProcessing}
-               className="px-2 py-1.5 bg-green-600 text-white text-[10px] font-bold uppercase tracking-wide rounded shadow-sm hover:bg-green-700 disabled:opacity-50"
+               className="px-2 py-1.5 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wide rounded shadow-sm hover:bg-blue-700 disabled:opacity-50"
              >
                Excel
              </button>
          </div>
          <button
             onClick={onOpenCodeExport}
-            className="mt-2 w-full text-[10px] text-slate-400 hover:text-blue-600 font-medium flex items-center justify-center gap-1 transition-colors"
+            className="mt-2 w-full text-[10px] text-blue-400 hover:text-blue-600 font-medium flex items-center justify-center gap-1 transition-colors"
          >
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m-4-4v12" /></svg>
             Sync Data (Download data.ts)

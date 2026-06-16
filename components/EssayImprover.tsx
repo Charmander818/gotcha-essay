@@ -23,13 +23,13 @@ const EssayImprover: React.FC<Props> = ({
   question, 
   modelEssay, 
   clozeData, 
-  userAnswers = {}, 
+  userAnswers, 
   feedback,
   onSaveData, 
   onSaveProgress,
   onModelEssayGenerated
 }) => {
-  const [answers, setAnswers] = useState<Record<number, string>>(userAnswers);
+  const [answers, setAnswers] = useState<Record<number, string>>(userAnswers || {});
   const [mode, setMode] = useState<Mode>(clozeData ? 'practice' : 'initial');
   const [isGrading, setIsGrading] = useState(false);
 
@@ -261,7 +261,7 @@ const EssayImprover: React.FC<Props> = ({
                   <button 
                       onClick={finishManualCreation}
                       disabled={manualBlanks.length === 0}
-                      className="px-6 py-2 bg-emerald-600 text-white font-bold rounded-lg shadow-lg hover:bg-emerald-700 disabled:opacity-50 h-10"
+                      className="px-6 py-2 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 disabled:opacity-50 h-10"
                   >
                       Start Exercise ({manualBlanks.length})
                   </button>
@@ -282,7 +282,7 @@ const EssayImprover: React.FC<Props> = ({
              </p>
           </div>
           {mode === 'practice' && (
-             <button onClick={handleReset} className="text-sm text-slate-400 hover:text-red-600 underline">Start Over</button>
+             <button onClick={handleReset} className="text-sm text-blue-400 hover:text-red-600 underline">Start Over</button>
           )}
         </div>
 
@@ -294,12 +294,12 @@ const EssayImprover: React.FC<Props> = ({
                         <p className="text-slate-500">You can let AI generate a challenge for you, or create one yourself by selecting key words from the model essay.</p>
                      </div>
                      <div className="flex gap-4">
-                         <button onClick={handleGenerateAICloze} className="flex flex-col items-center p-6 bg-indigo-50 border border-indigo-100 rounded-xl hover:bg-indigo-100 transition-colors w-48">
+                         <button onClick={handleGenerateAICloze} className="flex flex-col items-center p-6 bg-blue-50 border border-blue-100 rounded-xl hover:bg-blue-100 transition-colors w-48">
                              <span className="text-3xl mb-2">🤖</span>
                              <span className="font-bold text-indigo-700">AI Generated</span>
                              <span className="text-xs text-indigo-500 mt-1">Automatic masking</span>
                          </button>
-                         <button onClick={startManualCreation} className="flex flex-col items-center p-6 bg-emerald-50 border border-emerald-100 rounded-xl hover:bg-emerald-100 transition-colors w-48">
+                         <button onClick={startManualCreation} className="flex flex-col items-center p-6 bg-blue-50 border border-blue-100 rounded-xl hover:bg-blue-100 transition-colors w-48">
                              <span className="text-3xl mb-2">👆</span>
                              <span className="font-bold text-emerald-700">Manual Selection</span>
                              <span className="text-xs text-emerald-500 mt-1">You choose the blanks</span>
@@ -325,7 +325,7 @@ const EssayImprover: React.FC<Props> = ({
                 <button
                     onClick={handleSubmit}
                     disabled={isGrading}
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-sm disabled:opacity-50"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors shadow-sm disabled:opacity-50"
                 >
                     {isGrading ? "Checking..." : "Check Answers"}
                 </button>

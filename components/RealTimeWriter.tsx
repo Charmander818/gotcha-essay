@@ -99,7 +99,7 @@ const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
              </p>
              <button 
                onClick={handleDownload}
-               className="text-slate-400 hover:text-blue-600 transition-colors p-1"
+               className="text-blue-400 hover:text-blue-600 transition-colors p-1"
                title="Download Essay"
                disabled={!text}
              >

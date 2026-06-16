@@ -288,7 +288,7 @@ export const PolicyFeastViewer: React.FC = () => {
                 <div className="flex flex-col gap-2 ml-4">
                   <button
                     onClick={handleExportAllWord}
-                    className="px-3 py-2 bg-white border border-gray-200 text-emerald-600 font-bold rounded-lg text-xs hover:bg-gray-50 transition-colors flex items-center gap-2 shadow-sm whitespace-nowrap"
+                    className="px-3 py-2 bg-white border border-gray-200 text-blue-600 font-bold rounded-lg text-xs hover:bg-gray-50 transition-colors flex items-center gap-2 shadow-sm whitespace-nowrap"
                     title="Export All FEAST Analyses as Word Doc"
                   >
                     <Download className="w-4 h-4" />

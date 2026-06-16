@@ -88,13 +88,13 @@ ${questionObjects.join(',\n')}
         </div>
 
         <div className="p-4 bg-slate-50 rounded-b-xl flex justify-between items-center">
-            <button onClick={onClose} className="text-slate-500 hover:text-slate-700 font-medium text-sm">
+            <button onClick={onClose} className="text-blue-500 hover:text-blue-700 font-medium text-sm">
               Cancel
             </button>
             <div className="flex gap-3">
                 <button
                     onClick={handleCopy}
-                    className="px-4 py-2 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-medium rounded-lg transition-colors flex items-center gap-2 shadow-sm text-sm"
+                    className="px-4 py-2 bg-white border border-blue-200 text-blue-700 hover:bg-blue-50 font-medium rounded-lg transition-colors flex items-center gap-2 shadow-sm text-sm"
                 >
                     {copied ? 'Copied!' : 'Copy to Clipboard'}
                 </button>

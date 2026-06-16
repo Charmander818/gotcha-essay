@@ -13,7 +13,6 @@ import { PolicyFeastViewer } from './components/PolicyFeastViewer';
 import { CoreConceptViewer } from './components/CoreConceptViewer';
 import ExamTrends from './components/ExamTrends';
 import { TopicLibrary } from './components/TopicLibrary';
-import { ThemeSelector } from './components/ThemeSelector';
 import { MCQBank } from './components/MCQBank';
 import AddQuestionModal from './components/AddQuestionModal';
 import CodeExportModal from './components/CodeExportModal';
@@ -507,7 +506,7 @@ const App: React.FC = () => {
             
             <button 
               type="submit" 
-              className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg shadow-md transition-all active:scale-[0.98]"
+              className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition-all active:scale-[0.98]"
             >
               Unlock Access
             </button>
@@ -529,7 +528,7 @@ const App: React.FC = () => {
       <div className="w-16 bg-slate-900 flex flex-col items-center py-6 gap-6 z-50 shadow-xl shrink-0">
          <button 
             onClick={() => setMainModule('ESSAY')}
-            className={`flex flex-col items-center gap-1 w-full py-2 border-r-2 ${mainModule === 'ESSAY' ? 'border-purple-500 text-purple-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`}
+            className={`flex flex-col items-center gap-1 w-full py-2 border-r-2 ${mainModule === 'ESSAY' ? 'border-blue-500 text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`}
             title="Essay & Paper 2, 4"
          >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
@@ -538,7 +537,7 @@ const App: React.FC = () => {
          
          <button 
             onClick={() => setMainModule('MCQ')}
-            className={`flex flex-col items-center gap-1 w-full py-2 border-r-2 ${mainModule === 'MCQ' ? 'border-purple-500 text-purple-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`}
+            className={`flex flex-col items-center gap-1 w-full py-2 border-r-2 ${mainModule === 'MCQ' ? 'border-blue-500 text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`}
             title="Multiple Choice Questions"
          >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
@@ -547,14 +546,13 @@ const App: React.FC = () => {
 
          <button 
             onClick={() => setMainModule('SYLLABUS')}
-            className={`flex flex-col items-center gap-1 w-full py-2 border-r-2 ${mainModule === 'SYLLABUS' ? 'border-purple-500 text-purple-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`}
+            className={`flex flex-col items-center gap-1 w-full py-2 border-r-2 ${mainModule === 'SYLLABUS' ? 'border-blue-500 text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`}
             title="Syllabus Tracker & Cheat Sheets"
          >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
             <span className="text-[10px] font-bold tracking-wider">SYLLABUS</span>
          </button>
 
-         <ThemeSelector />
       </div>
 
       {mainModule === 'ESSAY' ? (
@@ -631,7 +629,7 @@ const App: React.FC = () => {
                 onClick={() => setMode(AppMode.TOPIC_ANALYSIS)}
                 className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
                   mode === AppMode.TOPIC_ANALYSIS
-                    ? 'bg-purple-600 text-white shadow-sm' 
+                    ? 'bg-blue-600 text-white shadow-sm' 
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
             >
@@ -641,7 +639,7 @@ const App: React.FC = () => {
                 onClick={() => setMode(AppMode.POLICY_FEAST)}
                 className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
                   mode === AppMode.POLICY_FEAST
-                    ? 'bg-purple-600 text-white shadow-sm' 
+                    ? 'bg-blue-600 text-white shadow-sm' 
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
             >
@@ -651,7 +649,7 @@ const App: React.FC = () => {
                 onClick={() => setMode(AppMode.CORE_CONCEPTS)}
                 className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
                   mode === AppMode.CORE_CONCEPTS
-                    ? 'bg-purple-600 text-white shadow-sm' 
+                    ? 'bg-blue-600 text-white shadow-sm' 
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
             >
@@ -661,7 +659,7 @@ const App: React.FC = () => {
                 onClick={() => setMode(AppMode.EXAM_TRENDS)}
                 className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
                   mode === AppMode.EXAM_TRENDS
-                    ? 'bg-purple-600 text-white shadow-sm' 
+                    ? 'bg-blue-600 text-white shadow-sm' 
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
             >
@@ -671,7 +669,7 @@ const App: React.FC = () => {
                 onClick={() => setMode(AppMode.TOPIC_LIBRARY)}
                 className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
                   mode === AppMode.TOPIC_LIBRARY
-                    ? 'bg-purple-600 text-white shadow-sm' 
+                    ? 'bg-blue-600 text-white shadow-sm' 
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
             >
@@ -776,7 +774,7 @@ const App: React.FC = () => {
                 <div className="flex gap-3">
                     <button 
                       onClick={handleBackupAnalysis}
-                      className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs font-bold rounded shadow-sm hover:bg-slate-50 transition-colors"
+                      className="px-3 py-1.5 bg-white border border-blue-200 text-blue-600 text-xs font-bold rounded shadow-sm hover:bg-blue-50 transition-colors"
                     >
                         Backup
                     </button>
@@ -844,7 +842,7 @@ const App: React.FC = () => {
                 <div className="flex gap-3">
                     <button 
                       onClick={handleBackupSyllabus}
-                      className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs font-bold rounded shadow-sm hover:bg-slate-50 transition-colors"
+                      className="px-3 py-1.5 bg-white border border-blue-200 text-blue-600 text-xs font-bold rounded shadow-sm hover:bg-blue-50 transition-colors"
                     >
                         Backup
                     </button>
@@ -863,7 +861,7 @@ const App: React.FC = () => {
                     />
                     <button 
                       onClick={() => setIsSyllabusExportOpen(true)}
-                      className="px-3 py-1.5 bg-purple-600 text-white text-xs font-bold rounded shadow-md hover:bg-purple-700 transition-colors flex items-center gap-1"
+                      className="px-3 py-1.5 bg-blue-600 text-white text-xs font-bold rounded shadow-md hover:bg-blue-700 transition-colors flex items-center gap-1"
                     >
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                         Sync to Source

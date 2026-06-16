@@ -173,7 +173,7 @@ const AddQuestionModal: React.FC<Props> = ({ isOpen, onClose, onSave, onSaveMult
                )}
             </div>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600">
+          <button onClick={onClose} className="text-blue-400 hover:text-blue-600">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
@@ -234,7 +234,7 @@ const AddQuestionModal: React.FC<Props> = ({ isOpen, onClose, onSave, onSaveMult
                 />
               </div>
               <div className="pt-4 flex justify-end gap-3 border-t border-slate-100">
-                <button type="button" onClick={onClose} className="px-4 py-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors">Cancel</button>
+                <button type="button" onClick={onClose} className="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Cancel</button>
                 <button 
                    type="button" 
                    onClick={handleBulkParse} 
@@ -333,7 +333,7 @@ const AddQuestionModal: React.FC<Props> = ({ isOpen, onClose, onSave, onSaveMult
               </div>
 
               <div className="pt-4 flex justify-end gap-3 border-t border-slate-100">
-                <button type="button" onClick={onClose} className="px-4 py-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors">Cancel</button>
+                <button type="button" onClick={onClose} className="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Cancel</button>
                 <button type="submit" className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
                   {initialQuestion ? 'Save Changes' : 'Add Question'}
                 </button>

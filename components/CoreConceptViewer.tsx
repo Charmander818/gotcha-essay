@@ -192,7 +192,7 @@ export const CoreConceptViewer: React.FC = () => {
                 <div className="flex flex-col gap-2 ml-4">
                   <button
                     onClick={handleExportAllWord}
-                    className="px-3 py-2 bg-white border border-slate-200 text-purple-600 font-bold rounded-lg text-xs hover:bg-slate-50 transition-colors flex items-center gap-2 shadow-sm whitespace-nowrap"
+                    className="px-3 py-2 bg-white border border-blue-200 text-blue-600 font-bold rounded-lg text-xs hover:bg-blue-50 transition-colors flex items-center gap-2 shadow-sm whitespace-nowrap"
                     title="Export All Concepts as Word Doc"
                   >
                     <Download className="w-4 h-4" />
@@ -201,7 +201,7 @@ export const CoreConceptViewer: React.FC = () => {
                   <div className="flex gap-2">
                     <button
                       onClick={handleExportWord}
-                      className="px-3 py-2 bg-white border border-slate-200 text-blue-600 font-bold rounded-lg text-xs hover:bg-slate-50 transition-colors flex items-center gap-1 shadow-sm w-full justify-center"
+                      className="px-3 py-2 bg-white border border-blue-200 text-blue-600 font-bold rounded-lg text-xs hover:bg-blue-50 transition-colors flex items-center gap-1 shadow-sm w-full justify-center"
                       title="Export Current Topic as Word Doc"
                     >
                       <FileText className="w-4 h-4" />

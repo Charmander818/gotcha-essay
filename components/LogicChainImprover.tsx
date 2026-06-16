@@ -41,7 +41,7 @@ const LogicChainImprover: React.FC = () => {
             <button
               onClick={handleImprove}
               disabled={loading || !input.trim()}
-              className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow-sm disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-sm disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>

@@ -140,7 +140,7 @@ export const PREFILLED_WORKSHEETS: Record<string, { worksheetContent: string, wo
                      Copy the content below and replace the corresponding file in your project to make changes permanent.
                    </p>
                </div>
-               <button onClick={onClose} className="text-slate-400 hover:text-slate-600">
+               <button onClick={onClose} className="text-blue-400 hover:text-blue-600">
                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                </button>
            </div>
@@ -181,7 +181,7 @@ export const PREFILLED_WORKSHEETS: Record<string, { worksheetContent: string, wo
         <div className="p-4 bg-slate-50 rounded-b-xl flex justify-end gap-3">
             <button
                 onClick={handleCopy}
-                className={`px-6 py-2 font-medium rounded-lg transition-colors flex items-center gap-2 shadow-sm text-sm ${copied ? 'bg-green-600 text-white' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'}`}
+                className={`px-6 py-2 font-medium rounded-lg transition-colors flex items-center gap-2 shadow-sm text-sm ${copied ? 'bg-blue-600 text-white' : 'bg-white border border-blue-200 text-blue-700 hover:bg-blue-100'}`}
             >
                 {copied ? (
                     <>

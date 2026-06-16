@@ -666,13 +666,16 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
       
       **Requirements for the Worksheet:**
       1. Structure the worksheet clearly so a student can print it and fill it in.
-      2. **Exhaustive Knowledge Coverage (CRITICAL):** The worksheet MUST comprehensively cover ALL the syllabus points and ALL the provided AO1 definitions without leaving any knowledge gaps. Systematically create questions that test every single concept mentioned in the syllabus content.
+      2. **Exhaustive Knowledge Coverage (CRITICAL):** The worksheet MUST comprehensively cover ALL the syllabus points and ALL the provided AO1 definitions without leaving any knowledge gaps. Do NOT create a short or 'summarized' worksheet. Be exhaustive. Generate as many specific theory questions, multiple-choice concepts, and application questions as needed to ensure the student has truly mastered the chapter.
       3. **Definitions (AO1):** Include a section where students must define key terms based exactly on the syllabus content provided.
-      4. **Graphs & Diagrams (AO2/AO3 - CRITICAL):** Include a dedicated "Diagram Drawing & Analysis" section. Format diagram tests with a title (e.g. '1. Indifference Curve (IC)'), followed by a specific prompt (if any), and leave ample space (use a blank Markdown blockquote or a clearly marked empty area like \`<br><br><br><br>\`) for the student to draw the graph. You MUST exhaustively cover ALL possible permutations and graphical scenarios for the topic (e.g., if the topic is indifference curves, include separate drawing tasks for income increase/decrease + normal/inferior goods, and price increase/decrease + normal/inferior/Giffen goods). Prompt the student to label all axes, curves, and equilibrium points.
-      5. **Tables / Comparisons (CRITICAL):** Include summary fill-in-the-blank tables for students to compare properties or contrast effects (e.g., Directions of Substitution Effect, Income Effect, and Price Effect for Normal, Inferior, and Giffen goods). Provide the table headers and leave the cells empty for the student.
-      6. **Economic Logic Chains (AO2):** Provide partial chains and ask the student to fill in the missing intermediate steps. Cover all major economic transmission mechanisms in this topic.
-      7. Use standard unicode arrows (→, ↑, ↓) instead of LaTeX for chains if applicable.
-      8. CRITICAL FORMATTING: Do NOT use long sequences of underscores (e.g., \`_____________\`) to create writing spaces for students, as it breaks MS Word formatting. Instead, just leave a blank space or use short brackets like \`[        ]\` to indicate where students should write. Maintain clean, standard markdown lists without orphaned numbers or broken lines.
+      4. **Graphs & Diagrams (AO2/AO3 - STRICTLY EXHAUSTIVE):** Include a dedicated "Diagram Drawing & Analysis" section. You MUST exhaustively cover ALL possible permutations and graphical scenarios. For example, if the topic involves shifting demand/supply, you must ask to draw the shift for every determinant. If it involves indifference curves, test a price increase vs decrease for normal, inferior, and Giffen goods separately. Format diagram tests clearly with a specific prompt, and leave ample space using \`<br><br><br><br>\`. Prompt the student to label all axes, curves, and equilibrium points. Do not miss any edge cases.
+      5. **Tables / Comparisons (CRITICAL):** Include comprehensive summary fill-in-the-blank tables for students to compare properties or contrast effects (e.g., Directions of Substitution Effect vs Income Effect). Provide the table headers and leave the cells empty.
+      6. **Economic Logic Chains (AO2):** Provide partial chains and ask the student to fill in the missing intermediate steps. Cover every major economic transmission mechanism present in the syllabus points given.
+      7. **Math & Symbol Formatting (CRITICAL):**
+         - If using LaTeX math, it MUST be properly enclosed in single dollar signs with NO spacing between the dollar sign and the text (e.g., \`$Q_y \\uparrow$\` or \`$MU_y \\downarrow$\`).
+         - Ensure that any LaTeX is compliant with standard KaTeX rendering. Do not use double dollar signs for inline math.
+         - For simple arrows outside of equations, prefer standard unicode arrows (→, ↑, ↓).
+      8. CRITICAL MS WORD FORMATTING: Do NOT use long sequences of underscores (e.g., \`_____________\`) to create writing spaces, as it breaks MS Word export. Use short brackets like \`[        ]\` or blank space. Maintain standard markdown formatting.
       
       **CRITICAL OUTPUT FORMAT:**
       You MUST output the worksheet, then exactly this delimiter:
@@ -684,7 +687,7 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-3.1-pro-preview',
       contents: prompt,
     });
     
