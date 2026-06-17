@@ -6,7 +6,8 @@ import { SYLLABUS_CHECKLIST } from '../syllabusChecklistData';
 import { exportPracticeBook } from '../utils/mcqExport';
 import { ALL_TOPICS } from '../utils/topicHelpers';
 import { AutoPDFImport } from './AutoPDFImport';
-import { generateAnalysisForMCQ, generateExplanationForMCQ } from '../services/geminiService';
+import { MCQQuizGenerator } from './MCQQuizGenerator';
+import { generateAnalysisForMCQ, generateExplanationForMCQ, extractQuestionStemForMCQ } from '../services/geminiService';
 
 const PAPER_CODES = [
   "2021 F/M 12", "2021 M/J 11", "2021 M/J 12", "2021 M/J 13", "2021 O/N 11", "2021 O/N 12", "2021 O/N 13",
@@ -33,6 +34,9 @@ export const MCQBank: React.FC = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [isPracticing, setIsPracticing] = useState(false);
   const [isGeneratingDesc, setIsGeneratingDesc] = useState(false);
+  const [isExtractingStem, setIsExtractingStem] = useState(false);
+  const [isBulkExtracting, setIsBulkExtracting] = useState(false);
+  const [bulkProgress, setBulkProgress] = useState<{current: number, total: number} | null>(null);
   const [isGeneratingExp, setIsGeneratingExp] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
@@ -56,10 +60,12 @@ export const MCQBank: React.FC = () => {
   const [newQuestionNum, setNewQuestionNum] = useState<number>(1);
   const [newTopic, setNewTopic] = useState<string>(ALL_TOPICS[0].text);
   const [newDescription, setNewDescription] = useState<string>('');
+  const [newQuestionText, setNewQuestionText] = useState<string>('');
   const [newCorrectAnswer, setNewCorrectAnswer] = useState<'A' | 'B' | 'C' | 'D' | 'X'>('A');
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [showAutoImport, setShowAutoImport] = useState(false);
+  const [showQuizGenerator, setShowQuizGenerator] = useState(false);
   const [newAnnotation, setNewAnnotation] = useState<string>('');
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const [viewingMCQ, setViewingMCQ] = useState<MCQ | null>(null);
@@ -80,6 +86,7 @@ export const MCQBank: React.FC = () => {
       setImagePreview(null);
       setNewAnnotation('');
       setNewDescription('');
+      setNewQuestionText('');
       if (isAdding) {
           setIsAdding(false);
           return;
@@ -134,6 +141,54 @@ export const MCQBank: React.FC = () => {
       } finally {
           setIsGeneratingDesc(false);
       }
+  };
+
+  const handleExtractStem = async () => {
+      if (!imagePreview) return;
+      setIsExtractingStem(true);
+      try {
+          const stem = await extractQuestionStemForMCQ(imagePreview);
+          setNewQuestionText(stem);
+      } catch (e) {
+          alert("Failed to extract stem.");
+      } finally {
+          setIsExtractingStem(false);
+      }
+  };
+
+  const handleBulkExtract = async () => {
+      const toProcess = filteredMcqs.filter(q => !q.questionText && q.imageUrl);
+      if (toProcess.length === 0) {
+          alert("No questions in the current view need text extraction (or they don't have images).");
+          return;
+      }
+      if (!confirm(`Are you sure you want to extract text for ${toProcess.length} questions? This may take some time.`)) return;
+
+      setIsBulkExtracting(true);
+      setBulkProgress({current: 0, total: toProcess.length});
+
+      let current = 0;
+      for (const q of toProcess) {
+          try {
+              if (q.imageUrl) {
+                  const stem = await extractQuestionStemForMCQ(q.imageUrl);
+                  if (stem && !stem.startsWith('Extraction failed')) {
+                      const updated = { ...q, questionText: stem };
+                      await saveMCQ(updated);
+                      // Update local state smoothly without full reload if possible, 
+                      // but we will do a fast update the array reference
+                      setMcqs(prev => prev.map(m => m.id === q.id ? updated : m));
+                  }
+              }
+          } catch (e) {
+              console.error("Failed to extract for", q.id, e);
+          }
+          current++;
+          setBulkProgress({current, total: toProcess.length});
+      }
+      
+      setIsBulkExtracting(false);
+      setBulkProgress(null);
   };
 
   const handleGenerateExplanation = async () => {
@@ -205,6 +260,7 @@ export const MCQBank: React.FC = () => {
       imageUrl: imagePreview,
       topic: newTopic,
       description: newDescription,
+      questionText: newQuestionText,
       correctAnswer: newCorrectAnswer,
       annotation: newAnnotation,
     };
@@ -223,6 +279,7 @@ export const MCQBank: React.FC = () => {
         setImagePreview(null);
         setNewAnnotation('');
         setNewDescription('');
+        setNewQuestionText('');
         if(fileInputRef.current) fileInputRef.current.value = "";
         
         // Synchronously set the next correct answer if we have bulk data
@@ -242,6 +299,7 @@ export const MCQBank: React.FC = () => {
       setNewQuestionNum(q.questionNum);
       setNewTopic(q.topic);
       setNewDescription(q.description || '');
+      setNewQuestionText(q.questionText || '');
       setNewCorrectAnswer(q.correctAnswer);
       setImagePreview(q.imageUrl);
       setNewAnnotation(q.annotation || '');
@@ -362,7 +420,11 @@ export const MCQBank: React.FC = () => {
       
       if (searchQuery) {
           const lowerQuery = searchQuery.toLowerCase();
-          if (!q.description?.toLowerCase().includes(lowerQuery) && !q.topic.toLowerCase().includes(lowerQuery)) {
+          if (
+              !q.description?.toLowerCase().includes(lowerQuery) && 
+              !q.topic.toLowerCase().includes(lowerQuery) &&
+              !q.questionText?.toLowerCase().includes(lowerQuery)
+          ) {
               return false;
           }
       }
@@ -773,7 +835,20 @@ export const MCQBank: React.FC = () => {
                       onClick={() => setShowAutoImport(true)} 
                       className="flex-1 min-w-[120px] px-3 py-1.5 text-sm bg-fuchsia-50 border border-fuchsia-200 text-fuchsia-700 rounded-lg hover:bg-fuchsia-100 font-medium transition-colors whitespace-nowrap text-center"
                     >
-                        Auto PDF Slicer
+                        Auto Slicer
+                    </button>
+                    <button 
+                      onClick={() => setShowQuizGenerator(true)} 
+                      className="flex-1 min-w-[120px] px-3 py-1.5 text-sm bg-amber-50 border border-amber-200 text-amber-700 rounded-lg hover:bg-amber-100 font-bold transition-colors whitespace-nowrap text-center"
+                    >
+                        Generate Quiz
+                    </button>
+                    <button 
+                      onClick={handleBulkExtract} 
+                      disabled={isBulkExtracting}
+                      className="flex-1 min-w-[120px] px-3 py-1.5 text-sm bg-indigo-50 border border-indigo-200 text-indigo-700 rounded-lg hover:bg-indigo-100 font-bold transition-colors disabled:opacity-50 whitespace-nowrap text-center"
+                    >
+                        {isBulkExtracting && bulkProgress ? `Extracting (${bulkProgress.current}/${bulkProgress.total})` : "Bulk Extract OCR"}
                     </button>
                     <button 
                       onClick={() => exportPracticeBook(filteredMcqs, selectedFilterValue === 'All' ? 'All Questions' : selectedFilterValue, true)}
@@ -887,6 +962,25 @@ export const MCQBank: React.FC = () => {
                                 />
                             </div>
                             <div>
+                                <div className="flex justify-between items-center mb-1">
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">Question Stem (Searchable Text)</label>
+                                    <button 
+                                        type="button" 
+                                        onClick={handleExtractStem} 
+                                        disabled={!imagePreview || isExtractingStem}
+                                        className="text-xs bg-blue-100 text-blue-700 hover:bg-blue-200 font-bold px-2 py-1 rounded transition-colors disabled:opacity-50"
+                                    >
+                                        {isExtractingStem ? 'Extracting...' : 'Extract OCR Text'}
+                                    </button>
+                                </div>
+                                <textarea 
+                                    value={newQuestionText} 
+                                    onChange={e => setNewQuestionText(e.target.value)} 
+                                    placeholder="Which statement about a free vaccination programme is normative?"
+                                    className="w-full p-2 border rounded bg-slate-50 text-xs min-h-[50px]"
+                                />
+                            </div>
+                            <div>
                                 <label className="block text-sm font-medium text-slate-700 mb-1">Annotation / Explanation (Optional)</label>
                                 <textarea 
                                     value={newAnnotation} 
@@ -968,6 +1062,9 @@ export const MCQBank: React.FC = () => {
                             {q.description && (
                                 <p className="text-xs font-medium text-slate-700 bg-slate-100 px-2 py-1 rounded inline-block self-start mb-2">{q.description}</p>
                             )}
+                            {q.questionText && (
+                                <p className="text-xs text-slate-800 italic line-clamp-2 mt-1 mb-2">"{q.questionText}"</p>
+                            )}
                             
                             <div className="mt-auto pt-3 border-t flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
                                 <span className="text-[10px] text-slate-400">ID: {q.id.slice(-6)}</span>
@@ -994,6 +1091,18 @@ export const MCQBank: React.FC = () => {
                     level={selectedLevel}
                     onComplete={() => { setShowAutoImport(false); loadMCQs(); }} 
                     onCancel={() => setShowAutoImport(false)} 
+                />
+            )}
+            
+            {showQuizGenerator && (
+                <MCQQuizGenerator 
+                    allMcqs={mcqs} 
+                    level={selectedLevel} 
+                    onClose={() => setShowQuizGenerator(false)} 
+                    onGenerate={(selected) => {
+                        exportPracticeBook(selected, `Generated Set (${selected.length} Questions)`);
+                        setShowQuizGenerator(false);
+                    }} 
                 />
             )}
         </div>

@@ -1003,6 +1003,59 @@ export const generateExplanationForMCQ = async (base64Image: string, correctAnsw
     }
   };
 
+export const extractQuestionStemForMCQ = async (base64Image: string): Promise<string> => {
+  try {
+    checkForApiKey();
+    if (!base64Image.includes('base64,')) {
+      throw new Error("Invalid base64 image data.");
+    }
+    const [mimeTypePrefix, base64Data] = base64Image.split(';base64,');
+    const mimeType = mimeTypePrefix.split(':')[1];
+    
+    const prompt = `
+      Extract the main question stem (the text of the question itself) from this image of a multiple-choice question.
+      Example: If the image contains "1 Which statement about a free vaccination programme is normative? A It will help raise life expectancy...",
+      You should return ONLY: "Which statement about a free vaccination programme is normative?"
+      If there is a background context or data provided before the question, include it briefly. 
+      Limit to plain text. Do not include the options (A, B, C, D).
+    `;
+
+    const ai = getAI();
+    let response;
+    
+    for (let i = 0; i < 3; i++) {
+        try {
+            response = await ai.models.generateContent({
+              model: 'gemini-3.1-flash-lite',
+              contents: {
+                 parts: [
+                     { text: prompt },
+                     { inlineData: { mimeType, data: base64Data } }
+                 ]
+              }
+            });
+            break;
+        } catch (e: any) {
+            if (e.message?.includes('503 Service Unavailable') && i < 2) {
+                console.warn(`Retry ${i + 1} for AI Extraction...`);
+                await new Promise(r => setTimeout(r, 1000));
+            } else {
+                throw e;
+            }
+        }
+    }
+
+    if (!response) {
+         throw new Error("Failed to get response after retries.");
+    }
+
+    return (response.text || "").trim();
+  } catch (error: any) {
+    console.error("AI Stem Extraction Error:", error);
+    return `Extraction failed: ${error.message || error}`;
+  }
+};
+
 export const generateAnalysisForMCQ = async (base64Image: string, level?: 'AS' | 'AL'): Promise<{ topic: string, description: string }> => {
   try {
     checkForApiKey();
