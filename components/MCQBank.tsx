@@ -420,11 +420,7 @@ export const MCQBank: React.FC = () => {
       
       if (searchQuery) {
           const lowerQuery = searchQuery.toLowerCase();
-          if (
-              !q.description?.toLowerCase().includes(lowerQuery) && 
-              !q.topic.toLowerCase().includes(lowerQuery) &&
-              !q.questionText?.toLowerCase().includes(lowerQuery)
-          ) {
+          if (!q.questionText?.toLowerCase().includes(lowerQuery)) {
               return false;
           }
       }
