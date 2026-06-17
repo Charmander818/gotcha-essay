@@ -993,7 +993,10 @@ export const generateExplanationForMCQ = async (base64Image: string, correctAnsw
               if (i === 2) {
                   return `AI 生成失败 (API Error / Rate Limit): ${err?.message || err}`;
               }
-              await new Promise(resolve => setTimeout(resolve, 2000));
+              const errStr = String(err?.message || err);
+              const delay = (errStr.includes('429') || errStr.includes('RESOURCE_EXHAUSTED') || errStr.includes('Quota exceeded') || errStr.includes('503')) ? 10000 : 2000;
+              console.warn(`Retry ${i + 1} for AI Explanation. Waiting ${delay}ms...`);
+              await new Promise(resolve => setTimeout(resolve, delay));
           }
       }
       return response?.text || "生成讲解失败。";
@@ -1036,9 +1039,10 @@ export const extractQuestionStemForMCQ = async (base64Image: string): Promise<st
             });
             break;
         } catch (e: any) {
-            if (e.message?.includes('503 Service Unavailable') && i < 2) {
-                console.warn(`Retry ${i + 1} for AI Extraction...`);
-                await new Promise(r => setTimeout(r, 1000));
+            const errStr = String(e.message || e);
+            if ((errStr.includes('503 Service Unavailable') || errStr.includes('429') || errStr.includes('RESOURCE_EXHAUSTED') || errStr.includes('Quota exceeded')) && i < 2) {
+                console.warn(`Retry ${i + 1} for AI Extraction due to rate limit/service error... Waiting 10s`);
+                await new Promise(r => setTimeout(r, 10000));
             } else {
                 throw e;
             }
@@ -1108,7 +1112,10 @@ export const generateAnalysisForMCQ = async (base64Image: string, level?: 'AS' |
             break;
         } catch (err: any) {
             if (i === 2) throw err;
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const errStr = String(err?.message || err);
+            const delay = (errStr.includes('429') || errStr.includes('RESOURCE_EXHAUSTED') || errStr.includes('Quota exceeded') || errStr.includes('503')) ? 10000 : 2000;
+            console.warn(`Retry ${i + 1} for AI Analysis. Waiting ${delay}ms...`);
+            await new Promise(resolve => setTimeout(resolve, delay));
         }
     }
     

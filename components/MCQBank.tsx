@@ -179,6 +179,8 @@ export const MCQBank: React.FC = () => {
                       // Update local state smoothly without full reload if possible, 
                       // but we will do a fast update the array reference
                       setMcqs(prev => prev.map(m => m.id === q.id ? updated : m));
+                  } else {
+                      console.warn("Extraction returned failure or empty for", q.id, stem);
                   }
               }
           } catch (e) {
@@ -187,7 +189,8 @@ export const MCQBank: React.FC = () => {
           current++;
           setBulkProgress({current, total: toProcess.length});
           if (current < toProcess.length) {
-              await new Promise(r => setTimeout(r, 4500));
+              // Wait 6.5 seconds to ensure we stay under the 15 Requests Per Minute limit of the free tier.
+              await new Promise(r => setTimeout(r, 6500));
           }
       }
       
