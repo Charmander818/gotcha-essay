@@ -186,6 +186,9 @@ export const MCQBank: React.FC = () => {
           }
           current++;
           setBulkProgress({current, total: toProcess.length});
+          if (current < toProcess.length) {
+              await new Promise(r => setTimeout(r, 4500));
+          }
       }
       
       setIsBulkExtracting(false);

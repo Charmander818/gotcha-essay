@@ -124,6 +124,11 @@ export const AutoPDFImport: React.FC<AutoPDFImportProps> = ({ initialPaperCode, 
                     console.error("AI error on page", pageNum, err);
                     setStatus(`Skipped page ${pageNum} due to AI error`);
                 }
+                
+                if (pageNum < pdf.numPages) {
+                    setStatus(`Rate limit pacing: waiting briefly before next page...`);
+                    await new Promise(resolve => setTimeout(resolve, 5000));
+                }
             }
             
             setStatus(`Done! Imported ${draftCount} questions successfully.`);
