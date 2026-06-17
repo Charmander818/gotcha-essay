@@ -76,6 +76,7 @@ export const MCQBank: React.FC = () => {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const importFileRef = useRef<HTMLInputElement>(null);
+  const mainScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     loadMCQs();
@@ -303,7 +304,10 @@ export const MCQBank: React.FC = () => {
       setNewCorrectAnswer(q.correctAnswer);
       setImagePreview(q.imageUrl);
       setNewAnnotation(q.annotation || '');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      setTimeout(() => {
+          mainScrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 50);
   };
 
   const navigateEdit = (direction: 'next' | 'prev') => {
@@ -452,6 +456,12 @@ export const MCQBank: React.FC = () => {
   const viewingIndex = viewingMCQ ? filteredMcqs.findIndex(m => m.id === viewingMCQ.id) : -1;
   const hasNextMCQ = viewingIndex !== -1 && viewingIndex < filteredMcqs.length - 1;
   const hasPrevMCQ = viewingIndex !== -1 && viewingIndex > 0;
+
+  useEffect(() => {
+      setTimeout(() => {
+          mainScrollRef.current?.scrollTo({ top: 0, behavior: 'instant' });
+      }, 50);
+  }, [selectedFilterValue]);
 
   useEffect(() => {
       const handleKeyDown = (e: KeyboardEvent) => {
@@ -672,7 +682,7 @@ export const MCQBank: React.FC = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 h-full overflow-y-auto p-4 md:p-8 space-y-8 relative">
+        <div ref={mainScrollRef} className="flex-1 h-full overflow-y-auto p-4 md:p-8 space-y-8 relative">
             {zoomedImage && (
                 <div 
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 cursor-zoom-out"

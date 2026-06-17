@@ -1,0 +1,1 @@
+                           description: eq.description || "",\n                            questionText: eq.questionText || "",

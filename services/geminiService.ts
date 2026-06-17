@@ -834,7 +834,7 @@ export const extractMCQsFromImage = async (base64Image: string, paperCode: strin
         - "Consumer Surplus & Indirect Tax: Identifying the geometric area of surplus lost when a tax shifts the supply curve."
         - "GDP at Basic Prices: Calculating value by adjusting market prices for indirect taxes and subsidies."
         - "Real vs. Nominal GDP: Adjusting national output for changes in the general price level (inflation)."
-        This will be used for keyword searching, so be as descriptive as possible.
+      - "questionText": EXACTLY copy ALL text associated with this question from the image, including the question number, stem, all options (A, B, C, D) and any text within graphs/tables. Do not summarize or alter the text. This is the OCR output.
       - "bbox": A precise bounding box [ymin, xmin, ymax, xmax] normalized to 0-1000. Follow these strict cropping rules:
         1. Start (ymin): Identify the question number (e.g., 1, 2, 3...) as the starting position. Add a tight 10-20 pixel top margin above it.
         2. Content: The box must contain exactly ONE complete question: the stem, any diagrams/tables, and options A, B, C, D. 
@@ -859,7 +859,7 @@ export const extractMCQsFromImage = async (base64Image: string, paperCode: strin
     for (let i = 0; i < retries; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-1.5-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
@@ -914,7 +914,7 @@ export const extractDescriptionForMCQ = async (base64Image: string, retries = 3)
     for (let i = 0; i < retries; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-1.5-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1026,7 +1026,7 @@ export const extractQuestionStemForMCQ = async (base64Image: string): Promise<st
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-1.5-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1094,7 +1094,7 @@ export const generateAnalysisForMCQ = async (base64Image: string, level?: 'AS' |
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-1.5-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
