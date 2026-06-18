@@ -4,12 +4,100 @@ import { Question, ClozeBlank, ClozeFeedback, TopicAnalysisData } from "../types
 import { ALL_TOPICS } from "../utils/topicHelpers";
 
 // Helper to ensure we have a client. 
-const getAI = () => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const realGetAI = () => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
+const getAI = (): any => {
+  return {
+    models: {
+      generateContent: async (params: any) => {
+        let model = params.model;
+
+        // Manual routing to GPT
+        if (model && model.startsWith('gpt-')) {
+          return generateOpenAI(params, model);
+        }
+
+        const realAI = realGetAI();
+        try {
+          return await realAI.models.generateContent(params);
+        } catch (e: any) {
+          const errStr = String(e?.message || e);
+          if (errStr.includes("429") || errStr.includes("RESOURCE_EXHAUSTED") || errStr.includes("Quota exceeded") || errStr.includes("503")) {
+            if (process.env.OPENAI_API_KEY) {
+              console.warn(`Gemini API limit reached. Falling back to OpenAI (gpt-4o-mini)...`);
+              return generateOpenAI(params, "gpt-4o-mini");
+            }
+          }
+          throw e; // re-throw if not limit error or no openai key
+        }
+      }
+    }
+  };
+}
+
+async function generateOpenAI(params: any, modelName: string) {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OPENAI_API_KEY is missing. Please add it to Vercel Settings or your .env file.");
+  }
+
+  let messages: any[] = [];
+  
+  if (params.systemInstruction) {
+    let text = typeof params.systemInstruction === 'string' ? params.systemInstruction : (params.systemInstruction.parts ? params.systemInstruction.parts.map((p:any)=>p.text).join('') : '');
+    if (text) messages.push({ role: 'system', content: text });
+  }
+
+  let contentsArray = Array.isArray(params.contents) ? params.contents : [params.contents];
+  for (const content of contentsArray) {
+    if (typeof content === 'string') {
+      messages.push({ role: 'user', content });
+    } else if (content.parts) {
+       let msgContent: any[] = [];
+       for (const part of content.parts) {
+         if (part.text) msgContent.push({ type: 'text', text: part.text });
+         else if (part.inlineData) {
+           msgContent.push({
+             type: 'image_url',
+             image_url: { url: `data:${part.inlineData.mimeType};base64,${part.inlineData.data}` }
+           });
+         }
+       }
+       messages.push({ role: 'user', content: msgContent });
+    }
+  }
+
+  let requestBody: any = {
+    model: modelName,
+    messages,
+    temperature: params.config?.temperature || 0.7,
+  };
+
+  if (params.config?.responseMimeType === 'application/json') {
+    requestBody.response_format = { type: 'json_object' };
+  }
+
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+    },
+    body: JSON.stringify(requestBody)
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(`OpenAI API Error: ${errorData.error?.message || response.statusText}`);
+  }
+
+  const data = await response.json();
+  return { text: data.choices[0]?.message?.content || "" };
+}
 
 const checkForApiKey = () => {
-  if (!process.env.GEMINI_API_KEY) {
+  if (!process.env.GEMINI_API_KEY && !process.env.OPENAI_API_KEY) {
     console.error("API Key is missing!");
-    throw new Error("GEMINI_API_KEY is missing. If you deployed to Vercel, please add it in Vercel Settings -> Environment Variables, and redeploy.");
+    throw new Error("API keys are missing. Please add GEMINI_API_KEY or OPENAI_API_KEY in Vercel Settings -> Environment Variables, and redeploy.");
   }
 };
 

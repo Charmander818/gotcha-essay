@@ -80,8 +80,8 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
               >
                 <option value="gemini-2.5-pro">Gemini 2.5 Pro (Powerful, slow)</option>
                 <option value="gemini-2.5-flash">Gemini 2.5 Flash (Fast, default)</option>
-                <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
-                <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+                <option value="gpt-4o">GPT-4o (OpenAI Premium)</option>
+                <option value="gpt-4o-mini">GPT-4o Mini (OpenAI Fast)</option>
               </select>
             </div>
             <button
@@ -114,8 +114,8 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
                 >
                   <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
                   <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
-                  <option value="gemini-1.5-pro">1.5 Pro</option>
-                  <option value="gemini-1.5-flash">1.5 Flash</option>
+                  <option value="gpt-4o">GPT-4o</option>
+                  <option value="gpt-4o-mini">GPT-4o Mini</option>
                 </select>
                 <button 
                     onClick={handleDownload}

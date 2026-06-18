@@ -9,12 +9,14 @@ export default defineConfig(({ mode }) => {
   // On Vercel, environment variables are in process.env. 
   // In local dev, they might be in .env files loaded by loadEnv.
   const apiKey = process.env.GEMINI_API_KEY || env.GEMINI_API_KEY || '';
+  const openaiApiKey = process.env.OPENAI_API_KEY || env.OPENAI_API_KEY || '';
 
   return {
     plugins: [react()],
     define: {
       // Shims process.env.GEMINI_API_KEY so the existing code works without modification
-      'process.env.GEMINI_API_KEY': JSON.stringify(apiKey)
+      'process.env.GEMINI_API_KEY': JSON.stringify(apiKey),
+      'process.env.OPENAI_API_KEY': JSON.stringify(openaiApiKey)
     }
   };
 });
