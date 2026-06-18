@@ -168,6 +168,7 @@ export const MCQBank: React.FC = () => {
       setIsBulkExtracting(true);
       setBulkProgress({current: 0, total: toProcess.length});
 
+      let current = 0;
       let consecutiveFailures = 0;
       let lastError = "";
 
