@@ -13,6 +13,7 @@ interface Props {
 const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
   const [essay, setEssay] = useState<string>(savedEssay);
   const [loading, setLoading] = useState(false);
+  const [selectedModel, setSelectedModel] = useState<string>('gemini-2.5-flash');
 
   // Update local state when prop changes (e.g. switching questions)
   useEffect(() => {
@@ -22,9 +23,10 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
   const handleGenerate = async () => {
     setLoading(true);
     try {
-      const result = await generateModelAnswer(question);
-      setEssay(result);
-      onSave(result);
+      const result = await generateModelAnswer(question, selectedModel);
+      const textToSave = `> **Model used:** ${selectedModel}\n\n---\n\n${result}`;
+      setEssay(textToSave);
+      onSave(textToSave);
     } catch (error: any) {
       console.error("Error generating essay:", error);
       alert(`Failed to generate essay. Error: ${error?.message || String(error)}`);
@@ -68,6 +70,20 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
         {!essay && (
           <div className="flex flex-col items-center justify-center py-12 bg-slate-50 rounded-xl border-2 border-dashed border-slate-200">
             <p className="text-slate-500 mb-4 text-sm">Ready to see a model answer based on the syllabus?</p>
+            <div className="flex items-center gap-3 mb-6">
+              <label htmlFor="model-select" className="text-sm text-slate-600 font-medium tracking-tight">Model:</label>
+              <select
+                id="model-select"
+                value={selectedModel}
+                onChange={(e) => setSelectedModel(e.target.value)}
+                className="bg-white border border-slate-300 text-slate-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 shadow-sm"
+              >
+                <option value="gemini-2.5-pro">Gemini 2.5 Pro (Powerful, slow)</option>
+                <option value="gemini-2.5-flash">Gemini 2.5 Flash (Fast, default)</option>
+                <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+                <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+              </select>
+            </div>
             <button
               onClick={handleGenerate}
               disabled={loading}
@@ -89,7 +105,18 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
           <div className="prose prose-slate prose-blue max-w-none">
             <div className="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
               <h3 className="text-slate-900 font-semibold m-0">AI Model Answer</h3>
-              <div className="flex gap-2">
+              <div className="flex gap-4 items-center">
+                <select
+                  value={selectedModel}
+                  onChange={(e) => setSelectedModel(e.target.value)}
+                  disabled={loading}
+                  className="bg-white border text-xs border-slate-300 text-slate-700 rounded focus:ring-blue-500 focus:border-blue-500 py-1.5 px-2"
+                >
+                  <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
+                  <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
+                  <option value="gemini-1.5-pro">1.5 Pro</option>
+                  <option value="gemini-1.5-flash">1.5 Flash</option>
+                </select>
                 <button 
                     onClick={handleDownload}
                     className="text-sm text-blue-500 hover:text-blue-600 font-medium flex items-center gap-1"
@@ -100,9 +127,10 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
                 </button>
                 <button 
                     onClick={handleGenerate} 
-                    className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                    disabled={loading}
+                    className="text-sm text-blue-600 hover:text-blue-800 font-medium disabled:opacity-50 flex items-center gap-1"
                 >
-                    Regenerate
+                    {loading ? "Generating..." : "Regenerate"}
                 </button>
               </div>
             </div>
