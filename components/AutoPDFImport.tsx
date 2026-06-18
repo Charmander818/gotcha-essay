@@ -127,7 +127,7 @@ export const AutoPDFImport: React.FC<AutoPDFImportProps> = ({ initialPaperCode, 
                 
                 if (pageNum < pdf.numPages) {
                     setStatus(`Rate limit pacing: waiting briefly before next page...`);
-                    await new Promise(resolve => setTimeout(resolve, 5000));
+                    await new Promise(resolve => setTimeout(resolve, 6500));
                 }
             }
             
