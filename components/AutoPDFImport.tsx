@@ -122,7 +122,7 @@ export const AutoPDFImport: React.FC<AutoPDFImportProps> = ({ initialPaperCode, 
                     }
                 } catch (err: any) {
                     console.error("AI error on page", pageNum, err);
-                    setStatus(`Skipped page ${pageNum} due to AI error`);
+                    setStatus(`Skipped page ${pageNum}: ${err.message || err}`);
                 }
                 
                 if (pageNum < pdf.numPages) {

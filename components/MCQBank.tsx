@@ -168,7 +168,9 @@ export const MCQBank: React.FC = () => {
       setIsBulkExtracting(true);
       setBulkProgress({current: 0, total: toProcess.length});
 
-      let current = 0;
+      let consecutiveFailures = 0;
+      let lastError = "";
+
       for (const q of toProcess) {
           try {
               if (q.imageUrl) {
@@ -179,15 +181,26 @@ export const MCQBank: React.FC = () => {
                       // Update local state smoothly without full reload if possible, 
                       // but we will do a fast update the array reference
                       setMcqs(prev => prev.map(m => m.id === q.id ? updated : m));
+                      consecutiveFailures = 0; // reset
                   } else {
                       console.warn("Extraction returned failure or empty for", q.id, stem);
+                      consecutiveFailures++;
+                      lastError = stem;
                   }
               }
-          } catch (e) {
+          } catch (e: any) {
               console.error("Failed to extract for", q.id, e);
+              consecutiveFailures++;
+              lastError = e?.message || e;
           }
           current++;
           setBulkProgress({current, total: toProcess.length});
+          
+          if (consecutiveFailures >= 3) {
+              alert(`Bulk extraction stopped: 3 consecutive failures. Last error: ${lastError}`);
+              break;
+          }
+          
           if (current < toProcess.length) {
               // Wait 6.5 seconds to ensure we stay under the 15 Requests Per Minute limit of the free tier.
               await new Promise(r => setTimeout(r, 6500));
