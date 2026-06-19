@@ -60,7 +60,7 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
             <span className="mr-2 group-open:rotate-90 transition-transform">▶</span>
             View Official Mark Scheme Guidance
           </summary>
-          <div className="mt-3 p-4 bg-slate-50 rounded-lg text-sm text-slate-700 font-mono whitespace-pre-wrap border border-slate-100">
+          <div className="mt-3 p-4 bg-slate-50 rounded-lg text-sm text-slate-700 font-sans leading-relaxed whitespace-pre-wrap border border-slate-200 shadow-inner">
             {question.markScheme}
           </div>
         </details>

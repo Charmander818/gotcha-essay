@@ -168,7 +168,7 @@ const RealTimeWriter: React.FC<Props> = ({ question, savedText, onSave }) => {
           {question.markScheme && (
             <div className="pt-4 border-t border-indigo-100">
               <h4 className="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-2">Mark Scheme Target</h4>
-              <div className="text-xs text-slate-500 leading-relaxed whitespace-pre-wrap font-mono bg-white/50 p-2 rounded border border-indigo-50">
+              <div className="text-xs text-slate-600 leading-relaxed whitespace-pre-wrap font-sans bg-white p-3 rounded border border-indigo-100 shadow-sm">
                 {question.markScheme}
               </div>
             </div>
