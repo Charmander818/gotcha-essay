@@ -78,8 +78,10 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
                 onChange={(e) => setSelectedModel(e.target.value)}
                 className="bg-white border text-sm border-slate-300 text-slate-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 py-2 px-3 shadow-sm"
               >
+                <option value="gemini-3.1-pro-preview">Gemini 3.1 Pro Preview</option>
                 <option value="gemini-2.5-pro">Gemini 2.5 Pro (Powerful, slow)</option>
                 <option value="gemini-2.5-flash">Gemini 2.5 Flash (Fast, default)</option>
+                <option value="gemini-2.0-flash-thinking-exp">Gemini 2.0 Flash Thinking</option>
                 <option value="gpt-4o">GPT-4o (OpenAI Premium)</option>
                 <option value="gpt-4o-mini">GPT-4o Mini (OpenAI Fast)</option>
                 <option value="gpt-4.5-preview">GPT-4.5 Preview</option>
@@ -115,8 +117,10 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
                   disabled={loading}
                   className="bg-white border text-xs border-slate-300 text-slate-700 rounded focus:ring-blue-500 focus:border-blue-500 py-1.5 px-2"
                 >
+                  <option value="gemini-3.1-pro-preview">Gemini 3.1 Pro Preview</option>
                   <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
                   <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
+                  <option value="gemini-2.0-flash-thinking-exp">Gemini 2.0 Thinking</option>
                   <option value="gpt-4o">GPT-4o</option>
                   <option value="gpt-4o-mini">GPT-4o Mini</option>
                   <option value="gpt-4.5-preview">GPT-4.5 Preview</option>

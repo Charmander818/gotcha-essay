@@ -171,8 +171,10 @@ const EssayGrader: React.FC<Props> = ({ question, savedInput, savedFeedback, onS
                   disabled={loading}
                   className="bg-white border text-xs border-slate-300 text-slate-700 rounded focus:ring-blue-500 focus:border-blue-500 py-1.5 px-2"
                 >
+                  <option value="gemini-3.1-pro-preview">Gemini 3.1 Pro Preview</option>
                   <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
                   <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
+                  <option value="gemini-2.0-flash-thinking-exp">Gemini 2.0 Thinking</option>
                   <option value="gpt-4o">GPT-4o</option>
                   <option value="gpt-4o-mini">GPT-4o Mini</option>
                   <option value="gpt-4.5-preview">GPT-4.5 Preview</option>
