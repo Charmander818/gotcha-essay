@@ -76,10 +76,15 @@ export const MCQBank: React.FC = () => {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const importFileRef = useRef<HTMLInputElement>(null);
+  const mainContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     loadMCQs();
   }, []);
+
+  useEffect(() => {
+    mainContentRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [selectedFilterValue, selectedFilterType, selectedLevel]);
 
   const startAdding = () => {
       setEditingId(null);
@@ -92,6 +97,7 @@ export const MCQBank: React.FC = () => {
           return;
       }
       setIsAdding(true);
+      mainContentRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
       if (selectedFilterType === 'PAPER' && selectedFilterValue !== 'All') {
           setNewPaper(selectedFilterValue);
           const questionsForPaper = mcqs.filter(m => m.paper === selectedFilterValue);
@@ -303,7 +309,7 @@ export const MCQBank: React.FC = () => {
       setNewCorrectAnswer(q.correctAnswer);
       setImagePreview(q.imageUrl);
       setNewAnnotation(q.annotation || '');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      mainContentRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navigateEdit = (direction: 'next' | 'prev') => {
@@ -676,7 +682,7 @@ export const MCQBank: React.FC = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 h-full overflow-y-auto p-4 md:p-8 space-y-8 relative">
+        <div ref={mainContentRef} className="flex-1 h-full overflow-y-auto p-4 md:p-8 space-y-8 relative">
             {zoomedImage && (
                 <div 
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 cursor-zoom-out"
