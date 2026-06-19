@@ -6,6 +6,8 @@ interface SidebarProps {
   questions: Question[];
   onSelectQuestion: (q: Question) => void;
   selectedQuestionId: string | null;
+  selectedLevel: Level;
+  onSelectedLevelChange: (level: Level) => void;
   onAddQuestionClick: () => void;
   onDeleteQuestion: (id: string) => void;
   onEditQuestion: (q: Question) => void;
@@ -107,6 +109,8 @@ const Sidebar: React.FC<SidebarProps> = ({
   questions, 
   onSelectQuestion, 
   selectedQuestionId, 
+  selectedLevel,
+  onSelectedLevelChange,
   onAddQuestionClick,
   onDeleteQuestion,
   onEditQuestion,
@@ -119,7 +123,6 @@ const Sidebar: React.FC<SidebarProps> = ({
   batchProgress
 }) => {
   const [filterMode, setFilterMode] = useState<FilterMode>('all');
-  const [selectedLevel, setSelectedLevel] = useState<Level>('AS');
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>('syllabus');
 
@@ -297,7 +300,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         {/* AS / A Level Switch */}
         <div className="flex bg-slate-100 p-1 rounded-lg">
            <button
-             onClick={() => setSelectedLevel('AS')}
+             onClick={() => onSelectedLevelChange('AS')}
              className={`flex-1 py-1 text-xs font-semibold rounded transition-all ${
                selectedLevel === 'AS' ? 'bg-white text-blue-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'
              }`}
@@ -305,7 +308,7 @@ const Sidebar: React.FC<SidebarProps> = ({
              AS Level
            </button>
            <button
-             onClick={() => setSelectedLevel('A Level')}
+             onClick={() => onSelectedLevelChange('A Level')}
              className={`flex-1 py-1 text-xs font-semibold rounded transition-all ${
                selectedLevel === 'A Level' ? 'bg-white text-purple-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'
              }`}

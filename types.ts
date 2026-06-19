@@ -85,7 +85,8 @@ export enum AppMode {
   CORE_CONCEPTS = "Core Concepts",
   EXAM_TRENDS = "Exam Trends & Prediction",
   TOPIC_LIBRARY = "Topic Library (Cheat Sheets)",
-  MCQ_BANK = "MCQ Bank"
+  MCQ_BANK = "MCQ Bank",
+  A2_ESSAY_GUIDE = "A2 Essay Guide"
 }
 
 export interface SyllabusItem {

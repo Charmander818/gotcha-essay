@@ -34,24 +34,18 @@ export const generateModelAnswer = async (question: Question): Promise<string> =
       - **AO3 (Max 6, Level 2):** You must reach Level 2 Evaluation by avoiding generic statements. Evaluative comments must have sufficient depth, synthesising alternative views (e.g., short-run vs long-run, magnitude, overriding macroeconomic aims) leading to a reasoned, well-supported final conclusion answering the question.
     
     **To write a perfect 20-mark A-Level essay, your essay MUST strictly follow the 6-part framework:**
-    1. **Introduction:**
-       - Approach to the question (e.g. tell the examiner you recognize the core topics, like "Climate change is caused by negative production externality...").
-       - Evaluation framework (e.g., "These policies can be addressed in terms of feasibility, effectiveness and side effects.")
-       - Direct answer to the question in one sentence (e.g., "This essay argues that indirect tax is a more effective policy.")
-    2. **Definition (AO1):**
-       - Define ALL terms in the prompt, regardless of whether they are AS or A2 concepts.
-       - Even if no obvious keywords, define terms relevant to the chapter.
-    3. **Thesis (AO2):**
-       - Directly answer the question using the core theory. Explain FULL mechanisms step-by-step.
-       - MUST include a high-quality Diagram (described clearly) and utilize/refer to it continuously in your analysis.
-    4. **Anti-thesis (AO2/AO3):**
-       - The counter-arguments or alternative perspectives.
-       - Ensure you answer EVERY part/statement of the question. Provide at least 2 to 3 fully explained counter-points or alternative policies.
-    5. **Synthesis (AO3):**
-       - Compare the differing views, policies, or impacts in depth to reach A-Level AO3 Level 2 standard. Which is best and why? (e.g. depends on price elasticity, Marshall-Lerner condition, time lags).
-    6. **Conclusion:**
-       - **State the final answer** to the question clearly.
-       - **Justify** using a summary of your key arguments without introducing new analytical points.`
+    1. **Introduction:** Approach to the question, Evaluation framework, Direct answer to the question in one sentence.
+    2. **Definition (AO1):** Define ALL terms in the prompt, regardless of whether they are AS or A2 concepts.
+    3. **Thesis (AO2):** Directly answer the question using the core theory. Explain FULL mechanisms step-by-step. MUST include a high-quality Diagram (described clearly) and utilize/refer to it continuously.
+    4. **Anti-thesis (AO2/AO3):** The counter-arguments or alternative perspectives. Ensure you answer EVERY part/statement of the question. Provide at least 2 to 3 fully explained counter-points or alternative policies.
+    5. **Synthesis (AO3):** Compare the differing views, policies, or impacts in depth to reach A-Level AO3 Level 2 standard. Which is best and why?
+    6. **Conclusion:** State the final answer clearly. Justify using a summary of your key arguments without introducing new analytical points.
+
+    **A2 Chapter-Specific Analysis Requirements (MANDATORY):**
+    - **Consumer Theory:** ALWAYS derive the demand curve from utility or indifference curves depending on approach. If using IC, explicitly analyze SE (Substitution Effect) and IE (Income Effect) for normal/inferior/giffen goods. Critically evaluate whether utility can be measured (cardinally) or if consumers are rational (bounded rationality).
+    - **Producer Theory (Market Structure & Firms):** When comparing market structures, always explicitly evaluate Price and Efficiency (Allocative, Productive, Dynamic). Compare Monopolistic Competition (MPC elastic demand) vs Monopoly. Understand Contestability (High BTE = less contestable). Analyze firm decisions like price discrimination and varying objectives (sales vs profit max).
+    - **Labour Market:** ALWAYS analyze BOTH Marginal Revenue Product (MRP) and Labour Supply (SL), even if the question only focuses on one. Analyze wage determination in PC first, then imperfect markets. For imperfect markets (Monopsony, TU, Govt Minimum Wage), trace the impact on both wages and employment levels clearly.
+    - **Market Failure (A2 context):** Differentiate firmly between consumption vs production externalities. For Monopolies, evaluate Private (lack of allocative efficiency -> taxes/regulation) vs Public (X-inefficiency -> privatisation/deregulation). When comparing Public vs Private Sector, explicitly debate Equity vs Efficiency.`
       : `- **Marking Strategy:** 12-mark questions are graded based on Levels. To hit the maximum marks, your essay MUST satisfy:
       - **AO1+2 (Max 8, Level 3):** Detailed knowledge and understanding, fully developed explanations. Analysis is developed, detailed, and makes accurate and relevant use of economic concepts, theories, and tools (diagrams) which are fully explained. Well-organised, logical, and coherent.
       - **AO3 (Max 4, Level 2):** Provides a justified conclusion/judgement addressing specific question requirements. Makes developed, reasoned, and well-supported evaluative comment(s).
@@ -144,7 +138,13 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
         - DIAGRAM CHECK: Did they draw a diagram? Is it accurately drawn and labeled (e.g. axes, P1, P2)? Is it explicitly referred to and utilized in their written analysis? Penalize heavily if they just dump a diagram without utilizing it in the text.
         - ANALYSIS CHECK: Did they trace out the FULL mechanism (e.g., monetary transmission mechanism, AD/AS shifts) or instead just provide descriptive/asserted jumps? Penalize over-reliance on generic learnt notes.
         - Did they follow the 6-part framework ensuring Thesis, Anti-thesis, and Synthesis are present and fully answer EVERY statement in the prompt?
-        - Did they reach Level 2 EV by providing deep evaluative comments (e.g. comparing time lags, exact magnitudes, elasticity) rather than vague 'it depends' statements?`
+        - Did they reach Level 2 EV by providing deep evaluative comments (e.g. comparing time lags, exact magnitudes, elasticity) rather than vague 'it depends' statements?
+        
+        - A2 CHAPTER-SPECIFIC CHECKS (CRITICAL):
+          - If Consumer Theory: Did they explicitly link to Utility or IC models? Did they explain SE and IE correctly for normal/inferior/giffen goods? Did they critique cardinality/rationality?
+          - If Producer Theory: Did they evaluate Price AND Efficiency (Productive, Allocative, Dynamic)? Did they analyze Contestability/BTE if applicable?
+          - If Labour Market: Did they write about BOTH Labour Supply AND MRP? Did they differentiate carefully between PC and imperfect markets?
+          - If Market Failure: Did they correctly identify consumption vs production externalities? For monopolies, did they critique private (taxes/anti-trust) vs public (privatization/deregulation)?`
       : `- For 12-mark questions specifically:
         - Did they define ALL key terms in AO1? Penalize if not.
         - Did they write exactly one point per paragraph in AO2? Penalize if they mixed points.

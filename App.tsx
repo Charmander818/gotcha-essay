@@ -14,6 +14,7 @@ import { CoreConceptViewer } from './components/CoreConceptViewer';
 import ExamTrends from './components/ExamTrends';
 import { TopicLibrary } from './components/TopicLibrary';
 import { MCQBank } from './components/MCQBank';
+import { A2EssayGuide } from './components/A2EssayGuide';
 import AddQuestionModal from './components/AddQuestionModal';
 import CodeExportModal from './components/CodeExportModal';
 import SyllabusExportModal from './components/SyllabusExportModal';
@@ -22,6 +23,7 @@ import { questions as initialQuestions } from './data';
 import { generateModelAnswer, generateClozeExercise } from './services/geminiService';
 import { SYLLABUS_CHECKLIST } from './syllabusChecklistData';
 import { PREFILLED_DEFINITIONS } from './syllabusDefinitions';
+import { Level } from './syllabusData';
 
 const STORAGE_KEY_CUSTOM_QUESTIONS = 'cie_econ_custom_questions_v2';
 const STORAGE_KEY_DELETED_IDS = 'cie_econ_deleted_ids_v1';
@@ -44,6 +46,7 @@ const App: React.FC = () => {
 
   // --- Global Navigation State ---
   const [mainModule, setMainModule] = useState<'ESSAY' | 'MCQ' | 'SYLLABUS'>('ESSAY');
+  const [selectedLevel, setSelectedLevel] = useState<Level>('AS');
 
   // --- Application State ---
   const [customQuestions, setCustomQuestions] = useState<Question[]>(() => {
@@ -520,7 +523,7 @@ const App: React.FC = () => {
     );
   }
 
-  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.POLICY_FEAST || mode === AppMode.CORE_CONCEPTS || mode === AppMode.EXAM_TRENDS || mode === AppMode.TOPIC_LIBRARY;
+  const isGlobalMode = mode === AppMode.TOPIC_ANALYSIS || mode === AppMode.SYLLABUS_TRACKER || mode === AppMode.LOGIC_CHAIN || mode === AppMode.POLICY_FEAST || mode === AppMode.CORE_CONCEPTS || mode === AppMode.EXAM_TRENDS || mode === AppMode.TOPIC_LIBRARY || mode === AppMode.A2_ESSAY_GUIDE;
 
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50">
@@ -559,6 +562,8 @@ const App: React.FC = () => {
         <>
           <Sidebar 
             questions={allQuestions}
+            selectedLevel={selectedLevel}
+            onSelectedLevelChange={setSelectedLevel}
             onSelectQuestion={(q) => {
                 if (isGlobalMode) setMode(AppMode.GENERATOR);
                 setSelectedQuestion(q);
@@ -635,26 +640,42 @@ const App: React.FC = () => {
             >
                 Analysis
             </button>
-            <button
-                onClick={() => setMode(AppMode.POLICY_FEAST)}
-                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
-                  mode === AppMode.POLICY_FEAST
-                    ? 'bg-blue-600 text-white shadow-sm' 
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-            >
-                FEAST
-            </button>
-            <button
-                onClick={() => setMode(AppMode.CORE_CONCEPTS)}
-                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
-                  mode === AppMode.CORE_CONCEPTS
-                    ? 'bg-blue-600 text-white shadow-sm' 
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-            >
-                Concepts
-            </button>
+            {selectedLevel === 'AS' && (
+              <>
+                <button
+                    onClick={() => setMode(AppMode.POLICY_FEAST)}
+                    className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
+                      mode === AppMode.POLICY_FEAST
+                        ? 'bg-blue-600 text-white shadow-sm' 
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                >
+                    FEAST
+                </button>
+                <button
+                    onClick={() => setMode(AppMode.CORE_CONCEPTS)}
+                    className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
+                      mode === AppMode.CORE_CONCEPTS
+                        ? 'bg-blue-600 text-white shadow-sm' 
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                >
+                    Concepts
+                </button>
+              </>
+            )}
+            {selectedLevel === 'A Level' && (
+              <button
+                  onClick={() => setMode(AppMode.A2_ESSAY_GUIDE as AppMode)}
+                  className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
+                    mode === AppMode.A2_ESSAY_GUIDE as AppMode
+                      ? 'bg-blue-600 text-white shadow-sm' 
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+              >
+                  A2 Essay Guide
+              </button>
+            )}
             <button
                 onClick={() => setMode(AppMode.EXAM_TRENDS)}
                 className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
@@ -717,6 +738,8 @@ const App: React.FC = () => {
                 <ExamTrends questions={allQuestions} />
             ) : mode === AppMode.TOPIC_LIBRARY ? (
                 <div className="p-8 h-full bg-slate-50"><TopicLibrary questions={allQuestions} /></div>
+            ) : mode === AppMode.A2_ESSAY_GUIDE ? (
+                <div className="p-8 h-full bg-slate-50"><A2EssayGuide /></div>
             ) : selectedQuestion ? (
               <div className="p-8">
                 {mode === AppMode.GENERATOR && (
