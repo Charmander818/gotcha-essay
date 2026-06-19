@@ -426,11 +426,7 @@ export const MCQBank: React.FC = () => {
       
       if (searchQuery) {
           const lowerQuery = searchQuery.toLowerCase();
-          if (
-              !q.description?.toLowerCase().includes(lowerQuery) && 
-              !q.topic.toLowerCase().includes(lowerQuery) &&
-              !q.questionText?.toLowerCase().includes(lowerQuery)
-          ) {
+          if (!q.questionText?.toLowerCase().includes(lowerQuery)) {
               return false;
           }
       }
@@ -811,7 +807,7 @@ export const MCQBank: React.FC = () => {
                         <div className="relative">
                             <input 
                                 type="text" 
-                                placeholder="Search by keyword, concept or description..."
+                                placeholder="Search by question text..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="w-full pl-9 pr-9 py-1.5 text-sm border rounded-lg focus:ring-2 focus:ring-blue-500 border-slate-300"
