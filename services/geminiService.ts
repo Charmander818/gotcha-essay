@@ -4,108 +4,16 @@ import { Question, ClozeBlank, ClozeFeedback, TopicAnalysisData } from "../types
 import { ALL_TOPICS } from "../utils/topicHelpers";
 
 // Helper to ensure we have a client. 
-const realGetAI = () => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || import.meta.env.VITE_GEMINI_API_KEY || "" });
-
-const getAI = (): any => {
-  return {
-    models: {
-      generateContent: async (params: any) => {
-        let model = params.model;
-
-        // Manual routing to GPT
-        if (model && model.startsWith('gpt-')) {
-          return generateOpenAI(params, model);
-        }
-
-        const realAI = realGetAI();
-        try {
-          return await realAI.models.generateContent(params);
-        } catch (e: any) {
-          const errStr = String(e?.message || e);
-          if (errStr.includes("429") || errStr.includes("RESOURCE_EXHAUSTED") || errStr.includes("Quota exceeded") || errStr.includes("503")) {
-            if (process.env.OPENAI_API_KEY) {
-              console.warn(`Gemini API limit reached. Falling back to OpenAI (gpt-4o-mini)...`);
-              return generateOpenAI(params, "gpt-4o-mini");
-            }
-          }
-          throw e; // re-throw if not limit error or no openai key
-        }
-      }
-    }
-  };
-}
-
-async function generateOpenAI(params: any, modelName: string) {
-  const apiKey = process.env.OPENAI_API_KEY || import.meta.env.VITE_OPENAI_API_KEY;
-  if (!apiKey) {
-    throw new Error("OPENAI_API_KEY is missing. Please add it to Vercel Settings or your .env file as VITE_OPENAI_API_KEY.");
-  }
-
-  let messages: any[] = [];
-  
-  if (params.systemInstruction) {
-    let text = typeof params.systemInstruction === 'string' ? params.systemInstruction : (params.systemInstruction.parts ? params.systemInstruction.parts.map((p:any)=>p.text).join('') : '');
-    if (text) messages.push({ role: 'system', content: text });
-  }
-
-  let contentsArray = Array.isArray(params.contents) ? params.contents : [params.contents];
-  for (const content of contentsArray) {
-    if (typeof content === 'string') {
-      messages.push({ role: 'user', content });
-    } else if (content.parts) {
-       let msgContent: any[] = [];
-       for (const part of content.parts) {
-         if (part.text) msgContent.push({ type: 'text', text: part.text });
-         else if (part.inlineData) {
-           msgContent.push({
-             type: 'image_url',
-             image_url: { url: `data:${part.inlineData.mimeType};base64,${part.inlineData.data}` }
-           });
-         }
-       }
-       messages.push({ role: 'user', content: msgContent });
-    }
-  }
-
-  let requestBody: any = {
-    model: modelName,
-    messages,
-    temperature: params.config?.temperature || 0.7,
-  };
-
-  // If using newer models like o1 or o3-mini which don't support system instructions in the same way sometimes, OpenAI format might need adjustments but they generally support developer arrays in new API. For now standard messages.
-  if (params.config?.responseMimeType === 'application/json' && !modelName.startsWith("o1") && !modelName.startsWith("o3-mini") && !modelName.startsWith("gpt-4.5")) {
-    requestBody.response_format = { type: 'json_object' };
-  }
-
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
-    },
-    body: JSON.stringify(requestBody)
-  });
-
-  if (!response.ok) {
-    const errorData = await response.json().catch(() => ({}));
-    throw new Error(`OpenAI API Error: ${errorData.error?.message || response.statusText}`);
-  }
-
-  const data = await response.json();
-  return { text: data.choices[0]?.message?.content || "" };
-}
+const getAI = () => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 const checkForApiKey = () => {
-  const geminiKey = process.env.GEMINI_API_KEY || import.meta.env.VITE_GEMINI_API_KEY;
-  const openaiKey = process.env.OPENAI_API_KEY || import.meta.env.VITE_OPENAI_API_KEY;
-  if (!geminiKey && !openaiKey) {
+  if (!process.env.GEMINI_API_KEY) {
     console.error("API Key is missing!");
-    throw new Error("API keys are missing. Please add VITE_GEMINI_API_KEY or VITE_OPENAI_API_KEY in Vercel Settings -> Environment Variables, and redeploy.");
+    throw new Error("GEMINI_API_KEY is missing. If you deployed to Vercel, please add it in Vercel Settings -> Environment Variables, and redeploy.");
   }
 };
 
-export const generateModelAnswer = async (question: Question, modelName: string = 'gemini-2.0-flash'): Promise<string> => {
+export const generateModelAnswer = async (question: Question): Promise<string> => {
   checkForApiKey();
   const prompt = `
     You are an expert Cambridge A-Level Economics Examiner.
@@ -181,13 +89,13 @@ export const generateModelAnswer = async (question: Question, modelName: string 
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: modelName,
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
   });
   return response.text || "Failed to generate essay.";
 };
 
-export const gradeEssay = async (question: Question, essay: string, images: string[] = [], modelName: string = 'gemini-2.0-flash'): Promise<string> => {
+export const gradeEssay = async (question: Question, essay: string, images: string[] = []): Promise<string> => {
   checkForApiKey();
   const imageParts = images.map(img => {
       // Assuming img is data:image/png;base64,...
@@ -314,7 +222,7 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: modelName,
+    model: 'gemini-3.1-flash-lite',
     contents: {
         parts: [
             { text: prompt },
@@ -384,7 +292,7 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -433,7 +341,7 @@ export const generateClozeExercise = async (text: string): Promise<{ textWithBla
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -487,7 +395,7 @@ export const evaluateClozeAnswers = async (blanks: ClozeBlank[], userAnswers: Re
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -538,7 +446,7 @@ export const improveLogicChain = async (input: string): Promise<string> => {
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
   });
   return response.text || "Could not improve chain.";
@@ -585,7 +493,7 @@ export const analyzeTopic = async (topic: string, questions: Question[]): Promis
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
     config: { responseMimeType: "application/json" }
   });
@@ -638,7 +546,7 @@ export const analyzeExamStrategy = async (marks: number, questions: Question[]):
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
+    model: 'gemini-3.1-flash-lite',
     contents: prompt,
   });
   return response.text || "Analysis failed.";
@@ -669,7 +577,7 @@ export const generateSyllabusLogicChain = async (topicTitle: string, point: stri
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     return response.text || "Error generating chain.";
@@ -698,7 +606,7 @@ export const generateSyllabusDefinition = async (topicTitle: string, point: stri
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     return response.text || "Error generating definition.";
@@ -728,7 +636,7 @@ export const evaluateSyllabusChain = async (topicTitle: string, point: string, s
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     return response.text || "Error evaluating chain.";
@@ -779,7 +687,7 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     
@@ -841,7 +749,7 @@ export const generateTeachingPPTData = async (chapter: string, syllabusPoints: s
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
       config: {
         responseMimeType: "application/json"
@@ -882,7 +790,7 @@ export const generateMindmapData = async (chapter: string, syllabusPoints: strin
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     
@@ -926,7 +834,7 @@ export const extractMCQsFromImage = async (base64Image: string, paperCode: strin
         - "Consumer Surplus & Indirect Tax: Identifying the geometric area of surplus lost when a tax shifts the supply curve."
         - "GDP at Basic Prices: Calculating value by adjusting market prices for indirect taxes and subsidies."
         - "Real vs. Nominal GDP: Adjusting national output for changes in the general price level (inflation)."
-      - "questionText": EXACTLY copy ALL text associated with this question from the image, including the question number, stem, all options (A, B, C, D) and any text within graphs/tables. Do not summarize or alter the text. This is the OCR output.
+        This will be used for keyword searching, so be as descriptive as possible.
       - "bbox": A precise bounding box [ymin, xmin, ymax, xmax] normalized to 0-1000. Follow these strict cropping rules:
         1. Start (ymin): Identify the question number (e.g., 1, 2, 3...) as the starting position. Add a tight 10-20 pixel top margin above it.
         2. Content: The box must contain exactly ONE complete question: the stem, any diagrams/tables, and options A, B, C, D. 
@@ -951,7 +859,7 @@ export const extractMCQsFromImage = async (base64Image: string, paperCode: strin
     for (let i = 0; i < retries; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.0-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1006,7 +914,7 @@ export const extractDescriptionForMCQ = async (base64Image: string, retries = 3)
     for (let i = 0; i < retries; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.0-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1038,7 +946,7 @@ export const generateChatResponse = async (prompt: string): Promise<string> => {
     checkForApiKey();
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: prompt,
     });
     return response.text || "";
@@ -1072,7 +980,7 @@ export const generateExplanationForMCQ = async (base64Image: string, correctAnsw
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.0-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1085,10 +993,7 @@ export const generateExplanationForMCQ = async (base64Image: string, correctAnsw
               if (i === 2) {
                   return `AI 生成失败 (API Error / Rate Limit): ${err?.message || err}`;
               }
-              const errStr = String(err?.message || err);
-              const delay = (errStr.includes('429') || errStr.includes('RESOURCE_EXHAUSTED') || errStr.includes('Quota exceeded') || errStr.includes('503')) ? 10000 : 2000;
-              console.warn(`Retry ${i + 1} for AI Explanation. Waiting ${delay}ms...`);
-              await new Promise(resolve => setTimeout(resolve, delay));
+              await new Promise(resolve => setTimeout(resolve, 2000));
           }
       }
       return response?.text || "生成讲解失败。";
@@ -1121,7 +1026,7 @@ export const extractQuestionStemForMCQ = async (base64Image: string): Promise<st
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.0-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1131,10 +1036,9 @@ export const extractQuestionStemForMCQ = async (base64Image: string): Promise<st
             });
             break;
         } catch (e: any) {
-            const errStr = String(e.message || e);
-            if ((errStr.includes('503 Service Unavailable') || errStr.includes('429') || errStr.includes('RESOURCE_EXHAUSTED') || errStr.includes('Quota exceeded')) && i < 2) {
-                console.warn(`Retry ${i + 1} for AI Extraction due to rate limit/service error... Waiting 10s`);
-                await new Promise(r => setTimeout(r, 10000));
+            if (e.message?.includes('503 Service Unavailable') && i < 2) {
+                console.warn(`Retry ${i + 1} for AI Extraction...`);
+                await new Promise(r => setTimeout(r, 1000));
             } else {
                 throw e;
             }
@@ -1190,7 +1094,7 @@ export const generateAnalysisForMCQ = async (base64Image: string, level?: 'AS' |
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.0-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1204,10 +1108,7 @@ export const generateAnalysisForMCQ = async (base64Image: string, level?: 'AS' |
             break;
         } catch (err: any) {
             if (i === 2) throw err;
-            const errStr = String(err?.message || err);
-            const delay = (errStr.includes('429') || errStr.includes('RESOURCE_EXHAUSTED') || errStr.includes('Quota exceeded') || errStr.includes('503')) ? 10000 : 2000;
-            console.warn(`Retry ${i + 1} for AI Analysis. Waiting ${delay}ms...`);
-            await new Promise(resolve => setTimeout(resolve, delay));
+            await new Promise(resolve => setTimeout(resolve, 2000));
         }
     }
     
@@ -1278,7 +1179,7 @@ export const parseBulkEssays = async (rawText: string, level: 'AS' | 'A Level'):
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.0-flash',
+              model: 'gemini-3.1-flash-lite',
               contents: [
                 { text: prompt },
                 { text: rawText }

@@ -76,7 +76,6 @@ export const MCQBank: React.FC = () => {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const importFileRef = useRef<HTMLInputElement>(null);
-  const mainScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     loadMCQs();
@@ -169,9 +168,6 @@ export const MCQBank: React.FC = () => {
       setBulkProgress({current: 0, total: toProcess.length});
 
       let current = 0;
-      let consecutiveFailures = 0;
-      let lastError = "";
-
       for (const q of toProcess) {
           try {
               if (q.imageUrl) {
@@ -182,30 +178,13 @@ export const MCQBank: React.FC = () => {
                       // Update local state smoothly without full reload if possible, 
                       // but we will do a fast update the array reference
                       setMcqs(prev => prev.map(m => m.id === q.id ? updated : m));
-                      consecutiveFailures = 0; // reset
-                  } else {
-                      console.warn("Extraction returned failure or empty for", q.id, stem);
-                      consecutiveFailures++;
-                      lastError = stem;
                   }
               }
-          } catch (e: any) {
+          } catch (e) {
               console.error("Failed to extract for", q.id, e);
-              consecutiveFailures++;
-              lastError = e?.message || e;
           }
           current++;
           setBulkProgress({current, total: toProcess.length});
-          
-          if (consecutiveFailures >= 3) {
-              alert(`Bulk extraction stopped: 3 consecutive failures. Last error: ${lastError}`);
-              break;
-          }
-          
-          if (current < toProcess.length) {
-              // Wait 6.5 seconds to ensure we stay under the 15 Requests Per Minute limit of the free tier.
-              await new Promise(r => setTimeout(r, 6500));
-          }
       }
       
       setIsBulkExtracting(false);
@@ -324,10 +303,7 @@ export const MCQBank: React.FC = () => {
       setNewCorrectAnswer(q.correctAnswer);
       setImagePreview(q.imageUrl);
       setNewAnnotation(q.annotation || '');
-      
-      setTimeout(() => {
-          mainScrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 50);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navigateEdit = (direction: 'next' | 'prev') => {
@@ -444,7 +420,11 @@ export const MCQBank: React.FC = () => {
       
       if (searchQuery) {
           const lowerQuery = searchQuery.toLowerCase();
-          if (!q.questionText?.toLowerCase().includes(lowerQuery)) {
+          if (
+              !q.description?.toLowerCase().includes(lowerQuery) && 
+              !q.topic.toLowerCase().includes(lowerQuery) &&
+              !q.questionText?.toLowerCase().includes(lowerQuery)
+          ) {
               return false;
           }
       }
@@ -476,12 +456,6 @@ export const MCQBank: React.FC = () => {
   const viewingIndex = viewingMCQ ? filteredMcqs.findIndex(m => m.id === viewingMCQ.id) : -1;
   const hasNextMCQ = viewingIndex !== -1 && viewingIndex < filteredMcqs.length - 1;
   const hasPrevMCQ = viewingIndex !== -1 && viewingIndex > 0;
-
-  useEffect(() => {
-      setTimeout(() => {
-          mainScrollRef.current?.scrollTo({ top: 0, behavior: 'instant' });
-      }, 50);
-  }, [selectedFilterValue]);
 
   useEffect(() => {
       const handleKeyDown = (e: KeyboardEvent) => {
@@ -702,7 +676,7 @@ export const MCQBank: React.FC = () => {
         </div>
 
         {/* Main Content */}
-        <div ref={mainScrollRef} className="flex-1 h-full overflow-y-auto p-4 md:p-8 space-y-8 relative">
+        <div className="flex-1 h-full overflow-y-auto p-4 md:p-8 space-y-8 relative">
             {zoomedImage && (
                 <div 
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 cursor-zoom-out"
