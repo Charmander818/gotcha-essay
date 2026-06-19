@@ -39,6 +39,13 @@ export interface ClozeFeedback {
   comment: string;
 }
 
+export interface SyllabusMedia {
+  id: string; // section.id
+  fileName: string;
+  mimeType: string;
+  data: string; // base64
+}
+
 export interface QuestionState {
   generatorEssay: string;
   graderEssay: string;

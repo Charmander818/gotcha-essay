@@ -47,6 +47,40 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
   const [worksheetContent, setWorksheetContent] = useState("");
   const [worksheetAnswerKey, setWorksheetAnswerKey] = useState("");
   const [worksheetTab, setWorksheetTab] = useState<'worksheet' | 'answerKey'>('worksheet');
+  
+  // Custom Media Upload State
+  const [uploadedFiles, setUploadedFiles] = useState<Record<string, {name: string, data: string, mime: string}>>({});
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+     // Optional: loading from indexedDB could go here
+     // But for now we just handle it directly from state if the user uploads a file during the session
+     // Or we can load it instantly
+  }, []);
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!worksheetModalData) return;
+    const key = `${worksheetModalData.sectionId}-${worksheetModalData.subTitle}`;
+    
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      
+      reader.onload = (event) => {
+        if (event.target && typeof event.target.result === 'string') {
+          const result = event.target.result;
+          const [mimePrefix, base64Data] = result.split(';base64,');
+          const mime = mimePrefix.split(':')[1];
+          setUploadedFiles(prev => ({
+            ...prev,
+            [key]: { name: file.name, data: base64Data, mime }
+          }));
+        }
+      };
+      
+      reader.readAsDataURL(file);
+    }
+  };
 
   // PPT State
   const [isGeneratingPPT, setIsGeneratingPPT] = useState<string | null>(null);
@@ -218,7 +252,11 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
           syllabusContent += `Point: ${point}\nDefinition: ${def}\n\n`;
       });
 
-      const result = await generateWorksheet(chapterName, points, syllabusContent, worksheetInstructions);
+      const fileKey = `${worksheetModalData.sectionId}-${worksheetModalData.subTitle}`;
+      const attachedFile = uploadedFiles[fileKey];
+      const filesToPass = attachedFile ? [{mimeType: attachedFile.mime, data: attachedFile.data}] : [];
+
+      const result = await generateWorksheet(chapterName, points, syllabusContent, worksheetInstructions, filesToPass);
       setWorksheetContent(result.worksheet);
       setWorksheetAnswerKey(result.answerKey);
       setWorksheetTab('worksheet');
@@ -1071,6 +1109,34 @@ const SyllabusTracker: React.FC<Props> = ({ statusMap, onUpdateStatus, customPoi
                     onChange={(e) => setWorksheetInstructions(e.target.value)}
                   />
                 </div>
+                
+                <div className="bg-blue-50/50 p-4 rounded-lg border border-blue-100">
+                    <label className="block text-xs font-bold text-blue-800 uppercase mb-2">Attach Teaching Deck (Optional)</label>
+                    <p className="text-xs text-blue-600 mb-3">Upload your Chapter PPT (PDF/Image) to embed your own slides' questions, nuances, and notes into the worksheet.</p>
+                    <input 
+                      type="file" 
+                      accept="application/pdf,image/png,image/jpeg"
+                      className="hidden" 
+                      ref={fileInputRef}
+                      onChange={handleFileUpload} 
+                    />
+                    <div className="flex items-center gap-2">
+                        <button 
+                            onClick={() => fileInputRef.current?.click()}
+                            className="bg-white px-3 py-1.5 border border-blue-200 rounded text-blue-700 text-xs font-bold hover:bg-blue-50 transition flex items-center gap-2"
+                        >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg>
+                            Select File (PDF)
+                        </button>
+                        {uploadedFiles[`${worksheetModalData.sectionId}-${worksheetModalData.subTitle}`] && (
+                            <span className="text-xs text-emerald-600 font-medium truncate flex-1 flex items-center gap-1">
+                                <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                {uploadedFiles[`${worksheetModalData.sectionId}-${worksheetModalData.subTitle}`].name}
+                            </span>
+                        )}
+                    </div>
+                </div>
+
                 <button 
                   onClick={handleGenerateWorksheet}
                   disabled={isGeneratingWorksheet}

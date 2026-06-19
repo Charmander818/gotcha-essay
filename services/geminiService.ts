@@ -646,12 +646,13 @@ export const evaluateSyllabusChain = async (topicTitle: string, point: string, s
   }
 };
 
-export const generateWorksheet = async (chapter: string, syllabusPoints: string, syllabusContent: string, additionalInstructions: string): Promise<{ worksheet: string, answerKey: string }> => {
+export const generateWorksheet = async (chapter: string, syllabusPoints: string, syllabusContent: string, additionalInstructions: string, files: {mimeType: string, data: string}[] = []): Promise<{ worksheet: string, answerKey: string }> => {
   try {
     checkForApiKey();
     const prompt = `
       You are an expert Cambridge A-Level Economics Teacher.
       Your task is to generate a comprehensive, printable student worksheet (homework assignment) AND its corresponding Answer Key, based strictly on the provided chapter, syllabus learning objectives, and syllabus content (definitions).
+      IF ANY PPT OR IMAGE MATERIAL HAS BEEN ATTACHED, make sure to read those directly to synthesize teaching slides into the worksheet format. Ensure you integrate the core concepts explicitly mentioned in the attached materials.
 
       **Chapter:** ${chapter}
       
@@ -666,7 +667,7 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
       
       **Requirements for the Worksheet:**
       1. Structure the worksheet clearly so a student can print it and fill it in.
-      2. **Exhaustive Knowledge Coverage (CRITICAL):** The worksheet MUST comprehensively cover ALL the syllabus points and ALL the provided AO1 definitions without leaving any knowledge gaps. Do NOT create a short or 'summarized' worksheet. Be exhaustive. Generate as many specific theory questions, multiple-choice concepts, and application questions as needed to ensure the student has truly mastered the chapter.
+      2. **Exhaustive Knowledge Coverage (CRITICAL):** The worksheet MUST comprehensively cover ALL the syllabus points and ALL the provided AO1 definitions and ATTACHED PPT content without leaving any knowledge gaps. Do NOT create a short or 'summarized' worksheet. Be exhaustive. Generate as many specific theory questions, multiple-choice concepts, and application questions as needed to ensure the student has truly mastered the chapter.
       3. **Definitions (AO1):** Include a section where students must define key terms based exactly on the syllabus content provided.
       4. **Graphs & Diagrams (AO2/AO3 - STRICTLY EXHAUSTIVE):** Include a dedicated "Diagram Drawing & Analysis" section. You MUST exhaustively cover ALL possible permutations and graphical scenarios. For example, if the topic involves shifting demand/supply, you must ask to draw the shift for every determinant. If it involves indifference curves, test a price increase vs decrease for normal, inferior, and Giffen goods separately. Format diagram tests clearly with a specific prompt, and leave ample space using \`<br><br><br><br>\`. Prompt the student to label all axes, curves, and equilibrium points. Do not miss any edge cases.
       5. **Tables / Comparisons (CRITICAL):** Include comprehensive summary fill-in-the-blank tables for students to compare properties or contrast effects (e.g., Directions of Substitution Effect vs Income Effect). Provide the table headers and leave the cells empty.
@@ -686,9 +687,20 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
     `;
 
     const ai = getAI();
+    
+    // Process files for multimodality
+    const inlineDataParts = files.map(f => ({
+      inlineData: { mimeType: f.mimeType, data: f.data }
+    }));
+    
     const response = await ai.models.generateContent({
-      model: 'gemini-3.1-flash-lite',
-      contents: prompt,
+      model: 'gemini-3.1-pro-preview', // Switch to pro to parse large PDFs natively
+      contents: {
+        parts: [
+           { text: prompt },
+           ...inlineDataParts
+        ]
+      }
     });
     
     const text = response.text || "";

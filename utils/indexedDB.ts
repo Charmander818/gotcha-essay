@@ -3,10 +3,11 @@ import { initialMCQs } from '../mcqData';
 
 const DB_NAME = 'cie_econ_mcq_db';
 const STORE_NAME = 'mcqs';
+const SYLLABUS_FILES_STORE = 'syllabus_files';
 
 export const initDB = (): Promise<IDBDatabase> => {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open(DB_NAME, 1);
+    const request = indexedDB.open(DB_NAME, 2);
     request.onerror = () => reject(request.error);
     request.onsuccess = () => resolve(request.result);
     request.onupgradeneeded = (e) => {
@@ -14,7 +15,47 @@ export const initDB = (): Promise<IDBDatabase> => {
       if (!db.objectStoreNames.contains(STORE_NAME)) {
         db.createObjectStore(STORE_NAME, { keyPath: 'id' });
       }
+      if (!db.objectStoreNames.contains(SYLLABUS_FILES_STORE)) {
+        db.createObjectStore(SYLLABUS_FILES_STORE, { keyPath: 'id' });
+      }
     };
+  });
+};
+
+export const getSyllabusFiles = async (sectionId: string): Promise<any[]> => {
+  const db = await initDB();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(SYLLABUS_FILES_STORE, 'readonly');
+    const store = transaction.objectStore(SYLLABUS_FILES_STORE);
+    const request = store.getAll();
+    request.onsuccess = () => {
+      const allFiles: any[] = request.result || [];
+      const sectionFiles = allFiles.filter(f => f.sectionId === sectionId);
+      resolve(sectionFiles);
+    };
+    request.onerror = () => reject(request.error);
+  });
+};
+
+export const saveSyllabusFile = async (file: any): Promise<void> => {
+  const db = await initDB();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(SYLLABUS_FILES_STORE, 'readwrite');
+    const store = transaction.objectStore(SYLLABUS_FILES_STORE);
+    store.put(file);
+    transaction.oncomplete = () => resolve();
+    transaction.onerror = () => reject(transaction.error);
+  });
+};
+
+export const deleteSyllabusFile = async (id: string): Promise<void> => {
+  const db = await initDB();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(SYLLABUS_FILES_STORE, 'readwrite');
+    const store = transaction.objectStore(SYLLABUS_FILES_STORE);
+    store.delete(id);
+    transaction.oncomplete = () => resolve();
+    transaction.onerror = () => reject(transaction.error);
   });
 };
 
