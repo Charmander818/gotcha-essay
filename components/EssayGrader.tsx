@@ -17,6 +17,7 @@ const EssayGrader: React.FC<Props> = ({ question, savedInput, savedFeedback, onS
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState<string[]>([]);
   const [copied, setCopied] = useState(false);
+  const [selectedModel, setSelectedModel] = useState<string>('gemini-2.5-flash');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -58,9 +59,10 @@ const EssayGrader: React.FC<Props> = ({ question, savedInput, savedFeedback, onS
     setLoading(true);
     setFeedback(""); // clear previous
     try {
-      const result = await gradeEssay(question, input, images);
-      setFeedback(result);
-      onSave(input, result);
+      const result = await gradeEssay(question, input, images, selectedModel);
+      const taggedFeedback = `> **Model used:** ${selectedModel}\n\n${result}`;
+      setFeedback(taggedFeedback);
+      onSave(input, taggedFeedback);
     } catch (error: any) {
       console.error("Error grading essay:", error);
       alert(`Failed to grade essay. Error: ${error?.message || String(error)}`);
@@ -162,11 +164,27 @@ const EssayGrader: React.FC<Props> = ({ question, savedInput, savedFeedback, onS
        <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
              <h3 className="font-semibold text-slate-700">Examiner Feedback</h3>
-             {feedback && (
-                 <button onClick={handleCopy} className="text-xs text-blue-600 hover:text-blue-800 font-medium">
-                     {copied ? "Copied!" : "Copy Report"}
-                 </button>
-             )}
+             <div className="flex gap-4 items-center">
+                <select
+                  value={selectedModel}
+                  onChange={(e) => setSelectedModel(e.target.value)}
+                  disabled={loading}
+                  className="bg-white border text-xs border-slate-300 text-slate-700 rounded focus:ring-blue-500 focus:border-blue-500 py-1.5 px-2"
+                >
+                  <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
+                  <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
+                  <option value="gpt-4o">GPT-4o</option>
+                  <option value="gpt-4o-mini">GPT-4o Mini</option>
+                  <option value="gpt-4.5-preview">GPT-4.5 Preview</option>
+                  <option value="o1">OpenAI o1</option>
+                  <option value="o3-mini">OpenAI o3-mini</option>
+                </select>
+                {feedback && (
+                    <button onClick={handleCopy} className="text-xs text-blue-600 hover:text-blue-800 font-medium">
+                        {copied ? "Copied!" : "Copy Report"}
+                    </button>
+                )}
+             </div>
           </div>
           <div className="flex-1 overflow-y-auto p-8 custom-scroll">
               {feedback ? (

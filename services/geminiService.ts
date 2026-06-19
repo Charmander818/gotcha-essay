@@ -4,7 +4,7 @@ import { Question, ClozeBlank, ClozeFeedback, TopicAnalysisData } from "../types
 import { ALL_TOPICS } from "../utils/topicHelpers";
 
 // Helper to ensure we have a client. 
-const realGetAI = () => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const realGetAI = () => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || import.meta.env.VITE_GEMINI_API_KEY || "" });
 
 const getAI = (): any => {
   return {
@@ -36,8 +36,9 @@ const getAI = (): any => {
 }
 
 async function generateOpenAI(params: any, modelName: string) {
-  if (!process.env.OPENAI_API_KEY) {
-    throw new Error("OPENAI_API_KEY is missing. Please add it to Vercel Settings or your .env file.");
+  const apiKey = process.env.OPENAI_API_KEY || import.meta.env.VITE_OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error("OPENAI_API_KEY is missing. Please add it to Vercel Settings or your .env file as VITE_OPENAI_API_KEY.");
   }
 
   let messages: any[] = [];
@@ -72,7 +73,8 @@ async function generateOpenAI(params: any, modelName: string) {
     temperature: params.config?.temperature || 0.7,
   };
 
-  if (params.config?.responseMimeType === 'application/json') {
+  // If using newer models like o1 or o3-mini which don't support system instructions in the same way sometimes, OpenAI format might need adjustments but they generally support developer arrays in new API. For now standard messages.
+  if (params.config?.responseMimeType === 'application/json' && !modelName.startsWith("o1") && !modelName.startsWith("o3-mini") && !modelName.startsWith("gpt-4.5")) {
     requestBody.response_format = { type: 'json_object' };
   }
 
@@ -80,7 +82,7 @@ async function generateOpenAI(params: any, modelName: string) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+      'Authorization': `Bearer ${apiKey}`
     },
     body: JSON.stringify(requestBody)
   });
@@ -95,13 +97,15 @@ async function generateOpenAI(params: any, modelName: string) {
 }
 
 const checkForApiKey = () => {
-  if (!process.env.GEMINI_API_KEY && !process.env.OPENAI_API_KEY) {
+  const geminiKey = process.env.GEMINI_API_KEY || import.meta.env.VITE_GEMINI_API_KEY;
+  const openaiKey = process.env.OPENAI_API_KEY || import.meta.env.VITE_OPENAI_API_KEY;
+  if (!geminiKey && !openaiKey) {
     console.error("API Key is missing!");
-    throw new Error("API keys are missing. Please add GEMINI_API_KEY or OPENAI_API_KEY in Vercel Settings -> Environment Variables, and redeploy.");
+    throw new Error("API keys are missing. Please add VITE_GEMINI_API_KEY or VITE_OPENAI_API_KEY in Vercel Settings -> Environment Variables, and redeploy.");
   }
 };
 
-export const generateModelAnswer = async (question: Question, modelName: string = 'gemini-2.5-flash'): Promise<string> => {
+export const generateModelAnswer = async (question: Question, modelName: string = 'gemini-1.5-flash'): Promise<string> => {
   checkForApiKey();
   const prompt = `
     You are an expert Cambridge A-Level Economics Examiner.
@@ -183,7 +187,7 @@ export const generateModelAnswer = async (question: Question, modelName: string 
   return response.text || "Failed to generate essay.";
 };
 
-export const gradeEssay = async (question: Question, essay: string, images: string[] = []): Promise<string> => {
+export const gradeEssay = async (question: Question, essay: string, images: string[] = [], modelName: string = 'gemini-1.5-flash'): Promise<string> => {
   checkForApiKey();
   const imageParts = images.map(img => {
       // Assuming img is data:image/png;base64,...
@@ -310,7 +314,7 @@ export const gradeEssay = async (question: Question, essay: string, images: stri
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: modelName,
     contents: {
         parts: [
             { text: prompt },
@@ -380,7 +384,7 @@ export const getRealTimeCoaching = async (question: Question, currentText: strin
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-1.5-flash',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -429,7 +433,7 @@ export const generateClozeExercise = async (text: string): Promise<{ textWithBla
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-1.5-flash',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -483,7 +487,7 @@ export const evaluateClozeAnswers = async (blanks: ClozeBlank[], userAnswers: Re
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-1.5-flash',
     contents: prompt,
     config: {
         responseMimeType: "application/json",
@@ -534,7 +538,7 @@ export const improveLogicChain = async (input: string): Promise<string> => {
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-1.5-flash',
     contents: prompt,
   });
   return response.text || "Could not improve chain.";
@@ -581,7 +585,7 @@ export const analyzeTopic = async (topic: string, questions: Question[]): Promis
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-1.5-flash',
     contents: prompt,
     config: { responseMimeType: "application/json" }
   });
@@ -634,7 +638,7 @@ export const analyzeExamStrategy = async (marks: number, questions: Question[]):
 
   const ai = getAI();
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-1.5-flash',
     contents: prompt,
   });
   return response.text || "Analysis failed.";
@@ -665,7 +669,7 @@ export const generateSyllabusLogicChain = async (topicTitle: string, point: stri
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-1.5-flash',
       contents: prompt,
     });
     return response.text || "Error generating chain.";
@@ -694,7 +698,7 @@ export const generateSyllabusDefinition = async (topicTitle: string, point: stri
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-1.5-flash',
       contents: prompt,
     });
     return response.text || "Error generating definition.";
@@ -724,7 +728,7 @@ export const evaluateSyllabusChain = async (topicTitle: string, point: string, s
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-1.5-flash',
       contents: prompt,
     });
     return response.text || "Error evaluating chain.";
@@ -775,7 +779,7 @@ export const generateWorksheet = async (chapter: string, syllabusPoints: string,
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-1.5-flash',
       contents: prompt,
     });
     
@@ -837,7 +841,7 @@ export const generateTeachingPPTData = async (chapter: string, syllabusPoints: s
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-1.5-flash',
       contents: prompt,
       config: {
         responseMimeType: "application/json"
@@ -878,7 +882,7 @@ export const generateMindmapData = async (chapter: string, syllabusPoints: strin
 
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-1.5-flash',
       contents: prompt,
     });
     
@@ -947,7 +951,7 @@ export const extractMCQsFromImage = async (base64Image: string, paperCode: strin
     for (let i = 0; i < retries; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.5-flash',
+              model: 'gemini-1.5-flash',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1002,7 +1006,7 @@ export const extractDescriptionForMCQ = async (base64Image: string, retries = 3)
     for (let i = 0; i < retries; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.5-flash',
+              model: 'gemini-1.5-flash',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1034,7 +1038,7 @@ export const generateChatResponse = async (prompt: string): Promise<string> => {
     checkForApiKey();
     const ai = getAI();
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-1.5-flash',
       contents: prompt,
     });
     return response.text || "";
@@ -1068,7 +1072,7 @@ export const generateExplanationForMCQ = async (base64Image: string, correctAnsw
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.5-flash',
+              model: 'gemini-1.5-flash',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1117,7 +1121,7 @@ export const extractQuestionStemForMCQ = async (base64Image: string): Promise<st
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.5-flash',
+              model: 'gemini-1.5-flash',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1186,7 +1190,7 @@ export const generateAnalysisForMCQ = async (base64Image: string, level?: 'AS' |
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.5-flash',
+              model: 'gemini-1.5-flash',
               contents: {
                  parts: [
                      { text: prompt },
@@ -1274,7 +1278,7 @@ export const parseBulkEssays = async (rawText: string, level: 'AS' | 'A Level'):
     for (let i = 0; i < 3; i++) {
         try {
             response = await ai.models.generateContent({
-              model: 'gemini-2.5-flash',
+              model: 'gemini-1.5-flash',
               contents: [
                 { text: prompt },
                 { text: rawText }

@@ -76,12 +76,15 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
                 id="model-select"
                 value={selectedModel}
                 onChange={(e) => setSelectedModel(e.target.value)}
-                className="bg-white border border-slate-300 text-slate-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 shadow-sm"
+                className="bg-white border text-sm border-slate-300 text-slate-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 py-2 px-3 shadow-sm"
               >
                 <option value="gemini-2.5-pro">Gemini 2.5 Pro (Powerful, slow)</option>
                 <option value="gemini-2.5-flash">Gemini 2.5 Flash (Fast, default)</option>
                 <option value="gpt-4o">GPT-4o (OpenAI Premium)</option>
                 <option value="gpt-4o-mini">GPT-4o Mini (OpenAI Fast)</option>
+                <option value="gpt-4.5-preview">GPT-4.5 Preview</option>
+                <option value="o1">OpenAI o1 Reasoning</option>
+                <option value="o3-mini">OpenAI o3-mini Reasoning</option>
               </select>
             </div>
             <button
@@ -116,6 +119,9 @@ const EssayGenerator: React.FC<Props> = ({ question, savedEssay, onSave }) => {
                   <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
                   <option value="gpt-4o">GPT-4o</option>
                   <option value="gpt-4o-mini">GPT-4o Mini</option>
+                  <option value="gpt-4.5-preview">GPT-4.5 Preview</option>
+                  <option value="o1">OpenAI o1</option>
+                  <option value="o3-mini">OpenAI o3-mini</option>
                 </select>
                 <button 
                     onClick={handleDownload}
