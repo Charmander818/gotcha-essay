@@ -67,7 +67,6 @@ export const MCQBank: React.FC = () => {
   const [showAutoImport, setShowAutoImport] = useState(false);
   const [showQuizGenerator, setShowQuizGenerator] = useState(false);
   const [newAnnotation, setNewAnnotation] = useState<string>('');
-  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const [viewingMCQ, setViewingMCQ] = useState<MCQ | null>(null);
   
   // Bulk Answers State
@@ -480,14 +479,6 @@ export const MCQBank: React.FC = () => {
       return (
           <div className="h-full w-full overflow-y-auto bg-slate-50">
             <div className="max-w-4xl mx-auto p-4 md:p-8 space-y-6">
-              {zoomedImage && (
-                  <div 
-                      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 cursor-zoom-out"
-                      onClick={() => setZoomedImage(null)}
-                  >
-                      <img src={zoomedImage} className="max-w-full max-h-full object-contain bg-white p-2 rounded shadow-2xl" alt="Zoomed" />
-                  </div>
-              )}
               <div className="flex justify-between items-center mb-6">
                  <div>
                      <div className="flex items-center gap-3 mb-1">
@@ -543,7 +534,7 @@ export const MCQBank: React.FC = () => {
                           <span className={currentQ.isStarred ? 'text-amber-400 drop-shadow-sm' : 'text-slate-300 grayscale'} style={{ fontSize: '1.4rem' }}>🌟</span>
                       </button>
                   </div>
-                  <div className="flex justify-center mb-8 cursor-zoom-in" onClick={() => setZoomedImage(currentQ.imageUrl)}>
+                  <div className="flex justify-center mb-8">
                      <img src={currentQ.imageUrl} alt="Question" className="max-w-full max-h-[500px] object-contain border rounded shadow-sm hover:opacity-90 transition-opacity" />
                   </div>
 
@@ -679,14 +670,6 @@ export const MCQBank: React.FC = () => {
 
         {/* Main Content */}
         <div ref={mainContentRef} className="flex-1 h-full overflow-y-auto p-4 md:p-8 space-y-8 relative">
-            {zoomedImage && (
-                <div 
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 cursor-zoom-out"
-                    onClick={() => setZoomedImage(null)}
-                >
-                    <img src={zoomedImage} className="max-w-full max-h-full object-contain bg-white p-2 rounded shadow-2xl" alt="Zoomed" />
-                </div>
-            )}
 
             {viewingMCQ && (
                 <div className="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center p-4 sm:p-6 overflow-y-auto cursor-auto" onClick={(e) => {
@@ -1039,8 +1022,7 @@ export const MCQBank: React.FC = () => {
                             </button>
                         </div>
                         <div 
-                            className="h-48 bg-slate-100 flex items-center justify-center p-2 relative overflow-hidden text-center cursor-zoom-in group/img"
-                            onClick={() => setZoomedImage(q.imageUrl)}
+                            className="h-48 bg-slate-100 flex items-center justify-center p-2 relative overflow-hidden text-center group/img"
                         >
                             <img src={q.imageUrl} alt={`Q${q.questionNum}`} className="max-w-full max-h-full object-contain mix-blend-multiply transition-transform group-hover/img:scale-[1.02]" />
                             <div className="absolute top-2 right-2 bg-white px-2 py-1 text-sm font-bold rounded shadow-sm text-green-700 border border-green-200 z-10 opacity-90">
