@@ -28,6 +28,11 @@ export const MCQQuizGenerator: React.FC<Props> = ({ allMcqs, onClose, onGenerate
      }).map(m => m.paper))).sort();
   }, [allMcqs, level]);
 
+  React.useEffect(() => {
+     setSelectedTopics([...availableTopics]);
+     setSelectedPapers([...availablePapers]);
+  }, [availableTopics, availablePapers]);
+
   const toggleTopic = (topic: string) => {
     setSelectedTopics(prev => prev.includes(topic) ? prev.filter(t => t !== topic) : [...prev, topic]);
   };
@@ -42,8 +47,8 @@ export const MCQQuizGenerator: React.FC<Props> = ({ allMcqs, onClose, onGenerate
        if (isAS && level !== 'AS') return false;
        if (!isAS && level !== 'AL') return false;
        
-       if (selectedPapers.length > 0 && !selectedPapers.includes(m.paper)) return false;
-       if (selectedTopics.length > 0 && !selectedTopics.includes(m.topic)) return false;
+       if (!selectedPapers.includes(m.paper)) return false;
+       if (!selectedTopics.includes(m.topic)) return false;
        
        return true;
      });
@@ -102,7 +107,11 @@ export const MCQQuizGenerator: React.FC<Props> = ({ allMcqs, onClose, onGenerate
              
              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
                  <div className="flex justify-between items-center mb-2">
-                     <label className="font-bold">Topics (Leave empty for all)</label>
+                     <div className="flex items-center gap-3">
+                         <label className="font-bold">Topics</label>
+                         <button onClick={() => setSelectedTopics([...availableTopics])} className="text-xs text-blue-600 hover:underline">Select All</button>
+                         <button onClick={() => setSelectedTopics([])} className="text-xs text-blue-600 hover:underline">Clear All</button>
+                     </div>
                      <label className="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white px-2 py-1 border rounded shadow-sm">
                          <input type="checkbox" checked={coverAllTopics} onChange={e => setCoverAllTopics(e.target.checked)} />
                          Cover all selected topics
@@ -122,7 +131,11 @@ export const MCQQuizGenerator: React.FC<Props> = ({ allMcqs, onClose, onGenerate
              </div>
              
              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                 <label className="block font-bold mb-2">Papers (Leave empty for all)</label>
+                 <div className="flex items-center gap-3 mb-2">
+                     <label className="block font-bold">Papers</label>
+                     <button onClick={() => setSelectedPapers([...availablePapers])} className="text-xs text-purple-600 hover:underline">Select All</button>
+                     <button onClick={() => setSelectedPapers([])} className="text-xs text-purple-600 hover:underline">Clear All</button>
+                 </div>
                  <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto p-2 bg-white border rounded">
                      {availablePapers.map(p => (
                          <button 
